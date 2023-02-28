@@ -4,7 +4,11 @@
 3) 스터디 장소 : [양재 토](https://moim.toz.co.kr/branchDetail?branch_id=368)
 5) 스터디 운영 계획
 - 2023.03.x : 03, 04, 05, 10장 [문제 해결 프로세스, 시각화, 주요 머신러닝, 딥러닝 갈무리]
-- 2023.03.x : 06장 (자전거 대여 수요 예측)
+- 2023.03.x : 06장 자전거 대여 수요 예측
+  - [탐색적 데이터 분석](https://www.kaggle.com/werooring/ch6-eda)
+  - [베이스라인 모델](https://www.kaggle.com/werooring/ch6-baseline)
+  - [성능 개선](https://www.kaggle.com/werooring/ch6-modeling)
+  - [환경 세팅된 노트북 양식](https://www.kaggle.com/werooring/ch6-notebook)
 - 2023.03.x : 07장 (범주형 데이터 이진 분류)
 - 2023.03.x : 08장 (안전 운전자 예측)
 - 2023.03.x : 09장 (향후 판매량 예측)
