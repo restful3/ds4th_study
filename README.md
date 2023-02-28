@@ -1,9 +1,9 @@
 # ds4th study
 1) 스터디 목적 : 캐글을 통한 머신러닝/딥러닝 실전 능력 향상
 2) 스터디 시간 : 일요일 오전 10 부터 2시간
-3) 스터디 장소 : [양재 토](https://moim.toz.co.kr/branchDetail?branch_id=368)
+3) 스터디 장소 : [양재 토즈](https://moim.toz.co.kr/branchDetail?branch_id=368)
 5) 스터디 운영 계획
-- 2023.03.x : 03, 04, 05, 10장 [문제 해결 프로세스, 시각화, 주요 머신러닝, 딥러닝 갈무리]
+- 2023.03.x : 03, 04, 05, 10장 문제 해결 프로세스, 시각화, 주요 머신러닝, 딥러닝 갈무리
 - 2023.03.x : 06장 자전거 대여 수요 예측
   - [탐색적 데이터 분석](https://www.kaggle.com/werooring/ch6-eda)
   - [베이스라인 모델](https://www.kaggle.com/werooring/ch6-baseline)
