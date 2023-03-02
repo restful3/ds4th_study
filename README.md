@@ -2,7 +2,7 @@
 1) 스터디 목적 : 캐글을 통한 머신러닝/딥러닝 실전 능력 향상
 2) 스터디 시간 : 일요일 오전 10 부터 2시간
 3) 스터디 장소 : [양재 토즈](https://moim.toz.co.kr/branchDetail?branch_id=368)
-5) 스터디 운영 계획
+5) 스터디 운영 계획 (2023년 3~4월)
 - 2023.03.05 : 오리엔테이션, 문제 해결 프로세스, 시각화
   - [시각화](https://github.com/restful3/ds4th_study/blob/main/tyoung/ch04%20-%20visualization/ch04%20-%20visualization.ipynb)
 - 2023.03.12 : 05장 머신러닝 갈무리, 06장 자전거 대여 수요 예측
