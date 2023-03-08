@@ -4,7 +4,8 @@
 3) 스터디 장소 : [양재 토즈](https://moim.toz.co.kr/branchDetail?branch_id=368)
 5) 스터디 운영 계획 (2023년 3~4월)
 - 2023.03.05 : 오리엔테이션, 문제 해결 프로세스, 시각화
-  - [시각화](https://github.com/restful3/ds4th_study/blob/main/tyoung/ch04%20-%20visualization/ch04%20-%20visualization.ipynb)
+  - [오리엔테이션, 문제 해결 프로세스, 시각화](https://github.com/restful3/ds4th_study/blob/main/doc/00%20%EC%98%A4%EB%A6%AC%EC%97%94%ED%85%8C%EC%9D%B4%EC%85%98.pdf)
+  - [시각화 code](https://github.com/restful3/ds4th_study/blob/main/tyoung/ch04%20-%20visualization/ch04%20-%20visualization.ipynb)
 - 2023.03.12 : 05장 머신러닝 갈무리, 06장 자전거 대여 수요 예측
   - [탐색적 데이터 분석](https://www.kaggle.com/werooring/ch6-eda)
   - [베이스라인 모델](https://www.kaggle.com/werooring/ch6-baseline)
