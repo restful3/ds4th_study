@@ -47,8 +47,9 @@
   - [베이스라인 모델 code](https://www.kaggle.com/werooring/ch13-baseline)
   - [성능 개선 code](https://www.kaggle.com/werooring/ch13-modeling)
   - [환경 세팅된 노트북 양식 code](https://www.kaggle.com/werooring/ch13-notebook)
-- 2023.04.30 : 총정리
-  - [ㅇㅇ]
+- 2023.04.30 : [캐글 CLiP 이미지 대회](https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification) 
+  - [참고 자료 1 : 블로그](https://brunch.co.kr/@hansungdev/45)
+  - [참고 자료 2 : Youtube](https://youtu.be/KTgNiKm_gYw)
 
 5) 스터디 운영 방법
 - 교재 : [Must Have 머신러닝·딥러닝 문제해결 전략](https://ridibooks.com/books/4547000012?_s=search&_q=%EB%AC%B8%EC%A0%9C+%ED%95%B4%EA%B2%B0+%EC%A0%84%EB%9E%B5&_rdt_sid=search&_rdt_idx=2)
