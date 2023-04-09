@@ -42,12 +42,13 @@
   - [성능 개선 code](https://www.kaggle.com/werooring/ch12-modeling)
   - [한 걸음 더 code](https://www.kaggle.com/werooring/ch12-modeling2)
   - [환경 세팅된 노트북 양식 code](https://www.kaggle.com/werooring/ch12-notebook)
-- 2023.04.30 : 13장 흉부 엑스선 기반 폐렴 진단
+- 2023.04.23 : 13장 흉부 엑스선 기반 폐렴 진단
   - [탐색적 데이터 분석 code](https://www.kaggle.com/werooring/ch13-eda)
   - [베이스라인 모델 code](https://www.kaggle.com/werooring/ch13-baseline)
   - [성능 개선 code](https://www.kaggle.com/werooring/ch13-modeling)
   - [환경 세팅된 노트북 양식 code](https://www.kaggle.com/werooring/ch13-notebook)
-
+- 2023.04.30 : 총정리
+  - [ㅇㅇ]
 
 5) 스터디 운영 방법
 - 교재 : [Must Have 머신러닝·딥러닝 문제해결 전략](https://ridibooks.com/books/4547000012?_s=search&_q=%EB%AC%B8%EC%A0%9C+%ED%95%B4%EA%B2%B0+%EC%A0%84%EB%9E%B5&_rdt_sid=search&_rdt_idx=2)
