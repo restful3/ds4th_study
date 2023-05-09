@@ -1,6 +1,6 @@
 # ds4th study
-1) 스터디 목적 : 캐글을 통한 머신러닝/딥러닝 실전 능력 향상
-2) 스터디 시간 : 일요일 오전 9 부터 2시간
+1) 스터디 목적 : 파이토치 및 딥러닝 기술 습득
+2) 스터디 시간 : 월, 화, 목 중 점심 시간 50분
 3) 스터디 장소 : Webex
 4) 스터디 운영 계획 (2023년 6~7월)
 
@@ -35,6 +35,8 @@
   - 15장. 데이터 없이 학습하는 GAN
 
 5) 스터디 운영 방법
-- 교재 : [Must Have 텐초의 파이토치 딥러닝 특강](https://www.millie.co.kr/v3/bookDetail/179572834?referrer=searchResult)
+- 교재 : 
+  - [Must Have 텐초의 파이토치 딥러닝 특강](https://www.millie.co.kr/v3/bookDetail/179572834?referrer=searchResult)
+  - [sorce](https://github.com/gilbutITbook/080289)
 - 매주 학습 한 내용 공유 업로드 (소스 코드)
 - 담당자 발표 후 자유로운 토론
