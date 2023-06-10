@@ -1,4 +1,5 @@
 data/
 model/
+models/
 *.pth
 .ipynb_checkpoints
