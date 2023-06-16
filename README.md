@@ -7,8 +7,8 @@
 - 2023년 6월 10일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=mbf1a423f021478380e0158b56c831abe	), 발표자 - 정우석, 송태영
   - [오리엔테이션](https://github.com/restful3/ds4th_study/blob/main/doc/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/%EC%98%A4%EB%A6%AC%EC%97%94%ED%85%8C%EC%9D%B4%EC%85%98.pdf)
   - 00장. 실습 환경 구축 
-  - 01장. 딥러닝 한눈에 살펴보기
-  - 02장. 인공 신경망 ANN 이해하기  
+  - [01장. 딥러닝 한눈에 살펴보기](https://github.com/restful3/ds4th_study/blob/main/doc/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/%EC%98%A4%EB%A6%AC%EC%97%94%ED%85%8C%EC%9D%B4%EC%85%98.pdf)
+  - [02장. 인공 신경망 ANN 이해하기](https://github.com/restful3/ds4th_study/blob/main/doc/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/%EC%98%A4%EB%A6%AC%EC%97%94%ED%85%8C%EC%9D%B4%EC%85%98.pdf)
   
 - 2023년 6월 17일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=m5d8f65cced19f9230ecc5c65facb7199), 발표자 - 정동우(3장), 최진구(4장)
   - 03장. 간단한 신경망 만들기
