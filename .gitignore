@@ -3,4 +3,5 @@ model/
 models/
 *.pth
 *.pt
-.ipynb_checkpoints
+*.ipynb_checkpoints*
+*.ipynb_check*
