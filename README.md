@@ -19,7 +19,7 @@
   - [06장. 넷플릭스 주가 예측하기 : RNN으로 첫 시계열 학습](https://github.com/restful3/ds4th_study/blob/main/source/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/06_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4_%EC%A3%BC%EA%B0%80_%EC%98%88%EC%B8%A1_RNN_Song.ipynb)
   
 - 2023년 7월 1일 (토요일) : [webex](), 발표자 - 박정훈(7장), 정동우(8장)
-  - 07장. 이미지 세그멘테이션 : U-Net
+  - 07장. 이미지 세그멘테이션 : U-Net ([video](https://www.youtube.com/watch?v=nCL7Y58jzH8))
   - 08장. 이미지 노이즈 제거 : 오토인코더
   
 - 2023년 7월 8일 (토요일) : [webex](), 발표자 - 미정
@@ -42,5 +42,6 @@
 - 교재 : 
   - [Must Have 텐초의 파이토치 딥러닝 특강](https://www.millie.co.kr/v3/bookDetail/179572834?referrer=searchResult)
   - [sorce](https://github.com/gilbutITbook/080289)
+  - [data](https://drive.google.com/drive/u/0/folders/1_XuoiGdAoueqwYcaJtt5NhJEFGHJKtvG)
 - 매주 학습 한 내용 공유 업로드 (소스 코드, 발표자료)
 - 담당자 발표 (30분) 후 자유로운 토론 (20분)
