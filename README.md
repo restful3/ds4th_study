@@ -41,7 +41,6 @@
 5) 스터디 운영 방법
 - 교재 : 
   - [Must Have 텐초의 파이토치 딥러닝 특강](https://www.millie.co.kr/v3/bookDetail/179572834?referrer=searchResult)
-  - [sorce](https://github.com/gilbutITbook/080289)
   - [data](https://drive.google.com/drive/u/0/folders/1_XuoiGdAoueqwYcaJtt5NhJEFGHJKtvG)
 - 매주 학습 한 내용 공유 업로드 (소스 코드, 발표자료)
 - 담당자 발표 (30분) 후 자유로운 토론 (20분)
