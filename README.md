@@ -15,7 +15,7 @@
   - 04장. 사진 분류하기 : CNN과 VGG   
   
 - 2023년 6월 24일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=ma5191fe900bde91343d33cd259c6b5cc	), 발표자 - 김태호(5장), 송태영(6장)
-  - 05장. 유행 따라가기 : ResNet 만들기
+  - [05장. 유행 따라가기 : ResNet 만들기](https://github.com/restful3/ds4th_study/blob/main/source/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/05_ResNet_%EC%84%A4%EB%AA%85%EC%9E%90%EB%A3%8C_Teo.ipynb)
   - [06장. 넷플릭스 주가 예측하기 : RNN으로 첫 시계열 학습](https://github.com/restful3/ds4th_study/blob/main/source/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/06_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4_%EC%A3%BC%EA%B0%80_%EC%98%88%EC%B8%A1_RNN_Song.ipynb)
   
 - 2023년 7월 1일 (토요일) : [webex](), 발표자 - 박정훈(07), 정동우(08)
