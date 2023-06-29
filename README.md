@@ -18,23 +18,23 @@
   - [05장. 유행 따라가기 : ResNet 만들기](https://github.com/restful3/ds4th_study/blob/main/source/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/05_ResNet_%EC%84%A4%EB%AA%85%EC%9E%90%EB%A3%8C_Teo.ipynb)
   - [06장. 넷플릭스 주가 예측하기 : RNN으로 첫 시계열 학습](https://github.com/restful3/ds4th_study/blob/main/source/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/06_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4_%EC%A3%BC%EA%B0%80_%EC%98%88%EC%B8%A1_RNN_Song.ipynb)
   
-- 2023년 7월 1일 (토요일) : [webex](), 발표자 - 박정훈(7장), 정동우(8장)
+- 2023년 7월 1일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=m4f70b78c00d3051e821965abe42f0ecb), 발표자 - 박정훈(7장), 정동우(8장)
   - 07장. 이미지 세그멘테이션 : U-Net ([video](https://www.youtube.com/watch?v=nCL7Y58jzH8))
   - 08장. 이미지 노이즈 제거 : 오토인코더
   
-- 2023년 7월 8일 (토요일) : [webex](), 발표자 - 미정
+- 2023년 7월 8일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=mc706b5630990018907509fe51f508242	), 발표자 - 미정
   - 09장. 자동 채색 : Let there be color 모델
   - 10장. 글쓰는 인공지능 : LSTM 텍스트 생성
  
-- 2023년 7월 15일 (토요일) : [webex](), 발표자 - 최진구(11장), 송태영(12장)
+- 2023년 7월 15일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=m41cd4fb99efa50819d1c0661cf64e402	), 발표자 - 최진구(11장), 송태영(12장)
   - 11장. 직접 만드는 번역기 : 어텐션 기계 번역
   - 12장. 캡챠 텍스트 인식 : CRNN+GRU
  
-- 2023년 7월 22일 (토요일) : [webex](), 발표자 - 미정
+- 2023년 7월 22일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=m31953a236e70e9f5586722e09581e3bf	), 발표자 - 미정
   - 13장. 사람 얼굴을 생성하는 GAN
   - 14장. 화질을 개선하는 GAN
   
-- 2023년 7월 29일 (토요일) : [webex](), 발표자 - 미정
+- 2023년 7월 29일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=m677e798510916101f367b4c4be820c84	), 발표자 - 미정
   - 15장. 데이터 없이 학습하는 GAN  
   - 부록 A. 트렌스포머, GPT, BERT, ViT
 
