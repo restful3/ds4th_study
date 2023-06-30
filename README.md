@@ -20,7 +20,7 @@
   
 - 2023년 7월 1일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=m4f70b78c00d3051e821965abe42f0ecb), 발표자 - 박정훈(7장), 정동우(8장)
   - 07장. 이미지 세그멘테이션 : U-Net ([video](https://www.youtube.com/watch?v=nCL7Y58jzH8))
-  - 08장. 이미지 노이즈 제거 : 오토인코더
+  - [08장. 이미지 노이즈 제거 : 오토인코더](https://github.com/restful3/ds4th_study/blob/main/source/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/08_%EC%9D%B4%EB%AF%B8%EC%A7%80_%EB%85%B8%EC%9D%B4%EC%A6%88_%EC%A0%9C%EA%B1%B0_%EC%98%A4%ED%84%B0%EC%9D%B8%EC%BD%94%EB%8D%94_dongwoo.ipynb)
   
 - 2023년 7월 8일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=mc706b5630990018907509fe51f508242	), 발표자 - 미정
   - 09장. 자동 채색 : Let there be color 모델
