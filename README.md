@@ -22,7 +22,7 @@
   - [07장. 이미지 세그멘테이션 : U-Net](https://github.com/restful3/ds4th_study/blob/main/source/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/07_%EC%9D%B4%EB%AF%B8%EC%A7%80_%EC%84%B8%EA%B7%B8%EB%A9%98%ED%85%8C%EC%9D%B4%EC%85%98_U-Net_%EB%B0%95%EC%A0%95%ED%9B%88.ipynb) ([video](https://www.youtube.com/watch?v=nCL7Y58jzH8), [doc](https://github.com/restful3/ds4th_study/blob/main/doc/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/07_%EC%9D%B4%EB%AF%B8%EC%A7%80_%EC%84%B8%EA%B7%B8%EB%A9%98%ED%85%8C%EC%9D%B4%EC%85%98_U-Net_%EB%B0%95%EC%A0%95%ED%9B%88.pdf))
   - [08장. 이미지 노이즈 제거 : 오토인코더](https://github.com/restful3/ds4th_study/blob/main/source/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/08_%EC%9D%B4%EB%AF%B8%EC%A7%80_%EB%85%B8%EC%9D%B4%EC%A6%88_%EC%A0%9C%EA%B1%B0_%EC%98%A4%ED%84%B0%EC%9D%B8%EC%BD%94%EB%8D%94_dongwoo.ipynb)
   
-- 2023년 7월 8일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=mc706b5630990018907509fe51f508242	), 발표자 - 미정
+- 2023년 7월 8일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=mc706b5630990018907509fe51f508242	), 발표자 - 박정훈(9장), 정우석(10장)
   - 09장. 자동 채색 : Let there be color 모델
   - 10장. 글쓰는 인공지능 : LSTM 텍스트 생성
  
@@ -30,11 +30,11 @@
   - 11장. 직접 만드는 번역기 : 어텐션 기계 번역
   - 12장. 캡챠 텍스트 인식 : CRNN+GRU
  
-- 2023년 7월 22일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=m31953a236e70e9f5586722e09581e3bf	), 발표자 - 미정
+- 2023년 7월 22일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=m31953a236e70e9f5586722e09581e3bf	), 발표자 - 송태영(13장), 김태호(14장)
   - 13장. 사람 얼굴을 생성하는 GAN
   - 14장. 화질을 개선하는 GAN
   
-- 2023년 7월 29일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=m677e798510916101f367b4c4be820c84	), 발표자 - 미정
+- 2023년 7월 29일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=m677e798510916101f367b4c4be820c84	), 발표자 - 최진구(15장), 정동우(부록)
   - 15장. 데이터 없이 학습하는 GAN  
   - 부록 A. 트렌스포머, GPT, BERT, ViT
 
