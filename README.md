@@ -23,7 +23,7 @@
   - [08장. 이미지 노이즈 제거 : 오토인코더](https://github.com/restful3/ds4th_study/blob/main/source/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/08_%EC%9D%B4%EB%AF%B8%EC%A7%80_%EB%85%B8%EC%9D%B4%EC%A6%88_%EC%A0%9C%EA%B1%B0_%EC%98%A4%ED%84%B0%EC%9D%B8%EC%BD%94%EB%8D%94_dongwoo.ipynb)
   
 - 2023년 7월 8일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=mc706b5630990018907509fe51f508242	), 발표자 - 박정훈(9장), 정우석(10장)
-  - 09장. 자동 채색 : Let there be color 모델 ([video](https://youtu.be/qdAI2UjqfvE))
+  - 09장. 자동 채색 : Let there be color 모델 ([video](https://youtu.be/qdAI2UjqfvE), [doc](https://github.com/restful3/ds4th_study/blob/main/source/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/09_%EC%9E%90%EB%8F%99%EC%B1%84%EC%83%89%ED%95%98%EA%B8%B0_%EB%B0%95%EC%A0%95%ED%9B%88.pptx))
   - [10장. 글쓰는 인공지능 : LSTM 텍스트 생성](https://github.com/restful3/ds4th_study/blob/main/source/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/LSTM%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%83%9D%EC%84%B1.ipynb) [참고자료](https://docs.google.com/presentation/d/1XOb_yx4oIxKGzgdDJlLVo966N6XPOhFk1180i4keu4E/edit?usp=sharing)
  
 - 2023년 7월 15일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=m41cd4fb99efa50819d1c0661cf64e402	), 발표자 - 최진구(11장), 송태영(12장)
