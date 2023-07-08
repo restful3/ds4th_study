@@ -1,6 +1,7 @@
 data/
 model/
 models/
+*.models/*
 *.pth
 *.pt
 *.ipynb_checkpoints*
