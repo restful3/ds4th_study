@@ -27,8 +27,8 @@
   - [10장. 글쓰는 인공지능 : LSTM 텍스트 생성](https://github.com/restful3/ds4th_study/blob/main/source/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/LSTM%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%83%9D%EC%84%B1.ipynb) ([참고자료](https://docs.google.com/presentation/d/1XOb_yx4oIxKGzgdDJlLVo966N6XPOhFk1180i4keu4E/edit?usp=sharing))
  
 - 2023년 7월 15일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=m41cd4fb99efa50819d1c0661cf64e402	), 발표자 - 최진구(11장), 송태영(12장)
-  - 11장. 직접 만드는 번역기 : 어텐션 기계 번역 ([doc] (https://github.com/restful3/ds4th_study/blob/main/doc/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98_Attetion.pdf))
-  - 12장. 캡챠 텍스트 인식 : CRNN+GRU
+  - 11장. 직접 만드는 번역기 : 어텐션 기계 번역 ([doc](https://github.com/restful3/ds4th_study/blob/main/doc/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98_Attetion.pdf))
+  - [12장. 캡챠 텍스트 인식 : CRNN+GRU](https://github.com/restful3/ds4th_study/blob/main/source/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/12_%EC%BA%A1%EC%B1%A0_%ED%85%8D%EC%8A%A4%ED%8A%B8_%EC%9D%B8%EC%8B%9D_CRNN_GRU_Song.ipynb)
  
 - 2023년 7월 22일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=m31953a236e70e9f5586722e09581e3bf	), 발표자 - 송태영(13장), 김태호(14장)
   - 13장. 사람 얼굴을 생성하는 GAN
