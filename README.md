@@ -32,9 +32,7 @@
  
 - 2023년 7월 22일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=m31953a236e70e9f5586722e09581e3bf	), 발표자 - 송태영(13장), 김태호(14장)
   - [13장. 사람 얼굴을 생성하는 GAN](https://github.com/restful3/ds4th_study/blob/main/source/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/13_%EC%82%AC%EB%9E%8C_%EC%96%BC%EA%B5%B4%EC%9D%84_%EC%83%9D%EC%84%B1%ED%95%98%EB%8A%94_GAN_Song.ipynb)
-  - 14장. 화질을 개선하는 GAN
-.
-(https://github.com/restful3/ds4th_study/blob/main/source/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/15_%ED%99%94%EC%A7%88%EC%9D%84%20%EA%B0%9C%EC%84%A0%ED%95%98%EB%8A%94%20GAN.ipynb)
+  - [14장. 화질을 개선하는 GAN](https://github.com/restful3/ds4th_study/blob/main/source/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/15_%ED%99%94%EC%A7%88%EC%9D%84%20%EA%B0%9C%EC%84%A0%ED%95%98%EB%8A%94%20GAN.ipynb)
 - 2023년 7월 29일 (토요일) : [webex](https://lgehq.webex.com/lgehq/e.php?MTID=m677e798510916101f367b4c4be820c84	), 발표자 - 최진구(15장), 정동우(부록)
   - 15장. 데이터 없이 학습하는 GAN  
   - 부록 A. 트렌스포머, GPT, BERT, ViT
