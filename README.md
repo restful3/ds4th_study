@@ -36,7 +36,7 @@
 - 2023년 7월 29일 (토요일) 오전 10시 ~ 12시: [양재 토즈](https://moim.toz.co.kr/branchDetail?branch_id=368),  발표자 - 최진구(15장), 정동우(부록), 송태영
   - 15장. 데이터 없이 학습하는 GAN  
   - [부록 A. 트렌스포머, GPT, BERT, ViT](https://github.com/restful3/ds4th_study/blob/main/doc/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95/%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8_GPT_BERT_ViT_%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0.pdf)
-  - 다음 스터디 오리엔테이션
+  - [다음 스터디 오리엔테이션](https://github.com/restful3/ds4th_study/blob/main/doc/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/%EC%98%A4%EB%A6%AC%EC%97%94%ED%85%8C%EC%9D%B4%EC%85%98.pdf)
 
 5) 스터디 운영 방법
 - 교재 : 
