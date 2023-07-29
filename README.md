@@ -36,7 +36,7 @@
   - (쿡) CHAPTER 16 로지스틱 회귀
   - (쿡) CHAPTER 17 서포트 벡터 머신
   - (쿡) CHAPTER 18 나이브 베이즈
-- 2023년 10월 7일 (토요일) : [Webex](), 발표자 - 
+- 2023년 10월 7일 (토요일) : [양재토즈](https://m.place.naver.com/place/1853539067/home?entry=ple) 10시~12시, 발표자 - 
   - (쿡) CHAPTER 19 군집
   - (쿡) CHAPTER 20 신경망
   - (쿡) CHAPTER 21 훈련된 모델 저장과 복원
