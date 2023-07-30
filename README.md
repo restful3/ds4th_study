@@ -3,7 +3,7 @@
 2) 스터디 시간 : 토요일 오전 9시 부터 2시간
 3) 스터디 장소 : Webex
 4) 스터디 운영 계획 (2023년 8월, 9월)
-- 2023년 8월 5일 (토요일) : [Webex](), 발표자 - 정우석(통, CH1), 
+- 2023년 8월 5일 (토요일) : [Webex](), 발표자 - 정우석(통, CH1), 최진구(쿡, CH3)
   - (통) CHAPTER 1 탐색적 데이터 분석
   - (쿡) [CHAPTER 1 벡터, 행렬, 배열](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/01_%EB%B2%A1%ED%84%B0_%ED%96%89%EB%A0%AC_%EB%B0%B0%EC%97%B4_Song.ipynb)
   - (쿡) CHAPTER 2 데이터 적재
