@@ -12,7 +12,7 @@
   - (통) CHAPTER 2 데이터와 표본분포
   - (쿡) CHAPTER 4 수치형 데이터 다루기
   - (쿡) CHAPTER 5 범주형 데이터 다루기
-- 2023년 8월 19일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m3b3c0ed1cf0e51352a0dba4d1d815144	), 발표자 - 송태영(통, CH3), 정동우(쿡, CH7)
+- 2023년 8월 19일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m3b3c0ed1cf0e51352a0dba4d1d815144	), 발표자 - 송태영(통, CH3)
   - (통) CHAPTER 3 통계적 실험과 유의성검정
   - (쿡) CHAPTER 6 텍스트 다루기
   - (쿡) CHAPTER 7 날짜와 시간 다루기
