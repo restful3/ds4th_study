@@ -8,7 +8,7 @@
   - (쿡) [CHAPTER 1 벡터, 행렬, 배열](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/01_%EB%B2%A1%ED%84%B0_%ED%96%89%EB%A0%AC_%EB%B0%B0%EC%97%B4_Song.ipynb)
   - (쿡) CHAPTER 2 데이터 적재
   - (쿡) CHAPTER 3 데이터 랭글링
-- 2023년 8월 12일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mf554b5dd8e1ca5e4f4c4c6cdee64a178	), 발표자 - 장민호(통, CH2), 정동우(쿡, CH4), 정우석(통, CH5)
+- 2023년 8월 12일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mf554b5dd8e1ca5e4f4c4c6cdee64a178	), 발표자 - 장민호(통, CH2), 정동우(쿡, CH4), 정우석(쿡, CH5)
   - (통) CHAPTER 2 데이터와 표본분포
   - (쿡) CHAPTER 4 수치형 데이터 다루기
   - (쿡) CHAPTER 5 범주형 데이터 다루기
