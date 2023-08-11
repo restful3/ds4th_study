@@ -16,7 +16,7 @@
   - (통) CHAPTER 3 통계적 실험과 유의성검정
   - (쿡) CHAPTER 6 텍스트 다루기
   - (쿡) CHAPTER 7 날짜와 시간 다루기
-- 2023년 8월 26일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m93124ed60f2f34c22c2343c05e0acc4e	), 발표자 - TBD
+- 2023년 8월 26일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m93124ed60f2f34c22c2343c05e0acc4e	), 발표자 - 정동우(쿡, CH8)
   - (통) CHAPTER 4 회귀와 예측
   - (쿡) CHAPTER 8 이미지 다루기
   - (쿡) CHAPTER 9 특성 추출을 사용한 차원 축소
