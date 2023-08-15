@@ -6,7 +6,7 @@
 - 2023년 8월 5일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m24ffdf192a05040010c5c81b43fface1	), 발표자 - 정우석(통, CH1), 노민지(쿡, CH2), 최진구(쿡, CH3)
   - (통) CHAPTER 1 탐색적 데이터 분석
   - (쿡) [CHAPTER 1 벡터, 행렬, 배열](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/01_%EB%B2%A1%ED%84%B0_%ED%96%89%EB%A0%AC_%EB%B0%B0%EC%97%B4_Song.ipynb)
-  - (쿡) CHAPTER 2 데이터 적재
+  - (쿡) [CHAPTER 2 데이터 적재](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/02_%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%A0%81%EC%9E%AC_Roh.ipynb)
   - (쿡) CHAPTER 3 데이터 랭글링
 - 2023년 8월 12일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mf554b5dd8e1ca5e4f4c4c6cdee64a178	), 발표자 - 장민호(통, CH2), 정동우(쿡, CH4), 정우석(쿡, CH5)
   - (통) [CHAPTER 2 데이터와 표본분포](https://github.com/restful3/ds4th_study/blob/d648d0b5e36914d06b60565c5abb31f73e86a064/source/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B3%BC%ED%95%99%EC%9D%84%20%EC%9C%84%ED%95%9C%20%ED%86%B5%EA%B3%84/ch2_%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%99%80_%ED%91%9C%EB%B3%B8%EB%B6%84%ED%8F%AC.ipynb)
