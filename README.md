@@ -13,7 +13,7 @@
   - (쿡) [CHAPTER 4 수치형 데이터 다루기](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/04_%EC%88%98%EC%B9%98%ED%98%95_%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%8B%A4%EB%A3%A8%EA%B8%B0_dongwoo.ipynb)
   - (쿡) CHAPTER 5 범주형 데이터 다루기
 - 2023년 8월 19일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m3b3c0ed1cf0e51352a0dba4d1d815144	), 발표자 - 송태영(통, CH3), 박정훈(쿡, CH6), 김태호(쿡, CH7)
-  - (통) CHAPTER 3 통계적 실험과 유의성검정
+  - (통) [CHAPTER 3 통계적 실험과 유의성검정](https://github.com/restful3/ds4th_study/blob/main/source/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B3%BC%ED%95%99%EC%9D%84%20%EC%9C%84%ED%95%9C%20%ED%86%B5%EA%B3%84/ch3_%ED%86%B5%EA%B3%84%EC%A0%81_%EC%8B%A4%ED%97%98%EA%B3%BC_%EC%9C%A0%EC%9D%98%EC%84%B1%EA%B2%80%EC%A0%95_Song.ipynb)
   - (쿡) CHAPTER 6 텍스트 다루기
   - (쿡) CHAPTER 7 날짜와 시간 다루기
 - 2023년 8월 26일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m93124ed60f2f34c22c2343c05e0acc4e	), 발표자 - 정동우(쿡, CH8)
