@@ -20,7 +20,7 @@
   - (통) CHAPTER 4 회귀와 예측
   - (쿡) CHAPTER 8 이미지 다루기
   - (쿡) CHAPTER 9 특성 추출을 사용한 차원 축소
-- 2023년 9월 3일 (일요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=me8040e0adaed27ddec976d91902554fc	), 발표자 - 송태영(쿡, CH10)
+- 2023년 9월 3일 (일요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=me8040e0adaed27ddec976d91902554fc	), 발표자 - TBD(통, CH5), 송태영(쿡, CH10), TBD(쿡, CH11)
   - (통) CHAPTER 5 분류
   - (쿡) CHAPTER 10 특성 선택을 사용한 차원 축소
   - (쿡) CHAPTER 11 모델 평가
