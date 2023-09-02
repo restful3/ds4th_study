@@ -23,8 +23,7 @@
 - 2023년 9월 3일 (일요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=me8040e0adaed27ddec976d91902554fc	), 발표자 - 박정훈(통, CH5), 송태영(쿡, CH10), 김태호(쿡, CH11)
   - (통) CHAPTER 5 분류
   - (쿡) CHAPTER 10 특성 선택을 사용한 차원 축소
-  - (쿡) [CHAPTER 11 모델 평가].
-(https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/11_%EB%AA%A8%EB%8D%B8%ED%8F%89%EA%B0%80_Teo.ipynb)
+  - (쿡) [CHAPTER 11 모델 평가].(https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/11_%EB%AA%A8%EB%8D%B8%ED%8F%89%EA%B0%80_Teo.ipynb)
 - 2023년 9월 9일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2e1e7a835e12882be31884b624dcf912	), 발표자 - TBD
   - (통) CHAPTER 6 통계적 머신러닝
   - (쿡) CHAPTER 12 모델 선택
