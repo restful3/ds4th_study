@@ -18,7 +18,7 @@
   - (쿡) [CHAPTER 7 날짜와 시간 다루기](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/07_%EB%82%A0%EC%A7%9C%EC%99%80_%EC%8B%9C%EA%B0%84_%EB%8B%A4%EB%A3%A8%EA%B8%B0_Teo.ipynb)
 - 2023년 8월 26일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m93124ed60f2f34c22c2343c05e0acc4e	), 발표자 - 노민지(통, CH4), 정동우(쿡, CH8), 정우석(쿡, CH9)
   - (통) CHAPTER 4 회귀와 예측
-  - (쿡) CHAPTER 8 이미지 다루기
+  - (쿡) [CHAPTER 8 이미지 다루기](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/08_%EC%9D%B4%EB%AF%B8%EC%A7%80_%EB%8B%A4%EB%A3%A8%EA%B8%B0_dw.ipynb)
   - (쿡) CHAPTER 9 특성 추출을 사용한 차원 축소
 - 2023년 9월 3일 (일요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=me8040e0adaed27ddec976d91902554fc	), 발표자 - 박정훈(통, CH5), 송태영(쿡, CH10), 김태호(쿡, CH11)
   - (통) CHAPTER 5 분류
