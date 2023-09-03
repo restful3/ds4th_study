@@ -24,15 +24,15 @@
   - (통) [CHAPTER 5 분류](https://github.com/restful3/ds4th_study/blob/main/source/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B3%BC%ED%95%99%EC%9D%84%20%EC%9C%84%ED%95%9C%20%ED%86%B5%EA%B3%84/ch5_%EB%B6%84%EB%A5%98_%EB%B0%95%EC%A0%95%ED%9B%88.ipynb)
   - (쿡) [CHAPTER 10 특성 선택을 사용한 차원 축소](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/10_%ED%8A%B9%EC%84%B1_%EC%84%A0%ED%83%9D%EC%9D%84_%EC%82%AC%EC%9A%A9%ED%95%9C_%EC%B0%A8%EC%9B%90_%EC%B6%95%EC%86%8C_Song.ipynb)
   - (쿡) [CHAPTER 11 모델 평가](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/11_%EB%AA%A8%EB%8D%B8%ED%8F%89%EA%B0%80_Teo.ipynb)
-- 2023년 9월 9일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2e1e7a835e12882be31884b624dcf912	), 발표자 - TBD
+- 2023년 9월 9일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2e1e7a835e12882be31884b624dcf912	), 발표자 - 송태영(통, CH6), 정우석(쿡, CH12), 장민호(쿡, CH13)
   - (통) CHAPTER 6 통계적 머신러닝
   - (쿡) CHAPTER 12 모델 선택
   - (쿡) CHAPTER 13 선형회귀
-- 2023년 9월 16일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mc3dad5557822469c774b8c90a5bf3530	), 발표자 - 정동우(통, CH7), 박정훈(쿡, CH14), TBD
+- 2023년 9월 16일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mc3dad5557822469c774b8c90a5bf3530), 발표자 - 정동우(통, CH7), 박정훈(쿡, CH14), (쿡, CH14)
   - (통) CHAPTER 7 비지도 학습
   - (쿡) CHAPTER 14 트리와 랜덤 포레스트
   - (쿡) CHAPTER 15 k-최근접 이웃
-- 2023년 9월 23일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m622e16ad01745b86402ffabb6e7dceec	), 발표자 - TBD
+- 2023년 9월 23일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m622e16ad01745b86402ffabb6e7dceec), 발표자 - TBD
   - (쿡) CHAPTER 16 로지스틱 회귀
   - (쿡) CHAPTER 17 서포트 벡터 머신
   - (쿡) CHAPTER 18 나이브 베이즈
