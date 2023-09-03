@@ -28,7 +28,7 @@
   - (통) CHAPTER 6 통계적 머신러닝
   - (쿡) CHAPTER 12 모델 선택
   - (쿡) CHAPTER 13 선형회귀
-- 2023년 9월 16일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mc3dad5557822469c774b8c90a5bf3530	), 발표자 - 정동우(통, CH7), TBD
+- 2023년 9월 16일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mc3dad5557822469c774b8c90a5bf3530	), 발표자 - 정동우(통, CH7), 박정훈(쿡, CH14), TBD
   - (통) CHAPTER 7 비지도 학습
   - (쿡) CHAPTER 14 트리와 랜덤 포레스트
   - (쿡) CHAPTER 15 k-최근접 이웃
