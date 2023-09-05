@@ -47,9 +47,9 @@
   - (쿡)[파이썬을 활용한 머신러닝 쿡북](https://ridibooks.com/books/443000724?_s=search&_q=%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84+%ED%99%9C%EC%9A%A9%ED%95%9C+%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D+%EC%BF%A1%EB%B6%81&_rdt_sid=search&_rdt_idx=0)
   
 - 매주 학습 한 내용 공유 업로드 (소스 코드, 발표자료)
-- (주제별) 발표 : 25분, Q&A : 5분
+- 발표 : 25분, Q&A : 5분 (주제별) 
 
-6)
+6) 기타
 - 참가 희망 요청 : [이메일](restful3@gmail.com)
 - 과거 스터디 자료
   - [문제 해결 프로세스](https://github.com/restful3/ds4th_study/tree/main/doc/%EB%AC%B8%EC%A0%9C%20%ED%95%B4%EA%B2%B0%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4)
