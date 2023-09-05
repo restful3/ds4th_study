@@ -51,6 +51,6 @@
 
 6)
 - 참가 희망 요청 : [이메일](restful3@gmail.com)
-- 과거 자료
+- 과거 스터디 자료
   - [문제 해결 프로세스](https://github.com/restful3/ds4th_study/tree/main/doc/%EB%AC%B8%EC%A0%9C%20%ED%95%B4%EA%B2%B0%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4)
   - [텐초의 파이토치 딥러닝 특강](https://github.com/restful3/ds4th_study/tree/main/doc/%ED%85%90%EC%B4%88%EC%9D%98%20%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%8A%B9%EA%B0%95)
