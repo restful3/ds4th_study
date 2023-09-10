@@ -32,11 +32,11 @@
   - (통) CHAPTER 7 비지도 학습
   - (쿡) CHAPTER 14 트리와 랜덤 포레스트
   - (쿡) CHAPTER 15 k-최근접 이웃
-- 2023년 9월 23일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m622e16ad01745b86402ffabb6e7dceec), 발표자 - 태호(쿡, CH17), 민지(쿡, CH18)
+- 2023년 9월 23일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m622e16ad01745b86402ffabb6e7dceec), 발표자 - TBD(쿡, CH16), 태호(쿡, CH17), 민지(쿡, CH18)
   - (쿡) CHAPTER 16 로지스틱 회귀
   - (쿡) CHAPTER 17 서포트 벡터 머신
   - (쿡) CHAPTER 18 나이브 베이즈
-- 2023년 10월 7일 (토요일) : [양재토즈](https://m.place.naver.com/place/1853539067/home?entry=ple) 10시~12시, 발표자 - TBD
+- 2023년 10월 7일 (토요일) : [양재토즈](https://m.place.naver.com/place/1853539067/home?entry=ple) 10시~12시, 발표자 - TBD(쿡, CH19), 태영(쿡, CH20), TBD(쿡, CH21)
   - (쿡) CHAPTER 19 군집
   - (쿡) CHAPTER 20 신경망
   - (쿡) CHAPTER 21 훈련된 모델 저장과 복원
