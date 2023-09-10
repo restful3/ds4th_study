@@ -4,7 +4,7 @@
 3) 스터디 장소 : Webex
 4) 스터디 운영 계획 (2023년 8월, 9월)
 - 2023년 8월 5일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m24ffdf192a05040010c5c81b43fface1	), 발표자 - 우석(통, CH1), 민지(쿡, CH2), 진구(쿡, CH3)
-  - (통) CHAPTER 1 탐색적 데이터 분석
+  - (통) [CHAPTER 1 탐색적 데이터 분석](https://github.com/restful3/ds4th_study/blob/main/source/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B3%BC%ED%95%99%EC%9D%84%20%EC%9C%84%ED%95%9C%20%ED%86%B5%EA%B3%84/ch1_%ED%83%90%EC%83%89%EC%A0%81_%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%B6%84%EC%84%9D.ipynb)
   - (쿡) [CHAPTER 1 벡터, 행렬, 배열](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/01_%EB%B2%A1%ED%84%B0_%ED%96%89%EB%A0%AC_%EB%B0%B0%EC%97%B4_Song.ipynb)
   - (쿡) [CHAPTER 2 데이터 적재](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/02_%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%A0%81%EC%9E%AC_Roh.ipynb)
   - (쿡) CHAPTER 3 데이터 랭글링
@@ -26,7 +26,7 @@
   - (쿡) [CHAPTER 11 모델 평가](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/11_%EB%AA%A8%EB%8D%B8%ED%8F%89%EA%B0%80_Teo.ipynb)
 - 2023년 9월 9일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2e1e7a835e12882be31884b624dcf912	), 발표자 - 태영(통, CH6), 우석(쿡, CH12), 민호(쿡, CH13)
   - (통) [CHAPTER 6 통계적 머신러닝](https://github.com/restful3/ds4th_study/blob/main/source/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B3%BC%ED%95%99%EC%9D%84%20%EC%9C%84%ED%95%9C%20%ED%86%B5%EA%B3%84/ch6_%ED%86%B5%EA%B3%84%EC%A0%81_%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D_Song.ipynb)
-  - (쿡) CHAPTER 12 모델 선택
+  - (쿡) [CHAPTER 12 모델 선택](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/12_%EB%AA%A8%EB%8D%B8%EC%84%A0%ED%83%9D_WS.ipynb)
   - (쿡) CHAPTER 13 선형회귀
 - 2023년 9월 16일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mc3dad5557822469c774b8c90a5bf3530), 발표자 - 동우(통, CH7), 정훈(쿡, CH14), 민지(쿡, CH15)
   - (통) CHAPTER 7 비지도 학습
