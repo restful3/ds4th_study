@@ -27,7 +27,7 @@
 - 2023년 9월 9일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2e1e7a835e12882be31884b624dcf912	), 발표자 - 태영(통, CH6), 우석(쿡, CH12), 민호(쿡, CH13)
   - (통) [CHAPTER 6 통계적 머신러닝](https://github.com/restful3/ds4th_study/blob/main/source/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B3%BC%ED%95%99%EC%9D%84%20%EC%9C%84%ED%95%9C%20%ED%86%B5%EA%B3%84/ch6_%ED%86%B5%EA%B3%84%EC%A0%81_%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D_Song.ipynb)
   - (쿡) [CHAPTER 12 모델 선택](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/12_%EB%AA%A8%EB%8D%B8%EC%84%A0%ED%83%9D_WS.ipynb)
-  - (쿡) CHAPTER 13 선형회귀
+  - (쿡) [CHAPTER 13 선형회귀].(https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/13_%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80.ipynb).
 - 2023년 9월 16일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mc3dad5557822469c774b8c90a5bf3530), 발표자 - 동우(통, CH7), 정훈(쿡, CH14), 민지(쿡, CH15)
   - (통) [CHAPTER 7 비지도 학습](https://github.com/restful3/ds4th_study/blob/main/source/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B3%BC%ED%95%99%EC%9D%84%20%EC%9C%84%ED%95%9C%20%ED%86%B5%EA%B3%84/ch7_%EB%B9%84%EC%A7%80%EB%8F%84%ED%95%99%EC%8A%B5_dongwoo.ipynb)
   - (쿡) CHAPTER 14 트리와 랜덤 포레스트
