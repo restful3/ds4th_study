@@ -38,7 +38,7 @@
   - (쿡) CHAPTER 18 나이브 베이즈
 - 2023년 10월 7일 (토요일) : [양재토즈](https://m.place.naver.com/place/1853539067/home?entry=ple) 10시~12시, 발표자 - TBD(쿡, CH19), 태영(쿡, CH20), TBD(쿡, CH21)
   - (쿡) CHAPTER 19 군집
-  - (쿡) CHAPTER 20 신경망
+  - (쿡) [CHAPTER 20 신경망](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/20_%EC%8B%A0%EA%B2%BD%EB%A7%9D_Song.ipynb)
   - (쿡) CHAPTER 21 훈련된 모델 저장과 복원
     
 5) 스터디 운영 방법
