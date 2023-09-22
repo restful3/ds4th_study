@@ -30,7 +30,7 @@
   - (쿡) [CHAPTER 13 선형회귀](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/13_%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80.ipynb)
 - 2023년 9월 16일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mc3dad5557822469c774b8c90a5bf3530), 발표자 - 동우(통, CH7), 정훈(쿡, CH14), 민지(쿡, CH15)
   - (통) [CHAPTER 7 비지도 학습](https://github.com/restful3/ds4th_study/blob/main/source/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B3%BC%ED%95%99%EC%9D%84%20%EC%9C%84%ED%95%9C%20%ED%86%B5%EA%B3%84/ch7_%EB%B9%84%EC%A7%80%EB%8F%84%ED%95%99%EC%8A%B5_dongwoo.ipynb)
-  - (쿡) CHAPTER 14 트리와 랜덤 포레스트
+  - (쿡) [CHAPTER 14 트리와 랜덤 포레스트](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/14_%ED%8A%B8%EB%A6%AC%EC%99%80%20%EB%9E%9C%EB%8D%A4%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8_%EB%B0%95%EC%A0%95%ED%9B%88.ipynb)
   - (쿡) CHAPTER 15 k-최근접 이웃
 - 2023년 9월 23일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m622e16ad01745b86402ffabb6e7dceec), 발표자 - 진구 (쿡, CH16), 태호(쿡, CH17), 민지(쿡, CH18)
   - (쿡) CHAPTER 16 로지스틱 회귀
