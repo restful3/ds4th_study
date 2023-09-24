@@ -34,7 +34,7 @@
   - (쿡) CHAPTER 15 k-최근접 이웃
 - 2023년 9월 23일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m622e16ad01745b86402ffabb6e7dceec), 발표자 - 진구 (쿡, CH16), 태호(쿡, CH17), 민지(쿡, CH18)
   - (쿡) CHAPTER 16 로지스틱 회귀
-  - (쿡) CHAPTER 17 서포트 벡터 머신
+  - (쿡) .[CHAPTER 17 서포트 벡터 머신].(https://github.com/restful3/ds4th_study/blob/main/source/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%BF%A1%EB%B6%81/17_%EC%84%9C%ED%8F%AC%ED%8A%B8_%EB%B2%A1%ED%84%B0_%EB%A8%B8%EC%8B%A0_teo.ipynb)
   - (쿡) CHAPTER 18 나이브 베이즈
 - 2023년 10월 7일 (토요일) : [양재토즈](https://m.place.naver.com/place/1853539067/home?entry=ple) 10시~12시, 발표자 - 동우(쿡, CH19), 태영(쿡, CH20), 동우(쿡, CH21)
   - (쿡) CHAPTER 19 군집
