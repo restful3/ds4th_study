@@ -1,0 +1,4 @@
+.venv
+.conda
+.DS_Store
+input
