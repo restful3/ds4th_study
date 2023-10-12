@@ -4,8 +4,8 @@
 3) 스터디 장소 : Webex
 4) 스터디 운영 계획 (2023년 10월 ~ 12월)
 - 2023년 10월 7일 (토요일) : [Webex](), 발표자 - 태영
-  - 1권-1장 헬로 파이썬
-  - 1권-2장 퍼셉트론
+  - [1권-1장 헬로 파이썬](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D/ch01_%ED%97%AC%EB%A1%9C_%ED%8C%8C%EC%9D%B4%EC%8D%AC_Song.ipynb)
+  - [1권-2장 퍼셉트론](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D/ch02_%ED%8D%BC%EC%85%89%ED%8A%B8%EB%A1%A0_Song.ipynb)
 
 - 2023년 10월 14일 (토요일) : [Webex](), 발표자 - 우석
   - 1권-3장 신경망
