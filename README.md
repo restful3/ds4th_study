@@ -2,7 +2,7 @@
 1) 스터디 목적 : 통계 및 머신러닝 기본 개념 습득 및 활용
 2) 스터디 시간 : 토요일 오전 9시 부터 2시간
 3) 스터디 장소 : Webex
-4) 스터디 운영 계획 (2023년 10월 ~ 12월)
+4) 스터디 운영 계획 (2023년 10월 ~ 2024년 1월)
 - 2023년 10월 14일 (토요일) : Webex, 발표자 - 태영
   - [1권-1장 헬로 파이썬](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D/ch01_%ED%97%AC%EB%A1%9C_%ED%8C%8C%EC%9D%B4%EC%8D%AC_Song.ipynb)
   - [1권-2장 퍼셉트론](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D/ch02_%ED%8D%BC%EC%85%89%ED%8A%B8%EB%A1%A0_Song.ipynb)
