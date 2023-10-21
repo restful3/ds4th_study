@@ -12,7 +12,7 @@
   - 1권-4장 신경망 학습
 - 2023년 11월 4일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m940a0e833c567a6895a65b2814179cdf	), 발표자 - TBD
   - 1권-5장 오차역전파법
-- 2023년 11월 11일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mecfbbccbadcbab875a818a3213077632	), 발표자 - TBD
+- 2023년 11월 11일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mecfbbccbadcbab875a818a3213077632	), 발표자 - 동우
   - 1권-6장 학습 관련 기술들
 - 2023년 11월 18일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m8a2daf05eaea4b14fbaa7c5086279f44	), 발표자 - TBD
   - 1권-7장 합성곱 신경망(CNN)
