@@ -8,7 +8,7 @@
   - [1권-2장 퍼셉트론](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D/ch02_%ED%8D%BC%EC%85%89%ED%8A%B8%EB%A1%A0_Song.ipynb)
 - 2023년 10월 21일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m6b1aabfc4defc94ac633ab7cf04f7208	), 발표자 - 우석
   - [1권-3장 신경망](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D/ch03_%EC%8B%A0%EA%B2%BD%EB%A7%9D.ipynb)
-- 2023년 10월 28일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mdea77f7c109436cba8812c295f52d36b	), 발표자 - TBD
+- 2023년 10월 28일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mdea77f7c109436cba8812c295f52d36b	), 발표자 - 정훈
   - 1권-4장 신경망 학습
 - 2023년 11월 4일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m940a0e833c567a6895a65b2814179cdf	), 발표자 - TBD
   - 1권-5장 오차역전파법
