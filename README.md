@@ -11,7 +11,7 @@
 - 2023년 10월 28일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mdea77f7c109436cba8812c295f52d36b	), 발표자 - 정훈
   - 1권-4장 신경망 학습
 - 2023년 11월 4일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m940a0e833c567a6895a65b2814179cdf	), 발표자 - 태영
-  - 1권-5장 오차역전파법
+  - [1권-5장 오차역전파법](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D/ch05_%EC%98%A4%EC%B0%A8%EC%97%AD%EC%A0%84%ED%8C%8C%EB%B2%95_Song.ipynb)
 - 2023년 11월 11일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mecfbbccbadcbab875a818a3213077632	), 발표자 - 동우
   - 1권-6장 학습 관련 기술들
 - 2023년 11월 18일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m8a2daf05eaea4b14fbaa7c5086279f44	), 발표자 - TBD
