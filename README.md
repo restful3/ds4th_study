@@ -7,16 +7,16 @@
   - [1권-1장 헬로 파이썬](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D/ch01_%ED%97%AC%EB%A1%9C_%ED%8C%8C%EC%9D%B4%EC%8D%AC_Song.ipynb)
   - [1권-2장 퍼셉트론](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D/ch02_%ED%8D%BC%EC%85%89%ED%8A%B8%EB%A1%A0_Song.ipynb)
 - 2023년 10월 21일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m6b1aabfc4defc94ac633ab7cf04f7208	), 발표자 - 우석
-  - 1권-3장 신경망
-- 2023년 10월 28일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mdea77f7c109436cba8812c295f52d36b	), 발표자 - TBD
+  - [1권-3장 신경망](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D/ch03_%EC%8B%A0%EA%B2%BD%EB%A7%9D.ipynb)
+- 2023년 10월 28일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mdea77f7c109436cba8812c295f52d36b	), 발표자 - 정훈
   - 1권-4장 신경망 학습
-- 2023년 11월 4일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m940a0e833c567a6895a65b2814179cdf	), 발표자 - TBD
+- 2023년 11월 4일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m940a0e833c567a6895a65b2814179cdf	), 발표자 - 태영
   - 1권-5장 오차역전파법
-- 2023년 11월 11일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mecfbbccbadcbab875a818a3213077632	), 발표자 - TBD
+- 2023년 11월 11일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mecfbbccbadcbab875a818a3213077632	), 발표자 - 동우
   - 1권-6장 학습 관련 기술들
 - 2023년 11월 18일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m8a2daf05eaea4b14fbaa7c5086279f44	), 발표자 - TBD
   - 1권-7장 합성곱 신경망(CNN)
-- 2023년 11월 25일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m516080cd6c092210ddda6ec31c29fb90	), 발표자 - TBD
+- 2023년 11월 25일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m516080cd6c092210ddda6ec31c29fb90	), 발표자 - 민호
   - 1권-8장 딥러닝
 - 2023년 12월 2일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2590c4bc47379692b7faa37e804562be	), 발표자 - 태호
   - 2권-1장 신경망 복습
