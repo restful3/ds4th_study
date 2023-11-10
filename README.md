@@ -13,7 +13,7 @@
 - 2023년 11월 4일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m940a0e833c567a6895a65b2814179cdf	), 발표자 - 태영
   - [1권-5장 오차역전파법](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D/ch05_%EC%98%A4%EC%B0%A8%EC%97%AD%EC%A0%84%ED%8C%8C%EB%B2%95_Song.ipynb)
 - 2023년 11월 11일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mecfbbccbadcbab875a818a3213077632	), 발표자 - 동우
-  - 1권-6장 학습 관련 기술들
+  - [1권-6장 학습 관련 기술들](source/밑바닥부터_시작하는_딥러닝/ch06_학습_관련_기술들_dongwoo.ipynb)
 - 2023년 11월 18일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m8a2daf05eaea4b14fbaa7c5086279f44	), 발표자 - 민호
   - 1권-7장 합성곱 신경망(CNN)
 - 2023년 11월 25일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m516080cd6c092210ddda6ec31c29fb90	), 발표자 - 민호
