@@ -16,11 +16,12 @@
   - [1권-6장 학습 관련 기술들](source/밑바닥부터_시작하는_딥러닝/ch06_학습_관련_기술들_dongwoo.ipynb)
 - 2023년 11월 18일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m8a2daf05eaea4b14fbaa7c5086279f44	), 발표자 - 민호
   - 1권-7장 합성곱 신경망(CNN)
-- 2023년 11월 25일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m516080cd6c092210ddda6ec31c29fb90	), 발표자 - 민호
   - 1권-8장 딥러닝
+- 2023년 11월 25일 (토요일) :
+  - 휴강
 - 2023년 12월 2일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2590c4bc47379692b7faa37e804562be	), 발표자 - 태호
   - 2권-1장 신경망 복습
-- 2023년 12월 9일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m55fe65b36e4970a6bdba12aa2918c3d3	), 발표자 - TBD
+- 2023년 12월 9일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m55fe65b36e4970a6bdba12aa2918c3d3	), 발표자 - 태영
   - 2권-2장 자연어와 단어의 분산 표현
 - 2023년 12월 16일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m677a40f4c75437ba1793bf5afc0c976f	), 발표자 - TBD
   - 2권-3장 word2vec
