@@ -23,7 +23,7 @@
   - 2권-1장 신경망 복습
 - 2023년 12월 9일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m55fe65b36e4970a6bdba12aa2918c3d3	), 발표자 - 태영
   - 2권-2장 자연어와 단어의 분산 표현
-- 2023년 12월 16일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m677a40f4c75437ba1793bf5afc0c976f	), 발표자 - TBD
+- 2023년 12월 16일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m677a40f4c75437ba1793bf5afc0c976f	), 발표자 - 동우
   - 2권-3장 word2vec
 - 2023년 12월 23일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2746e0fd9057b231b0e6586df6bcafa3	), 발표자 - TBD
   - 2권-4장 word2vec 속도 개선
