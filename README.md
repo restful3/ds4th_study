@@ -15,7 +15,7 @@
 - 2023년 11월 11일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mecfbbccbadcbab875a818a3213077632	), 발표자 - 동우
   - [1권-6장 학습 관련 기술들](source/밑바닥부터_시작하는_딥러닝/ch06_학습_관련_기술들_dongwoo.ipynb)
 - 2023년 11월 18일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m8a2daf05eaea4b14fbaa7c5086279f44	), 발표자 - 민호
-  - [1권-7장 합성곱 신경망(CNN)](source/밑바닥부터_시작하는_딥러닝/ch07_합성곱신경망_CNN_Minho.ipynb)
+  - [1권-7장 합성곱 신경망(CNN)]([source/밑바닥부터_시작하는_딥러닝/ch07_합성곱신경망_CNN_Minho.ipynb](https://github.com/restful3/ds4th_study/blob/66e88da979b92408248bf19ee836b88a100334c1/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D/ch07_%ED%95%A9%EC%84%B1%EA%B3%B1%EC%8B%A0%EA%B2%BD%EB%A7%9D_CNN_Minho.ipynb))
   - 1권-8장 딥러닝
 - 2023년 11월 25일 (토요일) :
   - 휴강
