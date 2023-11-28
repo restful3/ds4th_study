@@ -25,7 +25,7 @@
   - 2권-2장 자연어와 단어의 분산 표현
 - 2023년 12월 16일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m677a40f4c75437ba1793bf5afc0c976f	), 발표자 - 동우
   - 2권-3장 word2vec
-- 2023년 12월 23일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2746e0fd9057b231b0e6586df6bcafa3	), 발표자 - TBD
+- 2023년 12월 23일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2746e0fd9057b231b0e6586df6bcafa3	), 발표자 - 우석
   - 2권-4장 word2vec 속도 개선
 - 2023년 12월 30일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m4831a03966c73c29a56da85397df9058	), 발표자 - 민호
   - 2권-5장 순환 신경망(RNN)
