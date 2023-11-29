@@ -9,7 +9,8 @@ def load_data(seed=1984):
     CLS_NUM = 3  # 클래스 수
 
     x = np.zeros((N*CLS_NUM, DIM))
-    t = np.zeros((N*CLS_NUM, CLS_NUM), dtype=np.int)
+    #t = np.zeros((N*CLS_NUM, CLS_NUM), dtype=np.int)
+    t = np.zeros((N*CLS_NUM, CLS_NUM), dtype=int)
 
     for j in range(CLS_NUM):
         for i in range(N): # N*j, N*(j+1)):
