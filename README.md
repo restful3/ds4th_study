@@ -24,7 +24,7 @@
   - [2권-1장 신경망 복습_2](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_2/ch01_%EC%8B%A0%EA%B2%BD%EB%A7%9D_%EB%B3%B5%EC%8A%B5_Teo_2.ipynb)
   - [2권-1장 신경망 복습_3](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_2/ch01_%EC%8B%A0%EA%B2%BD%EB%A7%9D_%EB%B3%B5%EC%8A%B5_Teo_3.ipynb)
 - 2023년 12월 9일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m55fe65b36e4970a6bdba12aa2918c3d3	), 발표자 - 태영
-  - 2권-2장 자연어와 단어의 분산 표현
+  - [2권-2장 자연어와 단어의 분산 표현](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_2/ch02_%EC%9E%90%EC%97%B0%EC%96%B4%EC%99%80_%EB%8B%A8%EC%96%B4%EC%9D%98_%EB%B6%84%EC%82%B0_%ED%91%9C%ED%98%84_Song.ipynb)
 - 2023년 12월 16일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m677a40f4c75437ba1793bf5afc0c976f	), 발표자 - 동우
   - 2권-3장 word2vec
 - 2023년 12월 23일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2746e0fd9057b231b0e6586df6bcafa3	), 발표자 - 우석
@@ -35,7 +35,7 @@
   - 2권-6장 게이트가 추가된 RNN
 - 2024년 1월 13일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m6a0c4a5ef592fd2d515452895238863a	), 발표자 - 민지
   - 2권-7장 RNN을 사용한 문장 생성
-- 2024년 1월 20일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=md74e4222117132fd6c7af0fdc31306dd	), 발표자 - 민지
+- 2024년 1월 20일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=md74e4222117132fd6c7af0fdc31306dd	), 발표자 - 태호
   - 2권-8장 어텐션
 
     
