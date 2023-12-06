@@ -35,7 +35,7 @@
   - 2권-6장 게이트가 추가된 RNN
 - 2024년 1월 13일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m6a0c4a5ef592fd2d515452895238863a	), 발표자 - 민지
   - 2권-7장 RNN을 사용한 문장 생성
-- 2024년 1월 20일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=md74e4222117132fd6c7af0fdc31306dd	), 발표자 - 민지
+- 2024년 1월 20일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=md74e4222117132fd6c7af0fdc31306dd	), 발표자 - 태호
   - 2권-8장 어텐션
 
     
