@@ -27,7 +27,7 @@
   - [2권-2장 자연어와 단어의 분산 표현](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_2/ch02_%EC%9E%90%EC%97%B0%EC%96%B4%EC%99%80_%EB%8B%A8%EC%96%B4%EC%9D%98_%EB%B6%84%EC%82%B0_%ED%91%9C%ED%98%84_Song.ipynb)
   - [실습 정답](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_2/ch02_%EC%9E%90%EC%97%B0%EC%96%B4%EC%99%80_%EB%8B%A8%EC%96%B4%EC%9D%98_%EB%B6%84%EC%82%B0_%ED%91%9C%ED%98%84_%ED%85%8D%EC%8A%A4%ED%8A%B8%20%EB%B6%84%EB%A5%98%20%EC%8B%A4%EC%8A%B5_%EC%A0%95%EB%8B%B5_Song.ipynb)
 - 2023년 12월 16일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m677a40f4c75437ba1793bf5afc0c976f	), 발표자 - 동우
-  - 2권-3장 word2vec
+  - [2권-3장 word2vec](https://github.com/restful3/ds4th_study/blob/main/source/밑바닥부터_시작하는_딥러닝_2/ch03_word2vec_dongwoo.ipynb)
 - 2023년 12월 23일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2746e0fd9057b231b0e6586df6bcafa3	), 발표자 - 우석
   - 2권-4장 word2vec 속도 개선
 - 2023년 12월 30일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m4831a03966c73c29a56da85397df9058	), 발표자 - 민호
