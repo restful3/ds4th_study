@@ -29,7 +29,7 @@
 - 2023년 12월 16일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m677a40f4c75437ba1793bf5afc0c976f	), 발표자 - 동우
   - [2권-3장 word2vec](https://github.com/restful3/ds4th_study/blob/main/source/밑바닥부터_시작하는_딥러닝_2/ch03_word2vec_dongwoo.ipynb)
 - 2023년 12월 23일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2746e0fd9057b231b0e6586df6bcafa3	), 발표자 - 우석
-  - 2권-4장 word2vec 속도 개선
+  - [2권-4장 word2vec 속도 개선](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_2/ch04_Word2Vec%EC%86%8D%EB%8F%84%EA%B0%9C%EC%84%A0_wooseok.ipynb)
 - 2023년 12월 30일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m4831a03966c73c29a56da85397df9058), 발표자 - 민호
   - 2권-5장 순환 신경망(RNN)
 - 2024년 1월 6일 (토요일) : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m813c08479b203d8adfb0546953e913df), 발표자 - 민지
