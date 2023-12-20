@@ -1,8 +1,10 @@
 data/
 model/
 models/
+output/
 *.models/*
 *.pth
 *.pt
 *.ipynb_checkpoints*
 *.ipynb_check*
+*.pkl

@@ -138,7 +138,7 @@ class Embedding:
     def forward(self, idx):
         W, = self.params
         self.idx = idx
-        out = W[idx]
+        out = W[idx].get()
         return out
     
     def backward(self, dout):
