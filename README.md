@@ -43,7 +43,7 @@
   - (교재1) [밑바닥부터 시작하는 딥러닝](https://ridibooks.com/books/443000454?_s=search&_q=%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0+%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94+%EB%94%A5%EB%9F%AC%EB%8B%9D&_rdt_sid=search&_rdt_idx=0)
   - (교재2) [밑바닥부터 시작하는 딥러닝 2](https://ridibooks.com/books/443000691?_s=search&_q=%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0+%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94+%EB%94%A5%EB%9F%AC%EB%8B%9D&_rdt_sid=search&_rdt_idx=1)
 - 참고 :
-  - [수원대학교 한경훈 교수 강의](https://www.youtube.com/@SlowAI/playlists)
+  - [수원대학교 한경훈 교수 강의 영상](https://www.youtube.com/@SlowAI/playlists), [강의 자료](https://sites.google.com/site/kyunghoonhan/deep-learning-iii)
 - 매주 학습 한 내용 공유 업로드 (소스 코드, 발표자료)
 - 발표 : 50분, Q&A : 10분 (주제별) 
 
