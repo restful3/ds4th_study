@@ -138,11 +138,17 @@ class Embedding:
     def forward(self, idx):
         W, = self.params
         self.idx = idx
-        out = W[idx].get()
+#         out = W[idx].get()
+        out = W[idx]
         return out
     
     def backward(self, dout):
         dW, = self.grads
         dW[...] = 0
-        np.add.at(dW, self.idx, dout)
+#         np.add.at(dW, self.idx, dout)
+        if GPU:
+            import cupyx
+            cupyx.scatter_add(dW, self.idx, dout)
+        else:
+            np.add.at(dW, self.idx, dout)
         return None

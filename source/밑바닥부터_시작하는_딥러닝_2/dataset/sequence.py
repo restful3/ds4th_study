@@ -40,9 +40,11 @@ def load_data(file_name='addition.txt', seed=1984):
         _update_vocab(a)
 
     # 넘파이 배열 생성
-    x = numpy.zeros((len(questions), len(questions[0])), dtype=numpy.int)
-    t = numpy.zeros((len(questions), len(answers[0])), dtype=numpy.int)
-
+#     x = numpy.zeros((len(questions), len(questions[0])), dtype=numpy.int)
+#     t = numpy.zeros((len(questions), len(answers[0])), dtype=numpy.int)
+    x = numpy.zeros((len(questions), len(questions[0])), dtype=numpy.int64)
+    t = numpy.zeros((len(questions), len(answers[0])), dtype=numpy.int64)
+    
     for i, sentence in enumerate(questions):
         x[i] = [char_to_id[c] for c in list(sentence)]
     for i, sentence in enumerate(answers):
