@@ -8,3 +8,4 @@ output/
 *.ipynb_checkpoints*
 *.ipynb_check*
 *.pkl
+*.env
