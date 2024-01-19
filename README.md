@@ -47,6 +47,7 @@
 - 참고 :
   - [트랜스포머를 활용한 자연어 처리 관련 github](https://github.com/rickiepark/nlp-with-transformers)
   - [개발자를 위한 실전 선형대수학 github](https://github.com/Sancho-kim/LinAlg4DS)
+  - [곰돌이의 수학노트](https://angeloyeo.github.io/2020/09/07/basic_vector_operation.html)
 - 매주 학습 한 내용 공유 업로드 (소스 코드, 발표자료)
 - 발표 : 50분, Q&A : 10분 (주제별) 
 
