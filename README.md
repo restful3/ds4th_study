@@ -14,7 +14,7 @@
     - (트랜스포머) Chapter 3 트랜스포머 파헤치기
     - (선행대수) Chapter 4 행렬, 파트 1: 행렬과 행렬의 기본 연산
     - (선행대수) Chapter 5 행렬, 파트 2: 행렬의 확장 개념 
-- 2024년 2월 24일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m9dbae9c3edc5dd519b00eb5057a7a40f	), 발표자 - 트(TBD), 선(TBD)
+- 2024년 2월 24일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m9dbae9c3edc5dd519b00eb5057a7a40f	), 발표자 - 트(태영), 선(태영)
     - (트랜스포머) Chapter 4 다중 언어 개체명 인식
     - (선행대수) Chapter 6 행렬 응용: 데이터 분석에서의 행렬
 - 2024년 3월 2일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m81574a7b0894d2791955e6a5c94cf35a	), 발표자 - 트(TBD), 선(TBD)
@@ -29,7 +29,7 @@
 - 2024년 3월 23일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m74f46b62111bb9084644ef67b5fdaa22	), 발표자 - 트(TBD), 선(TBD)
     - (트랜스포머) Chapter 8 효율적인 트랜스포머 구축
     - (선행대수) Chapter 10 일반 선형 모델 및 최소제곱법: 우주를 이해하기 위한 방법
-- 2024년 3월 30일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m4a9ba133845fdf3bf0ba36062914c38b	), 발표자 - 트(TBD), 선(TBD)
+- 2024년 3월 30일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m4a9ba133845fdf3bf0ba36062914c38b	), 발표자 - 트(태영), 선(태영)
     - (트랜스포머) Chapter 9 레이블 부족 문제 다루기
     - (선행대수) Chapter 11 최소제곱법 응용: 실제 데이터를 활용한 최소제곱법
 - 2024년 4월 6일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m48476eaf13916932005e700f4de2791e	), 발표자 - 트(TBD), 선(TBD)
