@@ -7,10 +7,10 @@
     - (트랜스포머) [Chapter 1 트랜스포머 소개](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8%EB%A5%BC_%ED%99%9C%EC%9A%A9%ED%95%9C_%EC%9E%90%EC%97%B0%EC%96%B4_%EC%B2%98%EB%A6%AC/ch01_%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8_%EC%86%8C%EA%B0%9C_Song.ipynb)
     - (선행대수) [Chapter 1 벡터, 파트 1: 벡터와 벡터의 기본 연산](https://github.com/restful3/ds4th_study/blob/main/source/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC_%EC%9C%84%ED%95%9C_%EC%8B%A4%EC%A0%84_%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98%ED%95%99/ch01_%EB%B2%A1%ED%84%B0_%ED%8C%8C%ED%8A%B81_Song.ipynb)
     - (선행대수) [Chapter 2 벡터, 파트 2: 벡터의 확장 개념](https://github.com/restful3/ds4th_study/blob/main/source/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC_%EC%9C%84%ED%95%9C_%EC%8B%A4%EC%A0%84_%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98%ED%95%99/ch02_%EB%B2%A1%ED%84%B0_%ED%8C%8C%ED%8A%B82_Song.ipynb)
-- 2024년 2월 3일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m72f83d126bc4947677e14f70f7fa5b2f), 발표자 - 트(정훈), 선(TBD)
+- 2024년 2월 3일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m72f83d126bc4947677e14f70f7fa5b2f), 발표자 - 트(정훈), 선(우석)
     - (트랜스포머) Chapter 2 텍스트 분류
     - (선행대수) Chapter 3 벡터 응용: 데이터 분석에서의 벡터
-- 2024년 2월 17일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m78755a4b461a0e82348a607d6b10f868	), 발표자 - 트(TBD), 선(TBD)
+- 2024년 2월 17일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m78755a4b461a0e82348a607d6b10f868	), 발표자 - 트(우석), 선(TBD)
     - (트랜스포머) Chapter 3 트랜스포머 파헤치기
     - (선행대수) Chapter 4 행렬, 파트 1: 행렬과 행렬의 기본 연산
     - (선행대수) Chapter 5 행렬, 파트 2: 행렬의 확장 개념 
@@ -20,7 +20,7 @@
 - 2024년 3월 2일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m81574a7b0894d2791955e6a5c94cf35a	), 발표자 - 트(TBD), 선(TBD)
     - (트랜스포머) Chapter 5 텍스트 생성
     - (선행대수) Chapter 7 역행렬: 행렬 방정식의 만능 키
-- 2024년 3월 9일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2eaee837855f9dd652a6c7d6ffe24918	), 발표자 - 트(TBD), 선(TBD)
+- 2024년 3월 9일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2eaee837855f9dd652a6c7d6ffe24918	), 발표자 - 트(TBD), 선(우석)
     - (트랜스포머) Chapter 6 요약
     - (선행대수) Chapter 8 직교 행렬과 QR 분해: 선형대수학의 핵심 분해법 1
 - 2024년 3월 16일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m3142650797369c2c97ccaf8747c1025e	), 발표자 - 트(TBD), 선(TBD)
@@ -35,7 +35,7 @@
 - 2024년 4월 6일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m48476eaf13916932005e700f4de2791e	), 발표자 - 트(TBD), 선(TBD)
     - (트랜스포머) Chapter 10 대규모 데이터셋 수집하기
     - (선행대수) Chapter 13 특잇값 분해: 고윳값 분해의 다음 단계
-- 2024년 4월 13일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m6d4a233a6714b9e390cba1074185f78c	), 발표자 - 트(TBD), 선(TBD)
+- 2024년 4월 13일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m6d4a233a6714b9e390cba1074185f78c	), 발표자 - 트(우석), 선(TBD)
     - (트랜스포머) Chapter 11 향후 방향
     - (선행대수) Chapter 12 고윳값 분해: 선형대수학의 진주
     - (선행대수) Chapter 14 고윳값 분해와 SVD 응용: 선형대수학의 선물
