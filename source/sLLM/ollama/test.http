@@ -1,0 +1,8 @@
+POST http://192.168.0.221:11434/api/chat
+
+{
+  "model": "llama2:13b-chat",
+  "messages": [
+    { "role": "user", "content": "why is the sky blue?" }
+  ]
+}
