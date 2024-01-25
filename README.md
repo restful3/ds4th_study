@@ -17,7 +17,7 @@
 - 2024년 2월 24일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m9dbae9c3edc5dd519b00eb5057a7a40f	), 발표자 - 트(태영), 선(태영)
     - (트랜스포머) Chapter 4 다중 언어 개체명 인식
     - (선행대수) Chapter 6 행렬 응용: 데이터 분석에서의 행렬
-- 2024년 3월 2일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m81574a7b0894d2791955e6a5c94cf35a	), 발표자 - 트(TBD), 선(TBD)
+- 2024년 3월 2일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m81574a7b0894d2791955e6a5c94cf35a	), 발표자 - 트(동우), 선(TBD)
     - (트랜스포머) Chapter 5 텍스트 생성
     - (선행대수) Chapter 7 역행렬: 행렬 방정식의 만능 키
 - 2024년 3월 9일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2eaee837855f9dd652a6c7d6ffe24918	), 발표자 - 트(TBD), 선(우석)
