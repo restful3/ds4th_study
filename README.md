@@ -17,10 +17,10 @@
 - 2024년 2월 24일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m9dbae9c3edc5dd519b00eb5057a7a40f	), 발표자 - 트(태영), 선(태영)
     - (트랜스포머) Chapter 4 다중 언어 개체명 인식
     - (선행대수) Chapter 6 행렬 응용: 데이터 분석에서의 행렬
-- 2024년 3월 2일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m81574a7b0894d2791955e6a5c94cf35a	), 발표자 - 트(동우), 선(TBD)
+- 2024년 3월 2일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m81574a7b0894d2791955e6a5c94cf35a	), 발표자 - 트(동우), 선(태호)
     - (트랜스포머) Chapter 5 텍스트 생성
     - (선행대수) Chapter 7 역행렬: 행렬 방정식의 만능 키
-- 2024년 3월 9일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2eaee837855f9dd652a6c7d6ffe24918	), 발표자 - 트(TBD), 선(우석)
+- 2024년 3월 9일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2eaee837855f9dd652a6c7d6ffe24918	), 발표자 - 트(태호), 선(우석)
     - (트랜스포머) Chapter 6 요약
     - (선행대수) Chapter 8 직교 행렬과 QR 분해: 선형대수학의 핵심 분해법 1
 - 2024년 3월 16일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m3142650797369c2c97ccaf8747c1025e	), 발표자 - 트(우석), 선(TBD)
@@ -32,7 +32,7 @@
 - 2024년 3월 30일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m4a9ba133845fdf3bf0ba36062914c38b	), 발표자 - 트(태영), 선(태영)
     - (트랜스포머) Chapter 9 레이블 부족 문제 다루기
     - (선행대수) Chapter 11 최소제곱법 응용: 실제 데이터를 활용한 최소제곱법
-- 2024년 4월 6일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m48476eaf13916932005e700f4de2791e	), 발표자 - 트(TBD), 선(TBD)
+- 2024년 4월 6일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m48476eaf13916932005e700f4de2791e	), 발표자 - 트(태호), 선(TBD)
     - (트랜스포머) Chapter 10 대규모 데이터셋 수집하기
     - (선행대수) Chapter 13 특잇값 분해: 고윳값 분해의 다음 단계
 - 2024년 4월 13일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m6d4a233a6714b9e390cba1074185f78c	), 발표자 - 트(TBD), 선(TBD)
