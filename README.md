@@ -10,7 +10,7 @@
 - 2024년 2월 3일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m72f83d126bc4947677e14f70f7fa5b2f), 발표자 - 트(정훈), 선(우석)
     - (트랜스포머) Chapter 2 텍스트 분류
     - (선행대수) Chapter 3 벡터 응용: 데이터 분석에서의 벡터
-- 2024년 2월 17일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m78755a4b461a0e82348a607d6b10f868	), 발표자 - 트(우석), 선(TBD)
+- 2024년 2월 17일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m78755a4b461a0e82348a607d6b10f868	), 발표자 - 트(우석), 선(민지)
     - (트랜스포머) Chapter 3 트랜스포머 파헤치기
     - (선행대수) Chapter 4 행렬, 파트 1: 행렬과 행렬의 기본 연산
     - (선행대수) Chapter 5 행렬, 파트 2: 행렬의 확장 개념 
@@ -23,10 +23,10 @@
 - 2024년 3월 9일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2eaee837855f9dd652a6c7d6ffe24918	), 발표자 - 트(태호), 선(우석)
     - (트랜스포머) Chapter 6 요약
     - (선행대수) Chapter 8 직교 행렬과 QR 분해: 선형대수학의 핵심 분해법 1
-- 2024년 3월 16일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m3142650797369c2c97ccaf8747c1025e	), 발표자 - 트(우석), 선(TBD)
+- 2024년 3월 16일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m3142650797369c2c97ccaf8747c1025e	), 발표자 - 트(우석), 선(민지)
     - (트랜스포머) Chapter 7 질문 답변
     - (선행대수) Chapter 9 행 축소와 LU 분해: 선형대수학의 핵심 분해법 2
-- 2024년 3월 23일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m74f46b62111bb9084644ef67b5fdaa22	), 발표자 - 트(TBD), 선(TBD)
+- 2024년 3월 23일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m74f46b62111bb9084644ef67b5fdaa22	), 발표자 - 트(민지), 선(TBD)
     - (트랜스포머) Chapter 8 효율적인 트랜스포머 구축
     - (선행대수) Chapter 10 일반 선형 모델 및 최소제곱법: 우주를 이해하기 위한 방법
 - 2024년 3월 30일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m4a9ba133845fdf3bf0ba36062914c38b	), 발표자 - 트(태영), 선(태영)
@@ -35,7 +35,7 @@
 - 2024년 4월 6일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m48476eaf13916932005e700f4de2791e	), 발표자 - 트(태호), 선(TBD)
     - (트랜스포머) Chapter 10 대규모 데이터셋 수집하기
     - (선행대수) Chapter 13 특잇값 분해: 고윳값 분해의 다음 단계
-- 2024년 4월 13일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m6d4a233a6714b9e390cba1074185f78c	), 발표자 - 트(TBD), 선(TBD)
+- 2024년 4월 13일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m6d4a233a6714b9e390cba1074185f78c	), 발표자 - 트(민지), 선(TBD)
     - (트랜스포머) Chapter 11 향후 방향
     - (선행대수) Chapter 12 고윳값 분해: 선형대수학의 진주
     - (선행대수) Chapter 14 고윳값 분해와 SVD 응용: 선형대수학의 선물
