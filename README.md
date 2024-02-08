@@ -49,7 +49,7 @@
   - [개발자를 위한 실전 선형대수학 github](https://github.com/Sancho-kim/LinAlg4DS)
   - [곰돌이의 수학노트](https://angeloyeo.github.io/2020/09/07/basic_vector_operation.html)
 - 매주 학습 한 내용 공유 업로드 (소스 코드, 발표자료)
-- 발표 : 50분, Q&A : 10분 (주제별) 
+- 발표 : (주제별) 50분, Q&A : 10분 
 
 6) 기타
 - 참가 희망 요청 : [이메일](restful3@gmail.com)
