@@ -11,7 +11,7 @@
     - (트랜스포머) Chapter 2 텍스트 분류
     - (선행대수) [Chapter 3 벡터 응용: 데이터 분석에서의 벡터](https://github.com/restful3/ds4th_study/blob/main/source/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC_%EC%9C%84%ED%95%9C_%EC%8B%A4%EC%A0%84_%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98%ED%95%99/ch03_%EB%B2%A1%ED%84%B0_%ED%8C%8C%ED%8A%B83_jeong.ipynb)
 - 2024년 2월 17일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m78755a4b461a0e82348a607d6b10f868	), 발표자 - 트(우석), 선(민지)
-    - (트랜스포머) Chapter 3 트랜스포머 파헤치기
+    - (트랜스포머) [Chapter 3 트랜스포머 파헤치기](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8%EB%A5%BC_%ED%99%9C%EC%9A%A9%ED%95%9C_%EC%9E%90%EC%97%B0%EC%96%B4_%EC%B2%98%EB%A6%AC/03_%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8_%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0_jeong.ipynb)
     - (선행대수) Chapter 4 행렬, 파트 1: 행렬과 행렬의 기본 연산
     - (선행대수) Chapter 5 행렬, 파트 2: 행렬의 확장 개념 
 - 2024년 2월 24일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m9dbae9c3edc5dd519b00eb5057a7a40f	), 발표자 - 트(태영), 선(태영)
