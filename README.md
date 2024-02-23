@@ -18,7 +18,7 @@
     - (트랜스포머) [Chapter 3 트랜스포머 파헤치기](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8%EB%A5%BC_%ED%99%9C%EC%9A%A9%ED%95%9C_%EC%9E%90%EC%97%B0%EC%96%B4_%EC%B2%98%EB%A6%AC/03_%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8_%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0_jeong.ipynb)
     - (선행대수) Chapter 4 행렬, 파트 1: 행렬과 행렬의 기본 연산
     - (선행대수) Chapter 5 행렬, 파트 2: 행렬의 확장 개념 
-    - (RAG) sLM을 활용한 RAG 구현 검토 [pdf](https://github.com/restful3/ds4th_study/blob/main/source/sLM/sLM%EC%9D%84_%ED%99%9C%EC%9A%A9%ED%95%9C_RAG_%EA%B5%AC%ED%98%84_%EA%B2%80%ED%86%A0_20240206_final.pdf), [script](https://github.com/restful3/ds4th_study/blob/main/source/sLM/sLM%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20RAG%20%EA%B5%AC%ED%98%84%20%EA%B2%80%ED%86%A0.ipynb)
+    - (RAG) [sLM을 활용한 RAG 구현 검토](https://github.com/restful3/ds4th_study/blob/main/source/sLM/sLM%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20RAG%20%EA%B5%AC%ED%98%84%20%EA%B2%80%ED%86%A0.ipynb) ([pdf](https://github.com/restful3/ds4th_study/blob/main/source/sLM/sLM%EC%9D%84_%ED%99%9C%EC%9A%A9%ED%95%9C_RAG_%EA%B5%AC%ED%98%84_%EA%B2%80%ED%86%A0_20240206_final.pdf))
 - 2024년 3월 2일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m81574a7b0894d2791955e6a5c94cf35a	), 발표자 - 트(태영), 선(태영)
     - (트랜스포머) Chapter 4 다중 언어 개체명 인식
     - (선행대수) Chapter 6 행렬 응용: 데이터 분석에서의 행렬
