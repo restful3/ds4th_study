@@ -17,8 +17,8 @@
     - (트랜스포머) [Chapter 3 트랜스포머 파헤치기 - part 2](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8%EB%A5%BC_%ED%99%9C%EC%9A%A9%ED%95%9C_%EC%9E%90%EC%97%B0%EC%96%B4_%EC%B2%98%EB%A6%AC/03_%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8_%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0_jeong.ipynb)
     - (선행대수) Chapter 5 행렬, 파트 2: 행렬의 확장 개념 
 - 2024년 3월 2일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m81574a7b0894d2791955e6a5c94cf35a	), 발표자 - 트(태영), 선(태영)
-    - (트랜스포머) Chapter 4 다중 언어 개체명 인식
-    - (선행대수) Chapter 6 행렬 응용: 데이터 분석에서의 행렬
+    - (트랜스포머) [Chapter 4 다중 언어 개체명 인식](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8%EB%A5%BC_%ED%99%9C%EC%9A%A9%ED%95%9C_%EC%9E%90%EC%97%B0%EC%96%B4_%EC%B2%98%EB%A6%AC/ch04_%EB%8B%A4%EC%A4%91_%EC%96%B8%EC%96%B4_%EA%B0%9C%EC%B2%B4%EB%AA%85_%EC%9D%B8%EC%8B%9D_Song.ipynb)
+    - (선행대수) [Chapter 6 행렬 응용: 데이터 분석에서의 행렬](https://github.com/restful3/ds4th_study/blob/main/source/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC_%EC%9C%84%ED%95%9C_%EC%8B%A4%EC%A0%84_%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98%ED%95%99/ch06_%ED%96%89%EB%A0%AC_%EC%9D%91%EC%9A%A9_Song.ipynb)
     - (RAG) [sLM을 활용한 RAG 구현 검토](https://github.com/restful3/ds4th_study/blob/main/source/sLM/sLM%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20RAG%20%EA%B5%AC%ED%98%84%20%EA%B2%80%ED%86%A0.ipynb) ([pdf](https://github.com/restful3/ds4th_study/blob/main/source/sLM/sLM%EC%9D%84_%ED%99%9C%EC%9A%A9%ED%95%9C_RAG_%EA%B5%AC%ED%98%84_%EA%B2%80%ED%86%A0_20240206_final.pdf))    
 - 2024년 3월 9일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2eaee837855f9dd652a6c7d6ffe24918	), 발표자 - 트(동우), 선(태호)
     - (트랜스포머) Chapter 5 텍스트 생성
