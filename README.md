@@ -20,7 +20,7 @@
     - (트랜스포머) [Chapter 4 다중 언어 개체명 인식](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8%EB%A5%BC_%ED%99%9C%EC%9A%A9%ED%95%9C_%EC%9E%90%EC%97%B0%EC%96%B4_%EC%B2%98%EB%A6%AC/ch04_%EB%8B%A4%EC%A4%91_%EC%96%B8%EC%96%B4_%EA%B0%9C%EC%B2%B4%EB%AA%85_%EC%9D%B8%EC%8B%9D_Song.ipynb)
     - (선행대수) [Chapter 6 행렬 응용: 데이터 분석에서의 행렬](https://github.com/restful3/ds4th_study/blob/main/source/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC_%EC%9C%84%ED%95%9C_%EC%8B%A4%EC%A0%84_%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98%ED%95%99/ch06_%ED%96%89%EB%A0%AC_%EC%9D%91%EC%9A%A9_Song.ipynb)
     - (RAG) [sLM을 활용한 RAG 구현 검토](https://github.com/restful3/ds4th_study/blob/main/source/sLM/sLM%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20RAG%20%EA%B5%AC%ED%98%84%20%EA%B2%80%ED%86%A0.ipynb) ([pdf](https://github.com/restful3/ds4th_study/blob/main/source/sLM/sLM%EC%9D%84_%ED%99%9C%EC%9A%A9%ED%95%9C_RAG_%EA%B5%AC%ED%98%84_%EA%B2%80%ED%86%A0_20240206_final.pdf))    
-- 2024년 3월 9일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2eaee837855f9dd652a6c7d6ffe24918	), 발표자 - 트(동우), 선(태호)
+- 2024년 3월 9일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m2eaee837855f9dd652a6c7d6ffe24918	), 발표자 - 트(동우), 선(태영)
     - (트랜스포머) Chapter 5 텍스트 생성
     - (선행대수) Chapter 7 역행렬: 행렬 방정식의 만능 키
 - 2024년 3월 16일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m3142650797369c2c97ccaf8747c1025e	), 발표자 - 트(태호), 선(우석)
@@ -29,7 +29,7 @@
 - 2024년 3월 23일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m74f46b62111bb9084644ef67b5fdaa22	), 발표자 - 트(우석), 선(민지)
     - (트랜스포머) Chapter 7 질문 답변
     - (선행대수) Chapter 9 행 축소와 LU 분해: 선형대수학의 핵심 분해법 2
-- 2024년 3월 30일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m4a9ba133845fdf3bf0ba36062914c38b	), 발표자 - 트(민지), 선(TBD)
+- 2024년 3월 30일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m4a9ba133845fdf3bf0ba36062914c38b	), 발표자 - 트(민지), 선(태호)
     - (트랜스포머) Chapter 8 효율적인 트랜스포머 구축
     - (선행대수) Chapter 10 일반 선형 모델 및 최소제곱법: 우주를 이해하기 위한 방법
 - 2024년 4월 6일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m48476eaf13916932005e700f4de2791e	), 발표자 - 트(태영), 선(태영)
@@ -38,7 +38,7 @@
 - 2024년 4월 13일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m6d4a233a6714b9e390cba1074185f78c	), 발표자 - 트(태호), 선(TBD)
     - (트랜스포머) Chapter 10 대규모 데이터셋 수집하기
     - (선행대수) Chapter 13 특잇값 분해: 고윳값 분해의 다음 단계
-- 2024년 4월 20일 : [Webex](), 발표자 - 트(민지), 선(TBD)
+- 2024년 4월 20일 : [Webex](), 발표자 - 트(민지), 선(태호)
     - (트랜스포머) Chapter 11 향후 방향
     - (선행대수) Chapter 12 고윳값 분해: 선형대수학의 진주
     - (선행대수) Chapter 14 고윳값 분해와 SVD 응용: 선형대수학의 선물    
