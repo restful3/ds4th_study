@@ -24,7 +24,7 @@
     - (트랜스포머) [Chapter 5 텍스트 생성](https://github.com/restful3/ds4th_study/blob/main/source/트랜스포머를_활용한_자연어_처리/05_text-generation_dongwoo.ipynb)
     - (선행대수) [Chapter 7 역행렬: 행렬 방정식의 만능 키](https://github.com/restful3/ds4th_study/blob/main/source/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC_%EC%9C%84%ED%95%9C_%EC%8B%A4%EC%A0%84_%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98%ED%95%99/ch07_%EC%97%AD%ED%96%89%EB%A0%AC_Song.ipynb)
 - 2024년 3월 16일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m3142650797369c2c97ccaf8747c1025e	), 발표자 - 트(태호), 선(우석)
-    - (트랜스포머) Chapter 6 요약
+    - (트랜스포머) [Chapter 6 요약](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8%EB%A5%BC_%ED%99%9C%EC%9A%A9%ED%95%9C_%EC%9E%90%EC%97%B0%EC%96%B4_%EC%B2%98%EB%A6%AC/ch6_%EC%9A%94%EC%95%BD_Teo.ipynb)
     - (선행대수) Chapter 8 직교 행렬과 QR 분해: 선형대수학의 핵심 분해법 1
 - 2024년 3월 23일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m74f46b62111bb9084644ef67b5fdaa22	), 발표자 - 트(우석), 선(TBD)
     - (트랜스포머) Chapter 7 질문 답변
