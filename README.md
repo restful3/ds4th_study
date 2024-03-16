@@ -29,7 +29,7 @@
 - 2024년 3월 23일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m74f46b62111bb9084644ef67b5fdaa22	), 발표자 - 트(우석), 선(TBD)
     - (트랜스포머) Chapter 7 질문 답변
     - (선행대수) Chapter 9 행 축소와 LU 분해: 선형대수학의 핵심 분해법 2
-- 2024년 3월 30일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m4a9ba133845fdf3bf0ba36062914c38b	), 발표자 - 트(TBD), 선(태호)
+- 2024년 3월 30일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m4a9ba133845fdf3bf0ba36062914c38b	), 발표자 - 트(정훈), 선(태호)
     - (트랜스포머) Chapter 8 효율적인 트랜스포머 구축
     - (선행대수) Chapter 10 일반 선형 모델 및 최소제곱법: 우주를 이해하기 위한 방법
 - 2024년 4월 6일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m48476eaf13916932005e700f4de2791e	), 발표자 - 트(태영), 선(태영)
