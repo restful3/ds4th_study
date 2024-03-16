@@ -26,7 +26,7 @@
 - 2024년 3월 16일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m3142650797369c2c97ccaf8747c1025e	), 발표자 - 트(태호), 선(우석)
     - (트랜스포머) [Chapter 6 요약](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8%EB%A5%BC_%ED%99%9C%EC%9A%A9%ED%95%9C_%EC%9E%90%EC%97%B0%EC%96%B4_%EC%B2%98%EB%A6%AC/ch6_%EC%9A%94%EC%95%BD_Teo.ipynb)
     - (선행대수) Chapter 8 직교 행렬과 QR 분해: 선형대수학의 핵심 분해법 1
-- 2024년 3월 23일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m74f46b62111bb9084644ef67b5fdaa22	), 발표자 - 트(우석), 선(TBD)
+- 2024년 3월 23일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m74f46b62111bb9084644ef67b5fdaa22	), 발표자 - 트(우석), 선(민호)
     - (트랜스포머) Chapter 7 질문 답변
     - (선행대수) Chapter 9 행 축소와 LU 분해: 선형대수학의 핵심 분해법 2
 - 2024년 3월 30일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m4a9ba133845fdf3bf0ba36062914c38b	), 발표자 - 트(정훈), 선(태호)
