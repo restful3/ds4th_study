@@ -35,7 +35,7 @@
 - 2024년 4월 6일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m48476eaf13916932005e700f4de2791e	), 발표자 - 트(태영), 선(태영)
     - (트랜스포머) Chapter 9 레이블 부족 문제 다루기
     - (선행대수) Chapter 11 최소제곱법 응용: 실제 데이터를 활용한 최소제곱법
-- 2024년 4월 13일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m6d4a233a6714b9e390cba1074185f78c	), 발표자 - 트(태호), 선(TBD)
+- 2024년 4월 13일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m6d4a233a6714b9e390cba1074185f78c	), 발표자 - 트(태호), 선(민호)
     - (트랜스포머) Chapter 10 대규모 데이터셋 수집하기
     - (선행대수) Chapter 12 고윳값 분해: 선형대수학의 진주
 - 2024년 4월 20일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mdf0615736152b18a90227bbeaefd2e9a	), 발표자 - 트(TBD), 선(TBD, TBD)
