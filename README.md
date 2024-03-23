@@ -28,7 +28,7 @@
     - (선행대수) Chapter 8 직교 행렬과 QR 분해: 선형대수학의 핵심 분해법 1
 - 2024년 3월 23일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m74f46b62111bb9084644ef67b5fdaa22	), 발표자 - 트(우석), 선(민호)
     - (트랜스포머) Chapter 7 질문 답변
-    - (선행대수) Chapter 9 행 축소와 LU 분해: 선형대수학의 핵심 분해법 2
+    - (선행대수) [Chapter 9 행 축소와 LU 분해: 선형대수학의 핵심 분해법 2](https://github.com/restful3/ds4th_study/blob/1a477215e6923ef636e2bbda14df5dbefb423e86/source/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC_%EC%9C%84%ED%95%9C_%EC%8B%A4%EC%A0%84_%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98%ED%95%99/ch09_%ED%96%89%20%EC%B6%95%EC%86%8C%EC%99%80%20LU%EB%B6%84%ED%95%B4_Minho.ipynb)
 - 2024년 3월 30일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m4a9ba133845fdf3bf0ba36062914c38b	), 발표자 - 트(정훈), 선(태호)
     - (트랜스포머) Chapter 8 효율적인 트랜스포머 구축
     - (선행대수) Chapter 10 일반 선형 모델 및 최소제곱법: 우주를 이해하기 위한 방법
