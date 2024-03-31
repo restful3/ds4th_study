@@ -31,7 +31,7 @@
     - (선행대수) [Chapter 9 행 축소와 LU 분해: 선형대수학의 핵심 분해법 2](https://github.com/restful3/ds4th_study/blob/1a477215e6923ef636e2bbda14df5dbefb423e86/source/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC_%EC%9C%84%ED%95%9C_%EC%8B%A4%EC%A0%84_%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98%ED%95%99/ch09_%ED%96%89%20%EC%B6%95%EC%86%8C%EC%99%80%20LU%EB%B6%84%ED%95%B4_Minho.ipynb)
 - 2024년 3월 30일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m4a9ba133845fdf3bf0ba36062914c38b	), 발표자 - 트(정훈), 선(태호)
     - (트랜스포머) Chapter 8 효율적인 트랜스포머 구축
-    - (선행대수) Chapter 10 일반 선형 모델 및 최소제곱법: 우주를 이해하기 위한 방법,(https://github.com/restful3/ds4th_study/blob/main/source/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC_%EC%9C%84%ED%95%9C_%EC%8B%A4%EC%A0%84_%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98%ED%95%99/ch10_%EC%9D%BC%EB%B0%98%EC%84%A0%ED%98%95%EB%AA%A8%EB%8D%B8%EB%B0%8F%EC%B5%9C%EC%86%8C%EC%A0%9C%EA%B3%B1%EB%B2%95_teo.ipynb)
+    - (선행대수) Chapter 10 .[일반 선형 모델 및 최소제곱법: 우주를 이해하기 위한 방법](https://github.com/restful3/ds4th_study/blob/main/source/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC_%EC%9C%84%ED%95%9C_%EC%8B%A4%EC%A0%84_%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98%ED%95%99/ch10_%EC%9D%BC%EB%B0%98%EC%84%A0%ED%98%95%EB%AA%A8%EB%8D%B8%EB%B0%8F%EC%B5%9C%EC%86%8C%EC%A0%9C%EA%B3%B1%EB%B2%95_teo.ipynb)
 - 2024년 4월 6일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=m48476eaf13916932005e700f4de2791e	), 발표자 - 트(태영), 선(태영)
     - (트랜스포머) Chapter 9 레이블 부족 문제 다루기
     - (선행대수) Chapter 11 최소제곱법 응용: 실제 데이터를 활용한 최소제곱법
