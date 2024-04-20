@@ -3,36 +3,36 @@
 2) 스터디 시간 : 토요일 오전 9시 부터 2시간
 3) 스터디 장소 : Webex
 4) 스터디 운영 계획 (2024년 5월 ~ 2024년 7월)
-- **2024년 05월 04일**: Webex, 발표자 - 미정
+- **2024년 05월 04일**: [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mec2b0d984b6a169382ed1e42be474e46	), 발표자 - 미정
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 1 밴디트 문제
   - (랭체인 완벽 입문) CHAPTER 1: 챗지피티와 랭체인
-- **2024년 05월 11일**: Webex, 발표자 - 미정
+- **2024년 05월 11일**: [Webex](https://lgehq.webex.com/lgehq-ko/j.php?MTID=mf200f5f061fd05faedd2bdd7b5f4f874	), 발표자 - 미정
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 2 마르코프 결정 과정
   - (랭체인 완벽 입문) CHAPTER 2: Model I/O - 언어 모델을 다루기 쉽게 만들기
-- **2024년 05월 18일**: Webex, 발표자 - 미정
+- **2024년 05월 18일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m87953fe1d77cbb7eb8f78d53e7b38e9f	), 발표자 - 미정
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 3 벨만 방정식
   - (랭체인 완벽 입문) CHAPTER 3: Retrieval - 알지 못하는 데이터를 다루기
-- **2024년 05월 25일**: Webex, 발표자 - 미정
+- **2024년 05월 25일**: [Webex](https://lgehq.webex.com/lgehq-ko/j.php?MTID=ma995b7204cff42e96e4fae240a394b06	), 발표자 - 미정
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 4 동적 프로그래밍
   - (랭체인 완벽 입문) CHAPTER 4: Memory - 과거의 대화를 장·단기 기억하기
-- **2024년 06월 01일**: Webex, 발표자 - 미정
+- **2024년 06월 01일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m62d5b5ffc2a3f265fc4e102c7702935a	), 발표자 - 미정
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 5 몬테카를로법
   - (랭체인 완벽 입문) CHAPTER 5: Chains - 여러 프로세스를 통합
-- **2024년 06월 08일**: Webex, 발표자 - 미정
+- **2024년 06월 08일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=me8df8edb3cf9994a451c99acc1f749ea	), 발표자 - 미정
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 6 TD법
   - (랭체인 완벽 입문) CHAPTER 6: Agents - 자율적으로 외부와 상호작용해 언어 모델의 한계를 뛰어넘기
-- **2024년 06월 15일**: Webex, 발표자 - 미정
+- **2024년 06월 15일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m739efd0f48677e321961efefbd3f52d8	), 발표자 - 미정
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 7 신경망과 Q 러닝
   - (랭체인 완벽 입문) CHAPTER 7: Callbacks - 다양한 이벤트 발생 시 처리하기
-- **2024년 06월 22일**: Webex, 발표자 - 미정
+- **2024년 06월 22일**: [Webex](https://lgehq.webex.com/lgehq-ko/j.php?MTID=m1bdd981b9382081f01744498781c0a1c	), 발표자 - 미정
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 8 DQN
-- **2024년 06월 29일**: Webex, 발표자 - 미정
+  - (deeplearning.ai) 미정
+- **2024년 06월 29일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=ma5e9754fb3c8c1f2bd09d2f98ba7557e	), 발표자 - 미정
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 9 정책 경사법
-- **2024년 07월 06일**: Webex, 발표자 - 미정
+  - (deeplearning.ai) 미정
+- **2024년 07월 06일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m470406a1c6059fbb3dea145ac3425a6b	), 발표자 - 미정
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 10 한 걸음 더
-- **2024년 07월 06일**: Webex, 발표자 - 미정
-  - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 10 한 걸음 더
-
+  - (deeplearning.ai) 미정
 5) 스터디 운영 방법
 - **교재**:
   - (교재1) 밑바닥부터 시작하는 딥러닝 4 [도서 링크](https://ridibooks.com/books/443001280)
