@@ -39,7 +39,7 @@
     - (트랜스포머) [Chapter 10 대규모 데이터셋 수집하기](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8%EB%A5%BC_%ED%99%9C%EC%9A%A9%ED%95%9C_%EC%9E%90%EC%97%B0%EC%96%B4_%EC%B2%98%EB%A6%AC/ch10_%EB%8C%80%EA%B7%9C%EB%AA%A8_%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B_%EC%88%98%EC%A7%91%ED%95%98%EA%B8%B0_Teo.ipynb)
     - (선행대수) Chapter 12 고윳값 분해: 선형대수학의 진주
 - 2024년 4월 20일 : [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mdf0615736152b18a90227bbeaefd2e9a	), 발표자 - 트(태영), 선(민호, 민호)
-    - (트랜스포머) Chapter 11 향후 방향
+    - (트랜스포머) [Chapter 11 향후 방향](https://github.com/restful3/ds4th_study/blob/main/source/%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8%EB%A5%BC_%ED%99%9C%EC%9A%A9%ED%95%9C_%EC%9E%90%EC%97%B0%EC%96%B4_%EC%B2%98%EB%A6%AC/ch11_%ED%96%A5%ED%9B%84_%EB%B0%A9%ED%96%A5_Song.ipynb)
     - (선행대수) Chapter 13 특잇값 분해: 고윳값 분해의 다음 단계
     - (선행대수) Chapter 14 고윳값 분해와 SVD 응용: 선형대수학의 선물    
     
