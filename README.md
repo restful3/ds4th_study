@@ -4,7 +4,7 @@
 3) 스터디 장소 : Webex
 4) 스터디 운영 계획 (2024년 5월 ~ 2024년 7월)
 - **2024년 05월 04일**: [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mec2b0d984b6a169382ed1e42be474e46	), 발표자 - 밑바닥(태영),랭체인(미정)
-  - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 1 밴디트 문제
+  - (밑바닥부터 시작하는 딥러닝 4) [CHAPTER 1 밴디트 문제](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_4/ch01_%EB%B0%B4%EB%94%94%ED%8A%B8_%EB%AC%B8%EC%A0%9C_Song.ipynb)
   - (랭체인 완벽 입문) CHAPTER 1: 챗지피티와 랭체인
 - **2024년 05월 11일**: [Webex](https://lgehq.webex.com/lgehq-ko/j.php?MTID=mf200f5f061fd05faedd2bdd7b5f4f874	), 발표자 - 밑바닥(미정),랭체인(미정)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 2 마르코프 결정 과정
