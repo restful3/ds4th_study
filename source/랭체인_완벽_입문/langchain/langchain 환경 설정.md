@@ -16,7 +16,7 @@ conda create -n lang310 python=3.10
 ```Powershall
 conda activate lang310
 conda install ipykernel
-python3 -m pip install -r requirements.txt
+pip install -r requirements.txt
 pip install mkl-fft
 ```
 
