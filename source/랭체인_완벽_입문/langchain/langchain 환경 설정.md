@@ -21,6 +21,7 @@ pip install mkl-fft
 pip install python-dotenv
 ```
 
+4. 주피터의 커널로 가상환경을 저장합니다
 ```Powershall
 python -m ipykernel install --user --name=lang310
 ```
