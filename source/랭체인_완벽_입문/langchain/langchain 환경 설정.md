@@ -19,6 +19,7 @@ conda install ipykernel
 pip install -r requirements.txt
 pip install mkl-fft
 pip install python-dotenv
+pip install openai
 ```
 
 4. 주피터의 커널로 가상환경을 저장합니다
