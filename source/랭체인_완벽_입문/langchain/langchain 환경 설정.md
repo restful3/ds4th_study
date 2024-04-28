@@ -18,6 +18,7 @@ conda activate lang310
 conda install ipykernel
 pip install -r requirements.txt
 pip install mkl-fft
+pip install python-dotenv
 ```
 
 ```Powershall
