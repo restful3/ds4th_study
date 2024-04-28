@@ -6,6 +6,7 @@
 - **2024년 05월 04일**: [Webex](https://lgehq.webex.com/lgehq/e.php?MTID=mec2b0d984b6a169382ed1e42be474e46	), 발표자 - 밑바닥(태영),랭체인(우석)
   - (밑바닥부터 시작하는 딥러닝 4) [CHAPTER 1 밴디트 문제](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_4/ch01_%EB%B0%B4%EB%94%94%ED%8A%B8_%EB%AC%B8%EC%A0%9C_Song.ipynb)
   - (랭체인 완벽 입문) CHAPTER 1: 챗지피티와 랭체인
+[환경설정하기](https://github.com/restful3/ds4th_study/blob/main/source/%EB%9E%AD%EC%B2%B4%EC%9D%B8_%EC%99%84%EB%B2%BD_%EC%9E%85%EB%AC%B8/langchain/langchain%20%ED%99%98%EA%B2%BD%20%EC%84%A4%EC%A0%95.md)
 - **2024년 05월 11일**: [Webex](https://lgehq.webex.com/lgehq-ko/j.php?MTID=mf200f5f061fd05faedd2bdd7b5f4f874	), 발표자 - 밑바닥(미정),랭체인(미정)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 2 마르코프 결정 과정
   - (랭체인 완벽 입문) CHAPTER 2: Model I/O - 언어 모델을 다루기 쉽게 만들기
