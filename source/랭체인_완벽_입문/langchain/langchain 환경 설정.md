@@ -12,15 +12,13 @@ cd langchain
 conda create -n lang310 python=3.10
 ```
 
-3. 환경설정
+3. 환경설정 
+- Agent 생성을 위한 crewAI 및 빠른속도의 클라우드 서비스를 위한 groq까지 설치
 ```Powershall
 conda activate lang310
 conda install ipykernel
 pip install -r requirements.txt
-pip install mkl-fft
-pip install python-dotenv
-pip install openai
-pip install langchain
+pip install mkl-fft python-dotenv openai streamlit langchain groq crewai
 ```
 
 4. 주피터의 커널로 가상환경을 저장합니다
