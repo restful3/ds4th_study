@@ -18,7 +18,7 @@ conda create -n lang310 python=3.10
 conda activate lang310
 conda install ipykernel
 pip install -r requirements.txt
-pip install mkl-fft python-dotenv openai streamlit langchain groq crewai anthropic tiktoken pymupdf chromadb
+pip install mkl-fft python-dotenv openai streamlit langchain groq crewai anthropic tiktoken pymupdf chromadb chainlit==0.5.1
 ```
 
 4. 주피터의 커널로 가상환경을 저장합니다
