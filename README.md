@@ -9,7 +9,7 @@
 [환경설정하기](https://github.com/restful3/ds4th_study/blob/main/source/%EB%9E%AD%EC%B2%B4%EC%9D%B8_%EC%99%84%EB%B2%BD_%EC%9E%85%EB%AC%B8/langchain/langchain%20%ED%99%98%EA%B2%BD%20%EC%84%A4%EC%A0%95.md)
 - **2024년 05월 11일**: [Webex](https://lgehq.webex.com/lgehq-ko/j.php?MTID=mf200f5f061fd05faedd2bdd7b5f4f874	), 발표자 - 밑바닥(미정),랭체인(우석)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 2 마르코프 결정 과정
-  - [(랭체인 완벽 입문) CHAPTER 2: Model I/O - 언어 모델을 다루기 쉽게 만들기](https://github.com/restful3/ds4th_study/blob/main/source/%EB%9E%AD%EC%B2%B4%EC%9D%B8_%EC%99%84%EB%B2%BD_%EC%9E%85%EB%AC%B8/Ch2.%20Model%20IO_jeong.ipynb)
+  - (랭체인 완벽 입문) [CHAPTER 2: Model I/O - 언어 모델을 다루기 쉽게 만들기](https://github.com/restful3/ds4th_study/blob/main/source/%EB%9E%AD%EC%B2%B4%EC%9D%B8_%EC%99%84%EB%B2%BD_%EC%9E%85%EB%AC%B8/Ch2.%20Model%20IO_jeong.ipynb)
 - **2024년 05월 18일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m87953fe1d77cbb7eb8f78d53e7b38e9f	), 발표자 - 밑바닥(미정),랭체인(미정)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 3 벨만 방정식
   - (랭체인 완벽 입문) CHAPTER 3: Retrieval - 알지 못하는 데이터를 다루기
