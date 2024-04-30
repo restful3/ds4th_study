@@ -16,7 +16,7 @@ conda create -n lang310 python=3.10
 - Agent 생성을 위한 crewAI 및 빠른속도의 클라우드 서비스를 위한 groq까지 설치
 ```Powershall
 conda activate lang310
-conda install ipykernel
+conda install ipykernel faiss-gpu
 pip install -r requirements.txt
 pip install mkl-fft python-dotenv openai streamlit langchain groq crewai anthropic tiktoken pymupdf chromadb chainlit==0.5.1 sentence-transformers
 ```
