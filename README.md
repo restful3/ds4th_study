@@ -13,7 +13,7 @@
 - **2024년 05월 18일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m87953fe1d77cbb7eb8f78d53e7b38e9f	), 발표자 - 밑바닥(민호),랭체인(미정)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 3 벨만 방정식
   - (랭체인 완벽 입문) CHAPTER 3: Retrieval - 알지 못하는 데이터를 다루기
-- **2024년 05월 25일**: [Webex](https://lgehq.webex.com/lgehq-ko/j.php?MTID=ma995b7204cff42e96e4fae240a394b06	), 발표자 - 밑바닥(미정),랭체인(미정)
+- **2024년 05월 25일**: [Webex](https://lgehq.webex.com/lgehq-ko/j.php?MTID=ma995b7204cff42e96e4fae240a394b06	), 발표자 - 밑바닥(민호),랭체인(미정)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 4 동적 프로그래밍
   - (랭체인 완벽 입문) CHAPTER 4: Memory - 과거의 대화를 장·단기 기억하기
 - **2024년 06월 01일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m62d5b5ffc2a3f265fc4e102c7702935a	), 발표자 - 밑바닥(미정),랭체인(미정)
