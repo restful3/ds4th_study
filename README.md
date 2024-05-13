@@ -19,7 +19,7 @@
 - **2024년 06월 01일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m62d5b5ffc2a3f265fc4e102c7702935a	), 발표자 - 밑바닥(민호),랭체인(미정)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 5 몬테카를로법
   - (랭체인 완벽 입문) CHAPTER 5: Chains - 여러 프로세스를 통합
-- **2024년 06월 08일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=me8df8edb3cf9994a451c99acc1f749ea	), 발표자 - 밑바닥(미정),랭체인(미정)
+- **2024년 06월 08일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=me8df8edb3cf9994a451c99acc1f749ea	), 발표자 - 밑바닥(우석),랭체인(미정)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 6 TD법
   - (랭체인 완벽 입문) CHAPTER 6: Agents - 자율적으로 외부와 상호작용해 언어 모델의 한계를 뛰어넘기
 - **2024년 06월 15일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m739efd0f48677e321961efefbd3f52d8	), 발표자 - 밑바닥(미정),랭체인(미정)
