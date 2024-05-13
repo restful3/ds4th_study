@@ -11,7 +11,7 @@
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 2 마르코프 결정 과정
   - (랭체인 완벽 입문) [CHAPTER 2: Model I/O - 언어 모델을 다루기 쉽게 만들기](https://github.com/restful3/ds4th_study/blob/main/source/%EB%9E%AD%EC%B2%B4%EC%9D%B8_%EC%99%84%EB%B2%BD_%EC%9E%85%EB%AC%B8/Ch2.%20Model%20IO_jeong.ipynb)
 - **2024년 05월 18일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m87953fe1d77cbb7eb8f78d53e7b38e9f	), 발표자 - 밑바닥(민호),랭체인(태영)
-  - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 3 벨만 방정식
+  - (밑바닥부터 시작하는 딥러닝 4) [CHAPTER 3 벨만 방정식](https://github.com/restful3/ds4th_study/blob/bbcf81341ecc9e0b63eb67ce1e9974d8bec9dc28/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_4/ch03_%EB%B2%A8%EB%A7%8C_%EB%B0%A9%EC%A0%95%EC%8B%9D_Minho.ipynb)
   - (랭체인 완벽 입문) [CHAPTER 3: Retrieval - 알지 못하는 데이터를 다루기](https://github.com/restful3/ds4th_study/blob/main/source/%EB%9E%AD%EC%B2%B4%EC%9D%B8_%EC%99%84%EB%B2%BD_%EC%9E%85%EB%AC%B8/ch03_Retrieval_%EC%95%8C%EC%A7%80_%EB%AA%BB%ED%95%98%EB%8A%94_%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%8B%A4%EB%A3%A8%EA%B8%B0_Song.ipynb)
 - **2024년 05월 25일**: [Webex](https://lgehq.webex.com/lgehq-ko/j.php?MTID=ma995b7204cff42e96e4fae240a394b06	), 발표자 - 밑바닥(민호),랭체인(미정)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 4 동적 프로그래밍
