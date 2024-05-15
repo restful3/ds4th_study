@@ -19,10 +19,10 @@
 - **2024년 06월 01일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m62d5b5ffc2a3f265fc4e102c7702935a	), 발표자 - 밑바닥(민호),랭체인(태호)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 5 몬테카를로법
   - (랭체인 완벽 입문) CHAPTER 5: Chains - 여러 프로세스를 통합
-- **2024년 06월 08일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=me8df8edb3cf9994a451c99acc1f749ea	), 발표자 - 밑바닥(우석),랭체인(미정)
+- **2024년 06월 08일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=me8df8edb3cf9994a451c99acc1f749ea	), 발표자 - 밑바닥(우석),랭체인(태영)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 6 TD법
   - (랭체인 완벽 입문) CHAPTER 6: Agents - 자율적으로 외부와 상호작용해 언어 모델의 한계를 뛰어넘기
-- **2024년 06월 15일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m739efd0f48677e321961efefbd3f52d8	), 발표자 - 밑바닥(미정),랭체인(미정)
+- **2024년 06월 15일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m739efd0f48677e321961efefbd3f52d8	), 발표자 - 밑바닥(태영),랭체인(미정)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 7 신경망과 Q 러닝
   - (랭체인 완벽 입문) CHAPTER 7: Callbacks - 다양한 이벤트 발생 시 처리하기
 - **2024년 06월 22일**: [Webex](https://lgehq.webex.com/lgehq-ko/j.php?MTID=m1bdd981b9382081f01744498781c0a1c	), 발표자 - 밑바닥(미정),랭체인(미정)
