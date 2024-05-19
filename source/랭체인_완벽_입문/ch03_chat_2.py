@@ -20,7 +20,7 @@ prompt = PromptTemplate(template="""문장을 바탕으로 질문에 답하세�
 """, input_variables=["document", "query"])
 
 database = Chroma(
-    persist_directory="./data", 
+    persist_directory="/home/restful3/workspaces/study/ds4th_study/source/랭체인_완벽_입문/.data", 
     embedding_function=embeddings
 )
 
