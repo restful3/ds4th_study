@@ -28,12 +28,12 @@
 - **2024년 06월 22일**: [Webex](https://lgehq.webex.com/lgehq-ko/j.php?MTID=m1bdd981b9382081f01744498781c0a1c	), 발표자 - 밑바닥(태호),랭체인(태영)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 8 DQN
   - (deeplearning.ai) [LangChain for LLM Application Development](https://learn.deeplearning.ai/courses/langchain/lesson/1/introduction)
-- **2024년 06월 29일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=ma5e9754fb3c8c1f2bd09d2f98ba7557e	), 발표자 - 밑바닥(미정),랭체인(우석)
+- **2024년 06월 29일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=ma5e9754fb3c8c1f2bd09d2f98ba7557e	), 발표자 - 밑바닥(미정),랭체인(태영)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 9 정책 경사법
-  - (deeplearning.ai) [multi-ai-agent-systems-with-crewai](https://learn.deeplearning.ai/courses/multi-ai-agent-systems-with-crewai/lesson/1/introduction)
-- **2024년 07월 06일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m470406a1c6059fbb3dea145ac3425a6b	), 발표자 - 밑바닥(미정),랭체인(미정)
+  - (deeplearning.ai) [Functions, Tools and Agents with LangChain](https://learn.deeplearning.ai/courses/functions-tools-agents-langchain/lesson/1/introduction)
+- **2024년 07월 06일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m470406a1c6059fbb3dea145ac3425a6b	), 발표자 - 밑바닥(미정),랭체인(우석)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 10 한 걸음 더
-  - (deeplearning.ai) 미정
+  - (deeplearning.ai) [multi-ai-agent-systems-with-crewai](https://learn.deeplearning.ai/courses/multi-ai-agent-systems-with-crewai/lesson/1/introduction)
 5) 스터디 운영 방법
 - **교재**:
   - (교재1) 밑바닥부터 시작하는 딥러닝 4 [도서 링크](https://ridibooks.com/books/443001280)
