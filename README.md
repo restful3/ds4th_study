@@ -20,7 +20,7 @@
   - (밑바닥부터 시작하는 딥러닝 4) [CHAPTER 5 몬테카를로법](https://github.com/restful3/ds4th_study/blob/20bdfde476a268b9b4da53ab7929e7b4aa12487b/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_4/ch05_%EB%AA%AC%ED%85%8C%EC%B9%B4%EB%A5%BC%EB%A1%9C%EB%B2%95_Off%EC%A0%95%EC%B1%85_Minho.ipynb)
   - (랭체인 완벽 입문) [CHAPTER 5: Chains - 여러 프로세스를 통합](https://github.com/restful3/ds4th_study/blob/main/source/%EB%9E%AD%EC%B2%B4%EC%9D%B8_%EC%99%84%EB%B2%BD_%EC%9E%85%EB%AC%B8/ch5_.Chains_%EC%97%AC%EB%9F%AC%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%ED%86%B5%ED%95%A9.ipynb)
 - **2024년 06월 08일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=me8df8edb3cf9994a451c99acc1f749ea	), 발표자 - 밑바닥(우석),랭체인(태영)
-  - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 6 TD법
+  - [(밑바닥부터 시작하는 딥러닝 4) CHAPTER 6 TD법](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_4/ch06_TD%EB%B2%95_jeong.ipynb)
   - (랭체인 완벽 입문) CHAPTER 6: Agents - 자율적으로 외부와 상호작용해 언어 모델의 한계를 뛰어넘기
 - **2024년 06월 15일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m739efd0f48677e321961efefbd3f52d8	), 발표자 - 밑바닥(태영),랭체인(태호)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 7 신경망과 Q 러닝
