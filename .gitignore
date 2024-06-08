@@ -9,3 +9,4 @@ output/
 *.ipynb_check*
 *.pkl
 *.env
+.chainlit/
