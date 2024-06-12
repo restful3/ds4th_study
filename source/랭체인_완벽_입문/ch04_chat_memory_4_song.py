@@ -20,8 +20,7 @@ async def on_chat_start():
 
     history = RedisChatMessageHistory(
         session_id=thread_id,
-        url=os.environ.get('REDIS_URL'),
-
+        url='redis://192.168.0.4:6379'
     )
 
     memory = ConversationBufferMemory(
