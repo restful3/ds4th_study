@@ -26,7 +26,7 @@ async def on_chat_start():
 @cl.on_message
 async def on_message(input_message):
     result=agent.run(
-        input_message.content,
+        input_message.content,            # 객체 형태로 호출하기 때문에... (교재 코드 수정 부분)
         callbacks=[
             cl.LangchainCallbackHandler()
         ]
