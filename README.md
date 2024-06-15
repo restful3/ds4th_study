@@ -24,7 +24,7 @@
   - [(랭체인 완벽 입문) CHAPTER 6: Agents - 자율적으로 외부와 상호작용해 언어 모델의 한계를 뛰어넘기](https://github.com/restful3/ds4th_study/blob/main/source/%EB%9E%AD%EC%B2%B4%EC%9D%B8_%EC%99%84%EB%B2%BD_%EC%9E%85%EB%AC%B8/ch06_Agents_Song.ipynb)
 - **2024년 06월 15일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m739efd0f48677e321961efefbd3f52d8	), 발표자 - 밑바닥(태영),랭체인(태호)
   - [(밑바닥부터 시작하는 딥러닝 4) CHAPTER 7 신경망과 Q 러닝](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_4/ch07_%EC%8B%A0%EA%B2%BD%EB%A7%9D%EA%B3%BC_Q%EB%9F%AC%EB%8B%9D_song.ipynb)
-  - (랭체인 완벽 입문) CHAPTER 7: Callbacks - 다양한 이벤트 발생 시 처리하기
+  - (랭체인 완벽 입문) [CHAPTER 7: Callbacks - 다양한 이벤트 발생 시 처리하기](https://github.com/restful3/ds4th_study/blob/main/source/%EB%9E%AD%EC%B2%B4%EC%9D%B8_%EC%99%84%EB%B2%BD_%EC%9E%85%EB%AC%B8/ch7_callbacks.ipynb)
 - **2024년 06월 22일**: [Webex](https://lgehq.webex.com/lgehq-ko/j.php?MTID=m1bdd981b9382081f01744498781c0a1c	), 발표자 - 밑바닥(태호),랭체인(태영)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 8 DQN
   - (deeplearning.ai) [LangChain for LLM Application Development](https://learn.deeplearning.ai/courses/langchain/lesson/1/introduction)
