@@ -30,7 +30,7 @@
   - (deeplearning.ai) [LangChain for LLM Application Development](https://github.com/restful3/ds4th_study/blob/main/source/LangChain%20for%20LLM%20Application%20Development/LangChain%EC%9D%84%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EB%8C%80%EA%B7%9C%EB%AA%A8%20%EC%96%B8%EC%96%B4%20%EB%AA%A8%EB%8D%B8%20%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%20%EA%B0%9C%EB%B0%9C%20%EB%8B%A8%EA%B8%B0%20%EA%B3%BC%EC%A0%95.ipynb)
 - **2024년 06월 29일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=ma5e9754fb3c8c1f2bd09d2f98ba7557e	), 발표자 - 밑바닥(민호),랭체인(태영)
   - [(밑바닥부터 시작하는 딥러닝 4) CHAPTER 9 정책 경사법](https://github.com/restful3/ds4th_study/blob/65b5f3ee242699b57bc1e885334608c2b80bb281/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_4/ch09_%EC%A0%95%EC%B1%85%EA%B2%BD%EC%82%AC%EB%B2%95_minho.ipynb)
-  - (deeplearning.ai) [Functions, Tools and Agents with LangChain](https://learn.deeplearning.ai/courses/functions-tools-agents-langchain/lesson/1/introduction)
+  - (deeplearning.ai) [Functions, Tools and Agents with LangChain](https://github.com/restful3/ds4th_study/blob/main/source/Functions%2C%20Tools%20and%20Agents%20with%20LangChain/Functions%2C%20Tools%20and%20Agents%20with%20LangChain.ipynb)
 - **2024년 07월 06일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m470406a1c6059fbb3dea145ac3425a6b	), 발표자 - 밑바닥(민호),랭체인(우석)
   - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 10 한 걸음 더
   - (deeplearning.ai) [multi-ai-agent-systems-with-crewai](https://learn.deeplearning.ai/courses/multi-ai-agent-systems-with-crewai/lesson/1/introduction)
