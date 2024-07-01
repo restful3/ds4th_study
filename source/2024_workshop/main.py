@@ -32,8 +32,8 @@ initial_balance = 1000000  # 초기 자금 100만원
 
 # 강화학습 환경 및 에이전트 초기화
 env = StockTradingEnv(stock_data, initial_balance=initial_balance)
-state_size = 6  # 상태 크기 (6개 요소: Open, High, Low, Close, Balance, Shares Held)
-action_size = 3  # 행동 크기 (매수, 매도, 유지)
+state_size = 6  # 상태 크기 (6개 요소: Balance, Shares Held, Close, Open, High, Low)
+action_size = 4  # 행동 크기 (3 actions: hold, buy, sell) + 1 for amount
 agent = DQNAgent(state_size, action_size)
 
 # 강화학습 에피소드 및 학습

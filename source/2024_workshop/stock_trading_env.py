@@ -1,59 +1,48 @@
 import numpy as np
-import pandas as pd
-from gym import spaces
-from gym.utils import seeding
-
+\
 class StockTradingEnv:
-    """
-    주식 거래 환경
-    """
     def __init__(self, df, initial_balance=1000000):
         self.df = df
         self.initial_balance = initial_balance
-        self.action_space = spaces.Discrete(3)  # 매수, 매도, 유지
-        self.observation_space = spaces.Box(low=0, high=np.inf, shape=(6,), dtype=np.float32)
-        self.current_step = 0
+        self.reset()
 
     def reset(self):
         self.balance = self.initial_balance
         self.shares_held = 0
-        self.total_value = self.initial_balance
         self.current_step = 0
+        self.total_steps = len(self.df) - 1
         return self._get_observation()
 
     def _get_observation(self):
-        obs = np.array([
-            self.df.loc[self.current_step, 'Open'],
-            self.df.loc[self.current_step, 'High'],
-            self.df.loc[self.current_step, 'Low'],
-            self.df.loc[self.current_step, 'Close'],
-            self.balance,
-            self.shares_held
+        return np.array([
+            self.balance, 
+            self.shares_held, 
+            self.df.loc[self.current_step, 'Close'], 
+            self.df.loc[self.current_step, 'Open'], 
+            self.df.loc[self.current_step, 'High'], 
+            self.df.loc[self.current_step, 'Low']
         ])
-        return obs
 
     def step(self, action):
         current_price = self.df.loc[self.current_step, 'Close']
-        if action == 0:  # 매수
-            shares_bought = self.balance // current_price
-            self.balance -= shares_bought * current_price
-            self.shares_held += shares_bought
-        elif action == 1:  # 매도
-            self.balance += self.shares_held * current_price
-            self.shares_held = 0
-
         self.current_step += 1
-        done = self.current_step >= len(self.df) - 1
-        next_state = self._get_observation()
-        self.total_value = self.balance + self.shares_held * current_price
-        reward = self.total_value - self.initial_balance if done else 0
+        done = self.current_step == self.total_steps
 
-        return next_state, reward, done, {}
+        action_type = action[0]  # 0: Hold, 1: Buy, 2: Sell
+        action_amount = action[1]  # Fraction of balance or shares to use
 
-    def render(self):
-        profit = self.total_value - self.initial_balance
-        print(f'Step: {self.current_step}')
-        print(f'Balance: {self.balance}')
-        print(f'Shares held: {self.shares_held}')
-        print(f'Total value: {self.total_value}')
-        print(f'Profit: {profit}')
+        if action_type == 1:  # Buy
+            amount_to_invest = self.balance * action_amount
+            shares_to_buy = int(amount_to_invest // current_price)
+            self.balance -= shares_to_buy * current_price
+            self.shares_held += shares_to_buy
+
+        elif action_type == 2:  # Sell
+            shares_to_sell = int(self.shares_held * action_amount)
+            self.balance += shares_to_sell * current_price
+            self.shares_held -= shares_to_sell
+
+        reward = self.balance + self.shares_held * current_price - self.initial_balance if done else 0
+
+        return self._get_observation(), reward, done, {}
+

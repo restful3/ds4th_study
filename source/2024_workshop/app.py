@@ -79,7 +79,7 @@ with st.sidebar.expander("설정", expanded=True):
 
 # 전역 변수로 state_size와 action_size 설정
 state_size = 6
-action_size = 3
+action_size = 4  # 3 actions (hold, buy, sell) + 1 for amount
 
 # 전역 변수로 agent 초기화
 if 'agent' not in st.session_state:
@@ -89,7 +89,7 @@ if 'agent' not in st.session_state:
 tabs = st.tabs(["학습", "테스트"])
 
 with tabs[0]:
-    # st.header("학습")
+    st.header("학습")
     if st.button("학습 시작"):
         training_status_container = st.container()
         with training_status_container:
@@ -133,9 +133,9 @@ with tabs[0]:
         fig, ax = plt.subplots()
         ax.plot(stock_data['Date'], stock_data['Close'], label='Close Price')
         actions = [st.session_state.agent.act(np.reshape(env._get_observation(), [1, state_size])) for _ in range(env.df.shape[0] - 1)]
-        buy_signals = np.where(np.array(actions) == 0)[0]
-        sell_signals = np.where(np.array(actions) == 1)[0]
-        hold_signals = np.where(np.array(actions) == 2)[0]
+        buy_signals = np.where(np.array(actions)[:, 0] == 1)[0]
+        sell_signals = np.where(np.array(actions)[:, 0] == 2)[0]
+        hold_signals = np.where(np.array(actions)[:, 0] == 0)[0]
         
         ax.scatter(stock_data.iloc[buy_signals]['Date'], stock_data.iloc[buy_signals]['Close'], marker='^', color='g', label='Buy Signal', alpha=1)
         ax.scatter(stock_data.iloc[sell_signals]['Date'], stock_data.iloc[sell_signals]['Close'], marker='v', color='r', label='Sell Signal', alpha=1)
@@ -151,7 +151,7 @@ with tabs[0]:
         st.write(f"Final Balance after training: ₩{final_balance}")
 
 with tabs[1]:
-    # st.header("테스트")
+    st.header("테스트")
     if st.button("테스트 시작"):
         model_path = os.path.join('models', f'{ticker}.pth')
         if os.path.exists(model_path):
@@ -174,9 +174,9 @@ with tabs[1]:
             fig_test, ax_test = plt.subplots()
             ax_test.plot(stock_data_test['Date'], stock_data_test['Close'], label='Close Price')
             
-            buy_signals_test = np.where(np.array(actions_test) == 0)[0]
-            sell_signals_test = np.where(np.array(actions_test) == 1)[0]
-            hold_signals_test = np.where(np.array(actions_test) == 2)[0]
+            buy_signals_test = np.where(np.array(actions_test)[:, 0] == 1)[0]
+            sell_signals_test = np.where(np.array(actions_test)[:, 0] == 2)[0]
+            hold_signals_test = np.where(np.array(actions_test)[:, 0] == 0)[0]
             
             ax_test.scatter(stock_data_test.iloc[buy_signals_test]['Date'], stock_data_test.iloc[buy_signals_test]['Close'], marker='^', color='g', label='Buy Signal', alpha=1)
             ax_test.scatter(stock_data_test.iloc[sell_signals_test]['Date'], stock_data_test.iloc[sell_signals_test]['Close'], marker='v', color='r', label='Sell Signal', alpha=1)
