@@ -27,28 +27,33 @@ start_date = "2023-01-01"
 end_date = "2023-12-31"
 stock_data = get_stock_data(ticker, start_date, end_date)
 
+# 초기 자금 설정
+initial_balance = 1000000  # 초기 자금 100만원
+
 # 강화학습 환경 및 에이전트 초기화
-env = StockTradingEnv(stock_data)
-state_size = 3
-action_size = 3
+env = StockTradingEnv(stock_data, initial_balance=initial_balance)
+state_size = 6  # 상태 크기 (6개 요소: Open, High, Low, Close, Balance, Shares Held)
+action_size = 3  # 행동 크기 (매수, 매도, 유지)
 agent = DQNAgent(state_size, action_size)
 
 # 강화학습 에피소드 및 학습
-EPISODES = 1000
+EPISODES = 10
 batch_size = 32
 
 for e in range(EPISODES):
     state = env.reset()
     state = np.reshape(state, [1, state_size])
-    for time in range(env.total_steps):
+    total_reward = 0
+    for time in range(env.df.shape[0] - 1):
         action = agent.act(state)
         next_state, reward, done, _ = env.step(action)
-        reward = reward if not done else -10
+        total_reward += reward  # 각 스텝의 보상을 누적
         next_state = np.reshape(next_state, [1, state_size])
         agent.remember(state, action, reward, next_state, done)
         state = next_state
         if done:
-            print(f"episode: {e+1}/{EPISODES}, score: {reward}, epsilon: {agent.epsilon}")
+            final_balance = env.balance + env.shares_held * env.df.loc[env.current_step, 'Close']
+            print(f"episode: {e+1}/{EPISODES}, final balance: {final_balance}, epsilon: {agent.epsilon}")
             break
         if len(agent.memory) > batch_size:
             agent.replay(batch_size)

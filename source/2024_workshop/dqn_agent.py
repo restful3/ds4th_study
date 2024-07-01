@@ -60,22 +60,24 @@ class DQNAgent:
         optimizer (Adam): 옵티마이저
     """
 
-    def __init__(self, state_size, action_size):
+    def __init__(self, state_size, action_size, learning_rate=0.001, gamma=0.95):
         """
         DQNAgent 초기화 메서드
 
         Args:
             state_size (int): 상태의 크기
             action_size (int): 행동의 크기
+            learning_rate (float): 학습률
+            gamma (float): 할인 계수
         """
         self.state_size = state_size
         self.action_size = action_size
         self.memory = deque(maxlen=2000)
-        self.gamma = 0.95
+        self.gamma = gamma
         self.epsilon = 1.0
         self.epsilon_decay = 0.995
         self.epsilon_min = 0.01
-        self.learning_rate = 0.001
+        self.learning_rate = learning_rate
         self.model = DQN(state_size, action_size)
         self.optimizer = optim.Adam(self.model.parameters(), lr=self.learning_rate)
 

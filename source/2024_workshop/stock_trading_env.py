@@ -1,88 +1,59 @@
 import numpy as np
+import pandas as pd
+from gym import spaces
+from gym.utils import seeding
 
 class StockTradingEnv:
     """
-    StockTradingEnv 클래스는 주식 거래 환경을 시뮬레이션합니다.
-
-    Attributes:
-        stock_data (DataFrame): 주식 시장 데이터
-        current_step (int): 현재 스텝
-        total_steps (int): 총 스텝 수
-        cash (float): 현금 보유량
-        stock_owned (int): 보유 주식 수
-        stock_price (float): 현재 주식 가격
-        total_value (float): 포트폴리오 총 가치
+    주식 거래 환경
     """
-
-    def __init__(self, stock_data):
-        """
-        StockTradingEnv 초기화 메서드
-
-        Args:
-            stock_data (DataFrame): 주식 시장 데이터
-        """
-        self.stock_data = stock_data
+    def __init__(self, df, initial_balance=1000000):
+        self.df = df
+        self.initial_balance = initial_balance
+        self.action_space = spaces.Discrete(3)  # 매수, 매도, 유지
+        self.observation_space = spaces.Box(low=0, high=np.inf, shape=(6,), dtype=np.float32)
         self.current_step = 0
-        self.total_steps = len(stock_data)
-        self.cash = 10000
-        self.stock_owned = 0
-        self.stock_price = self.stock_data.iloc[self.current_step]['Close']
-        self.total_value = self.cash
 
     def reset(self):
-        """
-        환경을 초기 상태로 리셋합니다.
-
-        Returns:
-            numpy array: 초기 상태
-        """
+        self.balance = self.initial_balance
+        self.shares_held = 0
+        self.total_value = self.initial_balance
         self.current_step = 0
-        self.cash = 10000
-        self.stock_owned = 0
-        self.stock_price = self.stock_data.iloc[self.current_step]['Close']
-        self.total_value = self.cash
         return self._get_observation()
 
     def _get_observation(self):
-        """
-        현재 상태를 반환합니다.
-
-        Returns:
-            numpy array: 현재 상태 (주식 가격, 보유 주식 수, 현금 보유량)
-        """
-        obs = np.array([self.stock_price, self.stock_owned, self.cash])
+        obs = np.array([
+            self.df.loc[self.current_step, 'Open'],
+            self.df.loc[self.current_step, 'High'],
+            self.df.loc[self.current_step, 'Low'],
+            self.df.loc[self.current_step, 'Close'],
+            self.balance,
+            self.shares_held
+        ])
         return obs
 
     def step(self, action):
-        """
-        환경에서 한 스텝을 진행합니다.
-
-        Args:
-            action (int): 에이전트의 행동 (0: 매수, 1: 매도, 2: 보유)
-
-        Returns:
-            tuple: (다음 상태, 보상, 종료 여부, 추가 정보)
-        """
-        self.stock_price = self.stock_data.iloc[self.current_step]['Close']
-        reward = 0
-        done = False
-
+        current_price = self.df.loc[self.current_step, 'Close']
         if action == 0:  # 매수
-            if self.cash > self.stock_price:
-                self.stock_owned += 1
-                self.cash -= self.stock_price
+            shares_bought = self.balance // current_price
+            self.balance -= shares_bought * current_price
+            self.shares_held += shares_bought
         elif action == 1:  # 매도
-            if self.stock_owned > 0:
-                self.stock_owned -= 1
-                self.cash += self.stock_price
-        elif action == 2:  # 보유
-            pass
-
-        self.total_value = self.cash + self.stock_owned * self.stock_price
-        reward = self.total_value - self.cash
+            self.balance += self.shares_held * current_price
+            self.shares_held = 0
 
         self.current_step += 1
-        if self.current_step >= self.total_steps:
-            done = True
+        done = self.current_step >= len(self.df) - 1
+        next_state = self._get_observation()
+        self.total_value = self.balance + self.shares_held * current_price
+        reward = self.total_value - self.initial_balance if done else 0
 
-        return self._get_observation(), reward, done, {}
+        return next_state, reward, done, {}
+
+    def render(self):
+        profit = self.total_value - self.initial_balance
+        print(f'Step: {self.current_step}')
+        print(f'Balance: {self.balance}')
+        print(f'Shares held: {self.shares_held}')
+        print(f'Total value: {self.total_value}')
+        print(f'Profit: {profit}')
