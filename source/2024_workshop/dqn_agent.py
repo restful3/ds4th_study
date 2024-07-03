@@ -35,13 +35,12 @@ class DQNAgent:
         self.memory.append((state, action, reward, next_state, done))
 
     def act(self, state):
-        if np.random.rand() <= self.epsilon:
-            return [random.choice([0, 1, 2]), random.uniform(0, 1)]
         state = torch.FloatTensor(state)
-        q_values = self.model(state)
+        with torch.no_grad():
+            q_values = self.model(state)
         action_type = torch.argmax(q_values[0][:3]).item()
         action_amount = torch.sigmoid(q_values[0][3]).item()
-        return [action_type, action_amount]
+        return [action_type, max(0.01, action_amount)]  # 최소 1%의 금액은 사용하도록 설정
 
     def replay(self, batch_size):
         minibatch = random.sample(self.memory, batch_size)
