@@ -32,7 +32,7 @@
   - [(밑바닥부터 시작하는 딥러닝 4) CHAPTER 9 정책 경사법](https://github.com/restful3/ds4th_study/blob/65b5f3ee242699b57bc1e885334608c2b80bb281/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_4/ch09_%EC%A0%95%EC%B1%85%EA%B2%BD%EC%82%AC%EB%B2%95_minho.ipynb)
   - (deeplearning.ai) [Functions, Tools and Agents with LangChain](https://github.com/restful3/ds4th_study/blob/main/source/Functions%2C%20Tools%20and%20Agents%20with%20LangChain/Functions%2C%20Tools%20and%20Agents%20with%20LangChain.ipynb)
 - **2024년 07월 06일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m470406a1c6059fbb3dea145ac3425a6b	), 발표자 - 밑바닥(민호),랭체인(우석)
-  - (밑바닥부터 시작하는 딥러닝 4) CHAPTER 10 한 걸음 더
+  - [(밑바닥부터 시작하는 딥러닝 4) CHAPTER 10 한 걸음 더](https://github.com/restful3/ds4th_study/blob/7c6b1fbc7221f1d3bc9b9f5e0c2f0678c9eae765/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_4/ch10_%ED%95%9C%EA%B1%B8%EC%9D%8C%EB%8D%94_minho.ipynb)
   - (deeplearning.ai) [multi-ai-agent-systems-with-crewai](https://learn.deeplearning.ai/courses/multi-ai-agent-systems-with-crewai/lesson/1/introduction)
 5) 스터디 운영 방법
 - **교재**:
