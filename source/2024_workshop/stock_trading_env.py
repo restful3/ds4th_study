@@ -1,5 +1,7 @@
 import numpy as np
-\
+
+BUY = 1
+SELL = 2
 class StockTradingEnv:
     def __init__(self, df, initial_balance=1000000, commission_rate=0.00015):
         '''
@@ -16,7 +18,7 @@ class StockTradingEnv:
         self.shares_held = 0
         self.current_step = 0
         self.total_steps = len(self.df) - 1
-        return self._get_observation()
+        return self._get_observation()    
 
     def _get_observation(self):
         '''
@@ -32,20 +34,21 @@ class StockTradingEnv:
         
         '''
         return np.array([
-            self.balance, 
-            self.shares_held, 
-            self.df.loc[self.current_step, 'Close'], 
-            self.df.loc[self.current_step, 'Open'], 
-            self.df.loc[self.current_step, 'High'], 
-            self.df.loc[self.current_step, 'Low']
+            self.balance,
+            self.shares_held,
+            self.df.iloc[self.current_step]['Close'],
+            self.df.iloc[self.current_step]['Open'],
+            self.df.iloc[self.current_step]['High'],
+            self.df.iloc[self.current_step]['Low']
         ])
-    
+        
     def step(self, action):
         '''
         에이전트가 action을 취하면, 환경은 이를 처리하고 새로운 상태를 반환합니다.
         주식 거래(매수/매도)를 시뮬레이션하고, 다음 거래일로 이동합니다.
         새로운 상태, 보상, 에피소드 종료 여부를 반환합니다.        
         '''        
+        
         current_price = self.df.loc[self.current_step, 'Close']
         self.current_step += 1
         done = self.current_step == self.total_steps
@@ -53,7 +56,7 @@ class StockTradingEnv:
         action_type = action[0]  # 0: Hold, 1: Buy, 2: Sell
         action_amount = action[1]  # Fraction of balance or shares to use
 
-        if action_type == 1:  # Buy
+        if action_type == BUY:  # Buy
             amount_to_invest = self.balance * action_amount
             shares_to_buy = int(amount_to_invest // current_price)
             cost = shares_to_buy * current_price
@@ -63,7 +66,7 @@ class StockTradingEnv:
                 self.balance -= total_cost
                 self.shares_held += shares_to_buy
 
-        elif action_type == 2:  # Sell
+        elif action_type == SELL:  # Sell
             shares_to_sell = int(self.shares_held * action_amount)
             sale_value = shares_to_sell * current_price
             commission = sale_value * self.commission_rate

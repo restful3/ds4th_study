@@ -230,8 +230,7 @@ with tabs[0]:
 
         # 학습 완료 후 모델 저장
         model_path = os.path.join('models', f'{ticker}.pth')
-        if not os.path.exists('models'):
-            os.makedirs('models')
+        os.makedirs('models', exist_ok=True)
         torch.save(st.session_state.agent.model.state_dict(), model_path)
         st.success(f"Model saved to {model_path}")      
 
