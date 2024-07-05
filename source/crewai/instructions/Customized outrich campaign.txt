@@ -1,0 +1,29 @@
+# Personalized Business Proposal Guide
+
+## Introduction
+
+When reaching out to businesses in the {industry} sector, such as {lead_name}, it's essential to highlight their recent {milestone} and how the solutions I offer can support them in achieving their goals. These businesses are often looking for partners who understand their unique situation and can provide tailored solutions.
+
+## Key Points to Address
+
+- **Recent Accomplishments:** Reference the accomplishment associated with {lead_name}'s {milestone}. For example:
+   : 1) Partnered with L-Corp to train 30,000 employees on content creation / Delivered 90,000 pieces of real-time content with a 9.5 CSAT rating
+   : 2) Built a real-time training platform for K-Motors / Employees can access proprietary training content anytime, online or offline
+   : 3) Forged platform partnerships: Integrated with G-Suite Marketplace to secure content creation pipeline
+- **Tailored Solutions:** Explain how my solutions can be customized to meet their current and future needs. For example:
+   : 1) Custom solutions through API integrations: Offer 7 API tools so they can pick and choose the functionality they need
+   : 2) Single point of contact: From needs assessment to post-implementation support, we're your one-stop-shop
+- **Value Proposition:** Clearly state the value I provide and how it specifically helps them achieve their goals.
+
+## Template Message
+
+Dear {key_decision_maker},
+
+Congratulations on {lead_name}'s recent {milestone}! I was impressed to learn about {lead_name}'s achievements, and I believe that my {product/service} was designed with companies like yours in mind. It offers {key_feature} that can help you {benefit}.
+
+I understand the importance of tailored solutions in {lead_name}'s journey. {Insert how my solution can be customized to meet their current and future needs}
+
+I'd love to schedule a time to discuss how we can help {lead_name} achieve its {future goals}.
+
+Thank you,
+{My Name}
