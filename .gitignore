@@ -3,7 +3,12 @@ model/
 models/
 output/
 *.models/*
+results/
+results/
+*.pyc
+__pycache__/
 *.pth
+*.pyc
 *.pt
 *.ipynb_checkpoints*
 *.ipynb_check*

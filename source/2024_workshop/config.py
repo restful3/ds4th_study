@@ -9,7 +9,7 @@ config = {
     'commission_rate': 0.00015,  # 거래 수수료 0.015%
 
     # 학습 관련 설정
-    'epochs': 2,
+    'epochs': 1000,
     'batch_size': 32,
 
     # 에이전트 관련 설정

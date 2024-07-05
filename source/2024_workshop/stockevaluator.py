@@ -31,7 +31,7 @@ class StockEvaluator:
         df.reset_index(inplace=True)
         df.rename(columns={'날짜': 'Date', '종가': 'Close', '시가': 'Open', '고가': 'High', '저가': 'Low', '거래량': 'Volume'}, inplace=True)
         return df
-
+    
     def load_model(self):
         agent_config = get_agent_config(self.agent_type)
         if self.agent_type == 'dqn':
@@ -43,16 +43,44 @@ class StockEvaluator:
         else:
             raise ValueError(f"Unsupported agent type: {self.agent_type}")
 
+        # 소스 코드가 있는 폴더의 경로를 직접 지정
         current_dir = os.path.dirname(os.path.abspath(__file__))
         models_dir = os.path.join(current_dir, 'models')
         ticker_clean = ''.join(e for e in self.ticker if e.isalnum())
         model_path = os.path.join(models_dir, f'{ticker_clean}_{self.agent_type}.pth')
+
+        print(f"Current directory: {current_dir}")
+        print(f"Models directory: {models_dir}")
+        print(f"Attempting to load model from: {model_path}")
         
         if os.path.exists(model_path):
             self.agent.load(model_path)
             print(f"Model loaded from {model_path}")
         else:
-            raise FileNotFoundError(f"Model file not found: {model_path}")
+            print(f"Files in models directory: {os.listdir(models_dir)}")
+            raise FileNotFoundError(f"Model file not found: {model_path}")    
+
+    # def load_model(self):
+    #     agent_config = get_agent_config(self.agent_type)
+    #     if self.agent_type == 'dqn':
+    #         self.agent = DQNAgent(**agent_config)
+    #     elif self.agent_type == 'ppo':
+    #         self.agent = PPOAgent(**agent_config)
+    #     elif self.agent_type == 'a2c':
+    #         self.agent = A2CAgent(**agent_config)
+    #     else:
+    #         raise ValueError(f"Unsupported agent type: {self.agent_type}")
+
+    #     current_dir = os.path.dirname(os.path.abspath(__file__))
+    #     models_dir = os.path.join(current_dir, 'models')
+    #     ticker_clean = ''.join(e for e in self.ticker if e.isalnum())
+    #     model_path = os.path.join(models_dir, f'{ticker_clean}_{self.agent_type}.pth')
+        
+    #     if os.path.exists(model_path):
+    #         self.agent.load(model_path)
+    #         print(f"Model loaded from {model_path}")
+    #     else:
+    #         raise FileNotFoundError(f"Model file not found: {model_path}")
 
     def evaluate(self):
         self.test_data = self.get_stock_data()
