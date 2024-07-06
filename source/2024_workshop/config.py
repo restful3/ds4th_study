@@ -15,7 +15,7 @@ config = {
     # 에이전트 관련 설정
     'agent_type': 'dqn',  # 'dqn', 'ppo', 또는 'a2c'
     'state_size': 6,
-    'action_size': 4,
+    'action_size': 3,  # 예: 0 (매수), 1 (매도), 2 (홀드)
 
     # 공통 하이퍼파라미터
     'learning_rate': 0.001,
@@ -45,7 +45,6 @@ config = {
     'eval_start_date': "20240101",
     'eval_end_date': date.today().strftime("%Y%m%d"),
     'results_dir': 'results',
-
 }
 
 def get_agent_config(agent_type):

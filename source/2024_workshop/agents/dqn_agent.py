@@ -34,22 +34,16 @@ class DQNAgent:
         self.optimizer = optim.Adam(self.model.parameters(), lr=self.learning_rate)
 
     def remember(self, state, action, reward, next_state, done):
-        action_type = int(action[0])
-        action_amount = float(action[1])
-        self.memory.append((state, (action_type, action_amount), reward, next_state, done))
+        self.memory.append((state, action, reward, next_state, done))
 
     def act(self, state):
         if np.random.rand() <= self.epsilon:
-            return [np.random.randint(0, self.action_size - 1), np.random.rand()]
+            return np.random.randint(0, self.action_size)
         state = torch.FloatTensor(state).unsqueeze(0).to(device)
         with torch.no_grad():
             q_values = self.model(state).squeeze(0)
-        if q_values.shape[0] == 0:
-            return [np.random.randint(0, self.action_size - 1), np.random.rand()]
-        action_type = torch.argmax(q_values[:-1]).item()
-        action_amount = torch.sigmoid(q_values[-1]).item()
-        return [action_type, max(0.01, action_amount)]
-    
+        return torch.argmax(q_values).item()
+
     def replay(self, batch_size):
         minibatch = random.sample(self.memory, batch_size)
         for state, action, reward, next_state, done in minibatch:
@@ -61,26 +55,18 @@ class DQNAgent:
             current_q_values = self.model(state).squeeze(0)
             next_q_values = self.model(next_state).squeeze(0)
 
-            target = reward
+            # 현재 상태에서의 선택된 행동의 Q-값
+            q_value = current_q_values[action]
+
+            # 타겟 Q-값 계산
             if not done.item():
-                target = reward + self.gamma * torch.max(next_q_values)
+                target_q_value = reward + self.gamma * torch.max(next_q_values)
+            else:
+                target_q_value = reward
 
-            target_f = current_q_values.clone()
-            action_type = int(action[0])
+            # 손실 계산
+            loss = nn.MSELoss()(q_value, target_q_value)
 
-            if action_type >= len(target_f):
-                print(f"Error: action_type {action_type} is out of bounds for target_f with size {len(target_f)}")
-                continue
-            
-            target_f[action_type] = target.item()
-
-            if len(target_f) <= action_type + 1:
-                print(f"Error: action amount index is out of bounds for target_f with size {len(target_f)}")
-                continue
-            
-            target_f[action_type + 1] = action[1]
-
-            loss = nn.MSELoss()(current_q_values, target_f)
             self.optimizer.zero_grad()
             loss.backward()
             self.optimizer.step()

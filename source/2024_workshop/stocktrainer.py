@@ -18,7 +18,7 @@ class StockTrainer:
         self.batch_size = config['batch_size']
         self.agent_type = config['agent_type']
         self.state_size = config['state_size']
-        self.action_size = config['action_size']
+        self.action_size = config['action_size']  # 이제 3이 되어야 함 (Hold, Buy, Sell)
         self.agent = None
         self.env = None
 
@@ -77,46 +77,17 @@ class StockTrainer:
         return name
 
     def save_model(self):
-        # 현재 파일의 디렉토리 경로를 가져옵니다.
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        
-        # models 디렉토리 경로를 생성합니다.
         models_dir = os.path.join(current_dir, 'models')
         os.makedirs(models_dir, exist_ok=True)
         
-        # ticker를 그대로 사용합니다.
-        ticker = self.ticker
-        
-        # 파일명에 사용할 수 있도록 ticker에서 특수문자 제거 (필요한 경우)
-        ticker_clean = ''.join(e for e in ticker if e.isalnum())
+        ticker_clean = ''.join(e for e in self.ticker if e.isalnum())
         
         model_path = os.path.join(models_dir, f'{ticker_clean}_{self.agent_type}.pth')
         self.agent.save(model_path)
         print(f"Model saved to {model_path}")
-        
-    # def save_model(self):
-    #     # 현재 파일의 디렉토리 경로를 가져옵니다.
-    #     current_dir = os.path.dirname(os.path.abspath(__file__))
-        
-    #     # models 디렉토리 경로를 생성합니다.
-    #     models_dir = os.path.join(current_dir, 'models')
-    #     os.makedirs(models_dir, exist_ok=True)
-        
-    #     # 종목 코드를 회사 이름으로 변환
-    #     company_name = self.get_company_name(self.ticker)
-        
-    #     # 파일명에 사용할 수 있도록 회사 이름에서 특수문자 제거 및 공백을 언더스코어로 변경
-    #     company_name = ''.join(e for e in company_name if e.isalnum() or e.isspace())
-    #     company_name = company_name.replace(" ", "_")
-        
-    #     model_path = os.path.join(models_dir, f'{company_name}_{self.agent_type}.pth')
-    #     self.agent.save(model_path)
-    #     print(f"Model saved to {model_path}")
-        
-if __name__ == "__main__":
-    # 필요한 경우 설정 업데이트
-    # update_config({'epochs': 200, 'learning_rate': 0.0005})
 
+if __name__ == "__main__":
     trainer = StockTrainer()
     trainer.train()
     trainer.save_model()
