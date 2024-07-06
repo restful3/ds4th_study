@@ -34,20 +34,35 @@ class StockTradingEnv:
         done = self.current_step == self.total_steps
 
         if action == BUY:
-            shares_to_buy = self.balance // current_price
+            # Calculate the amount of balance to be used (20% of available balance)
+            balance_to_use = self.balance * 0.20
+            shares_to_buy = balance_to_use // current_price
             cost = shares_to_buy * current_price
             commission = cost * self.commission_rate
             total_cost = cost + commission
+
             if total_cost <= self.balance:
+                self.balance -= total_cost
+                self.shares_held += shares_to_buy
+            else:
+                # Fallback to use the available balance
+                shares_to_buy = self.balance // current_price
+                cost = shares_to_buy * current_price
+                commission = cost * self.commission_rate
+                total_cost = cost + commission
                 self.balance -= total_cost
                 self.shares_held += shares_to_buy
 
         elif action == SELL:
             if self.shares_held > 0:
-                sale_value = self.shares_held * current_price
+                # Calculate the maximum shares to sell (20% of shares held) and convert to integer
+                shares_to_sell = int(self.shares_held * 0.20)
+                sale_value = shares_to_sell * current_price
                 commission = sale_value * self.commission_rate
+
                 self.balance += sale_value - commission
-                self.shares_held = 0
+                self.shares_held -= shares_to_sell
+
 
         # HOLD action does nothing
 
