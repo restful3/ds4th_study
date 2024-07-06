@@ -27,16 +27,24 @@ class StockTradingEnv:
             self.df.iloc[self.current_step]['High'],
             self.df.iloc[self.current_step]['Low']
         ])
-        
+    
     def step(self, action):
         current_price = self.df.loc[self.current_step, 'Close']
         self.current_step += 1
         done = self.current_step == self.total_steps
 
+        # Kelly Criterion parameters (example values, these should be based on your model/strategy)
+        b = 1  # Example: 100% expected return
+        p = 0.6  # Example: 60% chance of winning (price going up)
+        q = 1 - p
+
+        # Calculate the optimal fraction to invest using Kelly Criterion
+        f_star = (b * p - q) / b
+
         if action == BUY:
-            # Calculate the amount of balance to be used (20% of available balance)
-            balance_to_use = self.balance * 0.20
-            shares_to_buy = balance_to_use // current_price
+            # Calculate the amount of balance to be used according to Kelly Criterion
+            balance_to_use = self.balance * f_star
+            shares_to_buy = int(balance_to_use // current_price)
             cost = shares_to_buy * current_price
             commission = cost * self.commission_rate
             total_cost = cost + commission
@@ -46,7 +54,7 @@ class StockTradingEnv:
                 self.shares_held += shares_to_buy
             else:
                 # Fallback to use the available balance
-                shares_to_buy = self.balance // current_price
+                shares_to_buy = int(self.balance // current_price)
                 cost = shares_to_buy * current_price
                 commission = cost * self.commission_rate
                 total_cost = cost + commission
@@ -55,19 +63,57 @@ class StockTradingEnv:
 
         elif action == SELL:
             if self.shares_held > 0:
-                # Calculate the maximum shares to sell (20% of shares held) and convert to integer
-                shares_to_sell = int(self.shares_held * 0.20)
+                # Calculate the maximum shares to sell according to Kelly Criterion
+                shares_to_sell = int(self.shares_held * f_star)
                 sale_value = shares_to_sell * current_price
                 commission = sale_value * self.commission_rate
 
                 self.balance += sale_value - commission
                 self.shares_held -= shares_to_sell
-
-
         # HOLD action does nothing
-
         reward = (self.balance + self.shares_held * current_price - self.initial_balance) / self.initial_balance
         return self._get_observation(), reward, done, {}
+    
+
+    # 최대 10% 만 매매 하게
+    # def step(self, action):
+    #     current_price = self.df.loc[self.current_step, 'Close']
+    #     self.current_step += 1
+    #     done = self.current_step == self.total_steps
+
+    #     if action == BUY:
+    #         # Calculate the amount of balance to be used (20% of available balance)
+    #         balance_to_use = self.balance * 0.10
+    #         shares_to_buy = balance_to_use // current_price
+    #         cost = shares_to_buy * current_price
+    #         commission = cost * self.commission_rate
+    #         total_cost = cost + commission
+
+    #         if total_cost <= self.balance:
+    #             self.balance -= total_cost
+    #             self.shares_held += shares_to_buy
+    #         else:
+    #             # Fallback to use the available balance
+    #             shares_to_buy = self.balance // current_price
+    #             cost = shares_to_buy * current_price
+    #             commission = cost * self.commission_rate
+    #             total_cost = cost + commission
+    #             self.balance -= total_cost
+    #             self.shares_held += shares_to_buy
+
+    #     elif action == SELL:
+    #         if self.shares_held > 0:
+    #             # Calculate the maximum shares to sell (20% of shares held) and convert to integer
+    #             shares_to_sell = int(self.shares_held * 0.10)
+    #             sale_value = shares_to_sell * current_price
+    #             commission = sale_value * self.commission_rate
+
+    #             self.balance += sale_value - commission
+    #             self.shares_held -= shares_to_sell
+
+    #     # HOLD action does nothing
+    #     reward = (self.balance + self.shares_held * current_price - self.initial_balance) / self.initial_balance
+    #     return self._get_observation(), reward, done, {}
 
     def backtest(self, model):
         self.reset()
