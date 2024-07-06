@@ -28,6 +28,7 @@ class StockTradingEnv:
             self.df.iloc[self.current_step]['Low']
         ])
     
+    # 캘리 공식 
     def step(self, action):
         current_price = self.df.loc[self.current_step, 'Close']
         self.current_step += 1
