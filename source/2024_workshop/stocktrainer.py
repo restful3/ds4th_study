@@ -50,19 +50,16 @@ class StockTrainer:
 
         for e in range(self.epochs):
             state = self.env.reset()
-            state = np.reshape(state, [1, self.state_size])
             episode_reward = 0
             done = False
 
             while not done:
                 action = self.agent.act(state)
                 next_state, reward, done, _ = self.env.step(action)
-                next_state = np.reshape(next_state, [1, self.state_size])
                 
                 if self.agent_type == 'dqn':
                     self.agent.remember(state, action, reward, next_state, done)
-                    if len(self.agent.memory) > self.batch_size:
-                        self.agent.replay(self.batch_size)
+                    self.agent.update()  # 새로운 update 메서드 사용
                 elif self.agent_type in ['ppo', 'a2c']:
                     self.agent.train(state, action, reward, next_state, done)
 

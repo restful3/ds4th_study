@@ -98,7 +98,7 @@ class StockEvaluator:
             state = next_state
             portfolio_value = self.env.balance + self.env.shares_held * self.env.df.iloc[self.env.current_step]['Close']
             self.portfolio_values.append(portfolio_value)
-            self.actions.append(action[0])
+            self.actions.append(action)  # action is now a single integer, no need for indexing
             if done:
                 break
 
@@ -120,8 +120,8 @@ class StockEvaluator:
         ax1.scatter(buy_dates, [self.test_data.loc[self.test_data['Date'] == str(date)[:10], 'Close'].values[0] for date in buy_dates], 
                     color='green', marker='^', s=100, label='Buy')
         ax1.scatter(sell_dates, [self.test_data.loc[self.test_data['Date'] == str(date)[:10], 'Close'].values[0] for date in sell_dates], 
-                    color='red', marker='v', s=100, label='Sell')
-        
+                    color='red', marker='v', s=100, label='Sell')  
+              
         ax1.set_xlabel('Date')
         ax1.set_ylabel('Stock Price', color='blue')
         ax2.set_ylabel('Portfolio Value', color='red')
