@@ -101,6 +101,8 @@ class DQNAgent:
         if self.epsilon > self.epsilon_min:
             self.epsilon *= self.epsilon_decay
 
+        # print(f'self.epsilon : {self.epsilon}')
+
         # 목표 신경망 업데이트
         self.update_counter += 1
         if self.update_counter % self.target_update_frequency == 0:

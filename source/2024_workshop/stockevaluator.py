@@ -4,20 +4,23 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from pykrx import stock
 from stock_trading_env import StockTradingEnv
-from agents.dqn_agent import DQNAgent
+from agents.dqn_agent import DQNAgent, DQN
 from agents.ppo_agent import PPOAgent
 from agents.a2c_agent import A2CAgent
 from datetime import date
 import os
 from config import config, get_agent_config
+import torch
 
 class StockEvaluator:
     def __init__(self, ticker):
         self.ticker = ticker
-        self.start_date = config.get('eval_start_date', "20240101")
-        self.end_date = config.get('eval_end_date', date.today().strftime("%Y%m%d"))
+        # self.start_date = config.get('eval_start_date', "20231001")
+        # self.end_date = config.get('eval_end_date', date.today().strftime("%Y%m%d"))
+        self.start_date = config['start_date']
+        self.end_date = config['end_date']        
         self.initial_balance = config.get('initial_balance', 10000000)
-        self.state_size = config.get('state_size', 6)
+        self.state_size = config.get('state_size', 14)  # 기본값을 14로 변경
         self.action_size = config.get('action_size', 4)
         self.agent_type = config.get('agent_type', 'dqn')
         self.agent = None
@@ -29,11 +32,23 @@ class StockEvaluator:
     def get_stock_data(self):
         df = stock.get_market_ohlcv_by_date(self.start_date, self.end_date, self.ticker)
         df.reset_index(inplace=True)
-        df.rename(columns={'날짜': 'Date', '종가': 'Close', '시가': 'Open', '고가': 'High', '저가': 'Low', '거래량': 'Volume'}, inplace=True)
+        df.rename(columns={'날짜': 'Date', '종가': 'Close', '시가': 'Open', '고가': 'High', '저가': 'Low', '거래량': 'Volume', '등락률':'Rate'}, inplace=True)
+        # MA 20 (단순 이동평균)
+        df['MA20_Simple'] = df['Close'].rolling(window=20).mean()
+        # MA 20 (지수 가중 이동평균, EMA)
+        df['MA20_EMA'] = df['Close'].ewm(span=20, min_periods=20, adjust=False).mean()
+        # MA 60 (단순 이동평균)
+        df['MA60_Simple'] = df['Close'].rolling(window=60).mean()
+        # MA 60 (지수 가중 이동평균, EMA)
+        df['MA60_EMA'] = df['Close'].ewm(span=20, min_periods=60, adjust=False).mean()
+        # MA 20이 결측인 행 제거
+        df.dropna(subset=['MA60_Simple'], inplace=True)
+        # df.fillna(0, inplace=True)
         return df
-    
+
     def load_model(self):
         agent_config = get_agent_config(self.agent_type)
+        agent_config['state_size'] = self.state_size  # 상태 크기 업데이트
         if self.agent_type == 'dqn':
             self.agent = DQNAgent(**agent_config)
         elif self.agent_type == 'ppo':
@@ -43,7 +58,6 @@ class StockEvaluator:
         else:
             raise ValueError(f"Unsupported agent type: {self.agent_type}")
 
-        # 소스 코드가 있는 폴더의 경로를 직접 지정
         current_dir = os.path.dirname(os.path.abspath(__file__))
         models_dir = os.path.join(current_dir, 'models')
         ticker_clean = ''.join(e for e in self.ticker if e.isalnum())
@@ -54,11 +68,70 @@ class StockEvaluator:
         print(f"Attempting to load model from: {model_path}")
         
         if os.path.exists(model_path):
-            self.agent.load(model_path)
-            print(f"Model loaded from {model_path}")
+            try:
+                checkpoint = torch.load(model_path)
+                loaded_state_size = checkpoint['qnet_state_dict']['fc1.weight'].shape[1]
+                
+                if loaded_state_size != self.state_size:
+                    print(f"Warning: Loaded model state size ({loaded_state_size}) " 
+                        f"differs from current state size ({self.state_size})")
+                    print("Adjusting model architecture...")
+                    
+                    # 새로운 네트워크 생성
+                    new_qnet = DQN(self.state_size, self.agent.action_size)
+                    new_qnet_target = DQN(self.state_size, self.agent.action_size)
+                    
+                    # 공통 레이어의 가중치만 로드
+                    new_qnet.fc2.load_state_dict(checkpoint['qnet_state_dict']['fc2'])
+                    new_qnet.fc3.load_state_dict(checkpoint['qnet_state_dict']['fc3'])
+                    new_qnet_target.fc2.load_state_dict(checkpoint['qnet_target_state_dict']['fc2'])
+                    new_qnet_target.fc3.load_state_dict(checkpoint['qnet_target_state_dict']['fc3'])
+                    
+                    self.agent.qnet = new_qnet
+                    self.agent.qnet_target = new_qnet_target
+                else:
+                    self.agent.qnet.load_state_dict(checkpoint['qnet_state_dict'])
+                    self.agent.qnet_target.load_state_dict(checkpoint['qnet_target_state_dict'])
+                
+                self.agent.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+                print(f"Model loaded from {model_path}")
+            except Exception as e:
+                print(f"Error loading model: {e}")
+                print("Initializing a new model with the current state size.")
+                self.agent.qnet = DQN(self.state_size, self.agent.action_size)
+                self.agent.qnet_target = DQN(self.state_size, self.agent.action_size)
+                self.agent.qnet_target.load_state_dict(self.agent.qnet.state_dict())
         else:
             print(f"Files in models directory: {os.listdir(models_dir)}")
-            raise FileNotFoundError(f"Model file not found: {model_path}")    
+            raise FileNotFoundError(f"Model file not found: {model_path}")
+
+    # def load_model(self):
+    #     agent_config = get_agent_config(self.agent_type)
+    #     if self.agent_type == 'dqn':
+    #         self.agent = DQNAgent(**agent_config)
+    #     elif self.agent_type == 'ppo':
+    #         self.agent = PPOAgent(**agent_config)
+    #     elif self.agent_type == 'a2c':
+    #         self.agent = A2CAgent(**agent_config)
+    #     else:
+    #         raise ValueError(f"Unsupported agent type: {self.agent_type}")
+
+    #     # 소스 코드가 있는 폴더의 경로를 직접 지정
+    #     current_dir = os.path.dirname(os.path.abspath(__file__))
+    #     models_dir = os.path.join(current_dir, 'models')
+    #     ticker_clean = ''.join(e for e in self.ticker if e.isalnum())
+    #     model_path = os.path.join(models_dir, f'{ticker_clean}_{self.agent_type}.pth')
+
+    #     print(f"Current directory: {current_dir}")
+    #     print(f"Models directory: {models_dir}")
+    #     print(f"Attempting to load model from: {model_path}")
+        
+    #     if os.path.exists(model_path):
+    #         self.agent.load(model_path)
+    #         print(f"Model loaded from {model_path}")
+    #     else:
+    #         print(f"Files in models directory: {os.listdir(models_dir)}")
+    #         raise FileNotFoundError(f"Model file not found: {model_path}")    
 
     # def load_model(self):
     #     agent_config = get_agent_config(self.agent_type)
@@ -93,6 +166,7 @@ class StockEvaluator:
 
         for _ in range(len(self.test_data) - 1):
             state = np.reshape(state, [1, self.state_size])
+            self.agent.epsilon = 0.0
             action = self.agent.act(state)
             next_state, _, done, _ = self.env.step(action)
             state = next_state

@@ -16,16 +16,12 @@ class StockTradingEnv:
         self.shares_held = 0
         self.current_step = 0
         self.total_steps = len(self.df) - 1
-        self.cost_basis = 0
-        self.total_trades = 0
         return self._get_observation()    
 
     def _get_observation(self):
         return np.array([
             self.balance,
             self.shares_held,
-            self.cost_basis,
-            self.total_trades,
             self.df.iloc[self.current_step]['Close'],
             self.df.iloc[self.current_step]['Open'],
             self.df.iloc[self.current_step]['High'],
@@ -38,11 +34,10 @@ class StockTradingEnv:
             self.df.iloc[self.current_step]['MA60_EMA']             
         ])
     
+    # 캘리 공식 
     def step(self, action):
         current_price = self.df.loc[self.current_step, 'Close']
-        previous_portfolio_value = self.balance + self.shares_held * current_price
         self.current_step += 1
-        next_price = self.df.loc[self.current_step, 'Close']
         done = self.current_step == self.total_steps
 
         # Kelly Criterion parameters (example values, these should be based on your model/strategy)
@@ -54,6 +49,7 @@ class StockTradingEnv:
         f_star = (b * p - q) / b
 
         if action == BUY:
+            # Calculate the amount of balance to be used according to Kelly Criterion
             balance_to_use = self.balance * f_star
             shares_to_buy = int(balance_to_use // current_price)
             cost = shares_to_buy * current_price
@@ -63,51 +59,68 @@ class StockTradingEnv:
             if total_cost <= self.balance:
                 self.balance -= total_cost
                 self.shares_held += shares_to_buy
-                self.cost_basis = ((self.cost_basis * self.total_trades) + total_cost) / (self.total_trades + 1)
-                self.total_trades += 1
+            else:
+                # Fallback to use the available balance
+                shares_to_buy = int(self.balance // current_price)
+                cost = shares_to_buy * current_price
+                commission = cost * self.commission_rate
+                total_cost = cost + commission
+                self.balance -= total_cost
+                self.shares_held += shares_to_buy
 
         elif action == SELL:
             if self.shares_held > 0:
+                # Calculate the maximum shares to sell according to Kelly Criterion
                 shares_to_sell = int(self.shares_held * f_star)
                 sale_value = shares_to_sell * current_price
                 commission = sale_value * self.commission_rate
 
                 self.balance += sale_value - commission
                 self.shares_held -= shares_to_sell
-                self.total_trades += 1
-
-        # HOLD action
-        else:
-            # 홀드 액션에 대한 작은 보상 추가
-            hold_reward = 0.0001 * self.balance  # 현재 잔고의 0.01%
-
-        # 포트폴리오 가치 변화 계산
-        current_portfolio_value = self.balance + self.shares_held * next_price
-        portfolio_return = (current_portfolio_value - previous_portfolio_value) / previous_portfolio_value
-
-        # 개선된 보상 계산
-        if action == BUY:
-            if next_price > current_price:
-                reward = portfolio_return + 0.01  # 성공적인 매수에 대한 추가 보상
-            else:
-                reward = portfolio_return - 0.01  # 실패한 매수에 대한 페널티
-        elif action == SELL:
-            if next_price < current_price:
-                reward = portfolio_return + 0.01  # 성공적인 매도에 대한 추가 보상
-            else:
-                reward = portfolio_return - 0.01  # 실패한 매도에 대한 페널티
-        else:  # HOLD
-            reward = portfolio_return + hold_reward
-
-        # 추가: 과도한 거래에 대한 페널티
-        trade_penalty = 0.001 if action != HOLD else 0
-        reward -= trade_penalty
-
-        # 리스크 관리: 큰 손실에 대한 추가 페널티
-        if portfolio_return < -0.05:  # 5% 이상의 손실
-            reward -= 0.1
-
+        # HOLD action does nothing
+        reward = (self.balance + self.shares_held * current_price - self.initial_balance) / self.initial_balance
         return self._get_observation(), reward, done, {}
+    
+
+    # 최대 10% 만 매매 하게
+    # def step(self, action):
+    #     current_price = self.df.loc[self.current_step, 'Close']
+    #     self.current_step += 1
+    #     done = self.current_step == self.total_steps
+
+    #     if action == BUY:
+    #         # Calculate the amount of balance to be used (20% of available balance)
+    #         balance_to_use = self.balance * 0.10
+    #         shares_to_buy = balance_to_use // current_price
+    #         cost = shares_to_buy * current_price
+    #         commission = cost * self.commission_rate
+    #         total_cost = cost + commission
+
+    #         if total_cost <= self.balance:
+    #             self.balance -= total_cost
+    #             self.shares_held += shares_to_buy
+    #         else:
+    #             # Fallback to use the available balance
+    #             shares_to_buy = self.balance // current_price
+    #             cost = shares_to_buy * current_price
+    #             commission = cost * self.commission_rate
+    #             total_cost = cost + commission
+    #             self.balance -= total_cost
+    #             self.shares_held += shares_to_buy
+
+    #     elif action == SELL:
+    #         if self.shares_held > 0:
+    #             # Calculate the maximum shares to sell (20% of shares held) and convert to integer
+    #             shares_to_sell = int(self.shares_held * 0.10)
+    #             sale_value = shares_to_sell * current_price
+    #             commission = sale_value * self.commission_rate
+
+    #             self.balance += sale_value - commission
+    #             self.shares_held -= shares_to_sell
+
+    #     # HOLD action does nothing
+    #     reward = (self.balance + self.shares_held * current_price - self.initial_balance) / self.initial_balance
+    #     return self._get_observation(), reward, done, {}
 
     def backtest(self, model):
         self.reset()
@@ -115,8 +128,8 @@ class StockTradingEnv:
         portfolio_values = [self.initial_balance]
         while not done:
             state = self._get_observation()
-            state = np.reshape(state, [1, -1])  # Reshape to match the input shape expected by the model
-            action = model.act(state)
+            state = np.reshape(state, [1, 6])
+            action = model.act(state, use_epsilon = True)
             _, reward, done, _ = self.step(action)
             portfolio_value = self.balance + self.shares_held * self.df.loc[self.current_step, 'Close']
             portfolio_values.append(portfolio_value)

@@ -3,7 +3,7 @@ from datetime import datetime, date
 config = {
     # 주식 관련 설정
     'ticker': "005930",  # 삼성전자
-    'start_date': datetime(2020, 1, 1),
+    'start_date': datetime(2010, 1, 1),
     'end_date': datetime(2023, 12, 31),
     'initial_balance': 10_000_000,  # 초기 자금 1000만원
     'commission_rate': 0.00015,  # 거래 수수료 0.015%
@@ -14,7 +14,7 @@ config = {
 
     # 에이전트 관련 설정
     'agent_type': 'dqn',  # 'dqn', 'ppo', 또는 'a2c'
-    'state_size': 6,
+    'state_size': 14,
     'action_size': 3,  # 예: 0 (매수), 1 (매도), 2 (홀드)
 
     # 공통 하이퍼파라미터
@@ -42,7 +42,7 @@ config = {
 
     # 평가 관련 설정
     'eval_episodes': 10,
-    'eval_start_date': "20240101",
+    'eval_start_date': "20231001",
     'eval_end_date': date.today().strftime("%Y%m%d"),
     'results_dir': 'results',
 }
