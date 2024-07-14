@@ -9,7 +9,7 @@
    * (핸즈온 머신러닝) 1장 한눈에 보는 머신러닝
    * (도커 & 쿠버네티스) 1장 도커란 무엇인가?
 
-* **2024년 07월 27일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m2ffb48639e2725f3cbcb5e21186bbcbc), 발표자 - 핸즈온(우석), 도커(태영)
+* **2024년 07월 27일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m2ffb48639e2725f3cbcb5e21186bbcbc), 발표자 - 핸즈온(민우), 도커(태영)
    * (핸즈온 머신러닝) 10장 케라스를 사용한 인공 신경망 소개
    * (도커 & 쿠버네티스) 2장 도커의 동작 원리
 
