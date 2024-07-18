@@ -6,7 +6,7 @@
 4. 스터디 운영 계획 (2024년 7월 ~ 2024년 11월)
 
 * **2024년 07월 20일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=mf4f4394a61c3fe2550a7f17020a3f457), 발표자 - 핸즈온(두균), 도커(정훈)
-   * (핸즈온 머신러닝) 1장 한눈에 보는 머신러닝
+   * (핸즈온 머신러닝) [1장 한눈에 보는 머신러닝](https://github.com/restful3/ds4th_study/blob/main/source/핸즈온_머신러닝/ch01_한눈에_보는_머신러닝_.ipynb)
    * (도커 & 쿠버네티스) 1장 도커란 무엇인가?
 
 * **2024년 07월 27일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m2ffb48639e2725f3cbcb5e21186bbcbc), 발표자 - 핸즈온(민우), 도커(태영)
