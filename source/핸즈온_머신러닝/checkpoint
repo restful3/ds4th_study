@@ -1,2 +1,0 @@
-model_checkpoint_path: "my_checkpoints"
-all_model_checkpoint_paths: "my_checkpoints"
