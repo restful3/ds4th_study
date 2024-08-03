@@ -13,71 +13,71 @@
    * (핸즈온 머신러닝) [10장 케라스를 사용한 인공 신경망 소개](https://github.com/restful3/ds4th_study/blob/main/source/%ED%95%B8%EC%A6%88%EC%98%A8_%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/ch10_neural_nets_with_keras.ipynb)
    * (도커 & 쿠버네티스) [2장 도커의 동작 원리](https://github.com/restful3/ds4th_study/blob/main/source/%EA%B7%B8%EB%A6%BC%EA%B3%BC_%EC%8B%A4%EC%8A%B5%EC%9C%BC%EB%A1%9C_%EB%B0%B0%EC%9A%B0%EB%8A%94_%EB%8F%84%EC%BB%A4_%26_%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/ch02_%EB%8F%84%EC%BB%A4%EC%9D%98_%EB%8F%99%EC%9E%91_%EC%9B%90%EB%A6%AC_song.pptx)
 
-* **2024년 08월 03일**: [Webex](), 발표자 - 핸즈온(태호), 도커(민호)
+* **2024년 08월 03일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m21ee2475573764b83cf89978dd3d76ec	), 발표자 - 핸즈온(태호), 도커(민호)
    * (핸즈온 머신러닝) [2장 머신러닝 프로젝트 처음부터 끝까지](https://github.com/restful3/ds4th_study/blob/main/source/%ED%95%B8%EC%A6%88%EC%98%A8_%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/ch2_%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D_%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%B2%98%EC%9D%8C%EB%B6%80%ED%84%B0_%EB%81%9D%EA%B9%8C%EC%A7%80_teo.ipynb)
    * (도커 & 쿠버네티스) [3장 도커를 사용해보자](https://github.com/restful3/ds4th_study/blob/de77e869f485b91af0dbc28dea4f688f14cfc204/source/%EA%B7%B8%EB%A6%BC%EA%B3%BC_%EC%8B%A4%EC%8A%B5%EC%9C%BC%EB%A1%9C_%EB%B0%B0%EC%9A%B0%EB%8A%94_%EB%8F%84%EC%BB%A4_%26_%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/ch03_%EB%8F%84%EC%BB%A4%EB%A5%BC%20%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%90_minho.pptx)
 
-* **2024년 08월 10일**: [Webex](), 발표자 - 핸즈온(태영), 도커(우석)
+* **2024년 08월 10일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m51039acab1b92fa019a481a40406a2a3	), 발표자 - 핸즈온(태영), 도커(우석)
    * (핸즈온 머신러닝) 11장 심층 신경망 훈련
    * (도커 & 쿠버네티스) 4장 컨테이너를 실행해 보자
 
-* **2024년 08월 17일**: [Webex](), 발표자 - 핸즈온(종우), 도커(정훈)
+* **2024년 08월 17일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m5fb75cc4bbb2b79101f7ccc6d18d9e4c	), 발표자 - 핸즈온(종우), 도커(정훈)
    * (핸즈온 머신러닝) 3장 분류
    * (도커 & 쿠버네티스) 5장 여러 개의 컨테이너를 연동해 실행해보자
 
-* **2024년 08월 24일**: [Webex](), 발표자 - 핸즈온(우석), 도커(TBD)
+* **2024년 08월 24일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mf99db8752ec13c81a763dc780e495a74	), 발표자 - 핸즈온(우석), 도커(TBD)
    * (핸즈온 머신러닝) 12장 텐서플로를 사용한 사용자 정의 모델과 훈련
    * (도커 & 쿠버네티스) 6장 실전에 활용 가능한 컨테이너 사용법을 익히자
 
-* **2024년 08월 31일**: [Webex](), 발표자 - 핸즈온(TBD), 도커(우석)
+* **2024년 08월 31일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=maca74f8d0e72c7b04f2b725033753584	), 발표자 - 핸즈온(TBD), 도커(우석)
    * (핸즈온 머신러닝) 4장 모델 훈련
    * (도커 & 쿠버네티스) 7장 도커 컴포즈를 익히자
 
-* **2024년 09월 07일**: [Webex](), 발표자 - 핸즈온(TBD), 도커(TBD)
+* **2024년 09월 07일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m6ec812564abc7626d42c2613269d7965	), 발표자 - 핸즈온(TBD), 도커(TBD)
    * (핸즈온 머신러닝) 13장 텐서플로를 사용한 데이터 적재와 전처리
    * (도커 & 쿠버네티스) 8장 쿠버네티스를 익히자
 
-* **2024년 09월 21일**: [Webex](), 발표자 - 핸즈온(TBD), 도커심화(TBD)
+* **2024년 09월 21일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m7e152e7d66dff86006a2ed60e3e92a5b	), 발표자 - 핸즈온(TBD), 도커심화(TBD)
    * (핸즈온 머신러닝) 5장 서포트 벡터 머신
    * (한 권으로 배우는 도커 & 쿠버네티스) 2장 도커의 개념
 
-* **2024년 09월 28일**: [Webex](), 발표자 - 핸즈온(TBD), 도커심화(TBD)
+* **2024년 09월 28일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m82d6e37b03b9d1de9d2ea06683fbbe66	), 발표자 - 핸즈온(TBD), 도커심화(TBD)
    * (핸즈온 머신러닝) 14장 합성곱 신경망을 사용한 컴퓨터 비전
    * (한 권으로 배우는 도커 & 쿠버네티스) 3장 도커 설치
 
-* **2024년 10월 05일**: [Webex](), 발표자 - 핸즈온(TBD), 도커심화(TBD)
+* **2024년 10월 05일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=ma63a7a72be8dba2ea85350e7808688c6	), 발표자 - 핸즈온(TBD), 도커심화(TBD)
    * (핸즈온 머신러닝) 6장 결정 트리
    * (한 권으로 배우는 도커 & 쿠버네티스) 4장 도커 기초
 
-* **2024년 10월 12일**: [Webex](), 발표자 - 핸즈온(TBD), 도커심화(TBD)
+* **2024년 10월 12일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m661aad720d3c20586538f45f3bfd5aa5	), 발표자 - 핸즈온(TBD), 도커심화(TBD)
    * (핸즈온 머신러닝) 15장 RNN과 CNN을 사용한 시퀀스 처리
    * (한 권으로 배우는 도커 & 쿠버네티스) 5장 도커를 활용한 django 실행
 
-* **2024년 10월 19일**: [Webex](), 발표자 - 핸즈온(TBD), 도커심화(TBD)
+* **2024년 10월 19일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m6c3d9d6a1f7db3d24a5741d4105be31f	), 발표자 - 핸즈온(TBD), 도커심화(TBD)
    * (핸즈온 머신러닝) 7장 앙상블 학습과 랜덤 포레스트
    * (한 권으로 배우는 도커 & 쿠버네티스) 6장 도커를 활용한 Flask 실행
 
-* **2024년 10월 26일**: [Webex](), 발표자 - 핸즈온(TBD), 도커심화(TBD)
+* **2024년 10월 26일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=md5425739162a8a9a44cb1922e31d2da3	), 발표자 - 핸즈온(TBD), 도커심화(TBD)
    * (핸즈온 머신러닝) 16장 RNN과 어텐션을 사용한 자연어 처리
    * (한 권으로 배우는 도커 & 쿠버네티스) 7장 쿠버네티스의 기본 구조
 
-* **2024년 11월 02일**: [Webex](), 발표자 - 핸즈온(TBD), 도커심화(TBD)
+* **2024년 11월 02일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb098113cae78d6aecd519425b7400a98	), 발표자 - 핸즈온(TBD), 도커심화(TBD)
    * (핸즈온 머신러닝) 8장 차원 축소
    * (한 권으로 배우는 도커 & 쿠버네티스) 8장 쿠버네티스 실습 환경 구축
 
-* **2024년 11월 09일**: [Webex](), 발표자 - 핸즈온(TBD), 도커심화(TBD)
+* **2024년 11월 09일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m51cfa97333999ea5dc395b5c6a015508	), 발표자 - 핸즈온(TBD), 도커심화(TBD)
    * (핸즈온 머신러닝) 17장 오토인코더, GAN 그리고 확산 모델
    * (한 권으로 배우는 도커 & 쿠버네티스) 9장 쿠버네티스 기초
 
-* **2024년 11월 16일**: [Webex](), 발표자 - 핸즈온(TBD), 도커심화(TBD)
+* **2024년 11월 16일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m5bf981d6a2583a9af0216a2dd3e5cf22	), 발표자 - 핸즈온(TBD), 도커심화(TBD)
    * (핸즈온 머신러닝) 9장 비지도 학습
    * (한 권으로 배우는 도커 & 쿠버네티스) 10장 쿠버네티스를 활용한 웹 서비스 배포
 
-* **2024년 11월 23일**: [Webex](), 발표자 - 핸즈온(TBD), 도커심화(TBD)
+* **2024년 11월 23일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m03b52771de6f8b623d6c89d2d26a44c2	), 발표자 - 핸즈온(TBD), 도커심화(TBD)
    * (핸즈온 머신러닝) 18장 강화 학습
    * (한 권으로 배우는 도커 & 쿠버네티스) 11장 깃허브 액션과 ArgoCD를 활용한 CI/CD
 
-* **2024년 11월 30일**: [Webex](), 발표자 - 핸즈온(TBD), 도커심화(TBD)
+* **2024년 11월 30일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1a675c45bf4a41b84b770b9d63ed4687	), 발표자 - 핸즈온(TBD), 도커심화(TBD)
    * (핸즈온 머신러닝) 19장 대규모 텐서플로 모델 훈련과 배포
    * (한 권으로 배우는 도커 & 쿠버네티스) 12장 쿠버네티스 모니터링
 
