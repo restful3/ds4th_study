@@ -4,6 +4,16 @@ docker network create wordpress000net1
 ■ 5-02：단계 2 'run' 커맨드로 MySQL 컨테이너를 생성 및 실행하기
 docker run --name mysql000ex11 -dit --net=wordpress000net1 -e MYSQL_ROOT_PASSWORD=myrootpass -e MYSQL_DATABASE=wordpress000db -e MYSQL_USER=wordpress000kun -e MYSQL_PASSWORD=wkunpass mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password
 
+우석 수정> 위의 명령어가 에러 발생합니다. 다음으로 변경하세요
+docker run --name mysql000ex11 --network wordpress000net1 \
+-e MYSQL_ROOT_PASSWORD=myrootpass \
+-e MYSQL_DATABASE=wordpress000db \
+-e MYSQL_USER=wordpress000kun \
+-e MYSQL_PASSWORD=wkunpass \
+-v mysql_data:/var/lib/mysql \
+-d mysql:8.0
+
+
 ■ 5-02：단계 3 'run' 커맨드로 WordPress 컨테이너를 생성 및 실행하기
 docker run --name wordpress000ex12 -dit --net=wordpress000net1 -p 8085:80 -e WORDPRESS_DB_HOST=mysql000ex11 -e WORDPRESS_DB_NAME=wordpress000db -e WORDPRESS_DB_USER=wordpress000kun -e WORDPRESS_DB_PASSWORD=wkunpass wordpress
 
