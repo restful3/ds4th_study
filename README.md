@@ -29,11 +29,11 @@
    * (핸즈온 머신러닝) [12장 텐서플로를 사용한 사용자 정의 모델과 훈련](https://github.com/restful3/ds4th_study/blob/main/source/%ED%95%B8%EC%A6%88%EC%98%A8_%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/ch12_%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C%EB%A5%BC%20%EC%82%AC%EC%9A%A9%ED%95%9C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%A0%95%EC%9D%98%20%EB%AA%A8%EB%8D%B8%EA%B3%BC%20%ED%9B%88%EB%A0%A8_wooseok.ipynb)
    * (도커 & 쿠버네티스) 6장 실전에 활용 가능한 컨테이너 사용법을 익히자
 
-* **2024년 08월 31일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=maca74f8d0e72c7b04f2b725033753584	), 발표자 - 핸즈온(TBD), 도커(우석)
+* **2024년 08월 31일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=maca74f8d0e72c7b04f2b725033753584	), 발표자 - 핸즈온(태영), 도커(우석)
    * (핸즈온 머신러닝) 4장 모델 훈련
    * (도커 & 쿠버네티스) 7장 도커 컴포즈를 익히자
 
-* **2024년 09월 07일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m6ec812564abc7626d42c2613269d7965	), 발표자 - 핸즈온(TBD), 도커(TBD)
+* **2024년 09월 07일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m6ec812564abc7626d42c2613269d7965	), 발표자 - 핸즈온(TBD), 도커(태영)
    * (핸즈온 머신러닝) 13장 텐서플로를 사용한 데이터 적재와 전처리
    * (도커 & 쿠버네티스) 8장 쿠버네티스를 익히자
 
