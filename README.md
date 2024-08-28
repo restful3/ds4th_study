@@ -41,11 +41,11 @@
    * (핸즈온 머신러닝) 5장 서포트 벡터 머신
    * (한 권으로 배우는 도커 & 쿠버네티스) 2장 도커의 개념
 
-* **2024년 09월 28일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m82d6e37b03b9d1de9d2ea06683fbbe66	), 발표자 - 핸즈온(TBD), 도커심화(TBD)
+* **2024년 09월 28일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m82d6e37b03b9d1de9d2ea06683fbbe66	), 발표자 - 핸즈온(태호), 도커심화(TBD)
    * (핸즈온 머신러닝) 14장 합성곱 신경망을 사용한 컴퓨터 비전
    * (한 권으로 배우는 도커 & 쿠버네티스) 3장 도커 설치
 
-* **2024년 10월 05일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=ma63a7a72be8dba2ea85350e7808688c6	), 발표자 - 핸즈온(TBD), 도커심화(TBD)
+* **2024년 10월 05일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=ma63a7a72be8dba2ea85350e7808688c6	), 발표자 - 핸즈온(TBD), 도커심화(태호)
    * (핸즈온 머신러닝) 6장 결정 트리
    * (한 권으로 배우는 도커 & 쿠버네티스) 4장 도커 기초
 
