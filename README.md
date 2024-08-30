@@ -37,7 +37,7 @@
    * (핸즈온 머신러닝) 13장 텐서플로를 사용한 데이터 적재와 전처리
    * (도커 & 쿠버네티스) 8장 쿠버네티스를 익히자
 
-* **2024년 09월 21일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m7e152e7d66dff86006a2ed60e3e92a5b	), 발표자 - 핸즈온(TBD), 도커심화(TBD)
+* **2024년 09월 21일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m7e152e7d66dff86006a2ed60e3e92a5b	), 발표자 - 핸즈온(종우), 도커심화(TBD)
    * (핸즈온 머신러닝) 5장 서포트 벡터 머신
    * (한 권으로 배우는 도커 & 쿠버네티스) 2장 도커의 개념
 
