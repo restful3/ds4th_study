@@ -46,7 +46,7 @@
    * (한 권으로 배우는 도커 & 쿠버네티스) 3장 도커 설치
 
 * **2024년 10월 05일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=ma63a7a72be8dba2ea85350e7808688c6	), 발표자 - 핸즈온(민호), 도커심화(태호)
-   * (핸즈온 머신러닝) 6장 결정 트리
+   * (핸즈온 머신러닝) [6장 결정 트리](https://github.com/restful3/ds4th_study/blob/dca6a0f109a98e6baca0aa0dbeec2b25b4902c66/source/%ED%95%B8%EC%A6%88%EC%98%A8_%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/ch06_decision_trees_minho.ipynb)
    * (한 권으로 배우는 도커 & 쿠버네티스) 4장 도커 기초
 
 * **2024년 10월 12일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m661aad720d3c20586538f45f3bfd5aa5	), 발표자 - 핸즈온(우석), 도커심화(태영)
