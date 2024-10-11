@@ -55,7 +55,7 @@
    * (한 권으로 배우는 도커 & 쿠버네티스) 5장 도커를 활용한 django 실행
    * (핸즈온 머신러닝) 15장 RNN과 CNN을 사용한 시퀀스 처리
 
-* **2024년 10월 19일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m6c3d9d6a1f7db3d24a5741d4105be31f	), 발표자 - 도커심화(우석), 핸즈온(TBD)
+* **2024년 10월 19일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m6c3d9d6a1f7db3d24a5741d4105be31f	), 발표자 - 도커심화(우석), 핸즈온(민호)
    * (한 권으로 배우는 도커 & 쿠버네티스) 6장 도커를 활용한 Flask 실행
    * (핸즈온 머신러닝) 7장 앙상블 학습과 랜덤 포레스트
 
