@@ -1,0 +1,38 @@
+version: "3"  # ② 컴포즈 파일 포맷 버전 정보
+
+services:
+  djangotest:  # ④ django를 활용한 서비스 이름
+    build: ./myDjango03  # ⑤ 이미지 빌드할 디렉터리 경로
+    networks:
+      - composenet01  # ⑥ 해당 서비스가 사용할 도커 네트워크 정보
+    depends_on:
+      - postgrestest  # ⑦ postgrestest가 먼저 실행되어야 한다는 설정
+    restart: always  # ⑧ 컨테이너가 중지되면 자동으로 재시작
+
+  nginxtest:
+    build: ./myNginx03  # ⑨ Nginx 서비스를 위한 이미지 빌드 경로
+    networks:
+      - composenet01  # Nginx도 같은 네트워크 사용
+    ports:
+      - "80:80"  # ⑩ 호스트의 포트 80을 Nginx 컨테이너의 포트 80에 매핑
+    depends_on:
+      - djangotest  # ⑪ djangotest 서비스가 먼저 실행된 후 nginxtext 실행
+    restart: always  # 컨테이너가 중지되면 자동 재시작
+
+  postgrestest:
+    build: ./myPostgres03  # ⑫ PostgreSQL 서비스 이미지 빌드 경로
+    networks:
+      - composenet01  # ⑬ PostgreSQL이 사용할 네트워크 정보
+    environment:
+      POSTGRES_USER: postgres  # PostgreSQL 사용자의 이름 설정
+      POSTGRES_PASSWORD: mysecretpassword  # PostgreSQL 비밀번호 설정
+      POSTGRES_DB: postgres  # 사용할 데이터베이스 이름 설정
+    volumes:
+      - composevol01:/var/lib/postgresql/data  # ⑭ 데이터가 저장될 볼륨 마운트 설정
+    restart: always  # 컨테이너가 중지되면 자동 재시작 설정
+
+networks:
+  composenet01:  # ⑯ 네트워크 정의
+
+volumes:
+  composevol01:  # ⑰ 볼륨 정의, PostgreSQL 데이터를 영구 저장하기 위한 볼륨

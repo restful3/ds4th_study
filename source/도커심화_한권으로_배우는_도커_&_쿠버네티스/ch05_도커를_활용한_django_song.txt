@@ -1,0 +1,160 @@
+--------------------------------------------------------------------
+도커를 활용한 django 실행 (ex02)
+--------------------------------------------------------------------
+도커 호스트에 django 프로젝트 생성
+
+ch05/ex02$ django-admin startproject myapp : myapp 이라는 프로젝트 생성
+ch05/ex02$ cd myapp/myapp : 폴더 이동
+ch05/ex02/myapp/myapp$ vi settings.py : ALLOWED_HOSTS = ['*'] 로 수정
+ch05/ex02/myapp$ python manage.py migrate : 데이터베이스에 변경사항을 저장
+ch05/ex02/myapp$ python manage.py runserver : django 프로젝트 실행
+
+--------------------------------------------------------------------
+django 이미지 빌드 (ex03)
+--------------------------------------------------------------------
+ch05$ cp -r ex02 ex03
+ch05/ex03$ vi requirements.txt : requirements.txt 생성, django==4.2.7 추가 
+ch05/ex03$ vi Dockerfile : Dockerfile 생성
+ch05/ex03$ docker image build . -t myweb01 : 이미지 생성
+ch05/ex03$ docker container run -d -p 8000:8000 myweb01 : 컨테이너 실행
+
+--------------------------------------------------------------------
+Nginx, django 연동 후 실행 (ex04, ex05)
+--------------------------------------------------------------------
+Nginx 컨테이너 실행
+
+ch05/ex04$ vi Dockerfile : Dockerfile 생성
+ch05/ex04$ docker image build . -t mynginx01 : 이미지 빌드
+ch05/ex04$ docker container run -p 80:80 -d mynginx01 : 컨테이너 실행
+ch05/ex04$ docker container ls : nginx 컨테이너의 id 확인
+ch05/ex04$ docker container exec -it <nginx 컨테이너의 id> /bin/bash
+root# cd /etc/nginx/config.d
+root# cat default.conf : 추후 django를 위한 설정 파일 확인
+
+django 이미지 빌드
+
+ch05/ex05$ vi requirements.txt : gunicorn==20.1.0 추가
+ch05/ex05/myDjango02$ vi Dockerfile : Dockerfile 수정 
+ch05/ex05/myDjango02$ docker image build . -t myweb02 : django 이미지 생성
+
+Nginx 이미지 빌드
+
+ch05/ex05/myNginx02$ vi default.conf : nginx의 default.conf 파일 수정 
+ch05/ex05/myNginx02$ vi Dockerfile : Dockerfile 수정
+ch05/ex05/myNginx02$ docker image build . -t mynginx02 : nginx 이미지 생성
+ch05/ex05/myNginx02$ ddocker network create mynetwork02 : 네트워크 생성
+ch05/ex05/myNginx02$ ddocker container run -d --name djangotext – network mynetwork02 myweb02 : django와 nginx 연동 후 컨테이너 실행
+
+django와 Nginx 연동 후 컨테이너 실행
+
+$ docker network create mynetwork02 : network 생성
+$ docker container run -d --name djangotest --network network02 myweb02
+$ docker container run -d --name nginxtest --network network02 -p 80:80 mynginx02
+
+--------------------------------------------------------------------
+Nginx, django, PostgreSQL 컨테이너 연동 (ex06, ex07)
+--------------------------------------------------------------------
+
+PostgreSQL 컨테이너 실행
+
+ch05/ex06$ vi Dockerfile : Dockefile 작성
+ch05/ex06$ docker image build . -t mypostgre03
+ch05/ex06$ docker volume create myvolume03
+ch05/ex06$ docker container run -e POSTGRES_PASSWORD=mysecretpassword --mount type=volume,source=myvolume03,target=/var/lib/postgresql/data -d mypostgre03
+
+django, Nginx, PostgreSQL 연동 : ex05, ex06으로 부터 파일 가지고 와서 ex07 구성
+
+django 이미지 빌드
+
+ch05/ex07/myDjango03/myapp/myapp$ vi settings.py : postgrestest를 위한 설정 추가
+ch05/ex07/myDjango03$ vi requirements.txt : psycopg2==2.9.9 추가, 파이썬으로 postgreSQL 활용
+ch05/ex07/myDjango03$ vi Dockerfile : 파일 수정
+ch05/ex07/myDjango03$ docker image build . -t myweb03 : django 이미지 빌드
+
+Nginx 이미지 빌드
+
+ch05/ex07/myNginx03$ docker image build . -t mynginx03
+
+django, Nginx, PostgreSQL 연동 후 컨테이너 실행
+
+$ docker network create mynetwork03 : network03 생성
+$ docker container run --name postgrestest --network mynetwork03 -e POSTGRES_PASSWORD=mysecretpassword --mount type=volume,source=myvolume03,target=/var/lib/postgresql/data -d mypostgres03 
+$ docker container run -d --name djangotest --network mynetwork03 myweb03
+$ docker container run -d --name nginxtest --network mynetwork03 -p 80:80 mynginx03
+$ docker container ls : djangotest 의 id 확인
+$ docker container exec -it <djangotest 의 id> /bin/bash
+/user/src/app/myapp# python manage.py inspectdb : 데이터베이스 연결 상태 확인
+
+--------------------------------------------------------------------
+Nginx, django와 로컬 PostgreSQL 연동 (ex08)
+--------------------------------------------------------------------
+
+PostgreSQL 로컬 설치
+
+$ sudo apt update
+$ sudo apt install postgresql postgresql-contrib
+$ sudo systemctl status postgresql : PostgreSQL 서비스 상태 확인
+$ sudo -i -u postgres : postgres 사용자로 변경
+$ psql
+# \password : 암호 설정
+Enter new password for user "postgres": mysecretpassword 
+Enter it again: mysecretpassword
+# \q
+/etc/postgresql/17/main$ sudo vi pg_hba.conf : 파일 수정 
+/etc/postgresql/17/main$ sudo vi postgresql.conf : 파일 수정 
+$ sudo systemctl restart postgresql
+$ sudo systemctl status postgresql.service : 서비스 상태 확인
+
+django 이미지 빌드
+
+ex07에서 파일 가지고와 ex08 만들기 
+ch05/ex08$ ifconfig : docker0 의 ip 확인 (172.17.0.1)
+ch05/ex08/myDjango04/myapp/myapp$ vi settings.py : docker0 의 ip를 사용하여 수정
+ch05/ex08/myDjango04$ docker image build . -t myweb04 : django 이미지 빌드
+
+Nginx 이미지 빌드
+
+ch05/ex08/myNginx04$ docker image build . -t mynginx04 : nginx 이미지 빌드
+
+django, Nginx, PostgreSQL 연동
+
+$ docker network create mynetwork04 : mynetwork04 생성
+$ docker container run -d --name djangotest --network mynetwork04 myweb04 : django 컨테이너 실행
+$ docker container run -d --name nginxtest --network mynetwork04 mynginx04 : nginx 컨테이너 실행
+$ docker container ls : <djangotest 의 id> 확인
+$ docker container exec -it <djangotest 의 id> /bin/bash 
+/usr/src/app/myapp# python manage.py ispectdb : db 연동 확인
+
+--------------------------------------------------------------------
+도커 컴포즈를 활용한 컨테이너 실행 (ex09, ex10)
+--------------------------------------------------------------------
+
+도커 컴포즈 설치
+
+$ sudo pip install docker-compose
+$ docker compose version
+
+실습 디렉토리 구성
+
+ex07을 복사하여 ex09 생성
+
+docker-compose.yml 파일 작성
+1. Django, Nginx, PostgreSQL 서비스를 정의하고 있으며, 각 서비스는 동일한 네트워크를 사용.
+2. 서비스 간 의존성이 설정되어 있고, PostgreSQL 데이터를 위한 볼륨이 정의되어 있으며, 모든 서비스는 자동 재시작 설정이 되어 있음.
+
+빌드 및 실행
+
+ch05/ex09$ docker compsoe up -d --build
+ch05/ex09$ docker container ls : <djangotest 의 id> 확인
+ch05/ex09$ docker container exec -it <djangotest 의 id> /bin/bash 
+/usr/src/app/myapp# python manage.py ispectdb : db 연동 확인
+ch05/ex09$ docker compose down : 실행 정지
+
+추가 실습 : 로컬 PostgreSQL 연동
+
+ex08 로 부터 파일을 가지고 와 ex10 생성
+ch05/ex10$ vi docker-compose.yml : 파일 생성
+1. Django와 Nginx 서비스를 정의하며, 두 서비스는 공통 네트워크 'composenet01'을 사용합니다.
+2. Nginx는 Django 서비스에 의존하며, 호스트의 80 포트를 통해 외부에 노출됩니다.
+ch05/ex10$ docker compsoe up -d --build
+ch05/ex10$ docker container ls : 실행 확인
