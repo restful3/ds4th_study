@@ -28,7 +28,7 @@ ch05/ex04$ docker image build . -t mynginx01 : 이미지 빌드
 ch05/ex04$ docker container run -p 80:80 -d mynginx01 : 컨테이너 실행
 ch05/ex04$ docker container ls : nginx 컨테이너의 id 확인
 ch05/ex04$ docker container exec -it <nginx 컨테이너의 id> /bin/bash
-root# cd /etc/nginx/config.d
+root# cd /etc/nginx/conf.d
 root# cat default.conf : 추후 django를 위한 설정 파일 확인
 
 django 이미지 빌드
@@ -42,14 +42,14 @@ Nginx 이미지 빌드
 ch05/ex05/myNginx02$ vi default.conf : nginx의 default.conf 파일 수정 
 ch05/ex05/myNginx02$ vi Dockerfile : Dockerfile 수정
 ch05/ex05/myNginx02$ docker image build . -t mynginx02 : nginx 이미지 생성
-ch05/ex05/myNginx02$ ddocker network create mynetwork02 : 네트워크 생성
-ch05/ex05/myNginx02$ ddocker container run -d --name djangotext – network mynetwork02 myweb02 : django와 nginx 연동 후 컨테이너 실행
+ch05/ex05/myNginx02$ docker network create mynetwork02 : 네트워크 생성
+ch05/ex05/myNginx02$ docker container run -d --name djangotest --network mynetwork02 myweb02 : django와 nginx 연동 후 컨테이너 실행
 
 django와 Nginx 연동 후 컨테이너 실행
 
 $ docker network create mynetwork02 : network 생성
-$ docker container run -d --name djangotest --network network02 myweb02
-$ docker container run -d --name nginxtest --network network02 -p 80:80 mynginx02
+$ docker container run -d --name djangotest --network mynetwork02 myweb02
+$ docker container run -d --name nginxtest --network mynetwork02 -p 80:80 mynginx02
 
 --------------------------------------------------------------------
 Nginx, django, PostgreSQL 컨테이너 연동 (ex06, ex07)
@@ -58,7 +58,7 @@ Nginx, django, PostgreSQL 컨테이너 연동 (ex06, ex07)
 PostgreSQL 컨테이너 실행
 
 ch05/ex06$ vi Dockerfile : Dockefile 작성
-ch05/ex06$ docker image build . -t mypostgre03
+ch05/ex06$ docker image build . -t mypostgres03
 ch05/ex06$ docker volume create myvolume03
 ch05/ex06$ docker container run -e POSTGRES_PASSWORD=mysecretpassword --mount type=volume,source=myvolume03,target=/var/lib/postgresql/data -d mypostgre03
 
@@ -131,7 +131,7 @@ $ docker container exec -it <djangotest 의 id> /bin/bash
 
 도커 컴포즈 설치
 
-$ sudo pip install docker-compose
+$ sudo apt install docker-compose
 $ docker compose version
 
 실습 디렉토리 구성
