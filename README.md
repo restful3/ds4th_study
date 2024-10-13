@@ -59,11 +59,11 @@
    * (한 권으로 배우는 도커 & 쿠버네티스) 6장 도커를 활용한 Flask 실행
    * (핸즈온 머신러닝) 7장 앙상블 학습과 랜덤 포레스트
 
-* **2024년 10월 26일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=md5425739162a8a9a44cb1922e31d2da3	), 발표자 - 도커심화(TBD), 핸즈온(태영)
+* **2024년 10월 26일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=md5425739162a8a9a44cb1922e31d2da3	), 발표자 - 도커심화(우석), 핸즈온(태영)
    * (한 권으로 배우는 도커 & 쿠버네티스) 7장 쿠버네티스의 기본 구조
    * (핸즈온 머신러닝) 16장 RNN과 어텐션을 사용한 자연어 처리
 
-* **2024년 11월 02일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb098113cae78d6aecd519425b7400a98	), 발표자 - 도커심화(TBD), 핸즈온(정훈)
+* **2024년 11월 02일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb098113cae78d6aecd519425b7400a98	), 발표자 - 도커심화(우석), 핸즈온(정훈)
    * (한 권으로 배우는 도커 & 쿠버네티스) 8장 쿠버네티스 실습 환경 구축
    * (핸즈온 머신러닝) 8장 차원 축소
 
@@ -71,11 +71,11 @@
    * (한 권으로 배우는 도커 & 쿠버네티스) 9장 쿠버네티스 기초
    * (핸즈온 머신러닝) 17장 오토인코더, GAN 그리고 확산 모델
 
-* **2024년 11월 16일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m5bf981d6a2583a9af0216a2dd3e5cf22	), 발표자 - 도커심화(TBD), 핸즈온(TBD)
+* **2024년 11월 16일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m5bf981d6a2583a9af0216a2dd3e5cf22	), 발표자 - 도커심화(우석), 핸즈온(TBD)
    * (한 권으로 배우는 도커 & 쿠버네티스) 10장 쿠버네티스를 활용한 웹 서비스 배포
    * (핸즈온 머신러닝) 9장 비지도 학습
 
-* **2024년 11월 23일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m03b52771de6f8b623d6c89d2d26a44c2	), 발표자 - 도커심화(TBD), 핸즈온(TBD)
+* **2024년 11월 23일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m03b52771de6f8b623d6c89d2d26a44c2	), 발표자 - 도커심화(우석), 핸즈온(TBD)
    * (한 권으로 배우는 도커 & 쿠버네티스) 11장 깃허브 액션과 ArgoCD를 활용한 CI/CD
    * (핸즈온 머신러닝) 18장 강화 학습
 
