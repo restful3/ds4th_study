@@ -1,0 +1,22 @@
+version: "3"  # ② 컴포즈 파일 포맷 버전 정보
+
+services:
+  flasktest:
+    build: ./myFlask_ws  # Flask 서비스를 위한 이미지 빌드 경로
+    networks:
+      - composenet03  # Flask 네트워크
+    restart: always
+
+  nginxtest:
+    build: ./myNginx_wsf  # Nginx 서비스를 위한 이미지 빌드 경로
+    networks:
+      - composenet03  # Nginx도 같은 네트워크 사용
+    ports:
+      - "81:81"  # ⑩ 호스트의 포트 80을 Nginx 컨테이너의 포트 80에 매핑
+    depends_on:
+      - flasktest  # ⑪ djangotest 서비스가 먼저 실행된 후 nginxtext 실행
+    restart: always  # 컨테이너가 중지되면 자동 재시작
+
+
+networks:
+  composenet03:  # ⑯ 네트워크 정의
