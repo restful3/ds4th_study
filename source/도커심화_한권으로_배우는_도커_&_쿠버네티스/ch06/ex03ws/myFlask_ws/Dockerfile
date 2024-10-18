@@ -1,14 +1,13 @@
 FROM python:3.11.6
 
 WORKDIR /usr/src/app
+RUN python -m pip install --upgrade pip
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
 COPY . .
 
-RUN python -m pip install --upgrade pip
-RUN pip install -r requirements.txt
+EXPOSE 8081
 
-WORKDIR ./myapp
-
-EXPOSE 8001
-
-CMD ["gunicorn", "--bind", "0.0.0.0:8081", "main:app"]
+CMD ["python", "main.py"]
