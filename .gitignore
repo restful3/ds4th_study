@@ -16,3 +16,4 @@ __pycache__/
 *.env
 .chainlit/*
 **/datasets/
+**/my_*/
