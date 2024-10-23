@@ -4,10 +4,15 @@ torchaudio==2.1.0+cu121
 --extra-index-url https://download.pytorch.org/whl/cu121
 jupyter
 jupyterlab
-transformers==4.40.1
-bitsandbytes==0.43.1 
-accelerate==0.29.3 
-datasets==2.19.0 
-tiktoken==0.6.0 
-huggingface_hub==0.22.2 
-autotrain-advanced==0.7.77
+transformers
+bitsandbytes
+PyYAML
+datasets
+tiktoken
+huggingface-hub
+accelerate
+peft
+llama-index
+langchain
+openai
+chromadb
