@@ -1,0 +1,50 @@
+# Deep Learning Framework
+torch==2.1.0+cu121
+torchvision==0.16.0+cu121
+torchaudio==2.1.0+cu121
+--extra-index-url https://download.pytorch.org/whl/cu121
+
+# Core ML Libraries
+transformers==4.37.2
+tokenizers==0.15.1
+accelerate==0.26.1
+bitsandbytes==0.41.3
+optimum==1.16.1
+sentencepiece==0.1.99
+
+# Model Fine-tuning
+peft==0.8.2
+trl==0.7.11
+datasets==2.16.1
+evaluate==0.4.1
+autotrain-advanced==0.8.11
+wandb==0.16.3
+
+# RAG Framework
+langchain==0.1.9
+langchain-community==0.0.24
+langchain-core==0.1.27
+llama-index==0.9.48
+chromadb==0.4.22
+faiss-cpu==1.7.4
+sentence-transformers==2.3.1
+
+# Vector Storage
+pinecone-client==3.0.2
+pymongo==4.6.1
+redis==5.0.1
+
+# Document Processing
+unstructured==0.12.3
+pdf2image==1.17.0
+pytesseract==0.3.10
+python-magic==0.4.27
+pypdf==3.17.4
+
+# Utilities
+jupyter
+jupyterlab
+ipywidgets
+tqdm
+PyYAML
+python-dotenv

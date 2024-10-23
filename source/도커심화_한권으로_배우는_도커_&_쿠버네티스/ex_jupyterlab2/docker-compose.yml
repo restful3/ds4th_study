@@ -1,0 +1,19 @@
+version: '3'
+services:
+  jupyterlab:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - /d/drive/SelfStudy/ds4th_study:/workspace/ds4th
+      - ${HOME}/.cache/huggingface:/root/.cache/huggingface
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - TRANSFORMERS_CACHE=/root/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
