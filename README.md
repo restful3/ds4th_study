@@ -61,7 +61,7 @@
 
 * **2024년 10월 26일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=md5425739162a8a9a44cb1922e31d2da3	), 발표자 - 도커심화(우석), 핸즈온(태영)
    * (한 권으로 배우는 도커 & 쿠버네티스) 7장 쿠버네티스의 기본 구조
-   * (핸즈온 머신러닝) 16장 RNN과 어텐션을 사용한 자연어 처리
+   * (핸즈온 머신러닝) [16장 RNN과 어텐션을 사용한 자연어 처리](https://github.com/restful3/ds4th_study/blob/main/source/%ED%95%B8%EC%A6%88%EC%98%A8_%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/ch16_RNN%EA%B3%BC_%EC%96%B4%ED%85%90%EC%85%98%EC%9D%84_%EC%82%AC%EC%9A%A9%ED%95%9C_%EC%9E%90%EC%97%B0%EC%96%B4_%EC%B2%98%EB%A6%AC_song.ipynb)
 
 * **2024년 11월 02일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb098113cae78d6aecd519425b7400a98	), 발표자 - 도커심화(우석), 핸즈온(정훈)
    * (한 권으로 배우는 도커 & 쿠버네티스) 8장 쿠버네티스 실습 환경 구축
