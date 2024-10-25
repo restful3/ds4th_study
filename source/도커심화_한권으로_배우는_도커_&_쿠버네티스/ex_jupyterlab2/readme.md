@@ -2,15 +2,15 @@
 
 ## 환경 구성:
 
-Python 3.10과 3.11 두 가지 버전의 가상환경이 제공되는 주피터랩입니다.
+Python 3.10과 3.11 두 가지 버전으로 구성
 각 버전별로 독립된 가상환경과 requirements 파일 사용
-Python 3.11을 기본 환경으로 설정됩니다.
+Python 3.11을 기본 환경으로 설정
 
 
 ## 라이브러리 구성
 
 - RAG 프레임워크: langchain, llama-index, chromadb 등 최신 버전 설치
-- 모델 개선 도구: peft, autotrain-advanced, trl 등 포함
+- 모델 개선 도구: peft, trl 등 포함
 - 문서 처리: unstructured, pdf2image, pytesseract 등 추가
 - 벡터 저장소: pinecone, faiss, mongodb, redis 지원
 
@@ -24,8 +24,8 @@ Python 3.11을 기본 환경으로 설정됩니다.
 
 ## 시스템 설정:
 
-PDF, 이미지 처리를 위한 시스템 라이브러리 설치
-Hugging Face 캐시 볼륨 마운트로 모델 재다운로드 방지
+- PDF, 이미지 처리를 위한 시스템 라이브러리 설치
+- Hugging Face 캐시 볼륨 마운트로 모델 재다운로드 방지
 
 
 
@@ -40,7 +40,6 @@ requirements-py311.txt
 ```
 
 2. 도커 빌드 및 실행:
-- docker-compose.yml에서 볼륨마운트할 경로를 변경하세요
 ```bashCopy
 docker-compose up --build
 ```

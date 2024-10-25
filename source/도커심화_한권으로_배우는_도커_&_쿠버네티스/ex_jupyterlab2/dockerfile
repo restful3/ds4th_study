@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     wget \
     # PDF 및 이미지 처리를 위한 시스템 라이브러리
     tesseract-ocr \
+    tesseract-ocr-kor \
     poppler-utils \
     libmagic1 \
     # 기타 필요한 시스템 라이브러리
@@ -29,18 +30,18 @@ COPY requirements-py311.txt .
 # Python 3.10 환경 설정
 RUN python3.10 -m venv /opt/venv/py310
 ENV PATH="/opt/venv/py310/bin:$PATH"
-RUN pip install --upgrade pip && \
-    pip install ipykernel && \
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir ipykernel && \
     python -m ipykernel install --name py310 --display-name "Python 3.10 (RAG)" && \
-    pip install -r requirements-py310.txt
+    pip install --no-cache-dir -r requirements-py310.txt
 
 # Python 3.11 환경 설정
 RUN python3.11 -m venv /opt/venv/py311
 ENV PATH="/opt/venv/py311/bin:$PATH"
-RUN pip install --upgrade pip && \
-    pip install ipykernel && \
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir ipykernel && \
     python -m ipykernel install --name py311 --display-name "Python 3.11 (RAG)" && \
-    pip install -r requirements-py311.txt
+    pip install --no-cache-dir -r requirements-py311.txt
 
 # JupyterLab 설정 디렉토리 생성
 RUN mkdir -p /root/.jupyter
