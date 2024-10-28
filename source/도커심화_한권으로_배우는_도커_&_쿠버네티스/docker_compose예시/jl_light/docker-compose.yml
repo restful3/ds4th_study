@@ -1,0 +1,11 @@
+version: '3'
+services:
+  jupyter:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - /d/drive/SelfStudy:/workspace #볼륨마운트할 경로를 입력하세요
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    restart: unless-stopped
