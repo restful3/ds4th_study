@@ -1,0 +1,8 @@
+# mysql-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config
+data:
+  MYSQL_DATABASE: k8sDemo
+  MYSQL_USER: appuser
