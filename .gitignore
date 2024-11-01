@@ -17,3 +17,4 @@ __pycache__/
 .chainlit/*
 **/datasets/
 **/my_*/
+*.mmap
