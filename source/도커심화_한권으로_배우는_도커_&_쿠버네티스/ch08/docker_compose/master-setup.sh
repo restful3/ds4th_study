@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# ±âº» ½Ã½ºÅÛ ¾÷µ¥ÀÌÆ® ¹× ÇÊ¼ö ÆÐÅ°Áö ¼³Ä¡
+# ï¿½âº» ï¿½Ã½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ ï¿½Ê¼ï¿½ ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½Ä¡
 apt-get update
 apt-get install -y \
     curl \
@@ -14,7 +14,7 @@ apt-get install -y \
     procps \
     mount
 
-# ±âÁ¸ ÇÁ·Î¼¼½º ¹× ¼ÒÄÏ Á¤¸®
+# ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 pkill containerd || true
 pkill kubelet || true
 rm -f /run/containerd/containerd.sock
@@ -22,7 +22,7 @@ rm -f /var/lib/kubelet/config.yaml
 rm -rf /etc/kubernetes/manifests/*
 rm -f /etc/kubernetes/kubelet.conf
 
-# ÇÊ¿äÇÑ µð·ºÅä¸® »ý¼º
+# ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½
 mkdir -p \
     /var/lib/kubelet \
     /var/lib/kubernetes \
@@ -32,7 +32,7 @@ mkdir -p \
     /opt/cni/bin \
     /etc/kubernetes/manifests
 
-# containerd ¼³Ä¡
+# containerd ï¿½ï¿½Ä¡
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 echo \
   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
@@ -41,17 +41,17 @@ echo \
 apt-get update
 apt-get install -y containerd.io
 
-# swap ºñÈ°¼ºÈ­
+# swap ï¿½ï¿½È°ï¿½ï¿½È­
 swapoff -a
 
-# CNI ÇÃ·¯±×ÀÎ ¼³Ä¡
+# CNI ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
 curl -L "https://github.com/containernetworking/plugins/releases/download/v1.2.0/cni-plugins-linux-amd64-v1.2.0.tgz" | tar -C /opt/cni/bin -xz
 
-# crictl ¼³Ä¡
+# crictl ï¿½ï¿½Ä¡
 VERSION="v1.24.0"
 curl -L "https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-$VERSION-linux-amd64.tar.gz" | tar -C /usr/local/bin -xz
 
-# containerd ¼³Á¤
+# containerd ï¿½ï¿½ï¿½ï¿½
 mkdir -p /etc/containerd
 cat > /etc/containerd/config.toml << EOF
 version = 2
@@ -75,14 +75,14 @@ state = "/run/containerd"
             SystemdCgroup = false
 EOF
 
-# containerd ½ÃÀÛ
+# containerd ï¿½ï¿½ï¿½ï¿½
 mkdir -p /run/containerd
 containerd > /var/log/containerd.log 2>&1 &
 
-# containerd°¡ ½ÃÀÛµÉ ¶§±îÁö ´ë±â
+# containerdï¿½ï¿½ ï¿½ï¿½ï¿½Ûµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 sleep 5
 
-# crictl ¼³Á¤
+# crictl ï¿½ï¿½ï¿½ï¿½
 cat > /etc/crictl.yaml <<EOF
 runtime-endpoint: unix:///run/containerd/containerd.sock
 image-endpoint: unix:///run/containerd/containerd.sock
@@ -90,19 +90,19 @@ timeout: 10
 debug: false
 EOF
 
-# Kubernetes apt ÀúÀå¼Ò ¼³Á¤
+# Kubernetes apt ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 mkdir -p /etc/apt/keyrings
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.24/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
 echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.24/deb/ /" | tee /etc/apt/sources.list.d/kubernetes.list
 
-# ÆÐÅ°Áö ¼³Ä¡
+# ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½Ä¡
 apt-get update
 apt-get install -y kubelet kubeadm kubectl
 apt-mark hold kubelet kubeadm kubectl
 
-# kubelet ¼³Á¤
+# kubelet ï¿½ï¿½ï¿½ï¿½
 cat > /var/lib/kubelet/config.yaml <<EOF
 apiVersion: kubelet.config.k8s.io/v1beta1
 kind: KubeletConfiguration
@@ -117,7 +117,7 @@ healthzPort: 10248
 failSwapOn: false
 EOF
 
-# kubeadm ¼³Á¤
+# kubeadm ï¿½ï¿½ï¿½ï¿½
 cat > /root/kubeadm-config.yaml <<EOF
 apiVersion: kubeadm.k8s.io/v1beta3
 kind: InitConfiguration
@@ -137,7 +137,7 @@ cgroupDriver: cgroupfs
 failSwapOn: false
 EOF
 
-# kubelet ¼³Á¤
+# kubelet ï¿½ï¿½ï¿½ï¿½
 cat > /var/lib/kubelet/config.yaml <<EOF
 apiVersion: kubelet.config.k8s.io/v1beta1
 kind: KubeletConfiguration
@@ -161,7 +161,7 @@ evictionHard:
 maxPods: 110
 EOF
 
-# kubelet ½ÃÀÛ
+# kubelet ï¿½ï¿½ï¿½ï¿½
 kubelet --config=/var/lib/kubelet/config.yaml \
   --container-runtime=remote \
   --container-runtime-endpoint=unix:///run/containerd/containerd.sock \
@@ -173,30 +173,30 @@ kubelet --config=/var/lib/kubelet/config.yaml \
   --register-node=true \
   > /var/log/kubelet.log 2>&1 &
 
-# kubeletÀÌ ½ÃÀÛµÉ ¶§±îÁö ´ë±â
+# kubeletï¿½ï¿½ ï¿½ï¿½ï¿½Ûµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 sleep 10
 
-# healthz ¿£µåÆ÷ÀÎÆ® È®ÀÎ
+# healthz ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® È®ï¿½ï¿½
 curl -v http://127.0.0.1:10248/healthz || true
 
-# kubeadm ÃÊ±âÈ­
+# kubeadm ï¿½Ê±ï¿½È­
 kubeadm init \
   --config=/root/kubeadm-config.yaml \
   --ignore-preflight-errors=all \
   --v=5
 
-# kubeconfig ¼³Á¤
+# kubeconfig ï¿½ï¿½ï¿½ï¿½
 mkdir -p $HOME/.kube
 cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 chown $(id -u):$(id -g) $HOME/.kube/config
 
-# Flannel CNI ¼³Ä¡
+# Flannel CNI ï¿½ï¿½Ä¡
 kubectl apply -f https://github.com/flannel-io/flannel/releases/download/v0.20.0/kube-flannel.yml
 
-# Join ¸í·É¾î ÀúÀå
+# Join ï¿½ï¿½ï¿½É¾ï¿½ ï¿½ï¿½ï¿½ï¿½
 kubeadm token create --print-join-command > /join-command
 
-# µð¹ö±ëÀ» À§ÇÑ Á¤º¸ Ãâ·Â
+# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 echo "===================== DEBUG INFO ====================="
 ps aux | grep kubelet
 ps aux | grep containerd

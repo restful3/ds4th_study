@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# ±âº» ½Ã½ºÅÛ ¾÷µ¥ÀÌÆ® ¹× ÇÊ¼ö ÆÐÅ°Áö ¼³Ä¡
+# ï¿½âº» ï¿½Ã½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ ï¿½Ê¼ï¿½ ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½Ä¡
 apt-get update
 apt-get install -y \
     curl \
@@ -14,7 +14,7 @@ apt-get install -y \
     procps \
     mount
 
-# ÇÊ¿äÇÑ µð·ºÅä¸® »ý¼º
+# ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½
 mkdir -p \
     /var/lib/kubelet \
     /var/lib/kubernetes \
@@ -23,13 +23,13 @@ mkdir -p \
     /etc/cni/net.d \
     /opt/cni/bin
 
-# ÇÊ¿äÇÑ ¸¶¿îÆ® ¼³Á¤
+# ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 mount --make-shared /
 mount --make-shared /sys
 mount --make-shared /sys/fs/cgroup
 mount --make-shared /var/lib/kubelet
 
-# containerd ¼³Ä¡
+# containerd ï¿½ï¿½Ä¡
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 echo \
   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
@@ -38,17 +38,17 @@ echo \
 apt-get update
 apt-get install -y containerd.io
 
-# swap ºñÈ°¼ºÈ­
+# swap ï¿½ï¿½È°ï¿½ï¿½È­
 swapoff -a
 
-# CNI ÇÃ·¯±×ÀÎ ¼³Ä¡
+# CNI ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
 curl -L "https://github.com/containernetworking/plugins/releases/download/v1.2.0/cni-plugins-linux-amd64-v1.2.0.tgz" | tar -C /opt/cni/bin -xz
 
-# crictl ¼³Ä¡
+# crictl ï¿½ï¿½Ä¡
 VERSION="v1.24.0"
 curl -L "https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-$VERSION-linux-amd64.tar.gz" | tar -C /usr/local/bin -xz
 
-# CNI ¼³Á¤
+# CNI ï¿½ï¿½ï¿½ï¿½
 cat > /etc/cni/net.d/10-containerd-net.conflist <<EOF
 {
   "cniVersion": "1.0.0",
@@ -82,7 +82,7 @@ cat > /etc/cni/net.d/10-containerd-net.conflist <<EOF
 }
 EOF
 
-# crictl ¼³Á¤
+# crictl ï¿½ï¿½ï¿½ï¿½
 cat > /etc/crictl.yaml <<EOF
 runtime-endpoint: unix:///run/containerd/containerd.sock
 image-endpoint: unix:///run/containerd/containerd.sock
@@ -90,7 +90,7 @@ timeout: 10
 debug: false
 EOF
 
-# containerd ¼³Á¤
+# containerd ï¿½ï¿½ï¿½ï¿½
 mkdir -p /etc/containerd
 cat > /etc/containerd/config.toml << EOF
 version = 2
@@ -114,45 +114,45 @@ state = "/run/containerd"
             SystemdCgroup = false
 EOF
 
-# Kubernetes apt ÀúÀå¼Ò ¼³Á¤
+# Kubernetes apt ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 mkdir -p /etc/apt/keyrings
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.24/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
 echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.24/deb/ /" | tee /etc/apt/sources.list.d/kubernetes.list
 
-# ÆÐÅ°Áö ¼³Ä¡
+# ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½Ä¡
 apt-get update
 apt-get install -y kubelet kubeadm kubectl
 apt-mark hold kubelet kubeadm kubectl
 
-# containerd ÁßÁö ¹× Àç½ÃÀÛ
+# containerd ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 pkill containerd || true
 sleep 2
 
-# containerd Á÷Á¢ ½ÇÇà
+# containerd ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 mkdir -p /run/containerd
 containerd > /var/log/containerd.log 2>&1 &
 
-# containerd°¡ ½ÃÀÛµÉ ¶§±îÁö ´ë±â
+# containerdï¿½ï¿½ ï¿½ï¿½ï¿½Ûµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 sleep 10
 
-# kubelet ¼³Á¤
+# kubelet ï¿½ï¿½ï¿½ï¿½
 cat > /var/lib/kubelet/config.yaml <<EOF
 apiVersion: kubelet.config.k8s.io/v1beta1
 kind: KubeletConfiguration
 cgroupDriver: cgroupfs
 EOF
 
-# kubelet Á÷Á¢ ½ÇÇà
+# kubelet ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 kubelet --config=/var/lib/kubelet/config.yaml --container-runtime=remote --container-runtime-endpoint=unix:///run/containerd/containerd.sock --pod-infra-container-image=registry.k8s.io/pause:3.9 > /var/log/kubelet.log 2>&1 &
 
 sleep 10
 
-# ¸¶½ºÅÍ ³ëµåÀÇ join Ä¿¸Çµå¸¦ ±â´Ù¸²
+# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ join Ä¿ï¿½Çµå¸¦ ï¿½ï¿½Ù¸ï¿½
 echo "Worker node setup completed. Please run the join command from the master node."
 echo "The join command can be found in the master node's /join-command file."
 echo "Copy the contents of that file and run it on this worker node."
 
-# ¹«ÇÑ ´ë±â (ÄÁÅ×ÀÌ³Ê°¡ Á¾·áµÇÁö ¾Êµµ·Ï)
+# ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½Ì³Ê°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Êµï¿½ï¿½ï¿½)
 tail -f /dev/null
