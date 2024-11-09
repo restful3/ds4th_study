@@ -69,7 +69,7 @@
 
 * **2024년 11월 09일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m51cfa97333999ea5dc395b5c6a015508	), 발표자 - 도커심화(태호), 핸즈온(민호)
    * (한 권으로 배우는 도커 & 쿠버네티스) 9장 쿠버네티스 기초
-   * (핸즈온 머신러닝) 17장 오토인코더, GAN 그리고 확산 모델
+   * (핸즈온 머신러닝) [17장 오토인코더, GAN 그리고 확산 모델](https://github.com/restful3/ds4th_study/blob/142d956a93b44334ed686cfb3cca4a9ff062e028/source/%ED%95%B8%EC%A6%88%EC%98%A8_%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/ch17_%EC%98%A4%ED%86%A0%EC%9D%B8%EC%BD%94%EB%8D%94%2C%20GAN%20%EA%B7%B8%EB%A6%AC%EA%B3%A0%20%ED%99%95%EC%82%B0%EB%AA%A8%EB%8D%B8_minho.ipynb)
 
 * **2024년 11월 16일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m5bf981d6a2583a9af0216a2dd3e5cf22	), 발표자 - 도커심화(우석), 핸즈온(종우)
    * (한 권으로 배우는 도커 & 쿠버네티스) 10장 쿠버네티스를 활용한 웹 서비스 배포
