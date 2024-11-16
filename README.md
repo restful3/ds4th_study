@@ -65,7 +65,8 @@
 
 * **2024년 11월 02일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb098113cae78d6aecd519425b7400a98	), 발표자 - 도커심화(우석), 핸즈온(정훈)
    * (한 권으로 배우는 도커 & 쿠버네티스) 8장 쿠버네티스 실습 환경 구축
-   * (핸즈온 머신러닝) 8장 차원 축소
+   * (핸즈온 머신러닝) 
+   * (핸즈온 머신러닝) [8장 차원 축소](https://github.com/restful3/ds4th_study/blob/6e4a63535f94119597b7118995bce528474c4094/source/%ED%95%B8%EC%A6%88%EC%98%A8_%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/ch08_dimensionality_reduction_%EC%A0%95%ED%9B%88.ipynb)
 
 * **2024년 11월 09일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m51cfa97333999ea5dc395b5c6a015508	), 발표자 - 도커심화(태호), 핸즈온(민호)
    * (한 권으로 배우는 도커 & 쿠버네티스) 9장 쿠버네티스 기초
