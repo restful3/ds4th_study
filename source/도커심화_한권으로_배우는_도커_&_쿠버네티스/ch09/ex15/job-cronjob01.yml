@@ -1,0 +1,14 @@
+apiVersion: batch/v1		    
+kind: Job	    		
+metadata:   	    
+  name: job-test01	  
+spec:		
+  template:   
+    spec:	    
+      containers:     	
+      - name: nginx-test01  
+        image: nginx:1.25     
+        command: ["echo", "Hello, Kubernetes!"]	
+      restartPolicy: Never
+  backoffLimit: 3	
+

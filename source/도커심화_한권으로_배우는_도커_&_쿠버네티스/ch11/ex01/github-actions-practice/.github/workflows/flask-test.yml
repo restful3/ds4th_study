@@ -1,0 +1,35 @@
+name: Docker Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.11'
+
+    - name: Build Flask Docker image
+      run: docker image build -t myflask-test .
+
+    - name: Run Flask Docker container
+      run: docker container run -d --name myflask-ac -p 8001:8001 myflask-test
+
+    - name: Test Flask app
+      run: |
+        sleep 10
+        curl http://127.0.0.1:8001
+
+    - name: Stop and remove Docker container
+      run: |
+        docker container stop myflask-ac
+        docker container rm myflask-ac
