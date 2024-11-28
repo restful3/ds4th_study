@@ -77,7 +77,7 @@
    * (핸즈온 머신러닝) 9장 비지도 학습
 
 * **2024년 11월 23일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m03b52771de6f8b623d6c89d2d26a44c2	), 발표자 - 도커심화(우석), 핸즈온(민호)
-   * (한 권으로 배우는 도커 & 쿠버네티스) 11장 깃허브 액션과 ArgoCD를 활용한 CI/CD
+   * (한 권으로 배우는 도커 & 쿠버네티스) [11장 깃허브 액션과 ArgoCD를 활용한 CI/CD](https://github.com/restful3/ds4th_study/blob/main/source/%EB%8F%84%EC%BB%A4%EC%8B%AC%ED%99%94_%ED%95%9C%EA%B6%8C%EC%9C%BC%EB%A1%9C_%EB%B0%B0%EC%9A%B0%EB%8A%94_%EB%8F%84%EC%BB%A4_%26_%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/ch11_%EA%B9%83%ED%97%88%EB%B8%8C%20%EC%95%A1%EC%85%98%EA%B3%BC%20ArgoCD%EB%A5%BC%20%ED%99%9C%EC%9A%A9%ED%95%9C%20CICD.pptx)
    * (핸즈온 머신러닝) 18장 강화 학습
 
 * **2024년 11월 30일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1a675c45bf4a41b84b770b9d63ed4687	), 발표자 - 도커심화(우석), 핸즈온(태영)
