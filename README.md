@@ -27,7 +27,7 @@
   - CH1. 정규 분포  
 
 #### **2024년 12월 21일**: [Webex]()
-- 발표자 - AI(TBD), 논문(TBD)  
+- 발표자 - AI(TBD), 논문(태영)  
   - CH1. Introduction To Building AI Applications With Foundation Models  
   - 논문 세션 (TBD)  
 
