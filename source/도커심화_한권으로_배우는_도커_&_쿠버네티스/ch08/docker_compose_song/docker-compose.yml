@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  myserver01:
+    image: ubuntu:20.04
+    container_name: myserver01
+    privileged: true
+    environment:
+      - NODE_ROLE=master
+      - DEBIAN_FRONTEND=noninteractive
+    networks:
+      - k8s_network
+    command: >
+      /bin/bash -c '
+      apt-get update && 
+      apt-get install -y apt-transport-https ca-certificates curl gnupg &&
+      curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - &&
+      echo "deb https://apt.kubernetes.io/ kubernetes main" | tee /etc/apt/sources.list.d/kubernetes.list &&
+      apt-get update && 
+      apt-get install -y kubelet kubeadm kubectl &&
+      kubeadm init --apiserver-advertise-address=$$(hostname -i) --pod-network-cidr=10.244.0.0/16 &&
+      mkdir -p $$HOME/.kube &&
+      cp -i /etc/kubernetes/admin.conf $$HOME/.kube/config &&
+      chown $$(id -u):$$(id -g) $$HOME/.kube/config &&
+      kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml &&
+      kubeadm token create --print-join-command > /join-command.sh &&
+      sleep infinity'
+
+  myserver02:
+    image: ubuntu:20.04
+    container_name: myserver02
+    privileged: true
+    environment:
+      - NODE_ROLE=worker
+      - DEBIAN_FRONTEND=noninteractive
+    networks:
+      - k8s_network
+    command: >
+      /bin/bash -c '
+      apt-get update && 
+      apt-get install -y apt-transport-https ca-certificates curl gnupg &&
+      curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - &&
+      echo "deb https://apt.kubernetes.io/ kubernetes main" | tee /etc/apt/sources.list.d/kubernetes.list &&
+      apt-get update && 
+      apt-get install -y kubelet kubeadm kubectl &&
+      sleep 30 && $$(cat /join-command.sh) &&
+      sleep infinity'
+
+  myserver03:
+    image: ubuntu:20.04
+    container_name: myserver03
+    privileged: true
+    environment:
+      - NODE_ROLE=worker
+      - DEBIAN_FRONTEND=noninteractive
+    networks:
+      - k8s_network
+    command: >
+      /bin/bash -c '
+      apt-get update && 
+      apt-get install -y apt-transport-https ca-certificates curl gnupg &&
+      curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - &&
+      echo "deb https://apt.kubernetes.io/ kubernetes main" | tee /etc/apt/sources.list.d/kubernetes.list &&
+      apt-get update && 
+      apt-get install -y kubelet kubeadm kubectl &&
+      sleep 30 && $$(cat /join-command.sh) &&
+      sleep infinity'
+
+networks:
+  k8s_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
