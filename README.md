@@ -29,7 +29,7 @@
 #### **2024년 12월 21일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m74bc31f0b8067acc17d5107a4cfcea0f	)
 - 발표자 - AI(TBD), 논문(태영)  
   - CH1. Introduction To Building AI Applications With Foundation Models  
-  - 논문 세션 : [A Survey on Model Compression for Large Language Models](https://github.com/restful3/ds4th_study/blob/main/source/papers/A%20Survey%20on%20Model%20Compression%20for%20Large%20Language%20Models%20.pdf)  
+  - 논문 세션 : [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633)  
 
 #### **2024년 12월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb5a74c3fb595bb2ab09920b817e1a2a5	)
 - 발표자 - LLM(TBD), 밑바닥(TBD)  
