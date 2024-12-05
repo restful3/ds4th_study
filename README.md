@@ -29,7 +29,7 @@
 #### **2024년 12월 21일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m74bc31f0b8067acc17d5107a4cfcea0f	)
 - 발표자 - AI(TBD), 논문(태영)  
   - CH1. Introduction To Building AI Applications With Foundation Models  
-  - 논문 세션 (TBD)  
+  - 논문 세션 : [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633)  
 
 #### **2024년 12월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb5a74c3fb595bb2ab09920b817e1a2a5	)
 - 발표자 - LLM(TBD), 밑바닥(TBD)  
@@ -39,7 +39,7 @@
 #### **2025년 1월 11일** *(1/4 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m16c5137784cdd76dee041575c96a4e48	)
 - 발표자 - AI(TBD), 논문(TBD)  
   - CH2. Understanding Foundation Models  
-  - 논문 세션 (TBD)  
+  - 논문 세션 : [TBD]()  
 
 #### **2025년 1월 18일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m0890a4d2dce5a5469ac4a4019efc3b51	)
 - 발표자 - LLM(TBD), 밑바닥(TBD)  
@@ -49,7 +49,7 @@
 #### **2025년 1월 25일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m41a6759003026ae0d91e29aecc9675e9	)
 - 발표자 - AI(TBD), 논문(TBD)  
   - CH3. Evaluation Methodology  
-  - 논문 세션 (TBD)  
+  - 논문 세션 : [TBD]()  
 
 #### **2025년 2월 8일** *(2/1 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=mebc02c032fcf0068181e7b554c709bb3	)
 - 발표자 - LLM(TBD), 밑바닥(TBD)  
@@ -59,7 +59,7 @@
 #### **2025년 2월 15일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m379b03e5c415c37bfbd5417b18034e57	)
 - 발표자 - AI(TBD), 논문(TBD)  
   - CH4. Evaluate AI Systems  
-  - 논문 세션 (TBD)  
+  - 논문 세션 : [TBD]()  
 
 #### **2025년 2월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc2a52bbfacadc192ba94409533823779	)
 - 발표자 - LLM(TBD), 밑바닥(TBD)  
@@ -69,7 +69,7 @@
 #### **2025년 3월 8일** *(3/1 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mff689e4a7817c0997b82f7ca4fbc5175	)
 - 발표자 - AI(TBD), 논문(TBD)  
   - CH5. Prompt Engineering  
-  - 논문 세션 (TBD)  
+  - 논문 세션 : [TBD]()  
 
 #### **2025년 3월 15일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mfaf5dc7391304da94f27f16871dce1a3	)
 - 발표자 - LLM(TBD), 밑바닥(TBD)  
@@ -79,7 +79,7 @@
 #### **2025년 3월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m93fd00e113e21dc12a75a6b4bb2d2208	)
 - 발표자 - AI(TBD), 논문(TBD)  
   - CH6. RAG And Agents  
-  - 논문 세션 (TBD)  
+  - 논문 세션 : [TBD]()  
 
 #### **2025년 3월 29일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m685a89d84e5c1129312cf3421b154059	)
 - 발표자 - LLM(TBD), 밑바닥(TBD)  
@@ -89,7 +89,7 @@
 #### **2025년 4월 12일** *(4/5 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m13e940f392b3b5ae422edff93b61b1ea	)
 - 발표자 - AI(TBD), 논문(TBD)  
   - CH7. Finetuning  
-  - 논문 세션 (TBD)  
+  - 논문 세션 : [TBD]()  
 
 #### **2025년 4월 19일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m492a1f4b4721f9070e3102bce3acc903	)
 - 발표자 - LLM(TBD), 밑바닥(TBD)  
@@ -99,7 +99,7 @@
 #### **2025년 4월 26일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc362a213dabd3c9d29f727b97b5fdf83	)
 - 발표자 - AI(TBD), 논문(TBD)  
   - CH8. Dataset Engineering  
-  - 논문 세션 (TBD)  
+  - 논문 세션 : [TBD]()  
 
 #### **2025년 5월 10일** *(5/3 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mebff409f9da191e9e2c17a6e815224b6	)
 - 발표자 - LLM(TBD), 밑바닥(TBD)  
@@ -109,7 +109,7 @@
 #### **2025년 5월 17일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb85f58b1c6d1d0a9062cee50342b0e3d	)
 - 발표자 - AI(TBD), 논문(TBD)  
   - CH9. Inference Optimization  
-  - 논문 세션 (TBD)  
+  - 논문 세션 : [TBD]()  
 
 #### **2025년 5월 24일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1decb14e63ff3ff5776c8e8deaf340aa	)
 - 발표자 - LLM(TBD), 밑바닥(TBD)  
@@ -129,7 +129,7 @@
 #### **2025년 6월 21일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1915fca8a0b5fbc16f23c9ba84616244	)
 - 발표자 - LLM(TBD), 논문(TBD)  
   - CH14. 멀티 모달  
-  - 논문 세션 (TBD)  
+  - 논문 세션 : [TBD]()  
  
 #### **2025년 6월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1cf3168ebcc132ee5074271e66d2defe	)
 - 발표자 - LLM(TBD), LLM(TBD)  
