@@ -23,7 +23,7 @@
 
 #### **2024년 12월 14일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m67909b7d882fffbb28a17bdd880050f7	)
 - 발표자 - LLM(태영), 밑바닥(두균)  
-  - CH1. LLM 지도  
+  - [CH1. LLM 지도](https://github.com/restful3/ds4th_study/blob/main/source/LLM%EC%9D%84_%ED%99%9C%EC%9A%A9%ED%95%9C_%EC%8B%A4%EC%A0%84_AI_%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98_%EA%B0%9C%EB%B0%9C/CH01_LLM_%EC%A7%80%EB%8F%84_song.pdf)
   - CH1. 정규 분포  
 
 #### **2024년 12월 21일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m74bc31f0b8067acc17d5107a4cfcea0f	)
