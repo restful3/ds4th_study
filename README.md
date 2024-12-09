@@ -27,7 +27,7 @@
   - CH1. 정규 분포  
 
 #### **2024년 12월 21일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m74bc31f0b8067acc17d5107a4cfcea0f	)
-- 발표자 - AI(TBD), 논문(태영)  
+- 발표자 - AI(정훈), 논문(태영)  
   - CH1. Introduction To Building AI Applications With Foundation Models  
   - 논문 세션 : [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633)  
 
