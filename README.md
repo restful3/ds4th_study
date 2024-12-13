@@ -37,7 +37,7 @@
   - CH2. 최대 가능도 추정  
 
 #### **2025년 1월 11일** *(1/4 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m16c5137784cdd76dee041575c96a4e48	)
-- 발표자 - AI(태호), 논문(TBD)  
+- 발표자 - AI(TBD), 논문(TBD)  
   - CH2. Understanding Foundation Models  
   - 논문 세션 : [TBD]()  
 
