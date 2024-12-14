@@ -32,12 +32,12 @@
   - 논문 세션 : [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633)  
 
 #### **2024년 12월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb5a74c3fb595bb2ab09920b817e1a2a5	)
-- 발표자 - LLM(우석), 밑바닥(종우)  
+- 발표자 - LLM(TBD), 밑바닥(종우)  
   - CH2. 트랜스포머 아키텍처 살펴보기  
   - CH2. 최대 가능도 추정  
 
 #### **2025년 1월 11일** *(1/4 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m16c5137784cdd76dee041575c96a4e48	)
-- 발표자 - AI(TBD), 논문(TBD)  
+- 발표자 - AI(우석), 논문(TBD)  
   - CH2. Understanding Foundation Models  
   - 논문 세션 : [TBD]()  
 
