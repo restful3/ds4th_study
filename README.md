@@ -32,7 +32,7 @@
   - 논문 세션 : [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633)  
 
 #### **2024년 12월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb5a74c3fb595bb2ab09920b817e1a2a5	)
-- 발표자 - LLM(TBD), 밑바닥(종우)  
+- 발표자 - LLM(C성진), 밑바닥(종우)  
   - CH2. 트랜스포머 아키텍처 살펴보기  
   - CH2. 최대 가능도 추정  
 
@@ -62,7 +62,7 @@
   - 논문 세션 : [TBD]()  
 
 #### **2025년 2월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc2a52bbfacadc192ba94409533823779	)
-- 발표자 - LLM(TBD), 밑바닥(권성진)  
+- 발표자 - LLM(TBD), 밑바닥(K성진)  
   - CH5. GPU 효율적인 학습  
   - CH5. EM 알고리즘  
 
