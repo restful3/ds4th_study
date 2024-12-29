@@ -34,7 +34,7 @@
 #### **2024년 12월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb5a74c3fb595bb2ab09920b817e1a2a5	)
 - 발표자 - LLM(C성진), 밑바닥(종우)  
   - CH2. 트랜스포머 아키텍처 살펴보기  
-  - CH2. 최대 가능도 추정  
+  - [CH2. 최대 가능도 추정](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_5/step02-MLE_jongwoo.pdf)  
 
 #### **2025년 1월 11일** *(1/4 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m16c5137784cdd76dee041575c96a4e48	)
 - 발표자 - AI(우석), 논문(재익)  
