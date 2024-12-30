@@ -34,20 +34,20 @@
 #### **2024년 12월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb5a74c3fb595bb2ab09920b817e1a2a5	)
 - 발표자 - LLM(C성진), 밑바닥(종우)  
   - CH2. 트랜스포머 아키텍처 살펴보기  
-  - CH2. 최대 가능도 추정  
+  - [CH2. 최대 가능도 추정](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_5/step02-MLE_jongwoo.pdf)  
 
 #### **2025년 1월 11일** *(1/4 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m16c5137784cdd76dee041575c96a4e48	)
-- 발표자 - AI(우석), 논문(TBD)  
+- 발표자 - AI(우석), 논문(재익)  
   - CH2. Understanding Foundation Models  
   - 논문 세션 : [TBD]()  
 
 #### **2025년 1월 18일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m0890a4d2dce5a5469ac4a4019efc3b51	)
-- 발표자 - LLM(태호), 밑바닥(TBD)  
+- 발표자 - LLM(태호), 밑바닥(태영)  
   - CH3. 트랜스포머 모델을 다루기 위한 허깅페이스 트랜스포머 라이브러리  
   - CH3. 다변량 정규 분포  
 
 #### **2025년 1월 25일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m41a6759003026ae0d91e29aecc9675e9	)
-- 발표자 - AI(TBD), 논문(TBD)  
+- 발표자 - AI(태영), 논문(TBD)  
   - CH3. Evaluation Methodology  
   - 논문 세션 : [TBD]()  
 
