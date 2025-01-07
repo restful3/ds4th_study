@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress	
+metadata:
+  name: django-ingress	
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx	
+  rules:
+  - http:
+      paths:
+      - path: /test01(/|$)(.*)		
+        pathType: Prefix
+        backend:
+          service:
+            name: django-service	
+            port:
+              number: 80

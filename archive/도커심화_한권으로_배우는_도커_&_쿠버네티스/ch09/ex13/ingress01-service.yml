@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-service-test01
+spec:
+  selector:
+    app.kubernetes.io/name: web-deploy01
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+

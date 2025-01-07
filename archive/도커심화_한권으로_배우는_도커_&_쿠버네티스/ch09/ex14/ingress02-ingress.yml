@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-test02	
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /test01
+        pathType: Prefix
+        backend:
+          service:
+            name: ingress-service-test01
+            port:
+              number: 80
+      - path: /test02	
+        pathType: Prefix
+        backend:
+          service:
+            name: ingress-service-test02
+            port:
+              number: 80

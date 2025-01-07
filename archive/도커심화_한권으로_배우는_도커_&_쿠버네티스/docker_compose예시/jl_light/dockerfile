@@ -1,0 +1,14 @@
+# Dockerfile
+FROM python:3.9-slim
+
+WORKDIR /workspace
+
+# 기본 패키지 설치
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 작업 디렉토리 설정
+EXPOSE 8888
+
+# Jupyter 실행
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]

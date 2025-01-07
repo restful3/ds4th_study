@@ -1,0 +1,14 @@
+apiVersion: v1	
+kind: PersistentVolume	
+metadata:	
+  name: pv-sfs01	
+spec:		
+  accessModes:	
+  - ReadWriteOnce
+  capacity:
+    storage: 100Mi
+  persistentVolumeReclaimPolicy: Retain	
+  storageClassName: pv-sfs-test01
+  hostPath:
+    path: /home/eevee/work/volhost01	
+    type: DirectoryOrCreate

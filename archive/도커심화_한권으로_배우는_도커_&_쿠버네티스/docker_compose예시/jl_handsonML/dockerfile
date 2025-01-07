@@ -1,0 +1,42 @@
+# Dockerfile
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
+
+# 시간대 설정을 위한 환경변수
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Asia/Seoul
+
+# Python 및 필요한 시스템 패키지 설치
+RUN apt-get update && apt-get install -y \
+    python3.10 \
+    python3-pip \
+    python3.10-dev \
+    python3.10-venv \
+    python3-tk \
+    fonts-nanum \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+# 가상환경 생성
+ENV VIRTUAL_ENV=/opt/venv/py310
+RUN python3.10 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+# matplotlib 한글 폰트 설정
+RUN mkdir -p /root/.config/matplotlib
+RUN echo "import matplotlib.pyplot as plt" > /root/.config/matplotlib/matplotlibrc \
+    && echo "plt.rcParams['font.family'] = 'NanumGothic'" >> /root/.config/matplotlib/matplotlibrc \
+    && echo "plt.rcParams['axes.unicode_minus'] = False" >> /root/.config/matplotlib/matplotlibrc
+
+# pip 업그레이드
+RUN pip install --upgrade pip
+
+# 기본 패키지 설치
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 가상환경 커널 설정
+RUN python -m ipykernel install --name=py310 --display-name="Python 3.10 (venv)" --user
+
+# Jupyter Lab 실행
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--allow-root"]

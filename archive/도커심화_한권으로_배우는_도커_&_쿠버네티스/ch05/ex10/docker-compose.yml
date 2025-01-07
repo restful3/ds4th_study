@@ -1,0 +1,21 @@
+version: "3"  # ① 컴포즈 파일 포맷 버전 3 사용
+
+services:
+  djangotest:  # Django 컨테이너 정의
+    build: ./myDjango04  # ③ 이미지 빌드 경로 설정 (myDjango04 디렉터리에서 빌드)
+    networks:
+      - composenet01  # ② djangotest 서비스가 사용할 네트워크 정보
+    restart: always  # 컨테이너가 중지되면 항상 다시 시작
+
+  nginxtext:  # Nginx 컨테이너 정의
+    build: ./myNginx04  # Nginx 이미지 빌드 경로 설정 (myNginx04 디렉터리에서 빌드)
+    networks:
+      - composenet01  # nginxtext 서비스가 사용할 네트워크 정보
+    ports:
+      - "80:80"  # 호스트의 포트 80을 Nginx 컨테이너의 포트 80에 매핑
+    depends_on:
+      - djangotest  # Nginx는 djangotest가 먼저 시작된 후 실행됨
+    restart: always  # 컨테이너가 중지되면 항상 다시 시작
+
+networks:
+  composenet01:  # ② 모든 서비스가 사용할 네트워크 정의

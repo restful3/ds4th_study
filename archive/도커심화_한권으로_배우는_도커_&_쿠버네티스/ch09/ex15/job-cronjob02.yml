@@ -1,0 +1,19 @@
+apiVersion: batch/v1	
+kind: CronJob		
+metadata:	
+  name: cronjob-test02	
+spec:	
+  schedule: "*/1 * * * *"	
+  jobTemplate:	
+    spec:	
+      template:	
+        spec:	
+          containers:	
+          - name: nginx-test02	
+            image: nginx:1.25	
+            command:	
+            - /bin/sh	
+            - -c	
+            - echo Hello Kubernetes!	
+          restartPolicy: Never	
+

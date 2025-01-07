@@ -1,0 +1,15 @@
+apiVersion: v1	
+kind: Service	
+metadata:
+  name: web-service-loadbalancer
+spec:	
+  selector:
+    app.kubernetes.io/name: web-deploy	
+  type: LoadBalancer	
+  ports:
+  - protocol: TCP
+    nodePort: 31002
+    port: 80	
+    targetPort: 80
+  externalIPs:
+  - 10.0.2.4

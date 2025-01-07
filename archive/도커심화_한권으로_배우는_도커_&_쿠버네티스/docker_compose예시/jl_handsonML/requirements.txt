@@ -1,0 +1,19 @@
+# Deep Learning Framework
+tensorflow==2.12.0
+
+# Core ML Libraries
+scikit-learn 
+xgboost
+lightgbm
+matplotlib
+seaborn
+plotly
+statsmodels
+
+# Utilities
+jupyter
+jupyterlab
+ipywidgets
+tqdm
+PyYAML
+python-dotenv

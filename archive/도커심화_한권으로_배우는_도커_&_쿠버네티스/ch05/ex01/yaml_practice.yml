@@ -1,0 +1,10 @@
+apiVersion: v1  # API 버전 v1 사용
+kind: Pod  # 리소스 종류는 Pod
+metadata:
+  name: nginx  # Pod의 이름은 nginx
+spec:
+  containers:
+    - name: nginx  # 첫 번째 컨테이너의 이름은 nginx
+      image: nginx:latest  # nginx 최신 버전 이미지 사용
+    - name: ubuntu  # 두 번째 컨테이너의 이름은 ubuntu
+      image: ubuntu:latest  # ubuntu 최신 버전 이미지 사용

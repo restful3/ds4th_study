@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-flask
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: flask-web-deploy	
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: flask-web-deploy
+    spec:
+      containers:
+      - name: nginx-f		
+        image: eeveek8s/mynginxf_ch10:0.3
+        ports:
+        - containerPort: 80
+
+      - name: flask-web	
+        image: eeveek8s/myflask_ch10:0.2
+        ports:		
+        - containerPort: 8001	
+
