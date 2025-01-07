@@ -38,7 +38,7 @@
 
 #### **2025년 1월 11일** *(1/4 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m16c5137784cdd76dee041575c96a4e48	)
 - 발표자 - AI(우석), 논문(재익)  
-  - CH2. Understanding Foundation Models  
+  - [CH2. Understanding Foundation Models](https://github.com/restful3/ds4th_study/blob/main/source/AI_Engineering/Ch02_Understanding_Foundation_Models_jeongwooseok.ipynb)  
   - 논문 세션 : [TBD]()  
 
 #### **2025년 1월 18일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m0890a4d2dce5a5469ac4a4019efc3b51	)
