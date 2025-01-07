@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-volume-03	
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: myserver02	
+  containers:
+  - name: nginx-test01
+    image: nginx:latest
+    volumeMounts:
+    - name: hostpath-test01
+      mountPath: /mount01
+  volumes:
+  - name: hostpath-test01
+    hostPath:
+      path: /home/eevee/work/volhost01
+      type: DirectoryOrCreate

@@ -1,0 +1,61 @@
+services:
+  master:
+    container_name: kube-master
+    image: ubuntu:20.04
+    privileged: true
+    volumes:
+      - ./master-setup.sh:/master-setup.sh
+      - /sys/fs/cgroup:/sys/fs/cgroup
+      - /lib/modules:/lib/modules:ro
+      - /var/lib/kubelet:/var/lib/kubelet:shared
+    command: sleep infinity
+    networks:
+      kubenet:
+        ipv4_address: 192.168.56.2
+    cap_add:
+      - ALL
+    security_opt:
+      - seccomp:unconfined
+
+  worker1:
+    container_name: kube-worker1
+    image: ubuntu:20.04
+    privileged: true
+    volumes:
+      - ./worker-setup.sh:/worker-setup.sh
+      - /sys/fs/cgroup:/sys/fs/cgroup
+      - /lib/modules:/lib/modules:ro
+      - /var/lib/kubelet:/var/lib/kubelet:shared
+    command: sleep infinity
+    networks:
+      kubenet:
+        ipv4_address: 192.168.56.3
+    cap_add:
+      - ALL
+    security_opt:
+      - seccomp:unconfined
+
+  worker2:
+    container_name: kube-worker2
+    image: ubuntu:20.04
+    privileged: true
+    volumes:
+      - ./worker-setup.sh:/worker-setup.sh
+      - /sys/fs/cgroup:/sys/fs/cgroup
+      - /lib/modules:/lib/modules:ro
+      - /var/lib/kubelet:/var/lib/kubelet:shared
+    command: sleep infinity
+    networks:
+      kubenet:
+        ipv4_address: 192.168.56.4
+    cap_add:
+      - ALL
+    security_opt:
+      - seccomp:unconfined
+
+networks:
+  kubenet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.56.0/24

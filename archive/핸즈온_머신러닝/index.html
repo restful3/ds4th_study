@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFJS 이미지 분류</title>
+    <style>
+        .confidence-bar {
+            height: 20px;
+            background-color: #4CAF50;
+            margin: 5px 0;
+        }
+        .result-item {
+            margin: 10px 0;
+        }
+        #loading {
+            color: #666;
+            font-style: italic;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+    <script type="module">
+        import 'https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.15.0/dist/tf.min.js';
+        import 'https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@1.0.0';
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            const image = document.getElementById("image");
+            const resultDiv = document.getElementById("results");
+            const loadingElement = document.getElementById("loading");
+            const fileInput = document.getElementById("imageUpload");
+
+            async function classifyImage() {
+                resultDiv.innerHTML = '<h2>분류 결과:</h2><p id="loading">모델을 로딩중입니다...</p>';
+                
+                try {
+                    console.log("모델 로드 시작");
+                    const model = await window.mobilenet.load();
+                    console.log("모델 로드 완료");
+                    
+                    loadingElement.innerText = "이미지 분석중...";
+
+                    const predictions = await model.classify(image);
+                    console.log("분류 완료", predictions);
+                    
+                    loadingElement.style.display = 'none';
+
+                    predictions.forEach(prediction => {
+                        const resultItem = document.createElement("div");
+                        resultItem.className = 'result-item';
+                        
+                        const percentage = (prediction.probability * 100).toFixed(1);
+                        
+                        resultItem.innerHTML = `
+                            <p>${prediction.className}: ${percentage}%</p>
+                            <div class="confidence-bar" style="width: ${percentage}%"></div>
+                        `;
+                        
+                        resultDiv.appendChild(resultItem);
+                    });
+                } catch (err) {
+                    console.error("오류 발생:", err);
+                    loadingElement.innerHTML = `<p class="error">오류가 발생했습니다: ${err.message}</p>`;
+                }
+            }
+
+            // 파일 업로드 처리
+            fileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        image.src = e.target.result;
+                        image.onload = () => classifyImage();
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // 초기 이미지 분류 실행
+            if (image.complete) {
+                classifyImage();
+            } else {
+                image.onload = () => classifyImage();
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>TFJS 이미지 분류</h1>
+    
+    <div>
+        <input type="file" id="imageUpload" accept="image/*">
+    </div>
+
+    <div style="margin: 20px 0;">
+        <img id="image" src="cat.jpg" alt="분석할 이미지" width="300">
+    </div>
+
+    <div id="results">
+        <h2>분류 결과:</h2>
+        <p id="loading">모델을 로딩중입니다...</p>
+    </div>
+</body>
+</html>

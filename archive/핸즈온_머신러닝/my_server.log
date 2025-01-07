@@ -1,0 +1,26 @@
+2024-11-30 09:16:56.101198: I tensorflow_serving/model_servers/server.cc:77] Building single TensorFlow model file config:  model_name: my_mnist_model model_base_path: /mnt/mydrive/workspaces/study/ds4th_study/source/핸즈온_머신러닝/my_mnist_model
+2024-11-30 09:16:56.101374: I tensorflow_serving/model_servers/server_core.cc:481] Adding/updating models.
+2024-11-30 09:16:56.101385: I tensorflow_serving/model_servers/server_core.cc:610]  (Re-)adding model: my_mnist_model
+2024-11-30 09:16:56.273406: I tensorflow_serving/core/basic_manager.cc:771] Successfully reserved resources to load servable {name: my_mnist_model version: 1}
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1732925816.273449  219112 loader_harness.cc:71] Approving load for servable version {name: my_mnist_model version: 1}
+I0000 00:00:1732925816.273468  219112 loader_harness.cc:79] Loading servable version {name: my_mnist_model version: 1}
+2024-11-30 09:16:56.273522: I external/org_tensorflow/tensorflow/cc/saved_model/reader.cc:83] Reading SavedModel from: /mnt/mydrive/workspaces/study/ds4th_study/source/핸즈온_머신러닝/my_mnist_model/0001
+2024-11-30 09:16:56.274020: I external/org_tensorflow/tensorflow/cc/saved_model/reader.cc:52] Reading meta graph with tags { serve }
+2024-11-30 09:16:56.274032: I external/org_tensorflow/tensorflow/cc/saved_model/reader.cc:147] Reading SavedModel debug info (if present) from: /mnt/mydrive/workspaces/study/ds4th_study/source/핸즈온_머신러닝/my_mnist_model/0001
+2024-11-30 09:16:56.274089: I external/org_tensorflow/tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+I0000 00:00:1732925816.296344  219112 mlir_graph_optimization_pass.cc:401] MLIR V1 optimization pass is not enabled
+2024-11-30 09:16:56.296716: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:236] Restoring SavedModel bundle.
+2024-11-30 09:16:56.312606: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:220] Running initialization op on SavedModel bundle at path: /mnt/mydrive/workspaces/study/ds4th_study/source/핸즈온_머신러닝/my_mnist_model/0001
+2024-11-30 09:16:56.316816: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:466] SavedModel load for tags { serve }; Status: success: OK. Took 43296 microseconds.
+2024-11-30 09:16:56.316992: I tensorflow_serving/servables/tensorflow/saved_model_warmup_util.cc:82] No warmup data file found at /mnt/mydrive/workspaces/study/ds4th_study/source/핸즈온_머신러닝/my_mnist_model/0001/assets.extra/tf_serving_warmup_requests
+I0000 00:00:1732925816.380848  219112 loader_harness.cc:100] Successfully loaded servable version {name: my_mnist_model version: 1}
+2024-11-30 09:16:56.385111: I tensorflow_serving/model_servers/server_core.cc:502] Finished adding/updating models
+2024-11-30 09:16:56.385159: I tensorflow_serving/model_servers/server.cc:121] Using InsecureServerCredentials
+2024-11-30 09:16:56.385178: I tensorflow_serving/model_servers/server.cc:388] Profiler service is enabled
+2024-11-30 09:16:56.386363: I tensorflow_serving/model_servers/server.cc:423] Running gRPC ModelServer at 0.0.0.0:8500 ...
+[evhttp_server.cc : 233] NET_LOG: Couldn't bind to port 8501
+[evhttp_server.cc : 66] NET_LOG: Server has not been terminated. Force termination now.
+[evhttp_server.cc : 268] NET_LOG: Server is not running ...
+2024-11-30 09:16:56.394767: E tensorflow_serving/model_servers/server.cc:446] Failed to start HTTP Server at localhost:8501
