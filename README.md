@@ -47,9 +47,9 @@
   - CH3. 다변량 정규 분포  
 
 #### **2025년 1월 25일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m41a6759003026ae0d91e29aecc9675e9	)
-- 발표자 - AI(태영), 논문(TBD)  
+- 발표자 - AI(태영), 논문(K성진)  
   - CH3. Evaluation Methodology  
-  - 논문 세션 : [TBD]()  
+  - 논문 세션 : [Mechanistic interpretability of LLM]()  
 
 #### **2025년 2월 8일** *(2/1 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=mebc02c032fcf0068181e7b554c709bb3	)
 - 발표자 - LLM(TBD), 밑바닥(태영)  
