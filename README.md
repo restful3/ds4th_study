@@ -42,7 +42,7 @@
   - 논문 세션 : [TBD]()  
 
 #### **2025년 1월 18일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m0890a4d2dce5a5469ac4a4019efc3b51	)
-- 발표자 - LLM(태호), 밑바닥(TBD)  
+- 발표자 - LLM(태호), 밑바닥(우석)  
   - CH3. 트랜스포머 모델을 다루기 위한 허깅페이스 트랜스포머 라이브러리  
   - CH3. 다변량 정규 분포  
 
