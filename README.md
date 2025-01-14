@@ -53,11 +53,11 @@
 
 #### **2025년 2월 8일** *(2/1 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=mebc02c032fcf0068181e7b554c709bb3	)
 - 발표자 - LLM(TBD), 밑바닥(태영)  
-  - CH4. 말 잘 듣는 모델 만들기  
+  - CH4. 말 잘 듣는 모델 만들기
   - CH4. 가우스 혼합 모델  
 
 #### **2025년 2월 15일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m379b03e5c415c37bfbd5417b18034e57	)
-- 발표자 - AI(TBD), 논문(TBD)  
+- 발표자 - AI(우석), 논문(TBD)  
   - CH4. Evaluate AI Systems  
   - 논문 세션 : [TBD]()  
 
@@ -67,7 +67,7 @@
   - CH5. EM 알고리즘  
 
 #### **2025년 3월 8일** *(3/1 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mff689e4a7817c0997b82f7ca4fbc5175	)
-- 발표자 - AI(TBD), 논문(TBD)  
+- 발표자 - AI(우석), 논문(TBD)  
   - CH5. Prompt Engineering  
   - 논문 세션 : [TBD]()  
 
@@ -77,7 +77,7 @@
   - CH6. 신경망  
 
 #### **2025년 3월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m93fd00e113e21dc12a75a6b4bb2d2208	)
-- 발표자 - AI(TBD), 논문(TBD)  
+- 발표자 - AI(우석), 논문(TBD)  
   - CH6. RAG And Agents  
   - 논문 세션 : [TBD]()  
 
