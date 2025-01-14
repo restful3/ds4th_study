@@ -44,7 +44,7 @@
 #### **2025년 1월 18일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m0890a4d2dce5a5469ac4a4019efc3b51	)
 - 발표자 - LLM(태호), 밑바닥(우석)  
   - CH3. 트랜스포머 모델을 다루기 위한 허깅페이스 트랜스포머 라이브러리  
-  - CH3. 다변량 정규 분포  
+  - [CH3. 다변량 정규 분포](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_5/step03_%EB%8B%A4%EB%B3%80%EB%9F%89%EB%B6%84%ED%8F%AC_wooseok.ipynb)
 
 #### **2025년 1월 25일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m41a6759003026ae0d91e29aecc9675e9	)
 - 발표자 - AI(태영), 논문(K성진)  
