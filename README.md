@@ -47,9 +47,9 @@
   - [CH3. 다변량 정규 분포](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_5/step03_%EB%8B%A4%EB%B3%80%EB%9F%89%EB%B6%84%ED%8F%AC_wooseok.ipynb)
 
 #### **2025년 1월 25일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m41a6759003026ae0d91e29aecc9675e9	)
-- 발표자 - AI(태영), 논문(K성진)  
+- 발표자 - AI(태영), 논문(TBD)  
   - CH3. Evaluation Methodology  
-  - 논문 세션 : [Mechanistic interpretability of LLM]()  
+  - 논문 세션 : [TBD]()  
 
 #### **2025년 2월 8일** *(2/1 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=mebc02c032fcf0068181e7b554c709bb3	)
 - 발표자 - LLM(TBD), 밑바닥(태영)  
