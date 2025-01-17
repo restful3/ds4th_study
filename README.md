@@ -44,7 +44,7 @@
 #### **2025년 1월 18일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m0890a4d2dce5a5469ac4a4019efc3b51	)
 - 발표자 - LLM(태호), 밑바닥(우석)  
   - CH3. 트랜스포머 모델을 다루기 위한 허깅페이스 트랜스포머 라이브러리  
-  - CH3. 다변량 정규 분포  
+  - [CH3. 다변량 정규 분포](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_5/step03_%EB%8B%A4%EB%B3%80%EB%9F%89%EB%B6%84%ED%8F%AC_wooseok.ipynb)
 
 #### **2025년 1월 25일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m41a6759003026ae0d91e29aecc9675e9	)
 - 발표자 - AI(태영), 논문(K성진)  
@@ -53,11 +53,11 @@
 
 #### **2025년 2월 8일** *(2/1 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=mebc02c032fcf0068181e7b554c709bb3	)
 - 발표자 - LLM(TBD), 밑바닥(태영)  
-  - CH4. 말 잘 듣는 모델 만들기  
+  - CH4. 말 잘 듣는 모델 만들기
   - CH4. 가우스 혼합 모델  
 
 #### **2025년 2월 15일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m379b03e5c415c37bfbd5417b18034e57	)
-- 발표자 - AI(TBD), 논문(TBD)  
+- 발표자 - AI(우석), 논문(TBD)  
   - CH4. Evaluate AI Systems  
   - 논문 세션 : [TBD]()  
 
@@ -67,7 +67,7 @@
   - CH5. EM 알고리즘  
 
 #### **2025년 3월 8일** *(3/1 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mff689e4a7817c0997b82f7ca4fbc5175	)
-- 발표자 - AI(TBD), 논문(TBD)  
+- 발표자 - AI(우석), 논문(TBD)  
   - CH5. Prompt Engineering  
   - 논문 세션 : [TBD]()  
 
@@ -77,7 +77,7 @@
   - CH6. 신경망  
 
 #### **2025년 3월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m93fd00e113e21dc12a75a6b4bb2d2208	)
-- 발표자 - AI(TBD), 논문(TBD)  
+- 발표자 - AI(우석), 논문(TBD)  
   - CH6. RAG And Agents  
   - 논문 세션 : [TBD]()  
 
