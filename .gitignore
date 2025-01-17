@@ -3,6 +3,7 @@ model/
 models/
 output/
 *.models/*
+**/models/
 results/
 results/
 *.pyc
