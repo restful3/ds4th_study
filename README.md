@@ -57,12 +57,12 @@
   - CH4. 가우스 혼합 모델  
 
 #### **2025년 2월 15일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m379b03e5c415c37bfbd5417b18034e57	)
-- 발표자 - AI(우석), 논문(TBD)  
+- 발표자 - AI(우석), 논문(태영)  
   - CH4. Evaluate AI Systems  
   - 논문 세션 : [TBD]()  
 
 #### **2025년 2월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc2a52bbfacadc192ba94409533823779	)
-- 발표자 - LLM(TBD), 밑바닥(K성진)  
+- 발표자 - LLM(태영), 밑바닥(K성진)  
   - CH5. GPU 효율적인 학습  
   - CH5. EM 알고리즘  
 
