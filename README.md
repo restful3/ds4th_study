@@ -62,7 +62,7 @@
   - 논문 세션 : [TBD]()  
 
 #### **2025년 2월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc2a52bbfacadc192ba94409533823779	)
-- 발표자 - LLM(TBD), 밑바닥(K성진)  
+- 발표자 - LLM(태영), 밑바닥(K성진)  
   - CH5. GPU 효율적인 학습  
   - CH5. EM 알고리즘  
 
