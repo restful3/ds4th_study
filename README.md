@@ -48,7 +48,7 @@
 
 #### **2025년 1월 25일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m41a6759003026ae0d91e29aecc9675e9	)
 - 발표자 - AI(태영), 논문(TBD)  
-  - [CH3. Evaluation Methodology](https://github.com/restful3/ds4th_study/blob/main/source/AI_Engineering/Ch03_Evaluation_Methodolog_song.ipynb)
+  - [CH3. Evaluation Methodology]([https://github.com/restful3/ds4th_study/blob/main/source/AI_Engineering/Ch03_Evaluation_Methodolog_song.ipynb](https://github.com/restful3/ds4th_study/blob/main/source/AI_Engineering/Ch03_Evaluation_Methodolog_song.pdf))
   - 논문 세션 : [TBD]()  
 
 #### **2025년 2월 8일** *(2/1 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=mebc02c032fcf0068181e7b554c709bb3	)
