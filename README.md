@@ -47,19 +47,20 @@
   - [CH3. 다변량 정규 분포](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_5/step03_%EB%8B%A4%EB%B3%80%EB%9F%89%EB%B6%84%ED%8F%AC_wooseok.ipynb)
 
 #### **2025년 1월 25일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m41a6759003026ae0d91e29aecc9675e9	)
-- 발표자 - AI(태영), 논문(TBD)  
-  - [CH3. Evaluation Methodology](https://github.com/restful3/ds4th_study/blob/main/source/AI_Engineering/Ch03_Evaluation_Methodolog_song.ipynb)
-  - 논문 세션 : [TBD]()  
+- 발표자 - AI(태영), 논문(우석)  
+  - [CH3. Evaluation Methodology](https://github.com/restful3/ds4th_study/blob/main/source/AI_Engineering/Ch03_Evaluation_Methodolog_song.pdf)
+  - 논문 세션 : [rstar-Math, Small LLMs](https://github.com/restful3/ds4th_study/blob/main/source/papers/Chain-of-Thought%20Prompring%20Elicits%20Reasoning%20in%20Large%20Language%20Models/rStar-Math%EC%9D%98%20%ED%83%84%EC%83%9D%20%EB%B0%B0%EA%B2%BD%EA%B3%BC%20%ED%95%B5%EC%8B%AC%20%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4.md)
 
 #### **2025년 2월 8일** *(2/1 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=mebc02c032fcf0068181e7b554c709bb3	)
-- 발표자 - LLM(TBD), 밑바닥(태영)  
+- 발표자 - LLM(우석), 밑바닥(태영)  
   - CH4. 말 잘 듣는 모델 만들기
   - CH4. 가우스 혼합 모델  
 
 #### **2025년 2월 15일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m379b03e5c415c37bfbd5417b18034e57	)
-- 발표자 - AI(우석), 논문(태영)  
+- 발표자 - AI(TBD), 논문(태영)  
   - CH4. Evaluate AI Systems  
-  - 논문 세션 : [ChainOfThought, rstar-Math, Small LLMs](https://github.com/restful3/ds4th_study/blob/main/source/papers/Chain-of-Thought%20Prompring%20Elicits%20Reasoning%20in%20Large%20Language%20Models/Chain-of-Thought-Prompting-Elicits-Reasoning-in-Large-Language-Models.pptx)  
+  - 논문 세션 : [TBD]()
+
 
 #### **2025년 2월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc2a52bbfacadc192ba94409533823779	)
 - 발표자 - LLM(태영), 밑바닥(K성진)  
