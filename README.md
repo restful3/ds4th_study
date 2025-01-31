@@ -57,7 +57,7 @@
   - CH4. 가우스 혼합 모델  
 
 #### **2025년 2월 15일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m379b03e5c415c37bfbd5417b18034e57	)
-- 발표자 - AI(TBD), 논문(태)  
+- 발표자 - AI(TBD), 논문(태호)  
   - CH4. Evaluate AI Systems  
   - 논문 세션 : [Deepseek 관련...]()
 
