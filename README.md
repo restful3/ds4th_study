@@ -54,7 +54,7 @@
 #### **2025년 2월 8일** *(2/1 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=mebc02c032fcf0068181e7b554c709bb3	)
 - 발표자 - LLM(우석), 밑바닥(태영)  
   - CH4. 말 잘 듣는 모델 만들기
-  - CH4. 가우스 혼합 모델  
+  - [CH4. 가우스 혼합 모델](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_5/step04_%EA%B0%80%EC%9A%B0%EC%8A%A4_%ED%98%BC%ED%95%A9_%EB%AA%A8%EB%8D%B8_song.ipynb)
 
 #### **2025년 2월 15일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m379b03e5c415c37bfbd5417b18034e57	)
 - 발표자 - AI(TBD), 논문(태호)  
