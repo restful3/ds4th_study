@@ -61,7 +61,6 @@
   - CH4. Evaluate AI Systems  
   - 논문 세션 : [Deepseek Multimodal 관련...]()
 
-
 #### **2025년 2월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc2a52bbfacadc192ba94409533823779	)
 - 발표자 - LLM(태영), 밑바닥(K성진)  
   - CH5. GPU 효율적인 학습  
