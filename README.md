@@ -143,10 +143,12 @@
   - (교재1) [LLM을 활용한 실전 AI 애플리케이션 개발](https://ridibooks.com/books/3649000042?_rdt_sid=category_bestsellers&_rdt_idx=5&_rdt_arg=2220)  
   - (교재2) [밑바닥부터 시작하는 딥러닝 5](https://ridibooks.com/books/443001394?_rdt_sid=BookDetailHomeSeriesMemberBookList&_rdt_idx=4&_s_id=)  
   - (교재3) [AI Engineering](https://www.oreilly.com/library/view/ai-engineering/9781098166298/)  
-- **참고**:
+- **참고 자료**:
   - 각 교재 관련 GitHub 또는 논문 자료
 - **학습 공유**: 매주 학습한 내용을 발표자료와 함께 공유  
-- **발표**: 각 주제별로 50분 발표, 10분 Q&A  
+- **발표**: 각 주제별로 50분 발표, 10분 Q&A
+- **운영 규칙**
+  - [스터디 운영 규칙](https://github.com/restful3/ds4th_study/blob/main/source/%EC%8A%A4%ED%84%B0%EB%94%94_%EC%9A%B4%EC%98%81_%EA%B7%9C%EC%B9%99_v01.pdf)
 
 ---
 
