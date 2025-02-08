@@ -57,7 +57,7 @@
   - [CH4. 가우스 혼합 모델](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_5/step04_%EA%B0%80%EC%9A%B0%EC%8A%A4_%ED%98%BC%ED%95%A9_%EB%AA%A8%EB%8D%B8_song.ipynb)
 
 #### **2025년 2월 15일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m379b03e5c415c37bfbd5417b18034e57	)
-- 발표자 - AI(TBD), 논문(태호)  
+- 발표자 - AI(재익), 논문(태호)  
   - CH4. Evaluate AI Systems  
   - 논문 세션 : [Deepseek Multimodal 관련...]()
 
@@ -71,7 +71,7 @@
   - CH5. Prompt Engineering  
   - 논문 세션 : [TBD]()  
 
-#### **2025년 3월 15일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mfaf5dc7391304da94f27f16871dce1a3	)
+#### **2025년 3월 15일**: [오프라인](https://booking.naver.com/booking/10/bizes/372277), [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mfaf5dc7391304da94f27f16871dce1a3	)
 - 발표자 - LLM(TBD), 밑바닥(TBD)  
   - CH6. sLLM 학습하기  
   - CH6. 신경망  
