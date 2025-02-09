@@ -72,7 +72,7 @@
   - 논문 세션 : [TBD]()  
 
 #### **2025년 3월 15일**: [오프라인](https://booking.naver.com/booking/10/bizes/372277), [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mfaf5dc7391304da94f27f16871dce1a3	)
-- 발표자 - LLM(TBD), 밑바닥(TBD)  
+- 발표자 - LLM(TBD), 밑바닥(민호)  
   - CH6. sLLM 학습하기  
   - CH6. 신경망  
 
