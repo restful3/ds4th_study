@@ -82,7 +82,7 @@
   - 논문 세션 : [TBD]()  
 
 #### **2025년 3월 29일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m685a89d84e5c1129312cf3421b154059	)
-- 발표자 - LLM(TBD), 밑바닥(TBD)  
+- 발표자 - LLM(민호), 밑바닥(TBD)  
   - CH7. 모델 가볍게 만들기  
   - CH7. 변이형 오토인코더  
 
@@ -92,7 +92,7 @@
   - 논문 세션 : [TBD]()  
 
 #### **2025년 4월 19일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m492a1f4b4721f9070e3102bce3acc903	)
-- 발표자 - LLM(TBD), 밑바닥(TBD)  
+- 발표자 - LLM(TBD), 밑바닥(민호)  
   - CH8. sLLM 서빙하기  
   - CH8. 확산 모델 이론  
 
