@@ -107,7 +107,7 @@
   - CH9. 확산 모델 구현  
 
 #### **2025년 5월 17일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb85f58b1c6d1d0a9062cee50342b0e3d	)
-- 발표자 - AI(TBD), 논문(TBD)  
+- 발표자 - AI(민호), 논문(TBD)  
   - CH9. Inference Optimization  
   - 논문 세션 : [TBD]()  
 
@@ -127,7 +127,7 @@
   - CH13. LLM 운영하기  
 
 #### **2025년 6월 21일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1915fca8a0b5fbc16f23c9ba84616244	)
-- 발표자 - LLM(TBD), 논문(TBD)  
+- 발표자 - LLM(TBD), 논문(민호)  
   - CH14. 멀티 모달  
   - 논문 세션 : [TBD]()  
  
