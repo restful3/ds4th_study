@@ -53,11 +53,11 @@
 
 #### **2025년 2월 8일** *(2/1 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=mebc02c032fcf0068181e7b554c709bb3	)
 - 발표자 - LLM(우석), 밑바닥(태영)  
-  - CH4. 말 잘 듣는 모델 만들기
+  - [CH4. 말 잘 듣는 모델 만들기](https://github.com/restful3/ds4th_study/blob/main/source/LLM%EC%9D%84_%ED%99%9C%EC%9A%A9%ED%95%9C_%EC%8B%A4%EC%A0%84_AI_%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98_%EA%B0%9C%EB%B0%9C/CH4_%EB%A7%90%EC%9E%98%EB%93%A3%EB%8A%94LLM_%EC%9E%91%EC%84%B1%EC%A4%91.pptx)
   - [CH4. 가우스 혼합 모델](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_5/step04_%EA%B0%80%EC%9A%B0%EC%8A%A4_%ED%98%BC%ED%95%A9_%EB%AA%A8%EB%8D%B8_song.ipynb)
 
 #### **2025년 2월 15일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m379b03e5c415c37bfbd5417b18034e57	)
-- 발표자 - AI(TBD), 논문(태호)  
+- 발표자 - AI(재익), 논문(태호)  
   - CH4. Evaluate AI Systems  
   - 논문 세션 : [Deepseek Multimodal 관련...]()
 
@@ -71,8 +71,8 @@
   - CH5. Prompt Engineering  
   - 논문 세션 : [TBD]()  
 
-#### **2025년 3월 15일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mfaf5dc7391304da94f27f16871dce1a3	)
-- 발표자 - LLM(TBD), 밑바닥(TBD)  
+#### **2025년 3월 15일**: [오프라인](https://booking.naver.com/booking/10/bizes/372277), [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mfaf5dc7391304da94f27f16871dce1a3	)
+- 발표자 - LLM(TBD), 밑바닥(민호)  
   - CH6. sLLM 학습하기  
   - CH6. 신경망  
 
@@ -82,7 +82,7 @@
   - 논문 세션 : [TBD]()  
 
 #### **2025년 3월 29일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m685a89d84e5c1129312cf3421b154059	)
-- 발표자 - LLM(TBD), 밑바닥(TBD)  
+- 발표자 - LLM(민호), 밑바닥(TBD)  
   - CH7. 모델 가볍게 만들기  
   - CH7. 변이형 오토인코더  
 
@@ -92,7 +92,7 @@
   - 논문 세션 : [TBD]()  
 
 #### **2025년 4월 19일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m492a1f4b4721f9070e3102bce3acc903	)
-- 발표자 - LLM(TBD), 밑바닥(TBD)  
+- 발표자 - LLM(TBD), 밑바닥(민호)  
   - CH8. sLLM 서빙하기  
   - CH8. 확산 모델 이론  
 
@@ -107,7 +107,7 @@
   - CH9. 확산 모델 구현  
 
 #### **2025년 5월 17일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb85f58b1c6d1d0a9062cee50342b0e3d	)
-- 발표자 - AI(TBD), 논문(TBD)  
+- 발표자 - AI(민호), 논문(TBD)  
   - CH9. Inference Optimization  
   - 논문 세션 : [TBD]()  
 
@@ -117,7 +117,7 @@
   - CH10. 확산 모델 응용
 
 #### **2025년 5월 31일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m35afd51f4e675a8362f2e9c24e84ca69	)
-- 발표자 - AI(TBD), LLM(TBD)
+- 발표자 - AI(민호), LLM(TBD)
   - CH10. AI Engineering Architecture And User Feedback
   - CH11. 자신의 데이터에 맞춘 임베딩 모델 만들기: RAG 개선하기  
 
@@ -127,7 +127,7 @@
   - CH13. LLM 운영하기  
 
 #### **2025년 6월 21일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1915fca8a0b5fbc16f23c9ba84616244	)
-- 발표자 - LLM(TBD), 논문(TBD)  
+- 발표자 - LLM(TBD), 논문(민호)  
   - CH14. 멀티 모달  
   - 논문 세션 : [TBD]()  
  
