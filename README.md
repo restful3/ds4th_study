@@ -59,7 +59,7 @@
 #### **2025년 2월 15일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m379b03e5c415c37bfbd5417b18034e57	)
 - 발표자 - AI(재익), 논문(태호)  
   - CH4. Evaluate AI Systems  
-  - 논문 세션 : [Deepseek Multimodal 관련...]()
+  - 논문 세션 : [Deepseek Multimodal 모델 - Janus, Janus-Pro](https://github.com/restful3/ds4th_study/blob/main/source/papers/%5B%EB%85%BC%EB%AC%B8%5D_Deepseek%20Multimodal_%EB%AA%A8%EB%8D%B8_%EB%85%BC%EB%AC%B8_%EB%A6%AC%EB%B7%B0_Janus_JanusPro_20250215_Teo.pdf)
 
 #### **2025년 2월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc2a52bbfacadc192ba94409533823779	)
 - 발표자 - LLM(태영), 밑바닥(K성진)  
