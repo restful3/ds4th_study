@@ -63,7 +63,7 @@
 
 #### **2025년 2월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc2a52bbfacadc192ba94409533823779	)
 - 발표자 - LLM(태영), 밑바닥(K성진)  
-  - CH5. GPU 효율적인 학습  
+  - [CH5. GPU 효율적인 학습](https://github.com/restful3/ds4th_study/blob/main/source/LLM%EC%9D%84_%ED%99%9C%EC%9A%A9%ED%95%9C_%EC%8B%A4%EC%A0%84_AI_%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98_%EA%B0%9C%EB%B0%9C/CH05_GPU_%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9D%B8_%ED%95%99%EC%8A%B5_song.ipynb)
   - CH5. EM 알고리즘  
 
 #### **2025년 3월 8일** *(3/1 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mff689e4a7817c0997b82f7ca4fbc5175	)
