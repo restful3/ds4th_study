@@ -27,9 +27,9 @@
   - [CH1. 정규 분포](https://github.com/restful3/ds4th_study/blob/main/source/밑바닥부터_시작하는_딥러닝_5/step01-probability-Statistics.ipynb)
 
 #### **2024년 12월 21일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m74bc31f0b8067acc17d5107a4cfcea0f	)
-- 발표자 - AI(정훈), 논문(태영)  
+- 발표자 - AI(정훈), 자유주제(태영)  
   - [CH1. Introduction To Building AI Applications With Foundation Models](https://github.com/restful3/ds4th_study/blob/main/source/AI_Engineering/Ch01_Introduction_to_Building_AI_Applications_park.pdf) 
-  - 논문 세션 : [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633)  
+  - 자유주제 세션 : [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633)  
 
 #### **2024년 12월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb5a74c3fb595bb2ab09920b817e1a2a5	)
 - 발표자 - LLM(C성진), 밑바닥(종우)  
@@ -37,9 +37,9 @@
   - [CH2. 최대 가능도 추정](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_5/step02-MLE_jongwoo.pdf)  
 
 #### **2025년 1월 11일** *(1/4 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m16c5137784cdd76dee041575c96a4e48	)
-- 발표자 - AI(우석), 논문(재익)  
+- 발표자 - AI(우석), 자유주제(재익)  
   - [CH2. Understanding Foundation Models](https://github.com/restful3/ds4th_study/blob/main/source/AI_Engineering/Ch02_Understanding_Foundation_Models_jeongwooseok.ipynb)  
-  - 논문 세션 : [TBD]()  
+  - 자유주제 세션 : [TBD]()  
 
 #### **2025년 1월 18일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m0890a4d2dce5a5469ac4a4019efc3b51	)
 - 발표자 - LLM(태호), 밑바닥(우석)  
@@ -47,9 +47,9 @@
   - [CH3. 다변량 정규 분포](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_5/step03_%EB%8B%A4%EB%B3%80%EB%9F%89%EB%B6%84%ED%8F%AC_wooseok.ipynb)
 
 #### **2025년 1월 25일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m41a6759003026ae0d91e29aecc9675e9	)
-- 발표자 - AI(태영), 논문(우석)  
+- 발표자 - AI(태영), 자유주제(우석)  
   - [CH3. Evaluation Methodology](https://github.com/restful3/ds4th_study/blob/main/source/AI_Engineering/Ch03_Evaluation_Methodolog_song.pdf)
-  - 논문 세션 : [rstar-Math, Small LLMs](https://github.com/restful3/ds4th_study/blob/main/source/papers/Chain-of-Thought%20Prompring%20Elicits%20Reasoning%20in%20Large%20Language%20Models/rStar-Math%EC%9D%98%20%ED%83%84%EC%83%9D%20%EB%B0%B0%EA%B2%BD%EA%B3%BC%20%ED%95%B5%EC%8B%AC%20%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4.md)
+  - 자유주제 세션 : [rstar-Math, Small LLMs](https://github.com/restful3/ds4th_study/blob/main/source/papers/Chain-of-Thought%20Prompring%20Elicits%20Reasoning%20in%20Large%20Language%20Models/rStar-Math%EC%9D%98%20%ED%83%84%EC%83%9D%20%EB%B0%B0%EA%B2%BD%EA%B3%BC%20%ED%95%B5%EC%8B%AC%20%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4.md)
 
 #### **2025년 2월 8일** *(2/1 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=mebc02c032fcf0068181e7b554c709bb3	)
 - 발표자 - LLM(우석), 밑바닥(태영)  
@@ -57,9 +57,9 @@
   - [CH4. 가우스 혼합 모델](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_5/step04_%EA%B0%80%EC%9A%B0%EC%8A%A4_%ED%98%BC%ED%95%A9_%EB%AA%A8%EB%8D%B8_song.ipynb)
 
 #### **2025년 2월 15일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m379b03e5c415c37bfbd5417b18034e57	)
-- 발표자 - AI(재익), 논문(태호)  
+- 발표자 - AI(재익), 자유주제(태호)  
   - CH4. Evaluate AI Systems  
-  - 논문 세션 : [Deepseek Multimodal 모델 - Janus, Janus-Pro](https://github.com/restful3/ds4th_study/blob/main/source/papers/%5B%EB%85%BC%EB%AC%B8%5D_Deepseek%20Multimodal_%EB%AA%A8%EB%8D%B8_%EB%85%BC%EB%AC%B8_%EB%A6%AC%EB%B7%B0_Janus_JanusPro_20250215_Teo.pdf)
+  - 자유주제 세션 : [Deepseek Multimodal 모델 - Janus, Janus-Pro](https://github.com/restful3/ds4th_study/blob/main/source/papers/%5B%EB%85%BC%EB%AC%B8%5D_Deepseek%20Multimodal_%EB%AA%A8%EB%8D%B8_%EB%85%BC%EB%AC%B8_%EB%A6%AC%EB%B7%B0_Janus_JanusPro_20250215_Teo.pdf)
 
 #### **2025년 2월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc2a52bbfacadc192ba94409533823779	)
 - 발표자 - LLM(태영), 밑바닥(K성진)  
@@ -67,9 +67,9 @@
   - CH5. EM 알고리즘  
 
 #### **2025년 3월 8일** *(3/1 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mff689e4a7817c0997b82f7ca4fbc5175	)
-- 발표자 - AI(우석), 논문(TBD)  
+- 발표자 - AI(우석), 자유주제(C성진)  
   - CH5. Prompt Engineering  
-  - 논문 세션 : [TBD]()  
+  - 자유주제 세션 : [TBD]()  
 
 #### **2025년 3월 15일**: [오프라인](https://booking.naver.com/booking/10/bizes/372277), [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mfaf5dc7391304da94f27f16871dce1a3	)
 - 발표자 - LLM(TBD), 밑바닥(민호)  
@@ -77,9 +77,9 @@
   - CH6. 신경망  
 
 #### **2025년 3월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m93fd00e113e21dc12a75a6b4bb2d2208	)
-- 발표자 - AI(우석), 논문(TBD)  
+- 발표자 - AI(우석), 자유주제(정훈)  
   - CH6. RAG And Agents  
-  - 논문 세션 : [TBD]()  
+  - 자유주제 세션 : [TBD]()  
 
 #### **2025년 3월 29일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m685a89d84e5c1129312cf3421b154059	)
 - 발표자 - LLM(민호), 밑바닥(TBD)  
@@ -87,9 +87,9 @@
   - CH7. 변이형 오토인코더  
 
 #### **2025년 4월 12일** *(4/5 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m13e940f392b3b5ae422edff93b61b1ea	)
-- 발표자 - AI(TBD), 논문(TBD)  
+- 발표자 - AI(TBD), 자유주제(TBD)  
   - CH7. Finetuning  
-  - 논문 세션 : [TBD]()  
+  - 자유주제 세션 : [TBD]()  
 
 #### **2025년 4월 19일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m492a1f4b4721f9070e3102bce3acc903	)
 - 발표자 - LLM(TBD), 밑바닥(민호)  
@@ -97,9 +97,9 @@
   - CH8. 확산 모델 이론  
 
 #### **2025년 4월 26일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc362a213dabd3c9d29f727b97b5fdf83	)
-- 발표자 - AI(TBD), 논문(TBD)  
+- 발표자 - AI(TBD), 자유주제(TBD)  
   - CH8. Dataset Engineering  
-  - 논문 세션 : [TBD]()  
+  - 자유주제 세션 : [TBD]()  
 
 #### **2025년 5월 10일** *(5/3 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mebff409f9da191e9e2c17a6e815224b6	)
 - 발표자 - LLM(TBD), 밑바닥(TBD)  
@@ -107,9 +107,9 @@
   - CH9. 확산 모델 구현  
 
 #### **2025년 5월 17일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb85f58b1c6d1d0a9062cee50342b0e3d	)
-- 발표자 - AI(민호), 논문(TBD)  
+- 발표자 - AI(민호), 자유주제(TBD)  
   - CH9. Inference Optimization  
-  - 논문 세션 : [TBD]()  
+  - 자유주제 세션 : [TBD]()  
 
 #### **2025년 5월 24일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1decb14e63ff3ff5776c8e8deaf340aa	)
 - 발표자 - LLM(TBD), 밑바닥(TBD)  
@@ -127,9 +127,9 @@
   - CH13. LLM 운영하기  
 
 #### **2025년 6월 21일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1915fca8a0b5fbc16f23c9ba84616244	)
-- 발표자 - LLM(TBD), 논문(민호)  
+- 발표자 - LLM(TBD), 자유주제(민호)  
   - CH14. 멀티 모달  
-  - 논문 세션 : [TBD]()  
+  - 자유주제 세션 : [TBD]()  
  
 #### **2025년 6월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1cf3168ebcc132ee5074271e66d2defe	)
 - 발표자 - LLM(TBD), LLM(TBD)  
@@ -144,7 +144,7 @@
   - (교재2) [밑바닥부터 시작하는 딥러닝 5](https://ridibooks.com/books/443001394?_rdt_sid=BookDetailHomeSeriesMemberBookList&_rdt_idx=4&_s_id=)  
   - (교재3) [AI Engineering](https://www.oreilly.com/library/view/ai-engineering/9781098166298/)  
 - **참고 자료**:
-  - 각 교재 관련 GitHub 또는 논문 자료
+  - 각 교재 관련 GitHub 또는 자유주제 자료
 - **학습 공유**: 매주 학습한 내용을 발표자료와 함께 공유  
 - **발표**: 각 주제별로 50분 발표, 10분 Q&A
 - **운영 규칙**
