@@ -17,13 +17,13 @@ urls = [
     "https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/",
 ]
 
-# 문서 로드
+# 문서 로드  
 docs = [WebBaseLoader(url).load() for url in urls]
 docs_list = [item for sublist in docs for item in sublist]
 
 # 문서 분할
 # RecursiveCharacterTextSplitter를 사용하여 문서를 작은 청크로 나눕니다.
-# tiktoken 인코더를 사용하여 토큰 기반으로 분할합니다.
+# tiktoken 인코더를 사용하여 토큰 기반으로 분할합니다.  2
 text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
     chunk_size=500, chunk_overlap=0
 )
