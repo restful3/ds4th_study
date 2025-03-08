@@ -71,7 +71,7 @@
   - CH5. Prompt Engineering  
   - 자유주제 세션 : [TBD]()  
 
-#### **2025년 3월 15일**: [오프라인](https://booking.naver.com/booking/10/bizes/372277), [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mfaf5dc7391304da94f27f16871dce1a3	)
+#### **2025년 3월 15일**: [오프라인,오전 10시](https://booking.naver.com/booking/10/bizes/372277), [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mfaf5dc7391304da94f27f16871dce1a3	)
 - 발표자 - 밑바닥(민호) , 자유주제(정훈)  
   - CH6. 신경망
   - 자유주제 세션 : [Anomaly detection 실무](https://github.com/restful3/ds4th_study/blob/main/source/papers/Anomaly%20detection_%EB%B0%95%EC%A0%95%ED%9B%88.pdf)   
