@@ -87,7 +87,7 @@
   - CH7. 변이형 오토인코더  
 
 #### **2025년 4월 12일** *(4/5 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m13e940f392b3b5ae422edff93b61b1ea	)
-- 발표자 - AI(TBD), 자유주제(TBD)  
+- 발표자 - AI(우석), 자유주제(TBD)  
   - CH7. Finetuning  
   - 자유주제 세션 : [TBD]()  
 
