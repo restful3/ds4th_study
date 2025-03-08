@@ -72,14 +72,14 @@
   - 자유주제 세션 : [TBD]()  
 
 #### **2025년 3월 15일**: [오프라인](https://booking.naver.com/booking/10/bizes/372277), [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mfaf5dc7391304da94f27f16871dce1a3	)
-- 발표자 - LLM(TBD), 밑바닥(민호)  
-  - CH6. sLLM 학습하기  
-  - CH6. 신경망  
+- 발표자 - 밑바닥(민호) , 자유주제(정훈)  
+  - CH6. 신경망
+  - 자유주제 세션 : [Anomaly detection 실무](https://github.com/restful3/ds4th_study/blob/main/source/papers/Anomaly%20detection_%EB%B0%95%EC%A0%95%ED%9B%88.pdf)   
 
 #### **2025년 3월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m93fd00e113e21dc12a75a6b4bb2d2208	)
-- 발표자 - AI(우석), 자유주제(정훈)  
-  - CH6. RAG And Agents  
-  - 자유주제 세션 : [Anomaly detection 실무](https://github.com/restful3/ds4th_study/blob/main/source/papers/Anomaly%20detection_%EB%B0%95%EC%A0%95%ED%9B%88.pdf)  
+- 발표자 - AI(우석), LLM(TBD)  
+  - CH6. RAG And Agents
+  - CH6. sLLM 학습하기   
 
 #### **2025년 3월 29일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m685a89d84e5c1129312cf3421b154059	)
 - 발표자 - LLM(민호), 밑바닥(TBD)  
