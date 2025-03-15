@@ -77,7 +77,7 @@
   - 자유주제 세션 : [Anomaly detection 실무](https://github.com/restful3/ds4th_study/blob/main/source/papers/Anomaly%20detection_%EB%B0%95%EC%A0%95%ED%9B%88.pdf)   
 
 #### **2025년 3월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m93fd00e113e21dc12a75a6b4bb2d2208	)
-- 발표자 - AI(우석), LLM(TBD)  
+- 발표자 - AI(우석), LLM(재익)  
   - CH6. RAG And Agents
   - CH6. sLLM 학습하기   
 
