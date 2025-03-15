@@ -82,7 +82,7 @@
   - CH6. sLLM 학습하기   
 
 #### **2025년 3월 29일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m685a89d84e5c1129312cf3421b154059	)
-- 발표자 - LLM(민호), 밑바닥(TBD)  
+- 발표자 - LLM(태영), 밑바닥(TBD)  
   - CH7. 모델 가볍게 만들기  
   - CH7. 변이형 오토인코더  
 
