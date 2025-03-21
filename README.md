@@ -71,23 +71,23 @@
   - CH5. Prompt Engineering  
   - 자유주제 세션 : [TBD]()  
 
-#### **2025년 3월 15일**: [오프라인](https://booking.naver.com/booking/10/bizes/372277), [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mfaf5dc7391304da94f27f16871dce1a3	)
-- 발표자 - LLM(TBD), 밑바닥(민호)  
-  - CH6. sLLM 학습하기  
-  - CH6. 신경망  
+#### **2025년 3월 15일**: [오프라인 : 오전 10시](https://booking.naver.com/booking/10/bizes/372277), [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mfaf5dc7391304da94f27f16871dce1a3	)
+- 발표자 - 밑바닥(민호) , 자유주제(정훈)  
+  - [CH6. 신경망](https://github.com/restful3/ds4th_study/blob/4c7edde084b640ffda8717f3d35569c86df90b48/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_5/step06_%EC%8B%A0%EA%B2%BD%EB%A7%9D_minho.ipynb)
+  - 자유주제 세션 : [Anomaly detection 실무](https://github.com/restful3/ds4th_study/blob/main/source/papers/Anomaly%20detection_%EB%B0%95%EC%A0%95%ED%9B%88.pdf)   
 
 #### **2025년 3월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m93fd00e113e21dc12a75a6b4bb2d2208	)
-- 발표자 - AI(우석), 자유주제(정훈)  
-  - CH6. RAG And Agents  
-  - 자유주제 세션 : [TBD]()  
+- 발표자 - AI(우석), LLM(재익)  
+  - CH6. RAG And Agents
+  - CH6. sLLM 학습하기   
 
 #### **2025년 3월 29일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m685a89d84e5c1129312cf3421b154059	)
-- 발표자 - LLM(민호), 밑바닥(TBD)  
+- 발표자 - LLM(태영), 밑바닥(민호)  
   - CH7. 모델 가볍게 만들기  
   - CH7. 변이형 오토인코더  
 
 #### **2025년 4월 12일** *(4/5 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m13e940f392b3b5ae422edff93b61b1ea	)
-- 발표자 - AI(TBD), 자유주제(TBD)  
+- 발표자 - AI(우석), 자유주제(TBD)  
   - CH7. Finetuning  
   - 자유주제 세션 : [TBD]()  
 
