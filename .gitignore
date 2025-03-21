@@ -19,3 +19,9 @@ __pycache__/
 **/datasets/
 **/my_*/
 *.mmap
+
+# Ignore API keys and sensitive information
+**/gpt/*.ipynb
+*api_key*
+*secret*
+*.env
