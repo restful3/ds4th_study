@@ -1,63 +1,21 @@
-# 데이터 관련
-**/data/
-**/datasets/
-*.csv
-*.json
-*.xml
-*.xlsx
-*.xls
-
-# 모델 관련
+data/
 model/
 models/
+output/
 *.models/*
 **/models/
-*.pth
-*.pt
-*.pkl
-*.mmap
-*.h5
-*.hdf5
-*.onnx
-
-# 결과 및 출력
-output/
-**/results/
-logs/
-**/logs/
-
-# 파이썬 관련
-*.py[cod]
+results/
+results/
+*.pyc
 __pycache__/
-*.so
-.Python
-*.egg
-*.egg-info/
-dist/
-build/
-
-# 주피터 노트북 관련
-.ipynb_checkpoints
-*/.ipynb_checkpoints/*
+*.pth
+*.pyc
+*.pt
+*.ipynb_checkpoints*
 *.ipynb_check*
-
-# 환경 설정
+*.pkl
 *.env
-.env.local
-.env.*.local
-.venv
-venv/
-ENV/
-
-# IDE 관련
-.idea/
-.vscode/
-*.swp
-*.swo
-.DS_Store
-
-# 기타
 .chainlit/*
+**/datasets/
 **/my_*/
-tmp/
-temp/
+*.mmap
