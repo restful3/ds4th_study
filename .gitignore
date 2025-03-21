@@ -1,27 +1,64 @@
-data/
+# 데이터 관련
+**/data/
+**/datasets/
+*.csv
+*.json
+*.xml
+*.xlsx
+*.xls
+
+# 모델 관련
 model/
 models/
-output/
 *.models/*
 **/models/
-results/
-results/
-*.pyc
-__pycache__/
 *.pth
-*.pyc
 *.pt
-*.ipynb_checkpoints*
-*.ipynb_check*
 *.pkl
-*.env
-.chainlit/*
-**/datasets/
-**/my_*/
 *.mmap
+*.h5
+*.hdf5
+*.onnx
 
-# Ignore API keys and sensitive information
-**/gpt/*.ipynb
-*sk_*
-*secret*
+# 결과 및 출력
+output/
+**/results/
+logs/
+**/logs/
+
+# 파이썬 관련
+*.py[cod]
+__pycache__/
+*.so
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+
+# 주피터 노트북 관련
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+*.ipynb_check*
+
+# 환경 설정
 *.env
+.env.local
+.env.*.local
+.venv
+venv/
+ENV/
+
+# IDE 관련
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# 기타
+.chainlit/*
+**/my_*/
+tmp/
+temp/
+.Trash-0/
