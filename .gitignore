@@ -22,6 +22,6 @@ __pycache__/
 
 # Ignore API keys and sensitive information
 **/gpt/*.ipynb
-*api_key*
+*sk_*
 *secret*
 *.env
