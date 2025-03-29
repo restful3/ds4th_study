@@ -92,7 +92,7 @@
   - 자유주제 세션 : [TBD]()  
 
 #### **2025년 4월 19일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m492a1f4b4721f9070e3102bce3acc903	)
-- 발표자 - LLM(TBD), 밑바닥(민호)  
+- 발표자 - LLM(태영), 밑바닥(민호)  
   - CH8. sLLM 서빙하기  
   - CH8. 확산 모델 이론  
 
