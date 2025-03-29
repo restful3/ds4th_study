@@ -84,7 +84,7 @@
 #### **2025년 3월 29일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m685a89d84e5c1129312cf3421b154059	)
 - 발표자 - LLM(태호), 밑바닥(민호)  
   - CH7. 모델 가볍게 만들기  
-  - CH7. 변이형 오토인코더  
+  - [CH7. 변이형 오토인코더] (https://github.com/restful3/ds4th_study/blob/31e64500ee40deeace764979b694e7f0b8f4ffe1/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_5/step07_%EB%B3%80%EC%9D%B4%ED%98%95%EC%98%A4%ED%86%A0%EC%9D%B8%EC%BD%94%EB%8D%94_minho.pdf) 
 
 #### **2025년 4월 12일** *(4/5 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m13e940f392b3b5ae422edff93b61b1ea	)
 - 발표자 - AI(태영), 자유주제(우석)  
