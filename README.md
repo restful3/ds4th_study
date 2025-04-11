@@ -89,7 +89,7 @@
 #### **2025년 4월 12일** *(4/5 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m13e940f392b3b5ae422edff93b61b1ea	)
 - 발표자 - AI(태영), 자유주제(우석)  
   - CH7. Finetuning  
-  - 자유주제 세션 : [TBD]()  
+  - 자유주제 세션 : [N8N 설치부터 실행까지, 매우 초보만](https://github.com/jeong-wooseok/AIDOINGAI)  
 
 #### **2025년 4월 19일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m492a1f4b4721f9070e3102bce3acc903	)
 - 발표자 - LLM(태영), 밑바닥(민호)  
@@ -97,7 +97,7 @@
   - CH8. 확산 모델 이론  
 
 #### **2025년 4월 26일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc362a213dabd3c9d29f727b97b5fdf83	)
-- 발표자 - AI(TBD), 자유주제(TBD)  
+- 발표자 - AI(우석), 자유주제(TBD)  
   - CH8. Dataset Engineering  
   - 자유주제 세션 : [TBD]()  
 
