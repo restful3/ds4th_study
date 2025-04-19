@@ -94,12 +94,11 @@
 #### **2025년 4월 19일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m492a1f4b4721f9070e3102bce3acc903	)
 - 발표자 - LLM(태영), 밑바닥(민호)  
   - CH8. sLLM 서빙하기  
-  - CH8. 확산 모델 이론  
 
 #### **2025년 4월 26일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc362a213dabd3c9d29f727b97b5fdf83	)
-- 발표자 - AI(우석), 자유주제(TBD)  
+- 발표자 - AI(우석), 밑바닥(민호)    
   - CH8. Dataset Engineering  
-  - 자유주제 세션 : [TBD]()  
+  - CH8. 확산 모델 이론  
 
 #### **2025년 5월 10일** *(5/3 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mebff409f9da191e9e2c17a6e815224b6	)
 - 발표자 - LLM(TBD), 밑바닥(태영)  
