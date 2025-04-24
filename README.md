@@ -101,7 +101,7 @@
   - CH8. 확산 모델 이론  
 
 #### **2025년 5월 10일** *(5/3 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mebff409f9da191e9e2c17a6e815224b6	)
-- 발표자 - LLM(TBD), 밑바닥(태영)  
+- 발표자 - LLM(우석), 밑바닥(태영)  
   - CH9. LLM 애플리케이션 개발하기  
   - CH9. 확산 모델 구현  
 
