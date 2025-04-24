@@ -92,8 +92,9 @@
   - 자유주제 세션 : [N8N 설치부터 실행까지, 매우 초보만](https://github.com/jeong-wooseok/AIDOINGAI)  
 
 #### **2025년 4월 19일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m492a1f4b4721f9070e3102bce3acc903	)
-- 발표자 - LLM(태영), 밑바닥(민호)  
-  - CH8. sLLM 서빙하기  
+- 발표자 - LLM(태영), 자유주제(재익)  
+  - CH8. sLLM 서빙하기
+  - 최근 LLM모델 서베이
 
 #### **2025년 4월 26일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc362a213dabd3c9d29f727b97b5fdf83	)
 - 발표자 - AI(우석), 밑바닥(민호)    
