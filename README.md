@@ -102,7 +102,7 @@
   - CH8. 확산 모델 이론  
 
 #### **2025년 5월 10일** *(5/3 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mebff409f9da191e9e2c17a6e815224b6	)
-- 발표자 - LLM(우석), 밑바닥(태영)  
+- 발표자 - LLM(영재), 밑바닥(K성진)  
   - CH9. LLM 애플리케이션 개발하기  
   - CH9. 확산 모델 구현  
 
@@ -112,7 +112,7 @@
   - 자유주제 세션 : [랭그래프로 멀티에이전트 구현하기(기초)]()  
 
 #### **2025년 5월 24일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1decb14e63ff3ff5776c8e8deaf340aa	)
-- 발표자 - LLM(TBD), 밑바닥(TBD)  
+- 발표자 - LLM(TBD), 밑바닥(태영)  
   - CH10. 임베딩 모델로 데이터 의미 압축하기
   - CH10. 확산 모델 응용
 
