@@ -99,7 +99,7 @@
 #### **2025년 4월 26일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc362a213dabd3c9d29f727b97b5fdf83	)
 - 발표자 - AI(우석), 밑바닥(민호)    
   - CH8. Dataset Engineering  
-  - CH8. 확산 모델 이론  
+  - [CH8. 확산 모델 이론](https://github.com/restful3/ds4th_study/blob/51d165b7bdfb2868f3c95f38533b0931a06e5cb9/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_5/step08_%ED%99%95%EC%82%B0%EB%AA%A8%EB%8D%B8%EC%9D%B4%EB%A1%A0_minho.pptx)
 
 #### **2025년 5월 10일** *(5/3 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mebff409f9da191e9e2c17a6e815224b6	)
 - 발표자 - LLM(영재), 밑바닥(K성진)  
@@ -107,7 +107,7 @@
   - CH9. 확산 모델 구현  
 
 #### **2025년 5월 17일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb85f58b1c6d1d0a9062cee50342b0e3d	)
-- 발표자 - AI(민호), 자유주제(우석)  
+- 발표자 - AI(TBD), 자유주제(우석)  
   - CH9. Inference Optimization  
   - 자유주제 세션 : [랭그래프로 멀티에이전트 구현하기(기초)]()  
 
@@ -117,7 +117,7 @@
   - CH10. 확산 모델 응용
 
 #### **2025년 5월 31일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m35afd51f4e675a8362f2e9c24e84ca69	)
-- 발표자 - AI(민호), LLM(TBD)
+- 발표자 - AI(TBD), LLM(TBD)
   - CH10. AI Engineering Architecture And User Feedback
   - CH11. 자신의 데이터에 맞춘 임베딩 모델 만들기: RAG 개선하기  
 
@@ -127,7 +127,7 @@
   - CH13. LLM 운영하기  
 
 #### **2025년 6월 21일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1915fca8a0b5fbc16f23c9ba84616244	)
-- 발표자 - LLM(TBD), 자유주제(민호)  
+- 발표자 - LLM(TBD), 자유주제(TBD)  
   - CH14. 멀티 모달  
   - 자유주제 세션 : [TBD]()  
  
