@@ -103,11 +103,11 @@
 
 #### **2025년 5월 10일** *(5/3 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mebff409f9da191e9e2c17a6e815224b6	)
 - 발표자 - LLM(영재), 밑바닥(K성진)  
-  - CH9. LLM 애플리케이션 개발하기  
+  - [CH9. LLM 애플리케이션 개발하기](https://github.com/restful3/ds4th_study/blob/main/source/LLM%EC%9D%84_%ED%99%9C%EC%9A%A9%ED%95%9C_%EC%8B%A4%EC%A0%84_AI_%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98_%EA%B0%9C%EB%B0%9C/chapter_9_%EB%82%98%EC%98%81%EC%9E%AC.ipynb)
   - CH9. 확산 모델 구현  
 
 #### **2025년 5월 17일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb85f58b1c6d1d0a9062cee50342b0e3d	)
-- 발표자 - AI(TBD), 자유주제(우석)  
+- 발표자 - AI(영재), 자유주제(우석)  
   - CH9. Inference Optimization  
   - 자유주제 세션 : [랭그래프로 멀티에이전트 구현하기(기초)]()  
 
@@ -117,12 +117,12 @@
   - CH10. 확산 모델 응용
 
 #### **2025년 5월 31일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m35afd51f4e675a8362f2e9c24e84ca69	)
-- 발표자 - AI(TBD), LLM(TBD)
+- 발표자 - AI(태호), LLM(TBD)
   - CH10. AI Engineering Architecture And User Feedback
   - CH11. 자신의 데이터에 맞춘 임베딩 모델 만들기: RAG 개선하기  
 
 #### **2025년 6월 14일** *(6/7 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mbcbbaed6d50821e7d52c93ce336aed79	)
-- 발표자 - LLM(TBD), LLM(TBD)  
+- 발표자 - LLM(TBD), LLM(CH13-HY)  
   - CH12. 벡터 데이터베이스로 확장하기: RAG 구현하기  
   - CH13. LLM 운영하기  
 
