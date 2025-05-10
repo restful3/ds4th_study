@@ -122,7 +122,7 @@
   - CH11. 자신의 데이터에 맞춘 임베딩 모델 만들기: RAG 개선하기  
 
 #### **2025년 6월 14일** *(6/7 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mbcbbaed6d50821e7d52c93ce336aed79	)
-- 발표자 - LLM(TBD), LLM(TBD)  
+- 발표자 - LLM(TBD), LLM(CH13:HY)  
   - CH12. 벡터 데이터베이스로 확장하기: RAG 구현하기  
   - CH13. LLM 운영하기  
 
