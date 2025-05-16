@@ -109,7 +109,7 @@
 #### **2025년 5월 17일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb85f58b1c6d1d0a9062cee50342b0e3d	)
 - 발표자 - AI(영재), 자유주제(우석)  
   - CH9. Inference Optimization  
-  - 자유주제 세션 : [랭그래프로 멀티에이전트 구현하기(기초)]()  
+  - 자유주제 세션 : [랭그래프로 멀티에이전트 구현하기(기초)](https://github.com/restful3/ds4th_study/tree/main/source/langgraph)  
 
 #### **2025년 5월 24일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1decb14e63ff3ff5776c8e8deaf340aa	)
 - 발표자 - LLM(TBD), 밑바닥(태영)  
