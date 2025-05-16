@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "langgraph-agent"
+version = "0.1.0"
+description = ""
+authors = ["example <example@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11,<3.13"
+langchain = "0.3.1"
+langgraph = "0.2.34"
+langchain-openai = "0.2.1"
+langchain-community = "0.3.1"
+langchain-chroma = "0.1.4"
+langchain-ollama = "0.2.0"
+langchain-google-genai = "2.0.0"
+langchain-groq = "0.2.0"
+gradio = "4.44.1"
+python-dotenv = "1.0.1"
+bs4 = "0.0.2"
+wikipedia = "1.4.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
