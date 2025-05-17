@@ -112,17 +112,17 @@
   - 자유주제 세션 : [랭그래프로 멀티에이전트 구현하기(기초)](https://github.com/restful3/ds4th_study/tree/main/source/langgraph)  
 
 #### **2025년 5월 24일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1decb14e63ff3ff5776c8e8deaf340aa	)
-- 발표자 - LLM(TBD), 밑바닥(태영)  
+- 발표자 - LLM(정훈), 밑바닥(태영)  
   - CH10. 임베딩 모델로 데이터 의미 압축하기
   - CH10. 확산 모델 응용
 
 #### **2025년 5월 31일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m35afd51f4e675a8362f2e9c24e84ca69	)
-- 발표자 - AI(태호), LLM(TBD)
+- 발표자 - AI(태호), LLM(C성진)
   - CH10. AI Engineering Architecture And User Feedback
   - CH11. 자신의 데이터에 맞춘 임베딩 모델 만들기: RAG 개선하기  
 
 #### **2025년 6월 14일** *(6/7 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mbcbbaed6d50821e7d52c93ce336aed79	)
-- 발표자 - LLM(TBD), LLM(CH13-HY)  
+- 발표자 - LLM(우석), LLM(CH13-HY)  
   - CH12. 벡터 데이터베이스로 확장하기: RAG 구현하기  
   - CH13. LLM 운영하기  
 
