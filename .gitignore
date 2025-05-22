@@ -6,6 +6,11 @@
 *.xml
 *.xlsx
 *.xls
+*.parquet
+*.feather
+*.db
+*.sqlite
+*.sqlite3
 
 # 모델 관련
 model/
@@ -19,12 +24,18 @@ models/
 *.h5
 *.hdf5
 *.onnx
+*.joblib
+*.bin
+*.weights
 
 # 결과 및 출력
 output/
 **/results/
 logs/
 **/logs/
+*.log
+*.out
+*.err
 
 # 파이썬 관련
 *.py[cod]
@@ -35,6 +46,10 @@ __pycache__/
 *.egg-info/
 dist/
 build/
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
 
 # 주피터 노트북 관련
 .ipynb_checkpoints
@@ -48,6 +63,8 @@ build/
 .venv
 venv/
 ENV/
+poetry.lock
+Pipfile.lock
 
 # IDE 관련
 .idea/
@@ -55,6 +72,8 @@ ENV/
 *.swp
 *.swo
 .DS_Store
+*.sublime-workspace
+*.sublime-project
 
 # 기타
 .chainlit/*
@@ -62,5 +81,4 @@ ENV/
 tmp/
 temp/
 .Trash-0/
-
 wandb*
