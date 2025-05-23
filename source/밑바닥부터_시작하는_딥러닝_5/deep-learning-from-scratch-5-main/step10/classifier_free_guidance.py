@@ -189,7 +189,7 @@ class Diffuser:
 
 
 preprocess = transforms.ToTensor()
-dataset = torchvision.datasets.MNIST(root='./data', download=True, transform=preprocess)
+dataset = torchvision.datasets.MNIST(root='~/data', download=True, transform=preprocess)
 dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
 diffuser = Diffuser(num_timesteps, device=device)
