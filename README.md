@@ -113,7 +113,8 @@
 
 #### **2025년 5월 24일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1decb14e63ff3ff5776c8e8deaf340aa	)
 - 발표자 - LLM(정훈), 밑바닥(태영)  
-  - CH10. 임베딩 모델로 데이터 의미 압축하기
+  - [CH10. 임베딩 모델로 데이터 의미 압축하기](https://github.com/restful3/ds4th_study/blob/main/source/LLM%EC%9D%84_%ED%99%9C%EC%9A%A9%ED%95%9C_%EC%8B%A4%EC%A0%84_AI_%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98_%EA%B0%9C%EB%B0%9C/CH10_%EC%9E%84%EB%B2%A0%EB%94%A9%20%EB%AA%A8%EB%8D%B8%EB%A1%9C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC%20%EC%95%95%EC%B6%95%ED%95%98%EA%B8%B0_%EC%A0%95%ED%9B%88.pdf)
+  - 
   - [CH10. 확산 모델 응용](https://github.com/restful3/ds4th_study/blob/main/source/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%94%A5%EB%9F%AC%EB%8B%9D_5/step10_%ED%99%95%EC%82%B0_%EB%AA%A8%EB%8C%88_%EC%9D%91%EC%9A%A9_song.ipynb)
 
 #### **2025년 5월 31일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m35afd51f4e675a8362f2e9c24e84ca69	)
