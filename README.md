@@ -132,7 +132,7 @@
   - 자유주제 세션 : [TBD]()  
  
 #### **2025년 6월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1cf3168ebcc132ee5074271e66d2defe	)
-- 발표자 - LLM(TBD), LLM(TBD)  
+- 발표자 - LLM(K성진), LLM(TBD)  
   - CH15. LLM 에이전트  
   - CH16. 새로운 아키텍처  
 
