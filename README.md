@@ -127,7 +127,7 @@
   - CH13. LLM 운영하기  
 
 #### **2025년 6월 21일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1915fca8a0b5fbc16f23c9ba84616244	)
-- 발표자 - LLM(TBD), 자유주제(TBD)  
+- 발표자 - LLM(TBD), 자유주제(태영)  
   - CH14. 멀티 모달  
   - 자유주제 세션 : [TBD]()  
  
