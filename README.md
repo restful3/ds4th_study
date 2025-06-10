@@ -129,7 +129,7 @@
 #### **2025년 6월 21일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1915fca8a0b5fbc16f23c9ba84616244	)
 - 발표자 - LLM(TBD), 자유주제(태영)  
   - CH14. 멀티 모달  
-  - 자유주제 세션 : [TBD]()  
+  - 자유주제 세션 : [A Survey of AI Agent Protocols](https://arxiv.org/abs/2504.16736)  
  
 #### **2025년 6월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1cf3168ebcc132ee5074271e66d2defe	)
 - 발표자 - LLM(K성진), LLM(TBD)  
