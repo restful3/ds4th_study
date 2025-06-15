@@ -80,4 +80,5 @@ Pipfile.lock
 **/my_*/
 tmp/
 temp/
+.Trash-0/
 wandb*
