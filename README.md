@@ -134,8 +134,8 @@
 #### **2025년 6월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1cf3168ebcc132ee5074271e66d2defe	)
 - 발표자 - LLM(K성진), LLM(정훈)  
   - CH15. LLM 에이전트  
-  - CH16. 새로운 아키텍처  
-
+  - 
+  - [CH16. 새로운 아키텍처](https://github.com/restful3/ds4th_study/blob/main/source/LLM%EC%9D%84_%ED%99%9C%EC%9A%A9%ED%95%9C_%EC%8B%A4%EC%A0%84_AI_%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98_%EA%B0%9C%EB%B0%9C/CH16_%EC%83%88%EB%A1%9C%EC%9A%B4%20%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90_%EC%A0%95%ED%9B%88.pdf)
 ---
 
 ### **5. 스터디 운영 방법**
