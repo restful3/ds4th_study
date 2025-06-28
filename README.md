@@ -124,7 +124,7 @@
 #### **2025년 6월 14일** *(6/7 쉬는 날)*: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mbcbbaed6d50821e7d52c93ce336aed79	)
 - 발표자 - LLM(우석), LLM(CH13-HY)  
   - CH12. 벡터 데이터베이스로 확장하기: RAG 구현하기  
-  - CH13. LLM 운영하기  
+  - CH13. [LLM 운영하기](https://github.com/restful3/ds4th_study/blob/main/source/LLM%EC%9D%84_%ED%99%9C%EC%9A%A9%ED%95%9C_%EC%8B%A4%EC%A0%84_AI_%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98_%EA%B0%9C%EB%B0%9C/13.LLM%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5.pdf)
 
 #### **2025년 6월 21일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1915fca8a0b5fbc16f23c9ba84616244	)
 - 발표자 - LLM(재익), 자유주제(태영)  
