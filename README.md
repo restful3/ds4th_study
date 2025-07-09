@@ -94,7 +94,5 @@
 
 ### **6. 기타**
 
-* **참가 희망 요청**: [restful3@gmail.com](mailto:restful3@gmail.com)
-* **GitHub 공유 파일**: [https://github.com/restful3/ds4th\_study](https://github.com/restful3/ds4th_study)
-
+* **참가 희망 요청**: [Email](mailto:restful3@gmail.com)
 ---
