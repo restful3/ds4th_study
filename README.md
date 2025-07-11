@@ -10,7 +10,7 @@
 
 ### **2. 스터디 시간**
 
-* 매주 토요일 오전 9시부터 2시간
+* 매주 토요일 오전 9시부터 1시간
 
 ---
 
@@ -34,7 +34,7 @@
 
 #### **2025년 7월 19일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m6a7d825ed7ea81c2529ef9c97a40e520)
 
-* 발표자 - 정훈, 민호, 성진
+* 발표자 - 정훈, 민호, K성진
 
   * **4.** 프롬프트 엔지니어링으로 메뉴 이미지 품질 검사하기 (16p)
   * **5.** 배민선물하기 AI 메시지 제작기 (8p)
@@ -94,7 +94,5 @@
 
 ### **6. 기타**
 
-* **참가 희망 요청**: [restful3@gmail.com](mailto:restful3@gmail.com)
-* **GitHub 공유 파일**: [https://github.com/restful3/ds4th\_study](https://github.com/restful3/ds4th_study)
-
+* **참가 희망 요청**: [Email](mailto:restful3@gmail.com)
 ---
