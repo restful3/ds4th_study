@@ -81,7 +81,7 @@
 
 * **교재**:
 
-  * 우아한형제 개발
+  * [요즘 우아한형제 AI개발](https://ridibooks.com/books/4547000060?_rdt_sid=category_bestsellers&_rdt_idx=7&_rdt_arg=2220)
 * **학습 공유**: 매주 학습한 내용을 발표자료와 함께 GitHub에 공유
 * **발표 방식**:
 
