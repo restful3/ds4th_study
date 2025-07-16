@@ -37,7 +37,7 @@
 * 발표자 - 정훈, 민호, K성진
 
   * **4.** 프롬프트 엔지니어링으로 메뉴 이미지 품질 검사하기 (16p)
-  * **5.** 배민선물하기 AI 메시지 제작기 (8p)
+  * **5.** [배민선물하기 AI 메시지 제작기 (8p)](https://github.com/restful3/ds4th_study/blob/e608568a3c9bf268fc6d127d2d81078b53ad243c/source/%EC%9A%94%EC%A6%98_%EC%9A%B0%EC%95%84%ED%95%9C_AI%EA%B0%9C%EB%B0%9C/ch05_%EB%B0%B0%EB%AF%BC%EC%84%A0%EB%AC%BC%ED%95%98%EA%B8%B0%20AI%20%EB%A9%94%EC%8B%9C%EC%A7%80%20%EC%A0%9C%EC%9E%91%EA%B8%B0_%EB%AF%BC%ED%98%B8.pptx)
   * **6.** 실시간 반응형 추천 개발 일지 1부 (19p)
 
 #### **2025년 7월 26일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m96b30ae920f54cf98cad46a72fb953b4)
