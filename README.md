@@ -36,7 +36,7 @@
 
 * 발표자 - 정훈, 민호, K성진
 
-  * **4.** [프롬프트 엔지니어링으로 메뉴 이미지 품질 검사하기 (16p)](https://github.com/restful3/ds4th_study/blob/main/source/%EC%9A%94%EC%A6%98_%EC%9A%B0%EC%95%84%ED%95%9C_AI%EA%B0%9C%EB%B0%9C/ch04_%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8_%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81%EC%9C%BC%EB%A1%9C_%EB%A9%94%EB%89%B4_%EC%9D%B4%EB%AF%B8%EC%A7%80_%ED%92%88%EC%A7%88_%EA%B2%80%EC%88%98%ED%95%98%EA%B8%B0_%EC%A0%95%ED%9B%88.pdf)
+  * **[4.** 프롬프트 엔지니어링으로 메뉴 이미지 품질 검사하기 (16p)](https://github.com/restful3/ds4th_study/blob/main/source/%EC%9A%94%EC%A6%98_%EC%9A%B0%EC%95%84%ED%95%9C_AI%EA%B0%9C%EB%B0%9C/ch04_%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8_%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81%EC%9C%BC%EB%A1%9C_%EB%A9%94%EB%89%B4_%EC%9D%B4%EB%AF%B8%EC%A7%80_%ED%92%88%EC%A7%88_%EA%B2%80%EC%88%98%ED%95%98%EA%B8%B0_%EC%A0%95%ED%9B%88.pdf)
   * **5.** 배민선물하기 AI 메시지 제작기 (8p)
   * **6.** 실시간 반응형 추천 개발 일지 1부 (19p)
 
