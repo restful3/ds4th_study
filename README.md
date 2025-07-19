@@ -49,14 +49,14 @@
 
 #### **2025년 8월 2일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m14e6df7c9cca9fc49ed0f0550a03706d)
 
-* 발표자 - 태호, 영재
+* 발표자 - C성진, 영재
 
   * **9.** AI 데이터 분석가 '물어보새' 등장 2부 (22p)
   * **10.** 플라스로 데이터 처리 더 빠르고 가볍게 (27p)
 
 #### **2025년 8월 9일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=md08bba3e4e99c60e3a3a67138d68abd5)
 
-* 발표자 - 두균, 우석
+* 발표자 - 두균, 태호
 
   * **11.** 빠르고 안정적인 AI 서빙 시스템 구성하기 (18p)
   * **12.** 생성형 AI 서비스 (30p)
@@ -65,14 +65,14 @@
 
 #### **2025년 8월 23일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1310965289450c223b50a2ae842abbdf)
 
-* 발표자 - 정훈, TBD
+* 발표자 - 정훈, 우석
 
   * **13.** 로봇 머신러닝 모델의 경량화 1부 (24p)
   * **14.** 로봇 ML 모델의 경량화 2부 (10p)
 
 #### **2025년 8월 30일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m887dfc637270d7a4b653b62fdbdc8b85)
 
-* 발표자 - 재익, TBD
+* 발표자 - 재익, 태영
 
   * **15.** 로봇을 위한 MLOps 1부 (21p)
   * **16.** 로봇을 위한 MLOps 2부 (35p)
