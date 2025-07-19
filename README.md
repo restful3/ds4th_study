@@ -65,7 +65,7 @@
 
 #### **2025년 8월 23일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1310965289450c223b50a2ae842abbdf)
 
-* 발표자 - TBD, TBD
+* 발표자 - 우석, TBD
 
   * **13.** 로봇 머신러닝 모델의 경량화 1부 (24p)
   * **14.** 로봇 ML 모델의 경량화 2부 (10p)
