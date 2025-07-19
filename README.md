@@ -56,7 +56,7 @@
 
 #### **2025년 8월 9일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=md08bba3e4e99c60e3a3a67138d68abd5)
 
-* 발표자 - 두균, TBD
+* 발표자 - 두균, 우석
 
   * **11.** 빠르고 안정적인 AI 서빙 시스템 구성하기 (18p)
   * **12.** 생성형 AI 서비스 (30p)
@@ -65,7 +65,7 @@
 
 #### **2025년 8월 23일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1310965289450c223b50a2ae842abbdf)
 
-* 발표자 - 우석, TBD
+* 발표자 - 정훈, TBD
 
   * **13.** 로봇 머신러닝 모델의 경량화 1부 (24p)
   * **14.** 로봇 ML 모델의 경량화 2부 (10p)
