@@ -51,7 +51,7 @@
 
 * 발표자 - 태영, 영재
 
-  * **9.** AI 데이터 분석가 '물어보새' 등장 2부 (22p)
+  * [**9.** AI 데이터 분석가 '물어보새' 등장 2부 (22p)](https://github.com/restful3/ds4th_study/blob/main/source/%EC%9A%94%EC%A6%98_%EC%9A%B0%EC%95%84%ED%95%9C_AI%EA%B0%9C%EB%B0%9C/ch09_%EB%AC%BC%EC%96%B4%EB%B3%B4%EC%83%88_2%EB%B6%80_song.pdf)
   * **10.** 플라스로 데이터 처리 더 빠르고 가볍게 (27p)
 
 #### **2025년 8월 9일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=md08bba3e4e99c60e3a3a67138d68abd5)
