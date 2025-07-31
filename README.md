@@ -49,7 +49,7 @@
 
 #### **2025년 8월 2일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m14e6df7c9cca9fc49ed0f0550a03706d)
 
-* 발표자 - C성진, 영재
+* 발표자 - 태영, 영재
 
   * **9.** AI 데이터 분석가 '물어보새' 등장 2부 (22p)
   * **10.** 플라스로 데이터 처리 더 빠르고 가볍게 (27p)
@@ -72,7 +72,7 @@
 
 #### **2025년 8월 30일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m887dfc637270d7a4b653b62fdbdc8b85)
 
-* 발표자 - 재익, 태영
+* 발표자 - 재익, C성진
 
   * **15.** 로봇을 위한 MLOps 1부 (21p)
   * **16.** 로봇을 위한 MLOps 2부 (35p)
