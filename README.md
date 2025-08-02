@@ -45,7 +45,7 @@
 * 발표자 - HY, 경연
 
   * [**7.** 실시간 반응형 추천 개발 일지 2부 (37p)](https://github.com/restful3/ds4th_study/blob/main/source/%EC%9A%94%EC%A6%98_%EC%9A%B0%EC%95%84%ED%95%9C_AI%EA%B0%9C%EB%B0%9C/CH07.%E1%84%89%E1%85%B5%E1%86%AF%E1%84%89%E1%85%B5%E1%84%80%E1%85%A1%E1%86%AB%20%E1%84%87%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%B3%E1%86%BC%E1%84%92%E1%85%A7%E1%86%BC%20%E1%84%8E%E1%85%AE%E1%84%8E%E1%85%A5%E1%86%AB%20%E1%84%80%E1%85%A2%E1%84%87%E1%85%A1%E1%86%AF%20%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8C%E1%85%B52%E1%84%87%E1%85%AE%20.pdf)
-  * **8.** AI 데이터 분석가 '물어보새' 등장 1부 (20p)
+  * [**8.** AI 데이터 분석가 '물어보새' 등장 1부 (20p)](https://github.com/restful3/ds4th_study/blob/main/source/%EC%9A%94%EC%A6%98_%EC%9A%B0%EC%95%84%ED%95%9C_AI%EA%B0%9C%EB%B0%9C/ch08_AI_%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%B6%84%EC%84%9D%EA%B0%80_'%EB%AC%BC%EC%96%B4%EB%B3%B4%EC%83%88'_%EB%93%B1%EC%9E%A5_1%EB%B6%80_%EA%B2%BD%EC%97%B0.pdf)
 
 #### **2025년 8월 2일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m14e6df7c9cca9fc49ed0f0550a03706d)
 
@@ -98,3 +98,4 @@
 
 * **참가 희망 요청**: [Email](mailto:restful3@gmail.com)
 ---
+
