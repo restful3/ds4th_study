@@ -59,7 +59,7 @@
 * 발표자 - 두균, 태호
 
   * **11.** 빠르고 안정적인 AI 서빙 시스템 구성하기 (18p)
-  * **12.** 생성형 AI 서비스 (30p)
+  * [**12.** 생성형 AI 서비스 (30p)](https://github.com/restful3/ds4th_study/blob/main/source/%EC%9A%94%EC%A6%98_%EC%9A%B0%EC%95%84%ED%95%9C_AI%EA%B0%9C%EB%B0%9C/ch12_%EC%83%9D%EC%84%B1%ED%98%95_AI_%EC%84%9C%EB%B9%84%EC%8A%A4_AI_gateway_Teo.pdf)
 
 #### **✅ 2025년 8월 16일**: 휴일 (스터디 없음)
 
@@ -98,4 +98,5 @@
 
 * **참가 희망 요청**: [Email](mailto:restful3@gmail.com)
 ---
+
 
