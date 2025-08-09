@@ -97,6 +97,7 @@
 ### **6. 기타**
 
 * **참가 희망 요청**: [Email](mailto:restful3@gmail.com)
+* **이제 까지 다룬 내용**: [archive 확인](https://github.com/restful3/ds4th_study/tree/main/archive)
 ---
 
 
