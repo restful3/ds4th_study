@@ -67,7 +67,7 @@
 
 * 발표자 - 정훈, 우석
 
-  * [**13.** 로봇 머신러닝 모델의 경량화 1부 (24p)] (https://github.com/restful3/ds4th_study/blob/main/source/%EC%9A%94%EC%A6%98_%EC%9A%B0%EC%95%84%ED%95%9C_AI%EA%B0%9C%EB%B0%9C/ch13_%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8_%EB%A1%9C%EB%B4%87%EA%B3%BC%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EB%AA%A8%EB%8D%B8%EC%B5%9C%EC%A0%81%ED%99%94%ED%95%98%EA%B8%B0_%EC%A0%95%ED%9B%88.pdf))
+  * [**13.** 로봇 머신러닝 모델의 경량화 1부 (24p)] (https://github.com/restful3/ds4th_study/blob/main/source/%EC%9A%94%EC%A6%98_%EC%9A%B0%EC%95%84%ED%95%9C_AI%EA%B0%9C%EB%B0%9C/ch13_%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8_%EB%A1%9C%EB%B4%87%EA%B3%BC%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EB%AA%A8%EB%8D%B8%EC%B5%9C%EC%A0%81%ED%99%94%ED%95%98%EA%B8%B0_%EC%A0%95%ED%9B%88.pdf)
   * **14.** 로봇 ML 모델의 경량화 2부 (10p)
 
 #### **2025년 8월 30일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m887dfc637270d7a4b653b62fdbdc8b85)
@@ -99,6 +99,7 @@
 * **참가 희망 요청**: [Email](mailto:restful3@gmail.com)
 * **이제 까지 다룬 내용**: [archive 확인](https://github.com/restful3/ds4th_study/tree/main/archive)
 ---
+
 
 
 
