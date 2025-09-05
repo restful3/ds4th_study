@@ -1,5 +1,3 @@
-말씀하신 대로 7챕터까지만 메인 챕터로 구성하여 스케줄을 다시 짜보겠습니다.
-
 # **ds4th study - Build a Large Language Model (From Scratch)**
 
 ---
@@ -139,5 +137,6 @@
   * [Manning 주교재](https://www.manning.com/books/build-a-large-language-model-from-scratch)
   * [O'Reilly 참고서](https://www.oreilly.com/library/view/hands-on-large-language/9781098150952/)
   * [국내서 참고자료](https://github.com/onlybooks/llm)
+
 
 ---
