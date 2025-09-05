@@ -26,7 +26,7 @@
 
 #### **2025년 9월 13일**: [Webex](링크 추가 필요)
 
-* 발표자 - TBD
+* 발표자 - C성진
   * **Chapter 1:** Understanding Large Language Models
     * LLM 기본 개념 및 트랜스포머 아키텍처 소개
     * 사전 훈련과 파인튜닝 단계 이해
@@ -140,4 +140,5 @@
 
 
 ---
+
 
