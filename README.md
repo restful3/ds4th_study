@@ -85,7 +85,7 @@
 
 #### **2025년 11월 8일**: [Webex](링크 추가 필요)
 
-* 발표자 - TBD
+* 발표자 - 태영
   * **Chapter 7:** Finetuning to Follow Instructions
     * 지시사항 파인튜닝 데이터셋 구성
     * 인간 피드백 학습(RLHF) 개념
@@ -140,5 +140,6 @@
 
 
 ---
+
 
 
