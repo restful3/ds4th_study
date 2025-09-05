@@ -1,4 +1,4 @@
-# **ds4th study - Build a Large Language Model (From Scratch)**
+# **ds4th study**
 
 ---
 
@@ -140,3 +140,4 @@
 
 
 ---
+
