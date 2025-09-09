@@ -24,7 +24,7 @@
 
 ---
 
-#### **2025년 9월 13일**: [Webex](링크 추가 필요)
+#### **2025년 9월 13일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m8a945c481103c4a418d4670b103f74be	)
 
 * 발표자 - C성진
   * **Chapter 1:** Understanding Large Language Models
@@ -32,7 +32,7 @@
     * 사전 훈련과 파인튜닝 단계 이해
     * GPT 시리즈 모델의 발전 과정
 
-#### **2025년 9월 20일**: [Webex](링크 추가 필요)
+#### **2025년 9월 20일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m7ce242843e71db115e8b2369986a04aa	)
 
 * 발표자 - TBD
   * **Chapter 2:** Working with Text Data
@@ -41,7 +41,7 @@
     * 토큰 임베딩과 위치 인코딩 생성
     * 슬라이딩 윈도우를 통한 훈련 데이터 생성
 
-#### **2025년 9월 27일**: [Webex](링크 추가 필요)
+#### **2025년 9월 27일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m794c4e50f5ff0e9aa332e21523485655	)
 
 * 발표자 - TBD
   * **Chapter 3:** Coding Attention Mechanisms
@@ -54,7 +54,7 @@
 
 #### **✅ 2025년 10월 11일**: 휴일 (추석 연휴 - 스터디 없음)
 
-#### **2025년 10월 18일**: [Webex](링크 추가 필요)
+#### **2025년 10월 18일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=me926d907650c9b1a34a5cf2a56fbea7c	)
 
 * 발표자 - TBD
   * **Chapter 4:** Implementing a GPT Model from Scratch to Generate Text
@@ -63,7 +63,7 @@
     * 트랜스포머 블록 조립
     * 텍스트 생성 및 디코딩 전략
 
-#### **2025년 10월 25일**: [Webex](링크 추가 필요)
+#### **2025년 10월 25일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m18b99f88356090f9f2ce9d29adefecc3	)
 
 * 발표자 - TBD
   * **Chapter 5:** Pretraining on Unlabeled Data
@@ -73,7 +73,7 @@
     * 온도 스케일링 및 top-k 샘플링
     * 모델 저장 및 로드 방법
 
-#### **2025년 11월 1일**: [Webex](링크 추가 필요)
+#### **2025년 11월 1일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m54969345967403cc4743ce696daeb9f0	)
 
 * 발표자 - TBD
   * **Chapter 6:** Finetuning for Text Classification
@@ -83,7 +83,7 @@
     * 성능 평가 및 결과 분석
     * 스팸 분류기 구현 실습
 
-#### **2025년 11월 8일**: [Webex](링크 추가 필요)
+#### **2025년 11월 8일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=me13617ac007993e928d591c2d3dc036e	)
 
 * 발표자 - 태영
   * **Chapter 7:** Finetuning to Follow Instructions
