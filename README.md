@@ -34,7 +34,7 @@
 
 #### **2025년 9월 20일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m7ce242843e71db115e8b2369986a04aa	)
 
-* 발표자 - TBD
+* 발표자 - 경연
   * **Chapter 2:** Working with Text Data
     * 텍스트 토큰화 및 토큰 ID 변환
     * 바이트 페어 인코딩(BPE) 구현
@@ -43,7 +43,7 @@
 
 #### **2025년 9월 27일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m794c4e50f5ff0e9aa332e21523485655	)
 
-* 발표자 - TBD
+* 발표자 - S종훈
   * **Chapter 3:** Coding Attention Mechanisms
     * 셀프 어텐션 메커니즘 구현
     * 인과적 어텐션 마스크 적용
@@ -56,7 +56,7 @@
 
 #### **2025년 10월 18일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=me926d907650c9b1a34a5cf2a56fbea7c	)
 
-* 발표자 - TBD
+* 발표자 - 민호
   * **Chapter 4:** Implementing a GPT Model from Scratch to Generate Text
     * GPT 아키텍처 전체 구현
     * 레이어 정규화 및 피드포워드 네트워크
@@ -65,7 +65,7 @@
 
 #### **2025년 10월 25일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m18b99f88356090f9f2ce9d29adefecc3	)
 
-* 발표자 - TBD
+* 발표자 - 우석
   * **Chapter 5:** Pretraining on Unlabeled Data
     * 모델 성능 평가 지표 구현
     * 훈련 루프 및 검증 프로세스
@@ -75,7 +75,7 @@
 
 #### **2025년 11월 1일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m54969345967403cc4743ce696daeb9f0	)
 
-* 발표자 - TBD
+* 발표자 - 태호
   * **Chapter 6:** Finetuning for Text Classification
     * 분류 작업을 위한 모델 헤드 수정
     * 파인튜닝 데이터셋 준비 방법
@@ -140,6 +140,7 @@
 
 
 ---
+
 
 
 
