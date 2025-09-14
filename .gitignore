@@ -82,3 +82,6 @@ tmp/
 temp/
 .Trash-0/
 wandb*
+
+.venv/
+venv/
