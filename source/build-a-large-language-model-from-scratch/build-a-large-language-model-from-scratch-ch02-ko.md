@@ -343,22 +343,29 @@ for i, item in enumerate(list(vocab.items())[-5:]):
 **목록 2.4 알 수 없는 단어를 처리하는 간단한 텍스트 토큰화기**
 
 ```python
+# 특수 토큰을 처리하는 개선된 토큰화기
 class SimpleTokenizerV2:
     def __init__(self, vocab):
         self.str_to_int = vocab
-        self.int_to_str = { i:s for s,i in vocab.items() }
+        self.int_to_str = { i:s for s,i in vocab.items()}
+    
     def encode(self, text):
-        preprocessed = re.split(r'([,.::;?_!"()\'])--|\s)', text)
+        """텍스트를 토큰 ID로 인코딩 (알 수 없는 단어는 <|unk|>로 처리)"""
+        preprocessed = re.split(r'([,.:;?_!"()\']|--|\s)', text)
+        preprocessed = [item.strip() for item in preprocessed if item.strip()]
         preprocessed = [
-            item.strip() for item in preprocessed if item.strip()
+            item if item in self.str_to_int 
+            else "<|unk|>" for item in preprocessed
         ]
-        preprocessed = [item if item in self.str_to_int
-            else "<|unk|>" for item in preprocessed]
+
         ids = [self.str_to_int[s] for s in preprocessed]
         return ids
+        
     def decode(self, ids):
+        """토큰 ID를 텍스트로 디코딩"""
         text = " ".join([self.int_to_str[i] for i in ids])
-        text = re.sub(r'\s+([,.::;?!"()\'])', r'\1', text)
+        # 지정된 구두점 앞의 공백을 제거
+        text = re.sub(r'\s+([,.:;?!"()\'])', r'\1', text)
         return text
 ```
 
@@ -378,8 +385,7 @@ print(text)
 출력은
 
 ```
-Hello, do you like tea? <|endoftext|> In the sunlit terraces of
-the palace.
+Hello, do you like tea? <|endoftext|> In the sunlit terraces of the palace.
 ```
 
 다음으로, 목록 2.2에서 이전에 생성한 vocab에서 SimpleTokenizerV2를 사용하여 샘플 텍스트를 토큰화해보겠습니다:
@@ -397,10 +403,15 @@ print(tokenizer.encode(text))
 토큰 ID 목록이 <|endoftext|> 구분자 토큰에 대한 1130과 알 수 없는 단어에 사용되는 두 개의 1131 토큰을 포함하고 있음을 알 수 있습니다.
 
 빠른 정상성 확인을 위해 텍스트를 디토큰화해보겠습니다:
+```python
 print(tokenizer.decode(tokenizer.encode(text)))
+```
+
 출력은
-<|unk|>, do you like tea? <|endoftext|> In the sunlit terraces of
-the <|unk|>.
+
+```
+<|unk|>, do you like tea? <|endoftext|> In the sunlit terraces of the <|unk|>.
+```
 
 이 디토큰화된 텍스트를 원래 입력 텍스트와 비교하면, 훈련 데이터셋인 Edith Wharton의 단편 소설 "The Verdict"에 "Hello"와 "palace"라는 단어가 포함되어 있지 않다는 것을 알 수 있습니다.
 
@@ -476,9 +487,11 @@ BPE의 기본 알고리즘은 사전 정의된 어휘에 없는 단어를 더 �
 
 <img src="./image/fig_02_11.png" width=800>
 
+그림 2.11 BPE 토크나이저는 알 수 없는 단어를 서브워드와 개별 문자로 분해합니다. 이렇게 하면 BPE 토크나이저는 어떤 단어도 파싱할 수 있으며, 알 수 없는 단어를 `<|unk|>` 같은 특수 토큰으로 바꿀 필요가 없습니다다.
+
 알 수 없는 단어를 개별 문자로 분해하는 능력은 토큰화기와 그에 따라 훈련된 LLM이 훈련 데이터에 없던 단어가 포함된 텍스트라도 처리할 수 있도록 보장합니다.
 
-# 연습 2.1 알 수 없는 단어의 바이트 페어 인코딩
+**연습 2.1 알 수 없는 단어의 바이트 페어 인코딩**
 
 tiktoken 라이브러리의 BPE 토큰화기를 알 수 없는 단어 "Akwirw ier"에 시도하고 개별 토큰 ID를 출력해보세요. 그런 다음 이 목록의 각 결과 정수에 대해 decode 함수를 호출하여 그림 2.11에 표시된 매핑을 재현해보세요. 마지막으로, 토큰 ID에 대해 decode 메서드를 호출하여 원래 입력 "Akwirw ier"를 재구성할 수 있는지 확인해보세요.
 
@@ -504,7 +517,10 @@ print(len(enc_text))
 이 코드를 실행하면 BPE 토큰화기를 적용한 후 훈련 세트의 총 토큰 수인 5145가 반환됩니다.
 
 다음으로, 다음 단계에서 약간 더 흥미로운 텍스트 구절을 만들기 위해 시연 목적으로 데이터셋에서 처음 50개 토큰을 제거합니다:
+
+```python
 enc_sample = enc_text[50:]
+```
 
 다음 단어 예측 작업을 위한 입력-대상 쌍을 생성하는 가장 쉽고 직관적인 방법 중 하나는 x가 입력 토큰을 포함하고 y가 1만큼 이동된 입력인 대상을 포함하는 두 변수 x와 y를 생성하는 것입니다:
 
@@ -576,19 +592,24 @@ and established himself in ----> a
 
 ```python
 import torch
+# GPT 데이터셋 클래스 구현
 from torch.utils.data import Dataset, DataLoader
+
 class GPTDatasetV1(Dataset):
     def __init__(self, txt, tokenizer, max_length, stride):
         self.input_ids = []
         self.target_ids = []
 
-        token_ids = tokenizer.encode(txt)
+        # 전체 텍스트를 토큰화
+        token_ids = tokenizer.encode(txt, allowed_special={"<|endoftext|>"})
+        assert len(token_ids) > max_length, "토큰화된 입력의 수는 최소 max_length+1과 같아야 합니다"
 
-    for i in range(0, len(token_ids) - max_length, stride):
-        input_chunk = token_ids[i:i + max_length]
-        target_chunk = token_ids[i + 1: i + max_length + 1]
-        self.input_ids.append(torch.tensor(input_chunk))
-        self.target_ids.append(torch.tensor(target_chunk))
+        # 슬라이딩 윈도우를 사용하여 책을 max_length의 겹치는 시퀀스로 청크화
+        for i in range(0, len(token_ids) - max_length, stride):
+            input_chunk = token_ids[i:i + max_length]
+            target_chunk = token_ids[i + 1: i + max_length + 1]
+            self.input_ids.append(torch.tensor(input_chunk))
+            self.target_ids.append(torch.tensor(target_chunk))
 
     def __len__(self):
         return len(self.input_ids)
@@ -606,23 +627,32 @@ GPTDatasetV1 클래스는 PyTorch Dataset 클래스를 기반으로 하며 데�
 **목록 2.6 입력 쌍으로 배치를 생성하는 데이터 로더**
 
 ```python
-def create_dataloader_v1(txt, batch_size=4, max_length=256,
+# 데이터로더 생성 함수
+def create_dataloader_v1(txt, batch_size=4, max_length=256, 
                          stride=128, shuffle=True, drop_last=True,
                          num_workers=0):
+
+    # 토큰화기 초기화
     tokenizer = tiktoken.get_encoding("gpt2")
+
+    # 데이터셋 생성
     dataset = GPTDatasetV1(txt, tokenizer, max_length, stride)
+
+    # 데이터로더 생성
     dataloader = DataLoader(
         dataset,
         batch_size=batch_size,
         shuffle=shuffle,
         drop_last=drop_last,
-        num_workers=num_workers)
+        num_workers=num_workers
+    )
+
     return dataloader
 ```
 
 drop_last=True는 지정된 batch_size보다 짧은 마지막 배치를 삭제하여 훈련 중 손실 급증을 방지합니다.
 
-전처리에 사용할 CPU 프로세스 수
+num_workers는 전처리에 사용할 CPU 프로세스 수를 설정 합니다.
 
 목록 2.5의 GPTDatasetV1 클래스와 목록 2.6의 create_dataloader_v1 함수가 어떻게 함께 작동하는지에 대한 직관을 개발하기 위해 컨텍스트 크기가 4인 LLM에 대해 배치 크기 1로 데이터로더를 테스트해보겠습니다:
 
@@ -660,17 +690,17 @@ print(second_batch)
 
 첫 번째와 두 번째 배치를 비교하면, 두 번째 배치의 토큰 ID가 한 위치씩 이동되어 있음을 알 수 있습니다(예: 첫 번째 배치 입력의 두 번째 ID는 367이며, 이는 두 번째 배치 입력의 첫 번째 ID입니다). stride 설정은 그림 2.14에 설명된 대로 슬라이딩 윈도우 접근 방식을 모방하여 배치 간에 입력이 이동하는 위치 수를 지정합니다.
 
-# 연습 2.2 다른 스트라이드와 컨텍스트 크기를 가진 데이터 로더
+**연습 2.2 다른 스트라이드와 컨텍스트 크기를 가진 데이터 로더**
 
 데이터 로더가 어떻게 작동하는지에 대한 더 많은 직관을 개발하기 위해, max_length=2와 stride=2, max_length=8과 stride=2와 같은 다른 설정으로 실행해보세요.
 
-지금까지 데이터 로더에서 샘플링한 것과 같은 1의 배치 크기는 설명 목적으로 유용합니다. 딥러닝에 이전 경험이 있다면, 작은 배치 크기는 훈련 중 더 적은 메모리를 필요로 하지만 더 많은
+지금까지 데이터 로더에서 샘플링한 것과 같은 1의 배치 크기는 설명 목적으로 유용합니다. 딥러닝에 이전 경험이 있다면, 작은 배치 크기는 훈련 중 더 적은 메모리를 필요로 하지만 더 많은 잡음이 많은 모델 업데이트로 이어진다는 것을 알고 있을 것입니다. 
 
 <img src="./image/fig_02_14.png" width=800>
 
 그림 2.14 입력 데이터셋에서 여러 배치를 생성할 때, 텍스트 전체에 입력 윈도우를 슬라이딩합니다. 스트라이드가 1로 설정되면, 다음 배치를 생성할 때 입력 윈도우를 한 위치씩 이동합니다. 스트라이드를 입력 윈도우 크기와 같게 설정하면 배치 간의 겹침을 방지할 수 있습니다.
 
-잡음이 많은 모델 업데이트로 이어진다는 것을 알고 있을 것입니다. 일반적인 딥러닝과 마찬가지로, 배치 크기는 트레이드오프이며 LLM을 훈련할 때 실험할 하이퍼파라미터입니다.
+일반적인 딥러닝과 마찬가지로, 배치 크기는 트레이드오프이며 LLM을 훈련할 때 실험할 하이퍼파라미터입니다.
 
 1보다 큰 배치 크기로 데이터 로더를 사용하는 방법을 간단히 살펴보겠습니다:
 
@@ -712,13 +742,13 @@ tensor([[ 367, 2885, 1464, 1807],
 
 # 2.7 토큰 임베딩 생성
 
-LLM 훈련을 위한 입력 텍스트를 준비하는 마지막 단계는 그림 2.15에 표시된 대로 토큰 ID를 임베딩 벡터로 변환하는 것입니다. 예비 단계로서, 우리는
+LLM 훈련을 위한 입력 텍스트를 준비하는 마지막 단계는 그림 2.15에 표시된 대로 토큰 ID를 임베딩 벡터로 변환하는 것입니다. 
 
 <img src="./image/fig_02_15.png" width=800>
 
 그림 2.15 준비 과정은 텍스트 토큰화, 텍스트 토큰을 토큰 ID로 변환, 토큰 ID를 임베딩 벡터로 변환하는 것을 포함합니다. 여기서는 이전에 생성된 토큰 ID를 고려하여 토큰 임베딩 벡터를 생성합니다.
 
-이러한 임베딩 가중치를 랜덤 값으로 초기화해야 합니다. 이 초기화는 LLM의 학습 과정의 시작점 역할을 합니다. 5장에서는 LLM 훈련의 일부로 임베딩 가중치를 최적화할 것입니다.
+예비 단계로서, 우리는 이러한 임베딩 가중치를 랜덤 값으로 초기화해야 합니다. 이 초기화는 LLM의 학습 과정의 시작점 역할을 합니다. 5장에서는 LLM 훈련의 일부로 임베딩 가중치를 최적화할 것입니다.
 
 GPT 유형 LLM은 역전파 알고리즘으로 훈련되는 심층 신경망이므로 연속 벡터 표현, 즉 임베딩이 필요합니다.
 
@@ -771,7 +801,11 @@ tensor([[ -0.4015, 0.9666, -1.1481]], grad_fn=<EmbeddingBackward0>)
 > 참고 원-핫 인코딩에 익숙한 분들을 위해, 여기서 설명하는 임베딩 레이어 접근법은 본질적으로 원-핫 인코딩 다음에 완전 연결 레이어에서 행렬 곱셈을 수행하는 것의 더 효율적인 방법일 뿐입니다. 이는 GitHub의 보충 코드 https://mng.bz/ZEB5에서 설명됩니다. 임베딩 레이어는 원-핫 인코딩과 행렬 곱셈 접근법과 동등한 더 효율적인 구현일 뿐이므로, 역전파를 통해 최적화될 수 있는 신경망 레이어로 볼 수 있습니다.
 
 단일 토큰 ID를 3차원 임베딩 벡터로 변환하는 방법을 봤습니다. 이제 모든 네 개의 입력 ID(torch.tensor([2,3,5,1]))에 적용해보겠습니다:
+
+```python
 print(embedding_layer(input_ids))
+```
+
 print 출력은 이것이 4×3 행렬을 만든다는 것을 보여줍니다:
 
 ```
@@ -879,7 +913,9 @@ print(pos_embeddings.shape)
 pos_embeddings의 입력은 일반적으로 최대 입력 길이 -1까지 0, 1, ... 의 숫자 시퀀스를 포함하는 플레이스홀더 벡터 torch.arange(context_length)입니다. context_length는 LLM의 지원 입력 크기를 나타내는 변수입니다. 여기서는 입력 텍스트의 최대 길이와 유사하게 선택합니다. 실제로는 입력 텍스트가 지원하는 컨텍스트 길이보다 길 수 있으며, 이 경우 텍스트를 잘라야 합니다.
 
 print 문의 출력은
+```
 torch.Size([4, 256])
+```
 
 보시다시피, 위치 임베딩 텐서는 4개의 256차원 벡터로 구성됩니다. 이제 이를 토큰 임베딩에 직접 추가할 수 있습니다. 여기서 PyTorch는 4×256 차원 pos_embeddings 텐서를 8개 배치 각각의 4×256 차원 토큰 임베딩 텐서에 추가할 것입니다:
 
@@ -889,7 +925,9 @@ print(input_embeddings.shape)
 ```
 
 print 출력은
+```
 torch.Size([8, 4, 256])
+```
 
 그림 2.19에 요약된 input_embeddings는 다음 장에서 구현을 시작할 주요 LLM 모듈에서 처리될 수 있는 임베딩된 입력 예제입니다.
 
