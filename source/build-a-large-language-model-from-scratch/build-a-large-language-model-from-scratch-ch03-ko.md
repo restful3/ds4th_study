@@ -22,6 +22,7 @@
 - LLM에서 사용하는 메커니즘의 기초가 되는, 훈련 가능한 가중치를 포함한 셀프 어텐션
 - 텍스트 생성 시 시간 순서를 보장하도록, 시퀀스에서 현재와 이전 입력만 고려하게 하는 LLM용 인과적(마스크드) 셀프 어텐션
 - 어텐션 메커니즘을 여러 헤드로 구성하는 멀티헤드 어텐션
+
 <img src="./image/fig_03_02.png" width="800" alt="Figure 3.2 The figure depicts different attention mechanisms we will code in this chapter, starting with a simplified version of self-attention before adding the trainable weights. The causal attention mechanism adds a mask to self-attention that allows the LLM to generate one word at a time. Finally, multi-head attention organizes the attention mechanism into multiple heads, allowing the model to capture various aspects of the input data in parallel.">
 
 그림 3.2 이 장에서 구현할 다양한 어텐션 메커니즘을 보여줍니다. 먼저 단순화된 셀프 어텐션을 살펴보고, 이어 훈련 가능한 가중치를 추가합니다. 인과적 어텐션은 셀프 어텐션에 마스크를 적용해 LLM이 한 번에 한 단어씩 생성하도록 합니다. 마지막으로 멀티헤드 어텐션은 어텐션을 여러 헤드로 구성하여 입력의 다양한 측면을 병렬로 포착합니다.
@@ -29,6 +30,7 @@
 # 3.1 긴 시퀀스 모델링의 문제점
 
 LLM의 핵심인 셀프 어텐션 메커니즘으로 들어가기 전에, 어텐션 메커니즘이 포함되지 않은 LLM 이전 아키텍처의 문제를 먼저 살펴보겠습니다. 한 언어의 텍스트를 다른 언어로 번역하는 모델을 만들고자 한다고 가정해 보겠습니다. 그림 3.3에서 보듯이 원문과 번역문의 문법 구조 차이 때문에 텍스트를 단어 단위로 그대로 옮길 수는 없습니다.
+
 <img src="./image/fig_03_03.png" width="800" alt="Figure 3.3 When translating text from one language to another, such as German to English, it's not possible to merely translate word by word. Instead, the translation process requires contextual understanding and grammatical alignment.">
 
 그림 3.3 독일어에서 영어처럼 한 언어를 다른 언어로 번역할 때는 단순히 단어를 하나씩 치환할 수 없습니다. 번역에는 문맥적 이해와 문법적 정렬이 필요합니다.
@@ -38,6 +40,7 @@ LLM의 핵심인 셀프 어텐션 메커니즘으로 들어가기 전에, 어텐
 트랜스포머가 등장하기 전에는 순환신경망(RNN)이 번역을 위한 인코더–디코더 아키텍처로 가장 널리 사용되었습니다. RNN은 이전 단계의 출력을 현재 단계의 입력으로 사용하는 신경망으로, 텍스트와 같은 순차 데이터에 적합합니다. RNN에 익숙하지 않더라도 걱정하지 마십시오. 여기서는 RNN의 내부 동작까지 알 필요는 없고, 인코더–디코더 구도의 일반적 개념에 초점을 맞춥니다.
 
 인코더–디코더 RNN에서는 입력 텍스트가 인코더로 들어가 순차적으로 처리됩니다. 인코더는 매 단계에서 은닉 상태(은닉층의 내부 값)를 갱신하여, 그림 3.4처럼 최종 은닉 상태에 입력 문장의 전체 의미를 담으려 합니다. 이후 디코더는 이 최종 은닉 상태를 받아 단어를 하나씩 생성하면서 번역을 시작합니다. 디코더 역시 단계마다 은닉 상태를 갱신하며, 이는 다음 단어 예측에 필요한 문맥을 담습니다.
+
 <img src="./image/fig_03_04.png" width="800" alt="Figure 3.4 Before the advent of transformer models, encoder-decoder RNNs were a popular choice for machine translation. The encoder takes a sequence of tokens from the source language as input, where a hidden state (an intermediate neural network layer) of the encoder encodes a compressed representation of the entire input sequence. Then, the decoder uses its current hidden state to begin the translation, token by token.">
 
 그림 3.4 트랜스포머 이전에는 인코더–디코더 RNN이 기계번역에 널리 사용되었습니다. 인코더는 원문 언어의 토큰 시퀀스를 입력으로 받아, 은닉 상태(중간 신경망 계층)에 전체 입력 시퀀스의 압축된 표현을 인코딩합니다. 디코더는 현재 은닉 상태를 이용해 토큰을 하나씩 생성하며 번역을 시작합니다.
@@ -249,6 +252,7 @@ tensor([0.4419, 0.6515, 0.5683])
 ## 3.3.2 모든 입력 토큰에 대한 어텐션 가중치 계산 
 
 지금까지 그림 3.11의 강조된 행에서 보듯이 입력 2에 대한 어텐션 가중치와 컨텍스트 벡터를 계산했습니다. 이제 이 계산을 확장하여 모든 입력에 대한 어텐션 가중치와 컨텍스트 벡터를 계산해보겠습니다.
+
 <img src="./image/fig_03_11.png" width="800" alt="Figure 3.11 The highlighted row shows the attention weights for the second input element as a query, generalizing the computation to obtain all other attention weights.">
 
 그림 3.11 강조된 행은 두 번째 입력 요소를 쿼리로 하는 어텐션 가중치를 보여줍니다. 이제 다른 모든 어텐션 가중치를 얻기 위해 계산을 일반화하겠습니다. (시각적 혼잡을 줄이기 위해 이 그림의 숫자들은 소수점 둘째 자리까지 잘렸다는 점을 참고하세요. 각 행의 값들은 1.0 또는 100%가 되어야 합니다.)
@@ -371,6 +375,7 @@ Previous 2nd context vector: tensor([0.4419, 0.6515, 0.5683])
 # 3.4 훈련 가능한 가중치를 사용한 셀프 어텐션 구현 
 
 다음 단계에서는 원조 트랜스포머 아키텍처, GPT 계열, 그리고 대부분의 인기 있는 LLM에서 사용하는 셀프 어텐션 메커니즘을 구현하겠습니다. 이 셀프 어텐션 메커니즘은 스케일드 도트 곱 어텐션(scaled dot-product attention)이라고도 합니다. 그림 3.13은 이 셀프 어텐션 메커니즘이 LLM 구현의 큰 흐름 속에서 어디에 위치하는지를 보여줍니다.
+
 <img src="./image/fig_03_13.png" width="800" alt="Figure 3.13 Building on the previous concepts, adding trainable weights to the self-attention mechanism to create scaled dot-product attention.">
 
 그림 3.13 앞서 어텐션의 기본 원리를 이해하기 위해 단순화된 메커니즘을 코딩했습니다. 이제 여기에 훈련 가능한 가중치를 추가합니다. 이후에는 인과적 마스크와 멀티헤드를 더해 확장하겠습니다.
@@ -384,6 +389,7 @@ Previous 2nd context vector: tensor([0.4419, 0.6515, 0.5683])
 ## 3.4.1 어텐션 가중치를 단계별로 계산하기 
 
 세 개의 학습 가능한 가중치 행렬 \(W_q, W_k, W_v\)을 도입해 셀프 어텐션을 단계별로 구현합니다. 그림 3.14처럼 이 세 행렬은 임베딩된 입력 토큰 \(x^{(i)}\)을 각각 쿼리, 키, 값 벡터로 사상하는 데 사용됩니다.
+
 <img src="./image/fig_03_14.png" width="800" alt="Figure 3.14 Computing query, key, and value vectors for input elements using weight matrices in the self-attention mechanism.">
 
 이는 가중치 행렬 \(W_v\)와 입력 토큰 \(x^{(1)}\)의 행렬 곱으로 얻은 첫 번째 입력 토큰에 대한 값 벡터입니다.
@@ -455,6 +461,7 @@ values.shape: torch.Size([6, 2])
 ```
 
 두 번째 단계는 그림 3.15에 나타난 것처럼 어텐션 스코어를 계산하는 것입니다.
+
 <img src="./image/fig_03_15.png" width="800" alt="Figure 3.15 Computing attention scores using the query and key vectors obtained by transforming inputs via respective weight matrices.">
 
 그림 3.15 어텐션 스코어 계산은 3.3절의 단순화된 셀프 어텐션 메커니즘에서 사용한 것과 유사한 도트 곱 계산입니다. 여기서 새로운 점은 입력 요소들 간에 직접 도트 곱을 계산하지 않고, 각각의 가중치 행렬을 통해 입력을 변환하여 얻은 쿼리와 키를 사용한다는 것입니다.
@@ -496,6 +503,7 @@ d_k = keys.shape[-1]
 attn_weights_2 = torch.softmax(attn_scores_2 / d_k**0.5, dim=-1)
 print(attn_weights_2)
 ```
+
 <img src="./image/fig_03_16.png" width="800" alt="Figure 3.16 Computing attention weights by scaling attention scores and using the softmax function for normalization.">
 
 
@@ -522,6 +530,7 @@ $$
 임베딩 차원의 제곱근으로 스케일링하는 것이 이 셀프 어텐션 메커니즘이 스케일드 도트 곱 어텐션이라고도 불리는 이유입니다.
 
 이제 마지막 단계는 그림 3.17에서 보여주는 것처럼 컨텍스트 벡터를 계산하는 것입니다.
+
 <img src="./image/fig_03_17.png" width="800" alt="Figure 3.17 Computing the context vector by combining all value vectors via the attention weights in the final step of self-attention.">
 
 그림 3.17 셀프 어텐션 계산의 마지막 단계에서, 어텐션 가중치를 통해 모든 값 벡터를 결합하여 컨텍스트 벡터를 계산합니다.
@@ -607,9 +616,11 @@ tensor([[0.2996, 0.8053],
 셀프 어텐션은 훈련 가능한 가중치 행렬 $W_q, W_k$, $W_v$를 포함합니다. 이 행렬들은 입력 데이터를 각각 쿼리, 키, 값으로 변환하며, 이는 어텐션 메커니즘의 핵심 구성 요소입니다. 모델이 훈련 중 더 많은 데이터에 노출되면서 이러한 훈련 가능한 가중치들을 조정하게 되며, 이는 다음 장들에서 살펴보겠습니다.
 
 PyTorch의 `nn.Linear` 레이어를 활용하면 `SelfAttention_v1` 구현을 더욱 개선할 수 있습니다. 이 레이어는 편향 유닛이 비활성화되었을 때 효과적으로 행렬 곱셈을 수행합니다. 또한 `nn.Linear`를 사용하는 중요한 장점은
+
 <img src="./image/fig_03_18.png" width="800" alt="Figure 3.18 Self-attention mechanism with input matrix transformation using weight matrices for queries, keys, and values to compute context vectors.">
 
 그림 3.18 셀프 어텐션에서는 입력 행렬 $X$의 입력 벡터들을 세 개의 가중치 행렬 $W_q, W_k, W_v$로 변환합니다. 그런 다음 결과로 나온 쿼리(Q)와 키(K)를 바탕으로 어텐션 가중치 행렬을 계산합니다. 어텐션 가중치와 값(V)을 사용하여 컨텍스트 벡터(Z)를 계산합니다. 시각적 명확성을 위해 여러 입력의 배치가 아닌 $n$개 토큰을 가진 단일 입력 텍스트에 초점을 맞춥니다. 따라서 이 맥락에서 3차원 입력 텐서는 2차원 행렬로 단순화됩니다. 이러한 접근 방식은 관련 프로세스의 더 직관적인 시각화와 이해를 가능하게 합니다. 후속 그림과의 일관성을 위해 어텐션 행렬의 값들은 실제 어텐션 가중치를 나타내지 않습니다. (이 그림의 숫자들은 시각적 혼란을 줄이기 위해 소수점 둘째 자리까지 반올림되었습니다. 각 행의 값들은 1.0 또는 100%가 되어야 합니다.)
+
 `nn.Parameter(torch.rand(...))`를 수동으로 구현하는 대신 `nn.Linear`를 사용하는 중요한 장점은 `nn.Linear`가 최적화된 가중치 초기화 방식을 가지고 있어 더 안정적이고 효과적인 모델 훈련에 기여한다는 점입니다.
 
 ### 리스트 3.2 PyTorch의 Linear 레이어를 사용하는 셀프 어텐션 클래스 
@@ -669,6 +680,7 @@ tensor([[-0.0739, 0.0713],
 많은 LLM 작업에서, 시퀀스의 다음 토큰을 예측할 때 셀프 어텐션 메커니즘이 현재 위치 이전에 나타나는 토큰들만 고려하기를 원할 것입니다. 마스크드 어텐션이라고도 알려진 인과적 어텐션은 셀프 어텐션의 특수한 형태입니다. 어텐션 스코어를 계산할 때 주어진 토큰을 처리하는 동안 시퀀스의 이전 및 현재 입력만 고려하도록 모델을 제한합니다. 이는 전체 입력 시퀀스에 한 번에 접근할 수 있는 표준 셀프 어텐션 메커니즘과 대조됩니다.
 
 이제 표준 셀프 어텐션 메커니즘을 수정하여 인과적 어텐션 메커니즘을 만들어보겠습니다. 이는 후속 장에서 LLM을 개발하는 데 필수적입니다. GPT 계열 LLM에서 이를 달성하기 위해, 처리되는 각 토큰에 대해 입력 텍스트에서 현재 토큰 다음에 오는 미래 토큰들을 마스킹합니다. 그림 3.19에서 볼 수 있듯이 말이죠. 대각선 위의 어텐션 가중치를 마스킹하고,
+
 <img src="./image/fig_03_19.png" width="800" alt="Figure 3.19 Causal attention masks out attention weights above the diagonal to prevent the LLM from accessing future tokens when computing context vectors.">
 
 그림 3.19 인과적 어텐션에서는 대각선 위의 어텐션 가중치를 마스킹하여, 주어진 입력에 대해 LLM이 어텐션 가중치를 사용해 컨텍스트 벡터를 계산할 때 미래 토큰에 접근할 수 없도록 합니다. 예를 들어, 두 번째 행의 "journey" 단어의 경우, 이전 단어("Your")와 현재 위치("journey")의 어텐션 가중치만 유지합니다.
@@ -678,6 +690,7 @@ tensor([[-0.0739, 0.0713],
 ## 3.5.1 인과적 어텐션 마스크 적용하기
 
 다음 단계는 인과적 어텐션 마스크를 코드로 구현하는 것입니다. 그림 3.20에 요약된 것처럼 인과적 어텐션 마스크를 적용하여 마스킹된 어텐션 가중치를 얻는 단계를 구현하기 위해, 이전 섹션의 어텐션 스코어와 가중치를 사용하여 인과적 어텐션 메커니즘을 코딩해보겠습니다.
+
 <img src="./image/fig_03_20.png" width="800" alt="Figure 3.20 Obtaining masked attention weight matrix in causal attention by applying softmax and zeroing out elements above the diagonal.">
 
 그림 3.20 인과적 어텐션에서 마스킹된 어텐션 가중치 행렬을 얻는 한 가지 방법은 어텐션 스코어에 소프트맥스 함수를 적용하고, 대각선 위의 요소들을 0으로 만든 다음 결과 행렬을 정규화하는 것입니다.
@@ -772,6 +785,7 @@ grad_fn=<DivBackward0>)
 > 간단히 말해서, 마스킹과 재정규화 후에는 어텐션 가중치의 분포가 처음부터 마스킹되지 않은 위치들 사이에서만 계산된 것과 같습니다. 이는 의도한 대로 미래(또는 기타 마스킹된) 토큰으로부터 정보 누출이 없음을 보장합니다.
 
 이 시점에서 인과적 어텐션 구현을 마무리할 수도 있지만, 여전히 개선할 수 있습니다. `softmax` 함수의 수학적 특성을 활용하여 그림 3.21에서 보는 것처럼 더 적은 단계로 마스킹된 어텐션 가중치 계산을 더 효율적으로 구현해 보겠습니다.
+
 <img src="./image/fig_03_21.png" width="800" alt="Figure 3.21 More efficient way to obtain masked attention weights by masking attention scores with negative infinity values before applying softmax.">
 
 그림 3.21 인과적 어텐션에서 마스킹된 어텐션 가중치 행렬을 얻는 더 효율적인 방법은 softmax 함수를 적용하기 전에 어텐션 점수를 음의 무한대 값으로 마스킹하는 것입니다.
@@ -948,6 +962,7 @@ print("context_vecs.shape:", context_vecs.shape)
 결과로 나오는 컨텍스트 벡터는 각 토큰이 이제 2차원 임베딩으로 표현되는 3차원 텐서입니다:
 context_vecs.shape: torch.Size([2, 6, 2])
 그림 3.23은 지금까지 우리가 달성한 것을 요약합니다. 우리는 신경망에서 인과적 어텐션의 개념과 구현에 집중했습니다. 다음으로, 이 개념을 확장하여 여러 인과적 어텐션 메커니즘을 병렬로 구현하는 멀티헤드 어텐션 모듈을 구현할 것입니다.
+
 <img src="./image/fig_03_23.png" width="800" alt="Figure 3.23 Summary of progress from simplified attention mechanism to causal attention with trainable weights and dropout mask.">
 
 그림 3.23 지금까지 우리가 달성한 것을 요약합니다. 우리는 단순화된 어텐션 메커니즘으로 시작하여 훈련 가능한 가중치를 추가하고, 인과적 어텐션 마스크를 추가했습니다. 다음으로, 인과적 어텐션 메커니즘을 확장하여 LLM에서 사용할 멀티헤드 어텐션을 코딩할 것입니다.
@@ -965,6 +980,7 @@ context_vecs.shape: torch.Size([2, 6, 2])
 실제로 멀티헤드 어텐션을 구현하는 것은 각각 고유한 가중치를 가진 셀프 어텐션 메커니즘의 여러 인스턴스를 생성하고(그림 3.18 참조), 그 출력을 결합하는 것을 포함합니다. 셀프 어텐션 메커니즘의 여러 인스턴스를 사용하는 것은 계산 집약적일 수 있지만, 트랜스포머 기반 LLM과 같은 모델이 알려진 복잡한 패턴 인식에 중요합니다.
 
 그림 3.24는 이전에 그림 3.18에서 묘사된 것처럼 여러 단일 헤드 어텐션 모듈이 서로 위에 쌓인 멀티헤드 어텐션 모듈의 구조를 보여줍니다.
+
 <img src="./image/fig_03_24.png" width="800" alt="Figure 3.24 Multi-head attention module with two single-head attention modules stacked, using separate weight matrices for each head.">
 
 그림 3.24 멀티헤드 어텐션 모듈은 두 개의 단일 헤드 어텐션 모듈이 서로 위에 쌓인 구조를 포함합니다. 따라서 값 행렬을 계산하기 위해 단일 행렬 $W_{x}$를 사용하는 대신, 두 개의 헤드를 가진 멀티헤드 어텐션 모듈에서는 이제 두 개의 값 가중치 행렬 $W_{x 1}$과 $W_{x 2}$를 가집니다. 이는 다른 가중치 행렬인 $W_{0}$과 $W_{b}$에도 동일하게 적용됩니다. 우리는 두 세트의 컨텍스트 벡터 $Z_{1}$과 $Z_{2}$를 얻고, 이를 단일 컨텍스트 벡터 행렬 $Z$로 결합할 수 있습니다.
@@ -989,6 +1005,7 @@ class MultiHeadAttentionWrapper(nn.Module):
 ```
 
 예를 들어, 이 `MultiHeadAttentionWrapper` 클래스를 두 개의 어텐션 헤드(`num_heads=2`)와 `CausalAttention` 출력 차원 `d_out=2`로 사용하면, 그림 3.25에 묘사된 대로 4차원 컨텍스트 벡터(`d_out*num_heads=4`)를 얻게 됩니다.
+
 <img src="./image/fig_03_25.png" width="800" alt="Figure 3.25 Using MultiHeadAttentionWrapper with two attention heads, concatenating context vector matrices along the column dimension.">
 
 컨텍스트 벡터에 대해 임베딩 차원을 2 (d_out $=2$)로 선택하면 최종 임베딩 차원이 4 (d_out $\times$ num_heads)가 됩니다.
@@ -1099,6 +1116,7 @@ MultiHeadAttention 클래스 내부의 텐서 재구성(.view)과 전치(.transp
 쿼리, 키, 값 텐서의 분할은 PyTorch의 .view와 .transpose 메서드를 사용한 텐서 재구성과 전치 연산을 통해 달성됩니다. 입력은 먼저 (쿼리, 키, 값을 위한 선형 레이어를 통해) 변환된 다음 여러 헤드를 나타내도록 재구성됩니다.
 
 핵심 연산은 d_out 차원을 num_heads와 head_dim으로 분할하는 것인데, 여기서 head_dim = d_out / num_heads입니다. 이 분할은 .view 메서드를 사용하여 달성됩니다: (b, num_tokens, d_out) 차원의 텐서가 (b, num_tokens, num_heads, head_dim) 차원으로 재구성됩니다.
+
 <img src="./image/fig_03_26.png" width="800" alt="Figure 3.26 Comparison between MultiHeadAttentionWrapper and MultiHeadAttention classes showing different approaches to implementing multi-head attention.">
 
 그림 3.26 두 개의 어텐션 헤드를 가진 MultiHeadAttentionWrapper 클래스에서는 두 개의 가중치 행렬 $W_{q 1}$과 $W_{q 2}$를 초기화하고, 두 개의 쿼리 행렬 $Q_{1}$과 $Q_{2}$를 계산했습니다(상단). MultiheadAttention 클래스에서는 하나의 더 큰 가중치 행렬 $W_{q}$를 초기화하고, 입력과 한 번의 행렬 곱셈만 수행하여 쿼리 행렬 $Q$를 얻은 다음, 쿼리 행렬을 $Q_{1}$과 $Q_{2}$로 분할합니다(하단). 키와 값에 대해서도 동일하게 수행하지만, 시각적 복잡성을 줄이기 위해 표시하지 않았습니다.
