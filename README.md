@@ -155,9 +155,11 @@
   * [Manning 주교재](https://www.manning.com/books/build-a-large-language-model-from-scratch)
   * [O'Reilly 참고서](https://www.oreilly.com/library/view/hands-on-large-language/9781098150952/)
   * [국내서 참고자료](https://github.com/onlybooks/llm)
-
+* **Kaggle 대회 링크**: 
+  * [ARC Prize 2025](https://www.kaggle.com/competitions/arc-prize-2025)
 
 ---
+
 
 
 
