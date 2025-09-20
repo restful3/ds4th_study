@@ -44,10 +44,8 @@
 * 발표자 - K성진, 태호
   * **Kaggle**
     * MAP - Charting Student Math Misunderstandings(태호)
-    * 바이트 페어 인코딩(BPE) 구현
-    * 토큰 임베딩과 위치 인코딩 생성
-    * 슬라이딩 윈도우를 통한 훈련 데이터 생성
     * 
+       
 #### **2025년 9월 27일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m794c4e50f5ff0e9aa332e21523485655	)
 
 * 발표자 - S종훈
@@ -147,6 +145,7 @@
 
 
 ---
+
 
 
 
