@@ -44,7 +44,7 @@
 * 발표자 - K성진, 태호
   * **Kaggle**
     * MAP - Charting Student Math Misunderstandings(태호)
-    * 
+    * ARC Prize 2025 (K성진)
        
 #### **2025년 9월 27일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m794c4e50f5ff0e9aa332e21523485655	)
 
@@ -54,6 +54,10 @@
     * 인과적 어텐션 마스크 적용
     * 멀티헤드 어텐션 구조 구축
     * 드롭아웃을 통한 정규화
+   
+* 발표자 - 재익
+  * **Kaggle**
+    * ARC Prize 2025
 
 #### **✅ 2025년 10월 4일**: 휴일 (추석 연휴 - 스터디 없음)
 
@@ -67,6 +71,10 @@
     * 레이어 정규화 및 피드포워드 네트워크
     * 트랜스포머 블록 조립
     * 텍스트 생성 및 디코딩 전략
+   
+* 발표자 - 영재
+  * **Kaggle**
+    * ARC Prize 2025
 
 #### **2025년 10월 25일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m18b99f88356090f9f2ce9d29adefecc3	)
 
@@ -77,6 +85,11 @@
     * OpenAI 사전 훈련 가중치 로드
     * 온도 스케일링 및 top-k 샘플링
     * 모델 저장 및 로드 방법
+   
+* 발표자 - K성진, 태호
+  * **Kaggle**
+    * ARC Prize 2025
+
 
 #### **2025년 11월 1일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m54969345967403cc4743ce696daeb9f0	)
 
@@ -145,6 +158,7 @@
 
 
 ---
+
 
 
 
