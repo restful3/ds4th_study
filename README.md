@@ -57,7 +57,7 @@
    
 * 발표자 - 재익
   * **Kaggle**
-    * ARC Prize 2025
+    * [ARC Prize 2025](https://github.com/restful3/ds4th_study/blob/main/source/20250927_arc2025_jishin.pdf)
 
 #### **✅ 2025년 10월 4일**: 휴일 (추석 연휴 - 스터디 없음)
 
@@ -159,6 +159,7 @@
   * [ARC Prize 2025](https://www.kaggle.com/competitions/arc-prize-2025)
 
 ---
+
 
 
 
