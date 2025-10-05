@@ -1,0 +1,92 @@
+from pathlib import Path
+files = [
+    Path('LLMs-from-scratch/ch05/gpt_train.py'),
+    Path('LLMs-from-scratch/ch05/gpt_download.py'),
+    Path('LLMs-from-scratch/ch05/gpt_generate.py'),
+    Path('LLMs-from-scratch/ch05/previous_chapters.py'),
+]
+
+comment_map = {
+    '# Initialize lists to track losses and tokens seen': '# 손실과 처리한 토큰 수를 기록할 리스트 초기화',
+    '# Main training loop': '# 메인 학습 루프',
+    '# Optional evaluation step': '# 선택적 평가 단계',
+    '# Print a sample text after each epoch': '# 각 에폭 이후 샘플 텍스트 출력',
+    '# Plot training and validation loss against epochs': '# 에폭별 학습/검증 손실 그래프 그리기',
+    '# Create a second x-axis for tokens seen': '# 처리한 토큰 수를 위한 두 번째 x축 생성',
+    '# Invisible plot for aligning ticks': '# 눈금 정렬용 보이지 않는 플롯',
+    '# Adjust layout to make room': '# 여유 공간을 확보하도록 레이아웃 조정',
+    '# Download data if necessary': '# 필요한 경우 데이터 다운로드',
+    '# Initialize model': '# 모델 초기화',
+    '# Set up dataloaders': '# 데이터 로더 설정',
+    '# Train/validation ratio': '# 학습/검증 비율',
+    '# Train model': '# 모델 학습',
+    '# After training': '# 학습 후',
+    '# Plot results': '# 결과 그래프 표시',
+    '# Save and load model': '# 모델 저장 및 로드',
+    '# Validate model size': '# 모델 크기 검증',
+    '# Define paths': '# 경로 정의',
+    '# Download files': '# 파일 다운로드',
+    '# Load settings and params': '# 설정과 파라미터 로드',
+    '# Get the total file size from headers, defaulting to 0 if not present': '# 헤더에서 파일 크기를 확인하고 없으면 0으로 설정',
+    '# Check if file exists and has the same size': '# 같은 크기의 파일이 이미 존재하는지 확인',
+    '# Alternative way using `requests`': '# `requests`를 사용하는 대체 방법',
+    '# Send a GET request to download the file in streaming mode': '# 스트리밍 모드로 파일을 받는 GET 요청 전송',
+    '# Define the block size for reading the file': '# 파일을 읽어올 블록 크기 정의',
+    '# Open the destination file in binary write mode': '# 대상 파일을 바이너리 쓰기 모드로 열기',
+    '# Iterate over the file data in chunks': '# 파일 데이터를 청크 단위로 반복 읽기',
+    '# Initialize parameters dictionary with empty blocks for each layer': '# 각 레이어에 해당하는 빈 딕셔너리 블록을 초기화',
+    '# Iterate over each variable in the checkpoint': '# 체크포인트의 변수들을 순회',
+    '# Load the variable and remove singleton dimensions': '# 변수를 로드하고 불필요한 차원 제거',
+    '# Process the variable name to extract relevant parts': '# 변수 이름에서 필요한 부분 추출',
+    "# Skip the 'model/' prefix": "# 'model/' 접두어 건너뜀",
+    '# Identify the target dictionary for the variable': '# 변수를 저장할 대상 딕셔너리 식별',
+    '# Recursively access or create nested dictionaries': '# 중첩된 딕셔너리를 재귀적으로 탐색하거나 생성',
+    '# Assign the variable array to the last key': '# 마지막 키에 변수 배열 할당',
+    '# For-loop is the same as before: Get logits, and only focus on last time step': '# 루프 구조는 이전과 동일하며, 마지막 시점의 로짓만 사용',
+    '# New: Filter logits with top_k sampling': '# 추가: top_k 샘플링으로 로짓 필터링',
+    '# Keep only top_k values': '# 상위 k개의 값만 유지',
+    '# New: Apply temperature scaling': '# 추가: 온도 조절 적용',
+    '# Apply softmax to get probabilities': '# 소프트맥스를 적용해 확률 계산',
+    '# Sample from the distribution': '# 분포에서 샘플링',
+    '# Otherwise same as before: get idx of the vocab entry with the highest logits value': '# 나머지 과정은 동일하게 가장 큰 로짓의 어휘 인덱스를 선택',
+    '# Same as before: append sampled index to the running sequence': '# 이전과 동일하게 샘플링한 인덱스를 시퀀스에 이어붙임',
+    '# Initiate training': '# 학습 시작',
+    '# Plot results': '# 결과 그래프 표시'
+}
+
+inline_map = {
+    'encoded_tensor = torch.tensor(encoded).unsqueeze(0)  # add batch dimension': 'encoded_tensor = torch.tensor(encoded).unsqueeze(0)  # 배치 차원 추가',
+    'flat = token_ids.squeeze(0)  # remove batch dimension': 'flat = token_ids.squeeze(0)  # 배치 차원 제거',
+    'print(decoded_text.replace("\\n", " "))  # Compact print format': 'print(decoded_text.replace("\\n", " "))  # 보기 좋은 형식으로 출력',
+    'model.train()  # Set model to training mode': 'model.train()  # 모델을 학습 모드로 전환',
+    'optimizer.zero_grad()  # Reset loss gradients from previous batch iteration': 'optimizer.zero_grad()  # 이전 배치에서 누적된 그래디언트 초기화',
+    'loss.backward()  # Calculate loss gradients': 'loss.backward()  # 손실 그래디언트 계산',
+    'optimizer.step()  # Update model weights using loss gradients': 'optimizer.step()  # 손실 그래디언트로 가중치 업데이트',
+    'progress_bar.update(len(chunk))  # Update progress bar': 'progress_bar.update(len(chunk))  # 진행률 갱신',
+    'file.write(chunk)  # Write the chunk to the file': 'file.write(chunk)  # 청크를 파일에 기록',
+    'progress_bar_description = url.split("/")[-1]  # Extract filename from URL': 'progress_bar_description = url.split("/")[-1]  # URL에서 파일명 추출',
+    'progress_bar_description = os.path.basename(url)  # Extract filename from URL': 'progress_bar_description = os.path.basename(url)  # URL에서 파일명 추출',
+    'block_size = 1024  # 1 Kilobyte': 'block_size = 1024  # 1킬로바이트',
+    'return True  # Indicate success without re-downloading': 'return True  # 이미 최신 파일이므로 재다운로드하지 않음',
+    'attn_scores = queries @ keys.transpose(2, 3)  # Dot product for each head': 'attn_scores = queries @ keys.transpose(2, 3)  # 각 헤드별 닷프로덕트 계산',
+    'idx_next = torch.argmax(logits, dim=-1, keepdim=True)  # (batch, 1)': 'idx_next = torch.argmax(logits, dim=-1, keepdim=True)  # (batch, 1)',
+    'idx = torch.cat((idx, idx_next), dim=1)  # (batch, n_tokens+1)': 'idx = torch.cat((idx, idx_next), dim=1)  # (batch, n_tokens+1)',
+    '"vocab_size": 50257,    # Vocabulary size': '"vocab_size": 50257,    # 어휘 수',
+    '"context_length": 256,  # Shortened context length (orig: 1024)': '"context_length": 256,  # (원래 1024에서) 줄인 컨텍스트 길이',
+    '"context_length": 1024,  # Context length': '"context_length": 1024,  # 컨텍스트 길이',
+    '"emb_dim": 768,         # Embedding dimension': '"emb_dim": 768,         # 임베딩 차원',
+    '"n_heads": 12,          # Number of attention heads': '"n_heads": 12,          # 어텐션 헤드 수',
+    '"n_layers": 12,         # Number of layers': '"n_layers": 12,         # 층 수',
+    '"drop_rate": 0.1,       # Dropout rate': '"drop_rate": 0.1,       # 드롭아웃 비율',
+    '"qkv_bias": False       # Query-key-value bias': '"qkv_bias": False       # 쿼리-키-값 편향',
+    'model.eval()  # disable dropout': 'model.eval()  # 드롭아웃 비활성화',
+    'model.eval()  # disable dropout during inference': 'model.eval()  # 추론 시 드롭아웃 비활성화'
+}
+
+for file in files:
+    text = file.read_text()
+    for old, new in comment_map.items():
+        text = text.replace(old, new)
+    for old, new in inline_map.items():
+        text = text.replace(old, new)
+    file.write_text(text)

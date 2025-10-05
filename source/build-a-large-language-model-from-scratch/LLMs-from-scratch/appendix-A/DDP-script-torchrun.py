@@ -9,7 +9,7 @@ import torch
 import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 
-# NEW imports:
+# NEW: 새로 추가한 import:
 import os
 import platform
 from torch.utils.data.distributed import DistributedSampler
@@ -17,13 +17,13 @@ from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.distributed import init_process_group, destroy_process_group
 
 
-# NEW: function to initialize a distributed process group (1 process / GPU)
-# this allows communication among processes
+# NEW: (GPU당 1개 프로세스) 분산 프로세스 그룹을 초기화하는 함수입니다
+# 프로세스 간 통신을 가능하게 합니다
 def ddp_setup(rank, world_size):
     """
-    Arguments:
-        rank: a unique process ID
-        world_size: total number of processes in the group
+    인자:
+        rank: 고유한 프로세스 ID
+        world_size: 그룹에 속한 전체 프로세스 수
     """
     # Only set MASTER_ADDR and MASTER_PORT if not already defined by torchrun
     if "MASTER_ADDR" not in os.environ:
@@ -31,15 +31,15 @@ def ddp_setup(rank, world_size):
     if "MASTER_PORT" not in os.environ:
         os.environ["MASTER_PORT"] = "12345"
 
-    # initialize process group
+    # 프로세스 그룹을 초기화합니다
     if platform.system() == "Windows":
-        # Disable libuv because PyTorch for Windows isn't built with support
+        # Windows용 PyTorch는 libuv를 지원하지 않으므로 비활성화합니다
         os.environ["USE_LIBUV"] = "0"
-        # Windows users may have to use "gloo" instead of "nccl" as backend
-        # gloo: Facebook Collective Communication Library
+        # Windows 사용자는 백엔드로 "nccl" 대신 "gloo"를 사용해야 할 수도 있습니다
+        # gloo: Facebook의 집단 통신 라이브러리
         init_process_group(backend="gloo", rank=rank, world_size=world_size)
     else:
-        # nccl: NVIDIA Collective Communication Library
+        # nccl: NVIDIA 집단 통신 라이브러리
         init_process_group(backend="nccl", rank=rank, world_size=world_size)
 
     torch.cuda.set_device(rank)
@@ -64,15 +64,15 @@ class NeuralNetwork(torch.nn.Module):
         super().__init__()
 
         self.layers = torch.nn.Sequential(
-            # 1st hidden layer
+            # 첫 번째 은닉층
             torch.nn.Linear(num_inputs, 30),
             torch.nn.ReLU(),
 
-            # 2nd hidden layer
+            # 두 번째 은닉층
             torch.nn.Linear(30, 20),
             torch.nn.ReLU(),
 
-            # output layer
+            # 출력층
             torch.nn.Linear(20, num_outputs),
         )
 
@@ -97,7 +97,7 @@ def prepare_dataset():
     ])
     y_test = torch.tensor([0, 1])
 
-    # Uncomment these lines to increase the dataset size to run this script on up to 8 GPUs:
+    # 최대 8개의 GPU에서 실행하려면 아래 주석을 해제해 데이터셋 크기를 늘리세요:
     # factor = 4
     # X_train = torch.cat([X_train + torch.randn_like(X_train) * 0.1 for _ in range(factor)])
     # y_train = y_train.repeat(factor)
@@ -110,10 +110,10 @@ def prepare_dataset():
     train_loader = DataLoader(
         dataset=train_ds,
         batch_size=2,
-        shuffle=False,  # NEW: False because of DistributedSampler below
+        shuffle=False,  # NEW: 아래 DistributedSampler 때문에 False로 설정합니다
         pin_memory=True,
         drop_last=True,
-        # NEW: chunk batches across GPUs without overlapping samples:
+        # NEW: GPU 간 샘플이 겹치지 않도록 배치를 분할합니다:
         sampler=DistributedSampler(train_ds)  # NEW
     )
     test_loader = DataLoader(
@@ -124,35 +124,35 @@ def prepare_dataset():
     return train_loader, test_loader
 
 
-# NEW: wrapper
+# NEW: 래퍼 함수
 def main(rank, world_size, num_epochs):
 
-    ddp_setup(rank, world_size)  # NEW: initialize process groups
+    ddp_setup(rank, world_size)  # NEW: 프로세스 그룹을 초기화합니다
 
     train_loader, test_loader = prepare_dataset()
     model = NeuralNetwork(num_inputs=2, num_outputs=2)
     model.to(rank)
     optimizer = torch.optim.SGD(model.parameters(), lr=0.5)
 
-    model = DDP(model, device_ids=[rank])  # NEW: wrap model with DDP
-    # the core model is now accessible as model.module
+    model = DDP(model, device_ids=[rank])  # NEW: DDP로 모델을 감쌉니다
+    # 이제 기본 모델은 model.module로 접근할 수 있습니다
 
     for epoch in range(num_epochs):
-        # NEW: Set sampler to ensure each epoch has a different shuffle order
+        # NEW: 각 에폭마다 셔플 순서가 달라지도록 샘플러를 설정합니다
         train_loader.sampler.set_epoch(epoch)
 
         model.train()
         for features, labels in train_loader:
 
-            features, labels = features.to(rank), labels.to(rank)  # New: use rank
+            features, labels = features.to(rank), labels.to(rank)  # NEW: rank와 동일한 디바이스를 사용
             logits = model(features)
-            loss = F.cross_entropy(logits, labels)  # Loss function
+            loss = F.cross_entropy(logits, labels)  # 손실 함수
 
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
 
-            # LOGGING
+            # 기록
             print(f"[GPU{rank}] Epoch: {epoch+1:03d}/{num_epochs:03d}"
                   f" | Batchsize {labels.shape[0]:03d}"
                   f" | Train/Val Loss: {loss:.2f}")
@@ -166,7 +166,7 @@ def main(rank, world_size, num_epochs):
         print(f"[GPU{rank}] Test accuracy", test_acc)
 
     ####################################################
-    # NEW (not in the book):
+    # NEW (책에는 없음):
     except ZeroDivisionError as e:
         raise ZeroDivisionError(
             f"{e}\n\nThis script is designed for 2 GPUs. You can run it as:\n"
@@ -175,7 +175,7 @@ def main(rank, world_size, num_epochs):
         )
     ####################################################
 
-    destroy_process_group()  # NEW: cleanly exit distributed mode
+    destroy_process_group()  # NEW: 분산 모드를 깔끔하게 종료
 
 
 def compute_accuracy(model, dataloader, device):
@@ -196,7 +196,7 @@ def compute_accuracy(model, dataloader, device):
 
 
 if __name__ == "__main__":
-    # NEW: Use environment variables set by torchrun if available, otherwise default to single-process.
+    # NEW: torchrun이 설정한 환경 변수가 있으면 사용하고, 없으면 단일 프로세스로 실행합니다.
     if "WORLD_SIZE" in os.environ:
         world_size = int(os.environ["WORLD_SIZE"])
     else:
@@ -209,7 +209,7 @@ if __name__ == "__main__":
     else:
         rank = 0
 
-    # Only print on rank 0 to avoid duplicate prints from each GPU process
+    # 각 GPU 프로세스가 중복 출력하지 않도록 rank 0에서만 출력합니다
     if rank == 0:
         print("PyTorch version:", torch.__version__)
         print("CUDA available:", torch.cuda.is_available())

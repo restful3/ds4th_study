@@ -14,10 +14,10 @@ class GPTDatasetV1(Dataset):
         self.input_ids = []
         self.target_ids = []
 
-        # Tokenize the entire text
+        # 전체 텍스트를 토큰화
         token_ids = tokenizer.encode(txt, allowed_special={"<|endoftext|>"})
 
-        # Use a sliding window to chunk the book into overlapping sequences of max_length
+        # 슬라이딩 윈도우로 책을 max_length 길이의 겹치는 시퀀스로 분할
         for i in range(0, len(token_ids) - max_length, stride):
             input_chunk = token_ids[i:i + max_length]
             target_chunk = token_ids[i + 1: i + max_length + 1]
@@ -33,13 +33,13 @@ class GPTDatasetV1(Dataset):
 
 def create_dataloader_v1(txt, batch_size=4, max_length=256,
                          stride=128, shuffle=True, drop_last=True, num_workers=0):
-    # Initialize the tokenizer
+    # 토크나이저 초기화
     tokenizer = tiktoken.get_encoding("gpt2")
 
-    # Create dataset
+    # 데이터셋 생성
     dataset = GPTDatasetV1(txt, tokenizer, max_length, stride)
 
-    # Create dataloader
+    # 데이터 로더 생성
     dataloader = DataLoader(
         dataset, batch_size=batch_size, shuffle=shuffle, drop_last=drop_last, num_workers=num_workers)
 
@@ -53,50 +53,50 @@ class MultiHeadAttention(nn.Module):
 
         self.d_out = d_out
         self.num_heads = num_heads
-        self.head_dim = d_out // num_heads  # Reduce the projection dim to match desired output dim
+        self.head_dim = d_out // num_heads  # 원하는 출력 차원에 맞도록 투영 차원을 줄임
 
         self.W_query = nn.Linear(d_in, d_out, bias=qkv_bias)
         self.W_key = nn.Linear(d_in, d_out, bias=qkv_bias)
         self.W_value = nn.Linear(d_in, d_out, bias=qkv_bias)
-        self.out_proj = nn.Linear(d_out, d_out)  # Linear layer to combine head outputs
+        self.out_proj = nn.Linear(d_out, d_out)  # 헤드 출력을 결합하는 선형 계층
         self.dropout = nn.Dropout(dropout)
         self.register_buffer('mask', torch.triu(torch.ones(context_length, context_length), diagonal=1))
 
     def forward(self, x):
         b, num_tokens, d_in = x.shape
 
-        keys = self.W_key(x)  # Shape: (b, num_tokens, d_out)
+        keys = self.W_key(x)  # 형태: (b, num_tokens, d_out)
         queries = self.W_query(x)
         values = self.W_value(x)
 
-        # We implicitly split the matrix by adding a `num_heads` dimension
-        # Unroll last dim: (b, num_tokens, d_out) -> (b, num_tokens, num_heads, head_dim)
+        # `num_heads` 차원을 추가해 행렬을 암묵적으로 분할
+        # 마지막 차원을 펼쳐 (b, num_tokens, d_out)을 (b, num_tokens, num_heads, head_dim)으로 변환
         keys = keys.view(b, num_tokens, self.num_heads, self.head_dim)
         values = values.view(b, num_tokens, self.num_heads, self.head_dim)
         queries = queries.view(b, num_tokens, self.num_heads, self.head_dim)
 
-        # Transpose: (b, num_tokens, num_heads, head_dim) -> (b, num_heads, num_tokens, head_dim)
+        # 전치: (b, num_tokens, num_heads, head_dim) -> (b, num_heads, num_tokens, head_dim)
         keys = keys.transpose(1, 2)
         queries = queries.transpose(1, 2)
         values = values.transpose(1, 2)
 
-        # Compute scaled dot-product attention (aka self-attention) with a causal mask
-        attn_scores = queries @ keys.transpose(2, 3)  # Dot product for each head
+        # 인과 마스크를 적용한 스케일드 닷프로덕트 어텐션(셀프 어텐션) 계산
+        attn_scores = queries @ keys.transpose(2, 3)  # 각 헤드별 닷프로덕트 계산
 
-        # Original mask truncated to the number of tokens and converted to boolean
+        # 원래 마스크를 토큰 수에 맞게 자르고 불리언으로 변환
         mask_bool = self.mask.bool()[:num_tokens, :num_tokens]
 
-        # Use the mask to fill attention scores
+        # 마스크를 이용해 어텐션 점수를 채움
         attn_scores.masked_fill_(mask_bool, -torch.inf)
 
         attn_weights = torch.softmax(attn_scores / keys.shape[-1]**0.5, dim=-1)
         attn_weights = self.dropout(attn_weights)
 
-        # Shape: (b, num_tokens, num_heads, head_dim)
+        # 형태: (b, num_tokens, num_heads, head_dim)
         context_vec = (attn_weights @ values).transpose(1, 2)
 
-        # Combine heads, where self.d_out = self.num_heads * self.head_dim
+        # self.d_out = self.num_heads * self.head_dim을 활용해 헤드를 결합
         context_vec = context_vec.contiguous().view(b, num_tokens, self.d_out)
-        context_vec = self.out_proj(context_vec)  # optional projection
+        context_vec = self.out_proj(context_vec)  # 필요 시 추가 투영
 
         return context_vec

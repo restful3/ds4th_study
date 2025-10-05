@@ -10,18 +10,18 @@ import urllib.request
 import tiktoken
 
 
-# Import from local files
+# 로컬 파일에서 import
 from previous_chapters import GPTModel, create_dataloader_v1, generate_text_simple
 
 
 def text_to_token_ids(text, tokenizer):
     encoded = tokenizer.encode(text)
-    encoded_tensor = torch.tensor(encoded).unsqueeze(0)  # add batch dimension
+    encoded_tensor = torch.tensor(encoded).unsqueeze(0)  # 배치 차원 추가
     return encoded_tensor
 
 
 def token_ids_to_text(token_ids, tokenizer):
-    flat = token_ids.squeeze(0)  # remove batch dimension
+    flat = token_ids.squeeze(0)  # 배치 차원 제거
     return tokenizer.decode(flat.tolist())
 
 
@@ -68,30 +68,30 @@ def generate_and_print_sample(model, tokenizer, device, start_context):
             max_new_tokens=50, context_size=context_size
         )
         decoded_text = token_ids_to_text(token_ids, tokenizer)
-        print(decoded_text.replace("\n", " "))  # Compact print format
+        print(decoded_text.replace("\n", " "))  # 보기 좋은 형식으로 출력
     model.train()
 
 
 def train_model_simple(model, train_loader, val_loader, optimizer, device, num_epochs,
                        eval_freq, eval_iter, start_context, tokenizer):
-    # Initialize lists to track losses and tokens seen
+    # 손실과 처리한 토큰 수를 기록할 리스트 초기화
     train_losses, val_losses, track_tokens_seen = [], [], []
     tokens_seen = 0
     global_step = -1
 
-    # Main training loop
+    # 메인 학습 루프
     for epoch in range(num_epochs):
-        model.train()  # Set model to training mode
+        model.train()  # 모델을 학습 모드로 전환
 
         for input_batch, target_batch in train_loader:
-            optimizer.zero_grad()  # Reset loss gradients from previous batch iteration
+            optimizer.zero_grad()  # 이전 배치에서 누적된 그래디언트 초기화
             loss = calc_loss_batch(input_batch, target_batch, model, device)
-            loss.backward()  # Calculate loss gradients
-            optimizer.step()  # Update model weights using loss gradients
+            loss.backward()  # 손실 그래디언트 계산
+            optimizer.step()  # 손실 그래디언트로 가중치 업데이트
             tokens_seen += input_batch.numel()
             global_step += 1
 
-            # Optional evaluation step
+            # 선택적 평가 단계
             if global_step % eval_freq == 0:
                 train_loss, val_loss = evaluate_model(
                     model, train_loader, val_loader, device, eval_iter)
@@ -101,7 +101,7 @@ def train_model_simple(model, train_loader, val_loader, optimizer, device, num_e
                 print(f"Ep {epoch+1} (Step {global_step:06d}): "
                       f"Train loss {train_loss:.3f}, Val loss {val_loss:.3f}")
 
-        # Print a sample text after each epoch
+        # 각 에폭 이후 샘플 텍스트 출력
         generate_and_print_sample(
             model, tokenizer, device, start_context
         )
@@ -112,19 +112,19 @@ def train_model_simple(model, train_loader, val_loader, optimizer, device, num_e
 def plot_losses(epochs_seen, tokens_seen, train_losses, val_losses):
     fig, ax1 = plt.subplots()
 
-    # Plot training and validation loss against epochs
+    # 에폭별 학습/검증 손실 그래프 그리기
     ax1.plot(epochs_seen, train_losses, label="Training loss")
     ax1.plot(epochs_seen, val_losses, linestyle="-.", label="Validation loss")
     ax1.set_xlabel("Epochs")
     ax1.set_ylabel("Loss")
     ax1.legend(loc="upper right")
 
-    # Create a second x-axis for tokens seen
-    ax2 = ax1.twiny()  # Create a second x-axis that shares the same y-axis
-    ax2.plot(tokens_seen, train_losses, alpha=0)  # Invisible plot for aligning ticks
+    # 처리한 토큰 수를 위한 두 번째 x축 생성
+    ax2 = ax1.twiny()  # 동일한 y축을 공유하는 두 번째 x축 생성
+    ax2.plot(tokens_seen, train_losses, alpha=0)  # 눈금 정렬용 보이지 않는 플롯
     ax2.set_xlabel("Tokens seen")
 
-    fig.tight_layout()  # Adjust layout to make room
+    fig.tight_layout()  # 여유 공간을 확보하도록 레이아웃 조정
     # plt.show()
 
 
@@ -134,7 +134,7 @@ def main(gpt_config, settings):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     ##############################
-    # Download data if necessary
+    # 필요한 경우 데이터 다운로드
     ##############################
 
     file_path = "the-verdict.txt"
@@ -150,20 +150,20 @@ def main(gpt_config, settings):
             text_data = file.read()
 
     ##############################
-    # Initialize model
+    # 모델 초기화
     ##############################
 
     model = GPTModel(gpt_config)
-    model.to(device)  # no assignment model = model.to(device) necessary for nn.Module classes
+    model.to(device)  # nn.Module에서는 model = model.to(device)를 다시 할당할 필요 없음
     optimizer = torch.optim.AdamW(
         model.parameters(), lr=settings["learning_rate"], weight_decay=settings["weight_decay"]
     )
 
     ##############################
-    # Set up dataloaders
+    # 데이터 로더 설정
     ##############################
 
-    # Train/validation ratio
+    # 학습/검증 비율
     train_ratio = 0.90
     split_idx = int(train_ratio * len(text_data))
 
@@ -188,7 +188,7 @@ def main(gpt_config, settings):
     )
 
     ##############################
-    # Train model
+    # 모델 학습
     ##############################
 
     tokenizer = tiktoken.get_encoding("gpt2")
@@ -205,13 +205,13 @@ def main(gpt_config, settings):
 if __name__ == "__main__":
 
     GPT_CONFIG_124M = {
-        "vocab_size": 50257,    # Vocabulary size
-        "context_length": 256,  # Shortened context length (orig: 1024)
-        "emb_dim": 768,         # Embedding dimension
-        "n_heads": 12,          # Number of attention heads
-        "n_layers": 12,         # Number of layers
-        "drop_rate": 0.1,       # Dropout rate
-        "qkv_bias": False       # Query-key-value bias
+        "vocab_size": 50257,    # 어휘 수
+        "context_length": 256,  # (원래 1024에서) 줄인 컨텍스트 길이
+        "emb_dim": 768,         # 임베딩 차원
+        "n_heads": 12,          # 어텐션 헤드 수
+        "n_layers": 12,         # 층 수
+        "drop_rate": 0.1,       # 드롭아웃 비율
+        "qkv_bias": False       # 쿼리-키-값 편향
     }
 
     OTHER_SETTINGS = {
@@ -222,21 +222,21 @@ if __name__ == "__main__":
     }
 
     ###########################
-    # Initiate training
+    # 학습 시작
     ###########################
 
     train_losses, val_losses, tokens_seen, model = main(GPT_CONFIG_124M, OTHER_SETTINGS)
 
     ###########################
-    # After training
+    # 학습 후
     ###########################
 
-    # Plot results
+    # 결과 그래프 표시
     epochs_tensor = torch.linspace(0, OTHER_SETTINGS["num_epochs"], len(train_losses))
     plot_losses(epochs_tensor, tokens_seen, train_losses, val_losses)
     plt.savefig("loss.pdf")
 
-    # Save and load model
+    # 모델 저장 및 로드
     torch.save(model.state_dict(), "model.pth")
     model = GPTModel(GPT_CONFIG_124M)
     model.load_state_dict(torch.load("model.pth", weights_only=True))
