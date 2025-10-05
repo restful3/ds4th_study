@@ -1,12 +1,12 @@
 # 3 어텐션 메커니즘 코딩하기
 
-## 이 장에서 다루는 내용
-
-- 신경망에서 어텐션 메커니즘을 사용하는 이유
-- 기본 셀프 어텐션 프레임워크부터 향상된 셀프 어텐션 메커니즘까지
-- LLM이 한 번에 하나의 토큰을 생성할 수 있게 하는 인과적 어텐션 모듈
-- 과적합을 줄이기 위해 드롭아웃으로 무작위로 선택된 어텐션 가중치를 마스킹하는 방법
-- 여러 인과적 어텐션 모듈을 멀티헤드 어텐션 모듈로 쌓는 방법
+>**이 장에서 다루는 내용**
+>
+>- 신경망에서 어텐션 메커니즘을 사용하는 이유
+>- 기본 셀프 어텐션 프레임워크부터 향상된 셀프 어텐션 메커니즘까지
+>- LLM이 한 번에 하나의 토큰을 생성할 수 있게 하는 인과적 어텐션 모듈
+>- 과적합을 줄이기 위해 드롭아웃으로 무작위로 선택된 어텐션 가중치를 마스킹하는 방법
+>- 여러 인과적 어텐션 모듈을 멀티헤드 어텐션 모듈로 쌓는 방법
 
 이 시점에서 여러분은 텍스트를 개별 단어와 서브워드 토큰으로 분할하여 LLM 훈련을 위한 입력 텍스트를 준비하는 방법을 알고 있습니다. 이러한 토큰들은 LLM을 위한 벡터 표현, 즉 임베딩으로 인코딩될 수 있습니다.
 
@@ -27,7 +27,7 @@
 
 그림 3.2 이 장에서 구현할 다양한 어텐션 메커니즘을 보여줍니다. 먼저 단순화된 셀프 어텐션을 살펴보고, 이어 훈련 가능한 가중치를 추가합니다. 인과적 어텐션은 셀프 어텐션에 마스크를 적용해 LLM이 한 번에 한 단어씩 생성하도록 합니다. 마지막으로 멀티헤드 어텐션은 어텐션을 여러 헤드로 구성하여 입력의 다양한 측면을 병렬로 포착합니다.
 
-# 3.1 긴 시퀀스 모델링의 문제점
+## 3.1 긴 시퀀스 모델링의 문제점
 
 LLM의 핵심인 셀프 어텐션 메커니즘으로 들어가기 전에, 어텐션 메커니즘이 포함되지 않은 LLM 이전 아키텍처의 문제를 먼저 살펴보겠습니다. 한 언어의 텍스트를 다른 언어로 번역하는 모델을 만들고자 한다고 가정해 보겠습니다. 그림 3.3에서 보듯이 원문과 번역문의 문법 구조 차이 때문에 텍스트를 단어 단위로 그대로 옮길 수는 없습니다.
 
@@ -51,7 +51,7 @@ LLM의 핵심인 셀프 어텐션 메커니즘으로 들어가기 전에, 어텐
 
 다행히 LLM을 구축하는 데 RNN을 깊이 이해할 필요는 없습니다. 인코더–디코더 RNN의 이러한 한계가 어텐션 메커니즘 설계의 동기가 되었다는 점만 기억하시면 됩니다.
 
-# 3.2 어텐션 메커니즘으로 데이터 의존성 포착하기
+## 3.2 어텐션 메커니즘으로 데이터 의존성 포착하기
 
 RNN은 짧은 문장을 번역할 때는 잘 작동하지만, 입력 내 이전 단어들에 직접 접근할 수 없기 때문에 긴 텍스트에서는 성능이 떨어집니다. 이 접근 방식의 핵심 한계는, 디코더에 전달하기 전에 인코더가 인코딩된 전체 입력을 하나의 은닉 상태에 담아 기억해야 한다는 점입니다(그림 3.4).
 
@@ -71,19 +71,19 @@ RNN은 짧은 문장을 번역할 때는 잘 작동하지만, 입력 내 이전 
 
 그림 3.6 셀프 어텐션은 시퀀스 내 각 위치가 다른 모든 위치와 상호작용하며 중요도를 가중해 더 효율적인 입력 표현을 계산하도록 하는 트랜스포머의 메커니즘입니다. 이 장에서는 다음 장에서 GPT 계열 LLM의 나머지 부분을 코딩하기에 앞서, 이 셀프 어텐션 메커니즘을 바닥부터 구현합니다.
 
-# 3.3 셀프 어텐션으로 입력의 다른 부분에 주의 기울이기
+## 3.3 셀프 어텐션으로 입력의 다른 부분에 주의 기울이기
 
 이제 셀프 어텐션 메커니즘의 내부 동작을 살펴보고, 이를 바닥부터 구현하는 방법을 학습하겠습니다. 셀프 어텐션은 트랜스포머 기반 모든 LLM의 초석입니다. 다소 집중력이 요구되는 주제이지만, 핵심을 이해하시면 본 도서와 전반적인 LLM 구현에서 가장 어려운 부분 중 하나를 정복하신 셈입니다.
 
-## 셀프 어텐션에서 '셀프'의 의미
-
-셀프 어텐션에서 "셀프"는 하나의 입력 시퀀스 내부의 서로 다른 위치들 간 관계를 통해 어텐션 가중치를 계산하는 능력을 의미합니다. 문장 내 단어들, 이미지의 픽셀들처럼 입력 자체의 여러 부분들 사이의 관계와 의존성을 평가하고 학습합니다.
-
-이는 전통적 어텐션 메커니즘과 대조적입니다. 전통적 메커니즘은 보통 두 개의 서로 다른 시퀀스 간 관계(예: 입력 시퀀스와 출력 시퀀스 간 어텐션; 그림 3.5 참조)에 초점을 맞춥니다.
+>**셀프 어텐션에서 '셀프'의 의미**
+>
+>셀프 어텐션에서 "셀프"는 하나의 입력 시퀀스 내부의 서로 다른 위치들 간 관계를 통해 어텐션 가중치를 계산하는 능력을 의미합니다. 문장 내 단어들, 이미지의 픽셀들처럼 입력 자체의 여러 부분들 사이의 관계와 의존성을 평가하고 학습합니다.
+>
+>이는 전통적 어텐션 메커니즘과 대조적입니다. 전통적 메커니즘은 보통 두 개의 서로 다른 시퀀스 간 관계(예: 입력 시퀀스와 출력 시퀀스 간 어텐션; 그림 3.5 참조)에 초점을 맞춥니다.
 
 셀프 어텐션은 처음 접하시면 복잡하게 느껴질 수 있습니다. 먼저 단순화된 버전부터 살펴본 뒤, LLM에서 사용하는 훈련 가능한 가중치를 포함한 셀프 어텐션을 구현하겠습니다.
 
-## 3.3.1 훈련 가능한 가중치 없는 간단한 셀프 어텐션 메커니즘
+### 3.3.1 훈련 가능한 가중치 없는 간단한 셀프 어텐션 메커니즘
 
 그림 3.7에 요약된 것처럼, 훈련 가능한 가중치가 전혀 없는 단순화된 셀프 어텐션 변형부터 구현해 보겠습니다. 목적은 가중치를 추가하기 전에 셀프 어텐션의 핵심 개념 몇 가지를 이해하도록 돕는 것입니다.
 
@@ -104,14 +104,16 @@ RNN은 짧은 문장을 번역할 때는 잘 작동하지만, 입력 내 이전 
 다음과 같이 이미 3차원 벡터로 임베딩된 입력 문장을 살펴봅시다(2장 참조). 페이지에서 줄바꿈 없이 표시되도록 작은 임베딩 차원을 선택했습니다:
 
 ```python
-import torch
+import torch  # PyTorch 라이브러리 임포트
 inputs = torch.tensor(
-    [[0.43, 0.15, 0.89],  # Your (x^1)
-     [0.55, 0.87, 0.66],  # journey (x^2)
-     [0.57, 0.85, 0.64],  # starts (x^3)
-     [0.22, 0.58, 0.33],  # with (x^4)
-     [0.77, 0.25, 0.10],  # one (x^5)
-     [0.05, 0.80, 0.55]]  # step (x^6)
+    [
+        [0.43, 0.15, 0.89],  # 'Your' 토큰의 임베딩 (x^1)
+        [0.55, 0.87, 0.66],  # 'journey' 토큰의 임베딩 (x^2)
+        [0.57, 0.85, 0.64],  # 'starts' 토큰의 임베딩 (x^3)
+        [0.22, 0.58, 0.33],  # 'with' 토큰의 임베딩 (x^4)
+        [0.77, 0.25, 0.10],  # 'one' 토큰의 임베딩 (x^5)
+        [0.05, 0.80, 0.55],  # 'step' 토큰의 임베딩 (x^6)
+    ]
 )
 ```
 
@@ -124,11 +126,11 @@ inputs = torch.tensor(
 그림 3.8은 쿼리 토큰과 각 입력 토큰 간의 중간 어텐션 스코어를 계산하는 방법을 보여줍니다. 이러한 스코어는 쿼리 $x^{(2)}$와 다른 모든 입력 토큰의 도트 곱을 계산하여 결정됩니다:
 
 ```python
-query = inputs[1]
-attn_scores_2 = torch.empty(inputs.shape[0])
+query = inputs[1]  # 두 번째 토큰(x^2='journey')을 쿼리로 선택
+attn_scores_2 = torch.empty(inputs.shape[0])  # 각 입력에 대한 어텐션 스코어 저장 텐서
 for i, x_i in enumerate(inputs):
-    attn_scores_2[i] = torch.dot(x_i, query)
-print(attn_scores_2)
+    attn_scores_2[i] = torch.dot(x_i, query)  # 도트 곱으로 유사도(스코어) 계산
+print(attn_scores_2)  # 정규화 전 스코어 출력
 ```
 
 계산된 어텐션 스코어는 다음과 같습니다:
@@ -137,41 +139,38 @@ print(attn_scores_2)
 tensor([0.9544, 1.4950, 1.4754, 0.8434, 0.7070, 1.0865])
 ```
 
-### 도트 곱의 이해
-
-> **참고**: 도트 곱은 본질적으로 두 벡터를 요소별로 곱한 다음 그 곱들의 합을 구하는 간결한 방법으로, 다음과 같이 설명할 수 있습니다:
-
-```python
-res = 0.
-for idx, element in enumerate(inputs[0]):
-    res += inputs[0][idx] * query[idx]
-print(res)
-print(torch.dot(inputs[0], query))
-```
-
-출력은 요소별 곱셈의 합이 도트 곱과 동일한 결과를 준다는 것을 확인해 줍니다:
-
-```
-tensor(0.9544)
-tensor(0.9544)
-```
-
-도트 곱 연산을 두 벡터를 결합하여 스칼라 값을 산출하는 수학적 도구로 보는 것 이상으로, 도트 곱은 두 벡터가 얼마나 잘 정렬되어 있는지를 정량화하므로 유사성의 척도입니다. 더 높은 도트 곱은 벡터들 간에 더 큰 정렬 정도 또는 유사성을 나타냅니다.
-
-수학적으로, 두 벡터 $\mathbf{a}$와 $\mathbf{b}$ 간의 도트 곱은 다음과 같이 정의됩니다:
-
-$$
-\mathbf{a} \cdot \mathbf{b} = \sum_{i=1}^{n} a_i b_i
-$$
-
-여기서 $n$은 벡터의 차원입니다. 셀프 어텐션 메커니즘의 맥락에서, 도트 곱은 시퀀스의 각 요소가 다른 요소에 얼마나 집중하거나 "주의를 기울이는지"를 결정합니다. 도트 곱이 높을수록 두 요소 간의 유사성과 어텐션 스코어가 더 높습니다.
+>**도트 곱의 이해**
+> 도트 곱은 본질적으로 두 벡터를 요소별로 곱한 다음 그 곱들의 합을 구하는 간결한 방법으로, 다음과 같이 설명할 수 있습니다:
+>
+>```python
+>res = 0.  # 요소별 곱의 합을 직접 계산해 도트 곱을 검증
+>for idx, element in enumerate(inputs[0]):
+>    res += inputs[0][idx] * query[idx]
+>print(res)  # 수동 합산 결과
+>print(torch.dot(inputs[0], query))  # torch.dot 결과(동일해야 함)
+>```
+>
+>출력은 요소별 곱셈의 합이 도트 곱과 동일한 결과를 준다는 것을 확인해 줍니다:
+>
+>```
+>tensor(0.9544)
+>tensor(0.9544)
+>```
+>
+>도트 곱 연산을 두 벡터를 결합하여 스칼라 값을 산출하는 수학적 도구로 보는 것 이상으로, 도트 곱은 두 벡터가 얼마나 잘 정렬되어 있는지를 정량화하므로 유사성의 척도입니다. 더 높은 도트 곱은 벡터들 간에 더 큰 정렬 정도 또는 유사성을 나타냅니다. 수학적으로, 두 벡터 $\mathbf{a}$와 $\mathbf{b}$ 간의 도트 곱은 다음과 같이 정의됩니다:
+>
+>$$
+>\mathbf{a} \cdot \mathbf{b} = \sum_{i=1}^{n} a_i b_i
+>$$
+>
+>여기서 $n$은 벡터의 차원입니다. 셀프 어텐션 메커니즘의 맥락에서, 도트 곱은 시퀀스의 각 요소가 다른 요소에 얼마나 집중하거나 "주의를 기울이는지"를 결정합니다. 도트 곱이 높을수록 두 요소 간의 유사성과 어텐션 스코어가 더 높습니다.
 
 다음 단계에서는 그림 3.9에 나타난 것처럼 이전에 계산한 각 어텐션 스코어를 정규화합니다. 정규화의 주요 목표는 합이 1이 되는 어텐션 가중치를 얻는 것입니다. 이 정규화는 해석에 유용하고 LLM에서 훈련 안정성을 유지하는 관례입니다. 이 정규화 단계를 달성하는 간단한 방법은 다음과 같습니다:
 
 ```python
-attn_weights_2_tmp = attn_scores_2 / attn_scores_2.sum()
+attn_weights_2_tmp = attn_scores_2 / attn_scores_2.sum()  # 합이 1이 되도록 단순 정규화
 print("Attention weights:", attn_weights_2_tmp)
-print("Sum:", attn_weights_2_tmp.sum())
+print("Sum:", attn_weights_2_tmp.sum())  # 1이어야 함
 ```
 
 <img src="./image/fig_03_09.png" width="800" alt="Figure 3.9 After computing the attention scores with respect to the input query, the next step is to obtain the attention weights by normalizing the attention scores.">
@@ -189,10 +188,12 @@ Sum: tensor(1.0000)
 
 ```python
 def softmax_naive(x):
+    # 주의: 수치적 안정성이 떨어져 큰/작은 값에서 오버/언더플로우가 발생할 수 있음
     return torch.exp(x) / torch.exp(x).sum(dim=0)
-attn_weights_2_naive = softmax_naive(attn_scores_2)
+
+attn_weights_2_naive = softmax_naive(attn_scores_2)  # 소프트맥스로 정규화(개념 시연용)
 print("Attention weights:", attn_weights_2_naive)
-print("Sum:", attn_weights_2_naive.sum())
+print("Sum:", attn_weights_2_naive.sum())  # 1이어야 함
 ```
 
 출력에서 보듯이, 소프트맥스 함수도 목표를 달성하고 어텐션 가중치를 합이 1이 되도록 정규화합니다:
@@ -215,9 +216,9 @@ Sum: tensor(1.)
 이 순수한 소프트맥스 구현(softmax_naive)은 큰 값이나 작은 입력 값을 다룰 때 오버플로우와 언더플로우 같은 수치적 불안정성 문제에 직면할 수 있다는 점에 주목하세요. 따라서 실제로는 성능을 위해 광범위하게 최적화된 PyTorch의 소프트맥스 구현을 사용하는 것이 좋습니다:
 
 ```python
-attn_weights_2 = torch.softmax(attn_scores_2, dim=0)
+attn_weights_2 = torch.softmax(attn_scores_2, dim=0)  # PyTorch 내장 안정적 softmax 사용 권장
 print("Attention weights:", attn_weights_2)
-print("Sum:", attn_weights_2.sum())
+print("Sum:", attn_weights_2.sum())  # 1이어야 함
 ```
 
 이 경우 이전의 softmax_naive 함수와 동일한 결과를 산출합니다:
@@ -230,10 +231,10 @@ Sum: tensor(1.)
 이제 정규화된 어텐션 가중치를 계산했으므로, 그림 3.10에 나타난 최종 단계를 수행할 준비가 되었습니다: 임베딩된 입력 토큰 $x^{(i)}$에 해당하는 어텐션 가중치를 곱하고 결과 벡터들을 합하여 컨텍스트 벡터 $z^{(2)}$를 계산하는 것입니다. 따라서 컨텍스트 벡터 $z^{(2)}$는 각 입력 벡터에 해당하는 어텐션 가중치를 곱하여 얻은 모든 입력 벡터의 가중합입니다:
 
 ```python
-query = inputs[1]
-context_vec_2 = torch.zeros(query.shape)
-for i,x_i in enumerate(inputs):
-    context_vec_2 += attn_weights_2[i]*x_i
+query = inputs[1]  # 동일 쿼리 사용
+context_vec_2 = torch.zeros(query.shape)  # 컨텍스트 벡터 초기화
+for i, x_i in enumerate(inputs):
+    context_vec_2 += attn_weights_2[i] * x_i  # 가중합으로 컨텍스트 벡터 계산
 print(context_vec_2)
 ```
 
@@ -249,7 +250,7 @@ tensor([0.4419, 0.6515, 0.5683])
 
 다음으로는 컨텍스트 벡터를 계산하는 이 절차를 일반화하여 모든 컨텍스트 벡터를 동시에 계산하겠습니다.
 
-## 3.3.2 모든 입력 토큰에 대한 어텐션 가중치 계산 
+### 3.3.2 모든 입력 토큰에 대한 어텐션 가중치 계산 
 
 지금까지 그림 3.11의 강조된 행에서 보듯이 입력 2에 대한 어텐션 가중치와 컨텍스트 벡터를 계산했습니다. 이제 이 계산을 확장하여 모든 입력에 대한 어텐션 가중치와 컨텍스트 벡터를 계산해보겠습니다.
 
@@ -260,10 +261,10 @@ tensor([0.4419, 0.6515, 0.5683])
 앞서와 동일한 세 단계를 따르되(그림 3.12 참조), 두 번째 컨텍스트 벡터 $z^{(2)}$만이 아닌 모든 컨텍스트 벡터를 계산하기 위해 코드에 몇 가지 수정을 가합니다:
 
 ```python
-attn_scores = torch.empty(6, 6)
+attn_scores = torch.empty(6, 6)  # (쿼리 idx, 키 idx)별 스코어 행렬
 for i, x_i in enumerate(inputs):
     for j, x_j in enumerate(inputs):
-        attn_scores[i, j] = torch.dot(x_i, x_j)
+        attn_scores[i, j] = torch.dot(x_i, x_j)  # 모든 쌍의 도트 곱
 print(attn_scores)
 ```
 
@@ -287,7 +288,7 @@ tensor([[0.9995, 0.9544, 0.9422, 0.4753, 0.4576, 0.6310],
 앞의 어텐션 스코어 텐서를 계산할 때 Python의 for 루프를 사용했습니다. 하지만 for 루프는 일반적으로 느리므로, 행렬 곱셈을 사용하여 동일한 결과를 얻을 수 있습니다:
 
 ```python
-attn_scores = inputs @ inputs.T
+attn_scores = inputs @ inputs.T  # 행렬 곱으로 모든 쌍의 도트 곱을 벡터화 계산
 print(attn_scores)
 ```
 
@@ -298,17 +299,14 @@ tensor([[0.9995, 0.9544, 0.9422, 0.4753, 0.4576, 0.6310],
     [0.9544, 1.4950, 1.4754, 0.8434, 0.7070, 1.0865],
     [0.9422, 1.4754, 1.4570, 0.8296, 0.7154, 1.0605],
     [0.4753, 0.8434, 0.8296, 0.4937, 0.3474, 0.6565],
-```
-
-```
-[0.4576, 0.7070, 0.7154, 0.3474, 0.6654, 0.2935],
-[0.6310, 1.0865, 1.0605, 0.6565, 0.2935, 0.9450]])
+    [0.4576, 0.7070, 0.7154, 0.3474, 0.6654, 0.2935],
+    [0.6310, 1.0865, 1.0605, 0.6565, 0.2935, 0.9450]])
 ```
 
 그림 3.12의 2단계에서는 각 행의 값들이 1이 되도록 각 행을 정규화합니다:
 
 ```python
-attn_weights = torch.softmax(attn_scores, dim=-1)
+attn_weights = torch.softmax(attn_scores, dim=-1)  # 각 행(토큰별) 분포로 정규화
 print(attn_weights)
 ```
 
@@ -328,9 +326,9 @@ PyTorch를 사용하는 맥락에서, torch.softmax와 같은 함수의 dim 매�
 행들이 실제로 모두 1이 되는지 확인할 수 있습니다:
 
 ```python
-row_2_sum = sum([0.1385, 0.2379, 0.2333, 0.1240, 0.1082, 0.1581])
+row_2_sum = sum([0.1385, 0.2379, 0.2333, 0.1240, 0.1082, 0.1581])  # 예시 행 합 검증
 print("Row 2 sum:", row_2_sum)
-print("All row sums:", attn_weights.sum(dim=-1))
+print("All row sums:", attn_weights.sum(dim=-1))  # 모든 행 합이 1인지 검증
 ```
 
 결과는 다음과 같습니다:
@@ -343,7 +341,7 @@ All row sums: tensor([1.0000, 1.0000, 1.0000, 1.0000, 1.0000, 1.0000])
 그림 3.12의 세 번째이자 마지막 단계에서는 이러한 어텐션 가중치를 사용하여 행렬 곱셈을 통해 모든 컨텍스트 벡터를 계산합니다:
 
 ```python
-all_context_vecs = attn_weights @ inputs
+all_context_vecs = attn_weights @ inputs  # 모든 컨텍스트 벡터를 한 번에 계산
 print(all_context_vecs)
 ```
 
@@ -361,7 +359,7 @@ tensor([[0.4421, 0.5931, 0.5790],
 두 번째 행을 3.3.1절에서 계산한 컨텍스트 벡터 $z^{(2)}$와 비교하여 코드가 올바른지 다시 확인할 수 있습니다:
 
 ```python
-print("Previous 2nd context vector:", context_vec_2)
+print("Previous 2nd context vector:", context_vec_2)  # 개별 계산과 일치하는지 확인
 ```
 
 결과를 바탕으로, 이전에 계산한 context_vec_2가 이전 텐서의 두 번째 행과 정확히 일치한다는 것을 알 수 있습니다:
@@ -372,7 +370,7 @@ Previous 2nd context vector: tensor([0.4419, 0.6515, 0.5683])
 
 이것으로 간단한 셀프 어텐션 메커니즘의 코드 설명을 마칩니다. 다음으로는 훈련 가능한 가중치를 추가하여 LLM이 데이터로부터 학습하고 특정 작업에서 성능을 향상시킬 수 있도록 하겠습니다.
 
-# 3.4 훈련 가능한 가중치를 사용한 셀프 어텐션 구현 
+## 3.4 훈련 가능한 가중치를 사용한 셀프 어텐션 구현 
 
 다음 단계에서는 원조 트랜스포머 아키텍처, GPT 계열, 그리고 대부분의 인기 있는 LLM에서 사용하는 셀프 어텐션 메커니즘을 구현하겠습니다. 이 셀프 어텐션 메커니즘은 스케일드 도트 곱 어텐션(scaled dot-product attention)이라고도 합니다. 그림 3.13은 이 셀프 어텐션 메커니즘이 LLM 구현의 큰 흐름 속에서 어디에 위치하는지를 보여줍니다.
 
@@ -436,9 +434,9 @@ print(query_2)
 tensor([0.4306, 1.4551])
 ```
 
-### 가중치 매개변수 대 어텐션 가중치
-
-> **중요**: 가중치 행렬 $W$에서 "가중치"라는 용어는 "가중치 매개변수"의 줄임말로, 훈련 중에 최적화되는 신경망의 값들을 의미합니다. 이는 어텐션 가중치와 혼동되어서는 안 됩니다. 이미 보았듯이, 어텐션 가중치는 컨텍스트 벡터가 입력의 서로 다른 부분들에 얼마나 의존하는지(즉, 네트워크가 입력의 서로 다른 부분들에 얼마나 집중하는지)를 결정합니다.
+>**가중치 매개변수 대 어텐션 가중치**
+>
+> 가중치 행렬 $W$에서 "가중치"라는 용어는 "가중치 매개변수"의 줄임말로, 훈련 중에 최적화되는 신경망의 값들을 의미합니다. 이는 어텐션 가중치와 혼동되어서는 안 됩니다. 이미 보았듯이, 어텐션 가중치는 컨텍스트 벡터가 입력의 서로 다른 부분들에 얼마나 의존하는지(즉, 네트워크가 입력의 서로 다른 부분들에 얼마나 집중하는지)를 결정합니다.
 >
 > 요약하면, 가중치 매개변수는 네트워크의 연결을 정의하는 학습된 기본 계수이고, 어텐션 가중치는 동적이고 맥락에 특화된 값들입니다.
 
@@ -469,11 +467,10 @@ values.shape: torch.Size([6, 2])
 먼저 어텐션 스코어 $\omega_{22}$를 계산해보겠습니다:
 
 ```python
-keys_2 = keys[1]
+keys_2 = keys[1] # Python은 0부터 인덱싱을 시작한다는 점을 기억하세요
 attn_score_22 = query_2.dot(keys_2)
+print(attn_score_22)
 ```
-
-# Python은 0부터 인덱싱을 시작한다는 점을 기억하세요
 
 정규화되지 않은 어텐션 스코어의 결과는 다음과 같습니다:
 
@@ -484,11 +481,9 @@ tensor(1.8524)
 다시, 행렬 곱셈을 통해 이 계산을 모든 어텐션 스코어로 일반화할 수 있습니다:
 
 ```python
-attn_scores_2 = query_2 @ keys.T
+attn_scores_2 = query_2 @ keys.T # 주어진 쿼리에 대한 모든 어텐션 스코어
 print(attn_scores_2)
 ```
-
-← 주어진 쿼리에 대한 모든 어텐션 스코어
 
 빠른 확인으로, 출력의 두 번째 요소가 이전에 계산한 attn_score_22와 일치한다는 것을 알 수 있습니다:
 
@@ -515,19 +510,15 @@ print(attn_weights_2)
 tensor([0.1500, 0.2264, 0.2199, 0.1311, 0.0906, 0.1820])
 ```
 
-### 스케일드 도트 곱 어텐션의 이론적 근거
-
-> **기술적 참고**: 임베딩 차원 크기로 정규화하는 이유는 작은 기울기를 피하여 훈련 성능을 향상시키기 위함입니다. 예를 들어, GPT 유사 LLM에서 일반적으로 1,000보다 큰 임베딩 차원을 확장할 때, 큰 도트 곱은 소프트맥스 함수가 적용되어 역전파 중에 매우 작은 기울기를 초래할 수 있습니다.
-
-스케일드 도트 곱 어텐션은 다음과 같이 계산됩니다:
-
-$$
-\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
-$$
-
-여기서 $Q$, $K$, $V$는 각각 쿼리, 키, 값 행렬이고, $d_k$는 키 벡터의 차원입니다. 스케일링 인수 $\frac{1}{\sqrt{d_k}}$는 도트 곱이 너무 커지는 것을 방지하여 소프트맥스 함수가 매우 작은 기울기를 가지는 영역으로 밀려나는 것을 막습니다.
-
-임베딩 차원의 제곱근으로 스케일링하는 것이 이 셀프 어텐션 메커니즘이 스케일드 도트 곱 어텐션이라고도 불리는 이유입니다.
+>**스케일드 도트 곱 어텐션의 이론적 근거**
+>
+> 임베딩 차원 크기로 정규화하는 이유는 작은 기울기를 피하여 훈련 성능을 향상시키기 위함입니다. 예를 들어, GPT 유사 LLM에서 일반적으로 1,000보다 큰 임베딩 차원을 확장할 때, 큰 도트 곱은 소프트맥스 함수가 적용되어 역전파 중에 매우 작은 기울기를 초래할 수 있습니다. 스케일드 도트 곱 어텐션은 다음과 같이 계산됩니다:
+>
+>$$
+>\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+>$$
+>
+>여기서 $Q$, $K$, $V$는 각각 쿼리, 키, 값 행렬이고, $d_k$는 키 벡터의 차원입니다. 스케일링 인수 $\frac{1}{\sqrt{d_k}}$는 도트 곱이 너무 커지는 것을 방지하여 소프트맥스 함수가 매우 작은 기울기를 가지는 영역으로 밀려나는 것을 막습니다. 임베딩 차원의 제곱근으로 스케일링하는 것이 이 셀프 어텐션 메커니즘이 스케일드 도트 곱 어텐션이라고도 불리는 이유입니다.
 
 이제 마지막 단계는 그림 3.17에서 보여주는 것처럼 컨텍스트 벡터를 계산하는 것입니다.
 
@@ -549,40 +540,44 @@ tensor([0.3061, 0.8210])
 ```
 지금까지 우리는 단일 컨텍스트 벡터 $z^{(2)}$만 계산했습니다. 다음으로는 입력 시퀀스의 모든 컨텍스트 벡터 $z^{(1)}$부터 $z^{(T)}$까지를 계산하도록 코드를 일반화하겠습니다.
 
-### 왜 쿼리, 키, 값인가?
+>**왜 쿼리, 키, 값인가?**
+>
+>어텐션 메커니즘의 맥락에서 “키(key)”, “쿼리(query)”, 그리고 “값(value)”이라는 용어는 정보를 저장하고, 검색하고, 조회하는 데 사용되는 유사한 개념들이 존재하는 **정보 검색(information retrieval)**과 **데이터베이스(databases)** 분야에서 차용된 것이다.
+>
+>쿼리는 데이터베이스에서의 검색 쿼리(search query)에 해당한다. 이는 모델이 집중하거나 이해하려고 하는 현재의 항목(예: 문장 내의 단어 또는 토큰)을 나타낸다. 쿼리는 입력 시퀀스의 다른 부분을 탐색(probe)하여 그들에게 얼마만큼의 어텐션을 줄지를 결정하는 데 사용된다.
+>
+>키는 인덱싱(indexing)과 검색(search)에 사용되는 데이터베이스 키(database key)와 같다. 어텐션 메커니즘에서 입력 시퀀스의 각 항목(예: 문장의 각 단어)은 관련된 키를 가진다. 이 키들은 쿼리와의 매칭(match)에 사용된다.
+>
+>이 맥락에서의 값(value)은 데이터베이스의 키-값(key-value) 쌍에서의 값(value)과 유사하다. 이는 입력 항목들의 실제 내용(content)이나 표현(representation)을 나타낸다. 모델이 어떤 키(즉, 입력의 어떤 부분)가 쿼리(현재 집중하고 있는 항목)와 가장 관련이 있는지를 결정하면, 그에 해당하는 값을 가져온다(retrieve).
 
-> **개념적 배경**: 어텐션 메커니즘에서 사용하는 "쿼리(query)", "키(key)", "값(value)"라는 용어는 정보 검색 및 데이터베이스 분야에서 차용된 것입니다. 이 분야에서는 정보를 저장, 검색, 조회하는 유사한 개념이 사용됩니다.
->
-> - **쿼리(Query)**: 데이터베이스에서의 검색 질의와 유사합니다. 이는 모델이 현재 집중하거나 이해하려는 항목(예: 문장 내의 특정 단어 또는 토큰)을 나타냅니다. 쿼리는 입력 시퀀스의 다른 부분을 탐색하여 어느 정도의 주의를 기울일지 결정하는 데 사용됩니다.
->
-> - **키(Key)**: 데이터베이스에서 인덱싱과 검색에 사용되는 키와 비슷합니다. 어텐션 메커니즘에서는 입력 시퀀스의 각 항목(예: 문장의 각 단어)에 키가 할당됩니다. 이 키들은 쿼리와의 매칭에 사용됩니다.
->
-> - **값(Value)**: 데이터베이스의 키-값 쌍에서 값에 해당합니다. 이는 입력 항목의 실제 내용이나 표현을 의미합니다. 모델이 쿼리(즉, 현재 집중하는 항목)와 가장 관련 있는 키(즉, 입력의 특정 부분)를 결정하면, 해당 키에 연결된 값을 가져옵니다.
 
-## 3.4.2 간결한 셀프 어텐션 Python 클래스 구현
+### 3.4.2 간결한 셀프 어텐션 Python 클래스 구현
 
 지금까지 셀프 어텐션 출력을 계산하기 위해 많은 단계를 거쳤습니다. 이는 주로 설명 목적으로 한 단계씩 차근차근 살펴보기 위함이었습니다. 실제로는 다음 장에서 구현할 LLM을 염두에 두고, 다음 리스팅에서 보는 것처럼 이 코드를 Python 클래스로 정리하는 것이 유용합니다.
 
-## Listing 3.1 A compact self-attention class
+**Listing 3.1 A compact self-attention class**
 
 ```python
-import torch.nn as nn
+import torch.nn as nn  # 신경망 모듈 임포트
+
 class SelfAttention_v1(nn.Module):
     def __init__(self, d_in, d_out):
         super().__init__()
+        # 쿼리/키/값 투영 가중치 행렬 (학습 가능 파라미터)
         self.W_query = nn.Parameter(torch.rand(d_in, d_out))
         self.W_key = nn.Parameter(torch.rand(d_in, d_out))
         self.W_value = nn.Parameter(torch.rand(d_in, d_out))
 
     def forward(self, x):
-        keys = x @ self.W_key
-        queries = x @ self.W_query
-        values = x @ self.W_value
-        attn_scores = queries @ keys.T # omega
+        # x: (num_tokens, d_in) 가정. 배치 없이 단일 시퀀스 처리 예시
+        keys = x @ self.W_key        # (num_tokens, d_out)
+        queries = x @ self.W_query   # (num_tokens, d_out)
+        values = x @ self.W_value    # (num_tokens, d_out)
+        attn_scores = queries @ keys.T  # (num_tokens, num_tokens), 유사도 스코어(omega)
         attn_weights = torch.softmax(
-            attn_scores / keys.shape[-1]**0.5, dim=-1
+            attn_scores / keys.shape[-1]**0.5, dim=-1  # 스케일드 도트 곱 후 행 단위 정규화
         )
-        context_vec = attn_weights @ values
+        context_vec = attn_weights @ values  # (num_tokens, d_out) 컨텍스트 벡터
         return context_vec
 ```
 
@@ -595,9 +590,9 @@ class SelfAttention_v1(nn.Module):
 We can use this class as follows:
 
 ```python
-torch.manual_seed(123)
+torch.manual_seed(123)  # 재현 가능성을 위한 시드 고정
 sa_v1 = SelfAttention_v1(d_in, d_out)
-print(sa_v1(inputs))
+print(sa_v1(inputs))  # (num_tokens, d_out) 출력
 ```
 
 `inputs`에 6개의 임베딩 벡터가 포함되어 있으므로, 출력은 6개의 컨텍스트 벡터가 담긴 행렬이 됩니다.
@@ -623,32 +618,33 @@ PyTorch의 `nn.Linear` 레이어를 활용하면 `SelfAttention_v1` 구현을 �
 
 `nn.Parameter(torch.rand(...))`를 수동으로 구현하는 대신 `nn.Linear`를 사용하는 중요한 장점은 `nn.Linear`가 최적화된 가중치 초기화 방식을 가지고 있어 더 안정적이고 효과적인 모델 훈련에 기여한다는 점입니다.
 
-### 리스트 3.2 PyTorch의 Linear 레이어를 사용하는 셀프 어텐션 클래스 
+**리스트 3.2 PyTorch의 Linear 레이어를 사용하는 셀프 어텐션 클래스**
 
 ```python
 class SelfAttention_v2(nn.Module):
     def __init__(self, d_in, d_out, qkv_bias=False):
         super().__init__()
+        # nn.Linear는 내부적으로 가중치를 전치된 형태로 저장하며, 초기화가 개선됨
         self.W_query = nn.Linear(d_in, d_out, bias=qkv_bias)
         self.W_key = nn.Linear(d_in, d_out, bias=qkv_bias)
         self.W_value = nn.Linear(d_in, d_out, bias=qkv_bias)
 
     def forward(self, x):
-        keys = self.W_key(x)
-        queries = self.W_query(x)
-        values = self.W_value(x)
-        attn_scores = queries @ keys.T
+        keys = self.W_key(x)         # (num_tokens, d_out)
+        queries = self.W_query(x)    # (num_tokens, d_out)
+        values = self.W_value(x)     # (num_tokens, d_out)
+        attn_scores = queries @ keys.T  # (num_tokens, num_tokens)
         attn_weights = torch.softmax(
             attn_scores / keys.shape[-1]**0.5, dim=-1
         )
-        context_vec = attn_weights @ values
+        context_vec = attn_weights @ values  # (num_tokens, d_out)
         return context_vec
 ```
 
 `SelfAttention_v1`과 유사하게 `SelfAttention_v2`를 사용할 수 있습니다:
 
 ```python
-torch.manual_seed(789)
+torch.manual_seed(789)  # 다른 초기화 비교
 sa_v2 = SelfAttention_v2(d_in, d_out)
 print(sa_v2(inputs))
 ```
@@ -666,16 +662,17 @@ tensor([[-0.0739, 0.0713],
 
 `SelfAttention_v1`과 `SelfAttention_v2`는 서로 다른 출력을 생성하는데, 이는 `nn.Linear`가 더 정교한 가중치 초기화 방식을 사용하여 가중치 행렬의 초기값이 다르기 때문입니다.
 
-### 연습 문제 3.1 SelfAttention_v1과 SelfAttention_v2 비교하기
-
-> **연습 문제**: `SelfAttention_v2`의 `nn.Linear`는 `SelfAttention_v1`에서 사용한 `nn.Parameter(torch.rand(d_in, d_out))`와 다른 가중치 초기화 방식을 사용하므로, 두 메커니즘이 서로 다른 결과를 생성합니다. 두 구현체인 `SelfAttention_v1`과 `SelfAttention_v2`가 다른 면에서는 유사하다는 것을 확인하기 위해, `SelfAttention_v2` 객체의 가중치 행렬을 `SelfAttention_v1`로 전달하여 두 객체가 동일한 결과를 생성하도록 할 수 있습니다.
+>**연습 문제 3.1 SelfAttention_v1과 SelfAttention_v2 비교하기**
 >
-> **과제**: `SelfAttention_v2` 인스턴스의 가중치를 `SelfAttention_v1` 인스턴스에 올바르게 할당하는 것이 여러분의 과제입니다. 이를 위해서는 두 버전의 가중치 간 관계를 이해해야 합니다. (힌트: `nn.Linear`는 가중치 행렬을 전치된 형태로 저장합니다.) 할당 후에는 두 인스턴스가 동일한 출력을 생성하는 것을 확인할 수 있어야 합니다.
+> `SelfAttention_v2`의 `nn.Linear`는 `SelfAttention_v1`에서 사용한 `nn.Parameter(torch.rand(d_in, d_out))`와 다른 가중치 초기화 방식을 사용하므로, 두 메커니즘이 서로 다른 결과를 생성합니다. 두 구현체인 `SelfAttention_v1`과 `SelfAttention_v2`가 다른 면에서는 유사하다는 것을 확인하기 위해, `SelfAttention_v2` 객체의 가중치 행렬을 `SelfAttention_v1`로 전달하여 두 객체가 동일한 결과를 생성하도록 할 수 있습니다.
+>
+> `SelfAttention_v2` 인스턴스의 가중치를 `SelfAttention_v1` 인스턴스에 올바르게 할당하는 것이 여러분의 과제입니다. 이를 위해서는 두 버전의 가중치 간 관계를 이해해야 합니다. (힌트: `nn.Linear`는 가중치 행렬을 전치된 형태로 저장합니다.) 할당 후에는 두 인스턴스가 동일한 출력을 생성하는 것을 확인할 수 있어야 합니다.
 
 다음으로는 셀프 어텐션 메커니즘을 개선하여, 특히 인과적 요소와 멀티헤드 요소를 통합하는 데 초점을 맞추겠습니다. 인과적 측면은 모델이 시퀀스의 미래 정보에 접근하지 못하도록 어텐션 메커니즘을 수정하는 것으로, 각 단어 예측이 이전 단어들에만 의존해야 하는 언어 모델링과 같은 작업에서 중요합니다.
 
 멀티헤드 구성 요소는 어텐션 메커니즘을 여러 "헤드"로 분할하는 것입니다. 각 헤드는 데이터의 서로 다른 측면을 학습하여, 모델이 서로 다른 위치에서 다양한 표현 부공간의 정보에 동시에 주의를 기울일 수 있게 합니다. 이는 복잡한 작업에서 모델의 성능을 향상시킵니다.
-# 3.5 인과적 어텐션으로 미래 단어 숨기기
+
+## 3.5 인과적 어텐션으로 미래 단어 숨기기
 
 많은 LLM 작업에서, 시퀀스의 다음 토큰을 예측할 때 셀프 어텐션 메커니즘이 현재 위치 이전에 나타나는 토큰들만 고려하기를 원할 것입니다. 마스크드 어텐션이라고도 알려진 인과적 어텐션은 셀프 어텐션의 특수한 형태입니다. 어텐션 스코어를 계산할 때 주어진 토큰을 처리하는 동안 시퀀스의 이전 및 현재 입력만 고려하도록 모델을 제한합니다. 이는 전체 입력 시퀀스에 한 번에 접근할 수 있는 표준 셀프 어텐션 메커니즘과 대조됩니다.
 
@@ -687,7 +684,7 @@ tensor([[-0.0739, 0.0713],
 
 마스킹되지 않은 어텐션 가중치를 정규화하여 각 행의 어텐션 가중치 합이 1이 되도록 합니다. 나중에 이 마스킹과 정규화 절차를 코드로 구현하겠습니다.
 
-## 3.5.1 인과적 어텐션 마스크 적용하기
+### 3.5.1 인과적 어텐션 마스크 적용하기
 
 다음 단계는 인과적 어텐션 마스크를 코드로 구현하는 것입니다. 그림 3.20에 요약된 것처럼 인과적 어텐션 마스크를 적용하여 마스킹된 어텐션 가중치를 얻는 단계를 구현하기 위해, 이전 섹션의 어텐션 스코어와 가중치를 사용하여 인과적 어텐션 메커니즘을 코딩해보겠습니다.
 
@@ -698,10 +695,10 @@ tensor([[-0.0739, 0.0713],
 첫 번째 단계에서는 이전에 했던 것처럼 소프트맥스 함수를 사용하여 어텐션 가중치를 계산합니다:
 
 ```python
-queries = sa_v2.W_query(inputs)
-keys = sa_v2.W_key(inputs)
-attn_scores = queries @ keys.T
-attn_weights = torch.softmax(attn_scores / keys.shape[-1]**0.5, dim=-1)
+queries = sa_v2.W_query(inputs)  # (num_tokens, d_out)
+keys = sa_v2.W_key(inputs)       # (num_tokens, d_out)
+attn_scores = queries @ keys.T   # (num_tokens, num_tokens)
+attn_weights = torch.softmax(attn_scores / keys.shape[-1]**0.5, dim=-1)  # 소프트맥스 정규화
 print(attn_weights)
 ```
 
@@ -720,8 +717,8 @@ tensor([[0.1921, 0.1646, 0.1652, 0.1550, 0.1721, 0.1510],
 두 번째 단계에서는 PyTorch의 `tril` 함수를 사용하여 대각선 위의 값들이 0인 마스크를 생성할 수 있습니다:
 
 ```python
-context_length = attn_scores.shape[0]
-mask_simple = torch.tril(torch.ones(context_length, context_length))
+context_length = attn_scores.shape[0]  # 시퀀스 길이(토큰 수)
+mask_simple = torch.tril(torch.ones(context_length, context_length))  # 하삼각 행렬 마스크
 print(mask_simple)
 ```
 
@@ -739,7 +736,7 @@ tensor([[1., 0., 0., 0., 0., 0.],
 이제 이 마스크를 어텐션 가중치와 곱하여 대각선 위의 값들을 0으로 만들 수 있습니다:
 
 ```python
-masked_simple = attn_weights*mask_simple
+masked_simple = attn_weights * mask_simple  # 대각선 위 요소를 0으로 마스킹
 print(masked_simple)
 ```
 
@@ -758,8 +755,8 @@ grad_fn=<MulBackward0>)
 세 번째 단계는 각 행에서 어텐션 가중치가 다시 1이 되도록 정규화하는 것입니다. 각 행의 각 요소를 해당 행의 합으로 나누어 이를 달성할 수 있습니다:
 
 ```python
-row_sums = masked_simple.sum(dim=-1, keepdim=True)
-masked_simple_norm = masked_simple / row_sums
+row_sums = masked_simple.sum(dim=-1, keepdim=True)  # 행별 합 계산
+masked_simple_norm = masked_simple / row_sums       # 다시 확률분포로 정규화
 print(masked_simple_norm)
 ```
 
@@ -776,9 +773,9 @@ grad_fn=<DivBackward0>)
 ```
 
 
-### 정보 누출
-
-> **기술적 설명**: 마스크를 적용한 후 어텐션 가중치를 재정규화할 때, 처음에는 마스킹하려는 미래 토큰의 정보가 softmax 계산에 포함되어 현재 토큰에 여전히 영향을 줄 수 있는 것처럼 보일 수 있습니다. 하지만 핵심은 마스킹 후 어텐션 가중치를 재정규화할 때, 본질적으로 더 작은 부분집합에 대해 softmax를 재계산하는 것이라는 점입니다(마스킹된 위치는 softmax 값에 기여하지 않기 때문입니다).
+>**정보 누출**
+>
+> 마스크를 적용한 후 어텐션 가중치를 재정규화할 때, 처음에는 마스킹하려는 미래 토큰의 정보가 softmax 계산에 포함되어 현재 토큰에 여전히 영향을 줄 수 있는 것처럼 보일 수 있습니다. 하지만 핵심은 마스킹 후 어텐션 가중치를 재정규화할 때, 본질적으로 더 작은 부분집합에 대해 softmax를 재계산하는 것이라는 점입니다(마스킹된 위치는 softmax 값에 기여하지 않기 때문입니다).
 >
 > softmax의 수학적 우아함은 처음에는 분모에 모든 위치를 포함하지만, 마스킹과 재정규화 후에는 마스킹된 위치의 효과가 무효화되어 softmax 점수에 의미 있는 방식으로 기여하지 않는다는 것입니다.
 >
@@ -795,8 +792,8 @@ grad_fn=<DivBackward0>)
 대각선 위에 1이 있는 마스크를 만든 다음 이 1들을 음의 무한대(`-inf`) 값으로 바꾸는 방식으로 이 더 효율적인 마스킹 "기법"을 구현할 수 있습니다:
 
 ```python
-mask = torch.triu(torch.ones(context_length, context_length), diagonal=1)
-masked = attn_scores.masked_fill(mask.bool(), -torch.inf)
+mask = torch.triu(torch.ones(context_length, context_length), diagonal=1)  # 상삼각(미래 토큰) 마스크
+masked = attn_scores.masked_fill(mask.bool(), -torch.inf)  # 미래 위치를 -inf로 채워 softmax 후 0이 되게 함
 print(masked)
 ```
 
@@ -815,7 +812,7 @@ tensor([[0.2899, -inf, -inf, -inf, -inf, -inf],
 이제 마스킹된 결과에 `softmax` 함수를 적용하기만 하면 완료됩니다:
 
 ```python
-attn_weights = torch.softmax(masked / keys.shape[-1]**0.5, dim=1)
+attn_weights = torch.softmax(masked / keys.shape[-1]**0.5, dim=1)  # 추가 정규화 불필요
 print(attn_weights)
 ```
 
@@ -832,7 +829,7 @@ tensor([[1.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000],
 ```
 이제 수정된 어텐션 가중치를 사용하여 3.4절에서와 같이 `context_vec = attn_weights @ values`를 통해 컨텍스트 벡터를 계산할 수 있습니다. 하지만 먼저 LLM 훈련 시 과적합을 줄이는 데 유용한 인과적 어텐션 메커니즘의 또 다른 작은 개선 사항을 다루겠습니다.
 
-## 3.5.2 드롭아웃으로 추가 어텐션 가중치 마스킹하기
+### 3.5.2 드롭아웃으로 추가 어텐션 가중치 마스킹하기
 
 딥러닝에서 드롭아웃은 훈련 중에 무작위로 선택된 은닉층 유닛들을 무시하여 효과적으로 "제외"시키는 기법입니다. 이 방법은 모델이 특정 은닉층 유닛 집합에 지나치게 의존하지 않도록 하여 과적합을 방지하는 데 도움이 됩니다. 드롭아웃은 훈련 중에만 사용되고 이후에는 비활성화된다는 점을 강조하는 것이 중요합니다.
 
@@ -842,14 +839,10 @@ GPT와 같은 모델을 포함한 트랜스포머 아키텍처에서, 어텐션 
 
 ```python
 torch.manual_seed(123)
-dropout = torch.nn.Dropout(0.5)
-example = torch.ones(6, 6)
-print(dropout(example))
+dropout = torch.nn.Dropout(0.5)  # 드롭아웃 비율 50%
+example = torch.ones(6, 6)       # 1로 채운 예시 행렬
+print(dropout(example))          # 0으로 마스킹된 곳 외에는 1/(1-p)=2로 스케일
 ```
-
-# 50%의 드롭아웃 비율을 선택합니다
-
-# 여기서 1로 구성된 행렬을 생성합니다
 
 <img src="./image/fig_03_22.png" width="800" alt="Figure 3.22 Using causal attention mask and applying additional dropout mask to zero out additional attention weights to reduce overfitting during training.">
 
@@ -879,7 +872,7 @@ $$
 
 ```python
 torch.manual_seed(123)
-print(dropout(attn_weights))
+print(dropout(attn_weights))  # 어텐션 가중치에 드롭아웃 적용(훈련 시만 활성)
 ```
 
 결과로 나온 어텐션 가중치 행렬은 이제 추가 원소들이 0으로 설정되고 남은 1들이 재스케일링되었습니다:
@@ -897,7 +890,7 @@ tensor([[2.0000, 0.0000, 0 .0000, 0.0000, 0.0000, 0.0000],
 
 인과적 어텐션과 드롭아웃 마스킹에 대한 이해를 바탕으로, 이제 간결한 Python 클래스를 개발할 수 있습니다. 이 클래스는 이 두 기법을 효율적으로 적용할 수 있도록 설계되었습니다.
 
-## 3.5.3 컴팩트한 인과적 어텐션 클래스 구현하기
+### 3.5.3 컴팩트한 인과적 어텐션 클래스 구현하기
 
 이제 3.4절에서 개발한 SelfAttention Python 클래스에 인과적 어텐션과 드롭아웃 수정사항을 통합하겠습니다. 이 클래스는 우리가 구현할 마지막 어텐션 클래스인 멀티헤드 어텐션을 개발하기 위한 템플릿 역할을 할 것입니다.
 
@@ -907,10 +900,9 @@ tensor([[2.0000, 0.0000, 0 .0000, 0.0000, 0.0000, 0.0000],
 
 ```python
 batch = torch.stack((inputs, inputs), dim=0)
-print(batch.shape)
+print(batch.shape) # 각각 6개의 토큰을 가진 두 개의 입력; 각 토큰은 임베딩 차원이 3입니다.
 ```
 
-각각 6개의 토큰을 가진 두 개의 입력; 각 토큰은 임베딩 차원이 3입니다.
 
 이는 각각 6개의 토큰을 가진 두 개의 입력 텍스트로 구성된 3차원 텐서를 생성하며, 각 토큰은 3차원 임베딩 벡터입니다:
 
@@ -920,7 +912,7 @@ torch.Size([2, 6, 3])
 
 다음 `CausalAttention` 클래스는 앞서 구현한 `SelfAttention` 클래스와 유사하지만, 드롭아웃과 인과적 마스크 구성 요소를 추가했습니다.
 
-### 목록 3.3 컴팩트한 인과적 어텐션 클래스
+**목록 3.3 컴팩트한 인과적 어텐션 클래스**
 
 ```python
 class CausalAttention(nn.Module):
@@ -928,22 +920,25 @@ class CausalAttention(nn.Module):
         dropout, qkv_bias=False):
         super().__init__()
         self.d_out = d_out
+        # 배치 입력을 처리할 수 있도록 nn.Linear를 사용
         self.W_query = nn.Linear(d_in, d_out, bias=qkv_bias)
         self.W_key = nn.Linear(d_in, d_out, bias=qkv_bias)
         self.W_value = nn.Linear(d_in, d_out, bias=qkv_bias)
-        self.dropout = nn.Dropout(dropout)
+        self.dropout = nn.Dropout(dropout)  # 어텐션 가중치에 드롭아웃 적용
+        # 장치 이동을 자동화하기 위해 마스크를 버퍼로 등록
         self.register_buffer('mask', torch.triu(torch.ones(context_length, context_length), diagonal=1))
 
     def forward(self, x):
-        b, num_tokens, d_in = x.shape
-        keys = self.W_key(x)
-        queries = self.W_query(x)
-        values = self.W_value(x)
-        attn_scores = queries @ keys.transpose(1, 2)
+        b, num_tokens, d_in = x.shape  # x: (batch, num_tokens, d_in)
+        keys = self.W_key(x)           # (b, num_tokens, d_out)
+        queries = self.W_query(x)      # (b, num_tokens, d_out)
+        values = self.W_value(x)       # (b, num_tokens, d_out)
+        attn_scores = queries @ keys.transpose(1, 2)  # (b, num_tokens, num_tokens)
+        # 마스크를 현재 길이에 맞게 잘라 적용, 제자리(masked_fill_)로 -inf 채움
         attn_scores.masked_fill_(self.mask.bool()[:num_tokens, :num_tokens], -torch.inf)
         attn_weights = torch.softmax(attn_scores / keys.shape[-1]**0.5, dim=-1)
         attn_weights = self.dropout(attn_weights)
-        context_vec = attn_weights @ values
+        context_vec = attn_weights @ values  # (b, num_tokens, d_out)
         return context_vec
 ```
 
@@ -953,10 +948,10 @@ class CausalAttention(nn.Module):
 
 ```python
 torch.manual_seed(123)
-context_length = batch.shape[1]
+context_length = batch.shape[1]  # 토큰 수
 ca = CausalAttention(d_in, d_out, context_length, 0.0)
 context_vecs = ca(batch)
-print("context_vecs.shape:", context_vecs.shape)
+print("context_vecs.shape:", context_vecs.shape)  # (b, num_tokens, d_out)
 ```
 
 결과로 나오는 컨텍스트 벡터는 각 토큰이 이제 2차원 임베딩으로 표현되는 3차원 텐서입니다:
@@ -967,7 +962,7 @@ context_vecs.shape: torch.Size([2, 6, 2])
 
 그림 3.23 지금까지 우리가 달성한 것을 요약합니다. 우리는 단순화된 어텐션 메커니즘으로 시작하여 훈련 가능한 가중치를 추가하고, 인과적 어텐션 마스크를 추가했습니다. 다음으로, 인과적 어텐션 메커니즘을 확장하여 LLM에서 사용할 멀티헤드 어텐션을 코딩할 것입니다.
 
-# 3.6 단일 헤드 어텐션을 멀티헤드 어텐션으로 확장하기
+## 3.6 단일 헤드 어텐션을 멀티헤드 어텐션으로 확장하기
 
 마지막 단계는 이전에 구현한 인과적 어텐션 클래스를 여러 헤드로 확장하는 것입니다. 이를 멀티헤드 어텐션이라고도 합니다.
 
@@ -975,7 +970,7 @@ context_vecs.shape: torch.Size([2, 6, 2])
 
 우리는 인과적 어텐션에서 멀티헤드 어텐션으로의 확장을 다룰 것입니다. 먼저, 여러 CausalAttention 모듈을 쌓아서 직관적으로 멀티헤드 어텐션 모듈을 구축할 것입니다. 그런 다음 더 복잡하지만 계산적으로 더 효율적인 방식으로 동일한 멀티헤드 어텐션 모듈을 구현할 것입니다.
 
-## 3.6.1 여러 단일 헤드 어텐션 레이어 쌓기
+### 3.6.1 여러 단일 헤드 어텐션 레이어 쌓기
 
 실제로 멀티헤드 어텐션을 구현하는 것은 각각 고유한 가중치를 가진 셀프 어텐션 메커니즘의 여러 인스턴스를 생성하고(그림 3.18 참조), 그 출력을 결합하는 것을 포함합니다. 셀프 어텐션 메커니즘의 여러 인스턴스를 사용하는 것은 계산 집약적일 수 있지만, 트랜스포머 기반 LLM과 같은 모델이 알려진 복잡한 패턴 인식에 중요합니다.
 
@@ -987,20 +982,23 @@ context_vecs.shape: torch.Size([2, 6, 2])
 
 앞서 언급했듯이, 멀티헤드 어텐션의 주요 아이디어는 서로 다른 학습된 선형 투영(어텐션 메커니즘의 쿼리, 키, 값 벡터와 같은 입력 데이터에 가중치 행렬을 곱한 결과)을 사용하여 어텐션 메커니즘을 여러 번 (병렬로) 실행하는 것입니다. 코드에서는 이전에 구현한 CausalAttention 모듈의 여러 인스턴스를 쌓는 간단한 MultiHeadAttentionWrapper 클래스를 구현하여 이를 달성할 수 있습니다.
 
-### 목록 3.4 멀티헤드 어텐션을 구현하는 래퍼 클래스
+**목록 3.4 멀티헤드 어텐션을 구현하는 래퍼 클래스**
 
 ```python
 class MultiHeadAttentionWrapper(nn.Module):
     def __init__(self, d_in, d_out, context_length,
                  dropout, num_heads, qkv_bias=False):
         super().__init__()
+        # 각 헤드는 독립적인 CausalAttention 인스턴스
         self.heads = nn.ModuleList(
             [CausalAttention(
                 d_in, d_out, context_length, dropout, qkv_bias
             )
             for _ in range(num_heads)]
         )
+
     def forward(self, x):
+        # 모든 헤드 출력을 마지막 차원(임베딩 차원) 방향으로 연결
         return torch.cat([head(x) for head in self.heads], dim=-1)
 ```
 
@@ -1016,14 +1014,14 @@ class MultiHeadAttentionWrapper(nn.Module):
 
 ```python
 torch.manual_seed(123)
-context_length = batch.shape[1]  # This is the number of tokens
+context_length = batch.shape[1]  # 토큰 수
 d_in, d_out = 3, 2
 mha = MultiHeadAttentionWrapper(
     d_in, d_out, context_length, 0.0, num_heads=2
 )
 context_vecs = mha(batch)
 print(context_vecs)
-print("context_vecs.shape:", context_vecs.shape)
+print("context_vecs.shape:", context_vecs.shape)  # (b, num_tokens, d_out*num_heads)
 ```
 
 이는 컨텍스트 벡터를 나타내는 다음 텐서를 결과로 생성합니다:
@@ -1046,15 +1044,15 @@ context_vecs.shape: torch.Size([2, 6, 4])
 
 결과로 나온 `context_vecs` 텐서의 첫 번째 차원이 2인 이유는 두 개의 입력 텍스트가 있기 때문입니다 (입력 텍스트가 중복되어 있어서 컨텍스트 벡터가 정확히 동일합니다). 두 번째 차원은 각 입력의 6개 토큰을 나타냅니다. 세 번째 차원은 각 토큰의 4차원 임베딩을 나타냅니다.
 
-### 연습 문제 3.2 2차원 임베딩 벡터 반환하기
-
-> **연습 문제**: `MultiHeadAttentionWrapper(..., num_heads=2)` 호출의 입력 인수를 변경하여 `num_heads=2` 설정을 유지하면서 출력 컨텍스트 벡터가 4차원 대신 2차원이 되도록 하세요.
+>**연습 문제 3.2 2차원 임베딩 벡터 반환하기**
+>
+>`MultiHeadAttentionWrapper(..., num_heads=2)` 호출의 입력 인수를 변경하여 `num_heads=2` 설정을 유지하면서 출력 컨텍스트 벡터가 4차원 대신 2차원이 되도록 하세요.
 >
 > **힌트**: 클래스 구현을 수정할 필요는 없습니다. 다른 입력 인수 중 하나만 변경하면 됩니다.
 
 지금까지 우리는 여러 개의 단일 헤드 어텐션 모듈을 결합한 MultiHeadAttentionWrapper를 구현했습니다. 하지만 이들은 forward 메서드에서 [head(x) for head in self.heads]를 통해 순차적으로 처리됩니다. 헤드들을 병렬로 처리함으로써 이 구현을 개선할 수 있습니다. 이를 달성하는 한 가지 방법은 행렬 곱셈을 통해 모든 어텐션 헤드의 출력을 동시에 계산하는 것입니다.
 
-## 3.6.2 가중치 분할을 통한 멀티헤드 어텐션 구현
+### 3.6.2 가중치 분할을 통한 멀티헤드 어텐션 구현
 
 지금까지 우리는 여러 개의 단일 헤드 어텐션 모듈을 쌓아서 멀티헤드 어텐션을 구현하는 MultiHeadAttentionWrapper를 만들었습니다. 이는 여러 개의 causalAttention 객체를 인스턴스화하고 결합함으로써 수행되었습니다.
 
@@ -1064,49 +1062,57 @@ MultiHeadAttentionWrapper에서는 각각 별도의 어텐션 헤드를 나타�
 
 더 자세히 논의하기 전에 MultiHeadAttention 클래스를 살펴보겠습니다.
 
-## 리스팅 3.5 효율적인 멀티헤드 어텐션 클래스
+**리스팅 3.5 효율적인 멀티헤드 어텐션 클래스**
 
 ```python
 class MultiHeadAttention(nn.Module):
     def __init__(self, d_in, d_out,
         context_length, dropout, num_heads, qkv_bias=False):
-        super(),__init__()
+        # NOTE: 원문 오타 수정 필요: super().__init__() 가 맞습니다.
+        super().__init__()
         assert (d_out % num_heads == 0), \
             "d_out must be divisible by num_heads"
         self.d_out = d_out
         self.num_heads = num_heads
-        self.head_dim = d_out // num_heads
+        self.head_dim = d_out // num_heads  # 헤드당 차원
         self.W_query = nn.Linear(d_in, d_out, bias=qkv_bias)
         self.W_key = nn.Linear(d_in, d_out, bias=qkv_bias)
         self.W_value = nn.Linear(d_in, d_out, bias=qkv_bias)
-        self.out_proj = nn.Linear(d_out, d_out)
+        self.out_proj = nn.Linear(d_out, d_out)  # 헤드 결합 후 투영
         self.dropout = nn.Dropout(dropout)
         self.register_buffer(
             "mask",
-            torch.triu(torch.ones(context_length, context_length),
-                diagonal=1)
-    )
+            torch.triu(torch.ones(context_length, context_length), diagonal=1)
+        )
+
     def forward(self, x):
         b, num_tokens, d_in = x.shape
-        keys = self.W_key(x)
-        queries = self.W_query(x)
-        values = self.W_value(x)
+        keys = self.W_key(x)      # (b, num_tokens, d_out)
+        queries = self.W_query(x) # (b, num_tokens, d_out)
+        values = self.W_value(x)  # (b, num_tokens, d_out)
+
+        # (b, num_tokens, d_out) -> (b, num_tokens, num_heads, head_dim)
         keys = keys.view(b, num_tokens, self.num_heads, self.head_dim)
         values = values.view(b, num_tokens, self.num_heads, self.head_dim)
         queries = queries.view(b, num_tokens, self.num_heads, self.head_dim)
+
+        # (b, num_tokens, num_heads, head_dim) -> (b, num_heads, num_tokens, head_dim)
         keys = keys.transpose(1, 2)
         queries = queries.transpose(1, 2)
         values = values.transpose(1, 2)
 
-        attn_scores = queries @ keys.transpose(2, 3)
-        mask_bool = self.mask.bool()[:num_tokens, :num_tokens]
+        attn_scores = queries @ keys.transpose(2, 3)  # (b, h, num_tokens, num_tokens)
+        mask_bool = self.mask.bool()[:num_tokens, :num_tokens]  # 길이에 맞게 마스크 자르기
         attn_scores.masked_fill_(mask_bool, -torch.inf)
         attn_weights = torch.softmax(attn_scores / keys.shape[-1]**0.5, dim=-1)
-        attn_weights = self.dropout(attn_weights)    
-        context_vec = (attn_weights @ values).transpose(1, 2)
+        attn_weights = self.dropout(attn_weights)
+
+        context_vec = (attn_weights @ values).transpose(1, 2)  # (b, num_tokens, h, head_dim)
+
+        # 헤드 결합: self.d_out = num_heads * head_dim
         context_vec = context_vec.contiguous().view(b, num_tokens, self.d_out)
         context_vec = self.out_proj(context_vec)
-        return context_vec    
+        return context_vec
 ```
 
 MultiHeadAttention 클래스 내부의 텐서 재구성(.view)과 전치(.transpose)가 수학적으로 매우 복잡해 보이지만, MultiHeadAttention 클래스는 앞서 다룬 MultiHeadAttentionWrapper와 동일한 개념을 구현합니다.
@@ -1126,7 +1132,7 @@ MultiHeadAttention 클래스 내부의 텐서 재구성(.view)과 전치(.transp
 이 배치 행렬 곱셈을 설명하기 위해, 다음과 같은 텐서가 있다고 가정해보겠습니다:
 
 ```python
-a = torch.tensor([[0.2745, 0.6584, 0.2775, 0.8573],
+a = torch.tensor([[0.2745, 0.6584, 0.2775, 0.8573], # 이 텐서의 형태는 (b, num_heads, num_tokens, head_dim) = (1, 2, 3, 4)입니다.
     [0.8993, 0.0390, 0.9268, 0.7388],
     [0.7179, 0.7058, 0.9156, 0.4340]],
     [[0.0772, 0.3565, 0.1479, 0.5331],
@@ -1134,9 +1140,8 @@ a = torch.tensor([[0.2745, 0.6584, 0.2775, 0.8573],
     [0.4606, 0.5159, 0.4220, 0.5786]]]]}
 ```
 
-← 이 텐서의 형태는 (b, num_heads, num_tokens, head_dim) = (1, 2, 3, 4)입니다.
-
 이제 텐서 자체와 마지막 두 차원인 num_tokens와 head_dim을 전치한 텐서의 뷰 사이에서 배치 행렬 곱셈을 수행합니다:
+
 ```python
 print(a @ a.transpose(2, 3))
 ```
@@ -1147,7 +1152,7 @@ print(a @ a.transpose(2, 3))
 tensor([[1.3208, 1.1631, 1.2879],
     [1.1631, 2.2150, 1.8424],
     [1.2879, 1.8424, 2.0402]],
-[[0.4391, 0.7003, 0.5903],
+    [[0.4391, 0.7003, 0.5903],
     [0.7003, 1.3737, 1.0620],
     [0.5903, 1.0620, 0.9912]]]])
 ```
@@ -1197,7 +1202,7 @@ d_out = 2
 mha = MultiHeadAttention(d_in, d_out, context_length, 0.0, num_heads=2)
 context_vecs = mha(batch)
 print(context_vecs)
-print("context_vecs.shape:", context_vecs.shape)
+print("context_vecs.shape:", context_vecs.shape)  # (b, num_tokens, d_out)
 ```
 
 결과는 출력 차원이 d_out 인수에 의해 직접 제어됨을 보여줍니다:
@@ -1222,9 +1227,9 @@ context_vecs.shape: torch.Size([2, 6, 2])
 
 비교를 위해, 가장 작은 GPT-2 모델(1억 1700만 개 매개변수)은 12개의 어텐션 헤드와 768 크기의 컨텍스트 벡터 임베딩을 가지고 있습니다. 가장 큰 GPT-2 모델(15억 개 매개변수)은 25개의 어텐션 헤드와 1,600 크기의 컨텍스트 벡터 임베딩을 가지고 있습니다. GPT 모델에서는 토큰 입력과 컨텍스트 임베딩의 임베딩 크기가 동일합니다(d_in = d_out).
 
-### 연습 문제 3.3 GPT-2 크기의 어텐션 모듈 초기화
-
-MultiHeadAttention 클래스를 사용하여 가장 작은 GPT-2 모델과 동일한 수의 어텐션 헤드(12개 어텐션 헤드)를 가진 멀티헤드 어텐션 모듈을 초기화하세요. 또한 GPT-2와 유사한 각각의 입력 및 출력 임베딩 크기(768 차원)를 사용하도록 하세요. 가장 작은 GPT-2 모델은 1,024개 토큰의 컨텍스트 길이를 지원한다는 점에 유의하세요.
+>**연습 문제 3.3 GPT-2 크기의 어텐션 모듈 초기화**
+>
+>MultiHeadAttention 클래스를 사용하여 가장 작은 GPT-2 모델과 동일한 수의 어텐션 헤드(12개 어텐션 헤드)를 가진 멀티헤드 어텐션 모듈을 초기화하세요. 또한 GPT-2와 유사한 각각의 입력 및 출력 임베딩 크기(768 차원)를 사용하도록 하세요. 가장 작은 GPT-2 모델은 1,024개 토큰의 컨텍스트 길이를 지원한다는 점에 유의하세요.
 
 ## 요약
 - 어텐션 메커니즘은 모든 입력에 대한 정보를 통합한 향상된 컨텍스트 벡터 표현으로 입력 요소들을 변환합니다.
