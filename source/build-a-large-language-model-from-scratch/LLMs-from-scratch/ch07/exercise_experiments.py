@@ -1,9 +1,9 @@
-# Copyright (c) Sebastian Raschka under Apache License 2.0 (see LICENSE.txt).
-# Source for "Build a Large Language Model From Scratch"
+# Copyright (c) Sebastian Raschka under Apache License 2.0 (LICENSE.txt 참조).
+# "처음부터 대규모 언어 모델 구축하기" 소스
 #   - https://www.manning.com/books/build-a-large-language-model-from-scratch
-# Code: https://github.com/rasbt/LLMs-from-scratch
+# 코드: https://github.com/rasbt/LLMs-from-scratch
 #
-# Code to run the exercises; see exercise-solutions.ipynb for more information
+# 연습문제를 실행하기 위한 코드; 자세한 내용은 exercise-solutions.ipynb를 참조하세요
 
 from functools import partial
 from importlib.metadata import version
@@ -21,7 +21,7 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 from tqdm import tqdm
 
-# Import from local files in this folder
+# 이 폴더의 로컬 파일에서 가져오기
 from gpt_download import download_and_load_gpt2
 from previous_chapters import (
     calc_loss_loader,
@@ -38,7 +38,7 @@ class InstructionDataset(Dataset):
     def __init__(self, data, tokenizer):
         self.data = data
 
-        # Pre-tokenize texts
+        # 텍스트 사전 토큰화
         self.encoded_texts = []
         for entry in data:
             instruction_plus_input = format_input(entry)
@@ -59,7 +59,7 @@ class InstructionDatasetWithMasking(Dataset):
     def __init__(self, data, tokenizer):
         self.data = data
 
-        # New: Separate list for instruction lengths
+        # 새로운 기능: 명령어 길이를 위한 별도 리스트
         self.instruction_lengths = []
         self.encoded_texts = []
 
@@ -72,12 +72,12 @@ class InstructionDatasetWithMasking(Dataset):
                 tokenizer.encode(full_text)
             )
 
-            # New: collect instruction lengths
+            # 새로운 기능: 명령어 길이 수집
             instruction_length = len(tokenizer.encode(instruction_plus_input))
             self.instruction_lengths.append(instruction_length)
 
     def __getitem__(self, index):
-        # New: return both instruction lengths and texts separately
+        # 새로운 기능: 명령어 길이와 텍스트를 각각 반환
         return self.instruction_lengths[index], self.encoded_texts[index]
 
     def __len__(self):
@@ -88,12 +88,12 @@ class InstructionDatasetPhi(Dataset):
     def __init__(self, data, tokenizer):
         self.data = data
 
-        # Pre-tokenize texts
+        # 텍스트 사전 토큰화
         self.encoded_texts = []
         for entry in data:
 
             ###################################################################
-            # NEW: Use `format_input_phi` and adjust the response text template
+            # 새로운 기능: `format_input_phi`를 사용하고 응답 텍스트 템플릿 조정
             instruction_plus_input = format_input_phi(entry)
             response_text = f"\n<|assistant|>:\n{entry['output']}"
             ###################################################################
@@ -125,7 +125,7 @@ class LoRALayer(torch.nn.Module):
     def __init__(self, in_dim, out_dim, rank, alpha):
         super().__init__()
         self.A = torch.nn.Parameter(torch.empty(in_dim, rank))
-        torch.nn.init.kaiming_uniform_(self.A, a=math.sqrt(5))  # similar to standard weight initialization
+        torch.nn.init.kaiming_uniform_(self.A, a=math.sqrt(5))  # 표준 가중치 초기화와 유사
         self.B = torch.nn.Parameter(torch.zeros(rank, out_dim))
         self.alpha = alpha
 
@@ -137,10 +137,10 @@ class LoRALayer(torch.nn.Module):
 def replace_linear_with_lora(model, rank, alpha):
     for name, module in model.named_children():
         if isinstance(module, torch.nn.Linear):
-            # Replace the Linear layer with LinearWithLoRA
+            # Linear 레이어를 LinearWithLoRA로 교체
             setattr(model, name, LinearWithLoRA(module, rank, alpha))
         else:
-            # Recursively apply the same function to child modules
+            # 자식 모듈에 동일한 함수를 재귀적으로 적용
             replace_linear_with_lora(module, rank, alpha)
 
 
@@ -151,28 +151,28 @@ def custom_collate_fn(
     allowed_max_length=None,
     device="cpu"
 ):
-    # Find the longest sequence in the batch
+    # 배치에서 가장 긴 시퀀스 찾기
     batch_max_length = max(len(item)+1 for item in batch)
 
-    # Pad and prepare inputs and targets
+    # 입력과 타겟을 패딩하고 준비
     inputs_lst, targets_lst = [], []
 
     for item in batch:
         new_item = item.copy()
-        # Add an <|endoftext|> token
+        # <|endoftext|> 토큰 추가
         new_item += [pad_token_id]
-        # Pad sequences to max_length
+        # 시퀀스를 max_length로 패딩
         padded = new_item + [pad_token_id] * (batch_max_length - len(new_item))
-        inputs = torch.tensor(padded[:-1])  # Truncate the last token for inputs
-        targets = torch.tensor(padded[1:])  # Shift +1 to the right for targets
+        inputs = torch.tensor(padded[:-1])  # 입력에 대해 마지막 토큰 자르기
+        targets = torch.tensor(padded[1:])  # 타겟에 대해 오른쪽으로 +1 이동
 
-        # New: Replace all but the first padding tokens in targets by ignore_index
+        # 새로운 기능: 타겟에서 첫 번째 패딩 토큰을 제외한 모든 패딩 토큰을 ignore_index로 교체
         mask = targets == pad_token_id
         indices = torch.nonzero(mask).squeeze()
         if indices.numel() > 1:
             targets[indices[1:]] = ignore_index
 
-        # New: Optionally truncate to maximum sequence length
+        # 새로운 기능: 선택적으로 최대 시퀀스 길이로 자르기
         if allowed_max_length is not None:
             inputs = inputs[:allowed_max_length]
             targets = targets[:allowed_max_length]
@@ -180,7 +180,7 @@ def custom_collate_fn(
         inputs_lst.append(inputs)
         targets_lst.append(targets)
 
-    # Convert list of inputs and targets to tensors and transfer to target device
+    # 입력 및 타겟 리스트를 텐서로 변환하고 대상 장치로 전송
     inputs_tensor = torch.stack(inputs_lst).to(device)
     targets_tensor = torch.stack(targets_lst).to(device)
 
@@ -194,31 +194,31 @@ def custom_collate_with_masking_fn(
     allowed_max_length=None,
     device="cpu"
 ):
-    # Find the longest sequence in the batch
-    batch_max_length = max(len(item)+1 for instruction_length, item in batch)   # New: batch is now a tuple
+    # 배치에서 가장 긴 시퀀스 찾기
+    batch_max_length = max(len(item)+1 for instruction_length, item in batch)   # 새로운 기능: 이제 배치는 튜플입니다
 
-    # Pad and prepare inputs and targets
+    # 입력과 타겟을 패딩하고 준비
     inputs_lst, targets_lst = [], []
 
-    for instruction_length, item in batch:  # New: batch is now a tuple
+    for instruction_length, item in batch:  # 새로운 기능: 이제 배치는 튜플입니다
         new_item = item.copy()
-        # Add an <|endoftext|> token
+        # <|endoftext|> 토큰 추가
         new_item += [pad_token_id]
-        # Pad sequences to max_length
+        # 시퀀스를 max_length로 패딩
         padded = new_item + [pad_token_id] * (batch_max_length - len(new_item))
-        inputs = torch.tensor(padded[:-1])  # Truncate the last token for inputs
-        targets = torch.tensor(padded[1:])  # Shift +1 to the right for targets
+        inputs = torch.tensor(padded[:-1])  # 입력에 대해 마지막 토큰 자르기
+        targets = torch.tensor(padded[1:])  # 타겟에 대해 오른쪽으로 +1 이동
 
-        # Replace all but the first padding tokens in targets by ignore_index
+        # 타겟에서 첫 번째 패딩 토큰을 제외한 모든 패딩 토큰을 ignore_index로 교체
         mask = targets == pad_token_id
         indices = torch.nonzero(mask).squeeze()
         if indices.numel() > 1:
             targets[indices[1:]] = ignore_index
 
-        # New: Mask all input and instruction tokens in the targets
+        # 새로운 기능: 타겟의 모든 입력 및 명령어 토큰 마스킹
         targets[:instruction_length-1] = -100
 
-        # Optionally truncate to maximum sequence length
+        # 선택적으로 최대 시퀀스 길이로 자르기
         if allowed_max_length is not None:
             inputs = inputs[:allowed_max_length]
             targets = targets[:allowed_max_length]
@@ -226,7 +226,7 @@ def custom_collate_with_masking_fn(
         inputs_lst.append(inputs)
         targets_lst.append(targets)
 
-    # Convert list of inputs and targets to tensors and transfer to target device
+    # 입력 및 타겟 리스트를 텐서로 변환하고 대상 장치로 전송
     inputs_tensor = torch.stack(inputs_lst).to(device)
     targets_tensor = torch.stack(targets_lst).to(device)
 
@@ -275,43 +275,43 @@ def format_input(entry):
 def plot_losses(epochs_seen, tokens_seen, train_losses, val_losses, plot_name):
     fig, ax1 = plt.subplots(figsize=(12, 6))
 
-    # Plot training and validation loss against epochs
+    # 에포크에 대한 훈련 및 검증 손실 플롯
     ax1.plot(epochs_seen, train_losses, label="Training loss")
     ax1.plot(epochs_seen, val_losses, linestyle="-.", label="Validation loss")
     ax1.set_xlabel("Epochs")
     ax1.set_ylabel("Loss")
     ax1.legend(loc="upper right")
-    ax1.xaxis.set_major_locator(MaxNLocator(integer=True))  # only show integer labels on x-axis
+    ax1.xaxis.set_major_locator(MaxNLocator(integer=True))  # x축에 정수 레이블만 표시
 
-    # Create a second x-axis for tokens seen
-    ax2 = ax1.twiny()  # Create a second x-axis that shares the same y-axis
-    ax2.plot(tokens_seen, train_losses, alpha=0)  # Invisible plot for aligning ticks
+    # 확인된 토큰에 대한 두 번째 x축 생성
+    ax2 = ax1.twiny()  # 동일한 y축을 공유하는 두 번째 x축 생성
+    ax2.plot(tokens_seen, train_losses, alpha=0)  # 틱 정렬을 위한 보이지 않는 플롯
     ax2.set_xlabel("Tokens seen")
 
-    fig.tight_layout()  # Adjust layout to make room
-    print(f"Plot saved as {plot_name}")
+    fig.tight_layout()  # 공간을 만들기 위해 레이아웃 조정
+    print(f"플롯이 {plot_name}으로 저장되었습니다")
     plt.savefig(plot_name)
     # plt.show()
 
 
 def main(mask_instructions=False, alpaca52k=False, phi3_prompt=False, lora=False):
     #######################################
-    # Print package versions
+    # 패키지 버전 출력
     #######################################
     print()
     pkgs = [
-        "matplotlib",  # Plotting library
-        "tiktoken",    # Tokenizer
-        "torch",       # Deep learning library
-        "tqdm",        # Progress bar
-        "tensorflow",  # For OpenAI's pretrained weights
+        "matplotlib",  # 플로팅 라이브러리
+        "tiktoken",    # 토크나이저
+        "torch",       # 딥러닝 라이브러리
+        "tqdm",        # 진행률 표시줄
+        "tensorflow",  # OpenAI의 사전 훈련된 가중치를 위함
     ]
     for p in pkgs:
         print(f"{p} version: {version(p)}")
     print(50*"-")
 
     #######################################
-    # Download and prepare dataset
+    # 데이터셋 다운로드 및 준비
     #######################################
     file_path = "instruction-data.json"
 
@@ -321,8 +321,8 @@ def main(mask_instructions=False, alpaca52k=False, phi3_prompt=False, lora=False
         url = "https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch07/01_main-chapter-code/instruction-data.json"
     data = download_and_load_file(file_path, url)
 
-    train_portion = int(len(data) * 0.85)  # 85% for training
-    test_portion = int(len(data) * 0.1)    # 10% for testing
+    train_portion = int(len(data) * 0.85)  # 85%는 훈련용
+    test_portion = int(len(data) * 0.1)    # 10%는 테스트용
 
     train_data = data[:train_portion]
     test_data = data[train_portion:train_portion + test_portion]
@@ -386,13 +386,13 @@ def main(mask_instructions=False, alpaca52k=False, phi3_prompt=False, lora=False
     )
 
     #######################################
-    # Load pretrained model
+    # 사전 훈련된 모델 로드
     #######################################
     BASE_CONFIG = {
-        "vocab_size": 50257,     # Vocabulary size
-        "context_length": 1024,  # Context length
-        "drop_rate": 0.0,        # Dropout rate
-        "qkv_bias": True         # Query-key-value bias
+        "vocab_size": 50257,     # 어휘 크기
+        "context_length": 1024,  # 컨텍스트 길이
+        "drop_rate": 0.0,        # 드롭아웃 비율
+        "qkv_bias": True         # 쿼리-키-값 편향
     }
 
     model_configs = {
@@ -433,7 +433,7 @@ def main(mask_instructions=False, alpaca52k=False, phi3_prompt=False, lora=False
         model.to(device)
 
     #######################################
-    # Finetuning the model
+    # 모델 미세 조정
     #######################################
     print("Initial losses")
     with torch.no_grad():
@@ -480,7 +480,7 @@ def main(mask_instructions=False, alpaca52k=False, phi3_prompt=False, lora=False
     print(50*"-")
 
     #######################################
-    # Saving results
+    # 결과 저장
     #######################################
     print("Generating responses")
     for i, entry in tqdm(enumerate(test_data), total=len(test_data)):
@@ -523,7 +523,7 @@ def main(mask_instructions=False, alpaca52k=False, phi3_prompt=False, lora=False
         file_name = file_name.replace(".pth", "-baseline.pth")
 
     with open(test_data_path, "w") as file:
-        json.dump(test_data, file, indent=4)  # "indent" for pretty-printing
+        json.dump(test_data, file, indent=4)  # 예쁘게 출력하기 위한 "indent"
     print(f"Responses saved as {test_data_path}")
 
     torch.save(model.state_dict(), file_name)
@@ -535,7 +535,7 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(
-        description="Instruction finetune a GPT model"
+        description="GPT 모델 명령어 미세 조정"
     )
     options = {"baseline", "mask_instructions", "alpaca_52k", "phi3_prompt", "lora"}
     parser.add_argument(

@@ -1,11 +1,10 @@
-# Copyright (c) Sebastian Raschka under Apache License 2.0 (see LICENSE.txt).
-# Source for "Build a Large Language Model From Scratch"
+# 저작권 (c) Sebastian Raschka, Apache License 2.0 (LICENSE.txt 참조).
+# "처음부터 대규모 언어 모델 구축하기" 소스
 #   - https://www.manning.com/books/build-a-large-language-model-from-scratch
-# Code: https://github.com/rasbt/LLMs-from-scratch
+# 코드: https://github.com/rasbt/LLMs-from-scratch
 #
-# This file collects all the relevant code that we covered thus far
-# throughout Chapters 2-5.
-# This file can be run as a standalone script.
+# 이 파일은 2-5장에서 다룬 모든 관련 코드를 수집합니다.
+# 이 파일은 독립 실행형 스크립트로 실행할 수 있습니다.
 
 import numpy as np
 import tiktoken

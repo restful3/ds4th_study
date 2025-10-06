@@ -1,7 +1,7 @@
-# Copyright (c) Sebastian Raschka under Apache License 2.0 (see LICENSE.txt).
-# Source for "Build a Large Language Model From Scratch"
+# 저작권 (c) Sebastian Raschka, Apache License 2.0 (LICENSE.txt 참조).
+# "처음부터 대규모 언어 모델 구축하기" 소스
 #   - https://www.manning.com/books/build-a-large-language-model-from-scratch
-# Code: https://github.com/rasbt/LLMs-from-scratch
+# 코드: https://github.com/rasbt/LLMs-from-scratch
 
 
 import os

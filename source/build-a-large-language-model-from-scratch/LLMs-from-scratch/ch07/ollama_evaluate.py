@@ -1,9 +1,9 @@
 # Copyright (c) Sebastian Raschka under Apache License 2.0 (see LICENSE.txt).
-# Source for "Build a Large Language Model From Scratch"
+# "처음부터 대규모 언어 모델 구축하기" 소스
 #   - https://www.manning.com/books/build-a-large-language-model-from-scratch
-# Code: https://github.com/rasbt/LLMs-from-scratch
+# 코드: https://github.com/rasbt/LLMs-from-scratch
 #
-# A minimal instruction finetuning file based on the code in chapter 7
+# 7장 코드를 기반으로 한 최소한의 명령어 미세 조정 파일
 
 import json
 import psutil
@@ -12,30 +12,30 @@ import urllib.request
 
 
 def query_model(prompt, model="llama3", url="http://localhost:11434/api/chat"):
-    # Create the data payload as a dictionary
+    # 데이터 페이로드를 딕셔너리로 생성
     data = {
         "model": model,
         "messages": [
             {"role": "user", "content": prompt}
         ],
-        "options": {     # Settings below are required for deterministic responses
+        "options": {     # 결정론적 응답을 위해 아래 설정이 필요합니다
             "seed": 123,
             "temperature": 0,
             "num_ctx": 2048
         }
     }
 
-    # Convert the dictionary to a JSON formatted string and encode it to bytes
+    # 딕셔너리를 JSON 형식의 문자열로 변환하고 바이트로 인코딩
     payload = json.dumps(data).encode("utf-8")
 
-    # Create a request object, setting the method to POST and adding necessary headers
+    # 요청 객체를 생성하고, 메서드를 POST로 설정하고 필요한 헤더를 추가
     request = urllib.request.Request(url, data=payload, method="POST")
     request.add_header("Content-Type", "application/json")
 
-    # Send the request and capture the response
+    # 요청을 보내고 응답을 캡처
     response_data = ""
     with urllib.request.urlopen(request) as response:
-        # Read and decode the response
+        # 응답을 읽고 디코딩
         while True:
             line = response.readline().decode("utf-8")
             if not line:
@@ -117,8 +117,8 @@ if __name__ == "__main__":
         "--file_path",
         required=True,
         help=(
-            "The path to the test dataset `.json` file with the"
-            " `'output'` and `'model_response'` keys"
+            "'output'과 'model_response' 키를 포함하는"
+            " 테스트 데이터셋의 `.json` 파일 경로"
         )
     )
     args = parser.parse_args()

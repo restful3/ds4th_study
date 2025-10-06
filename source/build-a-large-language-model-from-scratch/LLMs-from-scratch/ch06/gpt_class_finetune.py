@@ -1,9 +1,9 @@
-# Copyright (c) Sebastian Raschka under Apache License 2.0 (see LICENSE.txt).
-# Source for "Build a Large Language Model From Scratch"
+# 저작권 (c) Sebastian Raschka, Apache License 2.0 (LICENSE.txt 참조).
+# "처음부터 대규모 언어 모델 구축하기" 소스
 #   - https://www.manning.com/books/build-a-large-language-model-from-scratch
-# Code: https://github.com/rasbt/LLMs-from-scratch
+# 코드: https://github.com/rasbt/LLMs-from-scratch
 
-# This is a summary file containing the main takeaways from chapter 6.
+# 이 파일은 6장의 주요 내용을 요약한 파일입니다.
 
 import urllib.request
 import zipfile
@@ -26,29 +26,29 @@ def download_and_unzip_spam_data(url, zip_path, extracted_path, data_file_path):
         print(f"{data_file_path} already exists. Skipping download and extraction.")
         return
 
-    # Downloading the file
+    # 파일 다운로드
     with urllib.request.urlopen(url) as response:
         with open(zip_path, "wb") as out_file:
             out_file.write(response.read())
 
-    # Unzipping the file
+    # 파일 압축 해제
     with zipfile.ZipFile(zip_path, "r") as zip_ref:
         zip_ref.extractall(extracted_path)
 
-    # Add .tsv file extension
+    # .tsv 파일 확장자 추가
     original_file_path = Path(extracted_path) / "SMSSpamCollection"
     os.rename(original_file_path, data_file_path)
     print(f"File downloaded and saved as {data_file_path}")
 
 
 def create_balanced_dataset(df):
-    # Count the instances of "spam"
+    # "spam" 인스턴스 수 계산
     num_spam = df[df["Label"] == "spam"].shape[0]
 
-    # Randomly sample "ham" instances to match the number of "spam" instances
+    # "spam" 인스턴스 수와 일치하도록 "ham" 인스턴스를 무작위로 샘플링
     ham_subset = df[df["Label"] == "ham"].sample(num_spam, random_state=123)
 
-    # Combine ham "subset" with "spam"
+    # "ham" 서브셋과 "spam" 결합
     balanced_df = pd.concat([ham_subset, df[df["Label"] == "spam"]])
 
     return balanced_df
