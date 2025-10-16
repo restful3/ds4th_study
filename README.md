@@ -65,7 +65,7 @@
 
 #### **2025년 10월 18일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=me926d907650c9b1a34a5cf2a56fbea7c	)
 
-* 발표자 - 민호
+* 발표자 - 태영
   * **Chapter 4:** Implementing a GPT Model from Scratch to Generate Text
     * GPT 아키텍처 전체 구현
     * 레이어 정규화 및 피드포워드 네트워크
@@ -103,7 +103,7 @@
 
 #### **2025년 11월 8일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=me13617ac007993e928d591c2d3dc036e	)
 
-* 발표자 - 태영
+* 발표자 - 민호
   * **Chapter 7:** Finetuning to Follow Instructions
     * 지시사항 파인튜닝 데이터셋 구성
     * 인간 피드백 학습(RLHF) 개념
@@ -159,6 +159,7 @@
   * [ARC Prize 2025](https://www.kaggle.com/competitions/arc-prize-2025)
 
 ---
+
 
 
 
