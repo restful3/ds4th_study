@@ -169,8 +169,7 @@ Token IDs:
 
 ```python
 print(f"Targets batch 1: {token_ids_to_text(targets[0], tokenizer)}")
-print(f"Outputs batch 1:"
-    f" {token_ids_to_text(token_ids[0].flatten(), tokenizer)}")
+print(f"Outputs batch 1: {token_ids_to_text(token_ids[0].flatten(), tokenizer)}")
 ```
 
 이러한 토큰을 디코딩하면, 이러한 출력 토큰이 모델이 생성하기를 원하는 타겟 토큰과 상당히 다르다는 것을 알 수 있습니다:
@@ -432,9 +431,9 @@ torch.Size([2, 256]) torch.Size([2, 256])
 torch.Size([2, 256]) torch.Size([2, 256])
 torch.Size([2, 256]) torch.Size([2, 256])
 torch.Size([2, 256]) torch.Size([2, 256])
+Validation loader: 
+torch.Size([2, 256]) torch.Size([2, 256])
 ```
-
-Validation loader: torch.Size([2, 256]) torch.Size([2, 256])
 
 앞의 코드 출력을 기반으로 각각 2개의 샘플과 256개의 토큰을 가진 9개의 학습 세트 배치가 있습니다. 검증을 위해 데이터의 $10 \%$만 할당했기 때문에 두 개의 입력 예제로 구성된 검증 배치가 하나만 있습니다. 2장에서 논의한 것처럼 타겟이 한 위치 이동한 입력이기 때문에 예상대로 입력 데이터(x)와 타겟 데이터(y)는 동일한 형상(배치 크기 곱하기 각 배치의 토큰 수)을 가집니다.
 
@@ -469,8 +468,7 @@ def calc_loss_loader(data_loader, model, device, num_batches=None):
 
     for i, (input_batch, target_batch) in enumerate(data_loader):
         if i < num_batches:
-            loss = calc_loss_batch(input_batch, target_batch, model, device
-            )
+            loss = calc_loss_batch(input_batch, target_batch, model, device)
             total_loss += loss.item() # 각 배치의 손실을 합산합니다
         else:
             break
