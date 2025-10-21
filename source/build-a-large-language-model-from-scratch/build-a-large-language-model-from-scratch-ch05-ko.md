@@ -966,7 +966,13 @@ Output text:
 
 그림 5.16 모델을 학습하고 검사한 후 나중에 사용하거나 학습을 계속할 수 있도록 모델을 저장하는 것이 도움이 됩니다(6단계).
 
-다행히 PyTorch 모델을 저장하는 것은 비교적 간단합니다. 권장되는 방법은 torch.save 함수를 사용하여 각 레이어를 매개변수에 매핑하는 딕셔너리인 모델의 state_dict를 저장하는 것입니다: torch.save(model.state_dict(), "model.pth") "model.pth"는 state_dict가 저장되는 파일 이름입니다. .pth 확장자는 PyTorch 파일의 관례이지만 기술적으로는 모든 파일 확장자를 사용할 수 있습니다.
+다행히 PyTorch 모델을 저장하는 것은 비교적 간단합니다. 권장되는 방법은 torch.save 함수를 사용하여 각 레이어를 매개변수에 매핑하는 딕셔너리인 모델의 state_dict를 저장하는 것입니다: 
+
+```python
+torch.save(model.state_dict(), "model.pth")
+```
+
+"model.pth"는 state_dict가 저장되는 파일 이름입니다. .pth 확장자는 PyTorch 파일의 관례이지만 기술적으로는 모든 파일 확장자를 사용할 수 있습니다.
 
 그런 다음 state_dict를 통해 모델 가중치를 저장한 후 새 GPTModel 모델 인스턴스에 모델 가중치를 로드할 수 있습니다:
 
@@ -981,12 +987,13 @@ model.eval()
 AdamW와 같은 적응형 옵티마이저는 각 모델 가중치에 대한 추가 매개변수를 저장합니다. AdamW는 과거 데이터를 사용하여 각 모델 매개변수의 학습률을 동적으로 조정합니다. 이것이 없으면 옵티마이저가 재설정되고 모델이 최적이 아닌 방식으로 학습하거나 제대로 수렴하지 못할 수 있으며, 이는 일관된 텍스트를 생성하는 능력을 잃게 됨을 의미합니다. torch.save를 사용하여 모델과 옵티마이저 state_dict 내용을 모두 저장할 수 있습니다:
 
 ```python
-torch.save({
-    "model_state_dict": model.state_dict(),
-    "optimizer_state_dict": optimizer.state_dict(),
+torch.save(
+    {
+        "model_state_dict": model.state_dict(),
+        "optimizer_state_dict": optimizer.state_dict(),
     },
     "model_and_optimizer.pth"
-}
+)
 ```
 
 그런 다음 torch.load를 통해 저장된 데이터를 먼저 로드한 다음 load_state_dict 메서드를 사용하여 모델 및 옵티마이저 상태를 복원할 수 있습니다:
