@@ -770,8 +770,7 @@ print(inverse_vocab[next_token_id])
 ```python
 def print_sampled_tokens(probas):
     torch.manual_seed(123)
-    sample = [torch.multinomial(probas, num_samples=1).item()
-        for i in range(1_000)]
+    sample = [torch.multinomial(probas, num_samples=1).item() for i in range(1_000)]
     sampled_ids = torch.bincount(torch.tensor(sample))
     for i, freq in enumerate(sampled_ids):
         print(f*{freq} x {inverse_vocab[i]}")
@@ -806,14 +805,12 @@ def softmax_with_temperature(logits, temperature):
 
 ```python
 temperatures = [1, 0.1, 5] # 원본, 낮은 확신, 높은 확신
-scaled_probas = [softmax_with_temperature(next_token_logits, T)
-    for T in temperatures]
+scaled_probas = [softmax_with_temperature(next_token_logits, T) for T in temperatures]
 x = torch.arange(len(vocab))
 bar_width = 0.15
 fig, ax = plt.subplots(figsize=(5, 3))
 for i, T in enumerate(temperatures):
-    rects = ax.bar(x + i * bar_width, scaled_probas[i],
-        bar_width, label=f'Temperature = {T}')
+    rects = ax.bar(x + i * bar_width, scaled_probas[i], bar_width, label=f'Temperature = {T}')
 ax.set_ylabel('Probability')
 ax.set_xticks(x)
 ax.set_xticklabels(vocab.keys(), rotation=90)
@@ -876,8 +873,7 @@ print(new_logits)
 9개 토큰 어휘에서 다음 토큰에 대한 결과 로짓은 다음과 같습니다:
 
 ```
-tensor([4.5100, -inf, -inf, 6.7500, -inf, -inf, -inf, 6.2800,
-    -inf])
+tensor([4.5100, -inf, -inf, 6.7500, -inf, -inf, -inf, 6.2800, -inf])
 ```
 
 마지막으로 softmax 함수를 적용하여 이를 다음 토큰 확률로 변환해 봅시다:
@@ -890,8 +886,7 @@ print(topk_probas)
 보시다시피 이 상위 3개 접근 방식의 결과는 3개의 0이 아닌 확률 점수입니다:
 
 ```
-tensor([0.0615, 0.0000, 0.0000, 0.5775, 0.0000, 0.0000, 0.0000, 0.3610,
-    0.0000])
+tensor([0.0615, 0.0000, 0.0000, 0.5775, 0.0000, 0.0000, 0.0000, 0.3610, 0.0000])
 ```
 
 이제 온도 스케일링과 확률적 샘플링을 위한 multinomial 함수를 적용하여 이 세 개의 0이 아닌 확률 점수 중에서 다음 토큰을 선택하여 다음 토큰을 생성할 수 있습니다. 다음으로 텍스트 생성 함수를 수정하여 이를 수행합니다.
@@ -914,9 +909,7 @@ def generate(model, idx, max_new_tokens, context_size, temperature=0.0, top_k=No
             top_logits, _ = torch.topk(logits, top_k)
             min_val = top_logits[:, -1]
             logits = torch.where(
-                logits < min_val,
-                torch.tensor(float('-inf')).to(logits.device),
-                logits
+                logits < min_val, torch.tensor(float('-inf')).to(logits.device), logits)
 
         if temperature > 0.0: # 온도 스케일링을 적용합니다
             logits = logits / temperature
@@ -949,9 +942,8 @@ print("Output text:\n", token_ids_to_text(token_ids, tokenizer))
 생성된 텍스트는 다음과 같습니다:
 
 ```
-출력 텍스트:
-    Every effort moves you stand to work on surprise, a one of us had gone
-    with random-
+Output text:
+    Every effort moves you stand to work on surprise, a one of us had gone with random-
 ```
 
 보시다시피 생성된 텍스트는 5.3절에서 generate_simple 함수를 통해 이전에 생성한 텍스트("Every effort moves you know, " was one of the axioms he laid...!)와 매우 다릅니다. 이는 학습 세트에서 암기된 구절이었습니다.
