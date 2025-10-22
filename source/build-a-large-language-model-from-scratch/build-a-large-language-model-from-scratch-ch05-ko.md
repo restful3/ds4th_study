@@ -1039,9 +1039,7 @@ urllib.request.urlretrieve(url, filename)
 
 ```python
 from gpt_download import download_and_load_gpt2
-settings, params = download_and_load_gpt2(
-    model_size="124M", models_dir="gpt2"
-)
+settings, params = download_and_load_gpt2(model_size="124M", models_dir="gpt2")
 ```
 
 이 코드를 실행하면 124M 매개변수 GPT-2 모델과 관련된 다음 7개 파일이 다운로드됩니다:
@@ -1068,8 +1066,7 @@ print("Parameter dictionary keys:", params.keys())
 내용은 다음과 같습니다:
 
 ```
-Settings: {'n_vocab': 50257, 'n_ctx': 1024, 'n_embd': 768, 'n_head': 12,
-    'n_layer': 12}
+Settings: {'n_vocab': 50257, 'n_ctx': 1024, 'n_embd': 768, 'n_head': 12, 'n_layer': 12}
 Parameter dictionary keys: dict_keys(['blocks', 'b', 'g', 'wpe', 'wte'])
 ```
 
@@ -1134,9 +1131,7 @@ gpt.eval()
 ```python
 def assign(left, right):
     if left.shape != right.shape:
-        raise ValueError(f"Shape mismatch. Left: {left.shape}, "
-            "Right: {right.shape}"
-        )
+        raise ValueError(f"Shape mismatch. Left: {left.shape}, Right: {right.shape}")
     return torch.nn.Parameter(torch.tensor(right))
 ```
 
@@ -1146,62 +1141,79 @@ def assign(left, right):
 
 ```python
 import numpy as np
-def load_weights_into_gpt(gpt, params): # 모델의 위치 및 토큰 임베딩 가중치를 params에 지정된 가중치로 설정합니다.
+
+def load_weights_into_gpt(gpt, params):
+    # 위치 임베딩과 토큰 임베딩 가중치 설정
     gpt.pos_emb.weight = assign(gpt.pos_emb.weight, params['wpe'])
     gpt.tok_emb.weight = assign(gpt.tok_emb.weight, params['wte'])
-    for b in range(len(params["blocks"])): # 모델의 각 트랜스포머 블록을 반복합니다
-        q_w, k_w, v_w = np.split(
-            (params["blocks"] [b] ["attn"] ["c_attn"]) ["w"], 3, axis=-1) # np.split 함수는 어텐션 및 바이어스 가중치를 쿼리, 키, 값 구성 요소에 대해 세 개의 동일한 부분으로 나누는 데 사용됩니다.
-        gpt.trf_blocks[b].att.W_query.weight = assign(
-            gpt.trf_blocks[b].att.W_query.weight, q_w.T)
-        gpt.trf_blocks[b].att.W_key.weight = assign(
-            gpt.trf_blocks[b].att.W_key.weight, k_w.T)
-        gpt.trf_blocks[b].att.W_value.weight = assign(
-            gpt.trf_blocks[b].att.W_value.weight, v_w.T)
-        q_b, k_b, v_b = np.split(
-            (params["blocks"] [b] ["attn"] ["c_attn"]) ["b"], 3, axis=-1)
-        gpt.trf_blocks[b].att.W_query.bias = assign(
-            gpt.trf_blocks[b].att.W_query.bias, q_b)
-        gpt.trf_blocks[b].att.W_key.bias = assign(
-            gpt.trf_blocks[b].att.W_key.bias, k_b)
-        gpt.trf_blocks[b].att.W_value.bias = assign(
-            gpt.trf_blocks[b].att.W_value.bias, v_b)
+    # 각 트랜스포머 블록의 가중치 매핑
+    for b in range(len(params["blocks"])):
+        # 쿼리, 키, 값에 해당하는 가중치를 각각 나눠서 할당
+        q_w, k_w, v_w = np.split(params["blocks"][b]["attn"]["c_attn"]["w"], 3, axis=-1)
+        gpt.trf_blocks[b].att.W_query.weight = assign(gpt.trf_blocks[b].att.W_query.weight, q_w.T)
+        gpt.trf_blocks[b].att.W_key.weight = assign(gpt.trf_blocks[b].att.W_key.weight, k_w.T)
+        gpt.trf_blocks[b].att.W_value.weight = assign(gpt.trf_blocks[b].att.W_value.weight, v_w.T)
+
+        q_b, k_b, v_b = np.split(params["blocks"][b]["attn"]["c_attn"]["b"], 3, axis=-1)
+        gpt.trf_blocks[b].att.W_query.bias = assign(gpt.trf_blocks[b].att.W_query.bias, q_b)
+        gpt.trf_blocks[b].att.W_key.bias = assign(gpt.trf_blocks[b].att.W_key.bias, k_b)
+        gpt.trf_blocks[b].att.W_value.bias = assign(gpt.trf_blocks[b].att.W_value.bias, v_b)
+
+        # 어텐션 출력 프로젝션 가중치 및 바이어스
         gpt.trf_blocks[b].att.out_proj.weight = assign(
             gpt.trf_blocks[b].att.out_proj.weight,
-            params["blocks"] [b] ["attn"] ["c_proj"] ["w"].T)
+            params["blocks"][b]["attn"]["c_proj"]["w"].T
+        )
         gpt.trf_blocks[b].att.out_proj.bias = assign(
             gpt.trf_blocks[b].att.out_proj.bias,
-            params["blocks"] [b] ["attn"] ["c_proj"] ["b"])
+            params["blocks"][b]["attn"]["c_proj"]["b"]
+        )
+
+        # MLP(피드포워드 네트워크) 가중치 및 바이어스
         gpt.trf_blocks[b].ff.layers[0].weight = assign(
             gpt.trf_blocks[b].ff.layers[0].weight,
-            params["blocks"] [b] ["mlp"] ["c_fc"] ["w"].T)
+            params["blocks"][b]["mlp"]["c_fc"]["w"].T
+        )
         gpt.trf_blocks[b].ff.layers[0].bias = assign(
             gpt.trf_blocks[b].ff.layers[0].bias,
-            params["blocks"] [b] ["mlp"] ["c_fc"] ["b"])
+            params["blocks"][b]["mlp"]["c_fc"]["b"]
+        )
         gpt.trf_blocks[b].ff.layers[2].weight = assign(
             gpt.trf_blocks[b].ff.layers[2].weight,
-            params["blocks"] [b] ["mlp"] ["c_proj"] ["w"].T)
+            params["blocks"][b]["mlp"]["c_proj"]["w"].T
+        )
         gpt.trf_blocks[b].ff.layers[2].bias = assign(
             gpt.trf_blocks[b].ff.layers[2].bias,
-            params["blocks"] [b] ["mlp"] ["c_proj"] ["b"])
+            params["blocks"][b]["mlp"]["c_proj"]["b"]
+        )
+
+        # 레이어 노름 파라미터
         gpt.trf_blocks[b].norm1.scale = assign(
             gpt.trf_blocks[b].norm1.scale,
-            params["blocks"] [b] ["ln_1"] ["g"])
+            params["blocks"][b]["ln_1"]["g"]
+        )
         gpt.trf_blocks[b].norm1.shift = assign(
             gpt.trf_blocks[b].norm1.shift,
-            params["blocks"] [b] ["ln_1"] ["b"])
+            params["blocks"][b]["ln_1"]["b"]
+        )
         gpt.trf_blocks[b].norm2.scale = assign(
             gpt.trf_blocks[b].norm2.scale,
-            params["blocks"] [b] ["ln_2"] ["g"])
+            params["blocks"][b]["ln_2"]["g"]
+        )
         gpt.trf_blocks[b].norm2.shift = assign(
             gpt.trf_blocks[b].norm2.shift,
-            params["blocks"] [b] ["ln_2"] ["b"])
+            params["blocks"][b]["ln_2"]["b"]
+        )
 
-gpt.final_norm.scale = assign(gpt.final_norm.scale, params["g"])
-gpt.final_norm.shift = assign(gpt.final_norm.shift, params["b"])
-gpt.out_head.weight = assign(gpt.out_head.weight, params["wte"])  # OpenAI의 원래 GPT-2 모델은 총 매개변수 수를 줄이기 위해 출력 레이어에서 토큰 임베딩 가중치를 재사용했으며, 이는 가중치 묶기(weight tying)라는 개념입니다.      
+    # 최종 레이어 노름 및 출력 헤드 설정
+    gpt.final_norm.scale = assign(gpt.final_norm.scale, params["g"])
+    gpt.final_norm.shift = assign(gpt.final_norm.shift, params["b"])
+    gpt.out_head.weight = assign(
+        gpt.out_head.weight,
+        params["wte"]
+    )  # OpenAI의 GPT-2는 출력층에서 토큰 임베딩 가중치를 재사용(가중치 묶기)함
 ```
-load_weights_into_gpt 함수에서 OpenAI 구현의 가중치를 GPTModel 구현과 주의 깊게 일치시킵니다. 구체적인 예를 들어 OpenAI는 첫 번째 트랜스포머 블록의 출력 투영 레이어에 대한 가중치 텐서를 params["blocks"][0]["attn"]["c_proj"]["w"]로 저장했습니다. 우리 구현에서 이 가중치 텐서는 gpt.trf_blocks[b].att.out_proj.weight에 해당하며, 여기서 gpt는 GPTModel 인스턴스입니다.
+load_weights_into_gpt 함수에서 OpenAI 구현의 가중치를 GPTModel 구현과 주의 깊게 일치시킵니다. 구체적인 예를 들어 OpenAI는 첫 번째 트랜스포머 블록의 출력 투영 레이어에 대한 가중치 텐서를 params["blocks"][b]["attn"]["c_proj"]["w"]로 저장했습니다. 우리 구현에서 이 가중치 텐서는 gpt.trf_blocks[b].att.out_proj.weight에 해당하며, 여기서 gpt는 GPTModel 인스턴스입니다.
 
 OpenAI가 우리와 약간 다른 명명 규칙을 사용했기 때문에 load_weights_into_gpt 함수를 개발하는 데 많은 추측이 필요했습니다. 그러나 assign 함수는 차원이 다른 두 텐서를 일치시키려고 하면 경고합니다. 또한 이 함수에서 실수를 하면 결과 GPT 모델이 일관된 텍스트를 생성할 수 없기 때문에 이를 알 수 있습니다.
 
@@ -1231,9 +1243,8 @@ print("Output text:\n", token_ids_to_text(token_ids, tokenizer))
 
 ```
 Output text:
-    Every effort moves you toward finding an ideal new way to practice
-        something!
-What makes us want to be on top of that?
+    Every effort moves you toward finding an ideal new way to practice something!
+    What makes us want to be on top of that?
 ```
 
 모델이 일관된 텍스트를 생성할 수 있기 때문에 모델 가중치를 올바르게 로드했다고 확신할 수 있습니다. 이 프로세스에서 작은 실수라도 하면 모델이 실패합니다. 다음 장에서는 이 사전 학습된 모델로 더 작업하고 텍스트를 분류하고 지침을 따르도록 미세 조정할 것입니다.
