@@ -101,6 +101,10 @@
     * 성능 평가 및 결과 분석
     * 스팸 분류기 구현 실습
 
+* 발표자 - 태영
+  * **Kaggle**
+    * LLM Classification Finetuning
+
 #### **2025년 11월 8일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=me13617ac007993e928d591c2d3dc036e	)
 
 * 발표자 - 민호
@@ -159,6 +163,7 @@
   * [ARC Prize 2025](https://www.kaggle.com/competitions/arc-prize-2025)
 
 ---
+
 
 
 
