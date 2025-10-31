@@ -1,0 +1,17 @@
+# Core dependencies
+torch>=2.0.0
+transformers>=4.30.0
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+
+# Progress bar
+tqdm>=4.65.0
+
+# For reproducibility
+scipy>=1.10.0
+
+# Optional but recommended
+accelerate>=0.20.0
+
+kaggle

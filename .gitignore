@@ -85,3 +85,7 @@ wandb*
 
 .venv/
 venv/
+
+test.csv
+train.csv
+sample_submission.csv
