@@ -107,7 +107,7 @@
 
 #### **2025년 11월 8일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=me13617ac007993e928d591c2d3dc036e	)
 
-* 발표자 - TBD
+* 발표자 - 재익
   * **Chapter 7:** Finetuning to Follow Instructions
     * 지시사항 파인튜닝 데이터셋 구성
     * 인간 피드백 학습(RLHF) 개념
@@ -167,6 +167,7 @@
   * [ARC Prize 2025](https://www.kaggle.com/competitions/arc-prize-2025)
 
 ---
+
 
 
 
