@@ -94,7 +94,7 @@
 #### **2025년 11월 1일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m54969345967403cc4743ce696daeb9f0	)
 
 * 발표자 - 태호
-  * **Chapter 6:** Finetuning for Text Classification
+  * [**Chapter 6:** Finetuning for Text Classification](https://github.com/restful3/ds4th_study/blob/main/source/build-a-large-language-model-from-scratch/ch06_Finetuning_for_classification_Teo.ipynb)
     * 분류 작업을 위한 모델 헤드 수정
     * 파인튜닝 데이터셋 준비 방법
     * 다양한 파인튜닝 전략 비교
@@ -167,6 +167,7 @@
   * [ARC Prize 2025](https://www.kaggle.com/competitions/arc-prize-2025)
 
 ---
+
 
 
 
