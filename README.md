@@ -107,13 +107,17 @@
 
 #### **2025년 11월 8일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=me13617ac007993e928d591c2d3dc036e	)
 
-* 발표자 - 민호
+* 발표자 - TBD
   * **Chapter 7:** Finetuning to Follow Instructions
     * 지시사항 파인튜닝 데이터셋 구성
     * 인간 피드백 학습(RLHF) 개념
     * 직접 선호도 최적화(DPO) 구현
     * 모델 정렬 및 안전성 확보
     * 대화형 AI 구축
+
+* 발표자 - 두균
+  * **Kaggle**
+    * LLM Classification Finetuning
 
 ---
 

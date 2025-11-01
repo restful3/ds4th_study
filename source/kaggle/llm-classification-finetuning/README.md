@@ -47,7 +47,7 @@ Kaggle Competition: [LLM Classification Fine-tuning](https://www.kaggle.com/comp
 - 실제 사용자 선호도 데이터 수집
 
 ### 목적: RLHF의 Reward Model
-이 대회는 **Reinforcement Learning from Human Feedback (RLHF)**의 핵심 요소인 **Reward Model** 또는 **Preference Model** 개발과 직접 연관됩니다.
+이 대회는 **Reinforcement Learning from Human Feedback (RLHF)** 의 핵심 요소인 **Reward Model** 또는 **Preference Model** 개발과 직접 연관됩니다.
 
 #### 기존 LLM의 한계
 기존 LLM을 직접 사용하여 선호도를 예측할 때 발생하는 편향:
@@ -216,11 +216,12 @@ print(train['model_b'].value_counts())
 llm-classification-finetuning/
 ├── README.md                # 이 파일
 ├── requirements.txt         # Python 패키지 의존성
+├── setup_jupyter.sh         # Jupyter 커널 설정 스크립트
 │
 ├── baseline.py             # Kaggle 제출용 (Kaggle 노트북에 복사)
 ├── baseline_local.py       # 로컬 테스트용
-├── download_model.py       # DistilBERT 다운로드 스크립트
-├── exploration.ipynb       # 데이터 탐색용 (선택)
+├── download_model.py       # DistilBERT 다운로드 및 압축 스크립트
+├── exploration.ipynb       # 데이터 탐색용 Jupyter 노트북
 │
 ├── data/                   # 데이터 디렉토리 (gitignore)
 │   ├── train.csv          # 학습 데이터 (~176MB, 57,477행)
@@ -228,10 +229,11 @@ llm-classification-finetuning/
 │   └── sample_submission.csv
 │
 ├── models/                 # 모델 디렉토리 (gitignore)
-│   └── distilbert-base-uncased/
-│       ├── config.json
-│       ├── model.safetensors
-│       └── ...
+│   ├── distilbert-base-uncased/
+│   │   ├── config.json
+│   │   ├── model.safetensors
+│   │   └── ...
+│   └── distilbert-base-uncased.zip  # Kaggle 업로드용
 │
 └── outputs/                # 로컬 실행 결과 (gitignore)
     ├── best_model.pt      # 학습된 모델 (로컬용)
@@ -242,7 +244,7 @@ llm-classification-finetuning/
 
 ### 워크플로우 선택
 
-#### 옵션 1: 로컬에서 테스트 후 Kaggle 제출 (권장)
+#### 로컬에서 테스트 후 Kaggle 제출
 
 로컬에서 코드를 검증한 후 Kaggle에서 실행합니다.
 
@@ -261,19 +263,31 @@ pip install -r requirements.txt
 python download_model.py
 ```
 이 스크립트는 `models/distilbert-base-uncased/` 폴더에 모델을 다운로드합니다 (~254 MB).
+자동으로 모델을 `models/distilbert-base-uncased.zip` 에 압축 합니다.
 
 **3단계: 데이터 준비**
 
 ```bash
 kaggle competitions download -c llm-classification-finetuning
 ```
-
-Kaggle에서 대회 데이터를 다운로드하여 `data/` 폴더에 배치:
+위 명령어로 Kaggle에서 대회 데이터(llm-classification-finetuning.zip)를 다운로드 하고 압축을 풀어 `data/` 폴더에 배치:
 - `data/train.csv`
 - `data/test.csv`
 - `data/sample_submission.csv`
 
-**4단계: 로컬에서 테스트 (선택)**
+**4단계: 데이터 탐색 (선택, 권장)**
+```bash
+# Jupyter 커널 설정
+bash setup_jupyter.sh
+
+# Jupyter Notebook 실행
+jupyter notebook exploration.ipynb
+```
+- 노트북에서 커널 선택: `Kernel → Change Kernel → Python (LLM-Classification-FT)`
+- 데이터 분포, 텍스트 길이, 모델 분포 등 상세 분석
+- Feature Engineering 아이디어 도출
+
+**5단계: 로컬에서 학습 테스트 (선택)**
 ```bash
 python baseline_local.py
 ```
@@ -281,34 +295,16 @@ python baseline_local.py
 - 결과는 `outputs/` 폴더에 저장됨
 - 이 단계는 코드 검증용이며, 생성된 모델은 Kaggle에 업로드할 수 없음
 
-**5단계: 모델을 ZIP으로 압축**
-```bash
-zip -r distilbert-base-uncased.zip models/
-```
-
-**6단계: Kaggle에 데이터셋으로 업로드**
-1. [Kaggle Datasets](https://www.kaggle.com/datasets)로 이동
-2. "New Dataset" 클릭
-3. `distilbert-base-uncased.zip` 업로드
-4. Title: "distilbert-base-uncased"
-5. "Create" 클릭
-
-**7단계: Kaggle 노트북 생성 및 실행**
+**6단계: Kaggle 노트북 생성 및 실행**
 1. [대회 페이지](https://www.kaggle.com/competitions/llm-classification-finetuning)의 "Code" 탭으로 이동
 2. "New Notebook" 클릭
 3. **Settings → GPU T4 x2** 활성화 (필수)
 4. **Add Data** 클릭:
    - Competition 데이터: `llm-classification-finetuning` 추가
-   - 업로드한 데이터셋: `distilbert-base-uncased` 추가
+   - Model upload: `distilbert-base-uncased.zip` 추가
 5. 노트북에 [baseline.py](baseline.py)의 전체 코드를 복사/붙여넣기
 6. **Run All** 클릭
 7. 학습 완료 후 노트북을 대회에 제출
-
-#### 옵션 2: Kaggle에서 직접 실행
-
-로컬 테스트 없이 바로 Kaggle에서 실행하려면:
-1. 위의 5-7단계만 수행
-2. [baseline.py](baseline.py)를 Kaggle 노트북에 복사하여 실행
 
 ## Baseline 모델 구조
 
@@ -487,6 +483,11 @@ class LLMComparisonDataset(Dataset):
             return_attention_mask=True,
             return_tensors='pt'
         )
+
+        item = {
+            'input_ids': encoding['input_ids'].flatten(),
+            'attention_mask': encoding['attention_mask'].flatten(),
+        }        
 
         if not self.is_test:
             labels = torch.tensor([
