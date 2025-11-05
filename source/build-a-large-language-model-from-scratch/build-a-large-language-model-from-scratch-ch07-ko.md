@@ -977,7 +977,7 @@ print(f"모델이 {file_name}으로 저장되었습니다.")
 
 테스트 세트 응답을 자동화된 방식으로 평가하기 위해, Meta AI에서 개발한 기존의 지시사항 미세 조정된 80억 매개변수 Llama 3 모델을 활용합니다. 이 모델은 오픈 소스 Ollama 애플리케이션(https://ollama.com)을 사용하여 로컬에서 실행할 수 있습니다.
 
-> 참고: Ollama는 노트북에서 LLM을 실행하기 위한 효율적인 애플리케이션입니다. 순수 C/C++로 LLM을 구현하여 효율성을 극대화하는 오픈 소스 llama.cpp 라이브러리(https://github.com/ggerganov/llama.cpp)를 감싸는 래퍼 역할을 합니다. 그러나 Ollama는 LLM을 사용한 텍스트 생성(추론)을 위한 도구일 뿐이며 LLM 훈련이나 미세 조정을 지원하지 않습니다.
+> **참고:** Ollama는 노트북에서 LLM을 실행하기 위한 효율적인 애플리케이션입니다. 순수 C/C++로 LLM을 구현하여 효율성을 극대화하는 오픈 소스 llama.cpp 라이브러리(https://github.com/ggerganov/llama.cpp)를 감싸는 래퍼 역할을 합니다. 그러나 Ollama는 LLM을 사용한 텍스트 생성(추론)을 위한 도구일 뿐이며 LLM 훈련이나 미세 조정을 지원하지 않습니다.
 
 <img src="./image/fig_07_19.png" width=800>
 
@@ -987,7 +987,7 @@ print(f"모델이 {file_name}으로 저장되었습니다.")
 >
 > 80억 매개변수 Llama 3 모델은 로컬에서 실행되는 매우 유능한 LLM입니다. 그러나 OpenAI에서 제공하는 GPT-4와 같은 대규모 독점 LLM만큼 유능하지는 않습니다. OpenAI API를 통해 GPT-4를 활용하여 생성된 모델 응답을 평가하는 방법을 탐색하는 데 관심이 있는 독자를 위해, 이 책과 함께 제공되는 보충 자료 내에 선택적 코드 노트북이 있습니다: https://mng.bz/BgEv.
 
-다음 코드를 실행하려면 https://ollama.com을 방문하여 Ollama를 설치하고 운영 체제에 제공된 지침을 따르세요.
+다음 코드를 실행하려면 https://ollama.com 을 방문하여 Ollama를 설치하고 운영 체제에 제공된 지침을 따르세요.
 
 - macOS 및 Windows 사용자: 다운로드한 Ollama 애플리케이션을 엽니다. 명령줄 사용을 설치하라는 메시지가 표시되면 '예'를 선택합니다.
 - Linux 사용자: Ollama 웹사이트에서 제공되는 설치 명령을 사용합니다.
@@ -1091,41 +1091,41 @@ def query_model(
     prompt,
     model="llama3",
     url="http://localhost:11434/api/chat"
-) :
+):
     # 데이터 페이로드를 딕셔너리로 생성
     data = {
-    "model": model,
-    "messages": [
+        "model": model,
+        "messages": [
             {"role": "user", "content": prompt}
-    ],
-    "options": {
-        "seed": 123,
-        "temperature": 0,
-        "num_ctx": 2048
+        ],
+        "options": {
+            "seed": 123,
+            "temperature": 0,
+            "num_ctx": 2048
+        }
     }
-}
 
-# 딕셔너리를 JSON 형식 문자열로 변환하고 바이트로 인코딩
-payload = json.dumps(data).encode("utf-8")
+    # 딕셔너리를 JSON 형식 문자열로 변환하고 바이트로 인코딩
+    payload = json.dumps(data).encode("utf-8")
 
-# 요청 객체를 생성하고, 메서드를 POST로 설정하고 필요한 헤더를 추가
-request = urllib.request.Request(
-    url,
-    data=payload,
-    method="POST"
-)
-request.add_header("Content-Type", "application/json")
+    # 요청 객체를 생성하고, 메서드를 POST로 설정하고 필요한 헤더를 추가
+    request = urllib.request.Request(
+        url,
+        data=payload,
+        method="POST"
+    )
+    request.add_header("Content-Type", "application/json")
 
-response_data = ""
-# 요청을 보내고 응답을 캡처
-with urllib.request.urlopen(request) as response:
-    while True:
-        line = response.readline().decode("utf-8")
-        if not line:
-            break
-        response_json = json.loads(line)
-        response_data += response_json["message"]["content"]
-return response_data
+    response_data = ""
+    # 요청을 보내고 응답을 캡처
+    with urllib.request.urlopen(request) as response:
+        while True:
+            line = response.readline().decode("utf-8")
+            if not line:
+                break
+            response_json = json.loads(line)
+            response_data += response_json["message"]["content"]
+    return response_data
 ```
 
 이 노트북의 후속 코드 셀을 실행하기 전에 Ollama가 여전히 실행 중인지 확인하세요. 이전 코드 셀은 모델이 활성 상태이고 요청을 받을 준비가 되었음을 확인하기 위해 "Ollama 실행 중: True"를 인쇄해야 합니다.
@@ -1282,7 +1282,7 @@ print(f"평균 점수: {sum(scores)/len(scores):.2f}\n")
 - 모델의 응답을 보다 효과적으로 안내하기 위해 다른 프롬프트 또는 지시 형식 실험
 - 복잡한 패턴을 캡처하고 더 정확한 응답을 생성할 수 있는 더 큰 용량의 더 큰 사전 훈련된 모델 사용
 
-> 참고: 여기서 설명하는 방법론을 사용할 때, 미세 조정 없이 Llama 3 8B 기본 모델은 테스트 세트에서 평균 58.51점을 달성합니다. 일반적인 지시사항 따르기 데이터셋으로 미세 조정된 Llama 3 8B 지시 모델은 인상적인 평균 82.6점을 달성합니다.
+> **참고:** 여기서 설명하는 방법론을 사용할 때, 미세 조정 없이 Llama 3 8B 기본 모델은 테스트 세트에서 평균 58.51점을 달성합니다. 일반적인 지시사항 따르기 데이터셋으로 미세 조정된 Llama 3 8B 지시 모델은 인상적인 평균 82.6점을 달성합니다.
 
 > **연습문제 7.4 LoRA를 사용한 매개변수 효율적인 미세 조정**
 >
