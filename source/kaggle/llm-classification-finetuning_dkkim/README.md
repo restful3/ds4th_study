@@ -300,10 +300,13 @@ Training:   0%|            (공백생략)                         | 0/3234 [00:0
    **1-1. 선택 못하는 모델은 "xxxx models_page"로 가서 동의하시면 됩니다.**
     - ![](./image/notebook-19.png)
     - ![](./image/notebook-21.png)
-  
-**2. 모델 옵션을 선택합니다.**
-    - ![](./image/notebook-22.png)
-    - ![](./image/notebook-23.png)
 
-    - ![](./image/notebook-24.png)
+**2. 큰 모델을 선택하게 되면 메모리가 부족하게 됩니다.**
+    - ![](./image/notebook-25.png)
+
+**3. 모델 옵션을 선택합니다.** 
+    -![](./image/notebook-22.png)
+    -![](./image/notebook-23.png)
+    -![](./image/notebook-24.png)
+
 
