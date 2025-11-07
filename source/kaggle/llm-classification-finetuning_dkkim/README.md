@@ -5,7 +5,7 @@
 **1. 소스코드를 다운 로드 받고 캐글 디렉토리로 이동합니다.**
 
 ```jsx
-dkkim-mbp@workdisk~$> **git clone https://github.com/restful3/ds4th_study.git**
+dkkim-mbp@workdisk~$> git clone https://github.com/restful3/ds4th_study.git
 Cloning into 'ds4th_study'...
 remote: Enumerating objects: 18747, done.
 remote: Counting objects: 100% (737/737), done.
@@ -15,9 +15,9 @@ Receiving objects: 100% (18747/18747), 1.58 GiB | 18.19 MiB/s, done.
 Resolving deltas: 100% (7029/7029), done.
 Updating files: 100% (7295/7295), done.
 dkkim-mbp@study~$>
-dkkim-mbp@study~$> **cd ds4th_study**
+dkkim-mbp@study~$> cd ds4th_study
 dkkim-mbp@ds4th_study~$>
-dkkim-mbp@ds4th_study~$> **cd source/kaggle/llm-classification-finetuning**
+dkkim-mbp@ds4th_study~$> cd source/kaggle/llm-classification-finetuning
 dkkim-mbp@llm-classification-finetuning~$>
 dkkim-mbp@llm-classification-finetuning~$>
 dkkim-mbp@llm-classification-finetuning~$> ls -alF
@@ -48,7 +48,7 @@ dkkim-mbp@llm-classification-finetuning~$> source .venv/bin/activate
 
 ```jsx
 (.venv) dkkim-mbp@llm-classification-finetuning~$>
-(.venv) dkkim-mbp@llm-classification-finetuning~$> **pip install -r requirements.txt**
+(.venv) dkkim-mbp@llm-classification-finetuning~$> pip install -r requirements.txt
 Collecting torch>=2.0.0
   Using cached torch-2.8.0-cp39-none-macosx_11_0_arm64.whl (73.6 MB)
 Requirement already satisfied: transformers>=4.30.0 in ./.venv/lib/python3.9/site-packages (from -r requirements.txt (line 3)) (4.57.1)
@@ -316,4 +316,5 @@ Training:   0%|            (공백생략)                         | 0/3234 [00:0
 **2. 모델 옵션을 선택합니다.**
     - ![](./image/notebook-22.png)
     - ![](./image/notebook-23.png)
+
     - ![](./image/notebook-24.png)
