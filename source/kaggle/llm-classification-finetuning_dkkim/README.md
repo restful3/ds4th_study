@@ -121,23 +121,26 @@ Next steps:
 ```jsx
 (.venv) dkkim-mbp@llm-classification-finetuning~$>
 (.venv) dkkim-mbp@llm-classification-finetuning~$> ls -alF
-total 864
-drwxr-xr-x@ 10 dkkim  admin     320 11월  7 21:52 ./
-drwxr-xr-x@  3 dkkim  admin      96 11월  7 20:56 ../
-drwxr-xr-x@  8 dkkim  admin     256 11월  7 21:56 .venv/
--rw-r--r--@  1 dkkim  admin   13248 11월  7 20:56 baseline_local.py
--rw-r--r--@  1 dkkim  admin   13019 11월  7 20:56 baseline.py
--rw-r--r--@  1 dkkim  admin    2705 11월  7 20:56 download_model.py
--rw-r--r--@  1 dkkim  admin  351378 11월  7 20:56 exploration.ipynb
-drwxr-xr-x@  3 dkkim  admin      96 11월  7 21:52 models/
--rw-r--r--@  1 dkkim  admin   46022 11월  7 20:56 README.md
--rw-r--r--@  1 dkkim  admin     420 11월  7 20:56 requirements.txt
-(.venv) dkkim-mbp@llm-classification-finetuning~$>
+total 119648
+drwxr-xr-x@ 13 dkkim  admin       416 11월  7 22:15 ./
+drwxr-xr-x@  3 dkkim  admin        96 11월  7 20:56 ../
+drwxr-xr-x@  8 dkkim  admin       256 11월  7 21:56 .venv/
+-rw-r--r--@  1 dkkim  admin     13248 11월  7 20:56 baseline_local.py
+-rw-r--r--@  1 dkkim  admin     13019 11월  7 20:56 baseline.py
+drwxr-xr-x@  5 dkkim  admin       160 11월  7 22:15 data/
+-rw-r--r--@  1 dkkim  admin      2705 11월  7 20:56 download_model.py
+-rw-r--r--@  1 dkkim  admin    351378 11월  7 20:56 exploration.ipynb
+-rw-r--r--@  1 dkkim  admin  59810797 10월  9  2024 llm-classification-finetuning.zip
+drwxr-xr-x@  4 dkkim  admin       128 11월  7 22:20 models/
+drwxr-xr-x@  2 dkkim  admin        64 11월  7 22:13 outputs/
+-rw-r--r--@  1 dkkim  admin     46022 11월  7 20:56 README.md
+-rw-r--r--@  1 dkkim  admin       420 11월  7 20:56 requirements.txt
 (.venv) dkkim-mbp@llm-classification-finetuning~$> ls -alF models
-total 0
-drwxr-xr-x@  3 dkkim  admin   96 11월  7 21:52 ./
-drwxr-xr-x@ 10 dkkim  admin  320 11월  7 21:52 ../
-drwxr-xr-x@  6 dkkim  admin  192 11월  7 21:52 distilbert-base-uncased/
+total 491928
+drwxr-xr-x@  4 dkkim  admin        128 11월  7 22:20 ./
+drwxr-xr-x@ 13 dkkim  admin        416 11월  7 22:15 ../
+drwxr-xr-x@  8 dkkim  admin        256 11월  7 22:20 distilbert-base-uncased/
+-rw-r--r--@  1 dkkim  admin  245111735 11월  7 22:20 distilbert-base-uncased.zip
 (.venv) dkkim-mbp@llm-classification-finetuning~$>
 (.venv) dkkim-mbp@llm-classification-finetuning~$>
 ```
@@ -184,21 +187,6 @@ Archive:  llm-classification-finetuning.zip
   inflating: data/train.csv
 (.venv) dkkim-mbp@llm-classification-finetuning~$>
 (.venv) dkkim-mbp@llm-classification-finetuning~$>
-(.venv) dkkim-mbp@llm-classification-finetuning~$> ls -alF
-total 119648
-drwxr-xr-x@ 13 dkkim  admin       416 11월  7 22:15 ./
-drwxr-xr-x@  3 dkkim  admin        96 11월  7 20:56 ../
-drwxr-xr-x@  8 dkkim  admin       256 11월  7 21:56 .venv/
--rw-r--r--@  1 dkkim  admin     13248 11월  7 20:56 baseline_local.py
--rw-r--r--@  1 dkkim  admin     13019 11월  7 20:56 baseline.py
-drwxr-xr-x@  5 dkkim  admin       160 11월  7 22:15 data/
--rw-r--r--@  1 dkkim  admin      2705 11월  7 20:56 download_model.py
--rw-r--r--@  1 dkkim  admin    351378 11월  7 20:56 exploration.ipynb
--rw-r--r--@  1 dkkim  admin  59810797 10월  9  2024 llm-classification-finetuning.zip
-drwxr-xr-x@  3 dkkim  admin        96 11월  7 21:52 models/
-drwxr-xr-x@  2 dkkim  admin        64 11월  7 22:13 outputs/
--rw-r--r--@  1 dkkim  admin     46022 11월  7 20:56 README.md
--rw-r--r--@  1 dkkim  admin       420 11월  7 20:56 requirements.txt
 (.venv) dkkim-mbp@llm-classification-finetuning~$>
 (.venv) dkkim-mbp@llm-classification-finetuning~$> ls -alF data
 total 371616
@@ -318,3 +306,4 @@ Training:   0%|            (공백생략)                         | 0/3234 [00:0
     - ![](./image/notebook-23.png)
 
     - ![](./image/notebook-24.png)
+
