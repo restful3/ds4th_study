@@ -34,7 +34,7 @@ drwxr-xr-x@ 6 dkkim  admin     192 11월  7 21:22 .venv/
 dkkim-mbp@llm-classification-finetuning~$>
 ```
 
-**2. 파이썬을 venc로 실행합니다.**
+**2. 파이썬을 venv로 실행합니다.**
 
 ```jsx
 dkkim-mbp@llm-classification-finetuning~$> python3 -m venv .venv
@@ -308,5 +308,6 @@ Training:   0%|            (공백생략)                         | 0/3234 [00:0
     -![](./image/notebook-22.png)
     -![](./image/notebook-23.png)
     -![](./image/notebook-24.png)
+
 
 
