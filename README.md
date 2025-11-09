@@ -25,7 +25,6 @@
 ---
 
 #### **2025년 9월 13일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m8a945c481103c4a418d4670b103f74be	)
-
 * 발표자 - C성진
   * **Chapter 1:** Understanding Large Language Models
     * LLM 기본 개념 및 트랜스포머 아키텍처 소개
@@ -33,28 +32,24 @@
     * GPT 시리즈 모델의 발전 과정
 
 #### **2025년 9월 20일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m7ce242843e71db115e8b2369986a04aa	)
-
 * 발표자 - 경연
   * **Chapter 2:** Working with Text Data
     * 텍스트 토큰화 및 토큰 ID 변환
     * 바이트 페어 인코딩(BPE) 구현
     * 토큰 임베딩과 위치 인코딩 생성
     * 슬라이딩 윈도우를 통한 훈련 데이터 생성
-
 * 발표자 - K성진, 태호
   * **Kaggle**
     * MAP - Charting Student Math Misunderstandings(태호)
     * ARC Prize 2025 (K성진)
        
 #### **2025년 9월 27일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m794c4e50f5ff0e9aa332e21523485655	)
-
 * 발표자 - S종훈
   * **Chapter 3:** Coding Attention Mechanisms
     * 셀프 어텐션 메커니즘 구현
     * 인과적 어텐션 마스크 적용
     * 멀티헤드 어텐션 구조 구축
-    * 드롭아웃을 통한 정규화
-   
+    * 드롭아웃을 통한 정규화   
 * 발표자 - 재익
   * **Kaggle**
     * [ARC Prize 2025](https://github.com/restful3/ds4th_study/blob/main/source/20250927_arc2025_jishin.pdf)
@@ -64,32 +59,27 @@
 #### **✅ 2025년 10월 11일**: 휴일 (추석 연휴 - 스터디 없음)
 
 #### **2025년 10월 18일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=me926d907650c9b1a34a5cf2a56fbea7c	)
-
 * 발표자 - 태영
   * [**Chapter 4:** Implementing a GPT Model from Scratch to Generate Text](https://github.com/restful3/ds4th_study/blob/main/source/build-a-large-language-model-from-scratch/CH4%20%ED%85%8D%EC%8A%A4%ED%8A%B8%20%EC%83%9D%EC%84%B1%EC%9D%84%20%EC%9C%84%ED%95%9C%20GPT%20%EB%AA%A8%EB%8D%B8%EC%9D%84%20%EC%B2%98%EC%9D%8C%EB%B6%80%ED%84%B0%20%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0.pdf)
     * GPT 아키텍처 전체 구현
     * 레이어 정규화 및 피드포워드 네트워크
     * 트랜스포머 블록 조립
-    * 텍스트 생성 및 디코딩 전략
-   
+    * 텍스트 생성 및 디코딩 전략   
 * 발표자 - 영재
   * **Kaggle**
     * ARC Prize 2025
 
 #### **2025년 10월 25일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m18b99f88356090f9f2ce9d29adefecc3	)
-
 * 발표자 - 우석
   * **Chapter 5:** Pretraining on Unlabeled Data
     * 모델 성능 평가 지표 구현
     * 훈련 루프 및 검증 프로세스
     * OpenAI 사전 훈련 가중치 로드
     * 온도 스케일링 및 top-k 샘플링
-    * 모델 저장 및 로드 방법
-   
+    * 모델 저장 및 로드 방법   
 * 발표자 - K성진, 태호
   * **Kaggle**
     * ARC Prize 2025
-
 
 #### **2025년 11월 1일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m54969345967403cc4743ce696daeb9f0	)
 * 발표자 - 태호
@@ -99,7 +89,6 @@
     * 다양한 파인튜닝 전략 비교
     * 성능 평가 및 결과 분석
     * 스팸 분류기 구현 실습
-
 * 발표자 - 태영
   * **Kaggle**
     * LLM Classification Finetuning
@@ -115,6 +104,7 @@
 * 발표자 - 두균
   * **Kaggle**
     * LLM Classification Finetuning
+#### ✅ **요즘 바이브 코딩 클로드 코드 완벽 가이드로 교재 변경**
    
 #### **2025년 11월 15일**: [Webex](TBD)
 * 발표자 - 핀조이
@@ -122,8 +112,6 @@
 * 발표자 - 보현
   * **Kaggle**
     * LLM Classification Finetuning
-
-#### ✅ **요즘 바이브 코딩 클로드 코드 완벽 가이드로 교재 변경**
 
 #### **2025년 11월 22일**: [Webex](TBD)
 * 발표자 - TBD
@@ -235,6 +223,7 @@
   * [LLM Classification Finetuning](https://www.kaggle.com/competitions/llm-classification-finetuning)
 
 ---
+
 
 
 
