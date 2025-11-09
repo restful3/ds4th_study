@@ -21,7 +21,7 @@
 
 ---
 
-### **4. 스터디 운영 계획 (2025년 9월 ~ 2025년 11월)**
+### **4. 스터디 운영 계획 (2025년 9월 ~ 2025년 12월)**
 
 ---
 
@@ -189,6 +189,7 @@
   * [LLM Classification Finetuning](https://www.kaggle.com/competitions/llm-classification-finetuning)
 
 ---
+
 
 
 
