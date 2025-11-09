@@ -104,16 +104,17 @@
 * 발표자 - 두균
   * **Kaggle**
     * LLM Classification Finetuning
+
 #### ✅ **요즘 바이브 코딩 클로드 코드 완벽 가이드로 교재 변경**
    
-#### **2025년 11월 15일**: [Webex](TBD)
+#### **2025년 11월 15일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m2f1c9bd81d1f13fd9a638b4092d599b2)
 * 발표자 - 핀조이
   * **claude-code-router**    
 * 발표자 - 보현
   * **Kaggle**
     * LLM Classification Finetuning
 
-#### **2025년 11월 22일**: [Webex](TBD)
+#### **2025년 11월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb7eadd3edf33c21a979fa92ff7f8da7c)
 * 발표자 - TBD
   * **Chapter 4~9 (p.44–93)**
     * **Chapter 4:** 클로드 코드 기본 인터페이스 이해하기
@@ -126,7 +127,7 @@
   * **Kaggle**
     * TBD
 
-#### **2025년 11월 29일**: [Webex](TBD)
+#### **2025년 11월 29일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc1203b072b82d970ac091b79ca6c03f6)
 * 발표자 - TBD
   * **Chapter 10~14 (p.94–149)**
     * **Chapter 10:** 커스텀 슬래시 커맨드
@@ -138,7 +139,7 @@
   * **Kaggle**
     * TBD
 
-#### **2025년 12월 6일**: [Webex](TBD)
+#### **2025년 12월 6일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m440b55ecb6412ea23b0d388326e11581)
 * 발표자 - TBD
   * **Chapter 15~18 (p.150–202)**
     * **Chapter 15:** 아이디어 구체화
@@ -149,7 +150,7 @@
   * **Kaggle**
     * TBD
 
-#### **2025년 12월 13일**: [Webex](TBD)
+#### **2025년 12월 13일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m4043e4d9f8ed7a669db2e90873cfb9cc)
 * 발표자 - TBD
   * **Chapter 19~23 (p.203–249)**
     * **Chapter 19:** 데이터베이스 연동하기
@@ -161,7 +162,7 @@
   * **Kaggle**
     * TBD
 
-#### **2025년 12월 20일**: [Webex](TBD)
+#### **2025년 12월 20일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m144d92d270fea25298c353e9cc001b28)
 * 발표자 - TBD
   * **Chapter 24~27 + 부록 (p.250–274)**
     * **Chapter 24:** Claude Squad
@@ -223,6 +224,7 @@
   * [LLM Classification Finetuning](https://www.kaggle.com/competitions/llm-classification-finetuning)
 
 ---
+
 
 
 
