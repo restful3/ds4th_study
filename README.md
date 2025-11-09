@@ -92,7 +92,6 @@
 
 
 #### **2025년 11월 1일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m54969345967403cc4743ce696daeb9f0	)
-
 * 발표자 - 태호
   * [**Chapter 6:** Finetuning for Text Classification](https://github.com/restful3/ds4th_study/blob/main/source/build-a-large-language-model-from-scratch/ch06_Finetuning_for_classification_Teo.ipynb)
     * 분류 작업을 위한 모델 헤드 수정
@@ -106,7 +105,6 @@
     * LLM Classification Finetuning
 
 #### **2025년 11월 8일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=me13617ac007993e928d591c2d3dc036e	)
-
 * 발표자 - 재익
   * **Chapter 7:** Finetuning to Follow Instructions
     * 지시사항 파인튜닝 데이터셋 구성
@@ -114,16 +112,13 @@
     * 직접 선호도 최적화(DPO) 구현
     * 모델 정렬 및 안전성 확보
     * 대화형 AI 구축
-
 * 발표자 - 두균
   * **Kaggle**
     * LLM Classification Finetuning
    
 #### **2025년 11월 15일**: [Webex](TBD)
-
 * 발표자 - 핀조이
-  * **claude-code-router**
-    
+  * **claude-code-router**    
 * 발표자 - 보현
   * **Kaggle**
     * LLM Classification Finetuning
@@ -131,28 +126,21 @@
 #### ✅ **요즘 바이브 코딩 클로드 코드 완벽 가이드로 교재 변경**
 
 #### **2025년 11월 22일**: [Webex](TBD)
-
 * 발표자 - TBD
-
   * **Chapter 4~9 (p.44–93)**
-
     * **Chapter 4:** 클로드 코드 기본 인터페이스 이해하기
     * **Chapter 5:** 슬래시 명령어 제대로 알아보기
     * **Chapter 6:** CLAUDE.md 파일에 대한 모든 것
     * **Chapter 7:** 클로드 코드의 3가지 모드 알아보기
     * **Chapter 8:** 모델 선택, 사용량 관리
     * **Chapter 9:** 생각 과정 제어하기
-
 * 발표자 - TBD
   * **Kaggle**
     * TBD
 
 #### **2025년 11월 29일**: [Webex](TBD)
-
 * 발표자 - TBD
-
   * **Chapter 10~14 (p.94–149)**
-
     * **Chapter 10:** 커스텀 슬래시 커맨드
     * **Chapter 11:** MCP 사용하기
     * **Chapter 12:** PRD와 실행 계획
@@ -161,12 +149,10 @@
 * 발표자 - TBD
   * **Kaggle**
     * TBD
+
 #### **2025년 12월 6일**: [Webex](TBD)
-
 * 발표자 - TBD
-
   * **Chapter 15~18 (p.150–202)**
-
     * **Chapter 15:** 아이디어 구체화
     * **Chapter 16:** UI 프로토타이핑
     * **Chapter 17:** 인증 구현하기
@@ -174,12 +160,10 @@
 * 발표자 - TBD
   * **Kaggle**
     * TBD
+
 #### **2025년 12월 13일**: [Webex](TBD)
-
 * 발표자 - TBD
-
   * **Chapter 19~23 (p.203–249)**
-
     * **Chapter 19:** 데이터베이스 연동하기
     * **Chapter 20:** 테스트 작성하기
     * **Chapter 21:** 배포하기
@@ -188,12 +172,10 @@
 * 발표자 - TBD
   * **Kaggle**
     * TBD
+
 #### **2025년 12월 20일**: [Webex](TBD)
-
 * 발표자 - TBD
-
   * **Chapter 24~27 + 부록 (p.250–274)**
-
     * **Chapter 24:** Claude Squad
     * **Chapter 25:** ccusage
     * **Chapter 26:** Claude Code Action
@@ -202,6 +184,7 @@
 * 발표자 - TBD
   * **Kaggle**
     * TBD
+
 ---
 
 ### **5. 스터디 운영 방법**
@@ -246,10 +229,13 @@
   * [Manning 주교재](https://www.manning.com/books/build-a-large-language-model-from-scratch)
   * [O'Reilly 참고서](https://www.oreilly.com/library/view/hands-on-large-language/9781098150952/)
   * [국내서 참고자료](https://github.com/onlybooks/llm)
+  * [요즘 바이브 코딩 클로드 코드 완벽 가이드](https://ridibooks.com/books/4547000075?_rdt_sid=category_bestsellers&_rdt_idx=0&_rdt_arg=2220)
 * **Kaggle 대회 링크**: 
   * [ARC Prize 2025](https://www.kaggle.com/competitions/arc-prize-2025)
+  * [LLM Classification Finetuning](https://www.kaggle.com/competitions/llm-classification-finetuning)
 
 ---
+
 
 
 
