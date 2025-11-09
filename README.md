@@ -5,7 +5,8 @@
 ### **1. 스터디 목적**
 
 * **Sebastian Raschka의 "Build a Large Language Model (From Scratch)" 책을 통해 대형 언어 모델(LLM)의 내부 작동 원리를 완전히 이해하고, GPT 유사 모델을 처음부터 구현하는 실무 능력을 강화하는 것**을 목표로 한다.
-
+* '클로드 코드 완벽 가이드' 스터디를 통해 LLM 기반 개발 실무 능력(Agentic Workflow, Tool Use, Automation)을 함께 강화하여 이론과 실전을 모두 갖춘 AI 엔지니어링 역량을 구축한다.
+  
 ---
 
 ### **2. 스터디 시간**
@@ -224,6 +225,7 @@
   * [LLM Classification Finetuning](https://www.kaggle.com/competitions/llm-classification-finetuning)
 
 ---
+
 
 
 
