@@ -177,54 +177,19 @@
 
 ---
 
-### **5. 스터디 운영 방법**
-
-* **주교재**:
-  * [Build a Large Language Model (From Scratch) - Sebastian Raschka](https://www.manning.com/books/build-a-large-language-model-from-scratch)
-  * **공식 GitHub 저장소**: [rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch)
-
-* **참고 자료**:
-  * [Hands-On Large Language Models - Jay Alammar & Maarten Grootendorst](https://www.oreilly.com/library/view/hands-on-large-language/9781098150952/)
-  * [LLM을 활용한 실전 AI 애플리케이션 개발 - 허정준](https://github.com/onlybooks/llm)
-
-* **학습 공유**: 매주 학습한 내용을 발표자료와 함께 GitHub에 공유
-* **발표 방식**:
-  * 각 챕터에 대한 50분 발표 + 10분 Q&A
-  * 이론 설명과 실제 구현 코드 시연
-  * 참고 자료의 관련 내용도 함께 다룰 수 있음
-
-* **운영 규칙**:
-  * 스터디 운영 규칙 (별도 문서 참조)
-
----
-
-### **6. 학습 목표 및 성과물**
-
-* **기초 단계 (9월)**: LLM 기본 개념과 텍스트 처리 파이프라인 이해
-* **핵심 단계 (10월)**: 어텐션 메커니즘과 GPT 모델 완전 구현  
-* **응용 단계 (11월)**: 모델 훈련, 파인튜닝 및 실용화
-
-* **최종 성과물**: 
-  * 처음부터 구현한 완전한 GPT 유사 모델
-  * 개인별 특화된 LLM 프로젝트
-  * 학습 과정과 구현 코드가 체계적으로 정리된 GitHub 저장소
-
----
-
-### **7. 기타**
+### **참고**
 
 * **참가 희망 요청**: [Email](mailto:restful3@gmail.com)
 * **이제까지 다룬 내용**: [archive 확인](https://github.com/restful3/ds4th_study/tree/main/archive)
 * **교재 구매 링크**: 
-  * [Manning 주교재](https://www.manning.com/books/build-a-large-language-model-from-scratch)
-  * [O'Reilly 참고서](https://www.oreilly.com/library/view/hands-on-large-language/9781098150952/)
-  * [국내서 참고자료](https://github.com/onlybooks/llm)
-  * [요즘 바이브 코딩 클로드 코드 완벽 가이드](https://ridibooks.com/books/4547000075?_rdt_sid=category_bestsellers&_rdt_idx=0&_rdt_arg=2220)
+  * [Build a Large Language Model (From Scratch)](https://www.manning.com/books/build-a-large-language-model-from-scratch)
+  * [요즘 바이브 코딩 클로드 코드 완벽 가이드](https://ridibooks.com/books/4547000075?_rdt_sid=category_bestsellers&_rdt_idx=0&_rdt_arg=2220)   
 * **Kaggle 대회 링크**: 
   * [ARC Prize 2025](https://www.kaggle.com/competitions/arc-prize-2025)
   * [LLM Classification Finetuning](https://www.kaggle.com/competitions/llm-classification-finetuning)
 
 ---
+
 
 
 
