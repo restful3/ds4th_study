@@ -110,7 +110,7 @@
    
 #### **2025년 11월 15일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m2f1c9bd81d1f13fd9a638b4092d599b2)
 * 발표자 - 핀조이
-  * **claude-code-router**    
+  * **[claude-code-router 소개](https://github.com/musistudio/claude-code-router)**    
 * 발표자 - 보현
   * **Kaggle**
     * LLM Classification Finetuning
@@ -189,6 +189,7 @@
   * [LLM Classification Finetuning](https://www.kaggle.com/competitions/llm-classification-finetuning)
 
 ---
+
 
 
 
