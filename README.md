@@ -116,7 +116,7 @@
     * LLM Classification Finetuning
 
 #### **2025년 11월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb7eadd3edf33c21a979fa92ff7f8da7c)
-* 발표자 - TBD
+* 발표자 - 종훈
   * **Chapter 4~9 (p.44–93)**
     * **Chapter 4:** 클로드 코드 기본 인터페이스 이해하기
     * **Chapter 5:** 슬래시 명령어 제대로 알아보기
@@ -124,9 +124,6 @@
     * **Chapter 7:** 클로드 코드의 3가지 모드 알아보기
     * **Chapter 8:** 모델 선택, 사용량 관리
     * **Chapter 9:** 생각 과정 제어하기
-* 발표자 - TBD
-  * **Kaggle**
-    * TBD
 
 #### **2025년 11월 29일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc1203b072b82d970ac091b79ca6c03f6)
 * 발표자 - HY
@@ -136,44 +133,32 @@
     * **Chapter 12:** PRD와 실행 계획
     * **Chapter 13:** 에이전트 병렬 실행
     * **Chapter 14:** GitHub 워크플로
-* 발표자 - TBD
-  * **Kaggle**
-    * TBD
 
 #### **2025년 12월 6일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m440b55ecb6412ea23b0d388326e11581)
-* 발표자 - TBD
+* 발표자 - 도운
   * **Chapter 15~18 (p.150–202)**
     * **Chapter 15:** 아이디어 구체화
     * **Chapter 16:** UI 프로토타이핑
     * **Chapter 17:** 인증 구현하기
     * **Chapter 18:** 기능 작업
-* 발표자 - TBD
-  * **Kaggle**
-    * TBD
 
 #### **2025년 12월 13일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m4043e4d9f8ed7a669db2e90873cfb9cc)
-* 발표자 - TBD
+* 발표자 - 보현
   * **Chapter 19~23 (p.203–249)**
     * **Chapter 19:** 데이터베이스 연동하기
     * **Chapter 20:** 테스트 작성하기
     * **Chapter 21:** 배포하기
     * **Chapter 22:** Super Claude
     * **Chapter 23:** Claudia
-* 발표자 - TBD
-  * **Kaggle**
-    * TBD
 
 #### **2025년 12월 20일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m144d92d270fea25298c353e9cc001b28)
-* 발표자 - TBD
+* 발표자 - 우석
   * **Chapter 24~27 + 부록 (p.250–274)**
     * **Chapter 24:** Claude Squad
     * **Chapter 25:** ccusage
     * **Chapter 26:** Claude Code Action
     * **Chapter 27:** Claude Code Hooks
     * **부록:** 99가지 유용한 팁
-* 발표자 - TBD
-  * **Kaggle**
-    * TBD
 
 ---
 
@@ -189,6 +174,7 @@
   * [LLM Classification Finetuning](https://www.kaggle.com/competitions/llm-classification-finetuning)
 
 ---
+
 
 
 
