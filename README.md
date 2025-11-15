@@ -129,7 +129,7 @@
     * TBD
 
 #### **2025년 11월 29일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc1203b072b82d970ac091b79ca6c03f6)
-* 발표자 - TBD
+* 발표자 - HY
   * **Chapter 10~14 (p.94–149)**
     * **Chapter 10:** 커스텀 슬래시 커맨드
     * **Chapter 11:** MCP 사용하기
@@ -189,6 +189,7 @@
   * [LLM Classification Finetuning](https://www.kaggle.com/competitions/llm-classification-finetuning)
 
 ---
+
 
 
 
