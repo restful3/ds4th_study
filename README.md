@@ -124,6 +124,9 @@
     * **Chapter 7:** 클로드 코드의 3가지 모드 알아보기
     * **Chapter 8:** 모델 선택, 사용량 관리
     * **Chapter 9:** 생각 과정 제어하기
+* 발표자 - 태영
+  * **Papers**
+    * [MAS 설계 서베이](https://github.com/restful3/ds4th_study/blob/main/source/papers/MAS%EC%84%9C%EB%B2%A0%EC%9D%B4_2511_song.pdf)
 
 #### **2025년 11월 29일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc1203b072b82d970ac091b79ca6c03f6)
 * 발표자 - HY
@@ -174,6 +177,7 @@
   * [LLM Classification Finetuning](https://www.kaggle.com/competitions/llm-classification-finetuning)
 
 ---
+
 
 
 
