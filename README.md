@@ -116,7 +116,7 @@
     * LLM Classification Finetuning
 
 #### **2025년 11월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb7eadd3edf33c21a979fa92ff7f8da7c)
-* 발표자 - 종훈
+* 발표자 - 경연
   * **Chapter 4~9 (p.44–93)**
     * **Chapter 4:** 클로드 코드 기본 인터페이스 이해하기
     * **Chapter 5:** 슬래시 명령어 제대로 알아보기
@@ -177,6 +177,7 @@
   * [LLM Classification Finetuning](https://www.kaggle.com/competitions/llm-classification-finetuning)
 
 ---
+
 
 
 
