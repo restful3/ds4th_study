@@ -128,7 +128,8 @@
   * **Papers**
     * [MAS 설계 서베이](https://github.com/restful3/ds4th_study/blob/main/source/papers/MAS%EC%84%9C%EB%B2%A0%EC%9D%B4_2511_song.pdf)
 
-#### **2025년 11월 29일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc1203b072b82d970ac091b79ca6c03f6)
+#### **2025년 11월 29일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc1203b072b82d970ac091b79ca6c03f6) 
+* [발표자료](https://github.com/restful3/ds4th_study/blob/main/archive/etc/%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%84%83%E1%85%B3%20%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B3%20%E1%84%8B%E1%85%AA%E1%86%AB%E1%84%87%E1%85%A7%E1%86%A8%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3_%20Chapter%2010~14.pptx.pdf)
 * 발표자 - HY
   * **Chapter 10~14 (p.94–149)**
     * **Chapter 10:** 커스텀 슬래시 커맨드
@@ -177,6 +178,7 @@
   * [LLM Classification Finetuning](https://www.kaggle.com/competitions/llm-classification-finetuning)
 
 ---
+
 
 
 
