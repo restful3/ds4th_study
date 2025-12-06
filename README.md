@@ -156,7 +156,7 @@
     * **Chapter 23:** Claudia
 
 #### **2025년 12월 20일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m144d92d270fea25298c353e9cc001b28)
-* 발표자 - 우석
+* 발표자 - 종훈
   * **Chapter 24~27 + 부록 (p.250–274)**
     * **Chapter 24:** Claude Squad
     * **Chapter 25:** ccusage
@@ -178,6 +178,7 @@
   * [LLM Classification Finetuning](https://www.kaggle.com/competitions/llm-classification-finetuning)
 
 ---
+
 
 
 
