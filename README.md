@@ -1,12 +1,15 @@
-# **ds4th study**
+기존 **ds4th study** 공지 형식을 유지하면서, 앞서 정리한 **『소프트웨어 아키텍처 The Basics (개정 2판)』** 11주 완성 플랜을 반영하여 작성했습니다.
+
+Webex 링크와 발표자는 아직 미정이므로 **TBD (To Be Determined)**로 표시해 두었습니다. 상황에 맞춰 수정해서 사용하세요.
 
 ---
 
+# **ds4th study**
+
 ### **1. 스터디 목적**
 
-* **Sebastian Raschka의 "Build a Large Language Model (From Scratch)" 책을 통해 대형 언어 모델(LLM)의 내부 작동 원리를 완전히 이해하고, GPT 유사 모델을 처음부터 구현하는 실무 능력을 강화하는 것**을 목표로 한다.
-* '클로드 코드 완벽 가이드' 스터디를 통해 LLM 기반 개발 실무 능력(Agentic Workflow, Tool Use, Automation)을 함께 강화하여 이론과 실전을 모두 갖춘 AI 엔지니어링 역량을 구축한다.
-  
+* **『소프트웨어 아키텍처 The Basics (개정 2판)』을 통해 아키텍처적 사고, 다양한 아키텍처 스타일, 그리고 소프트 스킬(협상, 리더십)을 함양하여 견고한 시스템 설계를 위한 실무 역량을 강화하는 것**을 목표로 한다.
+
 ---
 
 ### **2. 스터디 시간**
@@ -21,188 +24,129 @@
 
 ---
 
-### **4. 스터디 운영 계획 (2025년 9월 ~ 2025년 12월)**
+### **4. 스터디 운영 계획 (2026년 1월 ~ 2026년 3월)**
 
 ---
 
-#### **2025년 9월 13일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m8a945c481103c4a418d4670b103f74be	)
-* 발표자 - C성진
-  * **Chapter 1:** Understanding Large Language Models
-    * LLM 기본 개념 및 트랜스포머 아키텍처 소개
-    * 사전 훈련과 파인튜닝 단계 이해
-    * GPT 시리즈 모델의 발전 과정
+#### **2026년 1월 10일**: [Webex]()
 
-#### **2025년 9월 20일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m7ce242843e71db115e8b2369986a04aa	)
-* 발표자 - 경연
-  * **Chapter 2:** Working with Text Data
-    * 텍스트 토큰화 및 토큰 ID 변환
-    * 바이트 페어 인코딩(BPE) 구현
-    * 토큰 임베딩과 위치 인코딩 생성
-    * 슬라이딩 윈도우를 통한 훈련 데이터 생성
-* 발표자 - K성진, 태호
-  * **Kaggle**
-    * MAP - Charting Student Math Misunderstandings(태호)
-    * ARC Prize 2025 (K성진)
-       
-#### **2025년 9월 27일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m794c4e50f5ff0e9aa332e21523485655	)
-* 발표자 - S종훈
-  * **Chapter 3:** Coding Attention Mechanisms
-    * 셀프 어텐션 메커니즘 구현
-    * 인과적 어텐션 마스크 적용
-    * 멀티헤드 어텐션 구조 구축
-    * 드롭아웃을 통한 정규화   
-* 발표자 - 재익
-  * **Kaggle**
-    * [ARC Prize 2025](https://github.com/restful3/ds4th_study/blob/main/source/20250927_arc2025_jishin.pdf)
+* 발표자 - TBD
+* **1.** 서론 (17p)
+* **2.** 아키텍처적 사고 (23p)
+* **3.** 모듈성 (21p)
+* *(총 61p)*
 
-#### **✅ 2025년 10월 4일**: 휴일 (추석 연휴 - 스터디 없음)
 
-#### **✅ 2025년 10월 11일**: 휴일 (추석 연휴 - 스터디 없음)
 
-#### **2025년 10월 18일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=me926d907650c9b1a34a5cf2a56fbea7c	)
-* 발표자 - 태영
-  * [**Chapter 4:** Implementing a GPT Model from Scratch to Generate Text](https://github.com/restful3/ds4th_study/blob/main/source/build-a-large-language-model-from-scratch/CH4%20%ED%85%8D%EC%8A%A4%ED%8A%B8%20%EC%83%9D%EC%84%B1%EC%9D%84%20%EC%9C%84%ED%95%9C%20GPT%20%EB%AA%A8%EB%8D%B8%EC%9D%84%20%EC%B2%98%EC%9D%8C%EB%B6%80%ED%84%B0%20%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0.pdf)
-    * GPT 아키텍처 전체 구현
-    * 레이어 정규화 및 피드포워드 네트워크
-    * 트랜스포머 블록 조립
-    * 텍스트 생성 및 디코딩 전략   
-* 발표자 - 영재
-  * **Kaggle**
-    * ARC Prize 2025
+#### **2026년 1월 17일**: [Webex]()
 
-#### **2025년 10월 25일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m18b99f88356090f9f2ce9d29adefecc3	)
-* 발표자 - 우석
-  * **Chapter 5:** Pretraining on Unlabeled Data
-    * 모델 성능 평가 지표 구현
-    * 훈련 루프 및 검증 프로세스
-    * OpenAI 사전 훈련 가중치 로드
-    * 온도 스케일링 및 top-k 샘플링
-    * 모델 저장 및 로드 방법   
-* 발표자 - K성진, 태호
-  * **Kaggle**
-    * ARC Prize 2025
+* 발표자 - TBD
+* **4.** 아키텍처 특성의 정의 (13p)
+* **5.** 아키텍처 특성의 식별 (15p)
+* **6.** 아키텍처 특성의 측정과 거버넌스 (17p)
+* **7.** 아키텍처 특성의 범위 (11p)
+* *(총 56p)*
 
-#### **2025년 11월 1일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m54969345967403cc4743ce696daeb9f0	)
-* 발표자 - 태호
-  * [**Chapter 6:** Finetuning for Text Classification](https://github.com/restful3/ds4th_study/blob/main/source/build-a-large-language-model-from-scratch/ch06_Finetuning_for_classification_Teo.ipynb)
-    * 분류 작업을 위한 모델 헤드 수정
-    * 파인튜닝 데이터셋 준비 방법
-    * 다양한 파인튜닝 전략 비교
-    * 성능 평가 및 결과 분석
-    * 스팸 분류기 구현 실습
-* 발표자 - 태영
-  * **Kaggle**
-    * LLM Classification Finetuning
 
-#### **2025년 11월 8일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=me13617ac007993e928d591c2d3dc036e	)
-* 발표자 - 재익
-  * **Chapter 7:** Finetuning to Follow Instructions
-    * 지시사항 파인튜닝 데이터셋 구성
-    * 인간 피드백 학습(RLHF) 개념
-    * 직접 선호도 최적화(DPO) 구현
-    * 모델 정렬 및 안전성 확보
-    * 대화형 AI 구축
-* 발표자 - 두균
-  * **Kaggle**
-    * LLM Classification Finetuning
 
-#### ✅ **요즘 바이브 코딩 클로드 코드 완벽 가이드로 교재 변경**
-   
-#### **2025년 11월 15일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m2f1c9bd81d1f13fd9a638b4092d599b2)
-* 발표자 - 핀조이
-  * **[claude-code-router 소개](https://github.com/musistudio/claude-code-router)**    
-* 발표자 - 보현
-  * **Kaggle**
-    * LLM Classification Finetuning
+#### **2026년 1월 24일**: [Webex]()
 
-#### **2025년 11월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mb7eadd3edf33c21a979fa92ff7f8da7c)
-* 발표자 - 경연
-  * **Chapter 4~9 (p.44–93)**
-    * **Chapter 4:** 클로드 코드 기본 인터페이스 이해하기
-    * **Chapter 5:** 슬래시 명령어 제대로 알아보기
-    * **Chapter 6:** CLAUDE.md 파일에 대한 모든 것
-    * **Chapter 7:** 클로드 코드의 3가지 모드 알아보기
-    * **Chapter 8:** 모델 선택, 사용량 관리
-    * **Chapter 9:** 생각 과정 제어하기
-* 발표자 - 태영
-  * **Papers**
-    * [MAS 설계 서베이](https://github.com/restful3/ds4th_study/blob/main/source/papers/MAS%EC%84%9C%EB%B2%A0%EC%9D%B4_2511_song.pdf)
+* 발표자 - TBD
+* **8.** 컴포넌트 기반 사고 (26p)
+* **9.** 아키텍처 스타일의 기초 (26p)
+* *(총 52p)*
 
-#### **2025년 11월 29일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc1203b072b82d970ac091b79ca6c03f6) 
-* [발표자료](https://github.com/restful3/ds4th_study/blob/main/archive/etc/%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%84%83%E1%85%B3%20%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B3%20%E1%84%8B%E1%85%AA%E1%86%AB%E1%84%87%E1%85%A7%E1%86%A8%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3_%20Chapter%2010~14.pptx.pdf)
-* 발표자 - HY
-  * **Chapter 10~14 (p.94–149)**
-    * **Chapter 10:** 커스텀 슬래시 커맨드
-    * **Chapter 11:** MCP 사용하기
-    * **Chapter 12:** PRD와 실행 계획
-    * **Chapter 13:** 에이전트 병렬 실행
-    * **Chapter 14:** GitHub 워크플로
 
-#### **2025년 12월 6일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m440b55ecb6412ea23b0d388326e11581)
-* 발표자 - 도운
-  * **Chapter 15~18 (p.150–202)**
-    * **Chapter 15:** 아이디어 구체화
-    * **Chapter 16:** UI 프로토타이핑
-    * **Chapter 17:** 인증 구현하기
-    * **Chapter 18:** 기능 작업
 
-#### **2025년 12월 13일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m4043e4d9f8ed7a669db2e90873cfb9cc)
-* 발표자 - 보현
-  * **Chapter 19~23 (p.203–249)**
-    * **Chapter 19:** 데이터베이스 연동하기
-    * **Chapter 20:** 테스트 작성하기
-    * **Chapter 21:** 배포하기
-    * **Chapter 22:** Super Claude
-    * **Chapter 23:** Claudia
+#### **2026년 1월 31일**: [Webex]()
 
-#### **2025년 12월 20일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m144d92d270fea25298c353e9cc001b28)
-* 발표자 - 종훈
-  * **Chapter 24~27 + 부록 (p.250–274)**
-    * **Chapter 24:** Claude Squad
-    * **Chapter 25:** ccusage
-    * **Chapter 26:** Claude Code Action
-    * **Chapter 27:** Claude Code Hooks
-    * **부록:** 99가지 유용한 팁
+* 발표자 - TBD
+* **10.** 계층형 아키텍처 스타일 (14p)
+* **11.** 모듈형 모놀리스 아키텍처 스타일 (18p)
+* **12.** 파이프라인 아키텍처 스타일 (16p)
+* *(총 48p)*
+
+
+
+#### **2026년 2월 7일**: [Webex]()
+
+* 발표자 - TBD
+* **13.** 마이크로커널 아키텍처 스타일 (20p)
+* **14.** 서비스 기반 아키텍처 스타일 (23p)
+* *(총 43p)*
+
+
+
+#### **2026년 2월 14일**: [Webex]()
+
+* 발표자 - TBD
+* **15.** 이벤트 주도 아키텍처 스타일 (64p)
+* *(총 64p)*
+
+
+
+#### **2026년 2월 21일**: [Webex]()
+
+* 발표자 - TBD
+* **16.** 공간 기반 아키텍처 스타일 (35p)
+* **17.** 오케스트레이션 주도 서비스 지향 아키텍처 (19p)
+* *(총 54p)*
+
+
+
+#### **2026년 2월 28일**: [Webex]()
+
+* 발표자 - TBD
+* **18.** 마이크로서비스 아키텍처 (31p)
+* **19.** 적절한 아키텍처 스타일의 선택 (15p)
+* **20.** 아키텍처 패턴 (15p)
+* *(총 61p)*
+
+
+
+#### **2026년 3월 7일**: [Webex]()
+
+* 발표자 - TBD
+* **21.** 아키텍처적 결정 (22p)
+* **22.** 아키텍처 위험 분석 (23p)
+* **23.** 아키텍처 도식화 (9p)
+* *(총 54p)*
+
+
+
+#### **2026년 3월 14일**: [Webex]()
+
+* 발표자 - TBD
+* **24.** 유능한 팀 만들기 (24p)
+* **25.** 협상과 리더십 스킬 (21p)
+* *(총 45p)*
+
+
+
+#### **2026년 3월 21일**: [Webex]()
+
+* 발표자 - TBD
+* **26.** 아키텍처 교차점 (21p)
+* **27.** 다시 살펴본 소프트웨어 아키텍처 법칙들 (14p)
+* *(총 35p)*
+
+
 
 ---
 
-### **참고**
+### **5. 스터디 운영 방법**
+
+* **교재**:
+* [소프트웨어 아키텍처 The Basics (개정 2판)](https://ridibooks.com/books/443001287)
+* **학습 공유**: 매주 학습한 내용을 발표자료와 함께 GitHub에 공유
+* **발표 방식**:
+* 각 책 장 또는 해당 주제에 대한 50분 발표 + 10분 Q&A
+* **운영 규칙**:
+* [스터디 운영 규칙](https://github.com/restful3/ds4th_study/blob/main/source/etc/%EC%8A%A4%ED%84%B0%EB%94%94_%EC%9A%B4%EC%98%81_%EA%B7%9C%EC%B9%99_v01.pdf)
+
+---
+
+### **6. 기타**
 
 * **참가 희망 요청**: [Email](mailto:restful3@gmail.com)
-* **이제까지 다룬 내용**: [archive 확인](https://github.com/restful3/ds4th_study/tree/main/archive)
-* **교재 구매 링크**: 
-  * [Build a Large Language Model (From Scratch)](https://www.manning.com/books/build-a-large-language-model-from-scratch)
-  * [요즘 바이브 코딩 클로드 코드 완벽 가이드](https://ridibooks.com/books/4547000075?_rdt_sid=category_bestsellers&_rdt_idx=0&_rdt_arg=2220)   
-* **Kaggle 대회 링크**: 
-  * [ARC Prize 2025](https://www.kaggle.com/competitions/arc-prize-2025)
-  * [LLM Classification Finetuning](https://www.kaggle.com/competitions/llm-classification-finetuning)
-
----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* **이제 까지 다룬 내용**: [archive 확인](https://github.com/restful3/ds4th_study/tree/main/archive)
