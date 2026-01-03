@@ -1,0 +1,3 @@
+## Teil III. Techniken und Soft Skills
+
+Ein effektiver Softwarearchitekt muss nicht nur die technischen Aspekte der Softwarearchitektur verstehen, sondern auch die wichtigsten Techniken und Soft Skills, die notwendig sind, um wie ein Architekt zu denken, Entwicklungsteams zu leiten und die Architektur den verschiedenen Interessengruppen effektiv zu vermitteln. Dieser Teil des Buches befasst sich mit den wichtigsten Techniken und Soft Skills, die notwendig sind, um ein effektiver Softwarearchitekt zu werden.
