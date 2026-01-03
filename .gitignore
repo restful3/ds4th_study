@@ -92,7 +92,6 @@ sample_submission.csv
 
 # 대용량 미디어 파일
 *.mp4
-*.m4a
 *.avi
 *.mov
 *.wmv
