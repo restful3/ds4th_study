@@ -89,3 +89,20 @@ venv/
 test.csv
 train.csv
 sample_submission.csv
+
+# 대용량 미디어 파일
+*.mp4
+*.m4a
+*.avi
+*.mov
+*.wmv
+*.flv
+*.mkv
+*.webm
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+*.iso
+*.safetensors
