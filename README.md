@@ -22,7 +22,7 @@
 
 ---
 
-#### **2026년 1월 10일**: [Webex]()
+#### **2026년 1월 10일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m39386da27451f75e1f8c0d5cf270c807)
 
 * 발표자 - 태영
 * **1.** 서론 (17p)
@@ -32,7 +32,7 @@
 
 
 
-#### **2026년 1월 17일**: [Webex]()
+#### **2026년 1월 17일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m0cd125e89daaebfe531315885a61a4aa)
 
 * 발표자 - TBD
 * **4.** 아키텍처 특성의 정의 (13p)
@@ -43,7 +43,7 @@
 
 
 
-#### **2026년 1월 24일**: [Webex]()
+#### **2026년 1월 24일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1b1f344a22d7fd9fe60f5e699b368a2b)
 
 * 발표자 - TBD
 * **8.** 컴포넌트 기반 사고 (26p)
@@ -52,7 +52,7 @@
 
 
 
-#### **2026년 1월 31일**: [Webex]()
+#### **2026년 1월 31일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m12b923314420c81943b168ba0182f65e)
 
 * 발표자 - TBD
 * **10.** 계층형 아키텍처 스타일 (14p)
@@ -62,7 +62,7 @@
 
 
 
-#### **2026년 2월 7일**: [Webex]()
+#### **2026년 2월 7일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m54999825444bdea65caae8a342000862)
 
 * 발표자 - TBD
 * **13.** 마이크로커널 아키텍처 스타일 (20p)
@@ -71,13 +71,13 @@
 
 
 
-#### **2026년 2월 14일**: [Webex]()
+#### **2026년 2월 14일**: 
 
 * **설 연휴로 쉼**
 
 
 
-#### **2026년 2월 21일**: [Webex]()
+#### **2026년 2월 21일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=me3574c20b0fda420870ef6a5a519f9fa)
 
 * 발표자 - TBD
 * **15.** 이벤트 주도 아키텍처 스타일 (64p)
@@ -85,7 +85,7 @@
 
 
 
-#### **2026년 2월 28일**: [Webex]()
+#### **2026년 2월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=meb86188e66a94dce2e3b5206140e22d0)
 
 * 발표자 - TBD
 * **16.** 공간 기반 아키텍처 스타일 (35p)
@@ -94,7 +94,7 @@
 
 
 
-#### **2026년 3월 7일**: [Webex]()
+#### **2026년 3월 7일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m8a86f86479fe817a0e45466e66548de1)
 
 * 발표자 - TBD
 * **18.** 마이크로서비스 아키텍처 (31p)
@@ -104,7 +104,7 @@
 
 
 
-#### **2026년 3월 14일**: [Webex]()
+#### **2026년 3월 14일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=md32de1ca842efa99471df2562bc982db)
 
 * 발표자 - TBD
 * **21.** 아키텍처적 결정 (22p)
@@ -114,7 +114,7 @@
 
 
 
-#### **2026년 3월 21일**: [Webex]()
+#### **2026년 3월 21일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mf72ed58f53d4d744dd9e7bfa21a9c086)
 
 * 발표자 - TBD
 * **24.** 유능한 팀 만들기 (24p)
@@ -123,7 +123,7 @@
 
 
 
-#### **2026년 3월 28일**: [Webex]()
+#### **2026년 3월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1bed326e057a1b2c8277b04560d6c89f)
 
 * 발표자 - TBD
 * **26.** 아키텍처 교차점 (21p)
