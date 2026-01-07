@@ -79,7 +79,7 @@
 
 #### **2026년 2월 21일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=me3574c20b0fda420870ef6a5a519f9fa)
 
-* 발표자 - L종훈
+* 발표자 - TBD
 * **15.** 이벤트 주도 아키텍처 스타일 (64p)
 * *(총 64p)*
 
@@ -87,7 +87,7 @@
 
 #### **2026년 2월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=meb86188e66a94dce2e3b5206140e22d0)
 
-* 발표자 - TBD
+* 발표자 - L종훈
 * **16.** 공간 기반 아키텍처 스타일 (35p)
 * **17.** 오케스트레이션 주도 서비스 지향 아키텍처 (19p)
 * *(총 54p)*
@@ -151,3 +151,4 @@
 * **참가 희망 요청**: [Email](mailto:restful3@gmail.com)
 
 * **이제 까지 다룬 내용**: [archive 확인](https://github.com/restful3/ds4th_study/tree/main/archive)
+
