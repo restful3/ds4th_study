@@ -79,7 +79,7 @@
 
 #### **2026년 2월 21일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=me3574c20b0fda420870ef6a5a519f9fa)
 
-* 발표자 - TBD
+* 발표자 - L종훈
 * **15.** 이벤트 주도 아키텍처 스타일 (64p)
 * *(총 64p)*
 
@@ -149,4 +149,5 @@
 ### **6. 기타**
 
 * **참가 희망 요청**: [Email](mailto:restful3@gmail.com)
+
 * **이제 까지 다룬 내용**: [archive 확인](https://github.com/restful3/ds4th_study/tree/main/archive)
