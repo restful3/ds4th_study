@@ -45,7 +45,7 @@
 
 #### **2026년 1월 24일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1b1f344a22d7fd9fe60f5e699b368a2b)
 
-* 발표자 - TBD
+* 발표자 - 두균
 * **8.** 컴포넌트 기반 사고 (26p)
 * **9.** 아키텍처 스타일의 기초 (26p)
 * *(총 52p)*
@@ -151,4 +151,5 @@
 * **참가 희망 요청**: [Email](mailto:restful3@gmail.com)
 
 * **이제 까지 다룬 내용**: [archive 확인](https://github.com/restful3/ds4th_study/tree/main/archive)
+
 
