@@ -75,6 +75,9 @@ Pipfile.lock
 *.sublime-workspace
 *.sublime-project
 
+# Claude Code 관련
+.claude/
+
 # 기타
 .chainlit/*
 **/my_*/
