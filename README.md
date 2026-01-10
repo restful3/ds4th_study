@@ -34,13 +34,12 @@
 
 #### **2026년 1월 17일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m0cd125e89daaebfe531315885a61a4aa)
 
-* 발표자 - TBD
+* 발표자 - 우석
 * **4.** 아키텍처 특성의 정의 (13p)
 * **5.** 아키텍처 특성의 식별 (15p)
 * **6.** 아키텍처 특성의 측정과 거버넌스 (17p)
 * **7.** 아키텍처 특성의 범위 (11p)
 * *(총 56p)*
-
 
 
 #### **2026년 1월 24일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1b1f344a22d7fd9fe60f5e699b368a2b)
@@ -152,5 +151,6 @@
 * **참가 희망 요청**: [Email](mailto:restful3@gmail.com)
 
 * **이제 까지 다룬 내용**: [archive 확인](https://github.com/restful3/ds4th_study/tree/main/archive)
+
 
 
