@@ -138,7 +138,6 @@
 
 * **교재**:
 * [소프트웨어 아키텍처 The Basics (개정 2판)](https://ridibooks.com/books/443001287)
-* [구글번역본] (https://github.com/restful3/ds4th_study/tree/main/archive/fundamentals-of-sw-arch)
 * **학습 공유**: 매주 학습한 내용을 발표자료와 함께 GitHub에 공유
 * **발표 방식**:
 * 각 책 장 또는 해당 주제에 대한 50분 발표 + 10분 Q&A
