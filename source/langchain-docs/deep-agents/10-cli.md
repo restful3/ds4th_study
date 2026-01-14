@@ -230,3 +230,10 @@ source ~/.bashrc
 ```
 
 Store secrets in a local `.env` file for the setup script to access.
+
+---
+
+| | |
+|:---|---:|
+| [← Previous: Middleware](09-middleware.md) | |
+| [Table of Contents](README.md) | |

@@ -251,3 +251,9 @@ Implement periodic cleanup of outdated persistent files to keep storage manageab
 - **Development**: Use `InMemoryStore` for quick iteration
 - **Production**: Use `PostgresStore` or other persistent stores
 - **Multi-tenant**: Consider using `assistant_id`-based namespacing in your store
+
+---
+
+<p align="center">
+  <a href="07-human-in-the-loop.md">← Previous: Human-in-the-loop</a> • <a href="README.md">Table of Contents</a> • <a href="09-middleware.md">Next: Middleware →</a>
+</p>

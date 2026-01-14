@@ -288,4 +288,8 @@ interrupt_on = {
 }
 ```
 
-***
+---
+
+<p align="center">
+  <a href="06-subagents.md">← Previous: Subagents</a> • <a href="README.md">Table of Contents</a> • <a href="08-long-term-memory.md">Next: Long-term Memory →</a>
+</p>

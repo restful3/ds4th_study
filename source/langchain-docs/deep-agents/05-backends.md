@@ -297,3 +297,9 @@ Backends must implement the `BackendProtocol`.
 - `EditResult(error, path, files_update, occurrences)`
 - `FileInfo` with fields: `path` (required), optionally `is_dir`, `size`, `modified_at`.
 - `GrepMatch` with fields: `path`, `line`, `text`.
+
+---
+
+<p align="center">
+  <a href="04-harness.md">← Previous: Agent Harness</a> • <a href="README.md">Table of Contents</a> • <a href="06-subagents.md">Next: Subagents →</a>
+</p>

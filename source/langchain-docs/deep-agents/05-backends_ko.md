@@ -297,3 +297,9 @@ class PolicyWrapper(BackendProtocol):
 - `EditResult(error, path, files_update, occurrences)`
 - `FileInfo` 필드: `path` (필수), 선택적으로 `is_dir`, `size`, `modified_at`.
 - `GrepMatch` 필드: `path`, `line`, `text`.
+
+---
+
+<p align="center">
+  <a href="04-harness_ko.md">← 이전: 에이전트 하네스</a> • <a href="README.md">목차</a> • <a href="06-subagents_ko.md">다음: 서브에이전트 →</a>
+</p>

@@ -230,3 +230,9 @@ source ~/.bashrc
 ```
 
 설정 스크립트가 접근할 수 있도록 로컬 `.env` 파일에 시크릿을 저장합니다.
+
+---
+
+<p align="center">
+  <a href="09-middleware_ko.md">← 이전: 미들웨어</a> • <a href="README.md">목차</a>
+</p>

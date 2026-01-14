@@ -251,3 +251,9 @@ Your persistent memory structure:
 - **개발**: 빠른 반복을 위해 `InMemoryStore` 사용
 - **프로덕션**: `PostgresStore` 또는 기타 영구 store 사용
 - **멀티테넌트**: store에서 `assistant_id` 기반 네임스페이싱 사용 고려
+
+---
+
+<p align="center">
+  <a href="07-human-in-the-loop_ko.md">← 이전: Human-in-the-loop</a> • <a href="README.md">목차</a> • <a href="09-middleware_ko.md">다음: 미들웨어 →</a>
+</p>

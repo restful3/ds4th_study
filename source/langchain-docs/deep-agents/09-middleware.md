@@ -187,3 +187,10 @@ agent = create_agent(
 ```
 
 In addition to any user-defined subagents, the main agent has access to a `general-purpose` subagent at all times. This subagent has the same instructions as the main agent and all the tools it has access to. The primary purpose of the `general-purpose` subagent is context isolation—the main agent can delegate a complex task to this subagent and get a concise answer back without bloat from intermediate tool calls.
+
+---
+
+| | |
+|:---|---:|
+| [← Previous: Long-term Memory](08-long-term-memory.md) | [Next: CLI →](10-cli.md) |
+| [Table of Contents](README.md) | |

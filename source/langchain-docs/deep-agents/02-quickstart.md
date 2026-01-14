@@ -99,3 +99,9 @@ Now that you've built your first deep agent:
 - **Understand middleware**: Dive into the [middleware architecture](https://docs.langchain.com/oss/python/deepagents/middleware) that powers deep agents.
 - **Add long-term memory**: Enable [persistent memory](https://docs.langchain.com/oss/python/deepagents/long-term-memory) across conversations.
 - **Deploy to production**: Learn about [deployment options](https://docs.langchain.com/oss/python/langgraph/deploy) for LangGraph applications.
+
+---
+
+<p align="center">
+  <a href="01-overview.md">← Previous: Overview</a> • <a href="README.md">Table of Contents</a> • <a href="03-customization.md">Next: Customization →</a>
+</p>

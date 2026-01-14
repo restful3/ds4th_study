@@ -108,3 +108,9 @@ agent = create_deep_agent(
     tools=[internet_search]
 )
 ```
+
+---
+
+<p align="center">
+  <a href="02-quickstart.md">← Previous: Quickstart</a> • <a href="README.md">Table of Contents</a> • <a href="04-harness.md">Next: Agent Harness →</a>
+</p>

@@ -362,3 +362,9 @@ subagents = [
     }
 ]
 ```
+
+---
+
+<p align="center">
+  <a href="05-backends.md">← Previous: Backends</a> • <a href="README.md">Table of Contents</a> • <a href="07-human-in-the-loop.md">Next: Human-in-the-loop →</a>
+</p>

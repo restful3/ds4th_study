@@ -187,3 +187,9 @@ agent = create_agent(
 ```
 
 사용자 정의 서브에이전트 외에도, 메인 에이전트는 항상 `general-purpose` 서브에이전트에 접근할 수 있습니다. 이 서브에이전트는 메인 에이전트와 동일한 지침과 접근 가능한 모든 도구를 가지고 있습니다. `general-purpose` 서브에이전트의 주요 목적은 컨텍스트 격리입니다—메인 에이전트가 복잡한 작업을 이 서브에이전트에게 위임하고 중간 도구 호출로 인한 비대화 없이 간결한 답변을 돌려받을 수 있습니다.
+
+---
+
+<p align="center">
+  <a href="08-long-term-memory_ko.md">← 이전: 장기 메모리</a> • <a href="README.md">목차</a> • <a href="10-cli_ko.md">다음: CLI →</a>
+</p>

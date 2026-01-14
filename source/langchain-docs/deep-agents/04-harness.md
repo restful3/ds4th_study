@@ -184,3 +184,9 @@ The harness enables Anthropic’s prompt caching feature to reduce redundant tok
 * System prompts (especially with filesystem docs) can be 5k+ tokens
 * These repeat every turn without caching
 * Caching provides ~10x speedup and cost reduction
+
+---
+
+<p align="center">
+  <a href="03-customization.md">← Previous: Customization</a> • <a href="README.md">Table of Contents</a> • <a href="05-backends.md">Next: Backends →</a>
+</p>
