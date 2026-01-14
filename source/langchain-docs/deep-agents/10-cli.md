@@ -233,7 +233,6 @@ Store secrets in a local `.env` file for the setup script to access.
 
 ---
 
-| | |
-|:---|---:|
-| [← Previous: Middleware](09-middleware.md) | |
-| [Table of Contents](README.md) | |
+<p align="center">
+  <a href="09-middleware.md">← Previous: Middleware</a> • <a href="README.md">Table of Contents</a>
+</p>

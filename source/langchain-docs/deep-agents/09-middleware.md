@@ -190,7 +190,6 @@ In addition to any user-defined subagents, the main agent has access to a `gener
 
 ---
 
-| | |
-|:---|---:|
-| [← Previous: Long-term Memory](08-long-term-memory.md) | [Next: CLI →](10-cli.md) |
-| [Table of Contents](README.md) | |
+<p align="center">
+  <a href="08-long-term-memory.md">← Previous: Long-term Memory</a> • <a href="README.md">Table of Contents</a> • <a href="10-cli.md">Next: CLI →</a>
+</p>
