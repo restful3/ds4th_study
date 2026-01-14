@@ -2,7 +2,7 @@
 
 > 계획을 수립하고, 서브에이전트를 사용하며, 복잡한 작업을 위해 파일 시스템을 활용할 수 있는 에이전트 구축
 
-![Deep Agents 아키텍처 개요](unnamed.png)
+![Deep Agents 아키텍처 개요](./images/summary.png)
 
 ---
 

@@ -35,7 +35,21 @@ To implement an agent in LangGraph, you will usually follow the same five steps.
 
 Start by identifying the distinct steps in your process. Each step will become a **node** (a function that does one specific thing). Then, sketch how these steps connect to each other.
 
-*(Diagram description: A flowchart starting at START, moving to 'Read Email', then 'Classify Intent'. From 'Classify Intent', arrows point to 'Doc Search', 'Bug Track', 'Human Review', and 'Draft Reply'. 'Doc Search' and 'Bug Track' both lead to 'Draft Reply'. 'Draft Reply' leads to either 'Human Review' or 'Send Reply'. 'Human Review' can lead to 'Draft Reply', 'Send Reply', or END. 'Send Reply' leads to END.)*
+```mermaid
+flowchart TD
+    START["START"] --> read_email["Read Email"]
+    read_email --> classify["Classify Intent"]
+    classify -.-> doc_search["Doc Search"]
+    classify -.-> bug_track["Bug Track"]
+    classify -.-> human_review1["Human Review"]
+    doc_search --> draft["Draft Reply"]
+    bug_track --> draft
+    human_review1 --> draft
+    draft -.-> human_review2["Human Review"]
+    draft -.-> send["Send Reply"]
+    human_review2 --> END["END"]
+    send --> END
+```
 
 The arrows in this diagram show possible paths, but the actual decision of which path to take happens inside each node.
 
@@ -56,56 +70,89 @@ Now that we've identified the components in our workflow, let's understand what 
 
 For each node in your graph, determine what type of operation it represents and what context it needs to work properly.
 
+| | |
+|:---|:---|
+| 🧠 **LLM steps**<br>Use when you need to understand, analyze, generate text, or make reasoning decisions | 🗄️ **Data steps**<br>Use when you need to retrieve information from external sources |
+| ⚡ **Action steps**<br>Use when you need to perform external actions | 👤 **User input steps**<br>Use when you need human intervention |
+
 ### LLM steps
 
 When a step needs to understand, analyze, generate text, or make reasoning decisions:
 
-**Classify intent**
+<details>
+<summary>Classify intent</summary>
+
 - Static context (prompt): Classification categories, urgency definitions, response format
 - Dynamic context (from state): Email content, sender information
 - Desired outcome: Structured classification that determines routing
 
-**Draft reply**
+</details>
+
+<details>
+<summary>Draft reply</summary>
+
 - Static context (prompt): Tone guidelines, company policies, response templates
 - Dynamic context (from state): Classification results, search results, customer history
 - Desired outcome: Professional email response ready for review
+
+</details>
 
 ### Data steps
 
 When a step needs to retrieve information from external sources:
 
-**Document search**
+<details>
+<summary>Document search</summary>
+
 - Parameters: Query built from intent and topic
 - Retry strategy: Yes, with exponential backoff for transient failures
 - Caching: Could cache common queries to reduce API calls
 
-**Customer history lookup**
+</details>
+
+<details>
+<summary>Customer history lookup</summary>
+
 - Parameters: Customer email or ID from state
 - Retry strategy: Yes, but with fallback to basic info if unavailable
 - Caching: Yes, with time-to-live to balance freshness and performance
+
+</details>
 
 ### Action steps
 
 When a step needs to perform an external action:
 
-**Send reply**
+<details>
+<summary>Send reply</summary>
+
 - When to execute node: After approval (human or automated)
 - Retry strategy: Yes, with exponential backoff for network issues
 - Should not cache: Each send is a unique action
 
-**Bug track**
+</details>
+
+<details>
+<summary>Bug track</summary>
+
 - When to execute node: Always when intent is "bug"
 - Retry strategy: Yes, critical to not lose bug reports
 - Returns: Ticket ID to include in response
+
+</details>
 
 ### User input steps
 
 When a step needs human intervention:
 
-**Human review node**
+<details>
+<summary>Human review node</summary>
+
 - Context for decision: Original email, draft response, urgency, classification
 - Expected input format: Approval boolean plus optional edited response
 - When triggered: High urgency, complex issues, or quality concerns
+
+</details>
 
 ## Step 3: Design your state
 
@@ -115,11 +162,9 @@ State is the shared **memory** accessible to all nodes in your agent. Think of i
 
 Ask yourself these questions about each piece of data:
 
-**Include in state**
-Does it need to persist across steps? If yes, it goes in state.
-
-**Don't store**
-Can you derive it from other data? If yes, compute it when needed instead of storing it in state.
+| | |
+|:---|:---|
+| ✓ **Include in state**<br>Does it need to persist across steps? If yes, it goes in state. | </> **Don't store**<br>Can you derive it from other data? If yes, compute it when needed instead of storing it in state. |
 
 For our email agent, we need to track:
 - The original email and sender info (can't reconstruct these later)
@@ -186,6 +231,9 @@ Different errors need different handling strategies:
 | User-fixable errors (missing information, unclear instructions) | Human | Pause with `interrupt()` | Need user input to proceed |
 | Unexpected errors | Developer | Let them bubble up | Unknown issues that need debugging |
 
+<details>
+<summary>🔄 Transient errors</summary>
+
 Add a retry policy to automatically retry network issues and rate limits:
 
 ```python
@@ -197,6 +245,70 @@ workflow.add_node(
     retry_policy=RetryPolicy(max_attempts=3, initial_interval=1.0)
 )
 ```
+
+</details>
+
+<details>
+<summary>🧠 LLM-recoverable</summary>
+
+Store the error in state and loop back so the LLM can see what went wrong and try again:
+
+```python
+from langgraph.types import Command
+
+def execute_tool(state: State) -> Command[Literal["agent", "execute_tool"]]:
+    try:
+        result = run_tool(state['tool_call'])
+        return Command(update={"tool_result": result}, goto="agent")
+    except ToolError as e:
+        # Let the LLM see what went wrong and try again
+        return Command(
+            update={"tool_result": f"Tool error: {str(e)}"},
+            goto="agent"
+        )
+```
+
+</details>
+
+<details>
+<summary>👤 User-fixable</summary>
+
+Pause and collect information from the user when needed (like account IDs, order numbers, or clarifications):
+
+```python
+from langgraph.types import Command
+
+def lookup_customer_history(state: State) -> Command[Literal["draft_response"]]:
+    if not state.get('customer_id'):
+        user_input = interrupt({
+            "message": "Customer ID needed",
+            "request": "Please provide the customer's account ID to look up their subscription history"
+        })
+        return Command(
+            update={"customer_id": user_input['customer_id']},
+            goto="lookup_customer_history"
+        )
+    # Now proceed with the lookup
+    customer_data = fetch_customer_history(state['customer_id'])
+    return Command(update={"customer_history": customer_data}, goto="draft_response")
+```
+
+</details>
+
+<details>
+<summary>⚠️ Unexpected</summary>
+
+Let them bubble up for debugging. Don't catch what you can't handle:
+
+```python
+def send_reply(state: EmailAgentState):
+    try:
+        email_service.send(state["draft_response"])
+    except Exception:
+        raise  # Surface unexpected errors
+```
+
+</details>
 
 ### Implementing our email agent nodes
 
@@ -430,6 +542,8 @@ app = workflow.compile(checkpointer=memory)
 ```
 </details>
 
+<br>
+
 The graph structure is minimal because routing happens inside nodes through `Command` objects. Each node declares where it can go using type hints like `Command[Literal["node1", "node2"]]`, making the flow explicit and traceable.
 
 ### Try out your agent
@@ -470,6 +584,8 @@ print(f"Email sent successfully!")
 ```
 </details>
 
+<br>
+
 The graph pauses when it hits `interrupt()`, saves everything to the checkpointer, and waits. It can resume days later, picking up exactly where it left off. The `thread_id` ensures all state for this conversation is preserved together.
 
 ## Summary and next steps
@@ -478,23 +594,11 @@ The graph pauses when it hits `interrupt()`, saves everything to the checkpointe
 
 Building this email agent has shown us the LangGraph way of thinking:
 
-**Break into discrete steps**
-Each node does one thing well. This decomposition enables streaming progress updates, durable execution that can pause and resume, and clear debugging since you can inspect state between steps.
-
-**State is shared memory**
-Store raw data, not formatted text. This lets different nodes use the same information in different ways.
-
-**Nodes are functions**
-They take state, do work, and return updates. When they need to make routing decisions, they specify both the state updates and the next destination.
-
-**Errors are part of the flow**
-Transient failures get retries, LLM-recoverable errors loop back with context, user-fixable problems pause for input, and unexpected errors bubble up for debugging.
-
-**Human input is first-class**
-The `interrupt()` function pauses execution indefinitely, saves all state, and resumes exactly where it left off when you provide input. When combined with other operations in a node, it must come first.
-
-**Graph structure emerges naturally**
-You define the essential connections, and your nodes handle their own routing logic. This keeps control flow explicit and traceable - you can always understand what your agent will do next by looking at the current node.
+| | |
+|:---|:---|
+| 📦 **Break into discrete steps**<br>Each node does one thing well. This decomposition enables streaming progress updates, durable execution that can pause and resume, and clear debugging since you can inspect state between steps. | 💾 **State is shared memory**<br>Store raw data, not formatted text. This lets different nodes use the same information in different ways. |
+| ⚙️ **Nodes are functions**<br>They take state, do work, and return updates. When they need to make routing decisions, they specify both the state updates and the next destination. | ⚠️ **Errors are part of the flow**<br>Transient failures get retries, LLM-recoverable errors loop back with context, user-fixable problems pause for input, and unexpected errors bubble up for debugging. |
+| 👤 **Human input is first-class**<br>The `interrupt()` function pauses execution indefinitely, saves all state, and resumes exactly where it left off when you provide input. When combined with other operations in a node, it must come first. | 🔗 **Graph structure emerges naturally**<br>You define the essential connections, and your nodes handle their own routing logic. This keeps control flow explicit and traceable - you can always understand what your agent will do next by looking at the current node. |
 
 ### Advanced considerations
 
@@ -525,9 +629,8 @@ You might wonder: why not combine `Read Email` and `Classify Intent` into one no
 
 This was an introduction to thinking about building agents with LangGraph. You can extend this foundation with:
 
-- **Human-in-the-loop patterns**: Learn how to add tool approval before execution, batch approval, and other patterns
-- **Subgraphs**: Create subgraphs for complex multi-step operations
-- **Streaming**: Add streaming to show real-time progress to users
-- **Observability**: Add observability with LangSmith for debugging and monitoring
-- **Tool Integration**: Integrate more tools for web search, database queries, and API calls
-- **Retry Logic**: Implement retry logic with exponential backoff for failed operations
+| | |
+|:---|:---|
+| 👥 **Human-in-the-loop patterns**<br>Learn how to add tool approval before execution, batch approval, and other patterns | 📊 **Subgraphs**<br>Create subgraphs for complex multi-step operations |
+| 📡 **Streaming**<br>Add streaming to show real-time progress to users | 🔍 **Observability**<br>Add observability with LangSmith for debugging and monitoring |
+| 🔧 **Tool Integration**<br>Integrate more tools for web search, database queries, and API calls | 🔄 **Retry Logic**<br>Implement retry logic with exponential backoff for failed operations |
