@@ -1,38 +1,72 @@
-# Web to Markdown Conversion Prompt Guide
+# Web to Markdown Conversion Guide
 
-This guide describes how to request a high-fidelity conversion of a web page into a Markdown document, ensuring charts (Mermaid), tables, and full text are preserved exactly as they appear.
+This guide outlines the **"Zero Information Loss"** standard for converting technical documentation from the web into high-fidelity Markdown. The goal is to create a local text-based replica that is indistinguishable in content from the original web page.
+
+## Core Philosophy: Zero Information Loss
+
+1.  **Word-for-Word Fidelity**: Never summarize. Never paraphrase. If the original text says "Furthermore, it is important to note that...", the Markdown must say exactly that, not "Note that...".
+2.  **Complete Structure**: Headings, sub-headings, notes, warnings, and sidebars must be preserved with appropriate Markdown syntax (e.g., `> [!NOTE]`).
+3.  **Visuals as-is**: Images should be placed exactly where they appear in the flow. Diagrams should be converted to Mermaid if possible, or kept as images if complex.
+
+## Handling Complex UI Patterns
+
+### 1. Tabbed Content (The "Sequential Expansion" Strategy)
+
+Technical documentation often uses tabs to switch between languages (e.g., "Python" vs "JavaScript") or APIs (e.g., "Graph API" vs "Functional API").
+
+**Rule**: Do not pick just one. Extract **ALL** tabs and present them sequentially.
+
+**Example Scenario**:
+A page has a code block with two tabs: **Graph API** and **Functional API**.
+
+**Web UI**:
+```
+[ Graph API ] [ Functional API ]
+< content visible based on click >
+```
+
+**Markdown Output**:
+```markdown
+#### Graph API
+
+```python
+# Code for Graph API...
+```
+
+#### Functional API
+
+```python
+# Code for Functional API...
+```
+```
+
+### 2. Images & Media
+
+*   **Extraction**: Download images to a local `images/` directory relative to the Markdown file.
+*   **Naming**: Use descriptive names matching the content (e.g., `checkpoints_full_story.avif` instead of `img_01.png`).
+*   **Placement**: Insert the image syntax `![Alt Text](images/filename.ext)` exactly at the logical break point where it sits in the web layout.
+
+## Verification Checklist
+
+Before considering a conversion complete, verify:
+
+- [ ] **The "Bottom of Page" Trap**: Did you capture the very last section? (e.g., "Capabilities" lists often have items at the footer).
+- [ ] **Tab Expansion**: Are both "Option A" and "Option B" code blocks present?
+- [ ] **Image Count**: If the web page has 5 images, does the Markdown have 5 image tags?
+- [ ] **Code Accuracy**: Are comments, decorators, and imports in code blocks preserved exactly?
 
 ## Recommended Prompt Template
 
-Copy and paste the following prompt when you want to convert a web page to Markdown. Replace `[URL]` with the target page URL.
+Use this prompt to instruct the agent:
 
 ```markdown
-I need you to convert the following web page into a high-fidelity Markdown file: [URL]
+I need to convert [URL] into a high-fidelity Markdown file.
 
-Please use a browser subagent to perform this task with the following strict adherence instructions:
+**Strict Requirements:**
+1. **No Summarization**: Capture text word-for-word.
+2. **Tabbed Content**: If there are tabs (e.g., Graph API vs Functional API), extract content for BOTH and list them sequentially under h4 headers.
+3. **Images**: Use existing local images from `images/` directory. Place them exactly as they appear in the source.
+4. **Verification**: Double-check the bottom of the page to ensure the final sections (e.g., "Next Steps", "Capabilities") are not cut off.
 
-1. **Goal**: Capture the COMPLETE page content word-for-word. Do NOT summarize, paraphrase, or omit any details.
-2. **Format**:
-   - Return the **FULL RAW MARKDOWN** text in your final report so I can copy-paste it directly.
-   - Use standard Markdown syntax (headers `##`, lists `-`, bold `**`, etc.).
-3. **Diagrams**:
-   - Inspect any diagrams or flowcharts visually.
-   - Convert them into **Mermaid** graphs (`mermaid` code blocks) that accurately represent the nodes and connections.
-4. **Tables**:
-   - formatting of tables must be exact. Transfer all rows and columns into Markdown tables.
-5. **Content**:
-   - Capture ALL sections, including "Notes", "Warnings", "Callouts".
-   - Capture ALL code blocks exactly as written.
-   - Do not skip detailed explanations or lists.
-
-**CRITICAL**: The final output must be the Markdown content itself, not a description of what you saw.
+Use the `browser_subagent` to view the page and extract exact content.
 ```
-
-## Strategy Explanation
-
-To achieve high-quality results, the prompt enforces the following strategies:
-
-1.  **Explicit Format Request**: By asking for "FULL RAW MARKDOWN", the agent is instructed to generate the code representation directly, rather than just describing the page.
-2.  **Anti-Summarization**: Commands like "Word-for-word", "Do NOT summarize" prevent the LLM's natural tendency to condense information.
-3.  **Visual Translation**: Explicitly instructing to convert diagrams to **Mermaid** ensures visual elements are preserved in a code-friendly format.
-4.  **Subagent Delegation**: Requesting a "browser subagent" ensures a specialized task runner is used to render the page, handle scrolling, and extract dynamic content effectively.
