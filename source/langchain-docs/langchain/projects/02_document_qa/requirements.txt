@@ -1,0 +1,25 @@
+# Core Dependencies
+langchain==0.3.18
+langchain-community==0.3.17
+langchain-core==0.3.28
+langchain-openai==0.2.14
+
+# Vector Store
+faiss-cpu==1.9.0.post1
+
+# Document Processing
+unstructured==0.17.6
+markdown==3.7
+
+# Additional Libraries
+python-dotenv==1.0.1
+tiktoken==0.8.0
+
+# Optional: For hybrid search
+rank-bm25==0.2.2
+
+# Development
+pytest==8.3.4
+pytest-cov==6.0.0
+black==24.10.0
+flake8==7.1.1

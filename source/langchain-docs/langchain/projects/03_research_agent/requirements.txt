@@ -1,0 +1,23 @@
+# Core Dependencies
+langchain==0.3.18
+langchain-community==0.3.17
+langchain-core==0.3.28
+langchain-openai==0.2.14
+
+# Search Tools
+tavily-python==0.5.0
+duckduckgo-search==7.1.0
+
+# Utilities
+python-dotenv==1.0.1
+
+# Optional: For async support
+aiohttp==3.11.11
+asyncio==3.4.3
+
+# Development
+pytest==8.3.4
+pytest-asyncio==0.25.2
+pytest-cov==6.0.0
+black==24.10.0
+flake8==7.1.1

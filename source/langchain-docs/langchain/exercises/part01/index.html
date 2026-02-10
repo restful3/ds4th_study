@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 LangChain Part 1 퀴즈</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <header class="header">
+            <h1>📚 LangChain 학습 퀴즈</h1>
+            <h2>Part 1: AI Agent의 이해</h2>
+            <p class="subtitle">총 10문제 | 객관식</p>
+        </header>
+
+        <!-- 시작 화면 -->
+        <div class="start-screen" id="startScreen">
+            <div class="card">
+                <h2>🎯 퀴즈 안내</h2>
+                <ul>
+                    <li>총 <strong>10개의 객관식</strong> 문제가 출제됩니다</li>
+                    <li>모든 문제를 풀고 <strong>"제출"</strong> 버튼을 누르세요</li>
+                    <li>제출 후 정답, 해설과 함께 결과를 확인할 수 있습니다</li>
+                </ul>
+                <div class="info-box">
+                    <p><strong>💡 범위</strong></p>
+                    <p>LangChain 소개, AI Agent 개념, 환경 설정 등</p>
+                </div>
+                <button class="btn btn-primary btn-large" onclick="startQuiz()">퀴즈 시작하기</button>
+            </div>
+        </div>
+
+        <!-- 퀴즈 화면 -->
+        <div class="quiz-screen" id="quizScreen" style="display: none;">
+            <div class="quiz-container" id="quizContainer">
+                <!-- 문제들이 여기에 동적으로 생성됨 -->
+            </div>
+            <div class="submit-container">
+                <button class="btn btn-primary btn-large" onclick="submitQuiz()">제출하기</button>
+            </div>
+        </div>
+
+        <!-- 결과 화면 -->
+        <div class="result-screen" id="resultScreen" style="display: none;">
+            <div class="card">
+                <h2>🎓 결과</h2>
+                <div class="result-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">총 문제</span>
+                        <span class="stat-value" id="totalQuestions">10</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">정답</span>
+                        <span class="stat-value correct" id="correctAnswers">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">정답률</span>
+                        <span class="stat-value" id="accuracy">0%</span>
+                    </div>
+                </div>
+                <div class="result-message" id="resultMessage"></div>
+            </div>
+
+            <!-- 문제별 상세 결과 -->
+            <div class="detailed-results" id="detailedResults">
+                <!-- 문제별 결과가 여기에 표시됨 -->
+            </div>
+
+            <div class="button-group" style="margin-top: 30px;">
+                <button class="btn btn-primary" onclick="restartQuiz()">다시 풀기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
