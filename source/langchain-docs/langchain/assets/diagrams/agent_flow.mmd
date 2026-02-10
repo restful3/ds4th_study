@@ -1,0 +1,20 @@
+```mermaid
+flowchart TD
+    Start([사용자 질문]) --> Agent[Agent 시작]
+    Agent --> Think{생각: 무엇을 해야하나?}
+
+    Think --> NeedTool{도구 필요?}
+
+    NeedTool -->|Yes| SelectTool[도구 선택]
+    SelectTool --> CallTool[도구 실행]
+    CallTool --> Observe[결과 관찰]
+    Observe --> Think
+
+    NeedTool -->|No| Generate[최종 답변 생성]
+    Generate --> End([사용자에게 응답])
+
+    style Start fill:#e1f5ff
+    style End fill:#c8e6c9
+    style Think fill:#fff3e0
+    style CallTool fill:#f3e5f5
+```

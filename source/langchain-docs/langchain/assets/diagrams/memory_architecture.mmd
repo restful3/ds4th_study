@@ -1,0 +1,73 @@
+```mermaid
+graph TD
+    User[사용자] --> Agent[Agent]
+    Agent --> Checkpointer[Checkpointer<br/>단기 메모리]
+    Agent --> Store[Store<br/>장기 메모리]
+
+    Checkpointer --> InMemory[InMemorySaver<br/>개발용]
+    Checkpointer --> Postgres[PostgresSaver<br/>프로덕션]
+
+    Store --> UserProf[사용자 프로필]
+    Store --> Prefs[선호도]
+    Store --> History[이력]
+
+    subgraph "단기 메모리 (대화)"
+        Checkpointer
+        InMemory
+        Postgres
+    end
+
+    subgraph "장기 메모리 (데이터)"
+        Store
+        UserProf
+        Prefs
+        History
+    end
+
+    style User fill:#e1f5ff
+    style Agent fill:#fff3cd
+    style Checkpointer fill:#d4edda
+    style Store fill:#f8d7da
+```
+
+# LangChain 메모리 아키텍처
+
+## Checkpointer (단기 메모리)
+
+**목적**: 대화 세션의 메시지 히스토리 저장
+
+- **InMemorySaver**: 메모리에만 저장 (개발/테스트)
+- **PostgresSaver**: 데이터베이스에 영구 저장 (프로덕션)
+
+**사용 예시**:
+```python
+from langgraph.checkpoint.memory import MemorySaver
+
+checkpointer = MemorySaver()
+agent = create_react_agent(model, tools, checkpointer=checkpointer)
+```
+
+## Store (장기 메모리)
+
+**목적**: 세션과 독립적인 구조화된 데이터 저장
+
+- **사용자 프로필**: 이름, 연령, 위치 등
+- **선호도**: 언어, 테마, 설정 등
+- **이력**: 과거 작업, 선택, 피드백 등
+
+**사용 예시**:
+```python
+from langgraph.store.memory import InMemoryStore
+
+store = InMemoryStore()
+store.put(("users", "user123"), "preferences", {"language": "ko"})
+```
+
+## Checkpointer vs Store
+
+| 기능 | Checkpointer | Store |
+|------|--------------|-------|
+| 목적 | 대화 기록 | 사용자 데이터 |
+| 범위 | 세션별 | 전역 |
+| 수명 | 세션 종료 시 삭제 가능 | 영구 보관 |
+| 예시 | 메시지 히스토리 | 사용자 프로필 |

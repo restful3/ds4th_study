@@ -1,0 +1,107 @@
+```mermaid
+graph TD
+    subgraph "1. Subagents 패턴"
+        Main1[메인 Agent] --> Sub1A[검색 Agent]
+        Main1 --> Sub1B[분석 Agent]
+        Sub1A --> Main1
+        Sub1B --> Main1
+    end
+
+    subgraph "2. Handoffs 패턴"
+        A1[Agent A] --> |제어 전달| A2[Agent B]
+        A2 --> |제어 전달| A3[Agent C]
+    end
+
+    subgraph "3. Router 패턴"
+        Router[Router Agent] --> |기술| Tech[기술 Agent]
+        Router --> |환불| Refund[환불 Agent]
+        Router --> |일반| General[일반 Agent]
+    end
+
+    style Main1 fill:#e1f5ff
+    style A1 fill:#d4edda
+    style Router fill:#fff3cd
+```
+
+# 멀티에이전트 패턴
+
+## 1. Subagents (서브에이전트)
+
+**특징**:
+- 메인 Agent가 다른 Agent를 **도구처럼** 호출
+- 결과를 받아서 계속 진행
+- 메인 Agent가 전체 제어
+
+**사용 사례**:
+- 전문가 조합 (검색 + 요약)
+- 명확한 분업
+
+**코드 예시**:
+```python
+@tool
+def call_search_agent(query: str) -> str:
+    result = search_agent.invoke({"messages": [query]})
+    return result["messages"][-1].content
+
+main_agent = create_react_agent(
+    model,
+    tools=[call_search_agent]
+)
+```
+
+## 2. Handoffs (핸드오프)
+
+**특징**:
+- Agent가 다른 Agent에게 **제어를 넘김**
+- 대화가 이어짐
+- 명시적 전환
+
+**사용 사례**:
+- 순차적 처리
+- 컨텍스트 전달 필요
+
+**코드 예시**:
+```python
+transfer_to_specialist = Tool(
+    name="transfer",
+    description="Transfer to specialist agent"
+)
+
+generalist_agent = create_react_agent(
+    model,
+    tools=[transfer_to_specialist]
+)
+```
+
+## 3. Router (라우터)
+
+**특징**:
+- 입력을 분석하여 적절한 Agent 선택
+- 여러 전문 Agent 관리
+- 효율적 리소스 활용
+
+**사용 사례**:
+- 고객 서비스 (문의 타입별)
+- 멀티도메인 시스템
+
+**코드 예시**:
+```python
+def route_request(query: str):
+    if "기술" in query:
+        return tech_agent
+    elif "환불" in query:
+        return refund_agent
+    else:
+        return general_agent
+
+agent = route_request(user_query)
+response = agent.invoke({"messages": [user_query]})
+```
+
+## 패턴 선택 가이드
+
+| 패턴 | 사용 시기 | 장점 | 단점 |
+|------|----------|------|------|
+| Subagents | 전문가 조합 | 명확한 분업 | 순차 실행 느림 |
+| Handoffs | 순차 처리 | 컨텍스트 유지 | 복잡한 흐름 관리 |
+| Router | 타입별 처리 | 효율적 | 분류 로직 필요 |

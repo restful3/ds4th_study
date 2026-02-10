@@ -1,0 +1,244 @@
+[project]
+name = "langchain-curriculum"
+version = "1.0.0"
+description = "LangChain AI Agent 마스터 교안 - 소스 코드 및 예제"
+authors = [
+    { name = "LangChain Curriculum Team" }
+]
+readme = "../README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+
+keywords = [
+    "langchain",
+    "ai",
+    "agent",
+    "llm",
+    "tutorial",
+    "korean"
+]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Education",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Education",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    # 핵심 LangChain
+    "langchain>=0.3.0",
+    "langchain-core>=0.3.0",
+    "langgraph>=0.2.0",
+    "langsmith>=0.1.0",
+
+    # LLM 프로바이더
+    "langchain-openai>=0.2.0",
+    "langchain-anthropic>=0.2.0",
+    "langchain-google-genai>=2.0.0",
+
+    # Vector Stores
+    "langchain-chroma>=0.1.0",
+    "langchain-community>=0.3.0",
+
+    # Document Processing
+    "pypdf>=4.0.0",
+    "python-docx>=1.1.0",
+    "unstructured>=0.15.0",
+    "sentence-transformers>=3.0.0",
+
+    # Database
+    "psycopg2-binary>=2.9.0",
+    "sqlalchemy>=2.0.0",
+
+    # Utilities
+    "python-dotenv>=1.0.0",
+    "requests>=2.32.0",
+    "httpx>=0.27.0",
+    "pydantic>=2.9.0",
+    "typing-extensions>=4.12.0",
+
+    # Production
+    "fastapi>=0.115.0",
+    "uvicorn>=0.32.0",
+    "fastapi-cors>=0.0.6",
+    "websockets>=13.0",
+
+    # Testing
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+]
+
+[project.optional-dependencies]
+# 개발 도구 (선택 사항)
+dev = [
+    "black>=24.0.0",
+    "isort>=5.13.0",
+    "ruff>=0.7.0",
+    "mypy>=1.13.0",
+    "jupyter>=1.1.0",
+    "ipykernel>=6.29.0",
+]
+
+# Vector DB 확장 (선택 사항)
+vectordb = [
+    "langchain-pinecone>=0.2.0",
+    "langchain-weaviate>=0.1.0",
+]
+
+# 관측성 (선택 사항)
+observability = [
+    "langfuse>=2.0.0",
+]
+
+# 모든 선택 사항 포함
+all = [
+    "langchain-curriculum[dev,vectordb,observability]",
+]
+
+[project.urls]
+Homepage = "https://github.com/langchain-curriculum/langchain-ai-agent-tutorial"
+Documentation = "https://github.com/langchain-curriculum/langchain-ai-agent-tutorial/tree/main/docs"
+Repository = "https://github.com/langchain-curriculum/langchain-ai-agent-tutorial"
+Issues = "https://github.com/langchain-curriculum/langchain-ai-agent-tutorial/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+include = [
+    "*.py",
+    "**/*.py",
+]
+exclude = [
+    "**/__pycache__",
+    "**/*.pyc",
+    "**/solutions/**",
+    "**/.env",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = [
+    "part01_introduction",
+    "part02_fundamentals",
+    "part03_first_agent",
+    "part04_memory",
+    "part05_middleware",
+    "part06_context",
+    "part07_multi_agent",
+    "part08_rag_mcp",
+    "part09_production",
+    "part10_deployment",
+]
+
+# ============================================================================
+# 개발 도구 설정
+# ============================================================================
+
+[tool.black]
+line-length = 100
+target-version = ['py310', 'py311', 'py312']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+  | solutions
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+skip_glob = ["**/solutions/**", "**/.venv/**"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+exclude = [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "solutions",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+]
+ignore = [
+    "E501",  # line too long (handled by black)
+    "B008",  # do not perform function calls in argument defaults
+]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+
+[[tool.mypy.overrides]]
+module = [
+    "langchain.*",
+    "langchain_core.*",
+    "langgraph.*",
+    "langsmith.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
+addopts = [
+    "-v",
+    "--strict-markers",
+    "--tb=short",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
+
+# ============================================================================
+# uv 설정 (권장 패키지 매니저)
+# ============================================================================
+
+[tool.uv]
+dev-dependencies = [
+    "black>=24.0.0",
+    "isort>=5.13.0",
+    "ruff>=0.7.0",
+    "mypy>=1.13.0",
+]
+
+[tool.uv.sources]
+# uv는 PyPI를 기본으로 사용하지만, 필요시 커스텀 소스 추가 가능

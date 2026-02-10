@@ -1,0 +1,142 @@
+```mermaid
+flowchart LR
+    subgraph "1. Indexing (오프라인)"
+        Docs[문서들] --> Load[문서 로딩]
+        Load --> Split[청킹]
+        Split --> Embed[임베딩]
+        Embed --> Store[(Vector Store)]
+    end
+
+    subgraph "2. Retrieval + Generation (온라인)"
+        Query[사용자 질문] --> QEmbed[질문 임베딩]
+        QEmbed --> Search[유사도 검색]
+        Store --> Search
+        Search --> Top[Top-K 문서]
+        Top --> Context[컨텍스트 구성]
+        Context --> LLM[LLM]
+        Query --> LLM
+        LLM --> Answer[답변 생성]
+    end
+
+    style Docs fill:#e1f5ff
+    style Store fill:#d4edda
+    style Answer fill:#fff3cd
+```
+
+# RAG (Retrieval Augmented Generation) 파이프라인
+
+RAG는 외부 지식을 검색하여 LLM의 답변을 향상시키는 기법입니다.
+
+## Phase 1: Indexing (인덱싱) - 오프라인
+
+사전에 한 번 수행하여 지식 베이스를 구축합니다.
+
+### 1.1 문서 로딩
+```python
+from langchain_community.document_loaders import DirectoryLoader
+
+loader = DirectoryLoader("./documents", glob="**/*.md")
+docs = loader.load()
+```
+
+### 1.2 청킹 (Chunking)
+문서를 작은 조각으로 분할합니다.
+
+```python
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=1000,
+    chunk_overlap=200
+)
+chunks = splitter.split_documents(docs)
+```
+
+**청크 크기 선택**:
+- 작은 청크 (500자): 정확한 검색
+- 중간 청크 (1000자): 균형잡힌 선택 ✅
+- 큰 청크 (2000자): 넓은 문맥
+
+### 1.3 임베딩
+텍스트를 벡터로 변환합니다.
+
+```python
+from langchain_openai import OpenAIEmbeddings
+
+embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+```
+
+### 1.4 Vector Store
+벡터를 저장하고 검색 가능하게 합니다.
+
+```python
+from langchain_community.vectorstores import FAISS
+
+vectorstore = FAISS.from_documents(chunks, embeddings)
+vectorstore.save_local("./vectorstore")
+```
+
+## Phase 2: Retrieval + Generation (검색 + 생성) - 온라인
+
+사용자 질문마다 실행됩니다.
+
+### 2.1 질문 임베딩
+```python
+query_vector = embeddings.embed_query("LangChain이란?")
+```
+
+### 2.2 유사도 검색
+벡터 공간에서 가장 유사한 문서를 찾습니다.
+
+```python
+docs = vectorstore.similarity_search(query, k=3)
+```
+
+### 2.3 컨텍스트 구성
+검색된 문서를 프롬프트에 추가합니다.
+
+```python
+context = "\n\n".join([doc.page_content for doc in docs])
+prompt = f"""
+다음 컨텍스트를 바탕으로 질문에 답하세요:
+
+{context}
+
+질문: {query}
+답변:
+"""
+```
+
+### 2.4 LLM 답변 생성
+```python
+response = model.invoke([HumanMessage(content=prompt)])
+```
+
+## Agentic RAG
+
+Agent가 검색 전략을 결정합니다.
+
+```python
+@tool
+def search_knowledge(query: str) -> str:
+    """지식 베이스에서 정보를 검색합니다."""
+    docs = vectorstore.similarity_search(query, k=3)
+    return "\n".join([doc.page_content for doc in docs])
+
+agent = create_react_agent(
+    model,
+    tools=[search_knowledge]
+)
+
+# Agent가 필요 시 자동으로 검색
+response = agent.invoke({"messages": [user_query]})
+```
+
+## RAG vs Fine-tuning
+
+| 방법 | 장점 | 단점 | 사용 시기 |
+|------|------|------|----------|
+| RAG | 빠른 업데이트, 출처 제공 | 검색 의존 | 자주 변하는 정보 |
+| Fine-tuning | 지식 내재화 | 비용 높음 | 특정 도메인 전문화 |
+
+대부분의 경우 **RAG가 더 실용적**입니다!
