@@ -2,8 +2,8 @@
 
 > 📚 **학습 시간**: 약 4-5시간
 > 🎯 **난이도**: ⭐⭐⭐⭐☆ (고급)
-> 📖 **공식 문서**: [22-multi-agent.md](/official/22-multi-agent_ko.md), [23-subagents.md](/official/23-subagents_ko.md), [24-handoffs.md](/official/24-handoffs_ko.md), [25-skills.md](/official/25-skills_ko.md), [26-router.md](/official/26-router_ko.md), [27-custom-workflow.md](/official/27-custom-workflow_ko.md)
-> 💻 **예제 코드**: [part07_multi_agent 디렉토리](/src/part07_multi_agent/)
+> 📖 **공식 문서**: [22-multi-agent.md](../official/22-multi-agent_ko.md), [23-subagents.md](../official/23-subagents_ko.md), [24-handoffs.md](../official/24-handoffs_ko.md), [25-skills.md](../official/25-skills_ko.md), [26-router.md](../official/26-router_ko.md), [27-custom-workflow.md](../official/27-custom-workflow_ko.md)
+> 💻 **예제 코드**: [part07_multi_agent 디렉토리](../src/part07_multi_agent/)
 
 ---
 
@@ -190,7 +190,7 @@ def customer_service_router(user_query: str) -> str:
 | **Router** | 입력 분류 후 라우팅 | 병렬 처리 가능한 독립 작업 | 질문 유형별 전문 Agent |
 | **Workflow** | 복잡한 상태 기반 흐름 | 다단계 비즈니스 프로세스 | 주문 처리 (검증→결제→배송) |
 
-> 💻 **예제 코드**: [01_why_multi_agent.py](/src/part07_multi_agent/01_why_multi_agent.py)
+> 💻 **예제 코드**: [01_why_multi_agent.py](../src/part07_multi_agent/01_why_multi_agent.py)
 
 ---
 
@@ -447,8 +447,8 @@ def robust_subagent(query: str) -> str:
 ```
 
 > 💻 **예제 코드**:
-> - [02_subagents_basic.py](/src/part07_multi_agent/02_subagents_basic.py) - 동기 Subagents
-> - [03_subagents_async.py](/src/part07_multi_agent/03_subagents_async.py) - 비동기 병렬 Subagents
+> - [02_subagents_basic.py](../src/part07_multi_agent/02_subagents_basic.py) - 동기 Subagents
+> - [03_subagents_async.py](../src/part07_multi_agent/03_subagents_async.py) - 비동기 병렬 Subagents
 
 ---
 
@@ -738,7 +738,7 @@ def tracked_handoff(from_agent: str, to_agent: str, reason: str, context: str) -
     ...
 ```
 
-> 💻 **예제 코드**: [04_handoffs.py](/src/part07_multi_agent/04_handoffs.py)
+> 💻 **예제 코드**: [04_handoffs.py](../src/part07_multi_agent/04_handoffs.py)
 
 ---
 
@@ -1043,7 +1043,7 @@ SKILLS_REGISTRY = {
 }
 ```
 
-> 💻 **예제 코드**: [05_skills_pattern.py](/src/part07_multi_agent/05_skills_pattern.py)
+> 💻 **예제 코드**: [05_skills_pattern.py](../src/part07_multi_agent/05_skills_pattern.py)
 
 ---
 
@@ -1356,7 +1356,7 @@ def robust_router(user_input: str) -> str:
     return agent.invoke(...)
 ```
 
-> 💻 **예제 코드**: [06_router_pattern.py](/src/part07_multi_agent/06_router_pattern.py)
+> 💻 **예제 코드**: [06_router_pattern.py](../src/part07_multi_agent/06_router_pattern.py)
 
 ---
 
@@ -1728,7 +1728,7 @@ def logged_node(state: WorkflowState) -> WorkflowState:
     return new_state
 ```
 
-> 💻 **예제 코드**: [07_custom_workflow.py](/src/part07_multi_agent/07_custom_workflow.py)
+> 💻 **예제 코드**: [07_custom_workflow.py](../src/part07_multi_agent/07_custom_workflow.py)
 
 ---
 
@@ -2130,7 +2130,7 @@ Part 8에서는 RAG (Retrieval-Augmented Generation)와 MCP (Model Context Proto
 2. **로깅**: 각 Agent 전환 시점에 로그 출력
 3. **단위 테스트**: 각 Agent를 독립적으로 테스트한 후 통합
 
-> 📖 [Part 10: 배포와 관측성](/docs/part10_deployment.md)에서 자세히 다룹니다.
+> 📖 [Part 10: 배포와 관측성](./part10_deployment.md)에서 자세히 다룹니다.
 </details>
 
 ---
@@ -2138,15 +2138,15 @@ Part 8에서는 RAG (Retrieval-Augmented Generation)와 MCP (Model Context Proto
 ## 🔗 심화 학습
 
 1. **공식 문서 심화**
-   - [22-multi-agent.md](/official/22-multi-agent_ko.md) - 패턴 비교 및 선택 가이드
-   - [27-custom-workflow.md](/official/27-custom-workflow_ko.md) - LangGraph 고급 워크플로우
+   - [22-multi-agent.md](../official/22-multi-agent_ko.md) - 패턴 비교 및 선택 가이드
+   - [27-custom-workflow.md](../official/27-custom-workflow_ko.md) - LangGraph 고급 워크플로우
 
 2. **관련 논문**
    - [AutoGen: Enabling Next-Gen LLM Applications](https://arxiv.org/abs/2308.08155) - 멀티에이전트 대화
    - [Generative Agents](https://arxiv.org/abs/2304.03442) - 에이전트 사회 시뮬레이션
 
 3. **커뮤니티 리소스**
-   - [LangGraph 문서](https://langchain-ai.github.io/langgraph/)
+   - [LangGraph 문서](https://docs.langchain.com/oss/python/langgraph/overview)
    - [LangChain Discord #multi-agent](https://discord.gg/langchain)
 
 ---
@@ -2154,21 +2154,21 @@ Part 8에서는 RAG (Retrieval-Augmented Generation)와 MCP (Model Context Proto
 ## 📚 참고 자료
 
 **공식 문서**:
-- [22-multi-agent.md](/official/22-multi-agent_ko.md) - 멀티에이전트 개요
-- [23-subagents.md](/official/23-subagents_ko.md) - Subagents 패턴
-- [24-handoffs.md](/official/24-handoffs_ko.md) - Handoffs 패턴
-- [25-skills.md](/official/25-skills_ko.md) - Skills 패턴
-- [26-router.md](/official/26-router_ko.md) - Router 패턴
-- [27-custom-workflow.md](/official/27-custom-workflow_ko.md) - LangGraph 커스텀 워크플로우
+- [22-multi-agent.md](../official/22-multi-agent_ko.md) - 멀티에이전트 개요
+- [23-subagents.md](../official/23-subagents_ko.md) - Subagents 패턴
+- [24-handoffs.md](../official/24-handoffs_ko.md) - Handoffs 패턴
+- [25-skills.md](../official/25-skills_ko.md) - Skills 패턴
+- [26-router.md](../official/26-router_ko.md) - Router 패턴
+- [27-custom-workflow.md](../official/27-custom-workflow_ko.md) - LangGraph 커스텀 워크플로우
 
 **예제 코드**:
-- [01_why_multi_agent.py](/src/part07_multi_agent/01_why_multi_agent.py)
-- [02_subagents_basic.py](/src/part07_multi_agent/02_subagents_basic.py)
-- [03_subagents_async.py](/src/part07_multi_agent/03_subagents_async.py)
-- [04_handoffs.py](/src/part07_multi_agent/04_handoffs.py)
-- [05_skills_pattern.py](/src/part07_multi_agent/05_skills_pattern.py)
-- [06_router_pattern.py](/src/part07_multi_agent/06_router_pattern.py)
-- [07_custom_workflow.py](/src/part07_multi_agent/07_custom_workflow.py)
+- [01_why_multi_agent.py](../src/part07_multi_agent/01_why_multi_agent.py)
+- [02_subagents_basic.py](../src/part07_multi_agent/02_subagents_basic.py)
+- [03_subagents_async.py](../src/part07_multi_agent/03_subagents_async.py)
+- [04_handoffs.py](../src/part07_multi_agent/04_handoffs.py)
+- [05_skills_pattern.py](../src/part07_multi_agent/05_skills_pattern.py)
+- [06_router_pattern.py](../src/part07_multi_agent/06_router_pattern.py)
+- [07_custom_workflow.py](../src/part07_multi_agent/07_custom_workflow.py)
 
 ---
 

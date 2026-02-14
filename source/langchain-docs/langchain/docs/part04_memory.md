@@ -1643,7 +1643,7 @@ agent = create_agent(model=model, tools=[weather_tool], checkpointer=checkpointe
 # TODO: thread_id를 사용한 대화 구현
 ```
 
-**해답**: [solutions/exercise_01.py](/src/part04_memory/solutions/exercise_01.py)
+**해답**: [solutions/exercise_01.py](../src/part04_memory/solutions/exercise_01.py)
 
 ---
 
@@ -1656,7 +1656,7 @@ agent = create_agent(model=model, tools=[weather_tool], checkpointer=checkpointe
 2. max_messages 임계값 지정
 3. 요약 전후의 메시지 수 변화 확인
 
-**해답**: [solutions/exercise_02.py](/src/part04_memory/solutions/exercise_02.py)
+**해답**: [solutions/exercise_02.py](../src/part04_memory/solutions/exercise_02.py)
 
 ---
 
@@ -1670,7 +1670,7 @@ agent = create_agent(model=model, tools=[weather_tool], checkpointer=checkpointe
 3. ToolRuntime으로 Store 접근
 4. Namespace: ("users", user_id, "preferences")
 
-**해답**: [solutions/exercise_03.py](/src/part04_memory/solutions/exercise_03.py)
+**해답**: [solutions/exercise_03.py](../src/part04_memory/solutions/exercise_03.py)
 
 ---
 
@@ -1751,8 +1751,8 @@ config = {"configurable": {"thread_id": f"{user_id}_{conv_id}"}}
 ## 🔗 심화 학습
 
 1. **공식 문서 심화**
-   - [10-short-term-memory.md](/official/10-short-term-memory_ko.md) - Checkpointer 고급 기능
-   - [29-long-term-memory.md](/official/29-long-term-memory_ko.md) - Store 심화
+   - [10-short-term-memory.md](../official/10-short-term-memory_ko.md) - Checkpointer 고급 기능
+   - [29-long-term-memory.md](../official/29-long-term-memory_ko.md) - Store 심화
 
 2. **관련 논문**
    - [MemGPT: Towards LLMs as Operating Systems](https://arxiv.org/abs/2310.08560) - LLM 메모리 관리
@@ -1760,7 +1760,7 @@ config = {"configurable": {"thread_id": f"{user_id}_{conv_id}"}}
 
 3. **커뮤니티 리소스**
    - [LangChain Discord #memory](https://discord.gg/langchain)
-   - [LangGraph Persistence 가이드](https://langchain-ai.github.io/langgraph/concepts/persistence/)
+   - [LangGraph Persistence 가이드](https://docs.langchain.com/oss/python/langgraph/persistence)
 
 ---
 

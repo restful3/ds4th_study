@@ -2,8 +2,8 @@
 
 > 📚 **학습 시간**: 약 3-4시간
 > 🎯 **난이도**: ⭐⭐⭐⭐☆ (고급)
-> 📖 **공식 문서**: [30-langsmith-studio.md](/official/30-langsmith-studio_ko.md), [31-test.md](/official/31-test_ko.md), [33-deployment.md](/official/33-deployment_ko.md), [34-observability.md](/official/34-observability_ko.md)
-> 💻 **예제 코드**: [part10_deployment 디렉토리](/src/part10_deployment/)
+> 📖 **공식 문서**: [30-langsmith-studio.md](../official/30-langsmith-studio_ko.md), [31-test.md](../official/31-test_ko.md), [33-deployment.md](../official/33-deployment_ko.md), [34-observability.md](../official/34-observability_ko.md)
+> 💻 **예제 코드**: [part10_deployment 디렉토리](../src/part10_deployment/)
 
 ---
 
@@ -967,7 +967,7 @@ agent = create_agent(model=config["model"])
 2. **LangSmith 계정** (https://smith.langchain.com 에서 무료 가입)
 3. **LangGraph 호환 애플리케이션** (로컬에서 동작 확인 완료)
 
-> 📖 **공식 문서**: [33-deployment.md](/official/33-deployment_ko.md)
+> 📖 **공식 문서**: [33-deployment.md](../official/33-deployment_ko.md)
 
 #### 5.4.3 배포 단계
 
@@ -1588,9 +1588,9 @@ FastAPI + Docker를 사용하여 Agent를 컨테이너로 배포하는 파이프
 ## 🔗 심화 학습
 
 ### 공식 문서
-- [LangSmith 공식 문서](https://docs.smith.langchain.com/)
-- [LangGraph Deploy 가이드](https://langchain-ai.github.io/langgraph/cloud/quick_start/)
-- [LangChain Evaluation 가이드](https://python.langchain.com/docs/concepts/evaluation/)
+- [LangSmith 공식 문서](https://docs.langchain.com/langsmith)
+- [LangGraph Deploy 가이드](https://docs.langchain.com/langsmith/deployments)
+- [LangChain Evaluation 가이드](https://docs.langchain.com/langsmith/evaluation)
 
 ### 고급 주제
 - **모니터링 고급**: Custom Metrics, Alerting, A/B 테스트
@@ -1598,7 +1598,7 @@ FastAPI + Docker를 사용하여 Agent를 컨테이너로 배포하는 파이프
 - **배포 고급**: Kubernetes, CI/CD, Blue-Green Deploy
 
 ### 커뮤니티 리소스
-- [LangChain Blog](https://blog.langchain.dev/)
+- [LangChain Blog](https://blog.langchain.com/)
 - [LangSmith Cookbook](https://github.com/langchain-ai/langsmith-cookbook)
 
 ---

@@ -941,9 +941,9 @@ graph.add_edge("start", "process")
 ## 📚 추가 리소스
 
 ### 공식 문서
-- [LangChain 용어집](https://python.langchain.com/docs/glossary)
-- [LangGraph 문서](https://langchain-ai.github.io/langgraph/)
-- [LangSmith 문서](https://docs.smith.langchain.com/)
+- [LangChain 용어집](https://docs.langchain.com/oss/python/langchain/overview)
+- [LangGraph 문서](https://docs.langchain.com/oss/python/langgraph/overview)
+- [LangSmith 문서](https://docs.langchain.com/langsmith)
 
 ### 교안 관련
 - [Changelog](./changelog.md) - 버전 변경 사항
@@ -988,7 +988,7 @@ LLM은 "뇌"이고, Agent는 "뇌 + 손발"입니다.
 
 ---
 
-*더 많은 용어는 [공식 문서](https://python.langchain.com/docs/)를 참고하세요.*
+*더 많은 용어는 [공식 문서](https://docs.langchain.com/oss/python/langchain/overview)를 참고하세요.*
 
 *마지막 업데이트: 2025-02-05*
 *버전: 1.0*

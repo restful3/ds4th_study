@@ -25,7 +25,7 @@
 ### LangChain 공식 리소스
 
 #### 1. LangChain Python 문서
-**URL**: https://python.langchain.com/docs/
+**URL**: https://docs.langchain.com/oss/python/langchain/overview
 
 **내용**:
 - 전체 기능 가이드
@@ -33,9 +33,9 @@
 - 개념 설명
 
 **추천 섹션**:
-- [Introduction](https://python.langchain.com/docs/introduction) - 기초 개념
-- [Tutorials](https://python.langchain.com/docs/tutorials) - 단계별 학습
-- [How-to guides](https://python.langchain.com/docs/how_to) - 실전 팁
+- [Overview](https://docs.langchain.com/oss/python/langchain/overview) - 기초 개념
+- [Agents](https://docs.langchain.com/oss/python/langchain/agents) - Agent 가이드
+- [Quickstart](https://docs.langchain.com/oss/python/langchain/quickstart) - 빠른 시작
 
 ---
 
@@ -60,7 +60,7 @@ from langchain.agents import create_agent
 ---
 
 #### 3. LangGraph 문서
-**URL**: https://langchain-ai.github.io/langgraph/
+**URL**: https://docs.langchain.com/oss/python/langgraph/overview
 
 **내용**:
 - 그래프 기반 워크플로우 설계
@@ -68,14 +68,14 @@ from langchain.agents import create_agent
 - 상태 관리
 
 **핵심 가이드**:
-- [Quick Start](https://langchain-ai.github.io/langgraph/tutorials/introduction/) - 빠른 시작
-- [How-to](https://langchain-ai.github.io/langgraph/how-tos/) - 패턴별 가이드
-- [Concepts](https://langchain-ai.github.io/langgraph/concepts/) - 핵심 개념
+- [Overview](https://docs.langchain.com/oss/python/langgraph/overview) - 빠른 시작
+- [Persistence](https://docs.langchain.com/oss/python/langgraph/persistence) - 상태 관리
+- [Durable Execution](https://docs.langchain.com/oss/python/langgraph/durable-execution) - 지속 실행
 
 ---
 
 #### 4. LangSmith 문서
-**URL**: https://docs.smith.langchain.com/
+**URL**: https://docs.langchain.com/langsmith
 
 **내용**:
 - 트레이싱 및 디버깅
@@ -83,9 +83,9 @@ from langchain.agents import create_agent
 - 데이터셋 관리
 
 **추천 섹션**:
-- [Tracing](https://docs.smith.langchain.com/tracing) - 실행 추적
-- [Evaluation](https://docs.smith.langchain.com/evaluation) - Agent 평가
-- [Datasets](https://docs.smith.langchain.com/evaluation/datasets) - 테스트 데이터
+- [Observability](https://docs.langchain.com/langsmith/observability) - 실행 추적
+- [Evaluation](https://docs.langchain.com/langsmith/evaluation) - Agent 평가
+- [Datasets](https://docs.langchain.com/langsmith/manage-datasets) - 테스트 데이터
 
 ---
 
@@ -340,12 +340,12 @@ RAG(Retrieval-Augmented Generation)의 기초를 확립한 논문입니다.
 ### LangChain 공식 블로그
 
 #### 1. LangChain Blog
-**URL**: https://blog.langchain.dev/
+**URL**: https://blog.langchain.com/
 
 **추천 글**:
-- ["LangChain 1.0"](https://blog.langchain.dev/langchain-v1-0/) - 1.0 릴리스 소개
-- ["Production-Ready Agents"](https://blog.langchain.dev/production-ready-agents/) - 프로덕션 가이드
-- ["Evaluating LLM Applications"](https://blog.langchain.dev/evaluating-llm-applications/) - 평가 방법론
+- ["LangChain 1.0"](https://blog.langchain.com/langchain-v1-0/) - 1.0 릴리스 소개
+- ["Production-Ready Agents"](https://blog.langchain.com/production-ready-agents/) - 프로덕션 가이드
+- ["Evaluating LLM Applications"](https://blog.langchain.com/evaluating-llm-applications/) - 평가 방법론
 
 ---
 
@@ -556,7 +556,7 @@ vectorstore = Chroma(persist_directory="./db")
 ---
 
 #### 8. LangServe
-**URL**: https://python.langchain.com/docs/langserve
+**URL**: https://docs.langchain.com/oss/python/langchain/overview
 
 **기능**:
 - Agent를 REST API로 배포

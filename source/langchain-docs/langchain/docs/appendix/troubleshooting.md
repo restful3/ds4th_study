@@ -814,7 +814,7 @@ result = agent.invoke(input)
 
 문제가 해결되지 않으면:
 
-1. **공식 문서**: [LangChain Documentation](https://python.langchain.com/docs/)
+1. **공식 문서**: [LangChain Documentation](https://docs.langchain.com/oss/python/langchain/overview)
 2. **Discord**: [LangChain Discord](https://discord.gg/langchain)
 3. **GitHub Issues**: [LangChain GitHub](https://github.com/langchain-ai/langchain/issues)
 4. **Stack Overflow**: [langchain 태그](https://stackoverflow.com/questions/tagged/langchain)

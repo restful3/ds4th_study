@@ -1,6 +1,6 @@
 # LangChain 버전 변경 사항
 
-> 📖 **공식 문서**: [04-changelog.md](/official/04-changelog.md)
+> 📖 **공식 문서**: [04-changelog.md](../../official/04-changelog_ko.md)
 
 이 문서는 LangChain의 주요 버전 변경 사항을 한국어로 요약합니다. LangChain은 빠르게 발전하고 있으며, 각 버전마다 중요한 기능 추가와 API 변경이 있습니다.
 
@@ -406,7 +406,7 @@ result = chain.invoke(input)
 ### 공식 문서
 - [LangChain Changelog](https://github.com/langchain-ai/langchain/releases)
 - [LangGraph Changelog](https://github.com/langchain-ai/langgraph/releases)
-- [마이그레이션 가이드](https://python.langchain.com/docs/migration)
+- [마이그레이션 가이드](https://docs.langchain.com/oss/python/migrate/langchain-v1)
 
 ### 교안 관련 섹션
 - [Part 3: 첫 번째 Agent](../part03_first_agent.md) - `create_agent()` API
@@ -476,7 +476,7 @@ LangChain 팀은 0.x 지원을 점진적으로 축소할 예정이므로, 가능
 
 ---
 
-*이 문서는 공식 changelog의 요약본입니다. 전체 내용은 [공식 문서](../../official/04-changelog.md)를 참고하세요.*
+*이 문서는 공식 changelog의 요약본입니다. 전체 내용은 [공식 문서](../../official/04-changelog_ko.md)를 참고하세요.*
 
 *마지막 업데이트: 2025-02-05*
 *버전: 1.0*

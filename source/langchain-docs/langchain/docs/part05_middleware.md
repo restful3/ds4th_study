@@ -2,8 +2,8 @@
 
 > 📚 **학습 시간**: 약 3-4시간
 > 🎯 **난이도**: ⭐⭐⭐⭐☆ (고급)
-> 📖 **공식 문서**: [14-middleware-overview.md](/official/14-middleware-overview_ko.md), [15-built-in-middleware.md](/official/15-built-in-middleware_ko.md), [16-custom-middleware.md](/official/16-custom-middleware_ko.md), [17-guardrails.md](/official/17-guardrails_ko.md)
-> 💻 **예제 코드**: [part05_middleware 디렉토리](/src/part05_middleware/)
+> 📖 **공식 문서**: [14-middleware-overview.md](../official/14-middleware-overview_ko.md), [15-built-in-middleware.md](../official/15-built-in-middleware_ko.md), [16-custom-middleware.md](../official/16-custom-middleware_ko.md), [17-guardrails.md](../official/17-guardrails_ko.md)
+> 💻 **예제 코드**: [part05_middleware 디렉토리](../src/part05_middleware/)
 
 ---
 
@@ -57,7 +57,7 @@ flowchart TD
     model --> result
 ```
 
-> 📖 **공식 문서**: [14-middleware-overview.md](/official/14-middleware-overview_ko.md#agent-루프)
+> 📖 **공식 문서**: [14-middleware-overview.md](../official/14-middleware-overview_ko.md#agent-루프)
 
 ### 1.2 미들웨어 훅(Hooks)
 
@@ -90,7 +90,7 @@ flowchart TD
     after_agent --> result
 ```
 
-> 💻 **예제 코드**: [01_middleware_intro.py](/src/part05_middleware/01_middleware_intro.py)
+> 💻 **예제 코드**: [01_middleware_intro.py](../src/part05_middleware/01_middleware_intro.py)
 
 #### 훅 종류
 
@@ -368,8 +368,8 @@ agent = create_agent(
 )
 ```
 
-> 📖 **공식 문서**: [15-built-in-middleware.md](/official/15-built-in-middleware_ko.md#요약)
-> 💻 **예제 코드**: [05_summarization_mw.py](/src/part05_middleware/05_summarization_mw.py)
+> 📖 **공식 문서**: [15-built-in-middleware.md](../official/15-built-in-middleware_ko.md#요약)
+> 💻 **예제 코드**: [05_summarization_mw.py](../src/part05_middleware/05_summarization_mw.py)
 
 **설정 옵션:**
 
@@ -399,8 +399,8 @@ agent = create_agent(
 )
 ```
 
-> 📖 **공식 문서**: [15-built-in-middleware.md](/official/15-built-in-middleware_ko.md#human-in-the-loop)
-> 📖 **관련 문서**: [21-human-in-the-loop.md](/official/21-human-in-the-loop_ko.md)
+> 📖 **공식 문서**: [15-built-in-middleware.md](../official/15-built-in-middleware_ko.md#human-in-the-loop)
+> 📖 **관련 문서**: [21-human-in-the-loop.md](../official/21-human-in-the-loop_ko.md)
 
 ### 2.3 Tool Retry Middleware
 
@@ -421,8 +421,8 @@ agent = create_agent(
 )
 ```
 
-> 📖 **공식 문서**: [15-built-in-middleware.md](/official/15-built-in-middleware_ko.md#tool-재시도)
-> 💻 **예제 코드**: [06_tool_retry.py](/src/part05_middleware/06_tool_retry.py)
+> 📖 **공식 문서**: [15-built-in-middleware.md](../official/15-built-in-middleware_ko.md#tool-재시도)
+> 💻 **예제 코드**: [06_tool_retry.py](../src/part05_middleware/06_tool_retry.py)
 
 ### 2.4 Model Fallback Middleware (모델 대체)
 
@@ -476,7 +476,7 @@ ModelFallbackMiddleware(
 - 각 모델의 API 키가 설정되어 있어야 함
 - 모델 간 응답 포맷이 다를 수 있음
 
-> 📖 **공식 문서**: [15-built-in-middleware.md](/official/15-built-in-middleware_ko.md#모델-폴백)
+> 📖 **공식 문서**: [15-built-in-middleware.md](../official/15-built-in-middleware_ko.md#모델-폴백)
 
 ---
 
@@ -1126,8 +1126,8 @@ def log_after_model(state: AgentState, runtime: Runtime) -> dict[str, Any] | Non
     return None
 ```
 
-> 📖 **공식 문서**: [16-custom-middleware.md](/official/16-custom-middleware_ko.md#노드-스타일-훅)
-> 💻 **예제 코드**: [02_before_after_model.py](/src/part05_middleware/02_before_after_model.py)
+> 📖 **공식 문서**: [16-custom-middleware.md](../official/16-custom-middleware_ko.md#노드-스타일-훅)
+> 💻 **예제 코드**: [02_before_after_model.py](../src/part05_middleware/02_before_after_model.py)
 
 #### 클래스 방식
 
@@ -1173,7 +1173,7 @@ def retry_model_call(
             print(f"재시도 {attempt + 1}/3: {e}")
 ```
 
-> 💻 **예제 코드**: [03_wrap_model_call.py](/src/part05_middleware/03_wrap_model_call.py)
+> 💻 **예제 코드**: [03_wrap_model_call.py](../src/part05_middleware/03_wrap_model_call.py)
 
 **wrap_model_call의 강력함:**
 - **재시도 로직**: 실패 시 재시도
@@ -1206,7 +1206,7 @@ def log_tool_execution(
     return result
 ```
 
-> 💻 **예제 코드**: [04_wrap_tool_call.py](/src/part05_middleware/04_wrap_tool_call.py)
+> 💻 **예제 코드**: [04_wrap_tool_call.py](../src/part05_middleware/04_wrap_tool_call.py)
 
 ---
 
@@ -1233,8 +1233,8 @@ flowchart LR
     output_check -- 실패 --> reject
 ```
 
-> 📖 **공식 문서**: [17-guardrails.md](/official/17-guardrails_ko.md)
-> 💻 **예제 코드**: [07_guardrails.py](/src/part05_middleware/07_guardrails.py)
+> 📖 **공식 문서**: [17-guardrails.md](../official/17-guardrails_ko.md)
+> 💻 **예제 코드**: [07_guardrails.py](../src/part05_middleware/07_guardrails.py)
 
 ### 4.2 콘텐츠 필터링
 
@@ -1278,7 +1278,7 @@ agent = create_agent(
 )
 ```
 
-> 📖 **공식 문서**: [15-built-in-middleware.md](/official/15-built-in-middleware_ko.md#pii-감지)
+> 📖 **공식 문서**: [15-built-in-middleware.md](../official/15-built-in-middleware_ko.md#pii-감지)
 
 ### 4.4 Rate Limiting
 
@@ -1449,7 +1449,7 @@ def early_exit(state: AgentState, runtime: Runtime) -> dict[str, Any] | None:
 - `time.time()`으로 시간 측정
 - 파일 또는 콘솔에 로그 출력
 
-**해답**: [solutions/logging_middleware.py](/src/part05_middleware/solutions/logging_middleware.py)
+**해답**: [solutions/logging_middleware.py](../src/part05_middleware/solutions/logging_middleware.py)
 
 ---
 
@@ -1467,7 +1467,7 @@ def early_exit(state: AgentState, runtime: Runtime) -> dict[str, Any] | None:
 - 클래스 변수로 누적 비용 저장
 - `jump_to="end"`로 조기 종료
 
-**해답**: [solutions/cost_tracking_middleware.py](/src/part05_middleware/solutions/cost_tracking_middleware.py)
+**해답**: [solutions/cost_tracking_middleware.py](../src/part05_middleware/solutions/cost_tracking_middleware.py)
 
 ---
 
@@ -1485,7 +1485,7 @@ def early_exit(state: AgentState, runtime: Runtime) -> dict[str, Any] | None:
 - `time.time()`으로 TTL 관리
 - 캐시 히트/미스 로깅
 
-**해답**: [solutions/caching_middleware.py](/src/part05_middleware/solutions/caching_middleware.py)
+**해답**: [solutions/caching_middleware.py](../src/part05_middleware/solutions/caching_middleware.py)
 
 ---
 
@@ -1622,15 +1622,15 @@ def stop_agent(state, runtime):
 이 파트의 기초를 마스터했다면:
 
 1. **공식 문서 심화**
-   - [14-middleware-overview.md](/official/14-middleware-overview_ko.md) - 미들웨어 개념
-   - [15-built-in-middleware.md](/official/15-built-in-middleware_ko.md) - 내장 미들웨어
-   - [16-custom-middleware.md](/official/16-custom-middleware_ko.md) - 커스텀 미들웨어
-   - [17-guardrails.md](/official/17-guardrails_ko.md) - Guardrails
+   - [14-middleware-overview.md](../official/14-middleware-overview_ko.md) - 미들웨어 개념
+   - [15-built-in-middleware.md](../official/15-built-in-middleware_ko.md) - 내장 미들웨어
+   - [16-custom-middleware.md](../official/16-custom-middleware_ko.md) - 커스텀 미들웨어
+   - [17-guardrails.md](../official/17-guardrails_ko.md) - Guardrails
 
 2. **관련 파트**
-   - [Part 6: Context Engineering](/docs/part06_context.md) - Runtime과 Context
-   - [Part 9: Production](/docs/part09_production.md) - HITL 상세
-   - [Part 10: Deployment](/docs/part10_deployment.md) - 관측성
+   - [Part 6: Context Engineering](./part06_context.md) - Runtime과 Context
+   - [Part 9: Production](./part09_production.md) - HITL 상세
+   - [Part 10: Deployment](./part10_deployment.md) - 관측성
 
 3. **API 레퍼런스**
    - [Middleware API](https://reference.langchain.com/python/langchain/middleware/) - 전체 API 문서

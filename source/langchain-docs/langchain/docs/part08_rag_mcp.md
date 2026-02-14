@@ -2,8 +2,8 @@
 
 > 📚 **학습 시간**: 약 4-5시간
 > 🎯 **난이도**: ⭐⭐⭐⭐☆ (고급)
-> 📖 **공식 문서**: [28-retrieval.md](/official/28-retrieval_ko.md), [20-model-context-protocol.md](/official/20-model-context-protocol_ko.md)
-> 💻 **예제 코드**: [part08_rag_mcp 디렉토리](/src/part08_rag_mcp/)
+> 📖 **공식 문서**: [28-retrieval.md](../official/28-retrieval_ko.md), [20-model-context-protocol.md](../official/20-model-context-protocol_ko.md)
+> 💻 **예제 코드**: [part08_rag_mcp 디렉토리](../src/part08_rag_mcp/)
 
 ---
 
@@ -399,7 +399,7 @@ results = vectorstore.max_marginal_relevance_search(
 )
 ```
 
-> 💻 **예제 코드**: [01_rag_basics.py](/src/part08_rag_mcp/01_rag_basics.py)
+> 💻 **예제 코드**: [01_rag_basics.py](../src/part08_rag_mcp/01_rag_basics.py)
 
 ---
 
@@ -644,7 +644,7 @@ threshold_retriever = vectorstore.as_retriever(
 docs = retriever.invoke("쿼리")
 ```
 
-> 💻 **예제 코드**: [02_vector_store.py](/src/part08_rag_mcp/02_vector_store.py)
+> 💻 **예제 코드**: [02_vector_store.py](../src/part08_rag_mcp/02_vector_store.py)
 
 ---
 
@@ -907,7 +907,7 @@ agent = create_agent(
 )
 ```
 
-> 💻 **예제 코드**: [03_agentic_rag.py](/src/part08_rag_mcp/03_agentic_rag.py)
+> 💻 **예제 코드**: [03_agentic_rag.py](../src/part08_rag_mcp/03_agentic_rag.py)
 
 ---
 
@@ -1073,7 +1073,7 @@ agent = create_agent("gpt-4o-mini", tools)
 | **HTTP** | HTTP 요청 | 원격 가능, 확장성 | 설정 복잡 | 클라우드 서비스 |
 | **SSE** | Server-Sent Events | 스트리밍 | 단방향 | 실시간 업데이트 |
 
-> 💻 **예제 코드**: [04_mcp_client.py](/src/part08_rag_mcp/04_mcp_client.py)
+> 💻 **예제 코드**: [04_mcp_client.py](../src/part08_rag_mcp/04_mcp_client.py)
 
 ---
 
@@ -1356,7 +1356,7 @@ if __name__ == "__main__":
     mcp.run(transport="http", port=8001)
 ```
 
-> 💻 **예제 코드**: [05_mcp_server.py](/src/part08_rag_mcp/05_mcp_server.py)
+> 💻 **예제 코드**: [05_mcp_server.py](../src/part08_rag_mcp/05_mcp_server.py)
 
 ---
 
@@ -1624,7 +1624,7 @@ response = await agent.ainvoke({
 # 3. 두 정보를 결합하여 답변
 ```
 
-> 💻 **예제 코드**: [06_mcp_agent.py](/src/part08_rag_mcp/06_mcp_agent.py)
+> 💻 **예제 코드**: [06_mcp_agent.py](../src/part08_rag_mcp/06_mcp_agent.py)
 
 ---
 
@@ -1969,7 +1969,7 @@ results = vectorstore.similarity_search(
 ## 🔗 심화 학습
 
 ### 공식 문서
-- [LangChain Retrieval 가이드](https://python.langchain.com/docs/concepts/retrieval/)
+- [LangChain Retrieval 가이드](https://docs.langchain.com/oss/python/langchain/rag)
 - [Model Context Protocol 공식 사이트](https://modelcontextprotocol.io/)
 - [FastMCP 문서](https://github.com/jlowin/fastmcp)
 
