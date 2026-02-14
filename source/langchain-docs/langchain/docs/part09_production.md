@@ -2,7 +2,7 @@
 
 > 📚 **학습 시간**: 약 3-4시간
 > 🎯 **난이도**: ⭐⭐⭐⭐☆ (고급)
-> 📖 **공식 문서**: [11-streaming-overview.md](/official/11-streaming-overview.md), [12-streaming-frontend.md](/official/12-streaming-frontend.md), [13-structured-output.md](/official/13-structured-output.md), [21-human-in-the-loop.md](/official/21-human-in-the-loop.md), [32-agent-chat-ui.md](/official/32-agent-chat-ui.md)
+> 📖 **공식 문서**: [11-streaming-overview.md](/official/11-streaming-overview_ko.md), [12-streaming-frontend.md](/official/12-streaming-frontend_ko.md), [13-structured-output.md](/official/13-structured-output_ko.md), [21-human-in-the-loop.md](/official/21-human-in-the-loop_ko.md), [32-agent-chat-ui.md](/official/32-agent-chat-ui_ko.md)
 > 💻 **예제 코드**: [part09_production 디렉토리](/src/part09_production/)
 
 ---
@@ -764,7 +764,7 @@ agent = create_agent(
 
 **Agent Chat UI**는 LangChain Agent와 상호작용할 수 있는 **Next.js 기반 대화형 인터페이스**입니다.
 
-> 📖 **공식 문서**: [32-agent-chat-ui.md](/official/32-agent-chat-ui.md)
+> 📖 **공식 문서**: [32-agent-chat-ui.md](/official/32-agent-chat-ui_ko.md)
 
 **주요 기능:**
 
@@ -1031,34 +1031,49 @@ except ValidationError as e:
 
 ---
 
-## FAQ
+## ❓ 자주 묻는 질문
 
-### Q1: stream()을 사용하면 항상 빠른가요?
+<details>
+<summary><strong>Q1: stream()을 사용하면 항상 빠른가요?</strong></summary>
 
-**A:** 아닙니다. 스트리밍은 **첫 토큰 응답 시간**을 단축하지만 **전체 처리 시간**은 동일하거나 약간 느릴 수 있습니다.
+아닙니다. 스트리밍은 **첫 토큰 응답 시간**을 단축하지만 **전체 처리 시간**은 동일하거나 약간 느릴 수 있습니다.
 
-### Q2: Checkpointer 없이 HITL 사용할 수 있나요?
+</details>
 
-**A:** 불가능합니다. Interrupt는 State를 저장하고 복원해야 하므로 Checkpointer가 필수입니다.
+<details>
+<summary><strong>Q2: Checkpointer 없이 HITL 사용할 수 있나요?</strong></summary>
 
-### Q3: ProviderStrategy vs ToolStrategy 언제 써야 하나요?
+불가능합니다. Interrupt는 State를 저장하고 복원해야 하므로 Checkpointer가 필수입니다.
 
-**A:** 자동 선택이 최선입니다. 직접 지정하면:
+</details>
+
+<details>
+<summary><strong>Q3: ProviderStrategy vs ToolStrategy 언제 써야 하나요?</strong></summary>
+
+자동 선택이 최선입니다. 직접 지정하면:
 - **ProviderStrategy**: 신뢰성이 중요하고 지원 모델 사용 시
 - **ToolStrategy**: Union 타입이나 복잡한 에러 핸들링 필요 시
 
-### Q4: 여러 도구를 동시에 Interrupt할 수 있나요?
+</details>
 
-**A:** 가능합니다. 각 도구에 대한 결정을 순서대로 제공하면 됩니다.
+<details>
+<summary><strong>Q4: 여러 도구를 동시에 Interrupt할 수 있나요?</strong></summary>
 
-### Q5: Pydantic 모델을 JSON으로 변환하려면?
+가능합니다. 각 도구에 대한 결정을 순서대로 제공하면 됩니다.
 
-**A:** `.model_dump()` 메서드를 사용합니다.
+</details>
+
+<details>
+<summary><strong>Q5: Pydantic 모델을 JSON으로 변환하려면?</strong></summary>
+
+`.model_dump()` 메서드를 사용합니다.
 
 ```python
 user_dict = user.model_dump()
 user_json = user.model_dump_json()
 ```
+
+</details>
 
 ---
 
@@ -1137,20 +1152,97 @@ graph TD
 
 ---
 
-## 마치며
+## 🎓 실습 과제
 
-Part 9에서는 프로덕션 환경에 필요한 네 가지 핵심 기술을 배웠습니다:
+### 과제 1: 실시간 스트리밍 Agent 구현
 
-1. **Streaming**: 실시간 사용자 피드백
-2. **Human-in-the-Loop**: 안전한 작업 실행
-3. **Structured Output**: 타입 안전한 데이터 처리
-4. **Agent Chat UI**: 프로덕션 인터페이스 구축
+**난이도**: ★★★☆☆
 
-이제 Part 10에서 Agent를 실제로 배포하고 모니터링하는 방법을 배웁니다.
+`stream()` API를 사용하여 토큰 단위 실시간 출력과 커스텀 이벤트를 지원하는 Agent를 구현하세요.
 
-**다음 단계:**
-- Part 10: Deployment로 이동하여 배포 학습
-- Agent Chat UI를 활용한 실전 프로젝트 구축
-- 공식 문서에서 고급 UI 기능 탐구
+**요구사항**:
+- `stream_mode="messages"`로 토큰 스트리밍
+- `StreamWriter`로 진행률 커스텀 이벤트 전송
+- 다양한 `stream_mode` 조합 테스트
 
-Happy Coding! 🚀
+> **힌트**: `src/part09_production/01_streaming.py`를 참고하세요.
+
+### 과제 2: HITL 승인 워크플로우 구현
+
+**난이도**: ★★★★☆
+
+위험한 작업(결제, 데이터 삭제 등)에 대해 사람의 승인을 받는 Human-in-the-Loop 워크플로우를 구현하세요.
+
+**요구사항**:
+- `interrupt()` 함수로 승인 대기 구현
+- approve/edit/reject 3가지 응답 처리
+- `Command(resume=...)` 패턴 적용
+
+> **힌트**: `src/part09_production/02_hitl.py`를 참고하세요.
+
+### 과제 3: 구조화된 출력 파이프라인
+
+**난이도**: ★★★☆☆
+
+Pydantic 모델을 활용하여 LLM 출력을 타입 안전하게 파싱하는 시스템을 구현하세요.
+
+**요구사항**:
+- `with_structured_output()` 메서드 활용
+- Union 타입 지원 (다중 출력 형식)
+- 유효성 검증 및 에러 처리
+
+> **힌트**: `src/part09_production/03_structured_output.py`를 참고하세요.
+
+---
+
+## 🔗 심화 학습
+
+### 공식 문서
+- [LangGraph Streaming 가이드](https://langchain-ai.github.io/langgraph/how-tos/streaming-tokens/)
+- [Human-in-the-Loop 패턴](https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/)
+- [Structured Output 가이드](https://python.langchain.com/docs/concepts/structured_outputs/)
+
+### 고급 주제
+- **스트리밍 최적화**: 대용량 응답 처리, 백프레셔 관리
+- **HITL 고급 패턴**: 다중 승인자, 에스컬레이션, 타임아웃
+- **출력 검증**: 커스텀 Validator, Retry 전략
+
+### 커뮤니티 리소스
+- [LangGraph Discussions](https://github.com/langchain-ai/langgraph/discussions)
+- [LangChain Blog - Production Patterns](https://blog.langchain.dev/)
+
+---
+
+## ✅ 체크리스트
+
+이 파트를 완료했다면 다음을 할 수 있어야 합니다:
+
+### Streaming
+- [ ] `stream()` API로 실시간 토큰 스트리밍을 구현할 수 있다
+- [ ] 다양한 `stream_mode`의 차이를 설명할 수 있다
+- [ ] `StreamWriter`로 커스텀 이벤트를 전송할 수 있다
+
+### Human-in-the-Loop
+- [ ] `interrupt()` 함수로 실행을 일시 중지할 수 있다
+- [ ] approve/edit/reject 패턴을 구현할 수 있다
+- [ ] `Command(resume=...)`으로 실행을 재개할 수 있다
+
+### Structured Output
+- [ ] `with_structured_output()`으로 타입 안전한 출력을 구현할 수 있다
+- [ ] Union 타입으로 다중 출력 형식을 처리할 수 있다
+- [ ] ProviderStrategy와 ToolStrategy 차이를 이해한다
+
+---
+
+## 다음 단계
+
+Part 9 완료! ➡ [Part 10: Deployment로 이동](./part10_deployment.md)
+
+**추천 프로젝트**: Customer Service Agent에 스트리밍과 HITL 적용
+- `projects/04_customer_service/` 참고
+
+**학습 진도**: ▓▓▓▓▓▓▓▓▓░ 90% (Part 9/10 완료)
+
+---
+
+*마지막 업데이트: 2025-02-06*

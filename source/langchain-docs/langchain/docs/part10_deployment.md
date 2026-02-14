@@ -2,7 +2,7 @@
 
 > 📚 **학습 시간**: 약 3-4시간
 > 🎯 **난이도**: ⭐⭐⭐⭐☆ (고급)
-> 📖 **공식 문서**: [30-langsmith-studio.md](/official/30-langsmith-studio.md), [31-test.md](/official/31-test.md), [33-deployment.md](/official/33-deployment.md), [34-observability.md](/official/34-observability.md)
+> 📖 **공식 문서**: [30-langsmith-studio.md](/official/30-langsmith-studio_ko.md), [31-test.md](/official/31-test_ko.md), [33-deployment.md](/official/33-deployment_ko.md), [34-observability.md](/official/34-observability_ko.md)
 > 💻 **예제 코드**: [part10_deployment 디렉토리](/src/part10_deployment/)
 
 ---
@@ -967,7 +967,7 @@ agent = create_agent(model=config["model"])
 2. **LangSmith 계정** (https://smith.langchain.com 에서 무료 가입)
 3. **LangGraph 호환 애플리케이션** (로컬에서 동작 확인 완료)
 
-> 📖 **공식 문서**: [33-deployment.md](/official/33-deployment.md)
+> 📖 **공식 문서**: [33-deployment.md](/official/33-deployment_ko.md)
 
 #### 5.4.3 배포 단계
 
@@ -1455,27 +1455,42 @@ async def async_agent(input_data: dict, background_tasks: BackgroundTasks):
 
 ---
 
-## FAQ
+## ❓ 자주 묻는 질문
 
-### Q1: LangSmith 무료 플랜으로 충분한가요?
+<details>
+<summary><strong>Q1: LangSmith 무료 플랜으로 충분한가요?</strong></summary>
 
-**A:** 개발과 소규모 프로젝트에는 충분합니다 (월 5,000 traces). 프로덕션은 유료 플랜 권장.
+개발과 소규모 프로젝트에는 충분합니다 (월 5,000 traces). 프로덕션은 유료 플랜 권장.
 
-### Q2: Docker 없이 배포할 수 있나요?
+</details>
 
-**A:** 가능합니다. 하지만 Docker를 사용하면 환경 일관성, 격리, 확장성 면에서 유리합니다.
+<details>
+<summary><strong>Q2: Docker 없이 배포할 수 있나요?</strong></summary>
 
-### Q3: 평가 시 실제 LLM을 호출하나요?
+가능합니다. 하지만 Docker를 사용하면 환경 일관성, 격리, 확장성 면에서 유리합니다.
 
-**A:** LLM-as-judge는 실제로 LLM을 호출하므로 비용이 발생합니다. Mock이나 캐싱 활용 권장.
+</details>
 
-### Q4: 프로덕션에서 Trace를 항상 켜야 하나요?
+<details>
+<summary><strong>Q3: 평가 시 실제 LLM을 호출하나요?</strong></summary>
 
-**A:** 선택사항입니다. 비용과 디버깅 필요성을 고려하여 결정하세요. 샘플링(10% 등)도 옵션입니다.
+LLM-as-judge는 실제로 LLM을 호출하므로 비용이 발생합니다. Mock이나 캐싱 활용 권장.
 
-### Q5: LangServe 대신 다른 프레임워크를 써도 되나요?
+</details>
 
-**A:** 가능합니다. Flask, Django 등 어떤 프레임워크든 Agent를 통합할 수 있습니다.
+<details>
+<summary><strong>Q4: 프로덕션에서 Trace를 항상 켜야 하나요?</strong></summary>
+
+선택사항입니다. 비용과 디버깅 필요성을 고려하여 결정하세요. 샘플링(10% 등)도 옵션입니다.
+
+</details>
+
+<details>
+<summary><strong>Q5: LangServe 대신 다른 프레임워크를 써도 되나요?</strong></summary>
+
+가능합니다. Flask, Django 등 어떤 프레임워크든 Agent를 통합할 수 있습니다.
+
+</details>
 
 ---
 
@@ -1527,31 +1542,111 @@ graph LR
 
 ---
 
+## 🎓 실습 과제
+
+### 과제 1: LangSmith 모니터링 설정
+
+**난이도**: ★★☆☆☆
+
+LangSmith를 설정하여 Agent 실행을 추적하고 분석하세요.
+
+**요구사항**:
+- LangSmith 계정 설정 및 환경변수 구성
+- Agent 실행 trace 수집 및 확인
+- 커스텀 메트릭 대시보드 구성
+
+> **힌트**: `src/part10_deployment/01_langsmith.py`를 참고하세요.
+
+### 과제 2: Agent 평가 테스트 작성
+
+**난이도**: ★★★☆☆
+
+LangSmith Evaluation을 활용하여 Agent 품질을 자동 평가하는 테스트를 작성하세요.
+
+**요구사항**:
+- 데이터셋 생성 및 관리
+- 커스텀 Evaluator 구현
+- LLM-as-judge 평가 파이프라인
+
+> **힌트**: `src/part10_deployment/02_evaluation.py`를 참고하세요.
+
+### 과제 3: Docker 배포 파이프라인
+
+**난이도**: ★★★★☆
+
+FastAPI + Docker를 사용하여 Agent를 컨테이너로 배포하는 파이프라인을 구성하세요.
+
+**요구사항**:
+- Dockerfile 작성 및 이미지 빌드
+- FastAPI 엔드포인트 구성
+- 환경변수 관리 및 보안 설정
+
+> **힌트**: `src/part10_deployment/03_docker.py`를 참고하세요.
+
+---
+
+## 🔗 심화 학습
+
+### 공식 문서
+- [LangSmith 공식 문서](https://docs.smith.langchain.com/)
+- [LangGraph Deploy 가이드](https://langchain-ai.github.io/langgraph/cloud/quick_start/)
+- [LangChain Evaluation 가이드](https://python.langchain.com/docs/concepts/evaluation/)
+
+### 고급 주제
+- **모니터링 고급**: Custom Metrics, Alerting, A/B 테스트
+- **평가 고급**: RAG 평가, Multi-turn 대화 평가, Safety 평가
+- **배포 고급**: Kubernetes, CI/CD, Blue-Green Deploy
+
+### 커뮤니티 리소스
+- [LangChain Blog](https://blog.langchain.dev/)
+- [LangSmith Cookbook](https://github.com/langchain-ai/langsmith-cookbook)
+
+---
+
+## ✅ 체크리스트
+
+이 파트를 완료했다면 다음을 할 수 있어야 합니다:
+
+### 모니터링
+- [ ] LangSmith를 설정하고 Agent 실행을 추적할 수 있다
+- [ ] Trace 데이터를 분석하여 성능 병목을 찾을 수 있다
+- [ ] 커스텀 메트릭을 정의하고 모니터링할 수 있다
+
+### 평가
+- [ ] 평가 데이터셋을 생성하고 관리할 수 있다
+- [ ] 커스텀 Evaluator를 구현할 수 있다
+- [ ] LLM-as-judge 패턴으로 자동 평가를 실행할 수 있다
+
+### 배포
+- [ ] FastAPI로 Agent API를 구현할 수 있다
+- [ ] Docker로 Agent를 컨테이너화할 수 있다
+- [ ] 프로덕션 환경의 보안 및 성능을 고려할 수 있다
+
+---
+
 ## 마치며
 
-**축하합니다!** 🎉
-
-LangChain AI Agent 마스터 교안 10개 파트를 모두 완료했습니다!
+축하합니다! LangChain AI Agent 마스터 교안 10개 파트를 모두 완료했습니다!
 
 ### 배운 내용 요약
 
-**Part 1-3**: Agent 기초와 첫 Agent 만들기
-**Part 4-5**: Memory와 Middleware로 고급 기능
-**Part 6-8**: Context, Multi-Agent, RAG/MCP
-**Part 9**: Streaming, HITL, Structured Output
-**Part 10**: 배포, 테스팅, 모니터링
+| 파트 | 주제 | 핵심 내용 |
+|------|------|-----------|
+| **Part 1-3** | Agent 기초 | 첫 Agent 만들기, 도구, 그래프 |
+| **Part 4-5** | 고급 기능 | Memory, Middleware |
+| **Part 6-8** | 확장 | Context, Multi-Agent, RAG/MCP |
+| **Part 9** | 프로덕션 | Streaming, HITL, Structured Output |
+| **Part 10** | 배포 | 모니터링, 테스팅, 배포 |
 
 ### 다음 단계
 
-1. **실습 프로젝트**: 10개 파트의 실습 과제 완료
+1. **실습 프로젝트**: 4개 미니 프로젝트 완료 (`projects/` 디렉토리)
 2. **개인 프로젝트**: 실제 문제를 해결하는 Agent 개발
 3. **커뮤니티 참여**: LangChain Discord, GitHub 이슈
 4. **최신 정보**: 공식 문서와 블로그 팔로우
 
-### 추가 학습 자료
+**학습 진도**: ▓▓▓▓▓▓▓▓▓▓ 100% (Part 10/10 완료)
 
-- [LangChain 공식 문서](https://python.langchain.com/)
-- [LangGraph 문서](https://langchain-ai.github.io/langgraph/)
-- [LangSmith 문서](https://docs.smith.langchain.com/)
+---
 
-**Happy Building!** 🚀
+*마지막 업데이트: 2025-02-06*

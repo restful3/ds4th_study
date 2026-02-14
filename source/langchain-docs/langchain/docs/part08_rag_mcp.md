@@ -2,7 +2,7 @@
 
 > 📚 **학습 시간**: 약 4-5시간
 > 🎯 **난이도**: ⭐⭐⭐⭐☆ (고급)
-> 📖 **공식 문서**: [28-retrieval.md](/official/28-retrieval.md), [20-model-context-protocol.md](/official/20-model-context-protocol.md)
+> 📖 **공식 문서**: [28-retrieval.md](/official/28-retrieval_ko.md), [20-model-context-protocol.md](/official/20-model-context-protocol_ko.md)
 > 💻 **예제 코드**: [part08_rag_mcp 디렉토리](/src/part08_rag_mcp/)
 
 ---
@@ -1860,27 +1860,31 @@ results = vectorstore.similarity_search(
 
 ---
 
-## ❓ FAQ
+## ❓ 자주 묻는 질문
 
-### Q1: RAG vs Fine-tuning 언제 사용?
+<details>
+<summary><strong>Q1: RAG vs Fine-tuning 언제 사용하나요?</strong></summary>
 
-**A**:
 - **RAG 사용**: 데이터가 자주 변경되거나, 최신 정보 필요, 출처 추적 필요
 - **Fine-tuning 사용**: 특정 스타일/톤 학습, 도메인 특화 언어, 고정된 지식
 
 대부분의 경우 RAG가 더 적합합니다. 비용이 낮고 업데이트가 쉽기 때문입니다.
 
-### Q2: Vector Store 어떤 것을 선택?
+</details>
 
-**A**:
+<details>
+<summary><strong>Q2: Vector Store 어떤 것을 선택하나요?</strong></summary>
+
 - **프로토타입/개발**: FAISS (무료, 빠름)
 - **중소규모 프로덕션**: Chroma (관리 쉬움)
 - **대규모 프로덕션**: Pinecone, Weaviate (확장성)
 - **온프레미스 필요**: Qdrant, Weaviate
 
-### Q3: MCP vs 일반 API 호출의 차이?
+</details>
 
-**A**:
+<details>
+<summary><strong>Q3: MCP vs 일반 API 호출의 차이는?</strong></summary>
+
 **MCP 장점**:
 - 표준화된 인터페이스
 - 도구 메타데이터 자동 제공
@@ -1893,9 +1897,11 @@ results = vectorstore.similarity_search(
 
 복잡한 시스템은 MCP, 간단한 통합은 일반 API 권장
 
-### Q4: 청킹 크기를 어떻게 결정?
+</details>
 
-**A**:
+<details>
+<summary><strong>Q4: 청킹 크기를 어떻게 결정하나요?</strong></summary>
+
 1. **문서 타입 고려**:
    - FAQ, 짧은 답변: 200-500
    - 일반 문서: 1000-1500
@@ -1908,17 +1914,21 @@ results = vectorstore.similarity_search(
        # 최적 크기 선택
    ```
 
-3. **LLM 컨텍스트 고려**: 검색 결과 k개 × 청크 크기가 컨텍스트 윈도우를 넘지 않게
+3. **LLM 컨텍스트 고려**: 검색 결과 k개 x 청크 크기가 컨텍스트 윈도우를 넘지 않게
 
-### Q5: RAG 검색 품질이 낮을 때?
+</details>
 
-**A**:
+<details>
+<summary><strong>Q5: RAG 검색 품질이 낮을 때 어떻게 하나요?</strong></summary>
+
 1. **청킹 전략 개선**: 크기, 겹침 조정
 2. **Hybrid 검색 사용**: 벡터 + 키워드
 3. **쿼리 개선**: Agentic RAG로 쿼리 재작성
 4. **Embedding 모델 변경**: 더 강력한 모델 시도
 5. **메타데이터 필터링**: 검색 범위 좁히기
 6. **재순위화(Reranking)**: 검색 후 결과 재정렬
+
+</details>
 
 ---
 
@@ -1956,7 +1966,7 @@ results = vectorstore.similarity_search(
 
 ---
 
-## 📚 추가 학습 자료
+## 🔗 심화 학습
 
 ### 공식 문서
 - [LangChain Retrieval 가이드](https://python.langchain.com/docs/concepts/retrieval/)

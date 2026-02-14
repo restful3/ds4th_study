@@ -2,7 +2,7 @@
 
 > 📚 **학습 시간**: 약 3-4시간
 > 🎯 **난이도**: ⭐⭐☆☆☆ (초급)
-> 📖 **공식 문서**: [07-models.md](/official/07-models.md), [08-messages.md](/official/08-messages.md), [09-tools.md](/official/09-tools.md)
+> 📖 **공식 문서**: [07-models.md](/official/07-models_ko.md), [08-messages.md](/official/08-messages_ko.md), [09-tools.md](/official/09-tools_ko.md)
 > 💻 **예제 코드**: [part02_fundamentals 디렉토리](/src/part02_fundamentals/)
 
 ---
@@ -60,7 +60,7 @@ graph LR
     style F fill:#e3f2fd,stroke:#0d47a1
 ```
 
-> 📖 **공식 문서**: [07-models.md](/official/07-models.md#basic-usage)
+> 📖 **공식 문서**: [07-models.md](/official/07-models_ko.md#기본-사용법)
 
 #### 핵심 특징
 
@@ -164,7 +164,7 @@ model = ChatAnthropic(model="claude-sonnet-4-5-20250929")
 - `claude-sonnet-4-5-20250929`: 균형잡힌 성능
 - `claude-haiku-4-5-20251001`: 빠르고 저렴한 모델
 
-> 📖 **공식 문서**: [07-models.md](/official/07-models.md#anthropic)
+> 📖 **공식 문서**: [07-models.md](/official/07-models_ko.md#anthropic)
 
 #### Google Gemini 설정
 
@@ -455,7 +455,7 @@ graph LR
 - **Content (내용)**: 실제 메시지 내용 (텍스트, 이미지, 오디오 등)
 - **Metadata (메타데이터)**: ID, 토큰 사용량, 응답 정보 등
 
-> 📖 **공식 문서**: [08-messages.md](/official/08-messages.md#message-types)
+> 📖 **공식 문서**: [08-messages.md](/official/08-messages_ko.md#메시지-유형)
 
 ### 2.2 SystemMessage - 시스템 지시사항
 
@@ -508,7 +508,7 @@ response = model.invoke(messages)
 2. 너무 긴 시스템 메시지는 토큰을 낭비할 수 있습니다
 3. 명확하고 구체적인 지시가 더 좋은 결과를 만듭니다
 
-> 📖 **공식 문서**: [08-messages.md](/official/08-messages.md#system-message)
+> 📖 **공식 문서**: [08-messages.md](/official/08-messages_ko.md#system-메시지)
 
 ### 2.3 HumanMessage - 사용자 입력
 
@@ -551,7 +551,7 @@ human_msg = HumanMessage(content=[
 response = model.invoke([human_msg])
 ```
 
-> 📖 **공식 문서**: [08-messages.md](/official/08-messages.md#human-message)
+> 📖 **공식 문서**: [08-messages.md](/official/08-messages_ko.md#human-메시지)
 
 ### 2.4 AIMessage - AI 응답
 
@@ -616,7 +616,7 @@ response = model.invoke(messages)
 print(response.content)  # "2+2는 4입니다."
 ```
 
-> 📖 **공식 문서**: [08-messages.md](/official/08-messages.md#ai-message)
+> 📖 **공식 문서**: [08-messages.md](/official/08-messages_ko.md#ai-메시지)
 
 ### 2.5 ToolMessage - 도구 실행 결과
 
@@ -661,7 +661,7 @@ print(response.content)
 - `tool_call_id`: AIMessage의 tool_call ID와 일치해야 함
 - `name`: 호출된 도구 이름
 
-> 📖 **공식 문서**: [08-messages.md](/official/08-messages.md#tool-message)
+> 📖 **공식 문서**: [08-messages.md](/official/08-messages_ko.md#tool-메시지)
 
 ### 2.6 Dictionary 포맷 사용하기
 
@@ -705,7 +705,7 @@ messages = [
 - **Message 객체**: 타입 안정성, IDE 자동완성, 멀티모달, 메타데이터 필요 시
 - **Dictionary**: 간단한 프로토타입, 외부 API 연동, JSON 직렬화 필요 시
 
-> 📖 **공식 문서**: [08-messages.md](/official/08-messages.md#dictionary-format)
+> 📖 **공식 문서**: [08-messages.md](/official/08-messages_ko.md#딕셔너리-형식)
 
 ### 2.7 Multimodal Content Handling
 
@@ -1023,7 +1023,7 @@ sequenceDiagram
 1. **스키마 (Schema)**: 도구 이름, 설명, 파라미터 정의
 2. **함수 (Function)**: 실제 실행할 Python 함수 또는 코루틴
 
-> 📖 **공식 문서**: [09-tools.md](/official/09-tools.md#create-tools)
+> 📖 **공식 문서**: [09-tools.md](/official/09-tools_ko.md#tool-생성)
 
 ### 3.2 @tool 데코레이터로 도구 만들기
 
@@ -1117,7 +1117,7 @@ def get_customer_data(customer_id: str) -> str:
 3. **파라미터 설명**: 각 파라미터의 의미와 예시 제공
 4. **반환값 설명**: 어떤 형식으로 무엇을 반환하는지 명시
 
-> 📖 **공식 문서**: [09-tools.md](/official/09-tools.md#basic-tool-definition)
+> 📖 **공식 문서**: [09-tools.md](/official/09-tools_ko.md#기본-tool-정의)
 
 ### 3.4 Type Hints의 역할
 
@@ -1653,7 +1653,7 @@ sequenceDiagram
     Agent->>User: 최종 답변
 ```
 
-> 📖 **공식 문서**: [07-models.md](/official/07-models.md#tool-calling)
+> 📖 **공식 문서**: [07-models.md](/official/07-models_ko.md#tool-호출)
 
 ### 6.2 모델이 도구를 선택하는 과정
 
@@ -1778,7 +1778,7 @@ for tool_call in response.tool_calls:
     results.append(result)
 ```
 
-> 📖 **공식 문서**: [07-models.md](/official/07-models.md#parallel-tool-calls)
+> 📖 **공식 문서**: [07-models.md](/official/07-models_ko.md#parallel-tool-calls)
 
 ---
 
@@ -2018,7 +2018,7 @@ from langchain_openai import ChatOpenAI
 model = ChatOpenAI(model="gpt-4o-mini", use_responses_api=True)
 ```
 
-📖 [07-models.md](/official/07-models.md#initialize-a-model)
+📖 [07-models.md](/official/07-models_ko.md#모델-초기화)
 </details>
 
 <details>
@@ -2049,7 +2049,7 @@ def search_database(query: str, limit: int = 10) -> str:
     return f"Results for {query}"
 ```
 
-📖 [09-tools.md](/official/09-tools.md#basic-tool-definition)
+📖 [09-tools.md](/official/09-tools_ko.md#기본-tool-정의)
 </details>
 
 <details>
@@ -2078,7 +2078,7 @@ for chunk in model.stream(
         print(chunk.usage_metadata)
 ```
 
-📖 [07-models.md](/official/07-models.md#token-usage)
+📖 [07-models.md](/official/07-models_ko.md#토큰-사용량)
 </details>
 
 <details>
@@ -2112,7 +2112,7 @@ messages = [
 
 **추천**: 실무에서는 Message 객체 사용을 권장합니다.
 
-📖 [08-messages.md](/official/08-messages.md#dictionary-format)
+📖 [08-messages.md](/official/08-messages_ko.md#딕셔너리-형식)
 </details>
 
 <details>
@@ -2142,7 +2142,7 @@ def risky_operation(param: str) -> str:
 - Tool이 에러 메시지를 반환하면 모델이 이를 읽고 사용자에게 설명
 - 또는 다른 방법으로 재시도 가능
 
-📖 [09-tools.md](/official/09-tools.md)
+📖 [09-tools.md](/official/09-tools_ko.md)
 </details>
 
 ---
@@ -2153,18 +2153,18 @@ def risky_operation(param: str) -> str:
 
 ### 1. 공식 문서 심화
 
-- [07-models.md - 고급 기능](/official/07-models.md#advanced-topics)
+- [07-models.md - 고급 기능](/official/07-models_ko.md#고급-주제)
   - Structured Output (구조화된 출력)
   - Multimodal (멀티모달)
   - Rate Limiting (속도 제한)
   - Prompt Caching (프롬프트 캐싱)
 
-- [08-messages.md - Content Blocks](/official/08-messages.md#content-block-reference)
+- [08-messages.md - Content Blocks](/official/08-messages_ko.md#콘텐츠-블록-참조)
   - 표준 콘텐츠 블록
   - 멀티모달 콘텐츠
   - 스트리밍과 청크
 
-- [09-tools.md - Runtime Context](/official/09-tools.md#accessing-context)
+- [09-tools.md - Runtime Context](/official/09-tools_ko.md#컨텍스트-접근)
   - ToolRuntime으로 State 접근
   - Context와 Store 사용
   - Stream Writer

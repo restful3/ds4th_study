@@ -2,7 +2,7 @@
 
 > 📚 **학습 시간**: 약 3-4시간
 > 🎯 **난이도**: ⭐⭐⭐⭐☆ (고급)
-> 📖 **공식 문서**: [18-runtime.md](/official/18-runtime.md), [19-context-engineering.md](/official/19-context-engineering.md)
+> 📖 **공식 문서**: [18-runtime.md](/official/18-runtime_ko.md), [19-context-engineering.md](/official/19-context-engineering_ko.md)
 > 💻 **예제 코드**: [part06_context 디렉토리](/src/part06_context/)
 
 ---
@@ -156,7 +156,7 @@ class Context:
 
 많은 개발자가 Context와 State를 헷갈려합니다. 이 둘의 차이를 정확히 이해하는 것이 **멀티턴 대화 구현의 핵심**입니다.
 
-> 📖 **공식 문서**: [18-runtime.md](/official/18-runtime.md)
+> 📖 **공식 문서**: [18-runtime.md](/official/18-runtime_ko.md)
 
 #### 핵심 차이점
 
@@ -1403,12 +1403,72 @@ def gradual_rollout(request, handler):
 
 ---
 
+## ❓ 자주 묻는 질문
+
+<details>
+<summary><strong>Q1: Context와 State의 차이가 뭔가요?</strong></summary>
+
+**A**:
+- **Context**: `@dataclass`로 정의하며 Agent 실행 시 외부에서 주입. 읽기 전용 의존성 주입
+- **State**: Checkpointer에 저장되는 대화 상태. Agent 실행 중 변경 가능
+
+Context는 "환경 설정", State는 "대화 기록"으로 이해하면 됩니다.
+</details>
+
+<details>
+<summary><strong>Q2: Dynamic Prompt vs System Prompt, 어떤 걸 써야 하나요?</strong></summary>
+
+**A**:
+- **System Prompt**: 고정된 지침. 모든 대화에 동일하게 적용
+- **Dynamic Prompt**: 상황(사용자, 시간, 권한 등)에 따라 변경
+
+대부분은 System Prompt로 충분합니다. 사용자별 다른 동작이 필요하면 Dynamic Prompt를 사용하세요.
+</details>
+
+<details>
+<summary><strong>Q3: ToolRuntime으로 어떤 것들에 접근할 수 있나요?</strong></summary>
+
+**A**:
+- `runtime.context` - 주입된 Context 객체
+- `runtime.store` - InMemoryStore (장기 메모리)
+- `runtime.config` - 설정 정보 (thread_id 등)
+
+도구 함수에서 `ToolRuntime`을 타입 힌트로 선언하면 자동 주입됩니다.
+</details>
+
+<details>
+<summary><strong>Q4: 모델을 동적으로 전환하면 비용이 절감되나요?</strong></summary>
+
+**A**:
+네, 효과적입니다. 간단한 질문은 GPT-4o-mini, 복잡한 분석은 Claude 3.5 Sonnet을 사용하고, 예산 소진 시 자동으로 저렴한 모델로 전환하면 30-50% 비용 절감이 가능합니다.
+</details>
+
+---
+
+## 🔗 심화 학습
+
+1. **공식 문서 심화**
+   - [18-runtime.md](/official/18-runtime_ko.md) - Runtime 객체 상세
+   - [19-context-engineering.md](/official/19-context-engineering_ko.md) - Context 고급 패턴
+   - [14-middleware-overview.md](/official/14-middleware-overview_ko.md) - 미들웨어와 Context 연계
+
+2. **고급 패턴**
+   - A/B 테스트를 위한 Context 활용
+   - Feature Flag 기반 도구 활성화
+   - 멀티테넌트 Agent 아키텍처
+
+3. **커뮤니티 리소스**
+   - [LangChain Blog - Context Engineering](https://blog.langchain.dev)
+   - [LangChain Discord](https://discord.gg/langchain)
+
+---
+
 ## 📚 참고 자료
 
 **공식 문서**:
-- [Runtime](/official/18-runtime.md)
-- [Context Engineering](/official/19-context-engineering.md)
-- [Middleware](/official/middleware.md)
+- [Runtime](/official/18-runtime_ko.md)
+- [Context Engineering](/official/19-context-engineering_ko.md)
+- [Middleware](/official/14-middleware-overview_ko.md)
 
 **예제 코드**:
 - [01_context_overview.py](/src/part06_context/01_context_overview.py)

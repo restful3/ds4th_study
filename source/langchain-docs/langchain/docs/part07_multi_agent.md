@@ -2,7 +2,7 @@
 
 > 📚 **학습 시간**: 약 4-5시간
 > 🎯 **난이도**: ⭐⭐⭐⭐☆ (고급)
-> 📖 **공식 문서**: [22-multi-agent.md](/official/22-multi-agent.md), [23-subagents.md](/official/23-subagents.md), [24-handoffs.md](/official/24-handoffs.md), [25-skills.md](/official/25-skills.md), [26-router.md](/official/26-router.md), [27-custom-workflow.md](/official/27-custom-workflow.md)
+> 📖 **공식 문서**: [22-multi-agent.md](/official/22-multi-agent_ko.md), [23-subagents.md](/official/23-subagents_ko.md), [24-handoffs.md](/official/24-handoffs_ko.md), [25-skills.md](/official/25-skills_ko.md), [26-router.md](/official/26-router_ko.md), [27-custom-workflow.md](/official/27-custom-workflow_ko.md)
 > 💻 **예제 코드**: [part07_multi_agent 디렉토리](/src/part07_multi_agent/)
 
 ---
@@ -2092,15 +2092,74 @@ Part 8에서는 RAG (Retrieval-Augmented Generation)와 MCP (Model Context Proto
 
 ---
 
+## ❓ 자주 묻는 질문
+
+<details>
+<summary><strong>Q1: 어떤 멀티에이전트 패턴을 선택해야 하나요?</strong></summary>
+
+**A**:
+- **Subagents**: 작업을 단계별로 분해 가능할 때 (리서치 -> 분석 -> 작성)
+- **Handoffs**: 순차적 에스컬레이션이 필요할 때 (1차 -> 2차 -> 전문가)
+- **Router**: 입력 유형별 분류가 필요할 때 (기술/결제/일반 문의)
+- **Skills**: 재사용 가능한 모듈이 필요할 때 (번역, 요약, 검색)
+- **LangGraph**: 복잡한 상태 전환, 사이클이 필요할 때
+</details>
+
+<details>
+<summary><strong>Q2: Subagent를 비동기로 실행하면 얼마나 빨라지나요?</strong></summary>
+
+**A**:
+독립적인 작업이 많을수록 효과적입니다. 예를 들어 3개 독립 검색을 순차 실행하면 15초, 비동기면 5초로 줄어듭니다. 단, LLM API 호출 제한(rate limit)을 고려해야 합니다.
+</details>
+
+<details>
+<summary><strong>Q3: Handoffs에서 무한 루프가 발생할 수 있나요?</strong></summary>
+
+**A**:
+가능합니다. Agent A -> B -> A 순환이 생길 수 있습니다. 방지법:
+1. `max_turns` 제한 설정
+2. 전환 이력 추적하여 중복 방지
+3. 에스컬레이션 전용 Agent로 단방향 설계
+</details>
+
+<details>
+<summary><strong>Q4: 멀티에이전트 시스템의 디버깅은 어떻게 하나요?</strong></summary>
+
+**A**:
+1. **LangSmith**: 각 Agent의 실행 흐름을 시각적으로 추적
+2. **로깅**: 각 Agent 전환 시점에 로그 출력
+3. **단위 테스트**: 각 Agent를 독립적으로 테스트한 후 통합
+
+> 📖 [Part 10: 배포와 관측성](/docs/part10_deployment.md)에서 자세히 다룹니다.
+</details>
+
+---
+
+## 🔗 심화 학습
+
+1. **공식 문서 심화**
+   - [22-multi-agent.md](/official/22-multi-agent_ko.md) - 패턴 비교 및 선택 가이드
+   - [27-custom-workflow.md](/official/27-custom-workflow_ko.md) - LangGraph 고급 워크플로우
+
+2. **관련 논문**
+   - [AutoGen: Enabling Next-Gen LLM Applications](https://arxiv.org/abs/2308.08155) - 멀티에이전트 대화
+   - [Generative Agents](https://arxiv.org/abs/2304.03442) - 에이전트 사회 시뮬레이션
+
+3. **커뮤니티 리소스**
+   - [LangGraph 문서](https://langchain-ai.github.io/langgraph/)
+   - [LangChain Discord #multi-agent](https://discord.gg/langchain)
+
+---
+
 ## 📚 참고 자료
 
 **공식 문서**:
-- [22-multi-agent.md](/official/22-multi-agent.md) - 멀티에이전트 개요
-- [23-subagents.md](/official/23-subagents.md) - Subagents 패턴
-- [24-handoffs.md](/official/24-handoffs.md) - Handoffs 패턴
-- [25-skills.md](/official/25-skills.md) - Skills 패턴
-- [26-router.md](/official/26-router.md) - Router 패턴
-- [27-custom-workflow.md](/official/27-custom-workflow.md) - LangGraph 커스텀 워크플로우
+- [22-multi-agent.md](/official/22-multi-agent_ko.md) - 멀티에이전트 개요
+- [23-subagents.md](/official/23-subagents_ko.md) - Subagents 패턴
+- [24-handoffs.md](/official/24-handoffs_ko.md) - Handoffs 패턴
+- [25-skills.md](/official/25-skills_ko.md) - Skills 패턴
+- [26-router.md](/official/26-router_ko.md) - Router 패턴
+- [27-custom-workflow.md](/official/27-custom-workflow_ko.md) - LangGraph 커스텀 워크플로우
 
 **예제 코드**:
 - [01_why_multi_agent.py](/src/part07_multi_agent/01_why_multi_agent.py)

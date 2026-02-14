@@ -2,7 +2,7 @@
 
 > 📚 **학습 시간**: 약 3-4시간
 > 🎯 **난이도**: ⭐⭐☆☆☆ (초급)
-> 📖 **공식 문서**: [06-agents.md](/official/06-agents.md), [03-quickstart.md](/official/03-quickstart.md)
+> 📖 **공식 문서**: [06-agents.md](/official/06-agents_ko.md), [03-quickstart.md](/official/03-quickstart_ko.md)
 > 💻 **예제 코드**: [part03_first_agent 디렉토리](/src/part03_first_agent/)
 
 ---
@@ -99,7 +99,7 @@ graph LR
 3. **추론**: 각 단계에서 무엇을 해야 할지 생각
 4. **적응성**: 도구 실행 결과에 따라 전략 조정
 
-> 📖 **공식 문서**: [06-agents.md](/official/06-agents.md#agents) - Agent 개념 설명
+> 📖 **공식 문서**: [06-agents.md](/official/06-agents_ko.md#agent) - Agent 개념 설명
 
 ### 1.2 create_agent() API
 
@@ -166,7 +166,7 @@ flowchart TD
     style output fill:#e8f5e9,stroke:#2e7d32
 ```
 
-> 📖 **공식 문서**: [06-agents.md](/official/06-agents.md) 라인 9-26 - Agent 실행 흐름도
+> 📖 **공식 문서**: [06-agents.md](/official/06-agents_ko.md) 라인 9-26 - Agent 실행 흐름도
 
 **실행 루프의 단계**:
 
@@ -276,7 +276,7 @@ print(result["messages"][-1].content)
 3. 명확한 System Prompt로 Agent 성격 정의
 4. 구조화된 응답 형식 (ResponseFormat)
 
-> 📖 **공식 문서**: [03-quickstart.md](/official/03-quickstart.md) 라인 46-194 - 실전 날씨 Agent 예제
+> 📖 **공식 문서**: [03-quickstart.md](/official/03-quickstart_ko.md) 라인 46-194 - 실전 날씨 Agent 예제
 
 ### 2.2 도구 작성
 
@@ -334,7 +334,7 @@ tools = [get_weather_for_location, get_user_location]
 3. **ToolRuntime[Context]**: 타입 힌트로 컨텍스트 구조 명시
 4. **명확한 docstring**: LLM이 도구를 올바르게 사용하도록 안내
 
-> 📖 **공식 문서**: [03-quickstart.md](/official/03-quickstart.md) 라인 77-98 - 컨텍스트를 사용하는 도구
+> 📖 **공식 문서**: [03-quickstart.md](/official/03-quickstart_ko.md) 라인 77-98 - 컨텍스트를 사용하는 도구
 
 ### 2.3 Agent 생성
 
@@ -380,8 +380,8 @@ agent = create_agent(
 4. **조건부 로직**: "~하면 ~하세요" 형태의 지침
 5. **응답 스타일**: "친근하고 재치있게" 같은 톤 지정
 
-> 📖 **공식 문서**: [03-quickstart.md](/official/03-quickstart.md) 라인 57-69 - System Prompt 정의
-> 📖 **공식 문서**: [06-agents.md](/official/06-agents.md) 라인 242-283 - System Prompt 고급 기법
+> 📖 **공식 문서**: [03-quickstart.md](/official/03-quickstart_ko.md) 라인 57-69 - System Prompt 정의
+> 📖 **공식 문서**: [06-agents.md](/official/06-agents_ko.md) 라인 242-283 - System Prompt 고급 기법
 
 ### 2.4 Agent 실행
 
@@ -436,7 +436,7 @@ print(response['structured_response'])
 ```
 
 > 💻 **예제 코드**: [02_weather_agent.py](/src/part03_first_agent/02_weather_agent.py)
-> 📖 **공식 문서**: [03-quickstart.md](/official/03-quickstart.md) 라인 149-192 - 전체 예제
+> 📖 **공식 문서**: [03-quickstart.md](/official/03-quickstart_ko.md) 라인 149-192 - 전체 예제
 
 ### 2.5 결과 분석
 
@@ -519,7 +519,7 @@ graph TD
     style F fill:#fce4ec,stroke:#c2185b
 ```
 
-> 📖 **공식 문서**: [06-agents.md](/official/06-agents.md) 라인 178-237 - ReAct 패턴 설명
+> 📖 **공식 문서**: [06-agents.md](/official/06-agents_ko.md) 라인 178-237 - ReAct 패턴 설명
 
 **ReAct의 장점**:
 1. **해석 가능성**: 각 단계의 추론 과정을 확인 가능
@@ -584,7 +584,7 @@ tool_calls = [{"name": "get_weather", "args": {"city": "서울"}}]
 # Result: "맑음, 22°C"
 ```
 
-> 📖 **공식 문서**: [06-agents.md](/official/06-agents.md) 라인 102-108 - 도구의 병렬 및 순차 실행
+> 📖 **공식 문서**: [06-agents.md](/official/06-agents_ko.md) 라인 102-108 - 도구의 병렬 및 순차 실행
 
 ### 3.4 Observation (관찰)
 
@@ -726,7 +726,7 @@ print("=" * 70)
 ```
 
 > 💻 **예제 코드**: [03_react_pattern.py](/src/part03_first_agent/03_react_pattern.py)
-> 📖 **공식 문서**: [06-agents.md](/official/06-agents.md) 라인 178-237 - 실제 ReAct 예제
+> 📖 **공식 문서**: [06-agents.md](/official/06-agents_ko.md) 라인 178-237 - 실제 ReAct 예제
 
 **ReAct 패턴의 실전 활용**:
 1. **멀티스텝 검색**: 검색 → 필터링 → 상세 조회
@@ -755,7 +755,7 @@ print("=" * 70)
 - 사용자 경험 향상
 - 브랜드 아이덴티티 반영
 
-> 📖 **공식 문서**: [06-agents.md](/official/06-agents.md) 라인 242-283 - System Prompt 상세 가이드
+> 📖 **공식 문서**: [06-agents.md](/official/06-agents_ko.md) 라인 242-283 - System Prompt 상세 가이드
 
 ### 4.2 좋은 System Prompt 작성 팁
 
@@ -1031,7 +1031,7 @@ Agent: [도구 결과] 부산: 흐림, 20도
 Agent: "서울은 맑고 22도, 부산은 흐리고 20도입니다. 서울이 더 따뜻합니다."
 ```
 
-> 📖 **공식 문서**: [06-agents.md](/official/06-agents.md) 라인 461-476 - Streaming 가이드
+> 📖 **공식 문서**: [06-agents.md](/official/06-agents_ko.md) 라인 461-476 - Streaming 가이드
 
 ### 5.2 stream() vs invoke()
 
@@ -1121,7 +1121,7 @@ for chunk in agent.stream(
 **장점**: UI에 직접 표시하기 쉬움
 **단점**: 메시지 외 상태는 볼 수 없음
 
-> 📖 **공식 문서**: [Streaming](/oss/python/langchain/streaming) - 상세한 스트리밍 가이드
+> 📖 **공식 문서**: [스트리밍 개요](/official/11-streaming-overview_ko.md) - 상세한 스트리밍 가이드
 
 ### 5.4 실시간 응답 구현
 
@@ -1907,7 +1907,7 @@ from langgraph.graph import StateGraph
 - **create_agent()**: 대부분의 경우 (80%)
 - **LangGraph**: 복잡한 제어 흐름, 멀티 에이전트, 조건부 라우팅 등
 
-LangGraph는 [Part 5: Agent 고급 패턴](/docs/part05_advanced_patterns.md)에서 자세히 다룹니다.
+LangGraph는 [Part 5: 미들웨어 & 고급 패턴](/docs/part05_middleware.md)에서 자세히 다룹니다.
 </details>
 
 <details>
@@ -1951,7 +1951,7 @@ LangGraph는 [Part 5: Agent 고급 패턴](/docs/part05_advanced_patterns.md)에
    agent = create_agent(model, tools=tools, checkpointer=checkpointer)
    ```
 
-더 자세한 내용은 [Appendix B: 프로덕션 배포](/docs/appendix/production_deployment.md)를 참고하세요.
+더 자세한 내용은 [Part 10: 배포 & 운영](/docs/part10_deployment.md)을 참고하세요.
 </details>
 
 ---
@@ -1961,9 +1961,9 @@ LangGraph는 [Part 5: Agent 고급 패턴](/docs/part05_advanced_patterns.md)에
 이 파트의 기초를 마스터했다면:
 
 1. **공식 문서 심화**
-   - [06-agents.md](/official/06-agents.md#advanced-concepts) - Structured Output, Memory, Middleware
-   - [Streaming](/oss/python/langchain/streaming) - 고급 스트리밍 기법
-   - [Middleware](/oss/python/langchain/middleware) - 커스텀 미들웨어 작성
+   - [06-agents.md](/official/06-agents_ko.md#고급-개념) - Structured Output, Memory, Middleware
+   - [스트리밍 개요](/official/11-streaming-overview_ko.md) - 고급 스트리밍 기법
+   - [미들웨어 개요](/official/14-middleware-overview_ko.md) - 커스텀 미들웨어 작성
 
 2. **관련 논문**
    - [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629) - ReAct 패턴의 원조 논문
@@ -1976,7 +1976,7 @@ LangGraph는 [Part 5: Agent 고급 패턴](/docs/part05_advanced_patterns.md)에
 
 4. **다음 단계 프로젝트**
    - [Project 1: 날씨 비서 Agent](/projects/01_weather_assistant/) (⭐⭐⭐)
-   - [Project 2: 고객 지원 Agent](/projects/02_customer_support/) (⭐⭐⭐⭐)
+   - [Project 2: 문서 QA Agent](/projects/02_document_qa/) (⭐⭐⭐⭐)
 
 ---
 
@@ -2000,7 +2000,7 @@ Part 3를 완료하기 전에 확인하세요:
 ## 다음 단계
 
 ✅ Part 3 완료!
-➡️ [Part 4: Memory & Context Management로 이동](./part04_memory_context.md)
+➡️ [Part 4: Memory & Context Management로 이동](./part04_memory.md)
 
 **Part 4 미리보기**:
 - 대화 기록 관리 (Short-term Memory)
