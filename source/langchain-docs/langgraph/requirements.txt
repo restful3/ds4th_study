@@ -1,0 +1,35 @@
+# LangGraph 핵심 패키지
+langgraph>=0.2.0,<0.3.0
+langchain-core>=0.3.0,<0.4.0
+langgraph-checkpoint>=2.0.0,<3.0.0
+
+# LLM 프로바이더
+langchain-anthropic>=0.3.0,<0.4.0
+langchain-openai>=0.2.0,<0.3.0
+langchain-google-genai>=2.0.0,<3.0.0
+
+# 체크포인터 (영속성)
+langgraph-checkpoint-sqlite>=2.0.0,<3.0.0
+langgraph-checkpoint-postgres>=2.0.0,<3.0.0
+
+# 유틸리티
+python-dotenv>=1.0.0
+pydantic>=2.0.0,<3.0.0
+typing-extensions>=4.0.0
+
+# 시각화 (선택사항)
+# graphviz를 시스템에 먼저 설치해야 합니다
+# macOS: brew install graphviz
+# Ubuntu: sudo apt-get install graphviz
+# Windows: https://graphviz.org/download/
+
+# 개발 도구 (선택사항)
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.0.0
+
+# Jupyter (선택사항 - 노트북 환경)
+jupyter>=1.0.0
+ipython>=8.0.0
