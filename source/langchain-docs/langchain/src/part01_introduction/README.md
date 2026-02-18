@@ -32,14 +32,16 @@
 ## 📁 예제 파일
 
 ### 01_hello_langchain.py
-**난이도**: ⭐☆☆☆☆ | **예상 시간**: 10분
+**난이도**: ⭐☆☆☆☆ | **예상 시간**: 15분
 
-첫 번째 LangChain 애플리케이션을 실행합니다.
+LangChain의 핵심 기능을 5개 예제로 체험합니다.
 
 **학습 내용**:
-- LangChain 기본 import
-- 간단한 LLM 호출
-- 응답 처리
+- 단순 LLM 호출과 그 한계
+- `create_agent()`로 도구를 사용하는 Agent 만들기
+- Agent vs 단순 LLM 호출 비교
+- 다양한 LLM 프로바이더 전환
+- System Prompt로 Agent 성격 바꾸기
 
 **실행 방법**:
 ```bash
@@ -48,9 +50,10 @@ python 01_hello_langchain.py
 ```
 
 **주요 코드 개념**:
-- `ChatOpenAI` 초기화
-- 메시지 전송 및 응답 받기
-- 기본적인 에러 핸들링
+- `ChatOpenAI` 초기화 및 기본 메시지 전송
+- `@tool` 데코레이터로 도구 정의
+- `create_agent()`로 Agent 생성
+- `system_prompt`로 Agent 행동 제어
 
 ---
 
@@ -84,7 +87,7 @@ python 02_environment_check.py
 
 ```bash
 # 프로젝트 루트에서 실행
-cd /Users/restful3/Desktop/langchain
+cd source/langchain-docs/langchain
 pip install -r src/requirements.txt
 ```
 
@@ -122,8 +125,8 @@ python src/part01_introduction/02_environment_check.py
 - 프로젝트별로 다른 API 키를 사용하는 것이 좋습니다
 
 ### Tip 2: LLM 프로바이더 선택
-- **개발/학습**: OpenAI GPT-4o-mini (저렴, 빠름)
-- **프로덕션**: Anthropic Claude 3.5 Sonnet (정확, 안정적)
+- **개발/학습**: OpenAI gpt-4.1-nano (최저가, 빠름)
+- **프로덕션**: Anthropic Claude Sonnet 4.5 (정확, 안정적)
 - **로컬 테스트**: Ollama (무료, 오프라인)
 
 ### Tip 3: 디버깅
@@ -204,4 +207,4 @@ Part 1을 완료하기 전에 확인하세요:
 
 ---
 
-*마지막 업데이트: 2025-02-06*
+*마지막 업데이트: 2026-02-16*

@@ -32,7 +32,7 @@ import os
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain.tools import tool
-from langchain_core.messages import HumanMessage, ToolMessage
+from langchain.messages import HumanMessage, ToolMessage
 from pydantic import BaseModel, Field
 from typing import Optional
 

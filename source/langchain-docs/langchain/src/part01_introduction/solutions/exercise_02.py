@@ -4,205 +4,196 @@ LangChain AI Agent 마스터 교안
 Part 1: AI Agent의 이해 - 실습 과제 2 해답
 ================================================================================
 
-과제: 온도(Temperature) 파라미터 실험
+과제: 첫 번째 Agent 실행
+
+난이도: ⭐☆☆ (입문)
 
 요구사항:
-1. 같은 질문에 대해 다른 온도 값으로 응답 생성
-2. Temperature 0.0, 0.5, 1.0, 1.5, 2.0으로 테스트
-3. 각 온도에서의 응답 차이를 관찰하고 기록
-4. 결과를 비교하여 출력
+1. 01_hello_langchain.py 읽고 이해하기
+2. 코드 실행하기
+3. 질문을 바꿔서 다시 실행해보기
+
+추가 도전:
+- 도구 설명(docstring)을 변경하면 Agent 응답이 어떻게 달라지는지 관찰
+- system_prompt를 변경하여 Agent의 성격 바꾸기
+
+학습 목표:
+- create_agent()로 Agent를 생성하고 실행하는 방법 이해
+- 도구(Tool)의 docstring이 Agent 행동에 미치는 영향 관찰
+- system_prompt로 Agent의 응답 스타일을 제어하는 방법 체험
 
 ================================================================================
 """
 
 import os
 from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
-from langchain_core.messages import HumanMessage
+from langchain.agents import create_agent
+from langchain_core.tools import tool
 
 # 환경 설정
-load_dotenv()
+load_dotenv(override=True)
+
+if not os.getenv("OPENAI_API_KEY"):
+    print("❌ OPENAI_API_KEY가 설정되지 않았습니다.")
+    print("📝 src/.env 파일을 확인하고 API 키를 설정하세요.")
+    exit(1)
+
 
 # ============================================================================
-# 솔루션: Temperature 실험
+# 도구 정의
 # ============================================================================
 
-def test_temperature(question: str, temperatures=[0.0, 0.5, 1.0, 1.5, 2.0]):
+@tool
+def get_weather(city: str) -> str:
+    """주어진 도시의 날씨를 알려줍니다."""
+    weather_data = {
+        "서울": "맑음, 15°C",
+        "뉴욕": "흐림, 8°C",
+        "샌프란시스코": "화창함, 18°C",
+        "도쿄": "비, 12°C",
+        "런던": "안개, 10°C",
+    }
+    return weather_data.get(city, f"{city}의 날씨 정보를 찾을 수 없습니다.")
+
+
+@tool
+def get_weather_detailed(city: str) -> str:
+    """주어진 도시의 날씨, 습도, 풍속, 체감 온도를 포함한 상세 기상 정보를 제공합니다."""
+    weather_data = {
+        "서울": "맑음, 15°C, 습도 45%, 풍속 5km/h, 체감온도 13°C",
+        "뉴욕": "흐림, 8°C, 습도 70%, 풍속 15km/h, 체감온도 4°C",
+        "샌프란시스코": "화창함, 18°C, 습도 55%, 풍속 10km/h, 체감온도 17°C",
+    }
+    return weather_data.get(city, f"{city}의 날씨 정보를 찾을 수 없습니다.")
+
+
+# ============================================================================
+# 실험 1: 다양한 질문으로 Agent 실행
+# ============================================================================
+
+def experiment_1_different_questions():
     """
-    다양한 temperature 값으로 응답을 생성하고 비교합니다.
-
-    Args:
-        question: 테스트할 질문
-        temperatures: 테스트할 temperature 값 리스트
+    같은 Agent에 다른 질문을 보내어 응답 차이를 관찰합니다.
+    📖 교안: Part 1 > 실습 과제 > 과제 2 - 요구사항 3
     """
+    print("=" * 60)
+    print("실험 1: 다양한 질문으로 Agent 실행")
+    print("=" * 60)
 
-    if not os.getenv("OPENAI_API_KEY"):
-        print("❌ OPENAI_API_KEY가 설정되지 않았습니다.")
-        return
+    agent = create_agent(
+        model="openai:gpt-4.1-nano",
+        tools=[get_weather],
+        system_prompt="당신은 친절한 날씨 도우미입니다.",
+    )
 
-    print("=" * 80)
-    print("🌡️ Temperature 실험")
-    print("=" * 80)
-    print()
-    print(f"📝 질문: {question}")
-    print()
-    print("💡 Temperature란?")
-    print("   - 0에 가까울수록: 결정적, 일관된 응답")
-    print("   - 1에 가까울수록: 균형잡힌 창의성")
-    print("   - 2에 가까울수록: 매우 창의적, 예측 불가능")
-    print()
+    questions = [
+        "서울 날씨는?",
+        "도쿄 날씨 알려줘",
+        "서울이랑 뉴욕 날씨 비교해줘",
+        "파리 날씨 어때?",  # 데이터에 없는 도시
+    ]
 
-    responses = {}
-
-    for temp in temperatures:
-        print("=" * 80)
-        print(f"🌡️ Temperature: {temp}")
-        print("=" * 80)
-
-        llm = ChatOpenAI(
-            model="gpt-4o-mini",
-            temperature=temp,
+    for q in questions:
+        print(f"\n👤 질문: {q}")
+        result = agent.invoke(
+            {"messages": [{"role": "user", "content": q}]}
         )
+        print(f"🤖 응답: {result['messages'][-1].content}")
 
-        try:
-            # 같은 질문을 3번 반복해서 일관성 확인
-            print("\n[3번 반복 테스트]")
-            for i in range(3):
-                response = llm.invoke([HumanMessage(content=question)])
-                print(f"\n응답 {i+1}:")
-                print(response.content)
-
-                # 첫 번째 응답만 저장
-                if i == 0:
-                    responses[temp] = response.content
-
-            print()
-
-        except Exception as e:
-            print(f"❌ 오류: {e}")
-            print()
-
-    # 결과 분석
-    print("\n" + "=" * 80)
-    print("📊 결과 분석")
-    print("=" * 80)
-    print()
-
-    print("🔍 관찰 포인트:")
-    print()
-
-    print("1️⃣ Temperature 0.0:")
-    print("   - 가장 결정적인 응답")
-    print("   - 3번 반복해도 거의 동일한 답변")
-    print("   - 사실 기반 질문에 적합")
-    print()
-
-    print("2️⃣ Temperature 1.0:")
-    print("   - 균형잡힌 창의성")
-    print("   - 약간의 변화는 있지만 일관성 유지")
-    print("   - 일반적인 대화에 적합")
-    print()
-
-    print("3️⃣ Temperature 2.0:")
-    print("   - 매우 창의적이고 다양한 응답")
-    print("   - 반복할 때마다 크게 다른 답변")
-    print("   - 창작 활동에 적합")
-    print()
-
-    return responses
+    print("\n💡 관찰 포인트:")
+    print("  - Agent는 질문에 따라 적절한 도구를 호출합니다")
+    print("  - 비교 질문에서는 여러 도시의 도구를 각각 호출합니다")
+    print("  - 데이터에 없는 도시도 도구를 시도하고 결과를 전달합니다")
 
 
-def compare_creativity_tasks():
+# ============================================================================
+# 실험 2: docstring 변경으로 Agent 행동 변화 관찰
+# ============================================================================
+
+def experiment_2_docstring_effect():
     """
-    창의적 작업과 사실 기반 작업에서 temperature 차이 비교
+    같은 기능이지만 다른 docstring을 가진 도구가
+    Agent의 행동에 어떤 영향을 미치는지 관찰합니다.
+    📖 교안: Part 1 > 실습 과제 > 과제 2 (추가 도전)
     """
-    print("=" * 80)
-    print("🎨 창의적 작업 vs 사실 기반 작업")
-    print("=" * 80)
-    print()
+    print("\n" + "=" * 60)
+    print("실험 2: docstring 변경의 효과")
+    print("=" * 60)
 
-    if not os.getenv("OPENAI_API_KEY"):
-        print("❌ OPENAI_API_KEY가 설정되지 않았습니다.")
-        return
+    question = "서울 날씨 알려줘"
 
-    # 테스트 케이스
-    tasks = [
-        {
-            "type": "사실 기반",
-            "question": "대한민국의 수도는 어디인가요?",
-            "recommended_temp": 0.0,
-        },
-        {
-            "type": "창의적",
-            "question": "고양이를 주인공으로 한 짧은 시를 작성해주세요.",
-            "recommended_temp": 1.5,
-        },
-    ]
+    # 도구 1: 간단한 docstring
+    print("\n🔹 [도구 A] 간단한 docstring:")
+    print('   """주어진 도시의 날씨를 알려줍니다."""')
+    agent_a = create_agent(
+        model="openai:gpt-4.1-nano",
+        tools=[get_weather],
+        system_prompt="당신은 날씨 도우미입니다.",
+    )
+    result_a = agent_a.invoke(
+        {"messages": [{"role": "user", "content": question}]}
+    )
+    print(f"   🤖 응답: {result_a['messages'][-1].content}")
 
-    for task in tasks:
-        print(f"\n📌 {task['type']} 작업")
-        print(f"질문: {task['question']}")
-        print(f"권장 Temperature: {task['recommended_temp']}")
-        print("-" * 80)
+    # 도구 2: 상세한 docstring
+    print("\n🔹 [도구 B] 상세한 docstring:")
+    print('   """주어진 도시의 날씨, 습도, 풍속, 체감 온도를 포함한 상세 기상 정보를 제공합니다."""')
+    agent_b = create_agent(
+        model="openai:gpt-4.1-nano",
+        tools=[get_weather_detailed],
+        system_prompt="당신은 날씨 도우미입니다.",
+    )
+    result_b = agent_b.invoke(
+        {"messages": [{"role": "user", "content": question}]}
+    )
+    print(f"   🤖 응답: {result_b['messages'][-1].content}")
 
-        # 낮은 온도 (0.0)
-        llm_low = ChatOpenAI(model="gpt-4o-mini", temperature=0.0)
-        response_low = llm_low.invoke([HumanMessage(content=task['question'])])
-
-        print(f"\n🌡️ Temperature 0.0:")
-        print(response_low.content)
-
-        # 높은 온도 (1.5)
-        llm_high = ChatOpenAI(model="gpt-4o-mini", temperature=1.5)
-        response_high = llm_high.invoke([HumanMessage(content=task['question'])])
-
-        print(f"\n🌡️ Temperature 1.5:")
-        print(response_high.content)
-        print("\n" + "=" * 80)
+    print("\n💡 관찰 포인트:")
+    print("  - docstring이 상세하면 Agent가 더 풍부한 정보를 전달합니다")
+    print("  - Agent는 docstring을 읽고 도구의 용도를 판단합니다")
+    print("  - 좋은 docstring = 더 정확한 도구 사용!")
 
 
-def find_optimal_temperature():
+# ============================================================================
+# 실험 3: system_prompt로 Agent 성격 바꾸기
+# ============================================================================
+
+def experiment_3_system_prompt():
     """
-    다양한 작업 유형에 대한 최적 temperature 찾기
+    system_prompt를 변경하여 Agent의 응답 스타일이
+    어떻게 달라지는지 관찰합니다.
+    📖 교안: Part 1 > 실습 과제 > 과제 2 (추가 도전)
     """
-    print("=" * 80)
-    print("🎯 작업별 최적 Temperature")
-    print("=" * 80)
-    print()
+    print("\n" + "=" * 60)
+    print("실험 3: system_prompt로 Agent 성격 바꾸기")
+    print("=" * 60)
 
-    recommendations = [
-        {
-            "task": "수학 문제 풀이",
-            "temp": 0.0,
-            "reason": "정확한 계산과 논리가 필요"
-        },
-        {
-            "task": "코드 생성",
-            "temp": 0.2,
-            "reason": "문법 정확성이 중요, 약간의 창의성"
-        },
-        {
-            "task": "일반 대화",
-            "temp": 0.7,
-            "reason": "자연스러운 대화, 적당한 다양성"
-        },
-        {
-            "task": "브레인스토밍",
-            "temp": 1.2,
-            "reason": "다양한 아이디어 생성"
-        },
-        {
-            "task": "창작 (시, 소설)",
-            "temp": 1.5,
-            "reason": "높은 창의성과 독창성"
-        },
-    ]
+    question = "서울 날씨 어때?"
 
-    for rec in recommendations:
-        print(f"📋 {rec['task']}")
-        print(f"   🌡️ 권장 Temperature: {rec['temp']}")
-        print(f"   💡 이유: {rec['reason']}")
-        print()
+    prompts = {
+        "친절한 도우미": "당신은 친절하고 따뜻한 날씨 도우미입니다. 이모티콘을 사용하여 답변하세요.",
+        "간결한 비서": "당신은 간결한 비서입니다. 핵심만 짧게 답변하세요. 최대 2문장.",
+        "기상 캐스터": "당신은 전문 기상 캐스터입니다. 날씨를 방송하듯 생동감 있게 전달하세요.",
+    }
+
+    for name, prompt in prompts.items():
+        print(f"\n🔹 [{name}]")
+        print(f"   system_prompt: \"{prompt[:50]}...\"")
+
+        agent = create_agent(
+            model="openai:gpt-4.1-nano",
+            tools=[get_weather],
+            system_prompt=prompt,
+        )
+        result = agent.invoke(
+            {"messages": [{"role": "user", "content": question}]}
+        )
+        print(f"   🤖 응답: {result['messages'][-1].content}")
+
+    print("\n💡 관찰 포인트:")
+    print("  - 같은 도구, 같은 질문이지만 응답 스타일이 달라집니다")
+    print("  - system_prompt는 Agent의 '성격'을 결정합니다")
+    print("  - 실무에서는 사용 사례에 맞게 system_prompt를 설계합니다")
 
 
 # ============================================================================
@@ -211,71 +202,46 @@ def find_optimal_temperature():
 
 def main():
     """메인 실행 함수"""
-
-    print("\n" + "=" * 80)
-    print("✅ Part 1 실습 과제 2 - 해답")
-    print("=" * 80)
-    print()
-
-    # 실험 1: 같은 질문으로 temperature 비교
-    print("🔬 실험 1: Temperature 값에 따른 응답 차이\n")
-
-    test_temperature(
-        question="AI Agent가 무엇인지 2문장으로 설명해주세요.",
-        temperatures=[0.0, 0.5, 1.0, 1.5]
-    )
-
-    # 실험 2: 창의적 vs 사실 기반 작업
-    print("\n" + "=" * 80)
-    print("🔬 실험 2: 작업 유형별 Temperature 비교\n")
-
-    compare_creativity_tasks()
-
-    # 가이드: 최적 temperature
     print("\n")
-    find_optimal_temperature()
+    print("=" * 60)
+    print("Part 1 실습 과제 2 - 첫 번째 Agent 실행")
+    print("=" * 60)
+
+    # 실험 1: 다양한 질문
+    try:
+        experiment_1_different_questions()
+    except Exception as e:
+        print(f"❌ 실험 1 오류: {e}")
+
+    input("\n⏎ 계속하려면 Enter를 누르세요...")
+
+    # 실험 2: docstring 변경 효과
+    try:
+        experiment_2_docstring_effect()
+    except Exception as e:
+        print(f"❌ 실험 2 오류: {e}")
+
+    input("\n⏎ 계속하려면 Enter를 누르세요...")
+
+    # 실험 3: system_prompt 변경 효과
+    try:
+        experiment_3_system_prompt()
+    except Exception as e:
+        print(f"❌ 실험 3 오류: {e}")
 
     # 요약
-    print("=" * 80)
-    print("📝 핵심 정리")
-    print("=" * 80)
+    print("\n" + "=" * 60)
+    print("핵심 정리")
+    print("=" * 60)
     print()
-    print("✅ Temperature는 모델의 창의성을 조절합니다")
-    print("✅ 0.0 = 결정적, 2.0 = 매우 창의적")
-    print("✅ 작업 유형에 따라 적절한 값을 선택하세요")
-    print("✅ 일반적으로 0.7-1.0이 대화에 적합합니다")
+    print("  ✅ create_agent()로 도구를 사용하는 Agent를 만들 수 있다")
+    print("  ✅ 다양한 질문에 Agent가 자율적으로 도구를 선택한다")
+    print("  ✅ docstring은 Agent의 도구 사용 판단에 영향을 준다")
+    print("  ✅ system_prompt로 Agent의 응답 스타일을 제어할 수 있다")
     print()
+    print("  다음 단계: Part 2 - LangChain 기초로 이동")
+    print("\n" + "=" * 60 + "\n")
 
 
 if __name__ == "__main__":
     main()
-
-
-# ============================================================================
-# 📚 학습 포인트
-# ============================================================================
-#
-# 1. Temperature 파라미터:
-#    - 모델 출력의 무작위성 조절
-#    - 0.0 = 가장 확률 높은 토큰 선택 (결정적)
-#    - 2.0 = 매우 다양한 토큰 선택 (창의적)
-#
-# 2. 작업별 최적값:
-#    - 사실 기반: 0.0-0.3
-#    - 대화: 0.7-1.0
-#    - 창작: 1.2-2.0
-#
-# 3. 실험의 중요성:
-#    - 항상 여러 값으로 테스트
-#    - 작업에 맞는 최적값 찾기
-#    - 일관성 vs 창의성 균형
-#
-# ============================================================================
-# 🎓 추가 실험
-# ============================================================================
-#
-# - top_p 파라미터도 함께 실험해보기
-# - 다른 모델 (Claude, Gemini)에서도 테스트
-# - 더 복잡한 작업으로 실험 (코드 생성, 번역 등)
-#
-# ============================================================================

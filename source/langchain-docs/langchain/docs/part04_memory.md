@@ -547,7 +547,7 @@ result = invoke_agent(
 |-------|---------------|------|
 | GPT-4o-mini | 128K tokens | ~96,000 단어 |
 | GPT-4o | 128K tokens | ~96,000 단어 |
-| Claude 3.5 Sonnet | 200K tokens | ~150,000 단어 |
+| Claude Sonnet 4 | 200K tokens | ~150,000 단어 |
 
 긴 대화는 다음 문제를 야기합니다:
 
@@ -1212,67 +1212,6 @@ class EventSourcedMemory:
         return state
 ```
 
-## 실습 과제
-
-### 과제 1: 대화 이력 관리 시스템 (⭐⭐☆☆☆)
-
-**목표**: InMemorySaver를 사용하여 다중 사용자 대화 관리
-
-**요구사항**:
-1. 3명의 사용자가 각자의 Thread로 대화
-2. 각 사용자의 이름을 기억
-3. 사용자별 대화 이력 출력
-
-**힌트**:
-```python
-users = ["alice", "bob", "charlie"]
-for user in users:
-    config = {"configurable": {"thread_id": user}}
-    agent.invoke({"messages": f"제 이름은 {user}입니다."}, config)
-```
-
-### 과제 2: Context Window 관리 (⭐⭐⭐☆☆)
-
-**목표**: before_model 미들웨어로 메시지 관리
-
-**요구사항**:
-1. 10개 이상의 메시지가 쌓이면 요약
-2. 시스템 메시지는 항상 유지
-3. 최근 5개 메시지는 원본 유지
-4. 나머지는 요약본으로 대체
-
-**힌트**:
-```python
-@before_model
-def smart_trim(state: AgentState, runtime: Runtime):
-    messages = state["messages"]
-    if len(messages) <= 10:
-        return None
-
-    # 요약 로직 구현
-    ...
-```
-
-### 과제 3: 사용자 프로필 시스템 (⭐⭐⭐⭐☆)
-
-**목표**: Store를 사용한 사용자 프로필 관리
-
-**요구사항**:
-1. 사용자 정보 저장 Tool 구현
-2. 사용자 정보 조회 Tool 구현
-3. 선호도 업데이트 Tool 구현
-4. 여러 대화에서 프로필 공유
-
-**힌트**:
-```python
-@tool
-def save_profile(name: str, email: str, runtime: ToolRuntime):
-    store = runtime.store
-    user_id = runtime.context.user_id
-    store.put(("users",), user_id, {"name": name, "email": email})
-    return "프로필 저장 완료"
-```
-
 ## 실전 팁
 
 ### 1. Checkpointer 선택
@@ -1451,7 +1390,7 @@ for thread in old_threads:
 예시:
 ```python
 # Custom State: 현재 대화의 임시 데이터
-class AgentState(AgentState):
+class MyAgentState(AgentState):
     current_query: str  # 현재 쿼리
     temp_results: list  # 임시 결과
 
@@ -1623,148 +1562,75 @@ class MemoryAnalytics:
         )
 ```
 
-## 🎓 실습 과제
+### 5. 공식 문서 심화
 
-### 과제 1: 대화 기억 Agent (⭐⭐)
+- [10-short-term-memory.md](../official/10-short-term-memory_ko.md) - Checkpointer 고급 기능
+- [29-long-term-memory.md](../official/29-long-term-memory_ko.md) - Store 심화
 
-**목표**: InMemorySaver를 사용하여 이전 대화를 기억하는 Agent를 만드세요.
+### 6. 관련 논문
+
+- [MemGPT: Towards LLMs as Operating Systems](https://arxiv.org/abs/2310.08560) - LLM 메모리 관리
+- [Generative Agents](https://arxiv.org/abs/2304.03442) - 장기 메모리 활용
+
+---
+
+## 실습 과제
+
+### 과제 1: 세션 기반 챗봇 (⭐⭐)
+
+**목표**: InMemorySaver를 사용하여 여러 사용자의 독립적인 대화를 관리하는 세션 기반 챗봇을 만드세요.
 
 **요구사항**:
-1. 날씨 도구를 가진 Agent 생성
-2. InMemorySaver로 체크포인터 설정
-3. 같은 thread_id로 3번 대화하여 맥락 유지 확인
+1. LangGraph의 StateGraph와 InMemorySaver(checkpointer)를 사용하여 챗봇 구축
+2. 여러 사용자(Alice, Bob 등)가 각자의 thread_id로 독립적인 대화 진행
+3. 세션별 대화 기록 저장 및 조회 기능
+4. 세션 간 격리 확인 (한 사용자의 정보가 다른 사용자에게 노출되지 않음)
 
 **힌트**:
 ```python
 from langgraph.checkpoint.memory import InMemorySaver
 
-checkpointer = InMemorySaver()
-agent = create_agent(model=model, tools=[weather_tool], checkpointer=checkpointer)
-# TODO: thread_id를 사용한 대화 구현
+memory = InMemorySaver()
+graph = graph_builder.compile(checkpointer=memory)
+
+# 사용자별 세션
+config_alice = {"configurable": {"thread_id": "alice_session"}}
+config_bob = {"configurable": {"thread_id": "bob_session"}}
 ```
 
 **해답**: [solutions/exercise_01.py](../src/part04_memory/solutions/exercise_01.py)
 
 ---
 
-### 과제 2: 메시지 요약 시스템 (⭐⭐⭐)
+### 과제 2: 자동 요약 시스템 (⭐⭐⭐)
 
-**목표**: 대화가 길어지면 자동으로 요약하는 시스템을 구현하세요.
+**목표**: 대화가 길어지면 자동으로 요약하는 LangGraph 기반 챗봇을 구현하세요.
 
 **요구사항**:
-1. SummarizationMiddleware 설정
-2. max_messages 임계값 지정
-3. 요약 전후의 메시지 수 변화 확인
+1. ChatState에 summary 필드를 추가한 Custom State 정의
+2. 메시지 수 기반 요약 트리거 (threshold 초과 시 요약 노드 실행)
+3. RemoveMessage로 오래된 메시지를 정리하고 요약본으로 대체
+4. 요약 전후의 메시지 수 변화 확인
 
 **해답**: [solutions/exercise_02.py](../src/part04_memory/solutions/exercise_02.py)
 
 ---
 
-### 과제 3: 사용자 프로필 Store (⭐⭐⭐⭐)
+### 과제 3: 사용자 프로필 시스템 (⭐⭐⭐)
 
-**목표**: InMemoryStore로 사용자별 선호도를 저장하고 활용하는 Agent를 구현하세요.
+**목표**: InMemoryStore로 사용자별 프로필 정보를 저장하고, 대화에서 자동으로 추출하여 개인화 응답을 제공하는 Agent를 구현하세요.
 
 **요구사항**:
-1. 사용자 선호도 저장 도구 (save_preference)
-2. 선호도 조회 도구 (get_preferences)
-3. ToolRuntime으로 Store 접근
-4. Namespace: ("users", user_id, "preferences")
+1. InMemoryStore에 사용자 프로필 저장 (이름, 선호도, 관심사)
+2. 대화에서 사용자 정보를 자동 추출하여 프로필 업데이트
+3. 프로필 기반 개인화 응답 생성
+4. Namespace: ("users", user_id) 하위에 구조화된 데이터 관리
 
 **해답**: [solutions/exercise_03.py](../src/part04_memory/solutions/exercise_03.py)
 
 ---
 
-## 💡 실전 팁
-
-### Tip 1: 체크포인터 선택 기준
-
-| 상황 | 추천 | 이유 |
-|------|------|------|
-| 개발/테스트 | InMemorySaver | 설정 불필요, 빠름 |
-| 프로덕션 (단일 서버) | SqliteSaver | 파일 기반, 안정적 |
-| 프로덕션 (다중 서버) | PostgresSaver | 공유 가능, 확장성 |
-
-### Tip 2: 메시지 관리 전략
-
-- **10턴 이하**: Trim 불필요
-- **10-50턴**: `max_messages`로 Trim
-- **50턴 이상**: SummarizationMiddleware 사용
-- 항상 SystemMessage는 유지하세요
-
-### Tip 3: Store Namespace 설계
-
-```
-("users", user_id, "preferences")  # 사용자 선호도
-("users", user_id, "history")      # 대화 이력 요약
-("system", "knowledge")            # 공유 지식
-```
-
----
-
-## ❓ 자주 묻는 질문
-
-<details>
-<summary><strong>Q1: InMemorySaver vs PostgresSaver, 어떤 걸 써야 하나요?</strong></summary>
-
-**A**:
-- **InMemorySaver**: 개발/테스트 단계. 앱 재시작 시 데이터 소실
-- **PostgresSaver**: 프로덕션 환경. 영구 저장, 다중 서버 지원
-
-개발할 때는 InMemorySaver로 시작하고, 배포 시 PostgresSaver로 전환하면 됩니다.
-</details>
-
-<details>
-<summary><strong>Q2: Checkpointer와 Store의 차이가 뭔가요?</strong></summary>
-
-**A**:
-- **Checkpointer (단기 메모리)**: 대화 내 메시지 기록 저장. Thread별로 관리
-- **Store (장기 메모리)**: 대화를 넘어 지속되는 정보 저장. 사용자 선호도 등
-
-비유하면 Checkpointer는 "대화 노트", Store는 "개인 파일"입니다.
-</details>
-
-<details>
-<summary><strong>Q3: 메시지 Trim과 Summarization 중 어떤 걸 써야 하나요?</strong></summary>
-
-**A**:
-- **Trim**: 오래된 메시지 제거. 구현 간단, 정보 손실
-- **Summarization**: 대화를 요약하여 압축. LLM 호출 필요하지만 정보 보존
-
-짧은 대화는 Trim, 맥락 유지가 중요한 경우 Summarization을 권장합니다.
-</details>
-
-<details>
-<summary><strong>Q4: thread_id는 어떻게 관리하나요?</strong></summary>
-
-**A**:
-- **웹 앱**: 세션 ID 또는 UUID 사용
-- **멀티유저**: `user_id + conversation_id` 조합
-- **재접속**: 이전 thread_id를 저장해두면 대화 이어가기 가능
-
-```python
-config = {"configurable": {"thread_id": f"{user_id}_{conv_id}"}}
-```
-</details>
-
----
-
-## 🔗 심화 학습
-
-1. **공식 문서 심화**
-   - [10-short-term-memory.md](../official/10-short-term-memory_ko.md) - Checkpointer 고급 기능
-   - [29-long-term-memory.md](../official/29-long-term-memory_ko.md) - Store 심화
-
-2. **관련 논문**
-   - [MemGPT: Towards LLMs as Operating Systems](https://arxiv.org/abs/2310.08560) - LLM 메모리 관리
-   - [Generative Agents](https://arxiv.org/abs/2304.03442) - 장기 메모리 활용
-
-3. **커뮤니티 리소스**
-   - [LangChain Discord #memory](https://discord.gg/langchain)
-   - [LangGraph Persistence 가이드](https://docs.langchain.com/oss/python/langgraph/persistence)
-
----
-
-## ✅ 체크리스트
+## 체크리스트
 
 Part 4를 완료했다면 다음을 할 수 있어야 합니다:
 
@@ -1787,11 +1653,11 @@ Part 4를 완료했다면 다음을 할 수 있어야 합니다:
 
 ## 다음 단계
 
-✅ Part 4 완료!
-➡️ [Part 5: Middleware로 이동](./part05_middleware.md)
+Part 4 완료!
+[Part 5: Middleware로 이동](./part05_middleware.md)
 
 **학습 진도**: ▓▓▓▓░░░░░░ 40% (Part 4/10 완료)
 
 ---
 
-*마지막 업데이트: 2025-02-06*
+*마지막 업데이트: 2026-02-18*

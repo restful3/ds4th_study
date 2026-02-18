@@ -20,13 +20,16 @@ Part 4: Memory - 실습 과제 1 해답
 ================================================================================
 """
 
+from dotenv import load_dotenv
 from typing import Sequence
 from langchain_core.messages import BaseMessage, HumanMessage, AIMessage
 from langchain_openai import ChatOpenAI
-from langgraph.checkpoint.memory import MemorySaver
+from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph import StateGraph, MessagesState, START, END
 from langgraph.store.memory import InMemoryStore
 from datetime import datetime
+
+load_dotenv()
 
 # ============================================================================
 # State 정의
@@ -60,7 +63,7 @@ def create_session_chatbot():
     graph_builder.add_edge("chatbot", END)
 
     # 메모리 추가 - 세션별 대화 기록 저장
-    memory = MemorySaver()
+    memory = InMemorySaver()
     graph = graph_builder.compile(checkpointer=memory)
 
     return graph
@@ -368,7 +371,7 @@ def main():
     # 학습 포인트
     print("\n" + "=" * 70)
     print("💡 학습 포인트:")
-    print("  1. MemorySaver로 세션별 대화 기록 관리")
+    print("  1. InMemorySaver로 세션별 대화 기록 관리")
     print("  2. thread_id로 세션 구분")
     print("  3. 멀티 유저 환경에서 격리된 메모리")
     print("  4. 세션 메타데이터 관리")

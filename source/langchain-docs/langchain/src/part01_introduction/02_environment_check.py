@@ -174,7 +174,7 @@ def check_api_connection():
         try:
             from langchain_openai import ChatOpenAI
 
-            llm = ChatOpenAI(model="gpt-4o-mini", timeout=10)
+            llm = ChatOpenAI(model="gpt-4.1-nano", timeout=10)
             response = llm.invoke("Hi")
 
             print(f"   ✅ OpenAI API 연결 성공")
@@ -189,7 +189,7 @@ def check_api_connection():
         try:
             from langchain_anthropic import ChatAnthropic
 
-            llm = ChatAnthropic(model="claude-3-5-haiku-20241022", timeout=10)
+            llm = ChatAnthropic(model="claude-haiku-4-5-20251001", timeout=10)
             response = llm.invoke("Hi")
 
             print(f"   ✅ Anthropic API 연결 성공")
@@ -204,7 +204,7 @@ def check_api_connection():
         try:
             from langchain_google_genai import ChatGoogleGenerativeAI
 
-            llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", timeout=10)
+            llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", timeout=10)
             response = llm.invoke("Hi")
 
             print(f"   ✅ Google API 연결 성공")

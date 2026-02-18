@@ -515,7 +515,7 @@ technical_agent = create_agent(
 
 # Agent 3: 전문가
 expert_agent = create_agent(
-    model="claude-opus-4-5",  # 가장 강력한 모델
+    model="claude-sonnet-4-5-20250929",  # 가장 강력한 모델
     tools=[access_database, modify_system],
     system_prompt="시스템 레벨 문제를 해결하는 최고 전문가입니다."
 )
@@ -644,7 +644,7 @@ tier2_agent = create_agent(
 
 # Tier 3: 시니어 매니저
 tier3_agent = create_agent(
-    model="claude-opus-4-5",
+    model="claude-sonnet-4-5-20250929",
     tools=[
         access_admin_panel,
         override_policy,
@@ -1734,88 +1734,103 @@ def logged_node(state: WorkflowState) -> WorkflowState:
 
 ## 🎓 실습 과제
 
-### 과제 1: 멀티모달 콘텐츠 생성 시스템 (⭐⭐⭐⭐)
+### 과제 1: 이중 전문가 시스템 (⭐⭐⭐☆☆)
 
-**목표**: 텍스트, 이미지, 데이터를 통합하여 리포트를 생성하는 멀티에이전트 시스템 구축
+**목표**: 검색 Agent와 요약 Agent의 순차적 협업 시스템 구축
 
 **요구사항**:
-1. Research Agent: 웹에서 정보 수집
-2. Data Agent: 데이터 분석 및 차트 생성
-3. Image Agent: 관련 이미지 검색 및 처리
-4. Writer Agent: 통합된 리포트 작성
+1. Searcher Agent: 웹/DB에서 정보 검색 전담
+2. Summarizer Agent: 검색 결과 요약 전담
+3. 두 Agent의 순차적 협업 (검색 -> 요약)
 
 **구현**:
 ```python
-# Subagents 패턴 사용
-# 1. 각 Agent를 독립적으로 구현
-# 2. 메인 Agent가 순서대로 호출
-# 3. 최종 결과를 통합
+# Multi-Agent 패턴 사용
+# 1. Searcher Agent (web_search, database_search 도구 사용)
+# 2. Summarizer Agent (LLM 기반 요약)
+# 3. StateGraph로 순차 파이프라인 구성
 
-main_agent = create_agent(
-    model="gpt-4o",
-    tools=[research_tool, data_tool, image_tool, writer_tool],
-)
+from langgraph.graph import StateGraph, START, END
+
+graph_builder = StateGraph(MultiAgentState)
+graph_builder.add_node("searcher", searcher_node)
+graph_builder.add_node("summarizer", summarizer_node)
+graph_builder.add_edge(START, "searcher")
+graph_builder.add_edge("searcher", "summarizer")
+graph_builder.add_edge("summarizer", END)
 ```
 
 **평가 기준**:
-- 각 Agent가 독립적으로 작동하는가?
-- 결과가 올바르게 통합되는가?
-- 오류 처리가 적절한가?
+- 각 Agent가 전문 역할에 집중하는가?
+- Agent 간 정보 전달이 올바른가?
+- StateGraph로 협업 플로우가 구성되었는가?
 
-### 과제 2: 계층적 고객 지원 시스템 (⭐⭐⭐⭐⭐)
+> **해답**: [exercise_01.py](../src/part07_multi_agent/solutions/exercise_01.py)
 
-**목표**: Handoffs 패턴을 사용한 3-tier 고객 지원 시스템
+### 과제 2: 고객 서비스 라우터 (⭐⭐⭐☆☆)
+
+**목표**: 문의 타입별 전문 Agent로 라우팅하는 고객 서비스 시스템
 
 **요구사항**:
-1. Tier 1: FAQ 및 기본 문의 처리
-2. Tier 2: 기술 문제 해결
-3. Tier 3: 복잡한 문제 및 정책 예외 처리
+1. Router Agent: 문의 타입 분류 (기술/영업/일반)
+2. Technical Support Agent: 기술 지원 (시스템 상태, 문서 검색, 티켓 생성)
+3. Sales Agent: 영업 문의 (가격 정보)
+4. General Agent: 일반 문의
 
 **구현**:
 ```python
-# Handoffs 패턴
-# 1. 각 Tier는 자신이 처리할 수 없으면 상위 Tier로 handoff
-# 2. 컨텍스트를 전달하여 중복 질문 방지
-# 3. 해결 시까지 계속 에스컬레이션
+# Router 패턴 + LangGraph
+# 1. InquiryClassifier로 키워드 기반 분류
+# 2. 조건부 엣지로 전문 Agent 선택
+# 3. create_react_agent로 각 Agent 생성
 
-tier1 = create_agent(tools=[faq, handoff_to_tier2])
-tier2 = create_agent(tools=[diagnostics, handoff_to_tier3])
-tier3 = create_agent(tools=[admin_tools])
+graph_builder = StateGraph(RouterState)
+graph_builder.add_node("classify", classify_inquiry)
+graph_builder.add_node("technical", technical_node)
+graph_builder.add_node("sales", sales_node)
+graph_builder.add_node("general", general_node)
+graph_builder.add_conditional_edges("classify", route_to_agent, {...})
 ```
 
 **평가 기준**:
-- Handoff가 적절한 시점에 발생하는가?
-- 컨텍스트가 손실 없이 전달되는가?
-- 각 Tier의 역할이 명확한가?
+- 문의 분류가 정확한가?
+- 조건부 라우팅이 올바르게 작동하는가?
+- 각 전문 Agent가 적절한 도구를 사용하는가?
 
-### 과제 3: 기업 챗봇 라우터 (⭐⭐⭐⭐)
+> **해답**: [exercise_02.py](../src/part07_multi_agent/solutions/exercise_02.py)
 
-**목표**: LLM 기반 Router로 다부서 챗봇 구현
+### 과제 3: 리서치 파이프라인 (⭐⭐⭐⭐☆)
+
+**목표**: 4단계 순차 파이프라인 (Planner -> Searcher -> Analyst -> Writer)
 
 **요구사항**:
-1. HR, IT, Finance, Facilities 부서별 Agent
-2. LLM으로 사용자 요청 분류
-3. Structured Output으로 신뢰도 포함
+1. Planner Agent: 리서치 계획 수립
+2. Searcher Agent: 학술 논문/산업 보고서 검색
+3. Analyst Agent: 수집 데이터 분석
+4. Writer Agent: 최종 보고서 작성
+5. 4단계 순차 파이프라인 구축
 
 **구현**:
 ```python
-# Router 패턴
-# 1. Pydantic 모델로 라우팅 결정 정의
-# 2. LLM이 입력을 분류
-# 3. 해당 부서 Agent로 전달
+# LangGraph 순차 파이프라인
+# 1. ResearchState로 단계별 데이터 전달
+# 2. 각 Agent는 이전 단계의 결과를 입력으로 사용
+# 3. 최종 보고서 자동 생성
 
-class RouteDecision(BaseModel):
-    department: Literal["hr", "it", "finance", "facilities"]
-    confidence: float
-    reasoning: str
-
-router = create_classifier(RouteDecision)
+graph_builder = StateGraph(ResearchState)
+graph_builder.add_edge(START, "planner")
+graph_builder.add_edge("planner", "searcher")
+graph_builder.add_edge("searcher", "analyst")
+graph_builder.add_edge("analyst", "writer")
+graph_builder.add_edge("writer", END)
 ```
 
 **평가 기준**:
-- 분류 정확도가 높은가?
-- 애매한 경우 처리 방법이 있는가?
-- 각 부서 Agent가 전문화되어 있는가?
+- 4단계 파이프라인이 순차적으로 실행되는가?
+- Agent 간 데이터 전달이 올바른가?
+- 최종 보고서의 품질이 높은가?
+
+> **해답**: [exercise_03.py](../src/part07_multi_agent/solutions/exercise_03.py)
 
 ---
 
@@ -2092,49 +2107,6 @@ Part 8에서는 RAG (Retrieval-Augmented Generation)와 MCP (Model Context Proto
 
 ---
 
-## ❓ 자주 묻는 질문
-
-<details>
-<summary><strong>Q1: 어떤 멀티에이전트 패턴을 선택해야 하나요?</strong></summary>
-
-**A**:
-- **Subagents**: 작업을 단계별로 분해 가능할 때 (리서치 -> 분석 -> 작성)
-- **Handoffs**: 순차적 에스컬레이션이 필요할 때 (1차 -> 2차 -> 전문가)
-- **Router**: 입력 유형별 분류가 필요할 때 (기술/결제/일반 문의)
-- **Skills**: 재사용 가능한 모듈이 필요할 때 (번역, 요약, 검색)
-- **LangGraph**: 복잡한 상태 전환, 사이클이 필요할 때
-</details>
-
-<details>
-<summary><strong>Q2: Subagent를 비동기로 실행하면 얼마나 빨라지나요?</strong></summary>
-
-**A**:
-독립적인 작업이 많을수록 효과적입니다. 예를 들어 3개 독립 검색을 순차 실행하면 15초, 비동기면 5초로 줄어듭니다. 단, LLM API 호출 제한(rate limit)을 고려해야 합니다.
-</details>
-
-<details>
-<summary><strong>Q3: Handoffs에서 무한 루프가 발생할 수 있나요?</strong></summary>
-
-**A**:
-가능합니다. Agent A -> B -> A 순환이 생길 수 있습니다. 방지법:
-1. `max_turns` 제한 설정
-2. 전환 이력 추적하여 중복 방지
-3. 에스컬레이션 전용 Agent로 단방향 설계
-</details>
-
-<details>
-<summary><strong>Q4: 멀티에이전트 시스템의 디버깅은 어떻게 하나요?</strong></summary>
-
-**A**:
-1. **LangSmith**: 각 Agent의 실행 흐름을 시각적으로 추적
-2. **로깅**: 각 Agent 전환 시점에 로그 출력
-3. **단위 테스트**: 각 Agent를 독립적으로 테스트한 후 통합
-
-> 📖 [Part 10: 배포와 관측성](./part10_deployment.md)에서 자세히 다룹니다.
-</details>
-
----
-
 ## 🔗 심화 학습
 
 1. **공식 문서 심화**
@@ -2174,4 +2146,4 @@ Part 8에서는 RAG (Retrieval-Augmented Generation)와 MCP (Model Context Proto
 
 **학습 진도**: ▓▓▓▓▓▓▓░░░ 70% (Part 7/10 완료)
 
-*마지막 업데이트: 2025-02-06*
+*마지막 업데이트: 2026-02-18*

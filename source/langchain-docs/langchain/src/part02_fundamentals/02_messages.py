@@ -29,7 +29,7 @@ Part 2: LangChain 기초
 import os
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
-from langchain_core.messages import (
+from langchain.messages import (
     SystemMessage,
     HumanMessage,
     AIMessage,

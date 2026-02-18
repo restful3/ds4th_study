@@ -444,14 +444,14 @@ agent = create_agent(
     tools=[search_web, calculator],
     middleware=[
         ModelFallbackMiddleware(
-            fallback_models=["gpt-4o-mini", "claude-opus-4"],
+            fallback_models=["gpt-4o-mini", "claude-sonnet-4-5-20250929"],
             max_retries=2
         )
     ]
 )
 
 # gpt-4o 실패 시 자동으로 gpt-4o-mini 시도,
-# 그것도 실패하면 claude-opus-4 시도
+# 그것도 실패하면 claude-sonnet-4-5-20250929 시도
 ```
 
 **주요 파라미터:**
@@ -465,9 +465,9 @@ agent = create_agent(
 # 전략: 저렴한 모델부터 시도
 ModelFallbackMiddleware(
     fallback_models=[
-        "gpt-4o-mini",      # 첫 시도 (가장 저렴)
-        "gpt-4o",           # 두 번째 (중간 가격)
-        "claude-opus-4"     # 최후 (가장 비싸지만 강력)
+        "gpt-4o-mini",                  # 첫 시도 (가장 저렴)
+        "gpt-4o",                       # 두 번째 (중간 가격)
+        "claude-sonnet-4-5-20250929"    # 최후 (가장 비싸지만 강력)
     ]
 )
 ```
@@ -1436,56 +1436,57 @@ def early_exit(state: AgentState, runtime: Runtime) -> dict[str, Any] | None:
 
 ## 🎓 실습 과제
 
-### 과제 1: 로깅 미들웨어 만들기 (⭐⭐⭐)
+### 과제 1: 비용 추적 미들웨어 (⭐⭐☆☆☆)
 
-**목표**: 모든 모델 호출과 도구 호출을 로깅하는 미들웨어 작성
+**목표**: 모델 호출 비용을 추적하고 리포트 생성
 
 **요구사항**:
-1. `before_model`에서 입력 메시지 로깅
-2. `after_model`에서 모델 응답 로깅
-3. `wrap_tool_call`에서 도구 실행 시간 측정
+1. 토큰 사용량 추적 (입력/출력)
+2. 모델별 비용 계산
+3. 누적 통계 및 리포트
 
 **힌트**:
-- `time.time()`으로 시간 측정
-- 파일 또는 콘솔에 로그 출력
+- `tiktoken`으로 토큰 수 계산
+- 모델별 가격 정보 관리 (GPT-4o, GPT-4o-mini 등)
+- `before_call`/`after_call` 패턴으로 측정
 
-**해답**: [solutions/logging_middleware.py](../src/part05_middleware/solutions/logging_middleware.py)
+**해답**: [solutions/exercise_01.py](../src/part05_middleware/solutions/exercise_01.py)
 
 ---
 
-### 과제 2: 비용 추적 미들웨어 (⭐⭐⭐⭐)
-
-**목표**: 모델 호출 비용을 추적하고 예산 초과 시 중단
-
-**요구사항**:
-1. 각 모델 호출의 토큰 수 카운트
-2. 토큰당 비용 계산 (예: GPT-4o-mini $0.15/1M tokens)
-3. 누적 비용이 예산 초과 시 Agent 중단
-
-**힌트**:
-- `wrap_model_call`에서 요청/응답의 토큰 수 확인
-- 클래스 변수로 누적 비용 저장
-- `jump_to="end"`로 조기 종료
-
-**해답**: [solutions/cost_tracking_middleware.py](../src/part05_middleware/solutions/cost_tracking_middleware.py)
-
----
-
-### 과제 3: 캐싱 미들웨어 (⭐⭐⭐⭐⭐)
+### 과제 2: 캐싱 미들웨어 (⭐⭐⭐☆☆)
 
 **목표**: 동일한 요청에 대해 모델 호출을 캐싱
 
 **요구사항**:
-1. `wrap_model_call`에서 요청 해싱
-2. 캐시에 결과가 있으면 모델 호출 없이 반환
-3. TTL(Time-To-Live) 지원
+1. 동일 질문에 대한 캐시 저장
+2. 캐시 히트 시 LLM 호출 없이 즉시 응답
+3. 캐시 만료 시간 및 최대 크기 관리
 
 **힌트**:
 - `hashlib`로 요청 해싱
-- `time.time()`으로 TTL 관리
-- 캐시 히트/미스 로깅
+- LRU 캐시 알고리즘 구현
+- TTL 기반 만료 처리
 
-**해답**: [solutions/caching_middleware.py](../src/part05_middleware/solutions/caching_middleware.py)
+**해답**: [solutions/exercise_02.py](../src/part05_middleware/solutions/exercise_02.py)
+
+---
+
+### 과제 3: 종합 모니터링 시스템 (⭐⭐⭐⭐☆)
+
+**목표**: 로깅, 성능, 에러를 통합 모니터링하는 시스템 구축
+
+**요구사항**:
+1. 로깅, 성능, 에러를 통합 모니터링
+2. 여러 Middleware 체이닝
+3. 대시보드급 리포트 생성
+
+**힌트**:
+- 로깅/성능/에러 추적을 각각 별도 클래스로 구현
+- `MonitoringSystem`으로 통합
+- health check 및 리포트 내보내기
+
+**해답**: [solutions/exercise_03.py](../src/part05_middleware/solutions/exercise_03.py)
 
 ---
 
@@ -1665,4 +1666,4 @@ Part 5를 완료하기 전에 확인하세요:
 
 ---
 
-*마지막 업데이트: 2025-02-06*
+*마지막 업데이트: 2026-02-18*

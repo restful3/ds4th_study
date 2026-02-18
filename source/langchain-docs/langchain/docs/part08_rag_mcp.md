@@ -1630,126 +1630,129 @@ response = await agent.ainvoke({
 
 ## 🎓 실습 과제
 
-### 과제 1: 문서 Q&A RAG 시스템 (⭐⭐⭐)
+### 과제 1: 기술 문서 Q&A (Vector Store RAG) (⭐⭐⭐)
 
-**목표**: PDF 문서를 읽고 질문에 답변하는 기본 RAG 시스템 구현
+**목표**: 문서를 Vector Store에 저장하고 질문에 답변하는 기본 RAG 시스템 구현
 
 **요구사항**:
-1. PDF 파일을 로드하고 청킹
-2. FAISS Vector Store에 저장
-3. 유사도 검색으로 관련 문서 찾기
-4. Agent가 검색 결과를 바탕으로 답변
+1. 문서를 Vector Store에 저장
+2. 유사도 검색으로 관련 문서 찾기
+3. 검색된 문서를 바탕으로 답변 생성
 
 **힌트**:
 ```python
-from langchain_community.document_loaders import PDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
+from langchain_openai import OpenAIEmbeddings
+from langchain_core.documents import Document
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-# PDF 로드
-loader = PDFLoader("document.pdf")
-docs = loader.load()
+# 문서 준비
+docs = [Document(page_content="..."), ...]
 
 # 청킹
-splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
 chunks = splitter.split_documents(docs)
 
 # Vector Store
-vectorstore = FAISS.from_documents(chunks, embeddings)
+vectorstore = FAISS.from_documents(chunks, OpenAIEmbeddings())
 
-# Retriever Tool 생성
-# ...
+# 유사도 검색
+results = vectorstore.similarity_search("쿼리", k=3)
 ```
 
 **평가 기준**:
-- [ ] PDF 로드 및 청킹 올바르게 구현
+- [ ] 문서 로드 및 청킹 올바르게 구현
 - [ ] Vector Store 정상 작동
 - [ ] 검색 품질 (관련 문서 정확히 찾기)
-- [ ] Agent 답변 품질
+- [ ] Context 기반 답변 생성 품질
+
+**해답**: [solutions/exercise_01.py](../src/part08_rag_mcp/solutions/exercise_01.py)
 
 ---
 
-### 과제 2: Agentic RAG (⭐⭐⭐⭐)
+### 과제 2: 스마트 검색 Agent (Agentic RAG) (⭐⭐⭐⭐)
 
-**목표**: 검색 전략을 스스로 개선하는 Self-RAG 시스템 구현
+**목표**: Agent가 필요시 문서를 검색하고 자율적으로 정보를 탐색하는 Agentic RAG 시스템 구현
 
 **요구사항**:
-1. 초기 검색 수행
-2. 검색 결과 품질 평가
-3. 부족하면 쿼리 개선하여 재검색
-4. 충분한 정보가 모이면 답변 생성
+1. Agent가 필요시 문서 검색
+2. 검색 도구와 LLM 통합
+3. 자율적인 정보 탐색
 
 **힌트**:
 ```python
+from langchain_core.tools import tool
+from langgraph.prebuilt import create_react_agent
+
 @tool
-def search_docs(query: str) -> str:
+def search_documentation(query: str) -> str:
     """문서 검색"""
+    vectorstore = get_vectorstore()
+    results = vectorstore.similarity_search(query, k=2)
+    return "\n\n".join([doc.page_content for doc in results])
+
+@tool
+def get_example_code(topic: str) -> str:
+    """예제 코드 제공"""
+    # 주제별 예제 코드 반환
+
+# Agent에 도구 제공
+model = ChatOpenAI(model="gpt-4o-mini")
+agent = create_react_agent(model, [search_documentation, get_example_code])
+```
+
+**평가 기준**:
+- [ ] Agent가 필요 여부를 판단하여 검색
+- [ ] 검색 도구와 LLM의 자연스러운 통합
+- [ ] 복잡한 질문에 대한 자율적 정보 탐색
+- [ ] 검색 결과 기반의 정확한 답변
+
+**해답**: [solutions/exercise_02.py](../src/part08_rag_mcp/solutions/exercise_02.py)
+
+---
+
+### 과제 3: MCP 기반 통합 시스템 (⭐⭐⭐⭐)
+
+**목표**: MCP 패턴을 이해하고 외부 도구를 통합하는 Agent 시스템 구축
+
+**요구사항**:
+1. MCP(Model Context Protocol) 개념 이해
+2. 외부 도구 통합 시뮬레이션 (파일시스템, DB, API 등)
+3. 통합 Agent 시스템 구축
+
+**힌트**:
+```python
+from langchain_core.tools import tool
+from langgraph.prebuilt import create_react_agent
+
+# MCP 도구 시뮬레이션
+@tool
+def filesystem_read(path: str) -> str:
+    """파일 시스템에서 파일을 읽습니다"""
     # ...
 
 @tool
-def evaluate_search_quality(query: str, results: str) -> str:
-    """검색 결과 품질 평가"""
-    # LLM으로 평가
-    # "SUFFICIENT" or "INSUFFICIENT" 반환
+def database_query(sql: str) -> str:
+    """데이터베이스 쿼리를 실행합니다"""
+    # ...
 
 @tool
-def improve_query(original_query: str, feedback: str) -> str:
-    """쿼리 개선"""
-    # LLM으로 쿼리 재작성
+def api_call(endpoint: str, method: str = "GET") -> str:
+    """외부 API를 호출합니다"""
+    # ...
 
-# Agent에 모든 도구 제공
+# 통합 Agent
+model = ChatOpenAI(model="gpt-4o-mini")
+agent = create_react_agent(model, [filesystem_read, database_query, api_call])
 ```
 
 **평가 기준**:
-- [ ] 검색 품질 자동 평가 구현
-- [ ] 쿼리 개선 로직 작동
-- [ ] 재검색으로 답변 품질 향상
-- [ ] 무한 루프 방지
-
----
-
-### 과제 3: MCP 서버 구현 (⭐⭐⭐⭐)
-
-**목표**: 커스텀 MCP 서버를 만들고 Agent에서 사용
-
-**요구사항**:
-1. FastMCP로 서버 구현
-2. 최소 3개의 Tool 제공 (예: 파일 읽기, 쓰기, 검색)
-3. HTTP transport로 실행
-4. Agent에서 서버에 연결하여 도구 사용
-
-**힌트**:
-```python
-# 서버 (my_server.py)
-from fastmcp import FastMCP
-
-mcp = FastMCP("MyServer")
-
-@mcp.tool()
-def tool1(...):
-    ...
-
-@mcp.tool()
-def tool2(...):
-    ...
-
-if __name__ == "__main__":
-    mcp.run(transport="http", port=8000)
-
-# 클라이언트
-client = MultiServerMCPClient({
-    "myserver": {
-        "transport": "http",
-        "url": "http://localhost:8000/mcp"
-    }
-})
-```
-
-**평가 기준**:
-- [ ] MCP 서버 정상 실행
-- [ ] Tool 정의 및 동작 확인
-- [ ] Agent에서 도구 사용 성공
+- [ ] 다양한 외부 도구 시뮬레이션 구현
+- [ ] Agent가 적절한 도구를 선택하여 사용
+- [ ] 여러 도구를 조합한 복잡한 작업 수행
 - [ ] 에러 처리 구현
+
+**해답**: [solutions/exercise_03.py](../src/part08_rag_mcp/solutions/exercise_03.py)
 
 ---
 
@@ -1986,4 +1989,4 @@ results = vectorstore.similarity_search(
 
 ---
 
-*마지막 업데이트: 2025-02-06*
+*마지막 업데이트: 2026-02-18*

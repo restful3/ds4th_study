@@ -8,9 +8,9 @@ Part 4: Memory - 실습 과제 3 해답
 난이도: ⭐⭐⭐☆☆ (중급)
 
 요구사항:
-1. InMemoryStore로 사용자 정보 영구 저장
-2. 대화에서 사용자 선호도, 정보 자동 추출
-3. 프로필 정보를 활용한 개인화 응답
+1. InMemoryStore에 사용자 프로필 저장 (이름, 선호도, 관심사)
+2. 대화에서 사용자 정보를 자동 추출하여 프로필 업데이트
+3. 프로필 기반 개인화 응답 생성
 
 학습 목표:
 - InMemoryStore 사용법
@@ -20,15 +20,18 @@ Part 4: Memory - 실습 과제 3 해답
 ================================================================================
 """
 
+from dotenv import load_dotenv
 from typing import Any
 from datetime import datetime
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from langchain_openai import ChatOpenAI
-from langgraph.checkpoint.memory import MemorySaver
+from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.store.memory import InMemoryStore
 from langgraph.graph import StateGraph, MessagesState, START, END
 from langgraph.graph.state import CompiledStateGraph
 import json
+
+load_dotenv()
 
 # ============================================================================
 # State 정의
@@ -261,7 +264,7 @@ def create_profile_chatbot() -> tuple[CompiledStateGraph, InMemoryStore]:
     graph_builder.add_edge("extract_profile", END)
 
     # 컴파일 (Store 포함)
-    memory = MemorySaver()
+    memory = InMemorySaver()
     graph = graph_builder.compile(checkpointer=memory, store=store)
 
     return graph, store

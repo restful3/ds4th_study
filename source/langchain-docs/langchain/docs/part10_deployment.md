@@ -1361,29 +1361,6 @@ def monitor_agent():
 
 ---
 
-## 실습 과제
-
-### 과제 1: LangSmith 통합 (난이도: ⭐⭐)
-
-**요구사항:**
-- LangSmith 설정
-- Agent 실행 trace 확인
-- 메타데이터 추가
-
-### 과제 2: 테스트 스위트 작성 (난이도: ⭐⭐⭐⭐)
-
-**요구사항:**
-- Unit Test 5개 이상
-- Integration Test 3개 이상
-- Trajectory Match 평가
-
-### 과제 3: API 서버 배포 (난이도: ⭐⭐⭐)
-
-**요구사항:**
-- LangServe로 API 구현
-- Docker 컨테이너화
-- 헬스 체크 엔드포인트
-
 ---
 
 ## 실전 팁
@@ -1544,53 +1521,98 @@ graph LR
 
 ## 🎓 실습 과제
 
-### 과제 1: LangSmith 모니터링 설정
-
-**난이도**: ★★☆☆☆
-
-LangSmith를 설정하여 Agent 실행을 추적하고 분석하세요.
-
-**요구사항**:
-- LangSmith 계정 설정 및 환경변수 구성
-- Agent 실행 trace 수집 및 확인
-- 커스텀 메트릭 대시보드 구성
-
-> **힌트**: `src/part10_deployment/01_langsmith.py`를 참고하세요.
-
-### 과제 2: Agent 평가 테스트 작성
+### 과제 1: 테스트 스위트 구축
 
 **난이도**: ★★★☆☆
 
-LangSmith Evaluation을 활용하여 Agent 품질을 자동 평가하는 테스트를 작성하세요.
+Agent 시스템의 품질을 보장하기 위한 종합 테스트 스위트를 구축하세요.
 
 **요구사항**:
-- 데이터셋 생성 및 관리
-- 커스텀 Evaluator 구현
-- LLM-as-judge 평가 파이프라인
+1. Unit 테스트: 개별 컴포넌트 (도구, 프롬프트)
+2. Integration 테스트: Agent 통합 동작
+3. End-to-End 테스트: 전체 플로우
 
-> **힌트**: `src/part10_deployment/02_evaluation.py`를 참고하세요.
+```python
+# 기본 구조 예시
+import pytest
+from unittest.mock import Mock, patch
 
-### 과제 3: Docker 배포 파이프라인
+@tool
+def calculator(expression: str) -> float:
+    """수식을 계산합니다."""
+    return eval(expression)
+
+def test_calculator_tool():
+    assert calculator.invoke("2 + 3") == 5
+```
+
+> **힌트**: `src/part10_deployment/03_testing.py`를 참고하세요.
+
+> **해답**: [solutions/exercise_01.py](../src/part10_deployment/solutions/exercise_01.py)
+
+### 과제 2: 평가 시스템
 
 **난이도**: ★★★★☆
 
-FastAPI + Docker를 사용하여 Agent를 컨테이너로 배포하는 파이프라인을 구성하세요.
+Agent 성능을 자동으로 평가하는 시스템을 구축하세요.
 
 **요구사항**:
-- Dockerfile 작성 및 이미지 빌드
-- FastAPI 엔드포인트 구성
-- 환경변수 관리 및 보안 설정
+1. Agent 성능 자동 평가
+2. 벤치마크 데이터셋 구성
+3. 메트릭 수집 및 분석
 
-> **힌트**: `src/part10_deployment/03_docker.py`를 참고하세요.
+```python
+# 기본 구조 예시
+@dataclass
+class EvaluationCase:
+    question: str
+    expected_answer: str
+    category: str
+    difficulty: str
+
+class AgentEvaluator:
+    def evaluate(self, cases: List[EvaluationCase]) -> Dict:
+        ...
+```
+
+> **힌트**: `src/part10_deployment/04_evaluation.py`를 참고하세요.
+
+> **해답**: [solutions/exercise_02.py](../src/part10_deployment/solutions/exercise_02.py)
+
+### 과제 3: 프로덕션 배포 (LangServe + Docker)
+
+**난이도**: ★★★★☆
+
+LangServe와 Docker를 사용하여 Agent를 프로덕션 환경에 배포하세요.
+
+**요구사항**:
+1. LangServe로 API 서버 구축
+2. Docker 컨테이너화
+3. 프로덕션 배포 준비 (환경변수, 보안, 헬스체크)
+
+```python
+# 기본 구조 예시
+from fastapi import FastAPI
+from langserve import add_routes
+
+app = FastAPI(title="Agent API")
+
+# Agent 라우트 추가
+add_routes(app, agent, path="/agent")
+```
+
+> **힌트**: `src/part10_deployment/05_deployment.py`를 참고하세요.
+
+> **해답**: [solutions/exercise_03.py](../src/part10_deployment/solutions/exercise_03.py)
 
 ---
 
 ## 🔗 심화 학습
 
 ### 공식 문서
-- [LangSmith 공식 문서](https://docs.langchain.com/langsmith)
-- [LangGraph Deploy 가이드](https://docs.langchain.com/langsmith/deployments)
-- [LangChain Evaluation 가이드](https://docs.langchain.com/langsmith/evaluation)
+- [LangSmith 공식 문서](https://docs.smith.langchain.com/)
+- [LangGraph Deploy 가이드](https://langchain-ai.github.io/langgraph/cloud/deployment/cloud/)
+- [LangChain Evaluation 가이드](https://docs.smith.langchain.com/evaluation)
 
 ### 고급 주제
 - **모니터링 고급**: Custom Metrics, Alerting, A/B 테스트
@@ -1598,7 +1620,7 @@ FastAPI + Docker를 사용하여 Agent를 컨테이너로 배포하는 파이프
 - **배포 고급**: Kubernetes, CI/CD, Blue-Green Deploy
 
 ### 커뮤니티 리소스
-- [LangChain Blog](https://blog.langchain.com/)
+- [LangChain Blog](https://blog.langchain.dev/)
 - [LangSmith Cookbook](https://github.com/langchain-ai/langsmith-cookbook)
 
 ---
@@ -1649,4 +1671,4 @@ FastAPI + Docker를 사용하여 Agent를 컨테이너로 배포하는 파이프
 
 ---
 
-*마지막 업데이트: 2025-02-06*
+*마지막 업데이트: 2026-02-18*

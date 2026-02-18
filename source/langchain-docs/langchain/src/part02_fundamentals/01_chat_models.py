@@ -144,16 +144,16 @@ def example_5_multiple_providers():
     # Anthropic
     if os.getenv("ANTHROPIC_API_KEY"):
         from langchain_anthropic import ChatAnthropic
-        anthropic_model = ChatAnthropic(model="claude-3-5-haiku-20241022")
+        anthropic_model = ChatAnthropic(model="claude-haiku-4-5-20251001")
         response = anthropic_model.invoke(prompt)
-        print(f"\n✅ Anthropic (claude-3-5-haiku): {response.content}")
+        print(f"\n✅ Anthropic (claude-haiku-4-5): {response.content}")
 
     # Google
     if os.getenv("GOOGLE_API_KEY"):
         from langchain_google_genai import ChatGoogleGenerativeAI
-        google_model = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
+        google_model = ChatGoogleGenerativeAI(model="gemini-2.5-flash-lite")
         response = google_model.invoke(prompt)
-        print(f"\n✅ Google (gemini-1.5-flash): {response.content}")
+        print(f"\n✅ Google (gemini-2.5-flash-lite): {response.content}")
 
     print()
 

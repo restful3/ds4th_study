@@ -15,6 +15,7 @@
 - [ ] SystemMessage, HumanMessage, AIMessage의 역할과 사용법을 이해한다
 - [ ] `@tool` 데코레이터를 사용하여 기본 도구를 만들 수 있다
 - [ ] Pydantic 스키마를 활용하여 복잡한 입력을 받는 도구를 정의할 수 있다
+- [ ] ToolRuntime을 통해 Agent 상태와 컨텍스트에 접근하는 방법을 이해한다
 - [ ] Tool Calling의 동작 원리와 모델이 도구를 선택하는 과정을 이해한다
 
 ---
@@ -49,7 +50,7 @@
 graph LR
     A[LangChain Application] --> B[Chat Model Interface]
     B --> C[OpenAI<br/>GPT-4, GPT-4o]
-    B --> D[Anthropic<br/>Claude 3.5, Claude 4.5]
+    B --> D[Anthropic<br/>Claude 4.5]
     B --> E[Google<br/>Gemini]
     B --> F[Azure<br/>Azure OpenAI]
 
@@ -267,7 +268,7 @@ model = init_chat_model(
 
 > 💻 **예제 코드**: [01_chat_models.py](../src/part02_fundamentals/01_chat_models.py) 라인 90-130
 
-### 1.3 Model Profiles & Capabilities Detection
+### 1.5 Model Profiles & Capabilities Detection
 
 **Model Profiles**는 모델의 지원 기능과 제약사항을 확인할 수 있는 메타데이터입니다.
 
@@ -456,6 +457,7 @@ graph LR
 - **Metadata (메타데이터)**: ID, 토큰 사용량, 응답 정보 등
 
 > 📖 **공식 문서**: [08-messages.md](../official/08-messages_ko.md#메시지-유형)
+> 💻 **예제 코드**: [02_messages.py](../src/part02_fundamentals/02_messages.py)
 
 ### 2.2 SystemMessage - 시스템 지시사항
 
@@ -731,8 +733,8 @@ if model.profile.get("video_inputs"):
 
 **주요 multimodal 모델**:
 - GPT-4o, GPT-4o-mini (OpenAI) - 이미지, 오디오
-- Claude 3.5 Sonnet (Anthropic) - 이미지, PDF
-- Gemini 1.5 Pro/Flash (Google) - 이미지, 오디오, 비디오
+- Claude 4.5 Sonnet (Anthropic) - 이미지, PDF
+- Gemini 2.5 Pro/Flash (Google) - 이미지, 오디오, 비디오
 
 #### 1. 이미지 입력 (Image Input)
 
@@ -946,8 +948,8 @@ except ValueError as e:
 | 모델 | 이미지 | 오디오 | 비디오 | PDF |
 |------|-------|-------|-------|-----|
 | GPT-4o | PNG, JPEG, GIF, WebP | WAV, MP3 | MP4 | ✅ |
-| Claude 3.5 | PNG, JPEG, GIF, WebP | ❌ | ❌ | ✅ |
-| Gemini 1.5 | PNG, JPEG, WebP | WAV, MP3, AAC | MP4, MOV | ✅ |
+| Claude 4.5 | PNG, JPEG, GIF, WebP | ❌ | ❌ | ✅ |
+| Gemini 2.5 | PNG, JPEG, WebP | WAV, MP3, AAC | MP4, MOV | ✅ |
 
 **3. Base64 vs URL vs File ID**:
 
@@ -1182,7 +1184,7 @@ def search_products(
 **기본 사용법**:
 
 ```python
-from langchain.agents import tool, ToolRuntime
+from langchain.tools import tool, ToolRuntime
 
 @tool
 def get_user_preference(
@@ -1293,7 +1295,7 @@ def log_tool_call(runtime: ToolRuntime) -> str:
 
 ```python
 from typing import TypedDict
-from langchain.agents import tool, ToolRuntime
+from langchain.tools import tool, ToolRuntime
 
 class UserContext(TypedDict):
     user_id: str
@@ -1492,6 +1494,8 @@ def optimized_search(
 
 ## 5. Tools 고급
 
+> 💻 **예제 코드**: [04_tools_advanced.py](../src/part02_fundamentals/04_tools_advanced.py)
+
 ### 5.1 Pydantic 스키마로 복잡한 입력 정의
 
 복잡한 입력 구조가 필요한 경우 Pydantic 모델을 사용하면 더 명확하고 안전합니다.
@@ -1616,6 +1620,8 @@ def register_customer(name: str, contact: dict, addresses: list,
 ---
 
 ## 6. Tool Calling 이해하기
+
+> 💻 **예제 코드**: [05_tool_calling.py](../src/part02_fundamentals/05_tool_calling.py)
 
 ### 6.1 Tool Calling이란?
 
@@ -1778,7 +1784,7 @@ for tool_call in response.tool_calls:
     results.append(result)
 ```
 
-> 📖 **공식 문서**: [07-models.md](../official/07-models_ko.md#parallel-tool-calls)
+> 📖 **공식 문서**: [07-models.md](../official/07-models_ko.md#tool-호출)
 
 ---
 
@@ -2224,4 +2230,4 @@ Part 2를 완료하기 전에 다음을 확인하세요:
 
 **학습 진도**: ▓▓░░░░░░░░ 20% (Part 2/10 완료)
 
-*마지막 업데이트: 2025-02-05*
+*마지막 업데이트: 2026-02-18*

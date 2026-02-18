@@ -20,6 +20,7 @@ Part 4: Memory - 실습 과제 2 해답
 ================================================================================
 """
 
+from dotenv import load_dotenv
 from typing import Sequence, Literal
 from langchain_core.messages import (
     BaseMessage,
@@ -29,9 +30,11 @@ from langchain_core.messages import (
     RemoveMessage
 )
 from langchain_openai import ChatOpenAI
-from langgraph.checkpoint.memory import MemorySaver
+from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph import StateGraph, MessagesState, START, END
 from langgraph.graph.state import CompiledStateGraph
+
+load_dotenv()
 
 # ============================================================================
 # State 정의
@@ -151,7 +154,7 @@ def create_summarizing_chatbot(
     graph_builder.add_edge("summarize", END)
 
     # 메모리 추가
-    memory = MemorySaver()
+    memory = InMemorySaver()
     graph = graph_builder.compile(checkpointer=memory)
 
     return graph
@@ -251,7 +254,7 @@ def test_memory_efficiency():
     from langgraph.prebuilt import create_react_agent
 
     model = ChatOpenAI(model="gpt-4o-mini")
-    normal_chatbot = create_react_agent(model, [], checkpointer=MemorySaver())
+    normal_chatbot = create_react_agent(model, [], checkpointer=InMemorySaver())
 
     # 요약 챗봇
     summary_chatbot = create_summarizing_chatbot(summary_threshold=4)

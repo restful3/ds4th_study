@@ -151,7 +151,7 @@ for chunk in agent.stream({"messages": [...]}, stream_mode="messages"):
 
 ### 1.2 Stream Modes 개요
 
-LangChain은 3가지 주요 스트림 모드를 제공합니다:
+LangChain은 4가지 주요 스트림 모드를 제공합니다:
 
 **1. updates 모드**: Agent의 각 단계 후 State 업데이트
 ```python
@@ -939,28 +939,7 @@ langgraph deploy
 
 ---
 
-## 실습 과제
-
-### 과제 1: 실시간 번역 챗봇 (난이도: ⭐⭐⭐)
-
-**요구사항:**
-- 사용자 입력을 실시간으로 번역
-- 번역 진행률 표시
-- 토큰별 스트리밍 출력
-
-### 과제 2: 승인 워크플로우 시스템 (난이도: ⭐⭐⭐⭐)
-
-**요구사항:**
-- 파일 작업은 관리자 승인 필요
-- 이메일은 자동 승인
-- 거절 시 대안 제시
-
-### 과제 3: 폼 자동 완성 (난이도: ⭐⭐⭐⭐)
-
-**요구사항:**
-- 사용자 입력에서 폼 정보 추출
-- Pydantic으로 검증
-- 필드별 에러 처리
+---
 
 ---
 
@@ -1154,44 +1133,50 @@ graph TD
 
 ## 🎓 실습 과제
 
-### 과제 1: 실시간 스트리밍 Agent 구현
+### 과제 1: 진행 상황 표시 Agent (Custom Streaming)
 
 **난이도**: ★★★☆☆
 
-`stream()` API를 사용하여 토큰 단위 실시간 출력과 커스텀 이벤트를 지원하는 Agent를 구현하세요.
+`stream()` API를 사용하여 Agent 실행 과정을 실시간 스트리밍하고 각 단계별 진행 상황을 표시하는 Agent를 구현하세요.
 
 **요구사항**:
-- `stream_mode="messages"`로 토큰 스트리밍
-- `StreamWriter`로 진행률 커스텀 이벤트 전송
-- 다양한 `stream_mode` 조합 테스트
+- Agent 실행 과정을 실시간 스트리밍
+- 각 단계별 진행 상황 표시
+- 사용자 경험 개선 (토큰/청크 단위 스트리밍)
 
-> **힌트**: `src/part09_production/01_streaming.py`를 참고하세요.
+> **힌트**: [`src/part09_production/01_streaming_basics.py`](../src/part09_production/01_streaming_basics.py)를 참고하세요.
 
-### 과제 2: HITL 승인 워크플로우 구현
+> **해답**: [solutions/exercise_01.py](../src/part09_production/solutions/exercise_01.py)
+
+### 과제 2: 승인 기반 작업 Agent (HITL)
 
 **난이도**: ★★★★☆
 
-위험한 작업(결제, 데이터 삭제 등)에 대해 사람의 승인을 받는 Human-in-the-Loop 워크플로우를 구현하세요.
+위험한 작업(데이터 삭제, 대량 이메일 발송, 설정 변경 등)에 대해 사람의 승인을 받는 Human-in-the-Loop 워크플로우를 구현하세요.
 
 **요구사항**:
-- `interrupt()` 함수로 승인 대기 구현
-- approve/edit/reject 3가지 응답 처리
-- `Command(resume=...)` 패턴 적용
+- 중요한 작업은 사용자 승인 필요
+- Interrupt를 통한 작업 중단
+- 승인 후 재개 기능 (상태 저장 및 재개)
 
-> **힌트**: `src/part09_production/02_hitl.py`를 참고하세요.
+> **힌트**: [`src/part09_production/04_hitl_basic.py`](../src/part09_production/04_hitl_basic.py)를 참고하세요.
 
-### 과제 3: 구조화된 출력 파이프라인
+> **해답**: [solutions/exercise_02.py](../src/part09_production/solutions/exercise_02.py)
+
+### 과제 3: API 통합 Agent (Structured Output)
 
 **난이도**: ★★★☆☆
 
-Pydantic 모델을 활용하여 LLM 출력을 타입 안전하게 파싱하는 시스템을 구현하세요.
+Pydantic 모델을 활용하여 LLM 출력을 타입 안전하게 파싱하고, API 스펙을 준수하는 구조화된 응답을 생성하는 시스템을 구현하세요.
 
 **요구사항**:
 - `with_structured_output()` 메서드 활용
-- Union 타입 지원 (다중 출력 형식)
-- 유효성 검증 및 에러 처리
+- 구조화된 응답 생성 (JSON, Pydantic)
+- 타입 안전성 확보 및 유효성 검증
 
-> **힌트**: `src/part09_production/03_structured_output.py`를 참고하세요.
+> **힌트**: [`src/part09_production/06_structured_output.py`](../src/part09_production/06_structured_output.py)를 참고하세요.
+
+> **해답**: [solutions/exercise_03.py](../src/part09_production/solutions/exercise_03.py)
 
 ---
 
@@ -1245,4 +1230,4 @@ Part 9 완료! ➡ [Part 10: Deployment로 이동](./part10_deployment.md)
 
 ---
 
-*마지막 업데이트: 2025-02-06*
+*마지막 업데이트: 2026-02-18*
