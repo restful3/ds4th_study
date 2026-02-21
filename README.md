@@ -80,7 +80,7 @@
 * 발표자 - S종훈
 * **15.** 이벤트 주도 아키텍처 스타일 (64p)
 * *(총 64p)*
-
+* [자료링크](https://github.com/restful3/ds4th_study/blob/e06be6b8eb31bfc7e31e10e4a6eb73799e89520c/source/%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%20%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%20The%20Basics%20(%EA%B0%9C%EC%A0%95%202%ED%8C%90)/ch15_%EC%9D%B4%EB%B2%A4%ED%8A%B8_%EC%A3%BC%EB%8F%84_%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98_%EC%8A%A4%ED%83%80%EC%9D%BC/%E1%84%8B%E1%85%A1%E1%84%8F%E1%85%B5%E1%84%90%E1%85%A6%E1%86%A8%E1%84%8E%E1%85%A515%E1%84%8C%E1%85%A1%E1%86%BC.pptx)
 
 
 #### **2026년 2월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=meb86188e66a94dce2e3b5206140e22d0)
@@ -149,6 +149,7 @@
 * **참가 희망 요청**: [Email](mailto:restful3@gmail.com)
 
 * **이제 까지 다룬 내용**: [archive 확인](https://github.com/restful3/ds4th_study/tree/main/archive)
+
 
 
 
