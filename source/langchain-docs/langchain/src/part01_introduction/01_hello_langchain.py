@@ -310,7 +310,7 @@ def example_5_system_prompt():
     print(f"   🤖 {result2['messages'][-1].content}")
 
     # 성격 3: 5살 아이에게 설명하는 선생님
-    print("\n🔹 [성격 3] 어린이 선생님:")
+    print("\n🔹 [성격 3] 어린이집 선생님:")
     agent3 = create_agent(
         model="openai:gpt-4.1-nano",
         tools=[get_weather],
