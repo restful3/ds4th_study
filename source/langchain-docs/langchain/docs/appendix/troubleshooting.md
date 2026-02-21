@@ -271,7 +271,7 @@ model = ChatOpenAI(model="gpt-4o-mini")  # $0.15 / 1M 토큰
 
 **3. 재시도 로직 추가**
 ```python
-from langchain.llms import OpenAI
+from langchain_openai import ChatOpenAI
 from tenacity import retry, wait_exponential, stop_after_attempt
 
 @retry(
@@ -390,7 +390,7 @@ model = ChatOpenAI(model="gpt-3.5-turbo-instruct")  # ❌
 
 # Tool Calling을 지원하는 모델
 model = ChatOpenAI(model="gpt-4o-mini")  # ✅
-model = ChatAnthropic(model="claude-3-5-sonnet-20241022")  # ✅
+model = ChatAnthropic(model="claude-sonnet-4-5-20250929")  # ✅
 ```
 
 **4. System Prompt 개선**
@@ -468,7 +468,7 @@ model = ChatOpenAI(model="gpt-4o")
 
 # 빠름
 model = ChatOpenAI(model="gpt-4o-mini")
-model = ChatAnthropic(model="claude-3-5-haiku-20241022")
+model = ChatAnthropic(model="claude-haiku-4-5-20251001")
 ```
 
 **2. 스트리밍 모드 활성화**
@@ -658,33 +658,22 @@ agent = create_agent(model=model, tools=tools, checkpointer=checkpointer)
 
 #### 해결 방법
 
-**1. 메시지 트리밍**
+**1. 요약 미들웨어 사용 (메시지 자동 트리밍)**
 ```python
-from langgraph.prebuilt import trimmer
+from langchain.agents import create_agent
+from langchain.agents.middleware import SummarizationMiddleware
 
-# 최근 10개 메시지만 유지
 agent = create_agent(
     model=model,
     tools=tools,
     checkpointer=checkpointer,
-    message_modifier=trimmer(max_messages=10),
-)
-```
-
-**2. 요약 미들웨어 사용**
-```python
-from langgraph.prebuilt.chat_agent_executor import create_agent
-from langgraph.prebuilt import create_summarization_middleware
-
-summarization_mw = create_summarization_middleware(
-    llm=model,
-    summary_prompt="이전 대화를 2-3문장으로 요약하세요."
-)
-
-agent = create_agent(
-    model=model,
-    tools=tools,
-    middleware=[summarization_mw],
+    middleware=[
+        SummarizationMiddleware(
+            model="gpt-4o-mini",
+            trigger=("messages", 10),  # 10개 이상이면 요약
+            keep=("messages", 5),      # 최근 5개는 유지
+        ),
+    ],
 )
 ```
 
@@ -826,5 +815,5 @@ result = agent.invoke(input)
 
 ---
 
-*마지막 업데이트: 2025-02-05*
-*버전: 1.0*
+*마지막 업데이트: 2025-02-18*
+*버전: 1.1*

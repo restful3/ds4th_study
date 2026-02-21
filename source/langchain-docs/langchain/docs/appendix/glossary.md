@@ -137,8 +137,8 @@ agent = create_agent(
 
 **예시**:
 - OpenAI: GPT-4o, GPT-4o-mini
-- Anthropic: Claude 3.5 Sonnet
-- Google: Gemini 1.5 Pro
+- Anthropic: Claude 4.5 Sonnet
+- Google: Gemini 2.5 Flash
 
 ```python
 from langchain_openai import ChatOpenAI
@@ -196,7 +196,7 @@ agent = create_agent(
 @tool
 def get_user_info(runtime: ToolRuntime) -> str:
     """사용자 정보 조회"""
-    user_id = runtime.context.get("user_id")
+    user_id = runtime.context.user_id
     return f"User ID: {user_id}"
 ```
 
@@ -355,7 +355,7 @@ LLM 애플리케이션 개발을 위한 오픈소스 프레임워크입니다.
 - Chains: 작업 파이프라인
 - Memory: 대화 이력 관리
 
-**공식 사이트**: https://python.langchain.com
+**공식 사이트**: https://docs.langchain.com/oss/python/langchain/overview
 
 ---
 
@@ -421,9 +421,9 @@ result = chain.invoke({"input": "질문"})
 대규모 언어 모델을 의미합니다.
 
 **예시**:
-- GPT-4, GPT-4o (OpenAI)
-- Claude 3.5 (Anthropic)
-- Gemini 1.5 (Google)
+- GPT-4o, GPT-4o-mini (OpenAI)
+- Claude 4.5 Sonnet (Anthropic)
+- Gemini 2.5 Flash (Google)
 
 ---
 
@@ -438,10 +438,10 @@ result = chain.invoke({"input": "질문"})
 - 플러그인 방식
 
 ```python
-from langchain_mcp import MCPClient
+from langchain_mcp_adapters.client import MultiServerMCPClient
 
-mcp_client = MCPClient(server_url="http://localhost:8000")
-agent = create_agent(model=model, tools=[mcp_client])
+async with MultiServerMCPClient({"server": {"url": "http://localhost:8000/sse"}}) as client:
+    agent = create_agent(model=model, tools=client.get_tools())
 ```
 
 **관련 파트**: Part 8.4-8.6 (MCP)
@@ -507,8 +507,8 @@ message = HumanMessage(
 
 **지원 모델**:
 - GPT-4o, GPT-4o-mini (OpenAI)
-- Claude 3.5 Sonnet (Anthropic)
-- Gemini 1.5 Pro (Google)
+- Claude 4.5 Sonnet (Anthropic)
+- Gemini 2.5 Flash (Google)
 
 **관련 파트**: Part 2.1 (Chat Models)
 
@@ -583,7 +583,7 @@ class SearchQuery(BaseModel):
 4. LLM이 답변 생성
 
 ```python
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 
 # 문서를 Vector Store에 저장
 vectorstore = Chroma.from_documents(documents, embeddings)
@@ -695,7 +695,7 @@ Agent의 장기 메모리를 저장하는 시스템입니다.
 - 학습된 정보 저장
 
 ```python
-from langgraph.store import InMemoryStore
+from langgraph.store.memory import InMemoryStore
 
 store = InMemoryStore()
 store.put("user-123", "preferences", {"language": "ko"})
@@ -841,8 +841,8 @@ result = model_with_tools.invoke("서울 날씨는?")
 
 **지원 모델**:
 - GPT-4o, GPT-4o-mini
-- Claude 3.5 Sonnet
-- Gemini 1.5 Pro
+- Claude 4.5 Sonnet
+- Gemini 2.5 Flash
 
 **관련 파트**: Part 2.4 (Tool Calling)
 
@@ -868,12 +868,12 @@ message = ToolMessage(
 도구에서 Agent의 런타임 컨텍스트에 접근하는 인터페이스입니다.
 
 ```python
-from langgraph.prebuilt import ToolRuntime
+from langchain.tools import tool, ToolRuntime
 
 @tool
 def get_user_data(runtime: ToolRuntime) -> str:
     """현재 사용자 정보를 조회합니다"""
-    user_id = runtime.context.get("user_id")
+    user_id = runtime.context.user_id
     return f"User: {user_id}"
 ```
 
@@ -990,5 +990,5 @@ LLM은 "뇌"이고, Agent는 "뇌 + 손발"입니다.
 
 *더 많은 용어는 [공식 문서](https://docs.langchain.com/oss/python/langchain/overview)를 참고하세요.*
 
-*마지막 업데이트: 2025-02-05*
-*버전: 1.0*
+*마지막 업데이트: 2025-02-18*
+*버전: 1.1*

@@ -112,18 +112,20 @@ for chunk in agent.stream(input, stream_mode="custom"):
 **새로운 기능**:
 
 ```python
-from langgraph.prebuilt import create_agent
+from langchain.agents import create_agent
+from langchain.agents.middleware import AgentMiddleware
 
-def logging_middleware(state, next):
-    print(f"Before: {state}")
-    result = next(state)
-    print(f"After: {result}")
-    return result
+class LoggingMiddleware(AgentMiddleware):
+    async def wrap_model_call(self, state, model_call):
+        print(f"Before: {state}")
+        result = await model_call(state)
+        print(f"After: {result}")
+        return result
 
 agent = create_agent(
     model=model,
     tools=tools,
-    middleware=[logging_middleware],
+    middleware=[LoggingMiddleware()],
 )
 ```
 
@@ -258,7 +260,7 @@ model_with_tools = model.bind_tools(tools)
 #### 3. Structured Output 지원
 
 ```python
-from langchain_core.pydantic_v1 import BaseModel
+from pydantic import BaseModel
 
 class Person(BaseModel):
     name: str
@@ -478,5 +480,5 @@ LangChain 팀은 0.x 지원을 점진적으로 축소할 예정이므로, 가능
 
 *이 문서는 공식 changelog의 요약본입니다. 전체 내용은 [공식 문서](../../official/04-changelog_ko.md)를 참고하세요.*
 
-*마지막 업데이트: 2025-02-05*
-*버전: 1.0*
+*마지막 업데이트: 2025-02-18*
+*버전: 1.1*
