@@ -94,7 +94,7 @@
 
 #### **2026년 3월 7일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m8a86f86479fe817a0e45466e66548de1)
 
-* 발표자 - 태호
+* 발표자 - TBD
 * **18.** 마이크로서비스 아키텍처 (31p)
 * **19.** 적절한 아키텍처 스타일의 선택 (15p)
 * **20.** 아키텍처 패턴 (15p)
@@ -123,7 +123,7 @@
 
 #### **2026년 3월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1bed326e057a1b2c8277b04560d6c89f)
 
-* 발표자 - TBD
+* 발표자 - 태호
 * **26.** 아키텍처 교차점 (21p)
 * **27.** 다시 살펴본 소프트웨어 아키텍처 법칙들 (14p)
 * *(총 35p)*
@@ -149,6 +149,7 @@
 * **참가 희망 요청**: [Email](mailto:restful3@gmail.com)
 
 * **이제 까지 다룬 내용**: [archive 확인](https://github.com/restful3/ds4th_study/tree/main/archive)
+
 
 
 
