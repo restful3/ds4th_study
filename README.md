@@ -114,18 +114,18 @@
 
 #### **2026년 3월 21일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mf72ed58f53d4d744dd9e7bfa21a9c086)
 
-* 발표자 - TBD
-* **24.** 유능한 팀 만들기 (24p)
-* **25.** 협상과 리더십 스킬 (21p)
+* 발표자 - 보현, 제익
+* Part 1: Claude와 대화 시작하기
+* Part 3: Claude와 프로젝트 완성하기
 * *(총 45p)*
 
 
 
 #### **2026년 3월 28일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m1bed326e057a1b2c8277b04560d6c89f)
 
-* 발표자 - 태호
-* **26.** 아키텍처 교차점 (21p)
-* **27.** 다시 살펴본 소프트웨어 아키텍처 법칙들 (14p)
+* 발표자 - s종훈, 태영
+* Part 2: Claude를 내 방식으로 확장하기
+* Part 4: 에이전틱 엔지니어링 패턴
 * *(총 35p)*
 
 
