@@ -39,32 +39,45 @@
 
 
 
-#### **2026년 5월 9일 (토) 오전 8:30**: 이론 발표 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m661ff64edcb8b55c76ab6d5011cb7f27)
+#### **2026년 5월 9일 (토) 오전 8:30**: 1주차 이론 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m661ff64edcb8b55c76ab6d5011cb7f27)
 
-* 발표자 - TBD (Deep Agents 파트원)
-* 주제: **Deep Agents** 핵심 개념 (1시간 내 핵심 요약)
-* 비고: 5/2까지 리드(종훈(S))가 멤버별 담당 영역 배정 완료
-
-
-
-#### **2026년 5월 16일 (토) 오후 9:30**: 구현 및 공유 — [Webex 링크](TBD)
-
-* 발표자 - 자유 주제 (퀀트 스터디 종료 후)
-* 주제: **Deep Agents 기반 퀀트 에이전트 구현 공유**
+* **태영**: Overview, Quickstart, Customization, Models
+  * `01-overview_ko.md`, `02-quickstart_ko.md`, `03-customization_ko.md`
+* **종훈(S)**: Context engineering, Memory, Skills
+  * `04-harness_ko.md`, `08-long-term-memory_ko.md`
+* **종훈(L)**: Backends, Sandboxes, Permissions
+  * `05-backends_ko.md`
 
 
 
-#### **2026년 5월 23일 (토) 오전 8:30**: 이론 발표 — [Webex 링크](TBD)
+#### **2026년 5월 16일 (토) 오후 9:30**: 2주차 실습 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=madde6f8079f99b17c91a793e35b8de59)
 
-* 발표자 - TBD
-* 주제: **Deep Agents 심화** (MCP / Memory / HITL / Skills 등)
+* **종훈(S)**: Quickstart 및 CLI 기본 구동 실습
+  * `02-quickstart_ko.md`, `10-cli_ko.md`
+* **재익**: Memory 와 Skills 적용 실습
+  * `04-harness_ko.md`, `08-long-term-memory_ko.md`
+* **태영**: 샌드박스와 권한(Permissions) 제어 실습
+  * `05-backends_ko.md`
 
 
 
-#### **2026년 5월 30일 (토) 오후 9:30**: 구현 및 공유 — [Webex 링크](TBD)
+#### **2026년 5월 23일 (토) 오전 8:30**: 3주차 이론 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=md89a6dc15f39b828835ebc9b32024bd6)
 
-* 발표자 - 자유 주제
-* 주제: **Deep Agents 구현 확장 및 공유**
+* **보현**: Subagents, Async subagents, HITL
+  * `06-subagents_ko.md`, `07-human-in-the-loop_ko.md`
+* **수경**: 배포(Deploy), Production, Streaming
+  * `10-cli_ko.md` (Deploy 파트), `09-middleware_ko.md`
+* **세훈**: Protocols (MCP, A2A, ACP), Frontend
+  * `09-middleware_ko.md`, `10-cli_ko.md` (MCP 파트)
+
+
+
+#### **2026년 5월 30일 (토) 오후 9:30**: 4주차 실습 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=mbf76dd0c34fa02a98416d13adcae86e2)
+
+* **TBD**: Subagent 위임과 HITL (승인) 시스템 실습
+  * `06-subagents_ko.md`, `07-human-in-the-loop_ko.md`
+* **TBD**: MCP 연결 및 CLI 배포 실습
+  * `10-cli_ko.md`
 
 ---
 
@@ -72,56 +85,56 @@
 
 
 
-#### **2026년 6월 6일 (토) 오전 8:30**: 이론 발표 — [Webex 링크](TBD)
+#### **2026년 6월 6일 (토) 오전 8:30**: 이론 발표 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m9a194682e586905462cf452240ce3574)
 
 * 발표자 - TBD
 * 주제: **LangGraph** 입문 / StateGraph 기초
 
 
 
-#### **2026년 6월 13일 (토) 오후 9:30**: 구현 및 공유 — [Webex 링크](TBD)
+#### **2026년 6월 13일 (토) 오후 9:30**: 구현 및 공유 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m87f9a7efa706eae278720a8f458f10a5)
 
 * 발표자 - 자유 주제
 * 주제: **LangGraph 기반 퀀트 에이전트 구현 공유**
 
 
 
-#### **2026년 6월 20일 (토) 오전 8:30**: 이론 발표 — [Webex 링크](TBD)
+#### **2026년 6월 20일 (토) 오전 8:30**: 이론 발표 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=maec40b0601bf91499a6c59760bd5340b)
 
 * 발표자 - TBD
 * 주제: **LangGraph 심화** (Persistence / HITL / Multi-agent 등)
 
 
 
-#### **2026년 6월 27일 (토) 오후 9:30**: 구현 및 공유 — [Webex 링크](TBD)
+#### **2026년 6월 27일 (토) 오후 9:30**: 구현 및 공유 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m15e64a942ca773ba9ff3893b375b65b5)
 
 * 발표자 - 자유 주제
 * 주제: **LangGraph 구현 확장 및 공유**
 
 
 
-#### **2026년 7월 4일 (토) 오전 8:30**: 이론 발표 — [Webex 링크](TBD)
+#### **2026년 7월 4일 (토) 오전 8:30**: 이론 발표 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m039bd4fb3e1d60792aaf56f8ec2e85e9)
 
 * 발표자 - TBD
 * 주제: **LangGraph 고급 주제** (Streaming / Subgraph 등)
 
 
 
-#### **2026년 7월 11일 (토) 오후 9:30**: 구현 및 공유 — [Webex 링크](TBD)
+#### **2026년 7월 11일 (토) 오후 9:30**: 구현 및 공유 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m245f52cbecc6367e56a150b271a78fbd)
 
 * 발표자 - 자유 주제
 * 주제: **LangGraph 구현 통합 및 공유**
 
 
 
-#### **2026년 7월 18일 (토) 오전 8:30**: 이론 발표 — [Webex 링크](TBD)
+#### **2026년 7월 18일 (토) 오전 8:30**: 이론 발표 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m2757d0104b346d8532d4d18d4a6ed952)
 
 * 발표자 - TBD
 * 주제: **LangGraph 마무리 / 베스트 프랙티스**
 
 
 
-#### **2026년 7월 25일 (토) 오후 9:30**: 최종 구현 공유 — [Webex 링크](TBD)
+#### **2026년 7월 25일 (토) 오후 9:30**: 최종 구현 공유 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m30772a3f3b895e39b31b3d369e35e71c)
 
 * 발표자 - 전원
 * 주제: **퀀트 에이전트 최종 결과물 공유 및 회고**
@@ -132,6 +145,7 @@
 
 * **학습 대상**:
   * Deep Agents, LangGraph 공식 문서 및 관련 자료 (LangChain 은 필요 시 참조)
+  * 참고 교재: [langchain-docs (한글 번역)](https://github.com/restful3/langchain-docs)
 * **학습 방법**:
   * 방대한 문서량을 효율적으로 소화하기 위해 담당자를 지정하여 해당 파트만 깊게 학습
   * 발표는 **NotebookLM 등 AI 도구로 생성한 요약 자료** 를 활용하여 핵심 위주로 진행 (1시간 내)
