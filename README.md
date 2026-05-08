@@ -42,7 +42,8 @@
 #### **2026년 5월 9일 (토) 오전 8:30**: 1주차 이론 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m661ff64edcb8b55c76ab6d5011cb7f27)
 
 * **태영**: Overview, Quickstart, Customization, Models
-  * `01-overview_ko.md`, `02-quickstart_ko.md`, `03-customization_ko.md`
+  * 원문: [`01-overview_ko.md`](https://github.com/restful3/langchain-docs/blob/main/deep-agents/01-overview_ko.md), [`02-quickstart_ko.md`](https://github.com/restful3/langchain-docs/blob/main/deep-agents/02-quickstart_ko.md), [`03-customization_ko.md`](https://github.com/restful3/langchain-docs/blob/main/deep-agents/03-customization_ko.md)
+  * 발표 자료: [week1-overview-taeyoung](https://github.com/restful3/langchain-docs/tree/main/deep-agents/week1-overview-taeyoung)
 * **종훈(S)**: Context engineering, Memory, Skills
   * `04-harness_ko.md`, `08-long-term-memory_ko.md`
 * **종훈(L)**: Backends, Sandboxes, Permissions
