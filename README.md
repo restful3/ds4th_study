@@ -13,7 +13,7 @@
 
 * **격주 로테이션** 으로 운영
 * **홀수 주 (이론)**: 매주 토요일 **오전 8:30 \~** — 문서 학습 중심 스터디
-* **짝수 주 (구현)**: 퀀트 스터디 종료 후 **오후 9:30 \~** — 자유 주제 시간을 활용한 구현 공유
+* **짝수 주 (구현)**: 퀀트 스터디 종료 후 **오전 9:30 \~** — 자유 주제 시간을 활용한 구현 공유
 
 ---
 
@@ -51,7 +51,7 @@
 
 
 
-#### **2026년 5월 16일 (토) 오후 9:30**: 2주차 실습 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=madde6f8079f99b17c91a793e35b8de59)
+#### **2026년 5월 16일 (토) 오전 9:30**: 2주차 실습 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=madde6f8079f99b17c91a793e35b8de59)
 
 * **종훈(S)**: Quickstart 및 CLI 기본 구동 실습
   * `02-quickstart_ko.md`, `10-cli_ko.md`
@@ -73,7 +73,7 @@
 
 
 
-#### **2026년 5월 30일 (토) 오후 9:30**: 4주차 실습 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=mbf76dd0c34fa02a98416d13adcae86e2)
+#### **2026년 5월 30일 (토) 오전 9:30**: 4주차 실습 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=mbf76dd0c34fa02a98416d13adcae86e2)
 
 * **TBD**: Subagent 위임과 HITL (승인) 시스템 실습
   * `06-subagents_ko.md`, `07-human-in-the-loop_ko.md`
@@ -93,7 +93,7 @@
 
 
 
-#### **2026년 6월 13일 (토) 오후 9:30**: 구현 및 공유 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m87f9a7efa706eae278720a8f458f10a5)
+#### **2026년 6월 13일 (토) 오전 9:30**: 구현 및 공유 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m87f9a7efa706eae278720a8f458f10a5)
 
 * 발표자 - 자유 주제
 * 주제: **LangGraph 기반 퀀트 에이전트 구현 공유**
@@ -107,7 +107,7 @@
 
 
 
-#### **2026년 6월 27일 (토) 오후 9:30**: 구현 및 공유 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m15e64a942ca773ba9ff3893b375b65b5)
+#### **2026년 6월 27일 (토) 오전 9:30**: 구현 및 공유 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m15e64a942ca773ba9ff3893b375b65b5)
 
 * 발표자 - 자유 주제
 * 주제: **LangGraph 구현 확장 및 공유**
@@ -121,7 +121,7 @@
 
 
 
-#### **2026년 7월 11일 (토) 오후 9:30**: 구현 및 공유 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m245f52cbecc6367e56a150b271a78fbd)
+#### **2026년 7월 11일 (토) 오전 9:30**: 구현 및 공유 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m245f52cbecc6367e56a150b271a78fbd)
 
 * 발표자 - 자유 주제
 * 주제: **LangGraph 구현 통합 및 공유**
@@ -135,7 +135,7 @@
 
 
 
-#### **2026년 7월 25일 (토) 오후 9:30**: 최종 구현 공유 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m30772a3f3b895e39b31b3d369e35e71c)
+#### **2026년 7월 25일 (토) 오전 9:30**: 최종 구현 공유 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m30772a3f3b895e39b31b3d369e35e71c)
 
 * 발표자 - 전원
 * 주제: **퀀트 에이전트 최종 결과물 공유 및 회고**
