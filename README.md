@@ -39,7 +39,7 @@
 
 
 
-#### **2026년 5월 9일 (토) 오전 8:30**: 이론 발표 — [Webex 링크](TBD)
+#### **2026년 5월 9일 (토) 오전 8:30**: 이론 발표 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=m661ff64edcb8b55c76ab6d5011cb7f27)
 
 * 발표자 - TBD (Deep Agents 파트원)
 * 주제: **Deep Agents** 핵심 개념 (1시간 내 핵심 요약)
