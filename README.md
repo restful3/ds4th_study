@@ -53,11 +53,11 @@
 
 #### **2026년 5월 16일 (토) 오전 9:30**: 2주차 실습 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=madde6f8079f99b17c91a793e35b8de59)
 
-* **종훈(S)**: Quickstart 및 CLI 기본 구동 실습
-  * `02-quickstart_ko.md`, `10-cli_ko.md`
-* **재익**: Memory 와 Skills 적용 실습
+* **태영**: Quickstart 및 CLI 기본 구동 실습
+  * `01-overview_ko.md`, `02-quickstart_ko.md`, `03-customization_ko.md`
+* **종훈(S)**: Memory 와 Skills 적용 실습
   * `04-harness_ko.md`, `08-long-term-memory_ko.md`
-* **태영**: 샌드박스와 권한(Permissions) 제어 실습
+* **종훈(L)**: 샌드박스와 권한(Permissions) 제어 실습
   * `05-backends_ko.md`
 
 
@@ -75,10 +75,12 @@
 
 #### **2026년 5월 30일 (토) 오전 9:30**: 4주차 실습 — [Webex 링크](https://lgehq.webex.com/lgehq-en/j.php?MTID=mbf76dd0c34fa02a98416d13adcae86e2)
 
-* **TBD**: Subagent 위임과 HITL (승인) 시스템 실습
+* **보현**: Subagents, Async subagents, HITL
   * `06-subagents_ko.md`, `07-human-in-the-loop_ko.md`
-* **TBD**: MCP 연결 및 CLI 배포 실습
-  * `10-cli_ko.md`
+* **수경**: 배포(Deploy), Production, Streaming
+  * `10-cli_ko.md` (Deploy 파트), `09-middleware_ko.md`
+* **세훈**: Protocols (MCP, A2A, ACP), Frontend
+  * `09-middleware_ko.md`, `10-cli_ko.md` (MCP 파트)
 
 ---
 
