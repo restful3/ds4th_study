@@ -1,113 +1,164 @@
 # **ds4th study**
 
-AI, 데이터 과학, 머신러닝, 에이전트 기술을 함께 학습하고 발표 자료와 실습 코드를 공유하는 스터디 저장소입니다.
+### **1. 스터디 목적**
 
-현재는 **Knowledge Graphs and LLMs in Action** 교재를 중심으로 지식 그래프와 LLM을 결합한 하이브리드 지능형 시스템을 학습합니다.
-
----
-
-## **1. 현재 스터디**
-
-### **Knowledge Graphs and LLMs in Action**
-
-* **교재**: Alessandro Negro 외, *Knowledge Graphs and LLMs in Action*
-* **자료 위치**: [`source/books/Alessandro Negro - Knowledge Graphs and LLMs in Action`](source/books/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action)
-* **학습 목표**
-  * Knowledge Graph와 LLM의 결합 방식 이해
-  * 구조화/비구조화 데이터에서 Knowledge Graph를 구축하는 방법 학습
-  * Graph ML, GNN, Graph RAG, 자연어 기반 KG 질의, LangGraph 기반 QA 에이전트 구현 흐름 학습
-  * 이후 에이전트/검색/RAG 프로젝트에 적용 가능한 공통 설계 감각 확보
+* **『Knowledge Graphs and LLMs in Action』(Alessandro Negro 외, Manning)를 통해 지식 그래프와 LLM의 결합 방식부터 온톨로지 기반 KG 구축·비정형 데이터 지식 추출·개체명 중의성 해소·Graph ML과 GNN·Graph RAG·LangGraph 기반 QA 에이전트까지, 하이브리드 지능형 시스템을 직접 구현하는 데 필요한 방법론을 체계적으로 학습하는 것** 을 목표로 한다.
 
 ---
 
-## **2. 스터디 시간**
+### **2. 스터디 시간**
 
-* **운영 주기**: 격주 토요일
-* **AI 스터디**: 토요일 **09:00-10:00**
-* **참고**: 같은 날 퀀트 스터디는 **08:00-09:00**에 진행
-* **휴식일**: **2026년 7월 18일(토)** 은 휴식
-* **재개일**: **2026년 7월 25일(토)**
+* 격주 토요일 **09:00–10:00** (기존 08:30 시작에서 09:00 시작으로 변경)
 
 ---
 
-## **3. 스터디 장소**
+### **3. 스터디 장소**
 
 * Webex
 
 ---
 
-## **4. 운영 계획 (2026년 7월-10월)**
+### **4. 스터디 운영 계획 (2026년 7월 \~ 2026년 11월)**
 
-> 최대 8회 발표 기준으로 구성했습니다.  
-> 쪽수는 교재의 인쇄 쪽수 기준이며, 챕터 경계를 우선해 일부 회차는 40-60쪽 범위에서 조금 벗어납니다.
-
-| 회차 | 일자 | 범위 | 주제 | 페이지 | 발표자 | 자료 |
-|---:|---|---|---|---:|---|---|
-| - | 2026-07-18 | 휴식 | 다음 교재 준비 | - | - | - |
-| 1 | 2026-07-25 | Ch1-Ch3 | KG와 LLM의 결합, 하이브리드 지능형 시스템, 온톨로지 기반 첫 KG 구축 | pp. 1-64 (64쪽) | 수경 | 추후 공유 |
-| 2 | 2026-08-08 | Ch4-Ch6 | 멀티소스 통합, 비정형 데이터 지식 추출, LLM 기반 KG 구축 | pp. 65-128 (64쪽) | 추후 확정 | 추후 공유 |
-| 3 | 2026-08-22 | Ch7 | Named Entity Disambiguation 기초와 도메인 기반 KG 활용 | pp. 129-179 (51쪽) | 추후 확정 | 추후 공유 |
-| 4 | 2026-09-05 | Ch8-Ch9 | Open LLM/도메인 온톨로지 기반 NED, KG 위의 머신러닝 개요 | pp. 180-232 (53쪽) | 추후 확정 | 추후 공유 |
-| 5 | 2026-09-19 | Ch10 | 그래프 특성 공학: 수동/반자동 접근 | pp. 233-271 (39쪽) | 추후 확정 | 추후 공유 |
-| 6 | 2026-10-03 | Ch11-Ch12 | 그래프 임베딩, GNN, 노드 분류와 링크 예측 | pp. 272-334 (63쪽) | 추후 확정 | 추후 공유 |
-| 7 | 2026-10-17 | Ch13-Ch14 | Graph RAG, 자연어 기반 Knowledge Graph 질의 | pp. 335-396 (62쪽) | 추후 확정 | 추후 공유 |
-| 8 | 2026-10-31 | Ch15 + Appendix A | LangGraph 기반 QA 에이전트와 그래프 기초 정리 | pp. 397-446 (50쪽) | 추후 확정 | 추후 공유 |
-
-### **부록 운영**
-
-* **Appendix B. Neo4j**, **Appendix C. Building knowledge graphs from structured sources** 는 발표 필수 범위에서 제외합니다.
-* 필요 시 Ch15 발표 또는 별도 실습 시간에서 참고 자료로 활용합니다.
+> 2026년 7월 18일(토)은 휴식하고, 7월 25일(토)부터 재개한다.
+>
+> 쪽수는 교재의 인쇄 쪽수 기준이며, 회당 40\~60쪽을 목표로 하되 챕터 경계를 우선해 일부 회차는 범위를 벗어난다. 발표 담당은 확정되는 대로 갱신한다.
 
 ---
 
-## **5. 스터디 운영 방법**
+#### **2026년 7월 25일**: [Webex](#)
 
-* **발표 방식**: 50분 발표 + 10분 Q&A
-* **발표 분량**: 회당 대략 40-60쪽
-* **발표 준비**
-  * 챕터별 원문 Markdown과 한국어 번역본을 우선 활용
-  * NotebookLM 등 AI 도구로 요약, 슬라이드, 인포그래픽을 생성해 발표 부담을 줄임
-  * 발표자는 핵심 개념, 구현 흐름, 적용 가능성을 중심으로 정리
-* **자료 공유**
-  * 발표 자료, 코드, 추가 정리 문서는 GitHub에 공유
-  * 챕터별 자료는 가능하면 해당 교재 폴더 아래에 함께 정리
+* 발표자 - 수경
+* **Chapter 1. 지식 그래프와 LLM: 강력한 조합 (Knowledge Graphs and LLMs: A Killer Combination)** — pp. 1–16
+    * 지식 그래프(KG)와 대규모 언어 모델(LLM) 소개
+    * LLM의 환각·맥락 부족 한계와 KG의 보완 관계
+    * KG와 LLM을 결합한 데이터 기반 애플리케이션 구축
+* **Chapter 2. 지능형 시스템: 하이브리드 접근 (Intelligent Systems: A Hybrid Approach)** — pp. 17–36
+    * 지능형 자문 시스템(IAS)을 위한 설계 개념과 아키텍처
+    * 하이브리드 시스템이 KG와 LLM의 상호 보완적 강점을 활용하는 방식
+* 자료: 추후 공유
+
+
+#### **2026년 8월 8일**: [Webex](#)
+
+* 발표자 - 추후 확정
+* **Chapter 3. 온톨로지로 첫 지식 그래프 만들기 (Create Your First Knowledge Graph from Ontologies)** — pp. 37–64
+    * 사용 사례에 기반한 KG 기술 선택
+    * 인간 표현형 온톨로지(HPO) 기반 임상 지원 KG 구축
+    * KG 위에서의 분석과 온톨로지 기반 추론
+* **Chapter 4. 단순 네트워크에서 멀티소스 통합으로 (From Simple Networks to Multisource Integration)** — pp. 65–94
+    * 여러 구조화 데이터 소스로부터 복잡한 KG 구축·통합
+    * 엔터티·관계 병합 후처리와 분석·질의 기법
+    * LLM을 활용한 KG 결과 분석
+* 자료: 추후 공유
+
+
+#### **2026년 8월 22일**: [Webex](#)
+
+* 발표자 - 추후 확정
+* **Chapter 5. 비정형 데이터에서 도메인 특화 지식 추출 (Extracting Domain-Specific Knowledge from Unstructured Data)** — pp. 95–114
+    * 비정형 데이터로부터 지식 그래프 구축
+    * 록펠러 아카이브 센터 사례로 보는 아카이브 관리의 복잡성
+    * LLM을 사용한 개체·관계 추출
+* **Chapter 6. LLM으로 지식 그래프 구축하기 (Building Knowledge Graphs with Large Language Models)** — pp. 115–128
+    * 아카이브를 지식 그래프로 변환하는 그래프 모델링
+    * 데이터 정규화·정제와 엔터티 해소(entity resolution)
+    * 지적 네트워크 분석
+* 자료: 추후 공유
+
+
+#### **2026년 9월 5일**: [Webex](#)
+
+* 발표자 - 추후 확정
+* **Chapter 7. 개체명 중의성 해소 (Named Entity Disambiguation)** — pp. 129–179
+    * 개체명 인식(NER)에서 개체명 중의성 해소(NED)로
+    * NED와 지식 그래프 기술의 결합
+    * 여러 출처로부터의 KG 구축과 고급 분석
+* 자료: 추후 공유
+
+
+#### **2026년 9월 19일**: [Webex](#)
+
+* 발표자 - 추후 확정
+* **Chapter 8. 오픈 LLM과 도메인 온톨로지를 활용한 NED (NED with Open LLMs and Domain Ontologies)** — pp. 180–206
+    * 전통적인 NED 도구의 한계
+    * 범용 LLM과 도메인 온톨로지를 결합한 중의성 해소
+    * 최단 경로 탐지·경로-텍스트 변환 기반 다단계 중의성 해소
+* **Chapter 9. 지식 그래프 위의 머신러닝 입문 (Machine Learning on Knowledge Graphs: A Primer Approach)** — pp. 207–232
+    * 지식 그래프에서의 머신러닝 이해
+    * 그래프에서 수행되는 일반적인 ML 과제
+    * 노드·관계 표현의 역할
+* 자료: 추후 공유
+
+
+#### **2026년 10월 3일**: [Webex](#)
+
+* 발표자 - 추후 확정
+* **Chapter 10. 그래프 특성 공학: 수동·반자동 접근 (Graph Feature Engineering: Manual and Semiautomated Approaches)** — pp. 233–271
+    * 노드·관계에 대한 수동 특성 공학 기법
+    * 도메인 전문성과 반자동 추출의 결합
+    * 특성 공학의 실제 응용
+* 자료: 추후 공유
+
+
+#### **2026년 10월 17일**: [Webex](#)
+
+* 발표자 - 추후 확정
+* **Chapter 11. 그래프 표현 학습과 그래프 신경망 (Graph Representation Learning and Graph Neural Networks)** — pp. 272–301
+    * 그래프 표현 학습(GRL)과 그래프 ML의 확장
+    * 딥러닝을 통한 특성 공학 자동화와 그래프 임베딩
+    * 그래프 신경망(GNN) 기초
+* **Chapter 12. GNN 기반 노드 분류와 링크 예측 (Node Classification and Link Prediction with GNNs)** — pp. 302–334
+    * 실제 시나리오에서의 GNN 활용
+    * 자금세탁방지(AML) 노드 분류 시스템 구축
+    * 추천 시스템을 위한 링크 예측 시스템 구축
+* 자료: 추후 공유
+
+
+#### **2026년 10월 31일**: [Webex](#)
+
+* 발표자 - 추후 확정
+* **Chapter 13. 지식 그래프 기반 검색 증강 생성 (Knowledge Graph-Powered Retrieval-Augmented Generation)** — pp. 335–355
+    * LLM을 AI 에이전트로서 유용하게 만드는 방법
+    * 검색 증강 생성(RAG)을 통한 LLM 기반화(grounding)
+    * KG 기반 RAG 시스템 구축
+* **Chapter 14. 자연어로 지식 그래프에 질문하기 (Asking a KG Questions with Natural Language)** — pp. 356–396
+    * 복잡한 시나리오에서 RAG의 한계
+    * 도메인 전문성을 모방하는 고급 질의응답 시스템 구축
+    * 쿼리 결과를 의미 있고 실행 가능한 요약으로 변환
+* 자료: 추후 공유
+
+
+#### **2026년 11월 14일**: [Webex](#)
+
+* 발표자 - 추후 확정
+* **Chapter 15. LangGraph로 QA 에이전트 구축 (Building a QA Agent with LangGraph)** — pp. 397–428
+    * 전문가 모방 접근법 구현
+    * LangGraph 오케스트레이션과 Streamlit 프런트엔드 기반 질의응답 조사 구현
+    * 시스템 조정과 개선
+* 자료: 추후 공유
+
+---
+
+### **5. 스터디 운영 방법**
+
+* **교재**: [Knowledge Graphs and LLMs in Action (Alessandro Negro 외, Manning)](https://www.manning.com/books/knowledge-graphs-and-llms-in-action)
+* **학습 자료**: [`source/Alessandro Negro - Knowledge Graphs and LLMs in Action`](source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action) — 챕터별 원문 Markdown·한국어 번역본·PDF
+* **학습 공유**: 격주 학습한 내용을 발표자료와 함께 GitHub에 공유
+* **발표 방식**: 담당 범위에 대한 50분 발표 + 10분 Q&A (총 1시간 진행)
 * **운영 규칙**: [스터디 운영 규칙](source/etc/%EC%8A%A4%ED%84%B0%EB%94%94_%EC%9A%B4%EC%98%81_%EA%B7%9C%EC%B9%99_v01.pdf)
 
 ---
 
-## **6. 자료 구조**
-
-| 경로 | 설명 |
-|---|---|
-| [`source/books`](source/books) | 현재 진행 중이거나 신규 학습 대상인 책 자료 |
-| [`source/papers`](source/papers) | 논문, 번역, 해설판, 발표 자료 |
-| [`source/deep_agents`](source/deep_agents) | 2026년 5월 Deep Agents 스터디 자료 |
-| [`source/langgraph`](source/langgraph) | 2026년 6-7월 LangGraph 스터디 자료와 회의록 |
-| [`archive`](archive) | 이전 스터디 자료 아카이브 |
-| [`official`](official) | 공식 문서 또는 원본 참고 자료 |
-
----
-
-## **7. 이전 진행 이력**
-
-### **Deep Agents / LangGraph 기반 퀀트 에이전트 스터디**
-
-* **기간**: 2026년 5월-2026년 7월 11일
-* **주제**: Deep Agents, LangGraph, MCP, Memory, Human-in-the-loop, Skills, Multi-agent, Streaming
-* **공통 프로젝트**: 퀀트 에이전트 구현
-* **자료**
-  * [`source/deep_agents`](source/deep_agents)
-  * [`source/langgraph`](source/langgraph)
-
----
-
-## **8. 회의록**
-
-* [2026-07-11 랭그래프 스터디 종료 및 차기 교재 논의](source/langgraph/%ED%9A%8C%EC%9D%98%EB%A1%9D/2026-07-11_%EB%9E%AD%EA%B7%B8%EB%9E%98%ED%94%84_%EC%8A%A4%ED%84%B0%EB%94%94_%EC%A2%85%EB%A3%8C_%EB%B0%8F_%EC%B0%A8%EA%B8%B0_%EA%B5%90%EC%9E%AC_%EB%85%BC%EC%9D%98.md)
-
----
-
-## **9. 기타**
+### **6. 기타**
 
 * **참가 희망 요청**: [Email](mailto:restful3@gmail.com)
-* **이전 자료**: [archive 확인](archive)
+* **아카이브**: [GitHub Archive](archive)
+    * [Deep Agents 스터디 자료](source/deep_agents) - 2026년 5월 완료
+    * [LangGraph 스터디 자료](source/langgraph) - 2026년 6\~7월 완료
+
+---
+
+### **7. 회의록**
+
+* [2026-07-11 랭그래프 스터디 종료 및 차기 교재 논의](source/langgraph/%ED%9A%8C%EC%9D%98%EB%A1%9D/2026-07-11_%EB%9E%AD%EA%B7%B8%EB%9E%98%ED%94%84_%EC%8A%A4%ED%84%B0%EB%94%94_%EC%A2%85%EB%A3%8C_%EB%B0%8F_%EC%B0%A8%EA%B8%B0_%EA%B5%90%EC%9E%AC_%EB%85%BC%EC%9D%98.md)
