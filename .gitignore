@@ -76,7 +76,13 @@ Pipfile.lock
 *.sublime-project
 
 # Claude Code 관련
-.claude/
+# 팀 공용 설정과 스킬만 추적하고, 개인 설정과 런타임 파일은 제외한다.
+.claude/*
+!.claude/settings.json
+!.claude/skills/
+!.claude/skills/**
+.claude/settings.local.json
+.claude/.headroom_wrap_marker.json
 
 # 기타
 .chainlit/*

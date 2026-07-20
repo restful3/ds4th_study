@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="ko" class="theme-light" data-deck-template="study-deck-v1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>지식 그래프와 LLM: 강력한 조합</title>
+  <link rel="icon" href="../../../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+  <a class="skip-link" href="#deck">발표자료로 건너뛰기</a>
+
+  <main class="stage" id="deck" aria-live="polite">
+    <section class="slide slide--cover" aria-label="표지">
+      <header class="cover-brand">
+        <span class="brand-name">ds4th study</span>
+        <span class="brand-sub">KNOWLEDGE GRAPHS &amp; LLMS IN ACTION</span>
+      </header>
+      <div class="cover-hero">
+        <p class="eyebrow">CHAPTER 01</p>
+        <h1>지식 그래프와 LLM:<br>강력한 조합</h1>
+        <p class="cover-subtitle">서로의 약점을 메워 신뢰할 수 있는 하이브리드 지능을 만드는 법</p>
+      </div>
+      <dl class="cover-meta">
+        <div><dt>발표자</dt><dd>수경</dd></div>
+        <div><dt>학습 범위</dt><dd>Chapter 1 · pp. 1–16</dd></div>
+        <div><dt>일시</dt><dd>2026-07-25</dd></div>
+      </dl>
+    </section>
+
+    <section class="slide" aria-label="발표의 핵심 질문">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">OPENING</span></header>
+      <h1>왜 하나만으로는 충분하지 않을까?</h1>
+      <p class="lead">LLM은 자연어에 강하고, KG는 사실과 관계를 명시적으로 다룹니다. 문제는 각자의 강점이 곧 약점의 반대편이라는 점입니다.</p>
+      <div class="slide-body">
+        <div class="two-col">
+          <article class="panel"><p class="eyebrow">LLM</p><h2>말은 잘하지만 근거가 흐리다</h2><ul><li>자연어 이해와 생성</li><li>비정형 텍스트 처리</li><li>환각·오래된 정보·불투명한 추론</li></ul></article>
+          <article class="panel panel--accent"><p class="eyebrow">KNOWLEDGE GRAPH</p><h2>근거는 선명하지만 접근이 어렵다</h2><ul><li>명시적 개체와 관계</li><li>검증·갱신·추적 가능한 지식</li><li>구축 비용과 복잡한 질의</li></ul></article>
+        </div>
+        <p class="takeaway"><strong>오늘의 질문</strong> — 자연어의 유연성과 구조화된 지식의 신뢰성을 어떻게 한 시스템 안에서 결합할까?</p>
+      </div>
+      <footer class="slide-footer"><span>Chapter 1 · 문제 제기</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="오늘의 흐름">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">OVERVIEW</span></header>
+      <h1>오늘의 흐름</h1>
+      <p class="lead">두 기술을 따로 이해한 뒤, 상호 보완 관계와 실제 선택 기준으로 연결합니다.</p>
+      <div class="slide-body">
+        <div class="flow">
+          <article class="flow__step"><span>01</span><h2>두 주인공</h2><p>KG와 LLM은 무엇을 잘하고 어디서 막히는가</p></article>
+          <b class="flow__arrow" aria-hidden="true">→</b>
+          <article class="flow__step"><span>02</span><h2>강력한 결합</h2><p>구축·질의·요약과 grounding의 선순환</p></article>
+          <b class="flow__arrow" aria-hidden="true">→</b>
+          <article class="flow__step"><span>03</span><h2>실무 판단</h2><p>적용 사례, 기술 선택과 just enough semantics</p></article>
+        </div>
+        <p class="takeaway"><strong>목표</strong> — 기술 목록을 외우는 대신 “언제 왜 결합하는가”를 판단하는 프레임을 가져갑니다.</p>
+      </div>
+      <footer class="slide-footer"><span>Chapter 1 · 전체 흐름</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--section" aria-label="지식 그래프 섹션">
+      <p class="eyebrow">SECTION 01</p>
+      <h1>지식 그래프</h1>
+      <p>현실의 개체와 관계를 기계가 다룰 수 있는 지식으로</p>
+      <span class="section-number">01</span>
+    </section>
+
+    <section class="slide" aria-label="지식 그래프의 구성 요소">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">KG BASICS</span></header>
+      <h1>KG는 연결에 의미를 부여한다</h1>
+      <p class="lead">노드는 대상을, 관계는 연결의 의미를, 속성은 판단에 필요한 맥락을 표현합니다.</p>
+      <div class="slide-body">
+        <div class="graph-scene" role="img" aria-label="약물, 질병, 증상이 관계로 연결된 지식 그래프 예시">
+          <article class="graph-node"><span>ENTITY</span><strong>약물 A</strong><small>승인일 · 용량</small></article>
+          <div class="graph-edge"><span>치료한다</span><b aria-hidden="true">→</b></div>
+          <article class="graph-node graph-node--focus"><span>ENTITY</span><strong>질병 B</strong><small>분류 · 설명</small></article>
+          <div class="graph-edge"><span>유발한다</span><b aria-hidden="true">→</b></div>
+          <article class="graph-node"><span>ENTITY</span><strong>증상 C</strong><small>중증도 · 빈도</small></article>
+        </div>
+        <div class="legend-row"><span><b>노드</b> 현실의 개체</span><span><b>관계</b> 의미 있는 연결</span><span><b>속성</b> 세부 맥락</span></div>
+        <p class="takeaway"><strong>핵심</strong> — 단순히 데이터가 연결된 것이 아니라, 연결의 의미를 명시해야 지식이 됩니다.</p>
+      </div>
+      <footer class="slide-footer"><span>§1.1 · Knowledge graphs</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="명시적 지식 표현의 가치">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">EXPLICIT KNOWLEDGE</span></header>
+      <h1>구조가 보이면 추론 경로도 보인다</h1>
+      <p class="lead">질문에 답하는 데 사용된 개체와 관계를 따라가며 결과를 설명하고 검증할 수 있습니다.</p>
+      <div class="slide-body">
+        <div class="card-grid">
+          <article class="card"><span>01</span><h2>질의</h2><p>여러 홉을 건너 관련 정보를 탐색합니다.</p></article>
+          <article class="card"><span>02</span><h2>추론</h2><p>관계 규칙으로 명시되지 않은 사실을 추정합니다.</p></article>
+          <article class="card"><span>03</span><h2>검증</h2><p>어떤 경로와 근거가 답을 만들었는지 추적합니다.</p></article>
+        </div>
+        <p class="takeaway"><strong>KG의 가치</strong> — 답만 저장하는 것이 아니라 답에 이르는 구조를 데이터로 표현합니다.</p>
+      </div>
+      <footer class="slide-footer"><span>§1.1 · 명시적 지식</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="지식 그래프 구축의 어려움">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">BUILDING KG</span></header>
+      <h1>KG의 첫 번째 병목은 구축 비용이다</h1>
+      <p class="lead">정형 데이터는 매핑할 수 있지만, 비정형 텍스트에서는 무엇이 개체이고 어떤 관계인지부터 찾아야 합니다.</p>
+      <div class="slide-body">
+        <div class="two-col">
+          <article class="panel panel--accent"><p class="eyebrow">STRUCTURED</p><h2>정형·반정형 데이터</h2><p>RDB, CSV, JSON처럼 항목과 유형이 어느 정도 분리되어 있습니다.</p><ul><li>공통 스키마로 매핑</li><li>예측 가능한 변환</li><li>식별자 정합성 관리</li></ul></article>
+          <article class="panel"><p class="eyebrow">UNSTRUCTURED</p><h2>비정형 텍스트</h2><p>표현이 일정하지 않고 의미가 문맥에 숨어 있습니다.</p><ul><li>다국어·오타·다양한 문체</li><li>대명사의 지칭 대상</li><li>도메인 전문 용어</li></ul></article>
+        </div>
+        <p class="takeaway"><strong>난점</strong> — 그래프 저장소보다 먼저 해결해야 할 문제는 믿을 만한 개체와 관계를 만드는 일입니다.</p>
+      </div>
+      <footer class="slide-footer"><span>§1.1 · 데이터에서 지식으로</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="지식 그래프 사용의 어려움">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">ACCESSING KG</span></header>
+      <h1>두 번째 병목은 접근성이다</h1>
+      <p class="lead">정보는 여러 노드에 흩어져 있고, 사용자는 스키마와 그래프 질의 언어를 알아야 원하는 경로를 찾을 수 있습니다.</p>
+      <div class="slide-body">
+        <div class="access-path" role="img" aria-label="자연어 질문이 복잡한 그래프 질의와 분산된 결과를 거치는 과정">
+          <div><span>사용자 질문</span><strong>“어떤 약물이 이 증상과 연결되나?”</strong></div>
+          <b aria-hidden="true">→</b>
+          <div><span>복잡한 접근</span><strong>스키마 + 다중 홉 질의</strong></div>
+          <b aria-hidden="true">→</b>
+          <div><span>분산된 결과</span><strong>노드·관계·속성 묶음</strong></div>
+        </div>
+        <p class="takeaway"><strong>기회</strong> — 자연어를 그래프 질의로 바꾸고 결과를 설명해 주는 인터페이스가 있다면 사용자층이 넓어집니다.</p>
+      </div>
+      <footer class="slide-footer"><span>§1.1 · 질의와 해석</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--section" aria-label="대규모 언어 모델 섹션">
+      <p class="eyebrow">SECTION 02</p>
+      <h1>대규모 언어 모델</h1>
+      <p>자연어라는 장벽을 낮추는 범용 인터페이스</p>
+      <span class="section-number">02</span>
+    </section>
+
+    <section class="slide" aria-label="전이 학습의 패러다임 전환">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">TRANSFER LEARNING</span></header>
+      <h1>과제마다 모델을 만들던 시대에서</h1>
+      <p class="lead">전이 학습은 일반 언어 패턴을 배운 큰 모델을 여러 과제에 재사용하게 만들었습니다.</p>
+      <div class="slide-body">
+        <div class="shift">
+          <article><p class="eyebrow">BEFORE</p><h2>과제별 전용 모델</h2><p>개체 추출, 관계 추출, 분류마다 라벨 데이터와 모델을 별도로 준비</p></article>
+          <b aria-hidden="true">→</b>
+          <article class="shift__focus"><p class="eyebrow">AFTER</p><h2>사전학습 모델 재사용</h2><p>범용 언어 능력 위에 프롬프트나 적은 데이터로 여러 과제를 수행</p></article>
+        </div>
+        <p class="takeaway"><strong>KG에 미친 영향</strong> — 도메인마다 NLP 파이프라인을 처음부터 만드는 부담을 크게 낮춥니다.</p>
+      </div>
+      <footer class="slide-footer"><span>§1.2 · Large language models</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="LLM의 능력과 한계">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">CAPABILITY &amp; LIMIT</span></header>
+      <h1>LLM의 강점은 자연어, 약점은 지식 통제</h1>
+      <p class="lead">방대한 텍스트의 패턴을 학습했지만, 생성된 문장이 어떤 최신 사실에 근거했는지는 별개의 문제입니다.</p>
+      <div class="slide-body">
+        <div class="balance-grid">
+          <article><span>강점</span><h2>읽고, 추출하고, 생성한다</h2><ul><li>복잡한 사용자 질문 해석</li><li>개체·관계 후보 추출</li><li>결과를 자연어로 요약</li></ul></article>
+          <article><span>한계</span><h2>사실을 보장하지 않는다</h2><ul><li>그럴듯한 환각</li><li>학습 이후의 오래된 정보</li><li>추론 근거의 불투명성</li></ul></article>
+        </div>
+        <p class="takeaway"><strong>분리해서 보기</strong> — 유창한 문장 생성 능력과 도메인 사실의 정확성은 같은 능력이 아닙니다.</p>
+      </div>
+      <footer class="slide-footer"><span>§1.2 · 능력과 한계</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--section" aria-label="KG와 LLM 결합 섹션">
+      <p class="eyebrow">SECTION 03</p>
+      <h1>Stronger Together</h1>
+      <p>한쪽의 출력이 다른 쪽의 입력과 검증 장치가 되는 구조</p>
+      <span class="section-number">03</span>
+    </section>
+
+    <section class="slide" aria-label="LLM이 지식 그래프를 돕는 세 가지 방식">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">LLM → KG</span></header>
+      <h1>LLM은 KG의 진입 장벽을 낮춘다</h1>
+      <p class="lead">비정형 텍스트와 자연어를 그래프 구축·질의·설명의 입력으로 바꿉니다.</p>
+      <div class="slide-body">
+        <div class="card-grid">
+          <article class="card"><span>01</span><h2>구축</h2><p>문서에서 도메인 개체와 관계 후보를 추출합니다.</p></article>
+          <article class="card"><span>02</span><h2>질의</h2><p>자연어 의도를 스키마에 맞는 그래프 탐색으로 연결합니다.</p></article>
+          <article class="card"><span>03</span><h2>요약</h2><p>노드와 관계의 결과를 사람이 읽는 설명으로 변환합니다.</p></article>
+        </div>
+        <p class="takeaway"><strong>역할</strong> — LLM은 지식의 최종 권위가 아니라 KG를 만들고 사용하는 자연어 인터페이스입니다.</p>
+      </div>
+      <footer class="slide-footer"><span>§1.3 · LLM empowers KG</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="지식 그래프가 LLM을 돕는 세 가지 방식">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">KG → LLM</span></header>
+      <h1>KG는 LLM의 답을 현실에 붙든다</h1>
+      <p class="lead">외부의 구조화된 지식을 조회하게 하면 답의 정확성, 최신성, 설명 가능성을 통제할 수 있습니다.</p>
+      <div class="slide-body">
+        <div class="card-grid">
+          <article class="card"><span>01</span><h2>Grounding</h2><p>검증된 사실을 제공해 환각 가능성을 낮춥니다.</p></article>
+          <article class="card"><span>02</span><h2>Freshness</h2><p>모델 재학습 대신 갱신되는 지식 베이스를 조회합니다.</p></article>
+          <article class="card"><span>03</span><h2>Explainability</h2><p>답에 사용된 개체·관계·출처 경로를 추적합니다.</p></article>
+        </div>
+        <p class="takeaway"><strong>역할</strong> — KG는 생성 모델의 기억을 대체하기보다, 답변 시점에 확인할 신뢰 가능한 지식 계층입니다.</p>
+      </div>
+      <footer class="slide-footer"><span>§1.3 · KG empowers LLM</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="하이브리드 지능의 선순환">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">HYBRID LOOP</span></header>
+      <h1>강력한 조합은 단방향 RAG가 아니다</h1>
+      <p class="lead">LLM이 그래프를 풍부하게 하고, KG가 다시 LLM의 답을 검증하는 반복 구조입니다.</p>
+      <div class="slide-body">
+        <div class="hybrid-loop" role="img" aria-label="문서에서 LLM 추출, KG 검증과 통합, 질의, 근거 기반 응답으로 이어지는 순환 구조">
+          <article><span>1</span><strong>문서·데이터</strong><small>정형 + 비정형</small></article>
+          <b aria-hidden="true">→</b>
+          <article><span>2</span><strong>LLM 추출</strong><small>개체·관계 후보</small></article>
+          <b aria-hidden="true">→</b>
+          <article class="hybrid-loop__focus"><span>3</span><strong>KG 검증·통합</strong><small>스키마·출처·관계</small></article>
+          <b aria-hidden="true">→</b>
+          <article><span>4</span><strong>자연어 질의</strong><small>검색·그래프 탐색</small></article>
+          <b aria-hidden="true">→</b>
+          <article><span>5</span><strong>근거 기반 응답</strong><small>요약 + 경로</small></article>
+        </div>
+        <p class="takeaway"><strong>운영 포인트</strong> — 추출 결과를 바로 사실로 쓰지 말고 검증·정합성 단계를 시스템에 포함해야 합니다.</p>
+      </div>
+      <footer class="slide-footer"><span>§1.3 · 상호 보완 루프</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--section" aria-label="데이터 기반 애플리케이션 섹션">
+      <p class="eyebrow">SECTION 04</p>
+      <h1>데이터에서 지식으로</h1>
+      <p>애플리케이션별 사일로를 넘어 공유되는 지식 인프라로</p>
+      <span class="section-number">04</span>
+    </section>
+
+    <section class="slide" aria-label="지식 그래프의 네 기둥">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">FOUR PILLARS</span></header>
+      <h1>KG를 KG답게 만드는 네 기둥</h1>
+      <p class="lead">저자들은 지식 그래프를 정적인 데이터 모델이 아니라 계속 작동하는 지식 인프라로 정의합니다.</p>
+      <div class="slide-body">
+        <div class="pillar-grid">
+          <article><strong>진화</strong><span>Evolution</span><p>새 데이터와 구조를 지속적으로 받아들입니다.</p></article>
+          <article><strong>의미</strong><span>Semantics</span><p>개체 유형과 관계의 뜻을 명시합니다.</p></article>
+          <article><strong>통합</strong><span>Integration</span><p>서로 다른 형식과 출처를 도메인 관점으로 연결합니다.</p></article>
+          <article><strong>학습</strong><span>Learning</span><p>질의·분석·추론으로 새로운 통찰을 만듭니다.</p></article>
+        </div>
+        <p class="takeaway"><strong>패러다임 전환</strong> — 지능적 행동의 근거를 애플리케이션마다 복제하지 않고 공유되는 지식 원천에 담습니다.</p>
+      </div>
+      <footer class="slide-footer"><span>§1.4 · Four pillars of KGs</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="신약 발견 사용 사례">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">USE CASE 01</span></header>
+      <h1>신약 발견: 흩어진 과학 지식을 연결한다</h1>
+      <p class="lead">생물학·화학·임상 데이터의 관계를 보존하면서 문헌에서 새로운 후보 연결을 찾아야 합니다.</p>
+      <div class="slide-body">
+        <div class="use-case-grid">
+          <article><p class="eyebrow">CHALLENGE</p><h2>다양한 데이터와 높은 실패 비용</h2><p>유전자·질병·약물·화합물의 데이터 무결성과 맥락을 함께 유지해야 합니다.</p></article>
+          <article><p class="eyebrow">KG</p><h2>관계가 있는 통합 모델</h2><p>유형화된 관계로 생물학적 개체를 연결하고 추론 가능한 구조를 만듭니다.</p></article>
+          <article><p class="eyebrow">LLM</p><h2>문헌에서 후보 지식 추출</h2><p>논문·임상 보고서에서 개체와 잠재 관계를 찾아 그래프 확장을 돕습니다.</p></article>
+        </div>
+        <p class="takeaway"><strong>결합 가치</strong> — LLM의 폭넓은 문헌 처리와 KG의 정합성·관계 추론이 가설 생성을 함께 지원합니다.</p>
+      </div>
+      <footer class="slide-footer"><span>§1.5.1 · Drug discovery</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="고객 지원 대화형 AI 사용 사례">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">USE CASE 02</span></header>
+      <h1>고객 지원: 대화는 지식을 중심으로 흐른다</h1>
+      <p class="lead">범용 LLM만으로는 답이 일반적이고 얕아질 수 있습니다. 고객·제품·정책의 구체적인 연결이 필요합니다.</p>
+      <div class="slide-body">
+        <div class="conversation">
+          <article><span>사용자</span><p>“지난 주문과 호환되는 부품이 필요해요.”</p></article>
+          <div class="conversation__middle"><strong>LLM</strong><span>의도·개체 해석</span><b>↔</b><strong>KG</strong><span>주문·제품·호환성 확인</span></div>
+          <article class="conversation__answer"><span>어시스턴트</span><p>구매 이력과 호환 규칙을 근거로 후보를 제안하고 필요한 정보를 되묻습니다.</p></article>
+        </div>
+        <p class="takeaway"><strong>결합 가치</strong> — 자연스러운 대화 흐름은 LLM이, 정확한 개인화 맥락은 연결된 지식이 담당합니다.</p>
+      </div>
+      <footer class="slide-footer"><span>§1.5.2 · Conversational AI</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="지식 그래프와 LLM 도입 판단 기준">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">DECISION GUIDE</span></header>
+      <h1>문제의 모양으로 기술을 선택한다</h1>
+      <p class="lead">“그래프가 유행인가?” 대신 데이터·관계·사용자 인터페이스의 필요를 질문합니다.</p>
+      <div class="slide-body">
+        <div class="decision-grid">
+          <article><p class="eyebrow">CONSIDER KG</p><h2>연결과 추적이 핵심인가?</h2><ul><li>여러 데이터 사일로를 통합해야 한다</li><li>구조가 계속 진화한다</li><li>출처와 관계 경로를 추적해야 한다</li><li>검색·추천·네트워크 분석이 필요하다</li></ul></article>
+          <article><p class="eyebrow">CONSIDER LLM</p><h2>자연어가 핵심 인터페이스인가?</h2><ul><li>텍스트에서 개체·관계를 추출해야 한다</li><li>복잡한 질문의 의도를 해석해야 한다</li><li>대화형 인터페이스가 필요하다</li><li>결과를 자연어로 요약해야 한다</li></ul></article>
+        </div>
+        <p class="takeaway"><strong>함께 쓸 신호</strong> — 연결된 지식이 필요하면서 사용자는 자연어로 묻고 싶을 때 결합의 가치가 커집니다.</p>
+      </div>
+      <footer class="slide-footer"><span>§1.5.3 · Deciding whether to use a KG</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--section" aria-label="지식 그래프 기술 섹션">
+      <p class="eyebrow">SECTION 05</p>
+      <h1>표현 기술과 의미</h1>
+      <p>RDF와 LPG, 분류체계와 온톨로지를 목적에 맞게 선택하기</p>
+      <span class="section-number">05</span>
+    </section>
+
+    <section class="slide" aria-label="RDF와 LPG 비교">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">RDF vs LPG</span></header>
+      <h1>두 패러다임은 경쟁보다 선택의 문제</h1>
+      <p class="lead">RDF는 표준화된 의미와 상호운용성에, LPG는 속성이 풍부한 관계와 그래프 순회에 강점이 있습니다.</p>
+      <div class="slide-body">
+        <table class="compare-table">
+          <thead><tr><th>관점</th><th>RDF</th><th>LPG</th></tr></thead>
+          <tbody>
+            <tr><th>기본 표현</th><td>주어–술어–목적어 트리플</td><td>라벨이 있는 노드·엣지 + 속성</td></tr>
+            <tr><th>대표 질의</th><td>SPARQL</td><td>openCypher · Gremlin</td></tr>
+            <tr><th>강점</th><td>표준·연합·의미적 일관성</td><td>경로 탐색·순회·관계 속성</td></tr>
+            <tr><th>잘 맞는 상황</th><td>웹 규모 상호운용과 온톨로지 추론</td><td>애플리케이션 중심 그래프 분석</td></tr>
+          </tbody>
+        </table>
+        <p class="takeaway"><strong>선택 기준</strong> — “어떤 DB가 빠른가”보다 필요한 의미 규칙과 질의 패턴을 먼저 정의합니다.</p>
+      </div>
+      <footer class="slide-footer"><span>§1.6 · Knowledge graph technologies</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="분류체계와 온톨로지 비교">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">SEMANTICS</span></header>
+      <h1>분류체계는 계층, 온톨로지는 규칙까지</h1>
+      <p class="lead">둘 다 어휘에 의미를 부여하지만 표현할 수 있는 관계의 깊이가 다릅니다.</p>
+      <div class="slide-body">
+        <div class="semantic-grid">
+          <article><p class="eyebrow">TAXONOMY</p><h2>넓음–좁음의 질서</h2><div class="hierarchy"><span>탈것</span><b>↓</b><span>자동차</span><b>↓</b><span>세단</span></div><p>범주를 계층으로 조직합니다.</p></article>
+          <article><p class="eyebrow">ONTOLOGY</p><h2>개념 사이의 제약</h2><div class="relation-tags"><span>동일하다</span><span>서로소다</span><span>역관계다</span><span>개수 제약</span></div><p>동일성·차이·복잡한 상호연결을 명시합니다.</p></article>
+        </div>
+        <p class="takeaway"><strong>의미의 역할</strong> — 관계 이름만 붙이는 것을 넘어 기계가 일관성을 검사하고 추론할 근거를 제공합니다.</p>
+      </div>
+      <footer class="slide-footer"><span>§1.6.1 · Taxonomies and ontologies</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="적정 수준의 의미론">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">PRACTICAL SEMANTICS</span></header>
+      <h1>완벽한 온톨로지보다 필요한 만큼의 의미</h1>
+      <p class="lead">현대적인 KG는 모든 규칙을 처음부터 정의하기보다 현재 문제를 풀 수 있는 부분 온톨로지에서 시작합니다.</p>
+      <div class="slide-body">
+        <div class="maturity-line">
+          <article><span>1</span><h2>비즈니스 목표</h2><p>어떤 결정을 개선할 것인가</p></article>
+          <b aria-hidden="true">→</b>
+          <article><span>2</span><h2>필요한 의미</h2><p>답에 필요한 개체·관계·제약</p></article>
+          <b aria-hidden="true">→</b>
+          <article><span>3</span><h2>점진적 확장</h2><p>새 데이터와 요구에 맞춰 진화</p></article>
+        </div>
+        <p class="takeaway"><strong>Just enough semantics</strong> — 목표 → 데이터 → 알고리즘 순서로 설계하고, 의미 모델도 실제 질문에 맞춰 성장시킵니다.</p>
+      </div>
+      <footer class="slide-footer"><span>§1.6.1–1.7 · 실용적 접근</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="발표 정리 퀴즈">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">CHECKPOINT</span></header>
+      <h1>세 질문으로 확인하기</h1>
+      <p class="lead">정답보다 판단 근거를 설명해 봅니다.</p>
+      <div class="slide-body">
+        <div class="question-list">
+          <article><span>Q1</span><p>LLM이 KG를 돕는 세 가지 역할은 무엇인가?</p></article>
+          <article><span>Q2</span><p>KG가 LLM의 환각·최신성·설명 가능성 문제를 어떻게 줄이는가?</p></article>
+          <article><span>Q3</span><p>우리 업무에서 KG와 LLM을 함께 써야 한다는 신호는 무엇인가?</p></article>
+        </div>
+        <p class="takeaway"><strong>토론</strong> — 기술 이름이 아니라 데이터 흐름과 검증 책임을 기준으로 답해 봅니다.</p>
+      </div>
+      <footer class="slide-footer"><span>Chapter 1 · Checkpoint</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--closing" aria-label="정리와 질의응답">
+      <header class="cover-brand"><span class="brand-name">ds4th study</span><span class="brand-sub">WRAP UP</span></header>
+      <div class="closing-body">
+        <p class="eyebrow">KEY TAKEAWAYS</p>
+        <h1>강력한 조합은 역할 분담에서 나온다</h1>
+        <div class="card-grid">
+          <article class="card"><span>01</span><h2>LLM은 인터페이스</h2><p>비정형 텍스트를 읽고 자연어로 질의·요약합니다.</p></article>
+          <article class="card"><span>02</span><h2>KG는 지식 계층</h2><p>사실, 관계, 맥락과 검증 경로를 명시합니다.</p></article>
+          <article class="card"><span>03</span><h2>결합은 운영 구조</h2><p>추출 → 검증 → 질의 → 근거 기반 응답을 반복합니다.</p></article>
+        </div>
+        <p class="closing-question">Q&amp;A</p>
+      </div>
+      <a class="back-link" href="../../">발표자료 목록으로 돌아가기</a>
+    </section>
+  </main>
+
+  <button class="toc-button control" id="tocButton" type="button" aria-label="목차 열기" aria-expanded="false">☰</button>
+  <aside class="toc" id="toc" aria-label="슬라이드 목차" aria-hidden="true"><h2>목차</h2><div id="tocItems"></div></aside>
+  <nav class="deck-controls" aria-label="슬라이드 제어">
+    <button type="button" id="prevButton" aria-label="이전 슬라이드">←</button>
+    <span id="deckCounter" aria-live="polite">1 / 1</span>
+    <button type="button" id="nextButton" aria-label="다음 슬라이드">→</button>
+    <button type="button" id="themeButton" aria-label="화면 테마 전환">◐</button>
+    <button type="button" id="fullscreenButton" aria-label="전체화면 전환">⛶</button>
+  </nav>
+  <div class="deck-progress" aria-hidden="true"><span id="progress"></span></div>
+  <script src="assets/deck.js"></script>
+</body>
+</html>

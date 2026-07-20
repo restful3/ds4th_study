@@ -1,0 +1,61 @@
+# Codex·Claude Code로 스터디 참여하기
+
+참가자는 발표 배포 절차를 외울 필요가 없다. 저장소 루트에서 Codex 또는 Claude Code를 시작하고 담당 날짜와 챕터를 자연어로 알려주면 된다.
+
+검증 도구 실행에는 Python 3.11 이상이 필요하다. 별도 Python 패키지는 설치하지 않는다.
+
+## 1. 저장소 받기
+
+저장소가 크므로 새로 받을 때는 전체 이력을 내려받지 않는 sparse checkout을 권장한다.
+
+```bash
+git clone --filter=blob:none --sparse --depth=1 https://github.com/restful3/ds4th_study.git
+cd ds4th_study
+git sparse-checkout set \
+  docs agent-support .agents .claude .github \
+  "source/Alessandro Negro - Knowledge Graphs and LLMs in Action"
+```
+
+다른 스터디를 준비한다면 마지막 경로를 `agent-support/studies.toml`의 해당 `materials_path`로 바꾼다. 이미 전체 저장소가 있다면 이 단계는 생략한다.
+
+## 2. 에이전트 시작하기
+
+Codex 또는 Claude Code를 저장소 루트에서 시작한다. 프로젝트를 신뢰할지 묻는 경우 이 저장소와 변경사항을 검토한 뒤 결정한다.
+
+처음에는 다음처럼 요청할 수 있다.
+
+```text
+이 저장소가 처음이야. 현재 진행 중인 스터디와 내 발표 준비 방법을 안내해줘.
+```
+
+```text
+나는 2026년 7월 25일 Chapter 1~2 발표 담당이야.
+먼저 자료와 일정을 확인하고 발표 계획을 제안한 다음 HTML 발표자료를 만들어줘.
+```
+
+```text
+내 발표자료를 Webex 발표 기준으로 검토해줘.
+깨진 이미지, 화면 넘침, 출처, 발표 시간과 GitHub Pages 경로까지 확인해줘.
+```
+
+에이전트는 기본적으로 로컬 파일만 준비하고 검증한다. 커밋, 푸시 또는 PR이 필요하면 마지막에 명시적으로 요청한다.
+
+새 발표자료는 별도 디자인 지시가 없으면 프로젝트의 `study-deck-v1` HTML 템플릿으로 생성된다. 표지·섹션·개념 설명·KPI·코드·요약 레이아웃과 키보드 이동, 목차, 진행률, 전체화면 기능이 기본으로 포함된다.
+
+## 3. 결과 확인하기
+
+에이전트가 검증을 마치면 로컬 사이트를 열 수 있다.
+
+```bash
+python3 -m http.server 8000 -d docs
+```
+
+브라우저에서 `http://localhost:8000/`을 연다. 발표 경로는 다음 형식이다.
+
+```text
+http://localhost:8000/studies/<study-slug>/presentations/<session-slug>/
+```
+
+## 스터디가 끝난 뒤
+
+책이 끝나면 학습자료는 `source/`에서 `archive/`로 이동하지만 발표 URL은 바뀌지 않는다. 이 이동은 운영자가 에이전트에게 명시적으로 요청해 수행하며, 참가자가 직접 디렉터리를 옮길 필요는 없다.
