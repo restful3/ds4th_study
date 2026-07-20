@@ -1,0 +1,7 @@
+study_id = "kg-llm-in-action-2026"
+session_id = "2026-07-25-ch01"
+title = "지식 그래프와 LLM: 강력한 조합"
+date = "2026-07-25"
+presenters = ["수경"]
+chapters = ["Chapter 1"]
+template = "study-deck-v1"

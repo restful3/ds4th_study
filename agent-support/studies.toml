@@ -1,0 +1,13 @@
+schema_version = 1
+
+[[studies]]
+id = "kg-llm-in-action-2026"
+slug = "knowledge-graphs-and-llms-in-action"
+title = "Knowledge Graphs and LLMs in Action"
+title_ko = "지식 그래프와 LLM 실전"
+status = "active"
+start_date = "2026-07-25"
+end_date = "2026-11-14"
+materials_path = "source/Alessandro Negro - Knowledge Graphs and LLMs in Action"
+archive_path = "archive/Alessandro Negro - Knowledge Graphs and LLMs in Action"
+presentation_path = "docs/studies/knowledge-graphs-and-llms-in-action"

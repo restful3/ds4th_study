@@ -1,0 +1,4 @@
+interface:
+  display_name: "스터디 발표자료"
+  short_description: "Build and validate ds4th study presentations"
+  default_prompt: "Use $study-presentation to prepare and validate my assigned study presentation."

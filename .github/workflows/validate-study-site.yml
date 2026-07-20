@@ -1,0 +1,65 @@
+name: Validate study site
+
+on:
+  pull_request:
+    paths:
+      - "AGENTS.md"
+      - "CLAUDE.md"
+      - "QUICKSTART.md"
+      - "README.md"
+      - ".agents/**"
+      - ".claude/**"
+      - "agent-support/**"
+      - "docs/**"
+      - ".github/workflows/validate-study-site.yml"
+  push:
+    branches: [main]
+    paths:
+      - "AGENTS.md"
+      - "CLAUDE.md"
+      - "QUICKSTART.md"
+      - "README.md"
+      - ".agents/**"
+      - ".claude/**"
+      - "agent-support/**"
+      - "docs/**"
+      - ".github/workflows/validate-study-site.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-study-site-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Sparse partial checkout
+        env:
+          REPOSITORY: ${{ github.repository }}
+          TARGET_REF: ${{ github.ref }}
+        run: |
+          git init .
+          git remote add origin "https://github.com/${REPOSITORY}.git"
+          git sparse-checkout init --cone
+          git sparse-checkout set .agents .claude .github agent-support docs
+          git -c protocol.version=2 fetch \
+            --no-tags --depth=1 --filter=blob:none origin "${TARGET_REF}"
+          git checkout --detach FETCH_HEAD
+
+      - name: Compile validation scripts
+        run: python3 -m py_compile agent-support/scripts/*.py
+
+      - name: Test site lifecycle and validation
+        run: python3 -m unittest discover -s agent-support/tests -v
+
+      - name: Check generated indexes
+        run: python3 agent-support/scripts/build-index.py --check
+
+      - name: Validate Pages content
+        run: python3 agent-support/scripts/validate-site.py

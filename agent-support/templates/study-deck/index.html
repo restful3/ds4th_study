@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko" class="theme-light" data-deck-template="study-deck-v1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{DECK_TITLE}}</title>
+  <link rel="icon" href="../../../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+  <a class="skip-link" href="#deck">발표자료로 건너뛰기</a>
+
+  <main class="stage" id="deck" aria-live="polite">
+    <section class="slide slide--cover" aria-label="표지">
+      <header class="cover-brand">
+        <span class="brand-name">ds4th study</span>
+        <span class="brand-sub">STUDY PRESENTATION</span>
+      </header>
+      <div class="cover-hero">
+        <p class="eyebrow">{{STUDY_TITLE}}</p>
+        <h1>{{DECK_TITLE}}</h1>
+        <p class="cover-subtitle">{{SUBTITLE}}</p>
+      </div>
+      <dl class="cover-meta">
+        <div><dt>발표자</dt><dd>{{PRESENTERS}}</dd></div>
+        <div><dt>학습 범위</dt><dd>{{CHAPTERS}}</dd></div>
+        <div><dt>일시</dt><dd>{{DATE}}</dd></div>
+      </dl>
+    </section>
+
+    <section class="slide" aria-label="오늘의 흐름">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">OVERVIEW</span></header>
+      <h1>오늘의 흐름</h1>
+      <p class="lead">핵심 질문에서 출발해 개념과 구조를 이해하고, 실제 적용 포인트를 함께 토론합니다.</p>
+      <div class="slide-body">
+        <div class="flow">
+          <article class="flow__step"><span>01</span><h2>핵심 질문</h2><p>이 장이 해결하려는 문제와 학습 목표를 정리합니다.</p></article>
+          <b class="flow__arrow" aria-hidden="true">→</b>
+          <article class="flow__step"><span>02</span><h2>개념과 구조</h2><p>핵심 개념, 구성요소와 동작 흐름을 설명합니다.</p></article>
+          <b class="flow__arrow" aria-hidden="true">→</b>
+          <article class="flow__step"><span>03</span><h2>적용과 토론</h2><p>예제, 한계와 열린 질문을 함께 살펴봅니다.</p></article>
+        </div>
+        <p class="takeaway"><strong>발표의 약속</strong> — 세부 내용을 외우기보다 큰 구조와 판단 기준을 가져갑니다.</p>
+      </div>
+      <footer class="slide-footer"><span>{{CHAPTERS}}</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--section" aria-label="핵심 개념 섹션">
+      <p class="eyebrow">SECTION 01</p>
+      <h1>핵심 개념</h1>
+      <p>문제를 이해하는 데 필요한 개념과 관계</p>
+      <span class="section-number">01</span>
+    </section>
+
+    <section class="slide" aria-label="핵심 개념 설명">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">KEY CONCEPT</span></header>
+      <h1>하나의 문장으로 핵심을 먼저 말합니다</h1>
+      <p class="lead">제목 아래에는 이 슬라이드가 왜 중요한지 한 줄로 설명합니다.</p>
+      <div class="slide-body">
+        <div class="two-col">
+          <article class="panel"><p class="eyebrow">CONTEXT</p><h2>배경과 문제</h2><p>독자가 이미 아는 것과 새로 이해해야 할 것의 경계를 명확히 합니다.</p><ul><li>현재 방식의 한계</li><li>새 개념이 필요한 이유</li><li>핵심 용어의 정의</li></ul></article>
+          <article class="panel panel--accent"><p class="eyebrow">IDEA</p><h2>핵심 아이디어</h2><p>책의 문장을 그대로 옮기지 않고 발표자의 언어로 재구성합니다.</p><ul><li>구성 요소의 역할</li><li>요소 사이의 관계</li><li>적용 가능한 조건</li></ul></article>
+        </div>
+        <p class="takeaway"><strong>핵심 메시지</strong> — 이 위치에는 청중이 기억해야 할 한 문장을 둡니다.</p>
+      </div>
+      <footer class="slide-footer"><span>{{CHAPTERS}}</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="핵심 수치와 비교">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">EVIDENCE</span></header>
+      <h1>수치와 비교는 같은 기준으로 보여줍니다</h1>
+      <p class="lead">숫자마다 의미와 출처를 함께 표시하고, 장식보다 비교 가능성을 우선합니다.</p>
+      <div class="slide-body">
+        <div class="kpi-grid">
+          <article class="kpi"><strong>01</strong><h2>첫 번째 근거</h2><p>수치가 의미하는 바를 한 줄로 설명합니다.</p></article>
+          <article class="kpi"><strong>02</strong><h2>두 번째 근거</h2><p>비교 기준과 조건을 빠뜨리지 않습니다.</p></article>
+          <article class="kpi"><strong>03</strong><h2>세 번째 근거</h2><p>해석과 사실을 구분해 표시합니다.</p></article>
+        </div>
+        <p class="source-note">출처: 발표에 사용한 공식 문서·논문·데이터 링크를 기록합니다.</p>
+        <p class="takeaway"><strong>해석</strong> — 숫자를 나열하는 데서 끝내지 말고 판단에 어떤 영향을 주는지 설명합니다.</p>
+      </div>
+      <footer class="slide-footer"><span>{{CHAPTERS}}</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="코드와 데모">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">CODE / DEMO</span></header>
+      <h1>코드는 설명할 부분만 남깁니다</h1>
+      <p class="lead">전체 구현보다 핵심 설계 결정과 실행 결과가 드러나는 범위를 선택합니다.</p>
+      <div class="slide-body">
+        <div class="code-layout">
+          <pre class="code-block"><code><span class="code-comment"># 핵심 흐름을 보여주는 최소 예제</span>
+def build_example(source):
+    graph = parse(source)
+    return graph.validate()</code></pre>
+          <article class="panel"><p class="eyebrow">READING GUIDE</p><h2>읽을 지점</h2><ol><li>입력과 출력의 계약</li><li>핵심 변환이 일어나는 곳</li><li>실패와 검증을 처리하는 곳</li></ol></article>
+        </div>
+        <p class="takeaway"><strong>데모 원칙</strong> — 네트워크가 없어도 핵심 흐름을 설명할 수 있는 캡처나 결과를 준비합니다.</p>
+      </div>
+      <footer class="slide-footer"><span>{{CHAPTERS}}</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--closing" aria-label="정리와 질의응답">
+      <header class="cover-brand"><span class="brand-name">ds4th study</span><span class="brand-sub">WRAP UP</span></header>
+      <div class="closing-body">
+        <p class="eyebrow">KEY TAKEAWAYS</p>
+        <h1>오늘의 내용을 세 문장으로 정리합니다</h1>
+        <div class="card-grid">
+          <article class="card"><span>01</span><h2>핵심 개념</h2><p>가장 중요한 정의와 관점을 요약합니다.</p></article>
+          <article class="card"><span>02</span><h2>판단 기준</h2><p>언제 적용하고 언제 피할지 정리합니다.</p></article>
+          <article class="card"><span>03</span><h2>다음 질문</h2><p>실습이나 다음 장으로 이어질 질문을 남깁니다.</p></article>
+        </div>
+        <p class="closing-question">Q&amp;A</p>
+      </div>
+      <a class="back-link" href="../../">발표자료 목록으로 돌아가기</a>
+    </section>
+  </main>
+
+  <button class="toc-button control" id="tocButton" type="button" aria-label="목차 열기" aria-expanded="false">☰</button>
+  <aside class="toc" id="toc" aria-label="슬라이드 목차" aria-hidden="true"><h2>목차</h2><div id="tocItems"></div></aside>
+  <nav class="deck-controls" aria-label="슬라이드 제어">
+    <button type="button" id="prevButton" aria-label="이전 슬라이드">←</button>
+    <span id="deckCounter" aria-live="polite">1 / 1</span>
+    <button type="button" id="nextButton" aria-label="다음 슬라이드">→</button>
+    <button type="button" id="themeButton" aria-label="화면 테마 전환">◐</button>
+    <button type="button" id="fullscreenButton" aria-label="전체화면 전환">⛶</button>
+  </nav>
+  <div class="deck-progress" aria-hidden="true"><span id="progress"></span></div>
+  <script src="assets/deck.js"></script>
+</body>
+</html>
