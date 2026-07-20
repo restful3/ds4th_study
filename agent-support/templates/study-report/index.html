@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko" class="theme-light" data-report-template="study-report-v1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{DECK_TITLE}} · 상세 리포트</title>
+  <link rel="icon" href="../../../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/report.css">
+</head>
+<body>
+  <a class="skip-link" href="#report">리포트 본문으로 건너뛰기</a>
+  <div class="reading-progress" aria-hidden="true"><span id="readingProgress"></span></div>
+
+  <button class="mobile-toc-button control" id="tocButton" type="button" aria-label="목차 열기" aria-expanded="false">☰</button>
+  <div class="toc-backdrop" id="tocBackdrop" hidden></div>
+  <aside class="report-toc" id="reportToc" aria-label="리포트 목차">
+    <div class="toc-brand"><strong>ds4th study</strong><span>STUDY REPORT</span></div>
+    <nav>
+      <a href="#summary">핵심 요약</a>
+      <a href="#concept">핵심 개념</a>
+      <a href="#application">적용과 판단</a>
+      <a href="#glossary">핵심 용어</a>
+      <a href="#references">참고 자료</a>
+    </nav>
+    <div class="toc-links"><a href="./">발표자료 보기</a><a href="../../">회차 목록</a></div>
+  </aside>
+
+  <main class="report" id="report">
+    <header class="report-cover">
+      <div class="cover-brand"><strong>ds4th study</strong><span>STUDY REPORT</span></div>
+      <div class="cover-copy">
+        <p class="eyebrow">{{STUDY_TITLE}}</p>
+        <h1>{{DECK_TITLE}}</h1>
+        <p class="cover-subtitle">{{SUBTITLE}}</p>
+      </div>
+      <dl class="cover-meta">
+        <div><dt>발표자</dt><dd>{{PRESENTERS}}</dd></div>
+        <div><dt>학습 범위</dt><dd>{{CHAPTERS}}</dd></div>
+        <div><dt>일시</dt><dd>{{DATE}}</dd></div>
+      </dl>
+    </header>
+
+    <article class="report-content">
+      <section class="executive-summary report-section" id="summary">
+        <p class="section-kicker">EXECUTIVE SUMMARY</p>
+        <h2>이 장을 읽고 가져갈 한 가지</h2>
+        <p class="section-lede">이곳에는 장 전체의 문제, 결론과 왜 중요한지를 세 문장 안에서 설명합니다.</p>
+        <div class="callout callout--hero"><strong>핵심 메시지</strong><p>발표가 끝난 뒤에도 기억할 판단 기준을 한 문장으로 적습니다.</p></div>
+        <div class="concept-grid concept-grid--three">
+          <article class="concept-card"><span>01</span><h3>문제</h3><p>기존 접근이 해결하지 못한 지점을 설명합니다.</p></article>
+          <article class="concept-card"><span>02</span><h3>아이디어</h3><p>장의 핵심 해법과 구성요소를 설명합니다.</p></article>
+          <article class="concept-card"><span>03</span><h3>판단</h3><p>어떤 상황에 적용할지 정리합니다.</p></article>
+        </div>
+      </section>
+
+      <section class="report-section" id="concept">
+        <p class="section-kicker">SECTION 01 · KEY CONCEPT</p>
+        <h2>핵심 개념과 구조</h2>
+        <p class="section-lede">슬라이드에서 압축한 정의와 관계를 여기서 충분한 맥락과 함께 풀어냅니다.</p>
+        <h3>개념을 먼저 정의합니다</h3>
+        <p>독자가 이 장을 읽는 데 필요한 용어, 구성요소와 경계를 설명합니다. 책 문장을 그대로 옮기지 않고 발표자의 언어로 재구성합니다.</p>
+        <div class="process" aria-label="핵심 흐름 예시">
+          <article><b>1</b><strong>입력</strong><span>문제와 데이터</span></article>
+          <i aria-hidden="true">→</i>
+          <article><b>2</b><strong>변환</strong><span>핵심 메커니즘</span></article>
+          <i aria-hidden="true">→</i>
+          <article><b>3</b><strong>결과</strong><span>검증 가능한 출력</span></article>
+        </div>
+        <div class="callout"><strong>읽기 포인트</strong><p>구성요소를 나열하는 데서 끝내지 않고 서로 어떤 책임을 주고받는지 확인합니다.</p></div>
+      </section>
+
+      <section class="report-section" id="application">
+        <p class="section-kicker">SECTION 02 · APPLICATION</p>
+        <h2>적용 사례와 선택 기준</h2>
+        <p class="section-lede">기술 이름이 아니라 문제의 모양을 기준으로 적용 여부를 판단합니다.</p>
+        <div class="concept-grid">
+          <article class="concept-card"><span>CASE A</span><h3>적합한 상황</h3><p>핵심 강점이 직접 문제를 해결하는 조건을 적습니다.</p></article>
+          <article class="concept-card"><span>CASE B</span><h3>주의할 상황</h3><p>비용, 복잡도와 운영 부담이 커지는 조건을 적습니다.</p></article>
+        </div>
+        <h3>결정 질문</h3>
+        <ul class="decision-list"><li>이 문제의 핵심 데이터와 관계는 무엇인가?</li><li>사용자는 어떤 방식으로 결과에 접근하는가?</li><li>정확성, 최신성, 설명 가능성 중 무엇이 중요한가?</li></ul>
+      </section>
+
+      <section class="report-section" id="glossary">
+        <p class="section-kicker">APPENDIX · GLOSSARY</p>
+        <h2>핵심 용어</h2>
+        <dl class="glossary"><div><dt>핵심 용어 A</dt><dd>이 장의 맥락에서 사용하는 간결한 정의</dd></div><div><dt>핵심 용어 B</dt><dd>비슷한 개념과 구분되는 지점</dd></div></dl>
+      </section>
+
+      <section class="report-section references" id="references">
+        <p class="section-kicker">REFERENCES</p>
+        <h2>참고 자료</h2>
+        <ol><li>교재 챕터와 발표에 사용한 공식 문서·논문을 기록합니다.</li></ol>
+      </section>
+    </article>
+
+    <footer class="report-footer"><span>ds4th study · {{CHAPTERS}}</span><a href="./">발표자료 보기 →</a></footer>
+  </main>
+
+  <div class="report-controls" aria-label="리포트 제어">
+    <button type="button" id="themeButton" aria-label="화면 테마 전환">◐</button>
+    <button type="button" id="printButton" aria-label="리포트 인쇄">인쇄</button>
+    <button type="button" id="topButton" aria-label="문서 맨 위로">↑</button>
+  </div>
+  <script src="assets/report.js"></script>
+</body>
+</html>

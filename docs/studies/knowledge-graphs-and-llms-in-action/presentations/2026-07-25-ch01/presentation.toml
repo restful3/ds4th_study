@@ -5,3 +5,5 @@ date = "2026-07-25"
 presenters = ["수경"]
 chapters = ["Chapter 1"]
 template = "study-deck-v1"
+report_template = "study-report-v1"
+artifacts = ["report", "slides"]

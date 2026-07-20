@@ -147,7 +147,7 @@
 * **학습 공유**: 격주 학습한 내용을 발표자료와 함께 GitHub에 공유
 * **AI 에이전트 활용**: [Codex·Claude Code 시작 가이드](QUICKSTART.md) — 담당 날짜와 챕터를 알려주면 자료 탐색부터 HTML 발표자료 생성·검증까지 지원
 * **웹 발표자료**: [`docs/studies`](docs/studies) — 스터디 종료 후 학습자료가 `archive/`로 이동해도 공개 발표 URL은 유지
-* **HTML 발표 템플릿**: [`study-deck-v1`](agent-support/templates/study-deck/DESIGN.md) — 별도 요청이 없으면 에이전트가 이 템플릿으로 새 발표를 생성
+* **HTML 산출물 템플릿**: [`study-report-v1`](agent-support/templates/study-report/DESIGN.md) + [`study-deck-v1`](agent-support/templates/study-deck/DESIGN.md) — 별도 요청이 없으면 에이전트가 회차별 상세 리포트와 발표자료를 함께 생성
 * **발표 방식**: 담당 범위에 대한 50분 발표 + 10분 Q&A (총 1시간 진행)
 * **운영 규칙**: [스터디 운영 규칙](source/etc/%EC%8A%A4%ED%84%B0%EB%94%94_%EC%9A%B4%EC%98%81_%EA%B7%9C%EC%B9%99_v01.pdf)
 

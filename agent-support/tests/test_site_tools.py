@@ -44,17 +44,32 @@ title = "첫 번째 발표"
 date = "2026-01-01"
 presenters = ["발표자"]
 chapters = ["Chapter 1"]
+template = "study-deck-v1"
+report_template = "study-report-v1"
+artifacts = ["report", "slides"]
 '''
 
 
 DECK_HTML = '''<!doctype html>
-<html lang="ko">
+<html lang="ko" data-deck-template="study-deck-v1">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>첫 번째 발표</title>
 </head>
 <body><main><h1>첫 번째 발표</h1></main></body>
+</html>
+'''
+
+
+REPORT_HTML = '''<!doctype html>
+<html lang="ko" data-report-template="study-report-v1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>첫 번째 발표 · 상세 리포트</title>
+</head>
+<body><main><h1>첫 번째 발표 · 상세 리포트</h1></main></body>
 </html>
 '''
 
@@ -88,6 +103,10 @@ class SiteToolTests(unittest.TestCase):
             DECK_METADATA, encoding="utf-8"
         )
         (self.deck / "index.html").write_text(DECK_HTML, encoding="utf-8")
+        (self.deck / "report.html").write_text(REPORT_HTML, encoding="utf-8")
+        (self.deck / "assets").mkdir()
+        for name in ("deck.css", "deck.js", "report.css", "report.js"):
+            (self.deck / "assets" / name).write_text("/* test */\n", encoding="utf-8")
 
     def tearDown(self) -> None:
         self.tempdir.cleanup()
@@ -125,6 +144,7 @@ class SiteToolTests(unittest.TestCase):
         active_page = study_page.read_text(encoding="utf-8")
         self.assertIn("진행 중", active_page)
         self.assertIn("presentations/2026-01-01-ch01/", active_page)
+        self.assertIn("presentations/2026-01-01-ch01/report.html", active_page)
 
         self.registry.write_text(ARCHIVED_REGISTRY, encoding="utf-8")
         archived_result = self.build()
@@ -132,6 +152,7 @@ class SiteToolTests(unittest.TestCase):
         archived_page = study_page.read_text(encoding="utf-8")
         self.assertIn("완료", archived_page)
         self.assertIn("presentations/2026-01-01-ch01/", archived_page)
+        self.assertIn("presentations/2026-01-01-ch01/report.html", archived_page)
         self.assertEqual(study_page, self.site / "studies" / "sample-study" / "index.html")
 
         validation = self.validate()
@@ -149,6 +170,15 @@ class SiteToolTests(unittest.TestCase):
         validation = self.validate()
         self.assertNotEqual(validation.returncode, 0)
         self.assertIn("broken local reference", validation.stderr)
+
+    def test_validator_rejects_missing_report_artifact(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        (self.deck / "report.html").unlink()
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn("report artifact is missing", validation.stderr)
 
     def test_new_presentation_uses_canonical_template_without_overwrite(self) -> None:
         session = "2026-01-15-ch02-ch03"
@@ -188,9 +218,17 @@ class SiteToolTests(unittest.TestCase):
         self.assertNotIn("ConnectBrick", generated_html)
         self.assertNotIn("{{", generated_html)
         self.assertEqual(metadata["template"], "study-deck-v1")
+        self.assertEqual(metadata["report_template"], "study-report-v1")
+        self.assertEqual(metadata["artifacts"], ["report", "slides"])
         self.assertEqual(metadata["presenters"], ["발표자 A", "발표자 B"])
         self.assertTrue((target / "assets" / "deck.css").is_file())
         self.assertTrue((target / "assets" / "deck.js").is_file())
+        generated_report = (target / "report.html").read_text(encoding="utf-8")
+        self.assertIn('data-report-template="study-report-v1"', generated_report)
+        self.assertIn("두 번째 발표", generated_report)
+        self.assertNotIn("{{", generated_report)
+        self.assertTrue((target / "assets" / "report.css").is_file())
+        self.assertTrue((target / "assets" / "report.js").is_file())
 
         build_result = self.build()
         self.assertEqual(build_result.returncode, 0, build_result.stderr)

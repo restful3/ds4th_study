@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create a ds4th HTML presentation from the canonical project template."""
+"""Create a ds4th study report and HTML presentation from canonical templates."""
 
 from __future__ import annotations
 
@@ -18,6 +18,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_REGISTRY = REPO_ROOT / "agent-support" / "studies.toml"
 DEFAULT_SITE = REPO_ROOT / "docs"
 DEFAULT_TEMPLATE = REPO_ROOT / "agent-support" / "templates" / "study-deck"
+DEFAULT_REPORT_TEMPLATE = REPO_ROOT / "agent-support" / "templates" / "study-report"
 SLUG_RE = re.compile(r"^[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$")
 TOKEN_RE = re.compile(r"{{[A-Z0-9_]+}}")
 
@@ -38,6 +39,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--registry", type=Path, default=DEFAULT_REGISTRY)
     parser.add_argument("--site", type=Path, default=DEFAULT_SITE)
     parser.add_argument("--template", type=Path, default=DEFAULT_TEMPLATE)
+    parser.add_argument(
+        "--report-template", type=Path, default=DEFAULT_REPORT_TEMPLATE
+    )
     return parser.parse_args()
 
 
@@ -106,7 +110,16 @@ def main() -> int:
         html_template = template / "index.html"
         metadata_template = template / "presentation.toml.tmpl"
         assets_template = template / "assets"
-        for required in (html_template, metadata_template, assets_template):
+        report_template = args.report_template.resolve()
+        report_html_template = report_template / "index.html"
+        report_assets_template = report_template / "assets"
+        for required in (
+            html_template,
+            metadata_template,
+            assets_template,
+            report_html_template,
+            report_assets_template,
+        ):
             if not required.exists():
                 raise ValueError(f"template component not found: {required}")
 
@@ -132,6 +145,11 @@ def main() -> int:
         deck_html = render(
             html_template.read_text(encoding="utf-8"), html_replacements, html_template.name
         )
+        report_html = render(
+            report_html_template.read_text(encoding="utf-8"),
+            html_replacements,
+            f"{report_template.name}/{report_html_template.name}",
+        )
         metadata = render(
             metadata_template.read_text(encoding="utf-8"),
             metadata_replacements,
@@ -143,15 +161,17 @@ def main() -> int:
             raise ValueError(f"presentation directory already exists: {target}")
         target.mkdir(parents=True)
         (target / "index.html").write_text(deck_html, encoding="utf-8")
+        (target / "report.html").write_text(report_html, encoding="utf-8")
         (target / "presentation.toml").write_text(metadata, encoding="utf-8")
         shutil.copytree(assets_template, target / "assets")
+        shutil.copytree(report_assets_template, target / "assets", dirs_exist_ok=True)
 
         try:
             display = target.relative_to(REPO_ROOT)
         except ValueError:
             display = target
-        print(f"created presentation: {display}")
-        print("next: replace the example slide content, build indexes, and validate the site")
+        print(f"created session report and presentation: {display}")
+        print("next: replace the example report and slide content, build indexes, and validate the site")
         return 0
     except (OSError, ValueError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
