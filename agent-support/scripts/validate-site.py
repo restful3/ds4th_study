@@ -17,7 +17,8 @@ DEFAULT_REGISTRY = REPO_ROOT / "agent-support" / "studies.toml"
 DEFAULT_SITE = REPO_ROOT / "docs"
 SLUG_RE = re.compile(r"^[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$")
 MAX_FILE_BYTES = 10 * 1024 * 1024
-MAX_DECK_BYTES = 30 * 1024 * 1024
+MAX_SESSION_BYTES = 30 * 1024 * 1024
+SUPPORTED_ARTIFACTS = {"report", "slides"}
 
 
 class PageParser(HTMLParser):
@@ -164,12 +165,28 @@ def validate_metadata(site: Path, studies: dict[str, dict], errors: list[str]) -
         for field in ("presenters", "chapters"):
             if not isinstance(metadata.get(field), list) or not metadata[field]:
                 errors.append(f"{field} must be a non-empty list in {metadata_path}")
+        artifacts = metadata.get("artifacts")
+        if (
+            not isinstance(artifacts, list)
+            or not artifacts
+            or len(artifacts) != len(set(artifacts))
+            or not set(artifacts).issubset(SUPPORTED_ARTIFACTS)
+        ):
+            errors.append(
+                f"artifacts must be a unique non-empty subset of "
+                f"{sorted(SUPPORTED_ARTIFACTS)} in {metadata_path}"
+            )
+            artifacts = []
+
         deck_html = metadata_path.parent / "index.html"
-        if not deck_html.is_file():
-            errors.append(f"presentation is missing index.html: {metadata_path.parent}")
+        report_html = metadata_path.parent / "report.html"
+        if "slides" in artifacts and not deck_html.is_file():
+            errors.append(f"slides artifact is missing index.html: {metadata_path.parent}")
+        if "report" in artifacts and not report_html.is_file():
+            errors.append(f"report artifact is missing report.html: {metadata_path.parent}")
 
         template_id = metadata.get("template")
-        if template_id == "study-deck-v1" and deck_html.is_file():
+        if "slides" in artifacts and template_id == "study-deck-v1" and deck_html.is_file():
             deck_text = deck_html.read_text(encoding="utf-8", errors="replace")
             if 'data-deck-template="study-deck-v1"' not in deck_text:
                 errors.append(f"study-deck-v1 marker is missing in {deck_html}")
@@ -179,18 +196,33 @@ def validate_metadata(site: Path, studies: dict[str, dict], errors: list[str]) -
                         f"study-deck-v1 asset is missing in {metadata_path.parent}: {asset}"
                     )
 
+        report_template_id = metadata.get("report_template")
+        if (
+            "report" in artifacts
+            and report_template_id == "study-report-v1"
+            and report_html.is_file()
+        ):
+            report_text = report_html.read_text(encoding="utf-8", errors="replace")
+            if 'data-report-template="study-report-v1"' not in report_text:
+                errors.append(f"study-report-v1 marker is missing in {report_html}")
+            for asset in ("assets/report.css", "assets/report.js"):
+                if not (metadata_path.parent / asset).is_file():
+                    errors.append(
+                        f"study-report-v1 asset is missing in {metadata_path.parent}: {asset}"
+                    )
+
         key = (study_id, session_id)
         if key in seen:
             errors.append(f"duplicate presentation id: {study_id}/{session_id}")
         seen.add(key)
 
-        deck_size = sum(
+        session_size = sum(
             path.stat().st_size for path in metadata_path.parent.rglob("*") if path.is_file()
         )
-        if deck_size > MAX_DECK_BYTES:
+        if session_size > MAX_SESSION_BYTES:
             errors.append(
-                f"presentation exceeds {MAX_DECK_BYTES // 1024 // 1024} MiB: "
-                f"{metadata_path.parent} ({deck_size} bytes)"
+                f"session artifacts exceed {MAX_SESSION_BYTES // 1024 // 1024} MiB: "
+                f"{metadata_path.parent} ({session_size} bytes)"
             )
 
 

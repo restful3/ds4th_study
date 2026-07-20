@@ -510,6 +510,11 @@ a {
   text-underline-offset: 4px;
 }
 
+.closing-links {
+  display: flex;
+  gap: 22px;
+}
+
 .deck-controls {
   position: fixed;
   z-index: 30;

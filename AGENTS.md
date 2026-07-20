@@ -10,7 +10,7 @@
 
 - `source/`: 진행 중인 스터디의 학습자료. 현재 작업은 레지스트리의 `materials_path`를 기준으로 한다.
 - `archive/`: 종료된 스터디의 학습자료. 사용자가 명시적으로 요청하지 않으면 수정하거나 재배치하지 않는다.
-- `docs/`: GitHub Pages 공개 사이트. 발표 URL을 안정적으로 유지하기 위한 별도 게시 계층이다.
+- `docs/`: GitHub Pages 공개 사이트. 회차별 상세 리포트와 발표자료 URL을 안정적으로 유지하기 위한 별도 게시 계층이다.
 - `agent-support/`: 스터디 레지스트리, 공통 절차와 결정적 검증 스크립트.
 - `.agents/skills/`, `.claude/skills/`: Codex와 Claude Code용 얇은 스킬 어댑터.
 
@@ -25,19 +25,21 @@
 5. 새 공개 경로는 소문자 ASCII slug만 사용한다. 한글 제목은 HTML과 메타데이터에 기록한다.
 6. Pages 안에서는 상대 URL을 사용한다. `/assets`, `file://`, `localhost`, 사설 IP와 로컬 절대경로를 넣지 않는다.
 7. 책 원문·번역 전문, 책의 표·그림을 그대로 복제한 자료, 비밀키와 참가자 동의 없는 개인정보를 Pages에 게시하지 않는다.
-8. 발표자료는 자체 해설과 재구성을 중심으로 만들고 인용·이미지의 출처를 표시한다.
+8. 리포트와 발표자료는 자체 해설과 재구성을 중심으로 만들고 인용·이미지의 출처를 표시한다.
 9. 커밋, 푸시, PR 생성, Pages 설정 변경은 사용자가 명시적으로 요청한 범위에서만 수행한다.
 10. 스터디 종료 이동은 사용자의 명시적 요청이 있을 때만 `git mv`로 수행한다.
 
-## Presentation workflow
+## Session publication workflow
 
-- 발표 생성·수정·검토 요청에는 `study-presentation` 스킬과 `agent-support/procedures/study-presentation.md`를 사용한다.
-- 새 발표는 사용자가 다른 형식을 명시하지 않는 한 `agent-support/templates/study-deck/`과 `agent-support/scripts/new-presentation.py`로 생성한다.
+- 회차 산출물 생성·수정·검토 요청에는 `study-presentation` 스킬과 `agent-support/procedures/study-presentation.md`를 사용한다.
+- 한 회차의 기본 공개 산출물은 **상세 리포트 + 발표자료** 두 가지다. 발표자료만 또는 리포트만 만들라는 명시적 요청이 없다면 둘 다 만든다.
+- 새 회차는 `agent-support/templates/study-report/`, `agent-support/templates/study-deck/`과 `agent-support/scripts/new-presentation.py`로 생성한다.
 - 공개 경로는 `docs/studies/<study-slug>/presentations/<session-slug>/`이다.
-- 각 발표 폴더에는 `index.html`과 `presentation.toml`이 있어야 한다.
+- 각 회차 폴더에는 `report.html`, 발표자료인 `index.html`, `presentation.toml`과 필요한 로컬 자산이 있어야 한다.
+- `index.html`은 이미 공유된 발표 URL을 유지하기 위해 발표자료 진입점으로 둔다. 스터디 인덱스는 같은 회차 카드에서 `report.html`과 `index.html`을 각각 링크한다.
 - 같은 회차를 수정할 때는 같은 `session-slug`를 사용해 URL을 유지한다.
-- 생성된 CSS와 JavaScript는 해당 발표의 스냅샷이다. 한 발표만 고치려고 공용 템플릿이나 다른 발표를 함께 수정하지 않는다.
-- 발표 HTML과 자산만 `docs/`에 둔다. 원문 PDF와 학습용 대용량 파일은 복사하지 않는다.
+- 생성된 CSS와 JavaScript는 해당 회차의 스냅샷이다. 한 회차만 고치려고 공용 템플릿이나 다른 회차를 함께 수정하지 않는다.
+- 리포트·발표 HTML과 자산만 `docs/`에 둔다. 원문 PDF와 학습용 대용량 파일은 복사하지 않는다.
 
 ## Required verification
 

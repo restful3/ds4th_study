@@ -35,7 +35,9 @@ REQUIRED_DECK_FIELDS = {
     "date",
     "presenters",
     "chapters",
+    "artifacts",
 }
+SUPPORTED_ARTIFACTS = {"report", "slides"}
 
 
 def parse_args() -> argparse.Namespace:
@@ -129,12 +131,28 @@ def load_presentations(site: Path, studies: list[dict]) -> dict[str, list[dict]]
             raise ValueError(
                 f"{metadata_path} is under {actual_slug}, expected {study['slug']}"
             )
-        if not (metadata_path.parent / "index.html").is_file():
-            raise ValueError(f"presentation is missing index.html: {metadata_path.parent}")
         if not isinstance(deck["presenters"], list) or not deck["presenters"]:
             raise ValueError(f"presenters must be a non-empty list in {metadata_path}")
         if not isinstance(deck["chapters"], list) or not deck["chapters"]:
             raise ValueError(f"chapters must be a non-empty list in {metadata_path}")
+        artifacts = deck["artifacts"]
+        if (
+            not isinstance(artifacts, list)
+            or not artifacts
+            or len(artifacts) != len(set(artifacts))
+            or not set(artifacts).issubset(SUPPORTED_ARTIFACTS)
+        ):
+            raise ValueError(
+                f"artifacts must be a unique non-empty subset of "
+                f"{sorted(SUPPORTED_ARTIFACTS)} in {metadata_path}"
+            )
+        artifact_files = {"report": "report.html", "slides": "index.html"}
+        for artifact in artifacts:
+            if not (metadata_path.parent / artifact_files[artifact]).is_file():
+                raise ValueError(
+                    f"{artifact} artifact is missing in {metadata_path.parent}: "
+                    f"{artifact_files[artifact]}"
+                )
 
         key = (study_id, session_id)
         if key in seen_sessions:
@@ -183,8 +201,8 @@ def study_card(study: dict) -> str:
 def render_root(studies: list[dict]) -> str:
     sections: list[str] = [
         "  <h1>ds4th study</h1>",
-        '  <p class="lead">진행 중인 스터디와 공개 발표자료를 한곳에서 봅니다. '
-        "학습자료가 source에서 archive로 이동해도 발표 URL은 유지됩니다.</p>",
+        '  <p class="lead">진행 중인 스터디와 공개 리포트·발표자료를 한곳에서 봅니다. '
+        "학습자료가 source에서 archive로 이동해도 공개 URL은 유지됩니다.</p>",
     ]
     for status, heading in (("active", "진행 중인 스터디"), ("archived", "완료된 스터디")):
         matching = [study for study in studies if study["status"] == status]
@@ -211,7 +229,7 @@ def render_study(study: dict, decks: list[dict]) -> str:
         f'  <p class="meta">{html.escape(study["start_date"])} – '
         f'{html.escape(study["end_date"])} · '
         f'<a href="{html.escape(material_url)}">학습자료</a></p>',
-        "  <h2>발표자료</h2>",
+        "  <h2>회차 자료</h2>",
     ]
     if not decks:
         body.append('  <p class="empty">아직 등록된 발표자료가 없습니다.</p>')
@@ -220,16 +238,26 @@ def render_study(study: dict, decks: list[dict]) -> str:
         for deck in decks:
             presenters = ", ".join(str(item) for item in deck["presenters"])
             chapters = " · ".join(str(item) for item in deck["chapters"])
+            links = []
+            if "report" in deck["artifacts"]:
+                links.append(
+                    f'<a class="artifact-link" href="presentations/{deck["session_id"]}/report.html">상세 리포트</a>'
+                )
+            if "slides" in deck["artifacts"]:
+                links.append(
+                    f'<a class="artifact-link artifact-link--primary" href="presentations/{deck["session_id"]}/">발표자료</a>'
+                )
             cards.append(
-                f'  <a class="card" href="presentations/{deck["session_id"]}/">\n'
+                '  <article class="card session-card">\n'
                 f'    <h3>{html.escape(str(deck["title"]))}</h3>\n'
                 f'    <p>{html.escape(chapters)}</p>\n'
                 f'    <p class="meta">{html.escape(str(deck["date"]))} · '
                 f'{html.escape(presenters)}</p>\n'
-                "  </a>"
+                f'    <div class="artifact-links">{"".join(links)}</div>\n'
+                "  </article>"
             )
         body.append(f'  <div class="grid">\n{"\n".join(cards)}\n  </div>')
-    body.append("  <footer>공개 발표 경로는 스터디 아카이브 이후에도 유지됩니다.</footer>")
+    body.append("  <footer>공개 리포트·발표자료 경로는 스터디 아카이브 이후에도 유지됩니다.</footer>")
     return page_shell(study["title_ko"], "../../assets/site.css", "\n".join(body))
 
 
