@@ -3,277 +3,387 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Knowledge Graphs and LLMs in Action Chapter 1을 스터디 관점에서 재구성한 상세 리포트">
+  <meta name="description" content="Knowledge Graphs and LLMs in Action Chapter 1의 논지, 구조, 적용 기준을 도형과 표로 재구성한 상세 리포트">
   <title>지식 그래프와 LLM: 강력한 조합 · 상세 리포트</title>
   <link rel="icon" href="../../../../assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/report.css">
 </head>
 <body>
-  <a class="skip-link" href="#report">리포트 본문으로 건너뛰기</a>
-  <div class="reading-progress" aria-hidden="true"><span id="readingProgress"></span></div>
-
-  <button class="mobile-toc-button control" id="tocButton" type="button" aria-label="목차 열기" aria-expanded="false">☰</button>
-  <div class="toc-backdrop" id="tocBackdrop" hidden></div>
-  <aside class="report-toc" id="reportToc" aria-label="리포트 목차">
-    <div class="toc-brand"><strong>ds4th study</strong><span>STUDY REPORT</span></div>
-    <nav>
-      <a href="#summary">핵심 요약</a>
-      <a href="#knowledge-graph">1. 지식 그래프</a>
-      <a href="#llm">2. 대규모 언어 모델</a>
-      <a href="#hybrid">3. 상호 보완 구조</a>
-      <a href="#paradigm">4. 데이터 앱의 전환</a>
-      <a href="#use-cases">5. 적용 사례</a>
-      <a href="#technology">6. RDF와 LPG</a>
-      <a href="#semantics">7. 의미 계층</a>
-      <a href="#decision">도입 판단 질문</a>
-      <a href="#glossary">핵심 용어</a>
-      <a href="#references">참고 자료</a>
-    </nav>
-    <div class="toc-links"><a href="./">발표자료 보기</a><a href="../../">회차 목록</a></div>
-  </aside>
-
-  <main class="report" id="report">
-    <header class="report-cover">
-      <div class="cover-brand"><strong>ds4th study</strong><span>STUDY REPORT</span></div>
-      <div class="cover-copy">
-        <p class="eyebrow">KNOWLEDGE GRAPHS &amp; LLMS IN ACTION · CHAPTER 01</p>
-        <h1>지식 그래프와 LLM:<br>강력한 조합</h1>
-        <p class="cover-subtitle">서로의 약점을 메워 신뢰할 수 있는 하이브리드 지능을 만드는 법</p>
+  <a class="skip-link" href="#summary">리포트 본문으로 건너뛰기</a>
+  <button id="tocToggle" class="report-nav-toggle" type="button" aria-label="목차 열기" aria-controls="tocDrawer" aria-expanded="false" title="목차"><span aria-hidden="true">☰</span></button>
+  <div class="report-settings" aria-label="설정">
+    <button id="settingsToggle" class="report-settings-toggle" type="button" aria-label="설정 열기" aria-controls="settingsPanel" aria-expanded="false" title="설정">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M9.67 4.14a2.34 2.34 0 0 1 4.66 0 2.34 2.34 0 0 0 3.32 1.91 2.34 2.34 0 0 1 2.33 4.04 2.34 2.34 0 0 0 0 3.82 2.34 2.34 0 0 1-2.33 4.04 2.34 2.34 0 0 0-3.32 1.91 2.34 2.34 0 0 1-4.66 0 2.34 2.34 0 0 0-3.32-1.91 2.34 2.34 0 0 1-2.33-4.04 2.34 2.34 0 0 0 0-3.82 2.34 2.34 0 0 1 2.33-4.04 2.34 2.34 0 0 0 3.32-1.91"/></svg>
+    </button>
+    <div id="settingsPanel" class="report-settings-panel" aria-hidden="true">
+      <div class="report-settings-panel__group"><span class="report-settings-panel__label">화면</span><button id="themeToggle" type="button" onclick="cycleTheme()" aria-label="나이트 모드 전환" title="나이트 모드 전환">☀</button></div>
+      <div class="report-settings-panel__group"><span class="report-settings-panel__label">출력</span><button class="report-settings-action" type="button" onclick="window.print()" aria-label="PDF 또는 인쇄" title="PDF 또는 인쇄">Print / PDF</button></div>
+      <div class="report-settings-panel__group">
+        <span class="report-settings-panel__label">이동</span>
+        <nav class="report-quick-links" aria-label="회차 링크"><a href="../../" title="회차 목록">Index</a><a href="report.html" title="상세 리포트">Report</a><a href="./" title="발표자료">Slides</a></nav>
       </div>
-      <dl class="cover-meta">
-        <div><dt>발표자</dt><dd>수경</dd></div>
-        <div><dt>학습 범위</dt><dd>Chapter 1 · pp. 1–16</dd></div>
-        <div><dt>일시</dt><dd>2026-07-25</dd></div>
-      </dl>
-    </header>
-
-    <article class="report-content">
-      <section class="executive-summary report-section" id="summary">
-        <p class="section-kicker">EXECUTIVE SUMMARY</p>
-        <h2>핵심은 더 큰 모델이 아니라 역할 분담이다</h2>
-        <p class="section-lede">LLM은 자연어와 비정형 데이터를 다루는 인터페이스이고, 지식 그래프는 사실·관계·맥락·검증 경로를 관리하는 지식 계층이다. 두 기술의 결합 가치는 한쪽이 다른 쪽을 대체할 때가 아니라 각자 잘하는 책임을 맡을 때 커진다.</p>
-        <div class="callout callout--hero">
-          <strong>이 장의 한 문장</strong>
-          <p>LLM이 지식을 읽고 말하게 하고, 지식 그래프가 그 말의 근거와 최신성을 붙잡게 한다.</p>
-        </div>
-        <div class="concept-grid concept-grid--three">
-          <article class="concept-card"><span>LLM</span><h3>언어 인터페이스</h3><p>문서를 이해하고 개체·관계를 추출하며, 복잡한 질문과 결과를 자연어로 연결한다.</p></article>
-          <article class="concept-card"><span>KNOWLEDGE GRAPH</span><h3>지식 계층</h3><p>개체, 의미 있는 관계, 속성과 출처를 명시해 사람이 검증할 수 있는 구조를 만든다.</p></article>
-          <article class="concept-card"><span>HYBRID</span><h3>운영 루프</h3><p>추출 → 검증 → 통합 → 질의 → 근거 기반 응답을 반복하며 지식을 계속 갱신한다.</p></article>
-        </div>
-        <div class="callout">
-          <strong>읽기 관점</strong>
-          <p>이 장은 특정 그래프 제품이나 RAG 구현법을 고르는 장이 아니다. 왜 두 기술이 필요한지, 각각 어느 책임을 맡아야 하는지, 어떤 문제에서 결합 가치가 커지는지를 정리하는 개념 지도다.</p>
-        </div>
-      </section>
-
-      <section class="report-section" id="knowledge-graph">
-        <p class="section-kicker">SECTION 01 · KNOWLEDGE GRAPH</p>
-        <h2>지식은 연결에 의미가 붙을 때 비로소 작동한다</h2>
-        <p class="section-lede">지식 그래프는 현실 세계의 대상을 노드로, 대상 사이의 의미 있는 연결을 관계로, 판단에 필요한 맥락을 속성으로 표현한다.</p>
-
-        <h3>노드·관계·속성</h3>
-        <p><strong>노드(node)</strong>는 사람, 조직, 질병, 약물처럼 구분할 수 있는 개체다. <strong>관계(relationship)</strong>는 두 개체가 어떻게 연결되는지를 이름으로 드러낸다. <strong>속성(property)</strong>은 날짜, 용량, 설명, 출처처럼 개체와 관계를 해석하는 데 필요한 세부 맥락을 제공한다.</p>
-        <div class="process" aria-label="약물과 질병, 증상의 지식 그래프 예시">
-          <article><b>1</b><strong>약물 A</strong><span>승인일 · 용량</span></article>
-          <i aria-hidden="true">치료한다 →</i>
-          <article><b>2</b><strong>질병 B</strong><span>분류 · 설명</span></article>
-          <i aria-hidden="true">유발한다 →</i>
-          <article><b>3</b><strong>증상 C</strong><span>중증도 · 빈도</span></article>
-        </div>
-        <p>중요한 점은 데이터가 연결됐다는 사실 자체가 아니다. 연결에 <em>치료한다</em>, <em>유발한다</em>처럼 해석 가능한 이름이 있고, 대상의 유형과 속성이 함께 있을 때 기계는 경로를 탐색하고 규칙을 적용하며 결과의 근거를 설명할 수 있다.</p>
-
-        <h3>왜 유용한데도 널리 쓰기 어려웠나</h3>
-        <div class="concept-grid concept-grid--three">
-          <article class="concept-card"><span>BUILD</span><h3>구축 비용</h3><p>여러 데이터 원천에서 개체와 관계를 찾고 공통 스키마에 맞춰 지속적으로 정제해야 한다.</p></article>
-          <article class="concept-card"><span>ACCESS</span><h3>질의 장벽</h3><p>여러 홉을 탐색하려면 그래프 구조와 전용 질의 언어를 이해해야 한다.</p></article>
-          <article class="concept-card"><span>DELIVERY</span><h3>결과 해석</h3><p>답이 여러 노드와 관계에 흩어져 있어 비전문가가 바로 이해할 설명으로 바꾸기 어렵다.</p></article>
-        </div>
-        <p>정형 데이터는 필드와 유형이 이미 나뉘어 있어 공통 그래프 스키마로 매핑하는 과정이 비교적 예측 가능하다. 비정형 텍스트는 다르다. 언어·문체·오타·전문 용어뿐 아니라 대명사가 무엇을 가리키는지까지 해석해야 하므로 전통적인 정보 추출 파이프라인은 도메인마다 많은 규칙과 학습 데이터를 요구했다.</p>
-        <div class="callout"><strong>접근성의 문제</strong><p>좋은 지식 그래프를 만드는 것만으로는 충분하지 않다. 사용자가 자연어로 질문하고, 시스템이 적절한 경로를 찾아 근거와 함께 읽기 쉬운 답으로 돌려줘야 지식이 실제 애플리케이션이 된다.</p></div>
-      </section>
-
-      <section class="report-section" id="llm">
-        <p class="section-kicker">SECTION 02 · LARGE LANGUAGE MODEL</p>
-        <h2>LLM은 자연어라는 접근 장벽을 낮춘다</h2>
-        <p class="section-lede">전이 학습은 과제마다 전용 모델을 만드는 방식을, 이미 언어 패턴을 익힌 큰 모델에 과제를 지시하는 방식으로 바꿨다.</p>
-
-        <h3>전이 학습이 만든 전환</h3>
-        <table class="comparison-table">
-          <thead><tr><th>관점</th><th>과제별 전용 모델</th><th>사전학습 모델·LLM</th></tr></thead>
-          <tbody>
-            <tr><td>출발점</td><td>각 과제용 라벨 데이터와 모델</td><td>대규모 말뭉치에서 배운 일반 언어 패턴</td></tr>
-            <tr><td>새 과제 대응</td><td>데이터 수집과 재학습</td><td>프롬프트, 예시 또는 제한적인 조정</td></tr>
-            <tr><td>KG 구축 영향</td><td>도메인마다 개체·관계 추출기 개발</td><td>하나의 모델을 여러 추출 과제에 재사용</td></tr>
-          </tbody>
-        </table>
-        <p>트랜스포머 기반 사전학습 모델은 다양한 자연어 처리 과제를 하나의 큰 모델로 다룰 수 있음을 보여줬다. 모델 규모, 학습 말뭉치의 양과 품질, 다음 토큰 예측이라는 공통 학습 목표가 결합되면서 자연어로 과제를 기술하고 결과를 생성하는 범용 인터페이스가 가능해졌다.</p>
-
-        <h3>강점과 한계를 같은 표에서 본다</h3>
-        <table class="comparison-table">
-          <thead><tr><th>LLM이 잘하는 일</th><th>LLM만으로 불안한 일</th></tr></thead>
-          <tbody>
-            <tr><td>비정형 문서에서 개체와 관계 후보 찾기</td><td>도메인 사실의 정확성과 최신성 보장</td></tr>
-            <tr><td>복잡한 자연어 질문의 의도 해석</td><td>답이 어떤 사실과 경로에서 나왔는지 추적</td></tr>
-            <tr><td>검색 결과를 사람이 읽기 쉬운 글로 요약</td><td>동일한 개체와 관계의 일관된 식별·관리</td></tr>
-            <tr><td>다양한 문체와 언어에 유연하게 대응</td><td>그럴듯한 오류와 오래된 지식 억제</td></tr>
-          </tbody>
-        </table>
-        <div class="callout"><strong>데이터 중심 관점</strong><p>모델의 크기만 키우는 것으로 신뢰성이 해결되지는 않는다. 어떤 지식을 제공하고, 어떻게 검증하며, 어떤 근거를 답과 함께 내보낼지가 하이브리드 시스템의 핵심 설계 문제다.</p></div>
-      </section>
-
-      <section class="report-section" id="hybrid">
-        <p class="section-kicker">SECTION 03 · MUTUAL REINFORCEMENT</p>
-        <h2>둘의 결합은 단방향 검색보다 넓다</h2>
-        <p class="section-lede">LLM은 지식 그래프를 만들고 이용하기 쉽게 하고, 지식 그래프는 LLM의 응답을 최신의 검증 가능한 사실에 연결한다.</p>
-
-        <div class="concept-grid">
-          <article class="concept-card"><span>LLM → KG</span><h3>구축·질의·요약</h3><p>문서에서 개체와 관계 후보를 추출하고, 자연어 질문을 그래프 질의로 바꾸며, 여러 노드의 결과를 설명으로 합친다.</p></article>
-          <article class="concept-card"><span>KG → LLM</span><h3>정확성·최신성·설명 가능성</h3><p>검증된 도메인 사실을 제공하고, 지속 갱신되는 지식을 연결하며, 답을 만든 관계 경로와 출처를 남긴다.</p></article>
-        </div>
-
-        <h3>운영 가능한 하이브리드 루프</h3>
-        <div class="process" aria-label="LLM과 지식 그래프의 하이브리드 운영 흐름">
-          <article><b>1</b><strong>수집</strong><span>문서·정형 데이터</span></article>
-          <i aria-hidden="true">→</i>
-          <article><b>2</b><strong>추출</strong><span>개체·관계 후보</span></article>
-          <i aria-hidden="true">→</i>
-          <article><b>3</b><strong>검증·통합</strong><span>스키마·출처·정합성</span></article>
-        </div>
-        <div class="process" aria-label="지식 그래프 질의와 응답 흐름">
-          <article><b>4</b><strong>자연어 질의</strong><span>의도·경로 변환</span></article>
-          <i aria-hidden="true">→</i>
-          <article><b>5</b><strong>그래프 탐색</strong><span>관련 사실·경로</span></article>
-          <i aria-hidden="true">→</i>
-          <article><b>6</b><strong>근거 기반 응답</strong><span>요약·출처·설명</span></article>
-        </div>
-        <div class="callout callout--hero"><strong>운영 원칙</strong><p>LLM이 추출했다는 이유만으로 사실이 되지는 않는다. 추출 결과를 스키마와 검증 규칙에 통과시키고, 출처와 함께 지식 그래프에 통합하는 단계가 반드시 필요하다.</p></div>
-      </section>
-
-      <section class="report-section" id="paradigm">
-        <p class="section-kicker">SECTION 04 · DATA APPLICATIONS</p>
-        <h2>애플리케이션마다 지식을 복제하지 않는다</h2>
-        <p class="section-lede">전통적인 데이터 애플리케이션은 목적별 데이터베이스와 로직을 따로 만들기 쉽다. 지식 그래프는 여러 애플리케이션이 공유하는 의미 있는 지식 원천을 지향한다.</p>
-        <p>그래프 패턴 매칭과 순회는 테이블 하나가 아니라 연결 구조 자체를 질문의 대상으로 만든다. 사람과 기계가 함께 해석할 수 있는 개체 유형, 관계와 규칙을 공통 지식 계층에 두면 검색·추천·분석·대화형 인터페이스가 같은 사실과 맥락을 재사용할 수 있다.</p>
-
-        <h3>지식 그래프의 네 기둥</h3>
-        <div class="concept-grid">
-          <article class="concept-card"><span>EVOLUTION</span><h3>진화</h3><p>새 데이터와 관계를 기존 구조를 전면 재설계하지 않고 계속 받아들인다.</p></article>
-          <article class="concept-card"><span>SEMANTICS</span><h3>의미</h3><p>개체의 유형과 관계의 뜻을 명시해 일관성 검사와 추론의 근거를 만든다.</p></article>
-          <article class="concept-card"><span>INTEGRATION</span><h3>통합</h3><p>형식과 출처가 다른 정형·비정형 데이터를 도메인의 의미를 중심으로 연결한다.</p></article>
-          <article class="concept-card"><span>LEARNING</span><h3>학습</h3><p>질의·규칙·네트워크 분석과 머신러닝을 통해 명시되지 않은 통찰을 끌어낸다.</p></article>
-        </div>
-        <div class="callout"><strong>단일 진실의 원천</strong><p>모든 데이터를 무조건 한곳에 복사한다는 뜻이 아니다. 동일한 개체와 관계를 해석하는 공통 의미, 식별자, 출처와 검증 규칙을 공유한다는 뜻에 가깝다.</p></div>
-      </section>
-
-      <section class="report-section" id="use-cases">
-        <p class="section-kicker">SECTION 05 · USE CASES</p>
-        <h2>결합 가치는 관계와 대화가 모두 중요할 때 커진다</h2>
-        <p class="section-lede">이 장은 신약 발견과 고객 지원을 통해 서로 다른 도메인에서도 같은 역할 분담이 반복된다는 점을 보여준다.</p>
-
-        <h3>신약 발견과 개발</h3>
-        <table class="comparison-table">
-          <thead><tr><th>문제</th><th>지식 그래프</th><th>LLM</th><th>결합 결과</th></tr></thead>
-          <tbody><tr><td>유전자·질병·약물·화합물과 문헌을 맥락을 잃지 않고 통합해야 한다.</td><td>유형화된 관계와 규칙으로 생물학적 개체의 상호작용을 모델링한다.</td><td>논문과 임상 보고서에서 개체·관계 후보를 찾고 텍스트를 연결한다.</td><td>검증된 지식 기반을 확장하고 검색·가설 생성·텍스트 마이닝을 지원한다.</td></tr></tbody>
-        </table>
-
-        <h3>고객 지원 대화형 AI</h3>
-        <table class="comparison-table">
-          <thead><tr><th>문제</th><th>지식 그래프</th><th>LLM</th><th>결합 결과</th></tr></thead>
-          <tbody><tr><td>범용 모델의 답은 자연스럽지만 구체적인 고객·제품·정책 맥락이 부족할 수 있다.</td><td>고객, 제품, 계약, 정책과 해결 절차를 의미 있는 관계로 연결한다.</td><td>질문 의도를 이해하고 관련 지식을 대화 흐름에 맞는 문장으로 구성한다.</td><td>복잡한 질문에도 사실에 기반하면서 자연스러운 응답을 제공한다.</td></tr></tbody>
-        </table>
-        <div class="callout"><strong>공통 패턴</strong><p>도메인 지식이 여러 원천에 흩어져 있고, 관계를 따라가야 답을 찾을 수 있으며, 사용자는 자연어로 묻고 싶어 한다면 하이브리드 접근의 후보가 된다.</p></div>
-      </section>
-
-      <section class="report-section" id="technology">
-        <p class="section-kicker">SECTION 06 · RDF VS LPG</p>
-        <h2>두 패러다임은 경쟁 제품이 아니라 표현 선택지다</h2>
-        <p class="section-lede">이 책은 RDF와 LPG 어느 하나를 정답으로 고정하지 않는다. 필요한 의미 규칙과 질의 패턴을 기준으로 선택하고 함께 사용할 수도 있다.</p>
-        <table class="comparison-table">
-          <thead><tr><th>관점</th><th>RDF</th><th>LPG</th></tr></thead>
-          <tbody>
-            <tr><td>기본 표현</td><td>주어–술어–목적어 트리플의 집합</td><td>레이블이 있는 노드·엣지와 각 요소의 속성</td></tr>
-            <tr><td>대표 질의</td><td>SPARQL</td><td>openCypher, Gremlin</td></tr>
-            <tr><td>강점</td><td>표준, 연합, 상호운용성, 의미적 일관성</td><td>관계 속성, 경로 탐색, 그래프 순회</td></tr>
-            <tr><td>잘 맞는 상황</td><td>여러 데이터셋을 웹 규모에서 연결하고 온톨로지 추론이 필요할 때</td><td>애플리케이션 중심 그래프 분석과 관계 단위의 풍부한 속성이 필요할 때</td></tr>
-          </tbody>
-        </table>
-        <p>RDF의 관계는 지식 베이스 전체에서 재사용되는 전역 술어에 가깝고, LPG의 엣지는 고유한 정체성과 속성을 가질 수 있다. 따라서 관계 하나에 출처·시간·신뢰도 같은 속성을 직접 붙이는 모델과, 표준화된 술어로 여러 그래프를 연결하는 모델은 서로 다른 장점을 갖는다.</p>
-      </section>
-
-      <section class="report-section" id="semantics">
-        <p class="section-kicker">SECTION 07 · JUST ENOUGH SEMANTICS</p>
-        <h2>그래프 구조만으로는 지식이 완성되지 않는다</h2>
-        <p class="section-lede">분류체계와 온톨로지는 개체와 관계의 의미를 기계가 사용할 수 있는 규칙으로 바꾼다.</p>
-        <div class="concept-grid">
-          <article class="concept-card"><span>TAXONOMY</span><h3>분류체계</h3><p>탈것 ⊃ 자동차 ⊃ 세단처럼 범주를 넓음–좁음의 계층으로 조직한다.</p></article>
-          <article class="concept-card"><span>ONTOLOGY</span><h3>온톨로지</h3><p>동일성, 역관계, 서로소, 개수 제약처럼 계층을 넘어선 개념 규칙을 명시한다.</p></article>
-        </div>
-        <p>전통적인 온톨로지는 모든 개념을 완전하게 정의하려다 경직되고 유지하기 어려워질 수 있다. 현대적인 지식 그래프는 당면한 문제를 해결하는 데 필요한 규칙부터 넣고, 도메인과 요구가 커지면서 부분 온톨로지를 확장하는 <strong>딱 필요한 만큼의 의미</strong>를 지향한다.</p>
-        <div class="callout"><strong>실무 기준</strong><p>완벽한 세계 모델을 먼저 만들지 않는다. 현재 답해야 하는 질문, 검증해야 하는 일관성, 설명해야 하는 관계를 지원하는 최소 의미 규칙부터 시작한다.</p></div>
-      </section>
-
-      <section class="report-section" id="decision">
-        <p class="section-kicker">DECISION GUIDE</p>
-        <h2>기술 이름보다 문제의 모양을 묻는다</h2>
-        <p class="section-lede">아래 질문에 여러 개가 해당할수록 지식 그래프와 LLM을 함께 검토할 이유가 커진다.</p>
-        <h3>지식 그래프 신호</h3>
-        <ul class="decision-list">
-          <li>서로 다른 데이터 사일로를 하나의 도메인 관점으로 연결해야 하는가?</li>
-          <li>정형·비정형 원천 사이에서 동일한 개체와 관계를 추적해야 하는가?</li>
-          <li>새 데이터와 구조를 계속 수용하는 유연한 표현이 필요한가?</li>
-          <li>답의 출처와 관계 경로, 파이프라인 일관성을 검증해야 하는가?</li>
-          <li>검색·추천·네트워크 분석이 관계의 구조를 활용해야 하는가?</li>
-        </ul>
-        <h3>LLM 신호</h3>
-        <ul class="decision-list">
-          <li>문서에서 도메인 개체와 관계 후보를 찾아야 하는가?</li>
-          <li>사용자의 복잡한 자연어 질문을 구조화된 질의로 바꿔야 하는가?</li>
-          <li>대화형 인터페이스와 후속 질문이 필요한가?</li>
-          <li>여러 경로의 결과를 사람이 읽기 쉬운 설명으로 요약해야 하는가?</li>
-        </ul>
-        <div class="callout callout--hero"><strong>함께 쓸 신호</strong><p>관계를 따라 검증 가능한 사실을 찾아야 하면서, 사용자는 자연어로 묻고 답을 설명으로 받고 싶어 할 때 결합 가치가 가장 분명하다.</p></div>
-      </section>
-
-      <section class="report-section" id="glossary">
-        <p class="section-kicker">APPENDIX · GLOSSARY</p>
-        <h2>핵심 용어</h2>
-        <dl class="glossary">
-          <div><dt>지식 그래프(KG)</dt><dd>유형이 있는 개체, 속성과 의미 있는 관계로 도메인 지식을 표현한 진화하는 그래프 구조</dd></div>
-          <div><dt>LLM</dt><dd>대규모 텍스트로 사전학습되어 자연어 이해와 생성을 수행하는 언어 모델</dd></div>
-          <div><dt>노드·관계·속성</dt><dd>현실의 대상, 대상 사이의 의미 있는 연결, 해석에 필요한 세부 맥락</dd></div>
-          <div><dt>홉(hop)</dt><dd>그래프에서 한 노드에서 인접한 다른 노드로 이동하는 한 단계</dd></div>
-          <div><dt>전이 학습</dt><dd>일반 과제에서 학습한 표현과 패턴을 다른 과제에 재사용하는 방식</dd></div>
-          <div><dt>환각</dt><dd>언어 모델이 사실이 아닌 내용을 그럴듯하게 생성하는 현상</dd></div>
-          <div><dt>GraphRAG</dt><dd>그래프의 구조와 관련 지식을 검색해 LLM 응답의 맥락으로 제공하는 접근</dd></div>
-          <div><dt>Text-to-Cypher</dt><dd>자연어 질문을 그래프 질의 언어 Cypher로 변환하는 작업</dd></div>
-          <div><dt>RDF·SPARQL</dt><dd>트리플 기반 지식 표현 표준과 그 데이터를 질의하는 언어</dd></div>
-          <div><dt>LPG</dt><dd>레이블이 있는 노드·엣지와 속성을 중심으로 표현하는 그래프 모델</dd></div>
-          <div><dt>분류체계</dt><dd>범주를 상위–하위 관계로 조직한 계층 구조</dd></div>
-          <div><dt>온톨로지</dt><dd>동일성·차이·제약 등 도메인 개념과 관계의 의미 규칙</dd></div>
-        </dl>
-      </section>
-
-      <section class="report-section references" id="references">
-        <p class="section-kicker">REFERENCES</p>
-        <h2>참고 자료</h2>
-        <ol>
-          <li>Alessandro Negro 외, <em>Knowledge Graphs and LLMs in Action</em>, Chapter 1, Manning Publications.</li>
-          <li><a href="https://www.manning.com/books/knowledge-graphs-and-llms-in-action">Manning 도서 소개 페이지</a></li>
-          <li><a href="https://github.com/restful3/ds4th_study/tree/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/chapter_01_knowledge_graphs_and_llms_a_killer_combination">저장소의 Chapter 1 학습자료</a></li>
-        </ol>
-        <p class="section-lede">이 리포트는 교재 1장의 논지를 스터디 발표와 복습을 위해 재구성한 해설 자료다. 교재 원문과 도표를 대체하지 않는다.</p>
-      </section>
-    </article>
-
-    <footer class="report-footer"><span>ds4th study · Chapter 1</span><a href="./">발표자료 보기 →</a></footer>
-  </main>
-
-  <div class="report-controls" aria-label="리포트 제어">
-    <button type="button" id="themeButton" aria-label="화면 테마 전환">◐</button>
-    <button type="button" id="printButton" aria-label="리포트 인쇄">인쇄</button>
-    <button type="button" id="topButton" aria-label="문서 맨 위로">↑</button>
+    </div>
   </div>
+  <div id="tocBackdrop" class="report-toc-backdrop" hidden></div>
+  <nav id="tocDrawer" class="report-toc-drawer" aria-label="문서 목차" aria-hidden="true">
+    <div class="report-toc-drawer__head"><span>목차</span><button id="tocClose" type="button" aria-label="목차 닫기">×</button></div>
+    <ol id="tocDrawerList" class="report-toc-drawer__list"></ol>
+  </nav>
+
+  <article class="report continuous-mode">
+    <section class="report-cover">
+      <div class="report-cover__wordmark"><span class="report-cover__wordmark-name">ds4th study</span><span class="report-cover__wordmark-sub">Knowledge Graphs &amp; LLMs</span></div>
+      <span class="report-cover__kicker">Study Report · Chapter 01</span>
+      <h1 class="report-cover__title">지식 그래프와 LLM:<br>강력한 조합</h1>
+      <p class="report-cover__subtitle">서로의 약점을 메워 신뢰할 수 있는 하이브리드 지능을 만드는 법</p>
+      <dl class="report-cover__meta">
+        <div><dt>발표자</dt><dd>수경</dd></div>
+        <div><dt>범위</dt><dd>Chapter 1 · pp. 1–16</dd></div>
+        <div><dt>발행</dt><dd>2026-07-25</dd></div>
+      </dl>
+    </section>
+
+    <section class="report-section s0 page-break" id="summary">
+      <div class="report-section__kicker">Section 00 · Executive Summary</div>
+      <h1>0. 핵심 요약</h1>
+      <div class="callout--hero">
+        <span class="callout__kicker">Chapter 01 · One Sentence</span>
+        <span class="callout__body"><strong>LLM은 지식을 읽고 말하게 하고, 지식 그래프는 그 말의 사실·관계·출처를 붙잡는다.</strong> 결합의 가치는 더 큰 생성 모델이 아니라 책임이 분리된 지식 시스템에서 나온다.</span>
+      </div>
+      <p>이 장은 특정 그래프 제품이나 RAG 구현법을 선택하는 장이 아니다. 왜 지식 그래프와 LLM이 함께 필요한지, 각 기술이 상대의 어떤 약점을 보완하는지, 그리고 어떤 문제에서 결합 비용을 감수할 가치가 있는지를 설명하는 <strong>개념 지도</strong>다. 출발점은 단순하다. 지식 그래프는 정확한 연결을 잘 다루지만 만들고 질의하기 어렵고, LLM은 언어를 유연하게 다루지만 사실의 정확성·최신성·근거를 스스로 보장하지 못한다.</p>
+      <div class="section-summary">
+        <div class="section-summary__kicker">이 리포트가 답하는 네 질문</div>
+        <div class="section-summary__body"><ul>
+          <li><strong>무엇을 맡기는가</strong> — LLM에는 언어 이해·추출·질의 변환·설명을, KG에는 식별·관계·출처·검증을 맡긴다.</li>
+          <li><strong>어디서 통제하는가</strong> — LLM의 추출 결과를 곧바로 사실로 저장하지 않고 스키마와 출처 검증을 거친다.</li>
+          <li><strong>언제 결합하는가</strong> — 데이터가 이질적이고 관계를 여러 홉 따라가야 하며 최신성·설명 가능성이 중요할 때다.</li>
+          <li><strong>무엇을 선택하는가</strong> — RDF/LPG는 표현 선택지이고, taxonomy/ontology는 필요한 의미를 더하는 계층이다.</li>
+        </ul></div>
+      </div>
+
+      <h2>0.1 장의 전체 논리</h2>
+      <table class="cmp-table">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 1</span><span class="asset-caption__title">Chapter 1의 질문–주장–판단 구조</span></div></caption>
+        <thead><tr><th>단계</th><th>핵심 질문</th><th>장의 주장</th><th>실무에서 남는 판단</th></tr></thead>
+        <tbody>
+          <tr><td>KG</td><td>왜 좋은 기술이 널리 쓰이기 어려웠나?</td><td>구축·접근·결과 해석의 비용이 높았다.</td><td>그래프 저장소보다 지식 수명주기를 먼저 설계한다.</td></tr>
+          <tr><td>LLM</td><td>무엇이 자연어 장벽을 낮췄나?</td><td>전이 학습이 언어 과제를 범용 모델에 재사용하게 했다.</td><td>추출과 인터페이스에 쓰되 사실 판정은 분리한다.</td></tr>
+          <tr><td>결합</td><td>둘은 어떻게 서로를 보완하나?</td><td>LLM은 KG 구축·질의·요약을, KG는 정확성·최신성·설명성을 강화한다.</td><td>검증 게이트가 있는 양방향 루프로 운영한다.</td></tr>
+          <tr><td>기술</td><td>어떤 그래프와 의미 모델을 쓰나?</td><td>RDF와 LPG는 상호 배타적 정답이 아니며 필요한 의미만 단계적으로 넣는다.</td><td>질의·통합·추론 요구에서 선택을 시작한다.</td></tr>
+        </tbody>
+      </table>
+      <div class="report-jump-links"><a href="./">발표자료 보기</a><a href="../../">회차 목록</a><a href="#decision">도입 판단표로 이동</a></div>
+    </section>
+
+    <section class="report-section s1 page-break" id="kg">
+      <div class="report-section__kicker">Section 01 · Knowledge Graph</div>
+      <h1>1. 지식 그래프: 연결을 지식으로 만드는 구조</h1>
+      <div class="section-summary">
+        <div class="section-summary__kicker">섹션 요약</div>
+        <div class="section-summary__body"><ul>
+          <li><strong>노드</strong>는 현실의 개체, <strong>관계</strong>는 연결의 의미, <strong>속성</strong>은 판단 맥락을 표현한다.</li>
+          <li>KG의 채택 장벽은 데이터베이스 기술 하나가 아니라 구축·접근·전달 전체의 비용이다.</li>
+          <li>비정형 텍스트에서는 개체와 관계가 문맥 안에 숨어 있으므로 LLM이 후보 추출 비용을 크게 낮춘다.</li>
+        </ul></div>
+      </div>
+
+      <h2>1.1 노드·관계·속성</h2>
+      <p>지식 그래프는 현실 세계의 대상을 <strong>유형이 있는 개체</strong>로 식별하고, 개체 사이의 연결을 의미가 드러나는 관계로 기록한다. 사람, 장소, 조직, 질병, 단백질, 약물은 노드가 될 수 있다. “치료한다”, “유발한다”, “암호화한다”는 관계가 된다. 승인일, 용량, 지리 좌표, 설명, 출처, 신뢰도와 같은 속성은 그 사실이 언제·어떤 조건에서 유효한지 알려준다.</p>
+      <p>핵심은 데이터가 선으로 연결됐다는 데 있지 않다. <strong>연결의 뜻과 개체의 유형이 명시돼 있다는 것</strong>이 중요하다. 그래야 기계가 관계 경로를 탐색하고, 규칙을 적용하고, 결과가 어떤 사실에서 나왔는지 설명할 수 있다. 그래프는 구조이고, 지식 그래프는 구조에 도메인 의미와 검증 가능한 맥락을 더한 것이다.</p>
+      <figure class="report-figure">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 1</span><span class="asset-caption__title">지식 그래프의 해부도 — 노드·관계·속성</span></figcaption>
+        <img src="assets/figs/kg-anatomy.svg" alt="약물, 질병, 증상, 단백질 노드와 의미 관계 및 속성의 연결 구조">
+        <small class="asset-note">교재 그림 1.1의 개념을 발표용으로 재구성. 실제 의료 지식 그래프가 아니라 구성요소와 읽는 법을 설명하기 위한 예시다.</small>
+      </figure>
+
+      <table class="cmp-table">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 2</span><span class="asset-caption__title">그래프 구성요소와 검증 질문</span></div></caption>
+        <thead><tr><th>요소</th><th>역할</th><th>예시</th><th>검증할 질문</th></tr></thead>
+        <tbody>
+          <tr><td>노드</td><td>구분 가능한 현실 개체를 식별</td><td>약물 A, 질병 B, 환자 C</td><td>동일 개체의 중복·동의어를 어떻게 합칠 것인가?</td></tr>
+          <tr><td>관계</td><td>두 개체의 의미 있는 연결을 명시</td><td>약물이 질병을 치료한다</td><td>방향·유형·유효 기간이 올바른가?</td></tr>
+          <tr><td>속성</td><td>개체와 관계를 해석하는 맥락 제공</td><td>승인일, 용량, 출처, 신뢰도</td><td>값의 단위·출처·갱신 시각이 남는가?</td></tr>
+          <tr><td>스키마·의미</td><td>허용되는 유형과 관계의 규칙 정의</td><td>약물만 질병을 치료할 수 있음</td><td>모순과 잘못된 연결을 기계적으로 찾을 수 있는가?</td></tr>
+        </tbody>
+      </table>
+
+      <h2>1.2 널리 쓰기 어려웠던 세 가지 비용</h2>
+      <p><strong>첫째, 구축 비용.</strong> 여러 원천에서 개체와 관계를 찾아 공통 스키마로 맞추고, 중복을 통합하며, 시간이 지나 바뀐 사실을 갱신해야 한다. <strong>둘째, 접근 비용.</strong> 여러 홉을 건너 답을 찾으려면 그래프 구조와 전용 질의 언어를 알아야 한다. <strong>셋째, 전달 비용.</strong> 답이 여러 노드와 관계에 흩어져 있기 때문에 비전문가가 읽을 설명으로 다시 합쳐야 한다.</p>
+      <p>정형 데이터는 필드와 유형이 이미 분리돼 있어 공통 그래프 스키마로 매핑하는 과정이 비교적 통제 가능하다. 비정형 데이터는 다르다. 언어와 문자 체계, 오타, 대명사와 상호참조, 저자별 문체, 도메인 전문 용어가 개체와 관계의 경계를 숨긴다. 이 지점에서 LLM은 완성된 사실을 생산하는 도구라기보다 <strong>후보 개체·관계·속성을 빠르게 제안하는 해석 계층</strong>으로 가치가 있다.</p>
+      <figure class="report-figure">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 2</span><span class="asset-caption__title">정형 데이터와 비정형 데이터의 KG 구축 병목</span></figcaption>
+        <img src="assets/figs/extraction-bottleneck.svg" alt="정형 데이터의 예측 가능한 매핑과 비정형 텍스트의 언어 해석 장애물 비교">
+        <small class="asset-note">교재 §1.1의 정형·비정형 데이터 논의를 재구성. 오른쪽 검증 게이트는 발표자가 실무 관점에서 보강한 통제 지점이다.</small>
+      </figure>
+      <div class="callout--insight"><span class="callout__kicker">주의</span><div class="callout__body"><p>좋은 지식 그래프를 만드는 것과 사용 가능한 애플리케이션을 만드는 것은 다른 일이다. 자연어 질문을 적절한 그래프 질의로 바꾸고, 결과를 근거와 함께 설명해야 지식이 실제 사용자에게 도달한다.</p></div></div>
+    </section>
+
+    <section class="report-section s2 page-break" id="llm">
+      <div class="report-section__kicker">Section 02 · Large Language Models</div>
+      <h1>2. LLM: 자연어라는 접근 장벽을 낮추다</h1>
+      <div class="section-summary">
+        <div class="section-summary__kicker">섹션 요약</div>
+        <div class="section-summary__body"><ul>
+          <li>전이 학습은 과제마다 모델을 새로 만드는 방식을 범용 언어 모델의 재사용으로 바꿨다.</li>
+          <li>규모·데이터·학습 목표가 일반화 능력을 만들지만, 그것이 사실 보증을 의미하지는 않는다.</li>
+          <li>KG 맥락에서 LLM의 강점은 비정형 해석과 자연어 인터페이스, 약점은 정확성·최신성·추적성이다.</li>
+        </ul></div>
+      </div>
+
+      <h2>2.1 전이 학습이 바꾼 비용 구조</h2>
+      <p>전이 학습은 일반적인 과제에서 배운 언어 패턴을 특정 과제에 재사용하는 능력이다. 이전에는 개체 추출, 관계 추출, 분류, 요약마다 대량의 라벨 데이터를 모으고 작은 전용 모델을 각각 개발했다. 사전학습 언어 모델은 대규모 말뭉치에서 얻은 표현을 프롬프트·예시·제한적 조정으로 여러 과제에 재사용한다. KG 구축에서는 도메인마다 완전히 다른 추출기를 만드는 비용을 낮추고, KG 이용에서는 자연어 질문과 그래프 질의 사이의 인터페이스가 된다.</p>
+      <figure class="report-figure">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 3</span><span class="asset-caption__title">과제별 모델에서 전이 학습 기반 재사용으로</span></figcaption>
+        <img src="assets/figs/transfer-learning.svg" alt="과제별 라벨 데이터와 전용 모델이 대규모 사전학습 모델의 재사용으로 전환되는 구조">
+        <small class="asset-note">교재 그림 1.2와 §1.2를 재구성. 이 그림의 초점은 모델 계보가 아니라 과제 수행 비용의 변화다.</small>
+      </figure>
+
+      <h2>2.2 왜 범용성이 나타났나</h2>
+      <p>이 장은 LLM의 성능 향상을 세 요소로 설명한다. <strong>모델 복잡도</strong>는 더 많은 패턴을 표현할 용량을 제공하고, <strong>학습 말뭉치의 규모와 품질</strong>은 더 넓은 언어·도메인 경험을 제공하며, <strong>다음 토큰 예측</strong>은 다양한 텍스트에 공통으로 적용되는 학습 목표를 제공한다. 토큰화는 텍스트를 모델이 처리할 단위로 바꾸고, 트랜스포머는 먼 문맥의 관계를 학습할 기반이 된다.</p>
+      <p>그러나 문장을 잘 이어 쓰는 능력과 도메인 사실을 보증하는 능력은 같지 않다. 모델이 배운 지식은 학습 시점에 고정되고, 답의 생성 경로는 사람이 확인할 사실 관계와 일치하지 않을 수 있다. 그래서 하이브리드 시스템은 모델 규모를 신뢰성의 대체물로 취급하지 않는다.</p>
+      <table class="cmp-table">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 3</span><span class="asset-caption__title">LLM의 강점과 KG가 보완해야 할 경계</span></div></caption>
+        <thead><tr><th>LLM이 잘하는 일</th><th>LLM만으로 불안한 일</th><th>시스템 경계</th></tr></thead>
+        <tbody>
+          <tr><td>문서에서 개체·관계 후보 찾기</td><td>후보의 사실 여부와 중복 식별</td><td>스키마·출처·개체 정렬 검증</td></tr>
+          <tr><td>질문의 의도와 표현 차이 이해</td><td>항상 올바르고 안전한 질의 생성</td><td>허용 질의·권한·결과 크기 통제</td></tr>
+          <tr><td>여러 결과를 읽기 쉬운 문장으로 요약</td><td>근거에 없는 내용을 섞지 않는 보증</td><td>검색 결과 범위와 인용 경로 고정</td></tr>
+          <tr><td>여러 언어·문체에 유연하게 대응</td><td>최신 정책·계약·상태 자체의 보유</td><td>외부 지식 원천을 질의 시점에 연결</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="report-section s3 page-break" id="hybrid">
+      <div class="report-section__kicker">Section 03 · Mutual Reinforcement</div>
+      <h1>3. 함께일 때 더 강하다: 양방향 보완</h1>
+      <div class="callout--hero"><span class="callout__kicker">핵심 원리</span><span class="callout__body">LLM이 KG를 <strong>구축·질의·설명하기 쉽게</strong> 만들고, KG가 LLM의 답을 <strong>정확하고 최신이며 추적 가능하게</strong> 만든다.</span></div>
+
+      <h2>3.1 LLM이 지식 그래프에 제공하는 세 역할</h2>
+      <ol class="nums">
+        <li><strong>구축</strong> — 문서에서 개체, 관계, 속성 후보를 찾고 서로 다른 표현을 정규화한다. 사람이 모든 문장을 규칙으로 코딩하는 비용을 줄인다.</li>
+        <li><strong>질의</strong> — 자연어 질문을 SPARQL·Cypher 같은 그래프 질의로 바꾸고, 사용자의 후속 질문에서 맥락을 유지한다. 그래프 스키마를 모르는 사용자도 복잡한 지식에 접근할 수 있다.</li>
+        <li><strong>요약</strong> — 여러 홉의 결과를 그대로 나열하지 않고 질문의 맥락에 맞는 설명으로 합친다. 단, 서술 범위는 검색 결과와 근거에 묶여야 한다.</li>
+      </ol>
+
+      <h2>3.2 지식 그래프가 LLM에 제공하는 세 역할</h2>
+      <ol class="nums">
+        <li><strong>정확성</strong> — 검증된 도메인 사실과 허용된 관계를 제공해 그럴듯한 오류의 여지를 줄인다.</li>
+        <li><strong>최신성</strong> — 모델 재학습 없이도 질의 시점의 고객 상태, 정책, 계약, 연구 결과처럼 계속 바뀌는 정보를 제공한다.</li>
+        <li><strong>설명 가능성</strong> — 어떤 노드와 관계, 어떤 출처를 따라 답을 만들었는지 경로를 남겨 사람이 검토하고 정정할 수 있게 한다.</li>
+      </ol>
+      <figure class="report-figure">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 4</span><span class="asset-caption__title">LLM ↔ KG 상호 보완 매트릭스</span></figcaption>
+        <img src="assets/figs/mutual-reinforcement.svg" alt="LLM이 KG 구축 질의 요약을 돕고 KG가 LLM에 정확성 최신성 설명 가능성을 제공하는 양방향 구조">
+        <small class="asset-note">교재 그림 1.5의 핵심 논지를 재구성. 화살표는 단순 검색 한 번이 아니라 구축과 이용의 양방향 수명주기를 뜻한다.</small>
+      </figure>
+
+      <h2>3.3 운영 가능한 하이브리드 루프</h2>
+      <p>개념적 결합과 운영 가능한 시스템 사이에는 검증 단계가 있다. 문서가 들어오면 LLM은 개체·관계 후보를 추출한다. 그 결과는 스키마, 출처, 중복, 충돌 규칙을 통과한 뒤 KG에 통합된다. 질문이 들어오면 LLM은 의도를 구조화하고 허용된 그래프 질의를 만든다. KG에서 찾은 사실과 관계 경로가 다시 LLM의 입력이 되고, LLM은 그 범위 안에서 답을 작성한다. 사용자의 정정과 새 질문은 다시 지식 갱신으로 돌아간다.</p>
+      <figure class="report-figure">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 5</span><span class="asset-caption__title">검증 게이트가 있는 하이브리드 지식 루프</span></figcaption>
+        <img src="assets/figs/hybrid-loop.svg" alt="수집 추출 검증 KG 통합 그래프 탐색 LLM 응답 피드백이 순환하는 운영 루프">
+        <small class="asset-note">교재 §1.3을 운영 관점으로 확장한 발표자 설계. 생성 결과를 사실로 승격하는 지점과 사용자 답변을 생성하는 지점을 분리한다.</small>
+      </figure>
+
+      <table class="cmp-table">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 4</span><span class="asset-caption__title">하이브리드 루프의 통제 지점</span></div></caption>
+        <thead><tr><th>지점</th><th>실패 모드</th><th>최소 통제</th><th>남겨야 할 증거</th></tr></thead>
+        <tbody>
+          <tr><td>추출 → KG</td><td>잘못된 개체·관계를 사실로 저장</td><td>스키마 검증, 엔터티 정렬, 신뢰 임계값, 사람 승인</td><td>원문 위치, 추출 모델·프롬프트, 승인자</td></tr>
+          <tr><td>질문 → 그래프 질의</td><td>과도한 조회, 잘못된 경로, 권한 우회</td><td>허용 스키마, 읽기 전용, 비용·시간 제한</td><td>생성 질의, 실행 계획, 권한 컨텍스트</td></tr>
+          <tr><td>검색 → 응답</td><td>근거에 없는 설명을 추가</td><td>근거 컨텍스트 고정, 출처 표시, 모르면 중단</td><td>사용한 노드·관계·문서와 최종 답</td></tr>
+          <tr><td>피드백 → 갱신</td><td>사용자 정정이 새 오류가 됨</td><td>제안과 승인 분리, 변경 이력, 롤백</td><td>변경 전후 사실과 승인 기록</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="report-section s4 page-break" id="paradigm">
+      <div class="report-section__kicker">Section 04 · Data-driven Applications</div>
+      <h1>4. 패러다임 전환: 앱마다 지식을 복제하지 않는다</h1>
+      <div class="section-summary">
+        <div class="section-summary__kicker">섹션 요약</div>
+        <div class="section-summary__body"><ul>
+          <li>전통적 앱은 목적별 데이터베이스와 로직을 반복해서 만들기 쉽다.</li>
+          <li>KG는 여러 애플리케이션이 공유하는 개체·관계·출처·의미 계층을 지향한다.</li>
+          <li>진화·의미·통합·학습 네 기둥이 함께 있어야 살아 있는 지식 원천이 된다.</li>
+        </ul></div>
+      </div>
+      <p>전통적인 데이터 애플리케이션은 특정 목적에 맞는 동질적 데이터베이스와 로직을 만든다. 요구가 안정적이고 범위가 좁을 때는 효율적이지만, 고객 특성에 따라 달라지는 질문과 이질적 데이터가 섞이는 복잡한 도메인에서는 같은 사실과 변환 로직이 애플리케이션마다 반복된다. 지식 그래프는 관계를 일급 요소로 만들고, 검색·추천·분석·대화형 인터페이스가 같은 개체 식별자와 의미를 재사용하게 한다.</p>
+      <p>여기서 <strong>단일 신뢰 원천</strong>은 모든 원본 데이터를 한 데이터베이스에 복사한다는 뜻이 아니다. 같은 대상을 가리키는 식별자, 관계의 뜻, 출처와 검증 규칙을 공유하고, 필요한 경우 원천 시스템으로 추적할 수 있다는 뜻에 가깝다. 지능적 행동의 근거를 앱별 코드에 흩어 놓지 않고 공통 지식 계층에 한 번 표현하는 것이 장이 말하는 전환이다.</p>
+
+      <h2>4.1 지식 그래프의 네 기둥</h2>
+      <figure class="report-figure">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 6</span><span class="asset-caption__title">진화·의미·통합·학습의 네 기둥</span></figcaption>
+        <img src="assets/figs/four-pillars.svg" alt="여러 애플리케이션과 공유 지식 원천을 연결하는 진화 의미 통합 학습 네 기둥">
+        <small class="asset-note">교재 그림 1.6과 §1.4.1을 재구성. 네 요소는 독립 기능 목록이 아니라 서로 의존하는 품질 조건이다.</small>
+      </figure>
+      <table class="cmp-table">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 5</span><span class="asset-caption__title">네 기둥을 운영 질문으로 번역하기</span></div></caption>
+        <thead><tr><th>기둥</th><th>장의 의미</th><th>운영 질문</th><th>없을 때의 증상</th></tr></thead>
+        <tbody>
+          <tr><td>진화</td><td>새 사실과 관계를 지속적으로 흡수</td><td>증분 갱신과 변경 이력이 가능한가?</td><td>그래프가 곧 낡고 재구축 프로젝트가 됨</td></tr>
+          <tr><td>의미</td><td>개체 유형과 관계 규칙을 명시</td><td>모순·동일성·허용 관계를 검사할 수 있는가?</td><td>연결은 많지만 해석이 사람마다 달라짐</td></tr>
+          <tr><td>통합</td><td>서로 다른 출처를 도메인 의미로 연결</td><td>동일 개체와 출처 충돌을 어떻게 다루는가?</td><td>사일로가 그래프 안에서 그대로 복제됨</td></tr>
+          <tr><td>학습</td><td>경로·규칙·ML로 새 통찰을 도출</td><td>추론 결과와 관측 사실을 구분하는가?</td><td>비싼 연결 저장소에 머무름</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="report-section s5 page-break" id="use-cases">
+      <div class="report-section__kicker">Section 05 · Use Cases</div>
+      <h1>5. 적용 사례: 관계와 대화가 모두 중요할 때</h1>
+      <p>이 장은 신약 발견과 고객 지원이라는 전혀 다른 도메인을 든다. 두 사례의 공통점은 데이터가 여러 원천에 흩어져 있고, 단일 레코드가 아니라 관계 경로를 따라야 답을 찾을 수 있으며, 중요한 근거가 비정형 문서에 있고, 사용자는 자연어로 질문하고 싶어 한다는 점이다.</p>
+
+      <h2>5.1 신약 발견과 개발</h2>
+      <p>신약 분야에서는 유전자, 단백질, 질병, 약물, 화합물, 임상 결과가 복잡한 네트워크를 이룬다. KG는 이 개체와 상호작용을 공통 구조로 통합하고, 생물학적 관계를 여러 홉 탐색하게 한다. LLM은 논문·특허·임상 보고서에서 새 개체와 관계 후보를 찾고, 연구자의 질문을 그래프 질의로 바꾸며, 결과를 연구 맥락에 맞게 요약한다. 이때 문헌에서 추출한 주장은 검증 상태와 출처를 함께 가져야 가설과 확정 사실이 섞이지 않는다.</p>
+
+      <h2>5.2 고객 지원을 위한 대화형 AI</h2>
+      <p>범용 언어 모델은 자연스러운 답을 만들지만 특정 고객의 계약, 제품 상태, 최신 정책을 자동으로 알지 못한다. KG는 고객–제품–계약–정책–해결 절차를 연결하고, LLM은 질문 의도를 해석해 관련 경로를 찾고 대화 흐름에 맞는 답을 작성한다. 유용한 대화는 단순한 문장 유창성이 아니라 <strong>사용자 맥락과 검증된 지식에 기반한 다음 행동</strong>에서 나온다.</p>
+      <figure class="report-figure">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 7</span><span class="asset-caption__title">두 사례의 공통 하이브리드 패턴</span></figcaption>
+        <img src="assets/figs/use-case-map.svg" alt="신약 발견과 고객 지원 사례에서 관계 지식 비정형 근거 자연어 질문이 공통 패턴으로 모이는 구조">
+        <small class="asset-note">교재 §1.5.1–1.5.2를 문제 구조 중심으로 재구성. 실제 도입에서는 개인정보·의료 안전·권한 통제가 별도 요구사항이다.</small>
+      </figure>
+
+      <table class="cmp-table">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 6</span><span class="asset-caption__title">사례별 역할 분담과 실패 경계</span></div></caption>
+        <thead><tr><th>사례</th><th>KG 책임</th><th>LLM 책임</th><th>특히 경계할 실패</th></tr></thead>
+        <tbody>
+          <tr><td>신약 발견</td><td>생물학적 개체·상호작용·출처·검증 상태</td><td>문헌 추출, 질문 해석, 연구 결과 요약</td><td>가설을 확정 사실처럼 저장하거나 설명</td></tr>
+          <tr><td>고객 지원</td><td>고객·계약·제품·정책·해결 절차와 권한</td><td>의도 파악, 후속 질문, 개인화된 응답</td><td>다른 고객 정보 노출, 만료 정책 사용, 무권한 실행</td></tr>
+        </tbody>
+      </table>
+      <div class="callout--insight"><span class="callout__kicker">사례를 읽는 기준</span><div class="callout__body"><p>“LLM을 어디에 붙일까?”보다 “어떤 관계를 따라야 답이 나오며, 그 사실은 누가 검증하고, 사용자에게 어떤 근거를 보여줘야 하는가?”를 먼저 묻는다.</p></div></div>
+    </section>
+
+    <section class="report-section s6 page-break" id="technology">
+      <div class="report-section__kicker">Section 06 · RDF, LPG &amp; Semantics</div>
+      <h1>6. 기술 선택: RDF와 LPG, 그리고 필요한 만큼의 의미</h1>
+      <div class="section-summary">
+        <div class="section-summary__kicker">섹션 요약</div>
+        <div class="section-summary__body"><ul>
+          <li>RDF는 표준 진술·상호운용·연합·온톨로지 추론에 강하다.</li>
+          <li>LPG는 속성이 풍부한 노드·엣지와 경로 탐색·그래프 순회에 강하다.</li>
+          <li>분류체계와 온톨로지는 그래프에 조직 원리를 더하되, 완전성보다 현재 문제에 필요한 의미부터 시작한다.</li>
+        </ul></div>
+      </div>
+
+      <h2>6.1 RDF와 LPG는 표현 패러다임이다</h2>
+      <p><strong>RDF</strong>는 지식을 주어–술어–목적어 트리플의 집합으로 표현하며 SPARQL로 질의한다. 표준화된 진술을 통해 데이터셋을 연결하고, 전역 술어와 온톨로지를 이용해 시스템 사이의 의미적 일관성을 높이는 데 강점이 있다. <strong>LPG</strong>는 레이블이 있는 노드와 엣지, 그리고 각 요소의 속성을 중심으로 표현하며 openCypher나 Gremlin 같은 질의 언어를 사용한다. 엣지가 고유한 정체성과 속성을 가질 수 있어 관계 자체의 시간·출처·가중치와 경로 탐색을 자연스럽게 모델링한다.</p>
+      <p>둘은 경쟁 제품 목록이 아니다. 웹 규모 상호운용성과 표준 의미 추론이 핵심이면 RDF가 자연스럽고, 애플리케이션 중심의 경로 탐색과 관계 속성이 핵심이면 LPG가 자연스럽다. 조직은 한 시스템 안에서도 공개·연합 지식은 RDF로, 고성능 운영 그래프는 LPG로 다루는 등 보완적으로 사용할 수 있다.</p>
+      <table class="cmp-table">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 7</span><span class="asset-caption__title">RDF와 LPG 비교 — “무엇이 더 좋은가”보다 “무엇을 최적화하는가”</span></div></caption>
+        <thead><tr><th>관점</th><th>RDF</th><th>LPG</th><th>선택 질문</th></tr></thead>
+        <tbody>
+          <tr><td>기본 단위</td><td>주어–술어–목적어 진술</td><td>레이블 노드·고유 엣지·속성</td><td>사실 교환인가, 경로 중심 운영인가?</td></tr>
+          <tr><td>관계 모델</td><td>지식 베이스 전체에서 재사용하는 전역 술어</td><td>각 엣지가 정체성과 속성을 가짐</td><td>관계마다 시간·출처·상태가 필요한가?</td></tr>
+          <tr><td>대표 강점</td><td>표준, 연합, 상호운용, 의미 추론</td><td>순회, 경로 탐색, 속성 기반 분석</td><td>외부 데이터 연결과 내부 질의 중 무엇이 중심인가?</td></tr>
+          <tr><td>대표 질의</td><td>SPARQL</td><td>openCypher, Gremlin</td><td>팀의 질의·운영 역량은 어디에 있는가?</td></tr>
+        </tbody>
+      </table>
+
+      <h2>6.2 Taxonomy와 Ontology</h2>
+      <p><strong>분류체계(taxonomy)</strong>는 “탈것 ⊃ 자동차 ⊃ 세단”처럼 범주를 넓음–좁음의 계층으로 조직한다. <strong>온톨로지(ontology)</strong>는 계층을 넘어 동일성, 차이, 역관계, 서로소, 합집합, 개수 제약과 같은 규칙으로 도메인의 개념 구조를 표현한다. “자동차”와 “승용차”가 같은 개념인지, “자동차”와 “자전거”가 동시에 될 수 없는지를 명시하면 데이터 일관성 검사와 추론이 가능해진다.</p>
+      <p>전통적인 접근은 도메인을 완전하게 정의하려다 경직되고 유지하기 어려워질 수 있다. 이 장이 강조하는 <strong>just enough semantics</strong>는 현재 답해야 하는 질문과 검증해야 하는 오류에 필요한 규칙부터 넣고, 실제 요구가 늘어날 때 부분 온톨로지를 유기적으로 확장하는 태도다. 완벽한 세계 모델을 먼저 만드는 것이 아니라 실용적인 의미 최소 집합을 운영하면서 진화시킨다.</p>
+      <figure class="report-figure">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 8</span><span class="asset-caption__title">표현 모델과 의미 계층의 관계</span></figcaption>
+        <img src="assets/figs/technology-semantics.svg" alt="RDF와 LPG 표현 모델 위에 분류체계와 온톨로지의 필요한 의미를 더하는 구조">
+        <small class="asset-note">교재 §1.6–1.6.1을 재구성. RDF/LPG 선택과 의미 모델링 수준은 별개의 설계 축이다.</small>
+      </figure>
+    </section>
+
+    <section class="report-section s7 page-break" id="decision">
+      <div class="report-section__kicker">Section 07 · Decision Guide</div>
+      <h1>7. 도입 판단: 기술 이름보다 문제의 모양을 본다</h1>
+      <p>모든 데이터 애플리케이션에 KG와 LLM을 함께 넣을 필요는 없다. 단일 테이블 조회와 고정된 규칙으로 충분한 문제라면 그래프와 생성 모델은 불필요한 복잡도가 될 수 있다. 반대로 관계가 답의 핵심이고, 여러 데이터 원천을 통합해야 하며, 자연어 접근과 근거 설명이 동시에 필요하면 결합 가치가 커진다.</p>
+      <table class="cmp-table">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 8</span><span class="asset-caption__title">KG·LLM 도입 판단 체크리스트</span></div></caption>
+        <thead><tr><th>질문</th><th>예라면</th><th>아니라면</th><th>추가로 정할 것</th></tr></thead>
+        <tbody>
+          <tr><td>답을 찾는 데 여러 개체의 관계 경로가 중요한가?</td><td>KG 후보</td><td>검색 인덱스·관계형 DB 우선 검토</td><td>핵심 노드·관계와 대표 질의</td></tr>
+          <tr><td>정형·비정형 데이터가 여러 시스템에 흩어져 있는가?</td><td>KG 통합 + LLM 추출 후보</td><td>기존 ETL·검색으로 충분할 수 있음</td><td>원천별 권위와 충돌 정책</td></tr>
+          <tr><td>사용자가 자연어로 복잡한 질문을 던지는가?</td><td>LLM 질의 인터페이스 후보</td><td>고정 UI·저장 질의 우선</td><td>허용 질의와 실패 응답</td></tr>
+          <tr><td>최신성·정확성·설명 가능성이 중요한가?</td><td>외부 지식 원천과 경로 기록 필수</td><td>단순 생성만으로 충분할 수 있음</td><td>출처·갱신 SLA·인용 형식</td></tr>
+          <tr><td>지식을 지속 갱신하고 여러 앱이 재사용하는가?</td><td>공유 지식 계층의 가치가 큼</td><td>회차성 분석·문서 RAG 우선</td><td>소유자·승인·버전·롤백</td></tr>
+        </tbody>
+      </table>
+
+      <h2>7.1 최소 시작점</h2>
+      <ol class="nums">
+        <li><strong>질문부터 고른다.</strong> 대표 질문 3–5개와 기대하는 근거 경로를 먼저 적는다.</li>
+        <li><strong>작은 스키마를 만든다.</strong> 핵심 개체·관계·출처 속성만 포함하고, 현재 질문에 필요 없는 온톨로지는 미룬다.</li>
+        <li><strong>LLM 출력을 후보로 취급한다.</strong> 샘플 문서에서 추출 정확도와 오류 유형을 측정하고 승인 지점을 정한다.</li>
+        <li><strong>응답과 근거를 함께 검증한다.</strong> 답이 맞는지만 보지 않고 사용한 경로·출처와 권한을 확인한다.</li>
+        <li><strong>갱신 책임을 정한다.</strong> 모델보다 먼저 지식 소유자, 충돌 해결, 변경 이력, 롤백 절차를 정한다.</li>
+      </ol>
+      <div class="callout--hero"><span class="callout__kicker">Takeaway</span><span class="callout__body">하이브리드 시스템의 최소 단위는 <strong>LLM + 그래프 DB</strong>가 아니라 <strong>질문 + 지식 모델 + 검증 게이트 + 근거 응답 + 갱신 책임</strong>이다.</span></div>
+    </section>
+
+    <section class="report-section s8 page-break" id="takeaways">
+      <div class="report-section__kicker">Section 08 · Takeaways &amp; Discussion</div>
+      <h1>8. 정리와 토론 질문</h1>
+      <h2>8.1 이 장에서 가져갈 여덟 문장</h2>
+      <ol class="nums">
+        <li>지식 그래프는 유형이 있는 개체, 의미 있는 관계, 속성과 출처를 연결하는 진화형 지식 구조다.</li>
+        <li>그래프를 어렵게 만든 병목은 저장보다 비정형 지식의 추출·검증과 복잡한 질의의 접근성이었다.</li>
+        <li>전이 학습은 여러 자연어 과제를 하나의 큰 모델에서 재사용할 수 있게 해 그 장벽을 낮췄다.</li>
+        <li>LLM은 KG를 구축·질의·요약하기 쉽게 하지만, 그 출력이 자동으로 사실이 되는 것은 아니다.</li>
+        <li>KG는 LLM에 정확성·최신성·설명 가능성을 제공하지만, 그래프 자체의 품질과 갱신이 전제다.</li>
+        <li>결합 가치는 이질적 데이터, 다중 홉 관계, 자연어 접근, 근거 요구가 동시에 클 때 커진다.</li>
+        <li>RDF와 LPG는 사용 사례에 따라 보완 가능한 표현 패러다임이고, 의미 모델링은 별도의 설계 축이다.</li>
+        <li>좋은 시작은 거대한 온톨로지가 아니라 대표 질문과 검증 가능한 작은 지식 루프다.</li>
+      </ol>
+
+      <h2>8.2 스터디 토론 시드</h2>
+      <table class="cmp-table">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 9</span><span class="asset-caption__title">발표 후 토론 질문</span></div></caption>
+        <thead><tr><th>질문</th><th>확인하려는 설계 쟁점</th></tr></thead>
+        <tbody>
+          <tr><td>우리 도메인에서 답의 품질을 결정하는 관계 경로는 무엇인가?</td><td>KG가 필요한 실제 이유</td></tr>
+          <tr><td>LLM이 추출한 사실을 누가, 어떤 증거로 승인해야 하는가?</td><td>지식 승격과 책임 경계</td></tr>
+          <tr><td>응답에 어떤 수준의 출처와 경로를 보여줘야 사용자가 신뢰할 수 있는가?</td><td>설명 가능성의 제품 요구</td></tr>
+          <tr><td>RDF의 상호운용성과 LPG의 순회 중 현재 더 중요한 것은 무엇인가?</td><td>표현 패러다임 선택</td></tr>
+          <tr><td>우리에게 필요한 “딱 필요한 만큼의 의미”는 어떤 규칙부터인가?</td><td>스키마·온톨로지 범위</td></tr>
+        </tbody>
+      </table>
+      <p>다음 장들에서는 이 개념 지도를 실제 구축 절차로 구체화한다. 데이터 원천에서 엔터티와 관계를 뽑고, 지식의 무결성과 정확성을 검증하고, 자연어 질문으로 그래프를 질의하고, 그래프 분석과 머신러닝을 결합하는 흐름을 따라간다. Chapter 1의 역할은 그 모든 구현 선택을 평가할 <strong>책임 분리와 품질 기준</strong>을 세우는 데 있다.</p>
+    </section>
+
+    <section class="report-appendix s-glossary page-break" id="glossary">
+      <div class="report-section__kicker">Appendix A · Glossary</div>
+      <h1>핵심 용어</h1>
+      <table class="cmp-table">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 10</span><span class="asset-caption__title">Chapter 1 핵심 용어 사전</span></div></caption>
+        <thead><tr><th>용어</th><th>이 리포트에서의 의미</th></tr></thead>
+        <tbody>
+          <tr><td>Knowledge Graph</td><td>유형이 있는 개체와 의미 있는 관계, 속성·출처·규칙을 연결해 사람과 기계가 함께 쓰는 지식 구조.</td></tr>
+          <tr><td>LLM</td><td>대규모 텍스트에서 학습해 자연어 이해·생성 과제를 재사용하는 사전학습 언어 모델.</td></tr>
+          <tr><td>Hallucination</td><td>모델이 근거 없이 그럴듯한 내용을 생성하는 현상. KG 연결만으로 자동 제거되지는 않는다.</td></tr>
+          <tr><td>Transfer Learning</td><td>일반 과제에서 배운 표현을 관계 추출 같은 특정 과제에 다시 사용하는 학습 방식.</td></tr>
+          <tr><td>Coreference Resolution</td><td>대명사나 표현이 어떤 개체를 가리키는지 문맥에서 해소하는 작업.</td></tr>
+          <tr><td>Text-to-Cypher</td><td>자연어 질문을 LPG의 Cypher 질의로 변환하는 패턴. 실행 전 스키마·권한 통제가 필요하다.</td></tr>
+          <tr><td>RDF / SPARQL</td><td>트리플 기반 지식 표현 표준과 그 질의 언어. 상호운용·연합·의미 추론에 강하다.</td></tr>
+          <tr><td>LPG</td><td>레이블 노드·엣지와 속성을 중심으로 한 그래프 모델. 경로 탐색과 관계 속성에 강하다.</td></tr>
+          <tr><td>Taxonomy / Ontology</td><td>범주의 계층과 도메인 개념의 동일성·제약·관계를 정의해 그래프에 조직 원리를 더하는 의미 모델.</td></tr>
+          <tr><td>Just enough semantics</td><td>완전한 온톨로지를 먼저 만들지 않고 현재 문제의 질문·검증에 필요한 의미 규칙부터 적용하는 접근.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="report-appendix s-refs page-break" id="references">
+      <div class="report-section__kicker">Appendix B · References</div>
+      <h1>참고 자료와 도형 출처</h1>
+      <ol class="references" style="list-style:none; padding:0;">
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[1]</span><span>Alessandro Negro. <em>Knowledge Graphs and LLMs in Action</em>, Chapter 1 “Knowledge graphs and LLMs: A killer combination.” Manning Publications. 본 리포트의 1차 교재.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[2]</span><span>프로젝트 내 한국어 쉬운 해설판: <code>01_knowledge_graphs_and_llms_a_killer_combination_ko_explained.md</code>. 발표 내용의 용어·문맥 확인에 사용.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[3]</span><span>RDF 1.1 Concepts and Abstract Syntax, W3C Recommendation. <a href="https://www.w3.org/TR/rdf11-concepts/" target="_blank" rel="noopener">w3.org/TR/rdf11-concepts/</a></span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[4]</span><span>openCypher project. <a href="https://opencypher.org/" target="_blank" rel="noopener">opencypher.org</a> · Apache TinkerPop Gremlin. <a href="https://tinkerpop.apache.org/gremlin.html" target="_blank" rel="noopener">tinkerpop.apache.org/gremlin.html</a></span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[5]</span><span>그림 1–8은 교재 Chapter 1의 개념과 서술을 바탕으로 ds4th study가 새로 작성한 발표용 도해다. 교재의 원본 그림을 복제하지 않았으며, 각 캡션에 재구성 범위를 표시했다.</span></li>
+      </ol>
+      <div class="callout--insight"><span class="callout__kicker">자료 사용 원칙</span><div class="callout__body"><p>본문은 교재의 논지를 발표자의 언어로 요약·재구성했다. 사례별 실제 도입 시에는 원 논문, 제품 문서, 보안·규제 요구사항을 별도로 확인해야 한다.</p></div></div>
+      <div class="report-jump-links"><a href="./">발표자료</a><a href="../../">회차 목록</a><a href="#summary">문서 처음</a></div>
+    </section>
+  </article>
   <script src="assets/report.js"></script>
 </body>
 </html>
