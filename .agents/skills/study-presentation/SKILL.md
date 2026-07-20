@@ -11,6 +11,8 @@ Use the registry to resolve the current learning-material path. It may point to 
 
 For a new session, read both `agent-support/templates/study-report/DESIGN.md` and `agent-support/templates/study-deck/DESIGN.md`, then scaffold it with `agent-support/scripts/new-presentation.py`. Unless the user explicitly requests a single artifact, create both `report.html` with `study-report-v1` and the `study-deck-v1` slide entrypoint at `index.html`. Do not hand-build a competing starter or overwrite an existing session directory. Edit only the generated snapshots for session-specific changes.
 
+Treat the report as a long-form publication, not a slide transcript. Preserve the canonical ConnectBrick-derived report component hierarchy, and add source-backed tables and newly composed SVG diagrams when they materially explain the chapter. Inspect the report at desktop and mobile widths and print it to A4 PDF; HTML validation alone is not sufficient for visual work.
+
 After creating or editing a report or deck, run:
 
 ```bash
