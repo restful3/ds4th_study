@@ -11,7 +11,11 @@ Resolve study materials through the registry because completed books move from `
 
 For a new session, read `agent-support/templates/STUDY_SESSION_BLUEPRINT.md` and both template `DESIGN.md` files completely, then inspect the Chapter 1 reference named by the blueprint and run `agent-support/scripts/new-presentation.py`. Unless the user explicitly asks for one artifact, create both `report.html` with `study-report-v1` and the `study-deck-v1` slide entrypoint at `index.html`. Never overwrite an existing session directory.
 
-Treat the report as a long-form publication, preserve the blueprint's problem-to-decision logic, and create source-backed tables and newly composed SVG diagrams where they explain the chapter. Preserve automatic report/deck TOCs and the report image lightbox. Inspect both browser outputs at desktop and mobile widths, exercise image zoom and keyboard closing, and print the report to A4 PDF.
+Work strictly in three phases: audit the raw chapter material; complete and validate the long-form report; only then derive the session-specific deck from that approved report. Do not write the real deck in parallel with an incomplete report. If a slide needs a new claim, example, or qualification, add it to the report and pass the report gate again before using it.
+
+Treat the report as a long-form publication, preserve the blueprint's problem-to-decision logic, and create source-backed tables and newly composed SVG diagrams where they explain the chapter. Give report sections, tables, and figures stable IDs; mark visuals required in the deck with `data-deck-use="required"`. The report gate includes complete argument coverage, captions and sources, TOC/lightbox behavior, desktop/mobile rendering, and an inspected A4 PDF.
+
+Build the deck from the report's narrative, claims, terms, tables, SVGs, and CSS relationships. Reuse report visuals when legible and otherwise adapt them faithfully for slide scale. Keep `data-report-source="report.html"` on the deck main element and valid `data-report-refs` on every slide, covering every report section and required visual. Preserve automatic report/deck TOCs and inspect both browser outputs at desktop and mobile widths.
 
 After creating or editing a report or deck, run:
 

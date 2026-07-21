@@ -14,8 +14,8 @@
     Chapter 1 완성본에서 추출한 22장 흐름이다. 내용에 맞지 않는 장은 합치거나 제거하되,
     문제 → 개념 → 메커니즘 → 운영 구조 → 사례 → 판단 → 요약의 논리 순서는 유지한다.
   -->
-  <main class="stage" id="deck" aria-live="polite">
-    <section class="slide slide--cover" aria-label="표지">
+  <main class="stage" id="deck" aria-live="polite" data-report-source="report.html">
+    <section class="slide slide--cover" aria-label="표지" data-report-refs="summary">
       <header class="cover-brand"><span class="brand-name">ds4th study</span><span class="brand-sub">STUDY PRESENTATION</span></header>
       <div class="cover-hero">
         <p class="eyebrow">{{STUDY_TITLE}}</p>
@@ -29,7 +29,7 @@
       </dl>
     </section>
 
-    <section class="slide" aria-label="발표의 핵심 질문">
+    <section class="slide" aria-label="발표의 핵심 질문" data-report-refs="summary table-overview">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">OPENING</span></header>
       <h1>왜 지금 이 문제를 다시 봐야 할까?</h1>
       <p class="lead">이 장이 다루는 두 힘 또는 기존 방식과 새 접근의 긴장을 한 문장으로 제시합니다.</p>
@@ -43,7 +43,7 @@
       <footer class="slide-footer"><span>{{CHAPTERS}} · 문제 제기</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="오늘의 흐름">
+    <section class="slide" aria-label="오늘의 흐름" data-report-refs="summary table-overview">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">OVERVIEW</span></header>
       <h1>오늘의 흐름</h1>
       <p class="lead">세부 목차를 나열하지 말고 청중이 따라갈 논리의 방향을 세 단계로 압축합니다.</p>
@@ -60,11 +60,11 @@
       <footer class="slide-footer"><span>{{CHAPTERS}} · 전체 흐름</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide slide--section" aria-label="배경과 핵심 개념 섹션">
+    <section class="slide slide--section" aria-label="배경과 핵심 개념 섹션" data-report-refs="concept fig-concept">
       <p class="eyebrow">SECTION 01</p><h1>배경과 핵심 개념</h1><p>문제의 경계와 공통 언어를 만든다</p><span class="section-number">01</span>
     </section>
 
-    <section class="slide" aria-label="핵심 개념의 구성 요소">
+    <section class="slide" aria-label="핵심 개념의 구성 요소" data-report-refs="concept fig-concept">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">CONCEPT ANATOMY</span></header>
       <h1>핵심 개념은 요소와 관계로 설명한다</h1>
       <p class="lead">정의만 읽지 말고 세 구성요소가 어떤 관계를 이루는지 한 화면에 보여줍니다.</p>
@@ -82,7 +82,7 @@
       <footer class="slide-footer"><span>{{CHAPTERS}} · 핵심 개념</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="핵심 개념의 가치">
+    <section class="slide" aria-label="핵심 개념의 가치" data-report-refs="concept">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">WHY IT MATTERS</span></header>
       <h1>가치는 기능보다 바뀌는 행동으로 말한다</h1>
       <p class="lead">핵심 개념이 독자나 시스템에게 가능하게 하는 행동을 세 가지로 정리합니다.</p>
@@ -97,7 +97,7 @@
       <footer class="slide-footer"><span>{{CHAPTERS}} · 가치</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="기존 접근의 병목">
+    <section class="slide" aria-label="기존 접근의 병목" data-report-refs="concept">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">BOTTLENECK</span></header>
       <h1>도입을 막는 병목을 두 종류로 나눈다</h1>
       <p class="lead">모든 문제를 하나로 뭉치지 말고 예측 가능한 부분과 해석이 필요한 부분을 비교합니다.</p>
@@ -111,11 +111,11 @@
       <footer class="slide-footer"><span>{{CHAPTERS}} · 문제 구조</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide slide--section" aria-label="작동 원리 섹션">
+    <section class="slide slide--section" aria-label="작동 원리 섹션" data-report-refs="mechanism table-mechanism-shift fig-mechanism">
       <p class="eyebrow">SECTION 02</p><h1>작동 원리</h1><p>입력부터 검증된 결과까지의 변화를 추적한다</p><span class="section-number">02</span>
     </section>
 
-    <section class="slide" aria-label="기존 방식에서 새 방식으로의 전환">
+    <section class="slide" aria-label="기존 방식에서 새 방식으로의 전환" data-report-refs="mechanism table-mechanism-shift">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">SHIFT</span></header>
       <h1>무엇이 달라졌는지 전환으로 보여준다</h1>
       <p class="lead">새 기술 이름보다 데이터, 책임, 검증 방식의 이전과 이후를 대비합니다.</p>
@@ -130,7 +130,7 @@
       <footer class="slide-footer"><span>{{CHAPTERS}} · 패러다임 전환</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="새 접근의 강점과 한계">
+    <section class="slide" aria-label="새 접근의 강점과 한계" data-report-refs="evidence-limits table-evidence">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">CAPABILITY &amp; LIMIT</span></header>
       <h1>강점과 한계는 같은 화면에서 읽는다</h1>
       <p class="lead">좋은 점만 설명하지 말고 어떤 조건에서 품질이 무너지는지 함께 제시합니다.</p>
@@ -144,7 +144,7 @@
       <footer class="slide-footer"><span>{{CHAPTERS}} · 능력과 한계</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="입력부터 결과까지의 처리 경로">
+    <section class="slide" aria-label="입력부터 결과까지의 처리 경로" data-report-refs="mechanism fig-mechanism">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">MECHANISM</span></header>
       <h1>작동 원리는 책임의 이동으로 설명한다</h1>
       <p class="lead">입력, 변환, 검증, 결과가 누구의 책임인지 한 경로로 연결합니다.</p>
@@ -160,11 +160,11 @@
       <footer class="slide-footer"><span>{{CHAPTERS}} · 처리 경로</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide slide--section" aria-label="결합과 운영 구조 섹션">
+    <section class="slide slide--section" aria-label="결합과 운영 구조 섹션" data-report-refs="operating-model table-role-contract fig-operating-loop">
       <p class="eyebrow">SECTION 03</p><h1>결합과 운영 구조</h1><p>구성요소의 역할 분담을 반복 가능한 시스템으로</p><span class="section-number">03</span>
     </section>
 
-    <section class="slide" aria-label="구성요소의 역할 분담">
+    <section class="slide" aria-label="구성요소의 역할 분담" data-report-refs="operating-model table-role-contract">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">ROLE SPLIT</span></header>
       <h1>강력한 결합은 명확한 역할 분담에서 나온다</h1>
       <p class="lead">각 구성요소가 입력, 판단, 검증 중 무엇을 책임지는지 세 칸으로 고정합니다.</p>
@@ -179,7 +179,7 @@
       <footer class="slide-footer"><span>{{CHAPTERS}} · 역할 분담</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="검증과 피드백의 운영 루프">
+    <section class="slide" aria-label="검증과 피드백의 운영 루프" data-report-refs="operating-model fig-operating-loop">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">OPERATING LOOP</span></header>
       <h1>운영 가능한 시스템은 선이 아니라 루프다</h1>
       <p class="lead">결과가 다시 검증과 개선으로 돌아오는 순환을 보여줍니다.</p>
@@ -196,7 +196,7 @@
       <footer class="slide-footer"><span>{{CHAPTERS}} · 운영 루프</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="주요 근거와 수치">
+    <section class="slide" aria-label="주요 근거와 수치" data-report-refs="evidence-limits table-evidence">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">EVIDENCE</span></header>
       <h1>근거는 같은 기준으로 비교한다</h1>
       <p class="lead">정량 근거가 없다면 숫자를 만들지 말고, 검증 가능한 세 주장으로 바꿉니다.</p>
@@ -212,11 +212,11 @@
       <footer class="slide-footer"><span>{{CHAPTERS}} · 근거</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide slide--section" aria-label="적용 사례와 의사결정 섹션">
+    <section class="slide slide--section" aria-label="적용 사례와 의사결정 섹션" data-report-refs="application decision">
       <p class="eyebrow">SECTION 04</p><h1>적용 사례와 의사결정</h1><p>기술 설명을 실제 문제와 선택 기준으로 번역한다</p><span class="section-number">04</span>
     </section>
 
-    <section class="slide" aria-label="설계를 지탱하는 네 원칙">
+    <section class="slide" aria-label="설계를 지탱하는 네 원칙" data-report-refs="application">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">DESIGN PRINCIPLES</span></header>
       <h1>지속 가능한 설계를 네 기둥으로 정리한다</h1>
       <p class="lead">책의 원칙을 그대로 나열하지 말고 운영 관점의 짧은 동사로 번역합니다.</p>
@@ -232,7 +232,7 @@
       <footer class="slide-footer"><span>{{CHAPTERS}} · 원칙</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="대표 적용 사례">
+    <section class="slide" aria-label="대표 적용 사례" data-report-refs="application table-cases">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">USE CASE</span></header>
       <h1>사례는 문제–역할–결과로 읽는다</h1>
       <p class="lead">제품 이름보다 결합 가치가 생기는 조건과 실패 경계를 설명합니다.</p>
@@ -247,7 +247,7 @@
       <footer class="slide-footer"><span>{{CHAPTERS}} · 사례</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="도입 판단 기준">
+    <section class="slide" aria-label="도입 판단 기준" data-report-refs="decision table-decision">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">DECISION GUIDE</span></header>
       <h1>유행이 아니라 문제의 모양으로 선택한다</h1>
       <p class="lead">적합 신호와 비적합 신호를 같은 무게로 제시합니다.</p>
@@ -261,7 +261,7 @@
       <footer class="slide-footer"><span>{{CHAPTERS}} · 도입 판단</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="대안 기술 비교">
+    <section class="slide" aria-label="대안 기술 비교" data-report-refs="decision">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">CHOICE</span></header>
       <h1>대안은 같은 질문으로 비교한다</h1>
       <p class="lead">기능 목록보다 표현 방식, 강점, 제약, 잘 맞는 상황을 맞춥니다.</p>
@@ -280,7 +280,7 @@
       <footer class="slide-footer"><span>{{CHAPTERS}} · 대안 비교</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="발표 정리 질문">
+    <section class="slide" aria-label="발표 정리 질문" data-report-refs="decision table-glossary">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">CHECKPOINT</span></header>
       <h1>세 질문으로 이해를 확인한다</h1>
       <p class="lead">정답을 외우기보다 판단 근거를 말할 수 있는 질문으로 만듭니다.</p>
@@ -295,7 +295,7 @@
       <footer class="slide-footer"><span>{{CHAPTERS}} · Checkpoint</span><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide slide--closing" aria-label="정리와 질의응답">
+    <section class="slide slide--closing" aria-label="정리와 질의응답" data-report-refs="summary decision">
       <header class="cover-brand"><span class="brand-name">ds4th study</span><span class="brand-sub">WRAP UP</span></header>
       <div class="closing-body">
         <p class="eyebrow">KEY TAKEAWAYS</p>

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create a ds4th study report and HTML presentation from canonical templates."""
+"""Scaffold a raw-to-report-to-deck ds4th study session."""
 
 from __future__ import annotations
 
@@ -172,7 +172,10 @@ def main() -> int:
         except ValueError:
             display = target
         print(f"created session report and presentation: {display}")
-        print("next: follow agent-support/templates/STUDY_SESSION_BLUEPRINT.md, replace the example content, build indexes, and validate the site")
+        print(
+            "next: follow agent-support/templates/STUDY_SESSION_BLUEPRINT.md; "
+            "finish and validate report.html first, then derive index.html from it"
+        )
         return 0
     except (OSError, ValueError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)

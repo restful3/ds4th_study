@@ -33,6 +33,7 @@
 
 - 회차 산출물 생성·수정·검토 요청에는 `study-presentation` 스킬과 `agent-support/procedures/study-presentation.md`를 사용한다.
 - 한 회차의 기본 공개 산출물은 **상세 리포트 + 발표자료** 두 가지다. 발표자료만 또는 리포트만 만들라는 명시적 요청이 없다면 둘 다 만든다.
+- 산출물은 반드시 **원자료 감사 → 상세 리포트 완성·검증 → 리포트를 근거로 발표자료 작성** 순서로 만든다. 회차별 슬라이드 본문은 리포트 품질 게이트를 통과하기 전에 작성하지 않는다.
 - 새 회차는 `agent-support/templates/study-report/`, `agent-support/templates/study-deck/`과 `agent-support/scripts/new-presentation.py`로 생성한다.
 - 새 회차를 설계할 때 `agent-support/templates/STUDY_SESSION_BLUEPRINT.md`와 그 문서가 가리키는 Chapter 1 완성본을 품질 기준으로 사용한다.
 - 공개 경로는 `docs/studies/<study-slug>/presentations/<session-slug>/`이다.
@@ -41,6 +42,8 @@
 - 같은 회차를 수정할 때는 같은 `session-slug`를 사용해 URL을 유지한다.
 - 생성된 CSS와 JavaScript는 해당 회차의 스냅샷이다. 한 회차만 고치려고 공용 템플릿이나 다른 회차를 함께 수정하지 않는다.
 - 목차는 별도 파일로 중복 관리하지 않는다. 리포트 제목 계층과 슬라이드 `aria-label`을 고치면 각 JavaScript가 목차를 자동 생성한다.
+- 리포트의 본문 절·표·그림에는 안정적인 `id`를 둔다. 발표자료의 모든 `.slide`는 근거가 된 ID를 `data-report-refs`에 기록하고, `<main>`은 `data-report-source="report.html"`을 유지한다. 발표에 반드시 써야 할 리포트 그림은 `data-deck-use="required"`로 표시한다.
+- 발표자료에 새 주장이나 근거가 필요하면 슬라이드에 먼저 쓰지 말고 `report.html`을 먼저 보완한 뒤 다시 압축한다. 리포트 SVG·표·CSS 관계도를 발표 화면에 읽히는 크기로 직접 재사용하거나 충실히 재배치한다.
 - 공용 리포트 템플릿의 전체화면 이미지 뷰어와 공용 슬라이드 템플릿의 키보드·목차·전체화면 기능을 유지한다.
 - 리포트·발표 HTML과 자산만 `docs/`에 둔다. 원문 PDF와 학습용 대용량 파일은 복사하지 않는다.
 

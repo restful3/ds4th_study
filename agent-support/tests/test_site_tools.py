@@ -46,6 +46,8 @@ presenters = ["발표자"]
 chapters = ["Chapter 1"]
 template = "study-deck-v1"
 report_template = "study-report-v1"
+workflow = "raw-report-deck-v1"
+report_source = "report.html"
 artifacts = ["report", "slides"]
 '''
 
@@ -57,7 +59,7 @@ DECK_HTML = '''<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>첫 번째 발표</title>
 </head>
-<body><main><h1>첫 번째 발표</h1></main></body>
+<body><main data-report-source="report.html"><section class="slide" aria-label="표지" data-report-refs="summary"><h1>첫 번째 발표</h1></section></main></body>
 </html>
 '''
 
@@ -69,7 +71,7 @@ REPORT_HTML = '''<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>첫 번째 발표 · 상세 리포트</title>
 </head>
-<body><main><h1>첫 번째 발표 · 상세 리포트</h1></main></body>
+<body><main><section class="report-section" id="summary"><h1>첫 번째 발표 · 상세 리포트</h1></section></main></body>
 </html>
 '''
 
@@ -180,6 +182,28 @@ class SiteToolTests(unittest.TestCase):
         self.assertNotEqual(validation.returncode, 0)
         self.assertIn("report artifact is missing", validation.stderr)
 
+    def test_validator_rejects_untraceable_deck_slide(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        untraceable = DECK_HTML.replace(' data-report-refs="summary"', "")
+        (self.deck / "index.html").write_text(untraceable, encoding="utf-8")
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn("slide lacks data-report-refs", validation.stderr)
+
+    def test_validator_rejects_unknown_report_reference(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        unknown = DECK_HTML.replace(
+            'data-report-refs="summary"', 'data-report-refs="summary missing-anchor"'
+        )
+        (self.deck / "index.html").write_text(unknown, encoding="utf-8")
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn("slide references unknown report id", validation.stderr)
+
     def test_new_presentation_uses_canonical_template_without_overwrite(self) -> None:
         session = "2026-01-15-ch02-ch03"
         result = self.run_tool(
@@ -220,8 +244,12 @@ class SiteToolTests(unittest.TestCase):
         self.assertEqual(generated_html.count('<section class="slide'), 22)
         self.assertEqual(generated_html.count('slide slide--section'), 4)
         self.assertGreaterEqual(generated_html.count('aria-label="'), 22)
+        self.assertIn('data-report-source="report.html"', generated_html)
+        self.assertEqual(generated_html.count('data-report-refs="'), 22)
         self.assertEqual(metadata["template"], "study-deck-v1")
         self.assertEqual(metadata["report_template"], "study-report-v1")
+        self.assertEqual(metadata["workflow"], "raw-report-deck-v1")
+        self.assertEqual(metadata["report_source"], "report.html")
         self.assertEqual(metadata["artifacts"], ["report", "slides"])
         self.assertEqual(metadata["presenters"], ["발표자 A", "발표자 B"])
         self.assertTrue((target / "assets" / "deck.css").is_file())
@@ -232,6 +260,9 @@ class SiteToolTests(unittest.TestCase):
         self.assertNotIn("{{", generated_report)
         self.assertEqual(generated_report.count('<section class="report-section'), 7)
         self.assertGreaterEqual(generated_report.count('class="report-figure"'), 3)
+        self.assertGreaterEqual(generated_report.count('data-deck-use="required"'), 3)
+        self.assertIn('id="fig-concept"', generated_report)
+        self.assertIn('id="table-decision"', generated_report)
         self.assertTrue((target / "assets" / "report.css").is_file())
         self.assertTrue((target / "assets" / "report.js").is_file())
         self.assertTrue((target / "assets" / "figs").is_dir())
