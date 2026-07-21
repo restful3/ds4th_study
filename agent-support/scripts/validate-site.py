@@ -49,6 +49,47 @@ class PageParser(HTMLParser):
                 self.references.append((tag, attribute, values[attribute]))
 
 
+class ReportDeckTraceParser(HTMLParser):
+    """Collect stable report anchors and per-slide derivation references."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.ids: set[str] = set()
+        self.duplicate_ids: set[str] = set()
+        self.report_sections: set[str] = set()
+        self.required_figures: set[str] = set()
+        self.required_figures_without_id = 0
+        self.slides: list[tuple[str, list[str]]] = []
+        self.deck_report_source = ""
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        values = {name.lower(): value or "" for name, value in attrs}
+        classes = set(values.get("class", "").split())
+        element_id = values.get("id", "").strip()
+        if element_id:
+            if element_id in self.ids:
+                self.duplicate_ids.add(element_id)
+            self.ids.add(element_id)
+
+        if tag == "main" and values.get("data-report-source"):
+            self.deck_report_source = values["data-report-source"].strip()
+        if tag == "section" and "slide" in classes:
+            label = values.get("aria-label", "").strip() or "unnamed slide"
+            refs = values.get("data-report-refs", "").split()
+            self.slides.append((label, refs))
+        if tag == "section" and "report-section" in classes and element_id:
+            self.report_sections.add(element_id)
+        if (
+            tag == "figure"
+            and "report-figure" in classes
+            and values.get("data-deck-use") == "required"
+        ):
+            if element_id:
+                self.required_figures.add(element_id)
+            else:
+                self.required_figures_without_id += 1
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--registry", type=Path, default=DEFAULT_REGISTRY)
@@ -210,6 +251,75 @@ def validate_metadata(site: Path, studies: dict[str, dict], errors: list[str]) -
                     errors.append(
                         f"study-report-v1 asset is missing in {metadata_path.parent}: {asset}"
                     )
+
+        if (
+            {"report", "slides"}.issubset(artifacts)
+            and template_id == "study-deck-v1"
+            and report_template_id == "study-report-v1"
+            and deck_html.is_file()
+            and report_html.is_file()
+        ):
+            expected_workflow = "raw-report-deck-v1"
+            if metadata.get("workflow") != expected_workflow:
+                errors.append(
+                    f"paired study artifacts must use workflow={expected_workflow!r} "
+                    f"in {metadata_path}"
+                )
+            if metadata.get("report_source") != "report.html":
+                errors.append(
+                    f"paired study artifacts must use report_source='report.html' "
+                    f"in {metadata_path}"
+                )
+
+            report_trace = ReportDeckTraceParser()
+            report_trace.feed(report_html.read_text(encoding="utf-8", errors="replace"))
+            deck_trace = ReportDeckTraceParser()
+            deck_trace.feed(deck_html.read_text(encoding="utf-8", errors="replace"))
+
+            for duplicate in sorted(report_trace.duplicate_ids):
+                errors.append(f"duplicate report id in {report_html}: {duplicate}")
+            for duplicate in sorted(deck_trace.duplicate_ids):
+                errors.append(f"duplicate deck id in {deck_html}: {duplicate}")
+            if report_trace.required_figures_without_id:
+                errors.append(
+                    f"{report_trace.required_figures_without_id} required report figure(s) "
+                    f"lack a stable id in {report_html}"
+                )
+            if deck_trace.deck_report_source != "report.html":
+                errors.append(
+                    f"deck must declare data-report-source='report.html' on its main "
+                    f"element: {deck_html}"
+                )
+            if not deck_trace.slides:
+                errors.append(f"deck has no traceable slides: {deck_html}")
+
+            referenced: set[str] = set()
+            for label, refs in deck_trace.slides:
+                if not refs:
+                    errors.append(
+                        f"slide lacks data-report-refs in {deck_html}: {label}"
+                    )
+                    continue
+                referenced.update(refs)
+                unknown = sorted(set(refs) - report_trace.ids)
+                if unknown:
+                    errors.append(
+                        f"slide references unknown report id(s) in {deck_html} "
+                        f"({label}): {unknown}"
+                    )
+
+            missing_sections = sorted(report_trace.report_sections - referenced)
+            if missing_sections:
+                errors.append(
+                    f"deck does not cover report section id(s) in {deck_html}: "
+                    f"{missing_sections}"
+                )
+            missing_figures = sorted(report_trace.required_figures - referenced)
+            if missing_figures:
+                errors.append(
+                    f"deck does not reuse required report figure id(s) in {deck_html}: "
+                    f"{missing_figures}"
+                )
 
         key = (study_id, session_id)
         if key in seen:
