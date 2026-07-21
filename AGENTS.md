@@ -34,11 +34,14 @@
 - 회차 산출물 생성·수정·검토 요청에는 `study-presentation` 스킬과 `agent-support/procedures/study-presentation.md`를 사용한다.
 - 한 회차의 기본 공개 산출물은 **상세 리포트 + 발표자료** 두 가지다. 발표자료만 또는 리포트만 만들라는 명시적 요청이 없다면 둘 다 만든다.
 - 새 회차는 `agent-support/templates/study-report/`, `agent-support/templates/study-deck/`과 `agent-support/scripts/new-presentation.py`로 생성한다.
+- 새 회차를 설계할 때 `agent-support/templates/STUDY_SESSION_BLUEPRINT.md`와 그 문서가 가리키는 Chapter 1 완성본을 품질 기준으로 사용한다.
 - 공개 경로는 `docs/studies/<study-slug>/presentations/<session-slug>/`이다.
 - 각 회차 폴더에는 `report.html`, 발표자료인 `index.html`, `presentation.toml`과 필요한 로컬 자산이 있어야 한다.
 - `index.html`은 이미 공유된 발표 URL을 유지하기 위해 발표자료 진입점으로 둔다. 스터디 인덱스는 같은 회차 카드에서 `report.html`과 `index.html`을 각각 링크한다.
 - 같은 회차를 수정할 때는 같은 `session-slug`를 사용해 URL을 유지한다.
 - 생성된 CSS와 JavaScript는 해당 회차의 스냅샷이다. 한 회차만 고치려고 공용 템플릿이나 다른 회차를 함께 수정하지 않는다.
+- 목차는 별도 파일로 중복 관리하지 않는다. 리포트 제목 계층과 슬라이드 `aria-label`을 고치면 각 JavaScript가 목차를 자동 생성한다.
+- 공용 리포트 템플릿의 전체화면 이미지 뷰어와 공용 슬라이드 템플릿의 키보드·목차·전체화면 기능을 유지한다.
 - 리포트·발표 HTML과 자산만 `docs/`에 둔다. 원문 PDF와 학습용 대용량 파일은 복사하지 않는다.
 
 ## Required verification

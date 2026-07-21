@@ -217,6 +217,9 @@ class SiteToolTests(unittest.TestCase):
         self.assertIn("두 번째 발표", generated_html)
         self.assertNotIn("ConnectBrick", generated_html)
         self.assertNotIn("{{", generated_html)
+        self.assertEqual(generated_html.count('<section class="slide'), 22)
+        self.assertEqual(generated_html.count('slide slide--section'), 4)
+        self.assertGreaterEqual(generated_html.count('aria-label="'), 22)
         self.assertEqual(metadata["template"], "study-deck-v1")
         self.assertEqual(metadata["report_template"], "study-report-v1")
         self.assertEqual(metadata["artifacts"], ["report", "slides"])
@@ -227,8 +230,19 @@ class SiteToolTests(unittest.TestCase):
         self.assertIn('data-report-template="study-report-v1"', generated_report)
         self.assertIn("두 번째 발표", generated_report)
         self.assertNotIn("{{", generated_report)
+        self.assertEqual(generated_report.count('<section class="report-section'), 7)
+        self.assertGreaterEqual(generated_report.count('class="report-figure"'), 3)
         self.assertTrue((target / "assets" / "report.css").is_file())
         self.assertTrue((target / "assets" / "report.js").is_file())
+        self.assertTrue((target / "assets" / "figs").is_dir())
+        self.assertIn(
+            "setupImageLightbox",
+            (target / "assets" / "report.js").read_text(encoding="utf-8"),
+        )
+        self.assertIn(
+            "Extended study presentation components",
+            (target / "assets" / "deck.css").read_text(encoding="utf-8"),
+        )
 
         build_result = self.build()
         self.assertEqual(build_result.returncode, 0, build_result.stderr)

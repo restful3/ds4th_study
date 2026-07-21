@@ -72,16 +72,94 @@
       <div class="callout--insight"><span class="callout__kicker">읽기 포인트</span><div class="callout__body"><p>핵심 아이디어가 해결하는 문제와 새로 만드는 비용을 같은 섹션에서 다룬다.</p></div></div>
     </section>
 
-    <section class="report-section s2 page-break" id="application">
-      <div class="report-section__kicker">Section 02 · Application &amp; Decision</div>
-      <h1>2. 사례와 적용 판단</h1>
-      <p>교재 사례를 문제–역할 분담–결과–실패 경계로 해석한다. 기술 이름보다 어떤 데이터와 관계, 사용자 요구가 결합 가치를 만드는지 보여준다.</p>
+    <section class="report-section s2 page-break" id="mechanism">
+      <div class="report-section__kicker">Section 02 · Mechanism</div>
+      <h1>2. 무엇이 어떻게 달라지는가</h1>
+      <div class="section-summary"><div class="section-summary__kicker">섹션 요약</div><div class="section-summary__body"><ul>
+        <li>기존 방식과 새 접근의 차이를 데이터·책임·검증 관점으로 나눈다.</li>
+        <li>입력에서 결과까지 각 단계의 주체와 실패 경계를 추적한다.</li>
+        <li>자동화 가능한 일과 사람이 승인해야 할 일을 구분한다.</li>
+      </ul></div></div>
+      <h2>2.1 이전과 이후</h2>
+      <p>새 기술의 이름을 설명하는 것만으로는 작동 방식을 이해하기 어렵다. 기존에는 누가 어떤 입력을 받아 어디에서 판단했고, 새 접근에서는 그 책임이 어느 계층으로 이동하는지 먼저 설명한다. 속도나 편의성뿐 아니라 검증 지점과 새로 생기는 운영 비용도 같은 비중으로 다룬다.</p>
       <table class="cmp-table">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 2</span><span class="asset-caption__title">도입 판단표</span></div></caption>
-        <thead><tr><th>질문</th><th>적합 신호</th><th>비적합 신호</th><th>검증할 것</th></tr></thead>
-        <tbody><tr><td>이 접근이 필요한가?</td><td>핵심 강점이 문제를 직접 해결</td><td>단순한 기존 방식으로 충분</td><td>대표 사용자 질문과 품질 기준</td></tr><tr><td>운영 가능한가?</td><td>소유자·승인·갱신 절차가 있음</td><td>생성 결과를 곧바로 사실로 취급</td><td>출처, 변경 이력, 롤백</td></tr></tbody>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 2</span><span class="asset-caption__title">이전과 이후의 책임 변화</span></div></caption>
+        <thead><tr><th>관점</th><th>기존 방식</th><th>새 접근</th><th>남는 질문</th></tr></thead>
+        <tbody><tr><td>입력</td><td>정해진 형식과 범위</td><td>더 다양한 자료와 질문</td><td>어떤 입력을 신뢰할 것인가?</td></tr><tr><td>변환</td><td>수작업 또는 고정 규칙</td><td>재사용 가능한 해석·처리 계층</td><td>오류를 어디에서 탐지할 것인가?</td></tr><tr><td>검증</td><td>사후 확인에 의존</td><td>근거·규칙·승인을 흐름에 포함</td><td>최종 책임자는 누구인가?</td></tr></tbody>
       </table>
-      <div class="callout--hero"><span class="callout__kicker">Takeaway</span><span class="callout__body">이 장의 결론을 <strong>실제 선택 기준</strong>으로 번역한 한 문장을 적는다.</span></div>
+      <h2>2.2 입력–변환–검증–결과</h2>
+      <p>구성요소의 내부 구현을 모두 설명하기보다, 각 단계가 받는 입력과 내보내는 출력, 그리고 다음 단계가 무엇을 검증하는지를 이어서 쓴다. 이 구조는 슬라이드의 메커니즘 도형과 같은 순서를 사용하되 리포트에서는 예외와 한계까지 보존한다.</p>
+      <figure class="report-figure">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 2</span><span class="asset-caption__title">입력에서 검증된 결과까지의 책임 경로</span></figcaption>
+        <svg viewBox="0 0 900 240" role="img" aria-label="입력, 해석, 검증, 결과 네 단계와 검증 피드백이 이어지는 흐름"><defs><marker id="mechanismArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B6B72"/></marker></defs><rect width="900" height="240" rx="12" fill="#FAFAF9"/><g font-family="system-ui,sans-serif" text-anchor="middle"><g fill="#fff" stroke="#0F2C59" stroke-width="2"><rect x="35" y="70" width="160" height="86" rx="8"/><rect x="250" y="70" width="160" height="86" rx="8"/><rect x="465" y="70" width="160" height="86" rx="8"/><rect x="680" y="70" width="160" height="86" rx="8" fill="#0F2C59"/></g><g font-size="17" font-weight="700" fill="#0F0F10"><text x="115" y="121">입력</text><text x="330" y="121">해석·변환</text><text x="545" y="121">검증·승인</text><text x="760" y="121" fill="#fff">결과·근거</text></g><g stroke="#6B6B72" stroke-width="2" marker-end="url(#mechanismArrow)"><path d="M195 113H244"/><path d="M410 113H459"/><path d="M625 113H674"/><path d="M760 168C760 214 330 214 330 165" fill="none" stroke-dasharray="6 6"/></g><text x="545" y="224" fill="#6B6B72" font-size="13">오류와 사용 결과를 다음 처리에 반영</text></g></svg>
+        <small class="asset-note">템플릿 예시. 실제 회차에서는 교재의 논리를 새로 배치한 SVG로 교체하고 자동화·승인 경계를 구체적으로 표시한다.</small>
+      </figure>
+      <div class="callout--insight"><span class="callout__kicker">작성 원칙</span><div class="callout__body"><p>“가능하다”는 설명 뒤에는 반드시 입력 조건, 실패 모드, 확인 방법 중 둘 이상을 붙인다.</p></div></div>
+    </section>
+
+    <section class="report-section s3 page-break" id="operating-model">
+      <div class="report-section__kicker">Section 03 · Operating Model</div>
+      <h1>3. 역할 분담과 운영 루프</h1>
+      <div class="section-summary"><div class="section-summary__kicker">섹션 요약</div><div class="section-summary__body"><ul><li>구성요소마다 잘하는 책임과 금지할 책임을 명시한다.</li><li>후보 생성과 검증된 사실을 같은 상태로 취급하지 않는다.</li><li>피드백, 갱신, 롤백까지 포함해야 반복 가능한 시스템이 된다.</li></ul></div></div>
+      <h2>3.1 역할을 먼저 고정한다</h2>
+      <p>한 구성요소가 모든 일을 잘한다고 가정하면 실패를 발견하기 어렵다. 해석과 후보 생성, 사실과 규칙의 보존, 승인과 예외 처리를 각각 누가 맡는지 나누고 구성요소 사이의 계약을 서술한다. 특히 확률적 출력과 검증된 상태를 데이터 모델과 화면에서 구분해야 한다.</p>
+      <table class="cmp-table">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 3</span><span class="asset-caption__title">구성요소별 책임과 통제</span></div></caption>
+        <thead><tr><th>주체</th><th>맡길 일</th><th>맡기지 않을 일</th><th>통제 장치</th></tr></thead>
+        <tbody><tr><td>구성요소 A</td><td>해석, 후보 생성, 요약</td><td>출처 없는 사실 확정</td><td>스키마, 근거, 신뢰도</td></tr><tr><td>구성요소 B</td><td>상태, 규칙, 관계 보존</td><td>모호한 의도 임의 해석</td><td>제약, 이력, 조회 경로</td></tr><tr><td>운영자</td><td>품질 기준, 승인, 예외 처리</td><td>모든 결과의 수동 재작업</td><td>샘플링, 경보, 롤백</td></tr></tbody>
+      </table>
+      <h2>3.2 선형 데모를 운영 루프로 바꾼다</h2>
+      <p>데모는 보통 입력에서 답이 나오는 지점에서 끝나지만 운영은 그 뒤부터 시작된다. 사용 중 발견된 오류가 어떤 데이터와 규칙을 수정하고, 변경된 상태가 다음 요청에 어떻게 반영되는지 설명한다. 품질 지표와 책임자는 이 루프의 각 단계에 붙여야 한다.</p>
+      <figure class="report-figure">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 3</span><span class="asset-caption__title">수집–후보–검증–사용–피드백 운영 루프</span></figcaption>
+        <svg viewBox="0 0 900 320" role="img" aria-label="수집, 후보 생성, 검증 통합, 사용, 피드백이 원형으로 이어지는 운영 루프"><defs><marker id="loopArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0F2C59"/></marker></defs><rect width="900" height="320" rx="12" fill="#FAFAF9"/><g font-family="system-ui,sans-serif" text-anchor="middle"><g fill="none" stroke="#0F2C59" stroke-width="3" marker-end="url(#loopArrow)"><path d="M240 94C320 28 575 28 655 94"/><path d="M700 130C760 175 710 250 625 257"/><path d="M565 267C480 300 340 300 255 260"/><path d="M195 246C116 218 112 145 185 111"/></g><g><rect x="150" y="72" width="180" height="72" rx="36" fill="#fff" stroke="#0F2C59"/><text x="240" y="114" font-size="18" font-weight="700">1. 수집·입력</text><rect x="570" y="72" width="180" height="72" rx="36" fill="#fff" stroke="#0F2C59"/><text x="660" y="114" font-size="18" font-weight="700">2. 후보 생성</text><rect x="555" y="218" width="210" height="72" rx="36" fill="#0F2C59"/><text x="660" y="260" fill="#fff" font-size="18" font-weight="700">3. 검증·통합</text><rect x="135" y="218" width="210" height="72" rx="36" fill="#fff" stroke="#0F2C59"/><text x="240" y="260" font-size="18" font-weight="700">4. 사용·피드백</text><circle cx="450" cy="160" r="62" fill="#E8EEF7"/><text x="450" y="153" fill="#0F2C59" font-size="14" font-weight="800">품질 기준</text><text x="450" y="177" fill="#0F2C59" font-size="14">출처 · 이력 · 책임</text></g></g></svg>
+        <small class="asset-note">템플릿 예시. 실제 운영 주체와 검증 상태, 실패 시 되돌아가는 경로를 회차 내용에 맞게 표시한다.</small>
+      </figure>
+    </section>
+
+    <section class="report-section s4 page-break" id="evidence-limits">
+      <div class="report-section__kicker">Section 04 · Evidence &amp; Limits</div>
+      <h1>4. 근거, 한계와 실패 경계</h1>
+      <div class="section-summary"><div class="section-summary__kicker">섹션 요약</div><div class="section-summary__body"><ul><li>교재의 주장과 발표자의 해석을 구분한다.</li><li>수치에는 측정 조건과 비교 기준을 함께 기록한다.</li><li>성공 사례만큼 실패 모드와 중단 기준을 구체화한다.</li></ul></div></div>
+      <h2>4.1 주장을 검증 가능한 형태로 바꾼다</h2>
+      <p>“더 정확하다”, “더 빠르다” 같은 문장은 무엇과 비교했는지 없으면 근거가 되지 않는다. 교재가 제공한 근거의 범위와 조건을 기록하고, 최신성이 중요한 외부 사실은 공식 1차 자료로 확인한다. 정량 근거가 없으면 숫자를 만들지 말고 관찰 가능한 품질 기준을 제안한다.</p>
+      <table class="cmp-table">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 4</span><span class="asset-caption__title">주장–근거–한계 추적표</span></div></caption>
+        <thead><tr><th>핵심 주장</th><th>근거 유형</th><th>적용 조건</th><th>반증·실패 신호</th></tr></thead>
+        <tbody><tr><td>핵심 주장 A</td><td>교재 사례 또는 공식 실험</td><td>데이터·사용자·범위</td><td>어떤 결과면 주장을 수정할 것인가?</td></tr><tr><td>핵심 주장 B</td><td>구조적 논리 또는 비교</td><td>전제와 제외 범위</td><td>어떤 예외가 있는가?</td></tr><tr><td>발표자 해석</td><td>위 근거에서 도출한 추론</td><td>추론임을 명시</td><td>추가로 확인할 자료는 무엇인가?</td></tr></tbody>
+      </table>
+      <div class="callout--hero"><span class="callout__kicker">Evidence Rule</span><span class="callout__body">모든 핵심 주장은 <strong>근거·조건·실패 신호</strong> 가운데 적어도 두 가지와 함께 제시한다.</span></div>
+    </section>
+
+    <section class="report-section s5 page-break" id="application">
+      <div class="report-section__kicker">Section 05 · Cases</div>
+      <h1>5. 사례를 문제–역할–결과로 해석하기</h1>
+      <div class="section-summary"><div class="section-summary__kicker">섹션 요약</div><div class="section-summary__body"><ul><li>사례의 제품명보다 문제 구조를 먼저 읽는다.</li><li>기술과 사람의 역할 분담을 분리한다.</li><li>기대 결과와 함께 실패 경계와 검증 지표를 남긴다.</li></ul></div></div>
+      <h2>5.1 대표 사례</h2>
+      <p>교재 사례를 요약하는 데서 끝내지 않고 왜 이 접근이 필요했는지, 각 구성요소가 무엇을 담당했는지, 결과를 어떤 기준으로 확인할지를 다시 쓴다. 사례의 데이터와 사용자가 내 업무와 다르다면 그 차이도 명시한다.</p>
+      <table class="cmp-table">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 5</span><span class="asset-caption__title">사례 비교 지도</span></div></caption>
+        <thead><tr><th>사례</th><th>문제 구조</th><th>역할 분담</th><th>결과와 실패 경계</th></tr></thead>
+        <tbody><tr><td>사례 A</td><td>데이터·관계·사용자 요구</td><td>기술 A / 기술 B / 운영자</td><td>품질 지표와 허용하지 않을 오류</td></tr><tr><td>사례 B</td><td>다른 도메인의 같은 패턴</td><td>재사용되는 책임과 달라지는 책임</td><td>전이 가능한 교훈과 한계</td></tr></tbody>
+      </table>
+      <h2>5.2 내 문제로 옮기는 질문</h2>
+      <p>우리 데이터는 충분히 식별되고 갱신되는가, 결과를 검증할 주체가 있는가, 사용자가 반복적으로 겪는 문제가 이 접근의 강점과 직접 연결되는가를 질문한다. “도입할 수 있는가”보다 “운영하면서 책임질 수 있는가”를 먼저 확인한다.</p>
+      <div class="callout--insight"><span class="callout__kicker">토론 포인트</span><div class="callout__body"><p>사례와 우리 환경 사이에서 가장 크게 달라지는 전제 하나를 고르고, 그 차이가 설계를 어떻게 바꾸는지 토론한다.</p></div></div>
+    </section>
+
+    <section class="report-section s6 page-break" id="decision">
+      <div class="report-section__kicker">Section 06 · Decision &amp; Takeaways</div>
+      <h1>6. 선택 기준과 다음 행동</h1>
+      <div class="section-summary"><div class="section-summary__kicker">섹션 요약</div><div class="section-summary__body"><ul><li>적합 신호와 비적합 신호를 같은 무게로 비교한다.</li><li>기술 선택 전에 문제, 품질, 책임을 먼저 정의한다.</li><li>작게 검증할 실험과 중단 기준을 함께 정한다.</li></ul></div></div>
+      <h2>6.1 도입 판단표</h2>
+      <table class="cmp-table">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 6</span><span class="asset-caption__title">도입 여부를 가르는 질문</span></div></caption>
+        <thead><tr><th>질문</th><th>적합 신호</th><th>비적합 신호</th><th>검증할 것</th></tr></thead>
+        <tbody><tr><td>핵심 강점이 필요한가?</td><td>문제의 병목을 직접 줄임</td><td>단순 규칙·검색으로 충분</td><td>대표 사용자 질문과 기준선</td></tr><tr><td>데이터를 통제할 수 있는가?</td><td>출처·갱신·소유자가 명확</td><td>입력 품질과 권한을 모름</td><td>샘플 데이터와 오류 유형</td></tr><tr><td>운영 가능한가?</td><td>승인·감시·롤백 절차가 있음</td><td>생성 결과를 곧바로 사실로 취급</td><td>책임자, 경보, 중단 조건</td></tr></tbody>
+      </table>
+      <h2>6.2 작은 검증에서 시작한다</h2>
+      <p>전체 시스템을 한 번에 바꾸기보다 대표 질문과 실패 비용이 분명한 좁은 범위를 고른다. 기존 방식의 기준선을 측정하고, 새 접근이 개선해야 할 품질과 운영 비용을 함께 본다. 성공 기준뿐 아니라 어느 결과에서 실험을 중단하거나 설계를 바꿀지도 합의한다.</p>
+      <div class="callout--hero"><span class="callout__kicker">Final Takeaway</span><span class="callout__body">이 장의 결론을 <strong>실제 선택 기준과 다음 행동</strong>으로 번역한 한 문장을 적는다.</span></div>
     </section>
 
     <section class="report-appendix s-glossary page-break" id="glossary">

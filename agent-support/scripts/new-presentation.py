@@ -165,13 +165,14 @@ def main() -> int:
         (target / "presentation.toml").write_text(metadata, encoding="utf-8")
         shutil.copytree(assets_template, target / "assets")
         shutil.copytree(report_assets_template, target / "assets", dirs_exist_ok=True)
+        (target / "assets" / "figs").mkdir(exist_ok=True)
 
         try:
             display = target.relative_to(REPO_ROOT)
         except ValueError:
             display = target
         print(f"created session report and presentation: {display}")
-        print("next: replace the example report and slide content, build indexes, and validate the site")
+        print("next: follow agent-support/templates/STUDY_SESSION_BLUEPRINT.md, replace the example content, build indexes, and validate the site")
         return 0
     except (OSError, ValueError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
