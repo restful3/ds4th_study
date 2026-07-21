@@ -246,6 +246,11 @@ class SiteToolTests(unittest.TestCase):
         self.assertGreaterEqual(generated_html.count('aria-label="'), 22)
         self.assertIn('data-report-source="report.html"', generated_html)
         self.assertEqual(generated_html.count('data-report-refs="'), 22)
+        self.assertIn('class="deck-settings"', generated_html)
+        self.assertIn('id="settingsToggle"', generated_html)
+        self.assertIn('href="../../">Index</a>', generated_html)
+        self.assertIn('href="./" aria-current="page">Slides</a>', generated_html)
+        self.assertIn('href="report.html">Report</a>', generated_html)
         self.assertEqual(metadata["template"], "study-deck-v1")
         self.assertEqual(metadata["report_template"], "study-report-v1")
         self.assertEqual(metadata["workflow"], "raw-report-deck-v1")
@@ -254,6 +259,10 @@ class SiteToolTests(unittest.TestCase):
         self.assertEqual(metadata["presenters"], ["발표자 A", "발표자 B"])
         self.assertTrue((target / "assets" / "deck.css").is_file())
         self.assertTrue((target / "assets" / "deck.js").is_file())
+        self.assertIn(
+            "setSettings",
+            (target / "assets" / "deck.js").read_text(encoding="utf-8"),
+        )
         generated_report = (target / "report.html").read_text(encoding="utf-8")
         self.assertIn('data-report-template="study-report-v1"', generated_report)
         self.assertIn("두 번째 발표", generated_report)
