@@ -64,6 +64,8 @@ http://localhost:8000/studies/<study-slug>/presentations/<session-slug>/
 
 위 주소는 발표자료이며, 상세 리포트는 같은 경로의 `report.html`이다.
 
+회차 폴더가 main에 반영되면 GitHub Actions가 인덱스를 검증하고 필요 시 자동 재생성하므로, 새 회차는 기존 스터디 목록에 자동으로 나타난다.
+
 ## 스터디가 끝난 뒤
 
 책이 끝나면 학습자료는 `source/`에서 `archive/`로 이동하지만 발표 URL은 바뀌지 않는다. 이 이동은 운영자가 에이전트에게 명시적으로 요청해 수행하며, 참가자가 직접 디렉터리를 옮길 필요는 없다.

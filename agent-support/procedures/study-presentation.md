@@ -131,6 +131,8 @@ python3 agent-support/scripts/validate-site.py --check-materials
 
 필요하면 `python3 -m http.server 8000 -d docs`로 실제 화면을 확인한다. 검증 실패를 무시하거나 검증 규칙을 약화하지 말고 원인을 수정한다.
 
+main에 push되면 GitHub Actions(`.github/workflows/validate-study-site.yml`)가 같은 검증을 실행하고, 인덱스가 오래된 경우 자동으로 재생성해 커밋한다. 이는 안전망일 뿐이며 검증 실패는 로컬에서 미리 잡는 것을 원칙으로 한다.
+
 ## 8. 게시 준비
 
 - 변경 파일과 검증 결과, 리포트·발표자료의 로컬 확인 URL을 사용자에게 보고한다.

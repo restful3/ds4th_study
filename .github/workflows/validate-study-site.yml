@@ -1,3 +1,5 @@
+# 회차 발표물 push·PR을 검증하고, main에서는 오래된 인덱스를 자동 재생성해 커밋한다 (ml4t pages.yml과 동일 패턴).
+# 저장소가 크므로 docs/ + agent-support/만 sparse checkout 한다.
 name: Validate study site
 
 on:
@@ -27,11 +29,11 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: validate-study-site-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   validate:
@@ -39,18 +41,12 @@ jobs:
     timeout-minutes: 5
 
     steps:
-      - name: Sparse partial checkout
-        env:
-          REPOSITORY: ${{ github.repository }}
-          TARGET_REF: ${{ github.ref }}
-        run: |
-          git init .
-          git remote add origin "https://github.com/${REPOSITORY}.git"
-          git sparse-checkout init --cone
-          git sparse-checkout set .agents .claude .github agent-support docs
-          git -c protocol.version=2 fetch \
-            --no-tags --depth=1 --filter=blob:none origin "${TARGET_REF}"
-          git checkout --detach FETCH_HEAD
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            docs
+            agent-support
 
       - name: Compile validation scripts
         run: python3 -m py_compile agent-support/scripts/*.py
@@ -58,8 +54,22 @@ jobs:
       - name: Test site lifecycle and validation
         run: python3 -m unittest discover -s agent-support/tests -v
 
-      - name: Check generated indexes
-        run: python3 agent-support/scripts/build-index.py --check
+      - name: Rebuild indexes
+        run: python3 agent-support/scripts/build-index.py
 
       - name: Validate Pages content
         run: python3 agent-support/scripts/validate-site.py
+
+      - name: Commit refreshed indexes (main push only)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          if git diff --quiet -- docs; then
+            echo "indexes already up to date"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git commit -m "ci: rebuild study indexes"
+          git pull --rebase origin main
+          git push origin HEAD:main
