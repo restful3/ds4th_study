@@ -4,40 +4,40 @@ schema_version = 1
 # preserve, redirect 또는 retire로 확정한다.
 [[pages]]
 path = "archive/그림과_실습으로_배우는_도커_&_쿠버네티스/dkkb/chapter06/index.html"
-decision = "pending"
+decision = "retire"
 
 [[pages]]
 path = "archive/도커심화_한권으로_배우는_도커_&_쿠버네티스/ch06/ex03ws/pages/index.html"
-decision = "pending"
+decision = "retire"
 
 [[pages]]
 path = "archive/밑바닥/밑바닥부터_시작하는_딥러닝/ch02_퍼셉트론_Song.html"
-decision = "pending"
+decision = "preserve"
 
 [[pages]]
 path = "archive/밑바닥/밑바닥부터_시작하는_딥러닝/ch03_신경망_Song.html"
-decision = "pending"
+decision = "preserve"
 
 [[pages]]
 path = "archive/요즘_우아한_AI개발/eduestory_plan_환경_6-8세.html"
-decision = "pending"
+decision = "retire"
 
 [[pages]]
 path = "archive/텐초의 파이토치 딥러닝 특강/12_캡챠_텍스트_인식_CRNN_GRU_Song.html"
-decision = "pending"
+decision = "preserve"
 
 [[pages]]
 path = "archive/텐초의 파이토치 딥러닝 특강/15_데이터_없이_학습하는_GAN_Song.html"
-decision = "pending"
+decision = "preserve"
 
 [[pages]]
 path = "archive/트랜스포머를_활용한_자연어_처리/nlp-with-transformers-main/images/chapter02_transformers-compact.html"
-decision = "pending"
+decision = "retire"
 
 [[pages]]
 path = "archive/트랜스포머를_활용한_자연어_처리/nlp-with-transformers-main/images/chapter02_transformers.html"
-decision = "pending"
+decision = "retire"
 
 [[pages]]
 path = "archive/핸즈온_머신러닝/index.html"
-decision = "pending"
+decision = "retire"

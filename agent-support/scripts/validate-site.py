@@ -344,6 +344,7 @@ def validate_reference(
     value: str,
     errors: list[str],
     warnings: list[str],
+    check_local_targets: bool = True,
 ) -> None:
     stripped = value.strip()
     if not stripped or stripped.startswith("#"):
@@ -380,30 +381,37 @@ def validate_reference(
         return
     if target.is_dir():
         target = target / "index.html"
-    if not target.exists():
+    if check_local_targets and not target.exists():
         errors.append(f"broken local reference in {html_path}: {value}")
 
 
 def validate_html(site: Path, errors: list[str], warnings: list[str]) -> None:
+    # docs/archive/ 아래는 legacy-pages.toml에서 preserve로 결정된 과거 스냅샷이다.
+    # 저작 시점 기준이 다르므로 품질 규칙(title/viewport/lang/alt/링크 무결성)은
+    # 면제하고, 안전 규칙(form, protocol-relative, 비HTTPS, docs 이탈)은 유지한다.
+    archive_root = site / "archive"
     for html_path in sorted(site.rglob("*.html")):
+        legacy = archive_root in html_path.parents
         text = html_path.read_text(encoding="utf-8", errors="replace")
         parser = PageParser()
         parser.feed(text)
-        if not parser.has_title:
-            errors.append(f"missing <title> in {html_path}")
-        if not parser.has_viewport:
-            errors.append(f"missing viewport meta tag in {html_path}")
-        if parser.html_lang not in {"ko", "en"}:
-            errors.append(f"missing or unsupported html lang in {html_path}")
-        if parser.images_without_alt:
-            errors.append(
-                f"{parser.images_without_alt} image(s) without alt text in {html_path}"
-            )
+        if not legacy:
+            if not parser.has_title:
+                errors.append(f"missing <title> in {html_path}")
+            if not parser.has_viewport:
+                errors.append(f"missing viewport meta tag in {html_path}")
+            if parser.html_lang not in {"ko", "en"}:
+                errors.append(f"missing or unsupported html lang in {html_path}")
+            if parser.images_without_alt:
+                errors.append(
+                    f"{parser.images_without_alt} image(s) without alt text in {html_path}"
+                )
         if parser.forms:
             errors.append(f"forms are not allowed on the public study site: {html_path}")
         for tag, attribute, value in parser.references:
             validate_reference(
-                html_path, site, tag, attribute, value, errors, warnings
+                html_path, site, tag, attribute, value, errors, warnings,
+                check_local_targets=not legacy,
             )
 
 

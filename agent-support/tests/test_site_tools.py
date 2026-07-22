@@ -173,6 +173,37 @@ class SiteToolTests(unittest.TestCase):
         self.assertNotEqual(validation.returncode, 0)
         self.assertIn("broken local reference", validation.stderr)
 
+    def test_validator_relaxes_quality_rules_for_preserved_archive_pages(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        legacy = self.site / "archive" / "old-study"
+        legacy.mkdir(parents=True)
+        (legacy / "page.html").write_text(
+            '<html><head></head><body><img src="missing.png"></body></html>\n',
+            encoding="utf-8",
+        )
+
+        validation = self.validate()
+        self.assertEqual(validation.returncode, 0, validation.stdout + validation.stderr)
+
+    def test_validator_still_blocks_unsafe_archive_pages(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        legacy = self.site / "archive" / "old-study"
+        legacy.mkdir(parents=True)
+        (legacy / "page.html").write_text(
+            '<html><head></head><body>'
+            '<form action="https://example.com"></form>'
+            '<script src="//local.adguard.org?x"></script>'
+            "</body></html>\n",
+            encoding="utf-8",
+        )
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn("forms are not allowed", validation.stderr)
+        self.assertIn("protocol-relative URL", validation.stderr)
+
     def test_validator_rejects_missing_report_artifact(self) -> None:
         build_result = self.build()
         self.assertEqual(build_result.returncode, 0, build_result.stderr)
