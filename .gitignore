@@ -84,6 +84,9 @@ Pipfile.lock
 .claude/settings.local.json
 .claude/.headroom_wrap_marker.json
 
+# 세션 핸드오프 메모는 개인 작업 기록이므로 추적하지 않는다.
+/HANDOFF.md
+
 # 기타
 .chainlit/*
 **/my_*/
