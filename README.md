@@ -26,7 +26,7 @@
 
 ---
 
-#### **2026년 7월 25일**: [Webex](#)
+#### **2026년 7월 25일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=me1d2791ff716182dd6d9d2d0029b6697)
 
 * 발표자 - 수경
 * **Chapter 1. 지식 그래프와 LLM: 강력한 조합 (Knowledge Graphs and LLMs: A Killer Combination)** — pp. 1–16
