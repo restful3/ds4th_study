@@ -22,23 +22,63 @@ explainer_suffix = "_ko_explained.md"
 # 봇 차단으로 200 이 아니지만 브라우저에서는 정상인 URL
 url_allow_non_200 = ["https://www.omim.org/"]
 
-# 챕터 원문 md 의 고유 키워드 빈도로 검증한 대응이다.
-# 개수를 맞춰 짝지으면 틀린다 — 실제로 ch05·ch06 을 잘못 배치했었다.
-# study-map-sources.py 로 재도출할 수 있다.
+# 키 = 책 장 폴더, 값 = 이 저장소의 소스 폴더 이름(`chapter_NN/src/<값>`).
+#
+# **이 저장소의 소스 폴더는 책 장 번호를 쓴다.** 업스트림 저장소는 MEAP 번호를 쓰므로
+# 둘이 다르다. 아래가 그 대응이고, 업스트림에서 코드를 다시 받을 때 이 표를 따른다.
+#
+#   책 장   이 저장소   업스트림 MEAP   확정 근거
+#   2~4     ch02~ch04   ch02~ch04       동일
+#   5       ch05        ch07
+#   6       ch06        ch08            Readme "Building knowledge graphs with Large Language Models"
+#   7       ch07        ch09            Readme "Named Entity Disambiguation"
+#   8       ch08        ch10            Readme "NED with Open LLMs and Domain Ontologies"
+#   9       ch09        ch11
+#   10      ch10        ch12
+#   11      ch11        ch13
+#   12      ch12        ch14            Readme "Node Classification and Link Prediction with GNNs"
+#   13      ch13        ch15
+#   14      —           (없음)          책 14장은 업스트림에 코드가 없다
+#   15      ch15        ch17            Readme "Question Answering System using LangGraph and Streamlit"
+#
+# 어긋나는 이유: 업스트림의 MEAP ch05("Build Knowledge Graph from Structured Sources")와
+# ch06("Knowledge graphs and natural language processing")이 최종 출간본에서 빠지면서 그 뒤
+# 번호가 두 칸 당겨졌는데, 저자가 저장소 폴더명을 renumber 하지 않았다 (업스트림 마지막
+# 커밋 3168908, 2025-04-15). 그 둘은 meap-only/ 에 두었다.
+#
+# 대응은 업스트림 각 폴더 Readme.md 의 제목이 책 장 제목과 일치하는 것으로 확정했다.
+# 개수를 맞춰 짝지으면 틀린다 — 실제로 업스트림 ch05·ch06 을 책 4·5장에 잘못 배치했었다.
 [mapping.chapters]
 chapter_02_intelligent_systems_a_hybrid_approach = "ch02"
 chapter_03_create_your_first_knowledge_graph_from_ontologies = "ch03"
 chapter_04_from_simple_networks_to_multisource_integration = "ch04"
-chapter_05_extracting_domain_specific_knowledge_from_unstructured_data = "ch07"
-chapter_06_building_knowledge_graphs_with_large_language_models = "ch08"
-chapter_07_named_entity_disambiguation = "ch09"
-chapter_08_ned_with_open_llms_and_domain_ontologies = "ch10"
-chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach = "ch11"
-chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches = "ch12"
-chapter_11_graph_representation_learning_and_graph_neural_networks = "ch13"
-chapter_12_node_classification_and_link_prediction_with_gnns = "ch14"
-chapter_13_knowledge_graph_powered_retrieval_augmented_generation = "ch15"
-chapter_15_building_a_qa_agent_with_langgraph = "ch17"
+chapter_05_extracting_domain_specific_knowledge_from_unstructured_data = "ch05"
+chapter_06_building_knowledge_graphs_with_large_language_models = "ch06"
+chapter_07_named_entity_disambiguation = "ch07"
+chapter_08_ned_with_open_llms_and_domain_ontologies = "ch08"
+chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach = "ch09"
+chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches = "ch10"
+chapter_11_graph_representation_learning_and_graph_neural_networks = "ch11"
+chapter_12_node_classification_and_link_prediction_with_gnns = "ch12"
+chapter_13_knowledge_graph_powered_retrieval_augmented_generation = "ch13"
+chapter_15_building_a_qa_agent_with_langgraph = "ch15"
+
+# 소스 폴더 -> 업스트림 저장소의 챕터 디렉터리. **기계가 읽는 정본** 이다.
+# 위 표는 사람이 읽는 것이고, 업스트림 Makefile 과 짝짓거나 코드를 다시 받을 때는
+# 이 표를 쓴다. 여기 없는 이름은 업스트림과 같다고 본다 (ch02~ch04).
+[mapping.upstream_dirs]
+ch05 = "ch07"
+ch06 = "ch08"
+ch07 = "ch09"
+ch08 = "ch10"
+ch09 = "ch11"
+ch10 = "ch12"
+ch11 = "ch13"
+ch12 = "ch14"
+ch13 = "ch15"
+ch15 = "ch17"
+"meap-ch05" = "ch05"
+"meap-ch06" = "ch06"
 
 # 리스팅 minor 번호 오프셋. 책 번호 = 파일 번호 - 오프셋.
 # 챕터마다 다르므로 한 챕터의 값을 다른 챕터에 적용하면 안 된다.
@@ -47,10 +87,13 @@ ch03 = 3
 ch04 = 0
 
 # 최종 출간본에 대응 챕터가 없는 MEAP 잔여 디렉터리. meap-only/ 에 둔다.
-# ch05 는 전체가 miRNA 인데 miRNA 는 책 4장에 1회뿐이고,
-# ch06 은 BBC+spaCy 문서 파이프라인인데 Jaccard 는 0회다.
+# 업스트림 ch05 는 전체가 miRNA 인데 miRNA 는 책 4장에 1회뿐이고,
+# 업스트림 ch06 은 BBC+spaCy 문서 파이프라인인데 Jaccard 는 0회다.
+# 이름에 meap- 를 붙인 이유: 소스 폴더가 책 번호를 쓰게 되면서 업스트림 번호 ch05·ch06 이
+# 책 5·6장과 겹쳤다. config.src_dirs() 가 `ch*` 를 이름으로 색인하므로 그대로 두면
+# meap 쪽이 책 5·6장 항목을 조용히 덮어쓴다.
 [mapping]
-meap_only = ["ch05", "ch06"]
+meap_only = ["meap-ch05", "meap-ch06"]
 
 # 리스팅 대응의 **정본**. 오프셋만으로는 표현할 수 없는 경우를 여기 명시한다.
 # 최종 교재가 코드 없는 리스팅(LLM 프롬프트 등)을 중간에 끼워넣으면 그 뒤 번호가
@@ -79,17 +122,18 @@ meap_only = ["ch05", "ch06"]
 [mapping.listings.ch02]
 "2.1" = { repo = "2.3" }
 
-# ch13 은 리스팅이 Cypher 가 아니라 파이썬이다. studykit.cypher.listings() 가 '.py' 를
-# 의도적으로 제외하므로 `repo = "N.M"` 해석 경로를 쓸 수 없고, 게다가 책 11.2~11.7 은
+# ch11(업스트림 ch13) 은 리스팅이 Cypher 가 아니라 파이썬이다. studykit.cypher.listings() 가
+# '.py' 를 의도적으로 제외하므로 `repo = "N.M"` 해석 경로를 쓸 수 없고, 게다가 책 11.2~11.7 은
 # 파일 하나(GNN_all_in_one.py) 안의 개별 클래스라 '파일 하나 = 리스팅 하나' 가정이 깨진다.
 # 그래서 source 를 "repo-file" 로 두고 path·symbol 로 실제 위치를 가리킨다.
 #   repo       : 번호 접두사 붙은 리스팅 파일 (Cypher)
 #   repo-file  : 코드가 저장소 안에 있으나 번호 파일이 아님 (path + symbol 또는 start/end)
 #   explainer  : 정본이 해설판 본문 (reason 으로 이유를 밝힌다)
 # 줄 번호는 소스가 갱신되면 조용히 어긋나므로 symbol(클래스명)을 정본으로 둔다.
-# [mapping.listing_offsets] 에 ch13 을 넣지 말 것 — 번호 붙은 파일이 13.1 하나뿐이라
+# path 의 파일명은 업스트림이 붙인 MEAP 번호 그대로다 (폴더만 renumber 했다).
+# [mapping.listing_offsets] 에 ch11 을 넣지 말 것 — 번호 붙은 파일이 13.1 하나뿐이라
 # 오프셋 +2 는 존재하지 않는 파일 13.3~13.8 을 가리킨다.
-[mapping.listings.ch13]
+[mapping.listings.ch11]
 "11.1" = { source = "repo-file", path = "listings/13.1 Applying node2vec embeddings to Karate Club’s Network.py", symbol = "__main__" }
 "11.2" = { source = "repo-file", path = "listings/GNN_all_in_one.py", symbol = "MultiHeadGraphAttention" }
 "11.3" = { source = "repo-file", path = "listings/GNN_all_in_one.py", symbol = "TransformerStyleGraphAttention" }
@@ -98,13 +142,13 @@ meap_only = ["ch05", "ch06"]
 "11.6" = { source = "repo-file", path = "listings/GNN_all_in_one.py", symbol = "GatedGraphUpdate" }
 "11.7" = { source = "repo-file", path = "listings/GNN_all_in_one.py", symbol = "JumpingKnowledge" }
 
-# ch14 는 listings/ 디렉터리가 아예 없다. 업스트림은 재사용 부품(model/·eval/·plot/)과
+# ch12(업스트림 ch14) 는 listings/ 디렉터리가 아예 없다. 업스트림은 재사용 부품(model/·eval/·plot/)과
 # 학습 함수 라이브러리(train_for_*.py)만 담고 진입점이 없다 — 실제 실행 코드는 Readme 가
 # 안내하는 Colab 노트북에만 있다. 그래서 책 리스팅 25개 중 모델 클래스 8건만 저장소에
 # 있고, 데이터 준비·분할·로더 17건은 해설판 본문이 정본이다.
 #   upstream-missing : 있어야 할 코드가 저장소에 없다 (노트북이 해설판 본문을 실행한다)
 #   book-only        : 코드가 아니라 출력 예시다
-[mapping.listings.ch14]
+[mapping.listings.ch12]
 "12.1"  = { source = "explainer", reason = "upstream-missing" }   # 증분 노드 ID 부여
 "12.2"  = { source = "explainer", reason = "upstream-missing" }   # edge_index 텐서 생성
 "12.3"  = { source = "explainer", reason = "book-only" }          # edge_index 출력 예시
@@ -131,12 +175,12 @@ meap_only = ["ch05", "ch06"]
 "12.24" = { source = "repo-file", path = "model/hetero_model.py", symbol = "HeteroBaseModel" }
 "12.25" = { source = "repo-file", path = "model/hetero_model.py", symbol = "HeteroSAGE" }
 
-# ch11 도 listings/ 가 없다. 코드는 analysis/ 두 파일에만 있다.
+# ch09(업스트림 ch11) 도 listings/ 가 없다. 코드는 analysis/ 두 파일에만 있다.
 # 책 9.5 는 원서 md 에서 캡션이 유실돼 book_listings() 가 잡지 못한다. title 을 함께 선언해
 # 대조표에 제목이 붙게 했다 (4.8·10.5 도 같은 사정이다).
 # 9.4·9.5 의 symbol 은 클래스 안 메서드라 dotted 표기다 — studykit.listing_source 가 해석한다.
-# [mapping.listing_offsets] 에 ch11 을 넣지 말 것 — 번호 붙은 파일이 하나도 없다.
-[mapping.listings.ch11]
+# [mapping.listing_offsets] 에 ch09 를 넣지 말 것 — 번호 붙은 파일이 하나도 없다.
+[mapping.listings.ch09]
 "9.1"  = { source = "repo-file", path = "analysis/simple_classification_example.py", symbol = "draw_and_save_graph_picture" }
 "9.2"  = { source = "repo-file", path = "analysis/simple_classification_example.py", symbol = "compute_degree_embeddings" }
 "9.3"  = { source = "repo-file", path = "analysis/simple_classification_example.py", symbol = "compute_complex_embeddings" }
@@ -148,16 +192,16 @@ meap_only = ["ch05", "ch06"]
 "9.9"  = { source = "explainer", reason = "book-only" }    # 출력 예시 — 9.6 + 9.8 이 만든다
 "9.10" = { source = "repo-file", path = "analysis/simple_clustering_example.py", symbol = "__main__" }
 
-# ch12 는 저장소가 MEAP 번호(12.x)를 쓴다. 책 major(10) 와 다르므로 listing_offsets 로
-# 표현할 수 없다 — resolve_listing 이 책 major 를 그대로 파일명에 쓰기 때문이다.
-# minor 는 대체로 일치하지만 책 10.18 만 저장소 12.19 다 (저장소 12.18 이 프롬프트라
-# 책에서 번호를 못 받아 뒤가 밀렸다). src/ch12/tasks.py 독스트링의 "번호 -2" 주장은
+# ch10 의 리스팅 파일은 업스트림 MEAP 번호(12.x)를 쓴다. 책 major(10) 와 다르므로
+# listing_offsets 로 표현할 수 없다 — resolve_listing 이 책 major 를 그대로 파일명에 쓰기
+# 때문이다. minor 는 대체로 일치하지만 책 10.18 만 파일 12.19 다 (파일 12.18 이 프롬프트라
+# 책에서 번호를 못 받아 뒤가 밀렸다). src/ch10/tasks.py 독스트링의 "번호 -2" 주장은
 # 이 한 건에서 틀리므로 함께 고쳤다.
 #
 # symbol 의 특수값 두 개 (노트북 헬퍼가 ast 로 해석한다):
 #   __main__   파일 전체 (스크립트, 또는 확장자 없는 Cypher·프롬프트 파일)
 #   __entry__  파일의 `if __name__ == '__main__':` 블록만
-[mapping.listings.ch12]
+[mapping.listings.ch10]
 "10.2"  = { source = "repo-file", path = "listings/12.3 Computing different types of node degrees in a fraud detection network.py", symbol = "__entry__" }
 "10.4"  = { source = "repo-file", path = "listings/12.4 Computing triangle metrics in a fraud detection network.py", symbol = "compute_triangle_metrics" }
 "10.6"  = { source = "repo-file", path = "listings/12.6 Computing geodesic path metrics in a fraud detection network.py", symbol = "compute_geodesic_metrics" }
@@ -177,12 +221,12 @@ meap_only = ["ch05", "ch06"]
 # 잡지 못한다 (원문 L237·L239). 게이트가 요구하지 않지만 사실이므로 선언해 둔다.
 "10.5"  = { source = "repo-file", path = "listings/12.5 Computing egonet density in a fraud detection network.py", symbol = "compute_density_metrics", title = "Computing egonet density in a fraud detection network" }
 
-# ch07 은 리스팅 파일명이 `listing_N.py` 다. 번호 접두사가 아니므로 repo 해석 경로를
-# 쓸 수 없다(cypher.find 는 "5.1" 로 시작하는 파일을 찾는다). 게다가 저장소 번호 N 이
-# 책 minor 와 한 칸 어긋난다 — 저장소 listing_1.py 는 UBIAI 어노테이션 API 호출인데
+# ch05(업스트림 ch07) 는 리스팅 파일명이 `listing_N.py` 다. 번호 접두사가 아니므로 repo
+# 해석 경로를 쓸 수 없다(cypher.find 는 "5.1" 로 시작하는 파일을 찾는다). 게다가 파일 번호 N
+# 이 책 minor 와 한 칸 어긋난다 — listing_1.py 는 UBIAI 어노테이션 API 호출인데
 # 최종 출간본에는 그 리스팅이 없다(원문 md 에 'ubiai' 가 0회). 그래서 뒤가 전부 밀려
-# 저장소 N = 책 minor + 1 이다. 짝수 자리(listing_4·6·8)는 GPT 출력 예시라 파일이 없다.
-#   저장소            책      내용
+# 파일 N = 책 minor + 1 이다. 짝수 자리(listing_4·6·8)는 GPT 출력 예시라 파일이 없다.
+#   파일              책      내용
 #   listing_1.py      —       UBIAI API (최종본에서 삭제)
 #   listing_2.py      5.1     프롬프트 v1
 #   listing_3.py      5.2     OpenAI API 호출
@@ -192,7 +236,7 @@ meap_only = ["ch05", "ch06"]
 #   listing_7.py      5.6     프롬프트 v3 (복잡한 예시)
 #   (없음)            5.7     5.6 의 GPT 출력
 # 셋 다 함수·클래스가 아니라 모듈 최상위 할당문이므로 symbol = "__main__"(파일 전체)이다.
-[mapping.listings.ch07]
+[mapping.listings.ch05]
 "5.1" = { source = "repo-file", path = "listings/listing_2.py", symbol = "__main__" }
 "5.2" = { source = "repo-file", path = "listings/listing_3.py", symbol = "__main__" }
 "5.3" = { source = "explainer", reason = "book-only" }   # 출력 예시 — 5.2 가 만든다
@@ -201,18 +245,18 @@ meap_only = ["ch05", "ch06"]
 "5.6" = { source = "repo-file", path = "listings/listing_7.py", symbol = "__main__" }
 "5.7" = { source = "explainer", reason = "book-only" }   # 출력 예시 — 5.6 이 만든다
 
-# ch08 은 저장소가 MEAP 번호(8.x)를 쓰고 책은 6.x 다. major 가 다르므로 listing_offsets
-# 로 표현할 수 없다. 파일이 .py 와 .txt 라 cypher.listings() 의 repo 경로도 못 쓴다
+# ch06 의 리스팅 파일은 업스트림 MEAP 번호(8.x)를 쓰고 책은 6.x 다. major 가 다르므로
+# listing_offsets 로 표현할 수 없다. 파일이 .py 와 .txt 라 cypher.listings() 의 repo 경로도 못 쓴다
 # (.py 는 제외되고, .txt 는 잡히지만 번호가 8.2 라 책 6.2 로 찾을 수 없다).
 # 6.1 은 모듈 상수 + __main__ 블록이 한 덩어리이고 6.2 는 Cypher 한 문장이라 둘 다 파일 전체다.
-[mapping.listings.ch08]
+[mapping.listings.ch06]
 "6.1" = { source = "repo-file", path = "listings/8.1 Normalization of persons and occupations.py", symbol = "__main__" }
 "6.2" = { source = "repo-file", path = "listings/8.2 Show influence network related to the cyclotron research.txt", symbol = "__main__" }
 
-# ch15 도 저장소가 MEAP 번호(15.x)를 쓰고 책은 13.x 다. minor 는 일치한다.
+# ch13 의 리스팅 파일도 업스트림 MEAP 번호(15.x)를 쓰고 책은 13.x 다. minor 는 일치한다.
 # 파일이 전부 `.py` 이고 이름이 "15.N - 제목.py" 라 repo 해석 경로를 쓸 수 없다.
 # 13.2·13.4 는 코드가 아니라 출력이다 — 13.2 는 대화 출력, 13.4 는 유사도 상위 두 청크다.
-[mapping.listings.ch15]
+[mapping.listings.ch13]
 "13.1" = { source = "repo-file", path = "listings/15.1 - A conversational AI agent with memory.py", symbol = "__main__" }
 "13.2" = { source = "explainer", reason = "book-only" }   # 출력 예시 — 13.1 이 만든다
 "13.3" = { source = "repo-file", path = "listings/15.3 - Transform documents into embeddings.py", symbol = "__main__" }

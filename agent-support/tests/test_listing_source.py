@@ -330,7 +330,7 @@ class StudyFacadeTests(unittest.TestCase):
 
     def test_chunk_for_resolves_symbol_chapter(self) -> None:
         """책 번호만 주면 study.toml 을 거쳐 소스 조각이 나온다."""
-        chunk = listing_source.chunk_for(self.study, "ch13", "11.2")
+        chunk = listing_source.chunk_for(self.study, "ch11", "11.2")
         self.assertIn("class MultiHeadGraphAttention", chunk.text)
         self.assertTrue(chunk.start >= 1)
         self.assertIn("GNN_all_in_one.py", chunk.origin())
@@ -338,16 +338,16 @@ class StudyFacadeTests(unittest.TestCase):
     def test_chunk_for_explainer_raises_with_reason(self) -> None:
         """해설판이 정본인 리스팅은 파일에서 읽을 수 없고, 이유가 메시지에 담긴다."""
         with self.assertRaises(listing_source.ListingSpecError) as ctx:
-            listing_source.chunk_for(self.study, "ch14", "12.3")
+            listing_source.chunk_for(self.study, "ch12", "12.3")
         self.assertIn("book-only", str(ctx.exception))
 
     def test_chunk_for_unknown_number_raises(self) -> None:
         with self.assertRaises(listing_source.ListingSpecError):
-            listing_source.chunk_for(self.study, "ch13", "11.99")
+            listing_source.chunk_for(self.study, "ch11", "11.99")
 
     def test_cross_reference_covers_declared_numbers(self) -> None:
         """대조표는 선언된 번호를 책 순서로 담고, 각 행이 위치를 안다."""
-        rows = listing_source.cross_reference(self.study, "ch12")
+        rows = listing_source.cross_reference(self.study, "ch10")
         numbers = [r.number for r in rows]
         self.assertEqual(numbers, sorted(numbers, key=lambda n: [int(x) for x in n.split(".")]))
         self.assertIn("10.15", numbers)
@@ -357,7 +357,7 @@ class StudyFacadeTests(unittest.TestCase):
 
     def test_cross_reference_marks_unnumbered_repo_files(self) -> None:
         """책 번호가 없는 저장소 리스팅도 함께 보여야 스터디원이 헷갈리지 않는다."""
-        extra = listing_source.unnumbered_listings(self.study, "ch12")
+        extra = listing_source.unnumbered_listings(self.study, "ch10")
         names = " ".join(extra)
         self.assertIn("12.18", names)   # 책이 번호를 주지 않은 LLM 프롬프트
 
@@ -407,11 +407,11 @@ class TitleTests(unittest.TestCase):
 
     def test_title_comes_from_book_listings(self) -> None:
         """원서 md 에서 캡션을 뽑을 수 있는 번호는 제목이 자동으로 붙는다."""
-        rows = {r.number: r for r in listing_source.cross_reference(self.study, "ch12")}
+        rows = {r.number: r for r in listing_source.cross_reference(self.study, "ch10")}
         self.assertIn("triangle", rows["10.4"].title.lower())
 
     def test_title_falls_back_to_declared(self) -> None:
         """캡션이 유실된 번호는 study.toml 의 title 선언을 쓴다 (없으면 빈 문자열)."""
-        rows = {r.number: r for r in listing_source.cross_reference(self.study, "ch11")}
+        rows = {r.number: r for r in listing_source.cross_reference(self.study, "ch09")}
         self.assertIn("9.5", rows)
         self.assertIsInstance(rows["9.5"].title, str)

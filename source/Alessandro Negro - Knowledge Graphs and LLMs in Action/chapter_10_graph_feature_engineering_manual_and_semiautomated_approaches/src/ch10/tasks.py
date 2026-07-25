@@ -4,9 +4,9 @@
     python tasks.py init
 
 업스트림 Makefile에는 init 만 있다. 리스팅 대응은 study.toml 의
-[mapping.listings.ch12] 가 정본이다. 저장소가 MEAP 번호(12.x)를 쓰므로 책 번호와
-major 부터 다르고, minor 도 한 건이 어긋난다 — 책 10.18 = listings/'12.19 ReFeX...py'
-(저장소 12.18 이 프롬프트라 책에서 번호를 못 받아 뒤가 밀렸다). "일괄 -2" 로 계산하면
+[mapping.listings.ch10] 가 정본이다. 리스팅 파일 이름이 업스트림 MEAP 번호(12.x)라
+책 번호와 major 부터 다르고, minor 도 한 건이 어긋난다 — 책 10.18 = listings/'12.19 ReFeX...py'
+(파일 12.18 이 프롬프트라 책에서 번호를 못 받아 뒤가 밀렸다). "일괄 -2" 로 계산하면
 그 한 건에서 틀린다.
 
 cypher.listings() 는 '.py' 를 제외하므로 이 폴더에서는 12.15~12.18 네 개만 돌려준다.

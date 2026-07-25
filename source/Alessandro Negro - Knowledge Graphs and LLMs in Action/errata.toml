@@ -53,11 +53,11 @@ observation = """
 책 표기대로 v1 의 task 에 v3 의 예시만 붙이면 v2 가 이미 얻은 정규화 효과를 잃는다.
 """
 correction = "저장소 listing_7.py 가 정본이다. 노트북은 세 프롬프트의 task 를 나란히 놓고 차이를 보인다."
-notebook = "chapter_05_extracting_domain_specific_knowledge_from_unstructured_data/src/ch07/05_chapter_guide.ipynb"
+notebook = "chapter_05_extracting_domain_specific_knowledge_from_unstructured_data/src/ch05/05_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 5
-location = "src/ch07/listings/ 번호 체계"
+location = "src/ch05/listings/ 번호 체계"
 kind = "code"
 status = "upstream"
 observation = """
@@ -67,8 +67,8 @@ listing_1.py 는 UBIAI 어노테이션 API 호출인데 최종 출간본에는 �
 listing_5 = 책 5.4, listing_7 = 책 5.6 이다. 출력 예시 자리(listing_4·6·8)에는 파일이 없다.
 게다가 listing_1.py 는 my_token = "XXX" 자리표시자라 그대로는 실행되지 않는다.
 """
-correction = "study.toml 의 [mapping.listings.ch07] 이 path 로 직접 가리킨다. listing_1.py 는 어떤 책 번호에도 대응하지 않는다."
-notebook = "chapter_05_extracting_domain_specific_knowledge_from_unstructured_data/src/ch07/05_chapter_guide.ipynb"
+correction = "study.toml 의 [mapping.listings.ch05] 이 path 로 직접 가리킨다. listing_1.py 는 어떤 책 번호에도 대응하지 않는다."
+notebook = "chapter_05_extracting_domain_specific_knowledge_from_unstructured_data/src/ch05/05_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 5
@@ -85,7 +85,7 @@ correction = """
 study.toml 에 title 을 덮어쓰지 않았다 — 원문의 손상을 감추는 쪽보다 드러내는 쪽이 낫다고
 보았다. 노트북 대조표가 이 사정을 출력으로 함께 알린다.
 """
-notebook = "chapter_05_extracting_domain_specific_knowledge_from_unstructured_data/src/ch07/05_chapter_guide.ipynb"
+notebook = "chapter_05_extracting_domain_specific_knowledge_from_unstructured_data/src/ch05/05_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 5
@@ -98,7 +98,7 @@ observation = """
 주석 부분, 둘째가 Topic 주석 부분이다.
 """
 correction = "노트북은 fig5-2a · fig5-2b 두 attachment 로 나눠 싣고 무엇이 잘렸는지 밝힌다."
-notebook = "chapter_05_extracting_domain_specific_knowledge_from_unstructured_data/src/ch07/05_chapter_guide.ipynb"
+notebook = "chapter_05_extracting_domain_specific_knowledge_from_unstructured_data/src/ch05/05_chapter_guide.ipynb"
 
 # ────────────────────────────────────────────── 6장
 [[erratum]]
@@ -117,11 +117,11 @@ RELATED_TO_ENTITY {type:"HAS_TITLE"} 214개, 그런데 Title 노드 0개, KG 층
 그림 6.2 의 스키마와 13장의 KG_SCHEMA 가 모두 Title 을 포함하므로 영향이 두 장에 걸친다.
 """
 correction = "업스트림 파일은 고치지 않는다. 노트북이 재현 질의로 0개임을 보이고 Person.titles 로 대체 조회하는 법을 싣는다."
-notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch08/06_chapter_guide.ipynb"
+notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch06/06_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 6
-location = "src/ch08/requirements.lock"
+location = "src/ch06/requirements.lock"
 kind = "code"
 status = "version-drift"
 observation = """
@@ -134,7 +134,7 @@ correction = """
 7개 챕터의 저장 출력과 어긋난다. 노트북 실행 환경 셀에 업스트림 pin 과 실제 검증 버전을
 나란히 적었다.
 """
-notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch08/06_chapter_guide.ipynb"
+notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch06/06_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 6
@@ -148,7 +148,7 @@ observation = """
 저장소의 `listings/8.2 … .txt` 는 `nodes(path)` 로 정확하다.
 """
 correction = "저장소 .txt 가 정본이다. 노트북은 그것을 실행한다 (occupation='cyclotron' 에서 242행)."
-notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch08/06_chapter_guide.ipynb"
+notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch06/06_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 6
@@ -163,7 +163,7 @@ STUDENT_OF(실측 69건)는 betweenness · PageRank · Louvain 어느 값에도 
 그림이 STUDENT_OF 를 반영한 것처럼 읽으면 틀린다.
 """
 correction = "노트북이 투영에 실제로 들어가는 관계 유형을 코드에서 뽑아 캡션과 나란히 보인다."
-notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch08/06_chapter_guide.ipynb"
+notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch06/06_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 6
@@ -180,11 +180,11 @@ observation = """
 create_kg() 가 KG 층을 다시 만든다. 즉 임포터는 멱등이 아니고 재실행하면 모든 수치가 바뀐다.
 """
 correction = "노트북은 그래프가 비어 있을 때만 파이프라인을 돌리고, 재실행 시 무엇이 달라지는지 설명한다."
-notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch08/06_chapter_guide.ipynb"
+notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch06/06_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 6
-location = "src/ch08/Readme.md — 캐시 동작 설명"
+location = "src/ch06/Readme.md — 캐시 동작 설명"
 kind = "semantics"
 status = "upstream"
 observation = """
@@ -194,7 +194,7 @@ Readme 는 캐시 덕분에 "the entire process to run even without a valid Open
 캐시가 100% 적중해도 마찬가지다.
 """
 correction = "업스트림은 고치지 않는다. 노트북이 실행 전에 자리표시자 값을 주입하고 그 이유를 밝힌다."
-notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch08/06_chapter_guide.ipynb"
+notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch06/06_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 6
@@ -207,7 +207,7 @@ observation = """
 캡션 "Figure 6.3 Graph-based entity resolution example" 은 이미지 오른쪽 안에 인쇄돼 있다.
 """
 correction = "노트북은 이 이미지를 fig6-3 으로 싣는다."
-notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch08/06_chapter_guide.ipynb"
+notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch06/06_chapter_guide.ipynb"
 
 # ────────────────────────────────────────────── 9장
 [[erratum]]
@@ -217,7 +217,7 @@ kind = "code"
 status = "confirmed"
 observation = "함수 호출이 정의보다 앞에 인쇄돼 있어 인쇄 순서대로 실행하면 NameError 다."
 correction = "저장소 파일의 정의 → 호출 순서가 맞다."
-notebook = "chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/src/ch11/09_chapter_guide.ipynb"
+notebook = "chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/src/ch09/09_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 9
@@ -231,7 +231,7 @@ gensim Word2Vec 이 네 스레드로 학습해 가중치 갱신 순서가 스케
 책 9.7 둘째 블록(F1 0.6447)이 재현되지 않는 진짜 이유다.
 """
 correction = "재현이 필요하면 workers=1 로 둔다. 책도 F1 이 30~70% 를 널뛴다고 적었다."
-notebook = "chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/src/ch11/09_chapter_guide.ipynb"
+notebook = "chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/src/ch09/09_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 9
@@ -240,7 +240,7 @@ kind = "extraction"
 status = "editorial"
 observation = "캡션 줄이 원서 md 에 없다. 9.4 와 9.6 사이의 EvaluateEmbedding.evaluate 블록이 그것이다."
 correction = "study.toml 에 9.5 를 선언했다 (symbol = EvaluateEmbedding.evaluate)."
-notebook = "chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/src/ch11/09_chapter_guide.ipynb"
+notebook = "chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/src/ch09/09_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 9
@@ -248,16 +248,16 @@ location = "Listing 9.8"
 kind = "extraction"
 status = "editorial"
 observation = "`degree =` 의 우변이 소실되고 주석 조각이 끼어들었다. 저장소 코드가 정본이다."
-notebook = "chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/src/ch11/09_chapter_guide.ipynb"
+notebook = "chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/src/ch09/09_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 9
-location = "src/ch11/requirements.lock"
+location = "src/ch09/requirements.lock"
 kind = "code"
 status = "upstream"
 observation = "scikit-learn 과 pandas 가 빠져 있어 깨끗한 환경에서 tasks.py init 만 하면 ModuleNotFoundError 다."
 correction = "원본은 고치지 않고 노트북 실행 환경 셀에 표로 경고했다."
-notebook = "chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/src/ch11/09_chapter_guide.ipynb"
+notebook = "chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/src/ch09/09_chapter_guide.ipynb"
 
 # ────────────────────────────────────────────── 10장
 [[erratum]]
@@ -273,8 +273,8 @@ hetionet 실측: count{(c)-...} = 56 (Metformin 차수) 대 count{(v)-...} = 23,
 PDP 가 (23142/56)^-0.4 = 0.0898 배로 눌려 DWPC 가 0.0007028 이 된다. PC 는 영향 없다.
 """
 correction = "v -> c 로 고치면 DWPC 0.0078220 (11.1배). 책 본문이 인용하는 0.0007 자체가 이 버그의 산물이다."
-extra = "src/ch12/listings/12.18 의 LLM 프롬프트가 이 쿼리를 '검증된 예시' 로 심어 놓았다."
-notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+extra = "src/ch10/listings/12.18 의 LLM 프롬프트가 이 쿼리를 '검증된 예시' 로 심어 놓았다."
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch10/10_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 10
@@ -288,7 +288,7 @@ observation = """
 홉 수를 0 으로 비우는데 표에는 값이 있다.
 """
 correction = "노트북은 두 정의를 나란히 계산해 차이를 보이고, 어느 쪽이 옳다고 판정하지 않는다."
-notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch10/10_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 10
@@ -296,7 +296,7 @@ location = "표 10.6 ↔ Listing 10.8"
 kind = "value"
 status = "confirmed"
 observation = "표는 정규화하지 않은 매개 중심성인데 리스팅 기본 인자는 normalized=True 다. normalized=False 로 20/20 일치, 기본값으로는 9/20(0 인 값만 우연히 맞는다). 정규화 상수 C(19,2)=171."
-notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch10/10_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 10
@@ -304,7 +304,7 @@ location = "표 10.7 사기 가중 PageRank"
 kind = "value"
 status = "confirmed"
 observation = "리스팅 기본 개인화(fraud_weight=2)로 재현되지 않는다. 후보 5개를 역추적해 '사기꾼만 1, 나머지 0' 이 정답임을 확정했다 (L1 오차 0.009 대 기본값 0.575)."
-notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch10/10_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 10
@@ -312,7 +312,7 @@ location = "표 10.7 노드 Q 기본 PageRank"
 kind = "value"
 status = "confirmed"
 observation = "0.75 로 인쇄됐지만 실제는 0.076 이다. 0.75 로 두면 20개 값 합이 1.663 이 되어 확률분포가 아니다. 자리 하나가 밀린 오타다."
-notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch10/10_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 10
@@ -320,7 +320,7 @@ location = "그림 10.10a 의 합 수식"
 kind = "extraction"
 status = "editorial"
 observation = "원문 md 가 `2 + 4 + 4 + 3 + 1 + 9 = 17` 로 옮겼는데 좌변 합이 23 이다. 그림 안 인쇄값 `2(H)+4(I)+3(B)+4(G)+3(O)+1(T)=17` 이 정답이고 실제 차수와 맞는다. 해설판이 깨진 식을 그대로 옮기며 'O=9' 라고 적었으나 O 의 차수는 3 이다."
-notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch10/10_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 10
@@ -329,7 +329,7 @@ kind = "extraction"
 status = "editorial"
 observation = "코드가 텍스트가 아니라 스캔 이미지로 실려(원문 L237·L239) book_listings() 정규식이 잡지 못한다."
 correction = "study.toml 에 10.5 를 선언했다."
-notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch10/10_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 10
@@ -338,31 +338,31 @@ kind = "semantics"
 status = "editorial"
 observation = "'저장소에 Neo4j 의 Hetionet 에 연결하는 전체 코드가 있다' 고 하지만 없다 (12.19 는 create_fraud_network() 만 쓴다)."
 correction = "노트북 실습 10-D 가 그 연결을 직접 만든다 (Cypher -> networkx -> ReFeX, 노드 946 / 간선 1,655)."
-notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch10/10_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 10
-location = "src/ch12/listings/12.10·12.11·12.12"
+location = "src/ch10/listings/12.10·12.11·12.12"
 kind = "code"
 status = "upstream"
 observation = "임포트는 되지만 호출하면 NameError 다. 실행 가능한 판은 12.13 하나뿐이다."
-notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch10/10_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 10
-location = "src/ch12/listings/12.14"
+location = "src/ch10/listings/12.14"
 kind = "code"
 status = "upstream"
 observation = "`import numpy as np` 가 빠져 operator_l1/operator_l2 가 깨진다. catenate 는 list, 나머지는 ndarray 를 요구해 입력 타입이 섞인다."
-notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch10/10_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 10
-location = "src/ch12/listings/12.19 (ReFeX)"
+location = "src/ch10/listings/12.19 (ReFeX)"
 kind = "code"
 status = "upstream"
 observation = "반복마다 원본 열에도 .sum/.mean 을 다시 붙여 같은 이름·같은 값의 열 12쌍이 생긴다 (54개 중 고유 42개). 가지치기를 끄면 df[name] 이 Series 를 돌려줘 조용히 깨진다. 책 10.18 과 달리 가지치기를 반복마다 수행해 결과 열 집합도 다르다."
-notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch10/10_chapter_guide.ipynb"
 
 # ────────────────────────────────────────────── 11장
 [[erratum]]
@@ -372,7 +372,7 @@ kind = "code"
 status = "confirmed"
 observation = "`self.head_dim = input_dim` 이지만 torch.chunk 는 input_dim // num_heads 크기로 쪼개므로 헤드 차원이 어긋난다. 또 이 리스팅이 쓰는 GraphAttentionHead 의 정의가 책에 없다 (저장소 L8-34 에만 있다) — 그대로 옮기면 NameError 다."
 correction = "저장소는 input_dim // num_heads + divisibility assert 로 고쳤다."
-notebook = "chapter_11_graph_representation_learning_and_graph_neural_networks/src/ch13/11_chapter_guide.ipynb"
+notebook = "chapter_11_graph_representation_learning_and_graph_neural_networks/src/ch11/11_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 11
@@ -381,7 +381,7 @@ kind = "code"
 status = "confirmed"
 observation = "Q [batch,nodes,dim] 와 K [batch,nodes,neighbors,dim] 를 그대로 matmul 해 shape 이 맞지 않는다."
 correction = "저장소는 node_features.unsqueeze(2) 로 이웃 축에 브로드캐스트한다."
-notebook = "chapter_11_graph_representation_learning_and_graph_neural_networks/src/ch13/11_chapter_guide.ipynb"
+notebook = "chapter_11_graph_representation_learning_and_graph_neural_networks/src/ch11/11_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 11
@@ -390,7 +390,7 @@ kind = "code"
 status = "confirmed"
 observation = "정의되지 않은 전역 max_degree 를 참조해 NameError 다."
 correction = "저장소는 max_degree 를 생성자 인자로 받고 nn.Embedding(max_degree + 1, ...) 로 여유를 둔다."
-notebook = "chapter_11_graph_representation_learning_and_graph_neural_networks/src/ch13/11_chapter_guide.ipynb"
+notebook = "chapter_11_graph_representation_learning_and_graph_neural_networks/src/ch11/11_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 11
@@ -399,11 +399,11 @@ kind = "code"
 status = "confirmed"
 observation = "torch.cat(..., dim=1) 을 쓴다. [batch, nodes, features] 에서 dim=1 은 노드 축이라 잘못이다. 노트북이 재현한 오류: RuntimeError: mat1 and mat2 shapes cannot be multiplied (40x64 and 128x64)."
 correction = "dim=-1 이 맞다 (저장소가 그렇게 한다)."
-notebook = "chapter_11_graph_representation_learning_and_graph_neural_networks/src/ch13/11_chapter_guide.ipynb"
+notebook = "chapter_11_graph_representation_learning_and_graph_neural_networks/src/ch11/11_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 11
-location = "src/ch13/listings/GNN_all_in_one.py (FlexibleGNN)"
+location = "src/ch11/listings/GNN_all_in_one.py (FlexibleGNN)"
 kind = "code"
 status = "upstream"
 observation = """
@@ -413,7 +413,7 @@ else 분기가 인자 셋을 넘기는데 MultiHeadGraphAttention.forward 는 �
 전파가 아니다.
 """
 correction = "노트북이 '교육용 조립대' 로 읽어야 한다고 명시한다."
-notebook = "chapter_11_graph_representation_learning_and_graph_neural_networks/src/ch13/11_chapter_guide.ipynb"
+notebook = "chapter_11_graph_representation_learning_and_graph_neural_networks/src/ch11/11_chapter_guide.ipynb"
 
 # ────────────────────────────────────────────── 12장
 [[erratum]]
@@ -428,7 +428,7 @@ observation = """
 0 = 불법을 가리킨다. 이 오류를 그대로 믿으면 혼동 행렬 해석이 정반대로 뒤집힌다.
 """
 correction = "노트북이 le.classes_ 실측으로 바로잡는다."
-notebook = "chapter_12_node_classification_and_link_prediction_with_gnns/src/ch14/12_chapter_guide.ipynb"
+notebook = "chapter_12_node_classification_and_link_prediction_with_gnns/src/ch12/12_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 12
@@ -441,7 +441,7 @@ LinkNeighborLoader 에 분할 전 전체 그래프(data=data)를 넘긴다. 검�
 규모로 되돌아온다. PyG 공식 이질 링크 예측 예제는 data=train_data 를 쓴다.
 """
 correction = "노트북 기본값은 train_data 이고 LEAKY_BOOK_LOADER = True 로 책 재현이 가능하다."
-notebook = "chapter_12_node_classification_and_link_prediction_with_gnns/src/ch14/12_chapter_guide.ipynb"
+notebook = "chapter_12_node_classification_and_link_prediction_with_gnns/src/ch12/12_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 12
@@ -472,7 +472,7 @@ correction = """
 정보 누출 가설 기각은 유효하다 — 누출판·비누출판이 같은 채점표를 썼으므로 서로 간 비교는
 성립한다.
 """
-notebook = "chapter_12_node_classification_and_link_prediction_with_gnns/src/ch14/12_chapter_guide.ipynb"
+notebook = "chapter_12_node_classification_and_link_prediction_with_gnns/src/ch12/12_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 12
@@ -484,7 +484,7 @@ observation = """
 정정 로더로 재채점한 값은 노트북 「원인 후보 검증」 절에 있다.
 """
 correction = "라벨 오염이 확정됐으므로 이 항목은 '깨진 채점표를 고친 뒤 남는 격차' 만 가리킨다."
-notebook = "chapter_12_node_classification_and_link_prediction_with_gnns/src/ch14/12_chapter_guide.ipynb"
+notebook = "chapter_12_node_classification_and_link_prediction_with_gnns/src/ch12/12_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 12
@@ -493,7 +493,7 @@ kind = "extraction"
 status = "editorial"
 observation = "해설판이 세 조각을 '(1/3) GCN · (2/3) GAT · (3/3) SAGE' 로 적었지만 원서 원문 등장 순서는 SAGE -> GCN -> GAT 다 (각 이미지의 제목 텍스트로 확인)."
 correction = "노트북은 모델 순서(GCN -> GAT -> SAGE)로 재정렬해 실었다."
-notebook = "chapter_12_node_classification_and_link_prediction_with_gnns/src/ch14/12_chapter_guide.ipynb"
+notebook = "chapter_12_node_classification_and_link_prediction_with_gnns/src/ch12/12_chapter_guide.ipynb"
 
 # ────────────────────────────────────────────── 13장
 [[erratum]]
@@ -520,7 +520,7 @@ correction = """
 August Krogh 면담 페이지)이 나오고 내용이 책 표 13.2 의 답과 부합한다. 노트북은 책
 그대로의 호출과 정정 호출을 나란히 실행해 보인다. 6장의 "임포터 LIMIT 100" 항목을 함께 보라.
 """
-notebook = "chapter_13_knowledge_graph_powered_retrieval_augmented_generation/src/ch15/13_chapter_guide.ipynb"
+notebook = "chapter_13_knowledge_graph_powered_retrieval_augmented_generation/src/ch13/13_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 13
@@ -534,7 +534,7 @@ Title 노드가 0개라 그 조합은 항상 빈 결과다. 게다가 KG_SCHEMA 
 노드 정의 자체가 없어서 스키마 자체가 불완전하다.
 """
 correction = "6장 QUERY_TITLES 항목을 함께 보라. 노트북은 이 조합이 왜 비는지 재현 질의로 보인다."
-notebook = "chapter_13_knowledge_graph_powered_retrieval_augmented_generation/src/ch15/13_chapter_guide.ipynb"
+notebook = "chapter_13_knowledge_graph_powered_retrieval_augmented_generation/src/ch13/13_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 13
@@ -551,7 +551,7 @@ correction = """
 오류가 아니다. 임베딩 모델이 다르면 코사인 점수의 스케일이 달라 절대값 비교가 성립하지
 않는다. 비교해야 할 것은 점수가 아니라 상위 문서 집합과 순위다.
 """
-notebook = "chapter_13_knowledge_graph_powered_retrieval_augmented_generation/src/ch15/13_chapter_guide.ipynb"
+notebook = "chapter_13_knowledge_graph_powered_retrieval_augmented_generation/src/ch13/13_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 13
@@ -568,18 +568,18 @@ correction = """
 오류가 아니다. 프롬프트가 "Respond directly if appropriate" 를 허용하고, 최신 모델은
 파라메트릭 지식만으로 답해 버리기도 한다. 노트북은 이 수치들을 단일값이 아니라 관측 범위로 적는다.
 """
-notebook = "chapter_13_knowledge_graph_powered_retrieval_augmented_generation/src/ch15/13_chapter_guide.ipynb"
+notebook = "chapter_13_knowledge_graph_powered_retrieval_augmented_generation/src/ch13/13_chapter_guide.ipynb"
 
 [[erratum]]
 chapter = 13
-location = "src/ch15/ 의존성 선언 부재 · cwd 상대경로"
+location = "src/ch13/ 의존성 선언 부재 · cwd 상대경로"
 kind = "code"
 status = "upstream"
 observation = """
 이 챕터에는 requirements.txt 도 requirements.lock 도 Makefile 도 없어 필요한 패키지를
 임포트문으로 판정해야 한다. 게다가 code/tools.py 는 load_dotenv("../.env") 를,
 listings/15.6 은 load_custom_prompt("../prompts/prompt_structured.txt") 를 쓰는데 둘 다
-cwd 상대경로라 src/ch15/listings/ 에서 실행할 때만 맞는다.
+cwd 상대경로라 src/ch13/listings/ 에서 실행할 때만 맞는다.
 또 업스트림 임포트가 구버전 LangChain 을 전제한다 — langchain 1.x 는
 langchain.agents.create_structured_chat_agent 와 langchain_community.graphs.Neo4jGraph 를
 각각 langchain-classic · langchain-neo4j 로 옮겨 그대로는 ImportError 다.
@@ -588,7 +588,7 @@ correction = """
 업스트림 파일은 고치지 않는다. langchain 0.3.x 를 설치해 검증했고(0.3.30 계열),
 노트북이 실행 시점에만 cwd 를 listings/ 로 옮긴다. 검증 버전은 노트북 실행 환경 셀에 있다.
 """
-notebook = "chapter_13_knowledge_graph_powered_retrieval_augmented_generation/src/ch15/13_chapter_guide.ipynb"
+notebook = "chapter_13_knowledge_graph_powered_retrieval_augmented_generation/src/ch13/13_chapter_guide.ipynb"
 
 # ────────────────────────────────────────────── 2장
 [[erratum]]

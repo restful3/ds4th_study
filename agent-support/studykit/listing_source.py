@@ -1,7 +1,7 @@
 """책 리스팅 하나가 실제로 어디 있는지 읽는다.
 
 `study.toml` 의 `[mapping.listings.chXX]` 가 정본이라고 선언해 놓고도, 실제 해석은
-노트북마다 각자 구현돼 있었다 — ch11·ch13·ch14 는 `config.resolve_listing()` 을
+노트북마다 각자 구현돼 있었다 — 책 9·11·12장은 `config.resolve_listing()` 을
 호출조차 하지 않고 자체 표를 들고 있었고, 넷 다 비슷한 `ast` 헬퍼를 중복 구현했다.
 그래서 정본이 정본이 아니었다. 해석을 여기 한 곳으로 모은다.
 
@@ -72,7 +72,7 @@ class ListingChunk:
     rel_path: str = ""
     #: `symbol = "__main__"` 으로 파일을 통째로 읽었나.
     #: 줄 범위 선언도 symbol 이 없으므로 이 플래그 없이는 둘을 구분할 수 없다.
-    #: ch11 은 9.10 을 파일 전체로, 9.6 을 줄 범위로 선언한다.
+    #: ch09 는 9.10 을 파일 전체로, 9.6 을 줄 범위로 선언한다.
     whole_file: bool = False
 
     def origin(self) -> str:
@@ -202,7 +202,7 @@ class CrossReferenceRow:
 def chunk_for(study, repo_dir: str, book_no: str) -> ListingChunk:
     """책 리스팅 번호 하나를 소스 조각으로. 노트북이 쓰는 진입점이다.
 
-    노트북이 자체 대응표와 `ast` 헬퍼를 두지 않게 하려고 있다. 실제로 ch11·ch13·ch14 가
+    노트북이 자체 대응표와 `ast` 헬퍼를 두지 않게 하려고 있다. 실제로 책 9·11·12장이
     각자 250줄쯤을 재구현해 study.toml 이 정본이라는 규칙이 이름만 남은 적이 있다.
     """
     raw = study.listing_overrides.get(repo_dir, {}).get(str(book_no))

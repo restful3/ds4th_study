@@ -158,7 +158,7 @@ def header_cell(study: Study, book_chapter: int, repo_dir: str,
 def environment_cells(study: Study, src_dir: Path | None = None) -> list[dict]:
     anchor = "listings"
     if src_dir is not None and not (src_dir / "listings").is_dir():
-        # listings/ 가 없는 챕터가 있다 (ch09·ch10·ch11·ch14·ch17).
+        # listings/ 가 없는 챕터가 있다 (ch07·ch08·ch09·ch12·ch15).
         # 실제 있는 디렉터리로 cwd 를 확인한다.
         others = [d.name for d in sorted(src_dir.iterdir())
                   if d.is_dir() and d.name != "__pycache__"]

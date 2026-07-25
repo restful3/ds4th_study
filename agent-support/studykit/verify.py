@@ -62,15 +62,18 @@ def check_makefile_parity(study: Study) -> list[str]:
     failures: list[str] = []
     src_dirs = study.src_dirs()
 
-    for repo_dir, path in makefile.find_makefiles(study).items():
+    for upstream_dir, path in makefile.find_makefiles(study).items():
         expected = makefile.parse(path)
+        # 소스 폴더는 책 장 번호, 업스트림은 MEAP 번호라 이름이 다르다.
+        repo_dir = study.src_dir_for_upstream(upstream_dir)
+        where = repo_dir if repo_dir == upstream_dir else f"{repo_dir}(업스트림 {upstream_dir})"
         location = src_dirs.get(repo_dir)
         if location is None:
-            failures.append(f"{repo_dir}: 사본을 찾지 못했다 (study-map-sources 실행 필요)")
+            failures.append(f"{where}: 사본을 찾지 못했다 — [mapping.upstream_dirs] 를 확인하라")
             continue
         tasks_py = location / "tasks.py"
         if not tasks_py.exists():
-            failures.append(f"{repo_dir}: tasks.py 없음")
+            failures.append(f"{where}: tasks.py 없음")
             continue
 
         module = _load_module(tasks_py, f"tasks_{repo_dir}")
@@ -80,13 +83,13 @@ def check_makefile_parity(study: Study) -> list[str]:
         }
         if set(actual) != set(expected):
             failures.append(
-                f"{repo_dir}: 타깃 불일치 Makefile={sorted(expected)} tasks.py={sorted(actual)}"
+                f"{where}: 타깃 불일치 Makefile={sorted(expected)} tasks.py={sorted(actual)}"
             )
             continue
         for target in expected:
             if actual[target] != expected[target]:
                 failures.append(
-                    f"{repo_dir}:{target} 액션 불일치\n"
+                    f"{where}:{target} 액션 불일치\n"
                     f"    Makefile: {expected[target]}\n"
                     f"    tasks.py: {actual[target]}"
                 )
@@ -306,7 +309,7 @@ def check_coverage_numbers(declared: dict, book: dict, mapped: set, label: str) 
 
     기대 집합은 `book_listings() ∪ study.toml 명시 매핑` 이다. 원서 md 에서 캡션이
     유실되거나 코드 스캔 이미지로 실려 자동 추출이 놓치는 리스팅이 있어서
-    (ch11 의 9.5, ch12 의 10.5) 여분 선언을 허용해야 하지만, 아무 여분이나 통과시키면
+    (ch09 의 9.5, ch10 의 10.5) 여분 선언을 허용해야 하지만, 아무 여분이나 통과시키면
     오타("12.99")가 조용히 살아남는다. 그래서 study.toml 이 선언한 번호만 허용한다.
     """
     failures: list[str] = []

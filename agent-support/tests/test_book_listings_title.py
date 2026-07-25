@@ -46,7 +46,7 @@ class TitleExtractionTests(unittest.TestCase):
         self.assertEqual(titles["9.6"], "The full node classification process")
 
     def test_bare_caption_still_works(self) -> None:
-        """헤딩 마커 없이 줄머리에 오는 캡션도 잡는다 (ch11 9.1 형태)."""
+        """헤딩 마커 없이 줄머리에 오는 캡션도 잡는다 (ch09 9.1 형태)."""
         body = "We used the following prompt.\n\nListing 9.1 Creating and drawing a karate club network\n\ncode\n"
         self.assertEqual(
             self._titles(body)["9.1"], "Creating and drawing a karate club network"

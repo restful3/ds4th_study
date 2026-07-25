@@ -5,7 +5,7 @@
     python tasks.py analysis
 
 주의 — 업스트림 Makefile의 끊긴 참조를 그대로 옮겼다:
-  * init 의 requirements.lock 이 업스트림 ch04 에 없다. 4장은 ch05 의
+  * init 의 requirements.lock 이 업스트림 ch04 에 없다. 4장은 meap-only/meap-ch05 의
     requirements.lock 을 쓰거나 필요한 패키지를 직접 설치해야 한다.
   * analysis 의 analysis/pharma_analysis.py 가 업스트림에 없다
     (실제로 있는 파일은 multiomic_analysis.py, louvain_cluster_analysis.py).

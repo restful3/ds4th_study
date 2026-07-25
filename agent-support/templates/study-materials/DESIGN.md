@@ -77,8 +77,11 @@ source/<교재>/
 ## 매핑은 추측하지 않는다
 
 업스트림 저장소는 MEAP 번호를 쓰는 경우가 있어 디렉터리 이름과 책 챕터가 어긋난다.
-디렉터리 개수와 챕터 수를 맞춰 짝지으면 틀린다. 실제로 그렇게 해서 `ch05`(miRNA)를
-책 4장에, `ch06`(BBC+spaCy)을 책 5장에 잘못 넣었다.
+디렉터리 개수와 챕터 수를 맞춰 짝지으면 틀린다. 실제로 그렇게 해서 업스트림 `ch05`(miRNA)를
+책 4장에, 업스트림 `ch06`(BBC+spaCy)을 책 5장에 잘못 넣었다.
+
+**이 저장소의 소스 폴더는 책 장 번호를 쓴다.** 업스트림 이름과의 변환은 `study.toml` 의
+`[mapping.upstream_dirs]` 가 정본이고, 업스트림 산출물과 짝지을 때 이 표를 쓴다.
 
 ② 는 챕터 원문 md 의 **고유 키워드 빈도** 로 대응을 검증한다. 예: `Neosemantics` 가
 3장에만 7회, `PPI network` 가 4장에만 16회, `fraud` 가 10장에만 114회. 신뢰도가 기준
@@ -102,7 +105,7 @@ source/<교재>/
 
 ```toml
 [[dataset]]
-chapter = "ch09"
+chapter = "ch07"
 name = "SNOMED CT US Edition"
 url = "https://uts-ws.nlm.nih.gov/download?url=...&apiKey=<KEY>"
 dest = "dataset/ontology/snomed/SnomedCT_....zip"

@@ -6,9 +6,9 @@
 metadata 를 complete 로 바꾸면 완성 게이트가 검사한다.
 
     python3 agent-support/scripts/study-new-notebook.py <교재경로> <업스트림디렉터리>
-    python3 agent-support/scripts/study-new-notebook.py <교재경로> ch07 --dry-run
+    python3 agent-support/scripts/study-new-notebook.py <교재경로> ch05 --dry-run
     python3 agent-support/scripts/study-new-notebook.py <교재경로> --list
-    python3 agent-support/scripts/study-new-notebook.py <교재경로> ch07 --embed
+    python3 agent-support/scripts/study-new-notebook.py <교재경로> ch05 --embed
 
 --embed 는 마크다운의 attachment: 참조를 해설판 그림으로 채운다. 서술을 먼저 쓰고
 그림 참조를 넣은 뒤 실행한다.
@@ -54,7 +54,7 @@ def list_candidates(study: config.Study) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("study", help="교재 폴더 경로")
-    parser.add_argument("repo_dir", nargs="?", help="업스트림 챕터 디렉터리 (예: ch07)")
+    parser.add_argument("repo_dir", nargs="?", help="업스트림 챕터 디렉터리 (예: ch05)")
     parser.add_argument("--list", action="store_true", help="대상 챕터 목록만 보여준다")
     parser.add_argument("--dry-run", action="store_true", help="쓰지 않고 구성만 보여준다")
     parser.add_argument("--overwrite", action="store_true", help="기존 파일을 덮어쓴다")

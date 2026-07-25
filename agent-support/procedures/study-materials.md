@@ -48,8 +48,8 @@ shim 이고, 실제 동작은 `studykit.bootstrap` 에 있다. 하는 일은 다
 
 ### 업스트림 lock 은 출처, 재현 기준은 저장소가 따로 보증한다
 
-한 `.venv` 로 서로 충돌하는 업스트림 lock 을 동시에 만족시킬 수 없다. 실제로 ch12 는
-`networkx==3.2.1` 을, ch08·ch17 은 `neo4j==4.4.11` 을, ch09 는 `neo4j==4.4.4` 를 pin 하는데
+한 `.venv` 로 서로 충돌하는 업스트림 lock 을 동시에 만족시킬 수 없다. 실제로 ch10 은
+`networkx==3.2.1` 을, ch06·ch15 는 `neo4j==4.4.11` 을, ch07 은 `neo4j==4.4.4` 를 pin 하는데
 완성된 노트북들은 `networkx 3.4.2` · `neo4j 5.28.4` 에서 실행돼 출력이 저장됐다. 여기서
 버전을 내리면 **이미 완성된 챕터의 저장 출력과 어긋난다.**
 
@@ -64,8 +64,8 @@ shim 이고, 실제 동작은 `studykit.bootstrap` 에 있다. 하는 일은 다
 **업스트림이 pin 한 버전과 실제로 검증한 버전을 나란히** 적고, 다르면 왜 그 선택인지 밝힌다.
 숫자를 맞추려고 다운그레이드하지는 마라 — 완성된 챕터를 깨뜨리는 대가가 더 크다.
 
-다만 남은 챕터에서 이 방침이 깨질 가능성이 있는 곳을 미리 안다. ch09 는 `scispacy` 와
-S3 모델이 현재 환경에 없고, ch15 는 구버전 LangChain 임포트를, ch17 은 구버전 LangGraph API
+다만 남은 챕터에서 이 방침이 깨질 가능성이 있는 곳을 미리 안다. ch07 은 `scispacy` 와
+S3 모델이 현재 환경에 없고, ch13 은 구버전 LangChain 임포트를, ch15 는 구버전 LangGraph API
 를 쓴다. 이들은 **현재 버전에서 동작하지 않을 수 있으므로** 착수 시점에 먼저 확인하고,
 정말 다운그레이드가 필요하면 그 챕터만 별도 `.venv` 를 두는 쪽을 검토한다.
 
@@ -79,11 +79,14 @@ python3 agent-support/scripts/study-verify.py "source/<교재>" --no-urls   # �
 
 ### 매핑을 추측하지 마라
 
-업스트림이 MEAP 번호를 쓰면 디렉터리 이름과 책 챕터가 어긋난다. **디렉터리 개수와 챕터
-수를 맞춰 짝지으면 틀린다.** 실제로 그렇게 해서 `ch05`(miRNA)를 책 4장에, `ch06`(BBC+spaCy)을
-책 5장에 잘못 넣었다.
+업스트림이 MEAP 번호를 쓰면 그 디렉터리 이름과 책 챕터가 어긋난다. **디렉터리 개수와 챕터
+수를 맞춰 짝지으면 틀린다.** 실제로 그렇게 해서 업스트림 `ch05`(miRNA)를 책 4장에,
+업스트림 `ch06`(BBC+spaCy)을 책 5장에 잘못 넣었다.
 
-챕터 원문 md 의 **고유 키워드 빈도** 로 확인한다. 예시:
+확정한 대응은 `study.toml` 의 `[mapping.upstream_dirs]` 에 적는다. **이 저장소의 소스 폴더는
+책 장 번호를 쓰고**, 그 표가 업스트림 이름과의 변환을 담당한다.
+
+챕터 원문 md 의 **고유 키워드 빈도** 로 확인한다 (아래 표의 `chNN` 은 업스트림 이름이다):
 
 | 근거 | 결론 |
 | --- | --- |
@@ -121,11 +124,12 @@ python3 agent-support/scripts/study-verify.py "source/<교재>" --no-urls   # �
 
 | 걸림돌 | 해당 |
 | --- | --- |
-| 리스팅이 `.py` 다 — `cypher.listings()` 가 의도적으로 제외한다 | ch07 · ch08 · ch12 · ch13 · ch15 |
-| `listings/` 디렉터리가 아예 없다 — 코드가 `analysis/`·`model/` 등에 흩어져 있다 | ch09 · ch10 · ch11 · ch14 · ch17 |
+| 리스팅이 `.py` 다 — `cypher.listings()` 가 의도적으로 제외한다 | ch05 · ch06 · ch10 · ch11 · ch13 |
+| `listings/` 디렉터리가 아예 없다 — 코드가 `analysis/`·`model/` 등에 흩어져 있다 | ch07 · ch08 · ch09 · ch12 · ch15 |
 
-게다가 저장소가 MEAP 번호를 쓰면 **major 번호부터 다르고**(책 10장 ↔ 저장소 `ch12`),
-파일 하나에 리스팅 여러 개가 들어 있기도 하다(ch13 의 `GNN_all_in_one.py` 안 클래스 6개).
+게다가 **리스팅 파일 이름은 업스트림 MEAP 번호 그대로** 라 책 번호와 major 부터 다르고
+(책 10장의 파일이 `12.x`), 파일 하나에 리스팅 여러 개가 들어 있기도 하다
+(ch11 의 `GNN_all_in_one.py` 안 클래스 6개).
 그래서 선언 형식이 세 가지다.
 
 ```toml
@@ -138,7 +142,7 @@ python3 agent-support/scripts/study-verify.py "source/<교재>" --no-urls   # �
 ```
 
 해석은 **`studykit.listing_source` 한 곳에서만** 한다. 노트북이 자체 표나 자체 `ast`
-헬퍼를 두지 마라 — 실제로 ch11·ch13·ch14 가 `resolve_listing()` 을 호출조차 하지 않고
+헬퍼를 두지 마라 — 실제로 책 9·11·12장이 `resolve_listing()` 을 호출조차 하지 않고
 각자 구현해서 "study.toml 이 정본" 이라는 규칙이 이름만 남은 적이 있다.
 
 | 키 | 뜻 |
@@ -190,7 +194,7 @@ status = "confirmed"   # confirmed | editorial | version-drift | upstream | open
 severity = "high"      # 선택. 결과 해석이 뒤집히는 것에만
 observation = "..."    # 무엇을 관찰했나 (실측값 포함)
 correction = "..."     # 바로잡은 결과
-notebook = "chapter_10_.../src/ch12/10_chapter_guide.ipynb"
+notebook = "chapter_10_.../src/ch10/10_chapter_guide.ipynb"
 ```
 
 `status` 를 구분하는 이유가 있다. **`version-drift` 는 오류가 아니다** — 집필 시점과 지금의
@@ -214,8 +218,8 @@ notebook = "chapter_10_.../src/ch12/10_chapter_guide.ipynb"
 
 ```bash
 python3 agent-support/scripts/study-new-notebook.py "source/<교재>" --list      # 대상 확인
-python3 agent-support/scripts/study-new-notebook.py "source/<교재>" ch07 --dry-run
-python3 agent-support/scripts/study-new-notebook.py "source/<교재>" ch07
+python3 agent-support/scripts/study-new-notebook.py "source/<교재>" ch05 --dry-run
+python3 agent-support/scripts/study-new-notebook.py "source/<교재>" ch05
 ```
 
 **노트북은 `src` 에 코드가 있는 챕터에만 만든다.** 코드가 없으면 실행할 것이 없다.
@@ -245,7 +249,7 @@ python3 agent-support/scripts/study-new-notebook.py "source/<교재>" ch07
   판단하지 마라.**
 
   ```bash
-  python3 agent-support/scripts/study-new-notebook.py "source/<교재>" ch07 --embed
+  python3 agent-support/scripts/study-new-notebook.py "source/<교재>" ch05 --embed
   ```
 
   attachment 키는 해시 파일명이 아니라 그림 번호(`fig4-1.jpg`)로 둔다. 한 그림이 여러
@@ -258,24 +262,24 @@ python3 agent-support/scripts/study-new-notebook.py "source/<교재>" ch07
 
   | 챕터 | 증상 |
   | --- | --- |
-  | ch11(책9장) | 이미지 13장 중 6건만, 그것도 전부 `fig9-7a~f` 로 묶임 (해설판 캡션이 `**그림 9.1**` 볼드라 정규식 미스) |
-  | ch13(책11장) | 20장 중 9건. 차원 증가 시퀀스의 첫 조각(점 "0")을 그림 11.2 에 오배치 |
-  | ch14(책12장) | 30장 중 17건. 모델 순서가 해설판(GCN→GAT→SAGE)과 원문 등장 순서(SAGE→GCN→GAT)가 다름 |
-  | ch12(책10장) | 리스팅 코드 스캔과 **저자 아바타 아이콘(1.3KB)** 까지 그림으로 잡음 |
+  | ch09 | 이미지 13장 중 6건만, 그것도 전부 `fig9-7a~f` 로 묶임 (해설판 캡션이 `**그림 9.1**` 볼드라 정규식 미스) |
+  | ch11 | 20장 중 9건. 차원 증가 시퀀스의 첫 조각(점 "0")을 그림 11.2 에 오배치 |
+  | ch12 | 30장 중 17건. 모델 순서가 해설판(GCN→GAT→SAGE)과 원문 등장 순서(SAGE→GCN→GAT)가 다름 |
+  | ch10 | 리스팅 코드 스캔과 **저자 아바타 아이콘(1.3KB)** 까지 그림으로 잡음 |
 
   그러니 **원서 원문의 `Figure N.M` 캡션 바로 위 이미지** 를 근거로 삼고, 애매하면 이미지를
-  직접 열어 내용으로 판정한다. 캡션이 이미지 **안에** 인쇄된 경우도 있다(ch12 의 그림 10.7).
+  직접 열어 내용으로 판정한다. 캡션이 이미지 **안에** 인쇄된 경우도 있다(ch10 의 그림 10.7).
   확정한 대응은 `{키: 파일명}` 표로 남기고 `notebook.embed_named_figures()` 에 넘긴다.
   PDF 변환으로 **수식이 이미지가 된 것** 은 그림으로 참조하지 말고 본문에 LaTeX 로 쓴다.
 
 - **요약 표의 수치를 손으로 옮기지 마라.** 재실행하면 비결정적 값이 달라져 표와 셀 출력이
-  어긋난다. ch13 에서 실제로 발생했다(표 `0.976` ↔ 출력 `0.967`, `gensim` 이 `workers=4` 로
+  어긋난다. ch11 에서 실제로 발생했다(표 `0.976` ↔ 출력 `0.967`, `gensim` 이 `workers=4` 로
   학습해 스레드 스케줄링에 좌우된다). 두 가지로 막는다.
 
   | 값의 성격 | 표에 적는 방식 |
   | --- | --- |
   | 결정적 (시드 고정·순수 계산) | 실측값 그대로 |
-  | 비결정적 | **관측 범위** 로 적고 무엇이 왜 비결정적인지 밝힌다 (ch11 이 이 방식) |
+  | 비결정적 | **관측 범위** 로 적고 무엇이 왜 비결정적인지 밝힌다 (ch09 가 이 방식) |
 
   그리고 요약 셀에 실측값을 **코드로 출력** 해 두면 마크다운 표와 나란히 놓고 대조할 수 있다.
   어느 항목이 비결정적인지도 그 출력에 표시한다.
@@ -355,7 +359,7 @@ llm.override_module_model(listing_3)   # OPENAI_MODEL 상수를 현재 모델로
 {
   "studykit": {
     "status": "complete",
-    "repo_dir": "ch07",
+    "repo_dir": "ch05",
     "listing_coverage": {"5.1": "executed", "5.2": "documented-only", ...}
   }
 }
@@ -379,7 +383,7 @@ llm.override_module_model(listing_3)   # OPENAI_MODEL 상수를 현재 모델로
 - **출력 예시를 `executed` 로 쓰지 마라.** 책 9.7·9.9, 12.3·12.16·12.19·12.20 처럼 결과 표·
   텍스트인 리스팅은 `reproduced` 다. 실행할 코드 자체가 없다.
 - **가드가 걸린 것은 `optional` 이다.** 내 환경에 마침 의존물이 있어 실행됐더라도, 깨끗한
-  환경에서 건너뛴다면 `optional` 이다 (ch12 의 10.15\~10.17 은 4장이 만든 `hetionet` DB 에
+  환경에서 건너뛴다면 `optional` 이다 (ch10 의 10.15\~10.17 은 4장이 만든 `hetionet` DB 에
   의존한다).
 - **`optional` 은 실측 보존을 요구한다.** 플래그만 두고 값을 남기지 않으면 스터디원이
   무엇을 기대할지 알 수 없다. ch02 는 프록시로 한 번 돌려 날짜·모델과 함께 결과를 실었다.

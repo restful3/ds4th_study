@@ -16,9 +16,10 @@ from pathlib import Path
 BOOK_ROOT = Path(__file__).resolve().parent.parent
 UPSTREAM = BOOK_ROOT / "code" / "chapters"
 
-# 업스트림 디렉터리명 -> 사본 경로.
-# 책 챕터에 대응하는 것은 chapter_*/src/ 밑에, 최종 출간본에 대응 챕터가 없는
-# MEAP 전용(ch05, ch06)은 meap-only/ 밑에 둔다.
+# 소스 폴더명 -> 사본 경로.
+# 책 챕터에 대응하는 것은 chapter_*/src/ 밑에 **책 장 번호** 로 두고, 최종 출간본에
+# 대응 챕터가 없는 MEAP 전용(업스트림 ch05·ch06)은 meap-only/meap-chNN 으로 둔다.
+# 업스트림 디렉터리명과의 대응은 study.toml 의 [mapping.upstream_dirs] 가 정본이다.
 SRC_DIRS = {
     d.name: d
     for parent in [*sorted(BOOK_ROOT.glob("chapter_*/src")), BOOK_ROOT / "meap-only"]

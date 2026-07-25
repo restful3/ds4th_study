@@ -53,16 +53,20 @@ class Study:
     base_packages: tuple[str, ...] = ("ipykernel", "jupyterlab")
     kernel_name: str | None = None
     explainer_suffix: str = "_ko_explained.md"
-    #: 책 챕터 폴더명 -> 업스트림 챕터 디렉터리명. study-map-sources.py 가 채운다.
+    #: 책 챕터 폴더명 -> 이 저장소의 소스 폴더명 (`chapter_NN/src/<값>`).
     chapter_map: dict[str, str] = field(default_factory=dict)
-    #: 업스트림 챕터 디렉터리명 -> 리스팅 minor 번호 오프셋.
+    #: 이 저장소의 소스 폴더명 -> 업스트림 저장소의 챕터 디렉터리명.
+    #: 이 저장소는 소스 폴더를 **책 장 번호** 로 두지만 업스트림은 MEAP 번호를 쓰므로
+    #: 둘이 다르다. 업스트림 산출물(Makefile 등)과 짝지으려면 이 표가 필요하다.
+    upstream_dirs: dict[str, str] = field(default_factory=dict)
+    #: 소스 폴더명 -> 리스팅 minor 번호 오프셋.
     #: **편의용 기본값일 뿐이다.** 책이 코드 없는 리스팅(프롬프트 등)을 중간에
     #: 끼워넣으면 그 뒤가 밀려 단일 오프셋으로 표현할 수 없다 (ch04 의 4.20 이 그렇다).
     #: 정본은 listing_overrides 다.
     listing_offsets: dict[str, int] = field(default_factory=dict)
-    #: 업스트림 디렉터리명 -> {책 리스팅 번호: {"repo": 파일번호} 또는 {"source": "explainer"}}
+    #: 소스 폴더명 -> {책 리스팅 번호: {"repo": 파일번호} 또는 {"source": "explainer"}}
     listing_overrides: dict[str, dict[str, dict]] = field(default_factory=dict)
-    #: 최종 출간본에 대응 챕터가 없는 업스트림 디렉터리
+    #: 최종 출간본에 대응 챕터가 없는 MEAP 잔여 디렉터리 (meap-only/ 아래 이름)
     meap_only: tuple[str, ...] = ()
     #: 봇 차단으로 200 이 아니지만 유효한 URL
     url_allow_non_200: tuple[str, ...] = ()
@@ -125,14 +129,28 @@ class Study:
     def chapter_dirs(self) -> list[Path]:
         return sorted(p for p in self.root.glob("chapter_*") if p.is_dir())
 
+    def src_dir_for_upstream(self, upstream_name: str) -> str:
+        """업스트림 챕터 디렉터리명 -> 이 저장소의 소스 폴더명.
+
+        선언이 없으면 이름이 같다고 본다 (ch02~ch04 가 그렇다).
+        """
+        for ours, theirs in self.upstream_dirs.items():
+            if theirs == upstream_name:
+                return ours
+        return upstream_name
+
     def src_dirs(self) -> dict[str, Path]:
-        """업스트림 디렉터리명 -> 사본 경로. meap-only 도 포함한다."""
+        """소스 폴더명 -> 사본 경로. meap-only 도 포함한다."""
         found: dict[str, Path] = {}
-        parents = [c / "src" for c in self.chapter_dirs()] + [self.meap_dir]
-        for parent in parents:
+        # 챕터 소스는 chNN, meap-only 는 접두사가 붙는다 (meap-chNN). 소스 폴더가 책 장
+        # 번호를 쓰게 되면서 MEAP 잔여물의 업스트림 번호와 겹쳤기 때문이다 — 접두사가
+        # 없으면 meap 쪽이 같은 이름의 책 챕터 항목을 덮어쓴다.
+        parents = [(c / "src", "ch*") for c in self.chapter_dirs()]
+        parents.append((self.meap_dir, "*ch*"))
+        for parent, pattern in parents:
             if not parent.is_dir():
                 continue
-            for path in sorted(parent.glob("ch*")):
+            for path in sorted(parent.glob(pattern)):
                 if path.is_dir():
                     found[path.name] = path
         return found
@@ -221,6 +239,7 @@ def load(study_root: Path | str | None = None) -> Study:
         kernel_name=study.get("kernel_name") or study["slug"],
         explainer_suffix=notebook.get("explainer_suffix", "_ko_explained.md"),
         chapter_map=dict(mapping.get("chapters", {})),
+        upstream_dirs=dict(mapping.get("upstream_dirs", {})),
         listing_offsets={k: int(v) for k, v in mapping.get("listing_offsets", {}).items()},
         listing_overrides={
             chapter: {str(num): dict(spec) for num, spec in entries.items()}

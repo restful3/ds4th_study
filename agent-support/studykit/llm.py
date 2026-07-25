@@ -2,8 +2,8 @@
 
 교재 코드가 환경변수 이름을 통일해 쓰지 않는다. 조사한 결과 두 계열이 섞여 있다.
 
-    OPENAI_KEY · OPENAI_BASE_URL · OPENAI_MODEL   ch08(책 6장) importer
-    OPENAI_API_KEY                                ch07·ch15 listings, langchain
+    OPENAI_KEY · OPENAI_BASE_URL · OPENAI_MODEL   ch06 importer
+    OPENAI_API_KEY                                ch05·ch13 listings, langchain
 
 그래서 한 곳에서 설정을 읽어 **두 형태 모두** 채운다. 그러지 않으면 챕터마다
 다른 변수를 수동으로 export 해야 한다.
