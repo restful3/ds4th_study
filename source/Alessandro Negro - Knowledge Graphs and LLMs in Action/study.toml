@@ -264,6 +264,37 @@ meap_only = ["meap-ch05", "meap-ch06"]
 "13.5" = { source = "repo-file", path = "listings/15.5 - KG-Enhanced Document Retriever tool.py", symbol = "__main__" }
 "13.6" = { source = "repo-file", path = "listings/15.6 - ReAct Agent implementing Graph RAG.py", symbol = "__main__" }
 
+# ch15 는 `listings/` 디렉터리가 없다. 코드가 애플리케이션 구조 그대로
+# app.py · chains/ · tools/ 에 흩어져 있어 전부 repo-file 로 가리킨다.
+# 리스팅 번호는 책과 같다 (major 15 가 우연히 업스트림 MEAP ch17 과 무관하게 일치).
+#
+# 캡션이 유실된 둘을 여기 선언한다 — 없으면 coverage 게이트가 여분으로 오해한다.
+#   15.7  원서 md 에 **코드가 스캔 이미지로** 실려 캡션 줄이 없다 (images/baa1236f….jpg).
+#         제목은 그 이미지 안에 인쇄된 "Schema extraction agent" 를 읽었다.
+#   15.9  캡션 줄만 사라졌고 코드는 텍스트로 남아 있다. 제목은 원문 절 제목
+#         "QUERY EXECUTION AGENT"(해설판 "질의 실행 에이전트")에서 복원한 것이라
+#         인쇄된 캡션과 글자까지 같다고 보증할 수 없다.
+#
+# 15.3·15.6·15.15 만 start/end 다 — 각각 클래스 둘(Property+Node), 메서드 둘
+# (run_prompt+intent_detection), 함수 경계가 없는 Streamlit 최상위 블록이라
+# 단일 symbol 로 가리킬 수 없다.
+[mapping.listings.ch15]
+"15.1"  = { source = "repo-file", path = "chains/chain_config.yaml", symbol = "__main__" }
+"15.2"  = { source = "repo-file", path = "chains/investigator.py", symbol = "ChainConfiguration" }
+"15.3"  = { source = "repo-file", path = "tools/schema.py", start = 8, end = 69 }
+"15.4"  = { source = "repo-file", path = "tools/schema.py", symbol = "Neo4jSchema" }
+"15.5"  = { source = "repo-file", path = "chains/investigator.py", symbol = "AgentState" }
+"15.6"  = { source = "repo-file", path = "chains/investigator.py", start = 113, end = 129 }
+"15.7"  = { source = "repo-file", path = "chains/investigator.py", symbol = "Agent.schema_extraction", title = "Schema extraction agent" }
+"15.8"  = { source = "repo-file", path = "chains/investigator.py", symbol = "Agent.text_to_cypher" }
+"15.9"  = { source = "repo-file", path = "chains/investigator.py", symbol = "Agent.query_execution", title = "Query execution agent" }
+"15.10" = { source = "repo-file", path = "chains/investigator.py", symbol = "Agent.post_query_execution" }
+"15.11" = { source = "repo-file", path = "chains/investigator.py", symbol = "Agent.generate_summary" }
+"15.12" = { source = "repo-file", path = "chains/investigator.py", symbol = "Agent.__init__" }
+"15.13" = { source = "repo-file", path = "chains/investigator.py", symbol = "processQuestion" }
+"15.14" = { source = "repo-file", path = "app.py", symbol = "MessageHistory" }
+"15.15" = { source = "repo-file", path = "app.py", start = 186, end = 230 }
+
 # OpenAI 호환 엔드포인트 설정. 비밀값을 저장소에 복사하지 않고 **참조만** 한다.
 # 이 파일은 저장소 밖에 있어 git 에 들어가지 않는다.
 # 교재 코드가 OPENAI_KEY / OPENAI_API_KEY 를 섞어 쓰므로 studykit.llm 이 양쪽을 채운다.
