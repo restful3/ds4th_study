@@ -26,7 +26,8 @@ agent-support/
 │   ├── config.py              study.toml 로드, 교재 루트 경로 해석
 │   ├── bootstrap.py           .venv 생성, 공용 자원 배치, .pth 등록
 │   ├── actions.py             Makefile 대체 액션 (pip/py/download/unzip/move)
-│   ├── cypher.py              리스팅 파일 읽기·실행
+│   ├── cypher.py              Cypher 리스팅 읽기·실행 (.py 는 제외한다)
+│   ├── listing_source.py      책 리스팅 → 실제 소스 조각 (repo-file·symbol·줄범위)
 │   ├── listing_map.py         챕터↔소스 매핑, 리스팅 번호 오프셋 도출
 │   ├── manifest.py            data-manifest.toml 기반 데이터 획득
 │   ├── notebook.py            노트북 골격 생성, 그림 attachment 내장
@@ -46,6 +47,7 @@ source/<교재>/
 ├── study.toml            교재 설정 (추적)
 ├── setup_env.py          studykit 을 호출하는 shim (추적)
 ├── data-manifest.toml    데이터 획득 매니페스트 (추적)
+├── errata.toml           교재 오류 정본 (추적)
 ├── .venv/                교재별 격리 가상환경 (무시)
 ├── code/                 업스트림 저장소 클론 (무시)
 ├── util/ config.ini      업스트림 공용 자원 (무시)

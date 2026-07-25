@@ -57,6 +57,10 @@ meap_only = ["ch05", "ch06"]
 # 전부 밀린다. ch04 는 책 4.20 이 프롬프트여서 4.21~4.22 가 업스트림 4.20~4.21 이다.
 # 여기 없는 번호는 listing_offsets 로 계산한다.
 [mapping.listings.ch04]
+# 책 4.8 은 실재하는데 원서 md 에서 캡션 줄만 유실됐다 (PDF 주석 콜아웃이 코드와
+# 뒤엉켰다). book_listings() 가 못 잡으므로 여기 선언해 coverage 게이트가 여분으로
+# 오해하지 않게 한다. 저장소 파일 번호는 책과 같다.
+"4.8"  = { repo = "4.8", title = "Create the graph projection in memory" }
 "4.20" = { source = "explainer" }   # Example LLM analysis prompt — 코드 파일 없음
 "4.21" = { repo = "4.20" }          # Importing the CKG database
 "4.22" = { repo = "4.21" }          # Finding known protein-disease associations
@@ -128,14 +132,16 @@ meap_only = ["ch05", "ch06"]
 "12.25" = { source = "repo-file", path = "model/hetero_model.py", symbol = "HeteroSAGE" }
 
 # ch11 도 listings/ 가 없다. 코드는 analysis/ 두 파일에만 있다.
-# 책 9.5 는 원서 md 에서 캡션이 유실돼 번호 붙은 리스팅으로 잡히지 않는다 (게이트도 요구하지 않는다).
-# 9.4 의 symbol 은 클래스 안 메서드라 dotted 표기다 — 이 챕터 노트북 헬퍼만 해석한다.
+# 책 9.5 는 원서 md 에서 캡션이 유실돼 book_listings() 가 잡지 못한다. title 을 함께 선언해
+# 대조표에 제목이 붙게 했다 (4.8·10.5 도 같은 사정이다).
+# 9.4·9.5 의 symbol 은 클래스 안 메서드라 dotted 표기다 — studykit.listing_source 가 해석한다.
 # [mapping.listing_offsets] 에 ch11 을 넣지 말 것 — 번호 붙은 파일이 하나도 없다.
 [mapping.listings.ch11]
 "9.1"  = { source = "repo-file", path = "analysis/simple_classification_example.py", symbol = "draw_and_save_graph_picture" }
 "9.2"  = { source = "repo-file", path = "analysis/simple_classification_example.py", symbol = "compute_degree_embeddings" }
 "9.3"  = { source = "repo-file", path = "analysis/simple_classification_example.py", symbol = "compute_complex_embeddings" }
 "9.4"  = { source = "repo-file", path = "analysis/simple_classification_example.py", symbol = "EvaluateEmbedding.train" }
+"9.5"  = { source = "repo-file", path = "analysis/simple_classification_example.py", symbol = "EvaluateEmbedding.evaluate", title = "Evaluation function" }
 "9.6"  = { source = "repo-file", path = "analysis/simple_classification_example.py", start = 96, end = 112 }
 "9.7"  = { source = "explainer", reason = "book-only" }    # 출력 예시 — 9.6 + 9.2/9.3 이 만든다
 "9.8"  = { source = "repo-file", path = "analysis/simple_classification_example.py", symbol = "compute_specific_degree_embeddings" }
@@ -169,7 +175,7 @@ meap_only = ["ch05", "ch06"]
 
 # 책 10.5 는 실재하지만 원서 md 에 **코드 스캔 이미지** 로 실려 있어 book_listings() 가
 # 잡지 못한다 (원문 L237·L239). 게이트가 요구하지 않지만 사실이므로 선언해 둔다.
-"10.5"  = { source = "repo-file", path = "listings/12.5 Computing egonet density in a fraud detection network.py", symbol = "compute_density_metrics" }
+"10.5"  = { source = "repo-file", path = "listings/12.5 Computing egonet density in a fraud detection network.py", symbol = "compute_density_metrics", title = "Computing egonet density in a fraud detection network" }
 
 # OpenAI 호환 엔드포인트 설정. 비밀값을 저장소에 복사하지 않고 **참조만** 한다.
 # 이 파일은 저장소 밖에 있어 git 에 들어가지 않는다.

@@ -1,0 +1,343 @@
+# 『Knowledge Graphs and LLMs in Action』 (Manning, 2025) 에서 확인한 오류·불일치 정본.
+#
+# 노트북을 만들면서 책 코드를 실제로 실행해 얻은 것들이다. 노트북 안에만 두면 검색도
+# 중복 제거도 안 되므로 여기 모은다. 각 항목의 `notebook` 이 재현·설명이 있는 곳이다.
+#
+# status
+#   confirmed      실행·측정으로 확정했다
+#   editorial      원서 PDF→md 변환이나 편집 과정의 손상 (책 내용 자체는 맞다)
+#   version-drift  집필 시점과 지금의 도구·데이터·모델이 달라 생긴 차이 (오류가 아니다)
+#   upstream       책이 아니라 저자 코드 저장소의 결함
+#   open           불일치는 확정했으나 원인은 미확정
+#
+# kind
+#   code       인쇄된 코드가 그대로는 동작하지 않는다
+#   value      인쇄된 수치가 재현되지 않는다
+#   semantics  본문 설명이 코드·데이터의 실제 동작과 다르다
+#   extraction 캡션·수식이 변환 과정에서 유실·손상됐다
+#
+# 검증 환경 (달라지면 value 항목을 다시 확인해야 한다)
+[env]
+python = "3.10.18"
+neo4j_server = "5.26 (Community n10s / Enterprise gds+apoc)"
+neo4j_driver = "5.28.4"
+torch = "2.13.0+cu130"
+torch_geometric = "2.8.0"
+networkx = "3.4.2"
+verified_on = "2026-07-25"
+
+# ────────────────────────────────────────────── 4장
+[[erratum]]
+chapter = 4
+location = "Listing 4.8"
+kind = "extraction"
+status = "editorial"
+observation = """
+`gds.graph.project` 리스팅의 코드 블록은 원서 md 에 있으나 `Listing 4.8` 캡션 줄이 없다.
+주석 콜아웃이 코드 줄과 뒤엉키며 사라졌다. 저장소에는 파일이 정상적으로 있다.
+"""
+correction = "study.toml 의 [mapping.listings.ch04] 에 4.8 을 선언해 coverage 게이트가 인식하게 했다."
+notebook = "chapter_04_from_simple_networks_to_multisource_integration/src/ch04/04_chapter_guide.ipynb"
+
+# ────────────────────────────────────────────── 9장
+[[erratum]]
+chapter = 9
+location = "Listing 9.1"
+kind = "code"
+status = "confirmed"
+observation = "함수 호출이 정의보다 앞에 인쇄돼 있어 인쇄 순서대로 실행하면 NameError 다."
+correction = "저장소 파일의 정의 → 호출 순서가 맞다."
+notebook = "chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/src/ch11/09_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 9
+location = "Listing 9.3 주석"
+kind = "semantics"
+status = "confirmed"
+observation = """
+"a random seed ensures reproducible results" 라고 적었지만 같은 리스팅이 workers=4 를 쓴다.
+gensim Word2Vec 이 네 스레드로 학습해 가중치 갱신 순서가 스케줄링에 좌우된다.
+임베딩 행렬을 비트 비교해 workers=1 은 재현, workers=4 는 미재현을 실측했다.
+책 9.7 둘째 블록(F1 0.6447)이 재현되지 않는 진짜 이유다.
+"""
+correction = "재현이 필요하면 workers=1 로 둔다. 책도 F1 이 30~70% 를 널뛴다고 적었다."
+notebook = "chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/src/ch11/09_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 9
+location = "Listing 9.5"
+kind = "extraction"
+status = "editorial"
+observation = "캡션 줄이 원서 md 에 없다. 9.4 와 9.6 사이의 EvaluateEmbedding.evaluate 블록이 그것이다."
+correction = "study.toml 에 9.5 를 선언했다 (symbol = EvaluateEmbedding.evaluate)."
+notebook = "chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/src/ch11/09_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 9
+location = "Listing 9.8"
+kind = "extraction"
+status = "editorial"
+observation = "`degree =` 의 우변이 소실되고 주석 조각이 끼어들었다. 저장소 코드가 정본이다."
+notebook = "chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/src/ch11/09_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 9
+location = "src/ch11/requirements.lock"
+kind = "code"
+status = "upstream"
+observation = "scikit-learn 과 pandas 가 빠져 있어 깨끗한 환경에서 tasks.py init 만 하면 ModuleNotFoundError 다."
+correction = "원본은 고치지 않고 노트북 실행 환경 셀에 표로 경고했다."
+notebook = "chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/src/ch11/09_chapter_guide.ipynb"
+
+# ────────────────────────────────────────────── 10장
+[[erratum]]
+chapter = 10
+location = "Listing 10.15 (Cypher)"
+kind = "code"
+status = "confirmed"
+severity = "high"
+observation = """
+DWPC 차수 계산의 첫 항이 바인딩되지 않은 변수 v 를 쓴다 — count{(v)-[:BINDS_CbG]-()}.
+패턴이 바인딩하는 것은 c·g·d 뿐이다. 10.16·10.17 은 같은 자리에 c 를 쓴다 (프로그램으로 확인).
+hetionet 실측: count{(c)-...} = 56 (Metformin 차수) 대 count{(v)-...} = 23,142 (전역 합계).
+PDP 가 (23142/56)^-0.4 = 0.0898 배로 눌려 DWPC 가 0.0007028 이 된다. PC 는 영향 없다.
+"""
+correction = "v -> c 로 고치면 DWPC 0.0078220 (11.1배). 책 본문이 인용하는 0.0007 자체가 이 버그의 산물이다."
+extra = "src/ch12/listings/12.18 의 LLM 프롬프트가 이 쿼리를 '검증된 예시' 로 심어 놓았다."
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 10
+location = "표 10.4 ↔ Listing 10.6"
+kind = "semantics"
+status = "confirmed"
+observation = """
+둘이 다른 양을 센다. 표는 인접행렬 A^k 의 사기꾼 열 합(= 길이 k 걸음 수, 목표 집합에 자기 포함),
+리스팅은 "최단 거리가 k 인 사기꾼 수" 다. 걸음 수로 재구성하면 20/20 일치, 리스팅 정의로는 6/20.
+리스팅 값은 사기꾼 4명을 넘을 수 없는데 표의 A 행은 1+4+18=23 이다. 리스팅은 사기꾼 노드의
+홉 수를 0 으로 비우는데 표에는 값이 있다.
+"""
+correction = "노트북은 두 정의를 나란히 계산해 차이를 보이고, 어느 쪽이 옳다고 판정하지 않는다."
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 10
+location = "표 10.6 ↔ Listing 10.8"
+kind = "value"
+status = "confirmed"
+observation = "표는 정규화하지 않은 매개 중심성인데 리스팅 기본 인자는 normalized=True 다. normalized=False 로 20/20 일치, 기본값으로는 9/20(0 인 값만 우연히 맞는다). 정규화 상수 C(19,2)=171."
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 10
+location = "표 10.7 사기 가중 PageRank"
+kind = "value"
+status = "confirmed"
+observation = "리스팅 기본 개인화(fraud_weight=2)로 재현되지 않는다. 후보 5개를 역추적해 '사기꾼만 1, 나머지 0' 이 정답임을 확정했다 (L1 오차 0.009 대 기본값 0.575)."
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 10
+location = "표 10.7 노드 Q 기본 PageRank"
+kind = "value"
+status = "confirmed"
+observation = "0.75 로 인쇄됐지만 실제는 0.076 이다. 0.75 로 두면 20개 값 합이 1.663 이 되어 확률분포가 아니다. 자리 하나가 밀린 오타다."
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 10
+location = "그림 10.10a 의 합 수식"
+kind = "extraction"
+status = "editorial"
+observation = "원문 md 가 `2 + 4 + 4 + 3 + 1 + 9 = 17` 로 옮겼는데 좌변 합이 23 이다. 그림 안 인쇄값 `2(H)+4(I)+3(B)+4(G)+3(O)+1(T)=17` 이 정답이고 실제 차수와 맞는다. 해설판이 깨진 식을 그대로 옮기며 'O=9' 라고 적었으나 O 의 차수는 3 이다."
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 10
+location = "Listing 10.5"
+kind = "extraction"
+status = "editorial"
+observation = "코드가 텍스트가 아니라 스캔 이미지로 실려(원문 L237·L239) book_listings() 정규식이 잡지 못한다."
+correction = "study.toml 에 10.5 를 선언했다."
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 10
+location = "해설판 10.3.2 연습문제"
+kind = "semantics"
+status = "editorial"
+observation = "'저장소에 Neo4j 의 Hetionet 에 연결하는 전체 코드가 있다' 고 하지만 없다 (12.19 는 create_fraud_network() 만 쓴다)."
+correction = "노트북 실습 10-D 가 그 연결을 직접 만든다 (Cypher -> networkx -> ReFeX, 노드 946 / 간선 1,655)."
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 10
+location = "src/ch12/listings/12.10·12.11·12.12"
+kind = "code"
+status = "upstream"
+observation = "임포트는 되지만 호출하면 NameError 다. 실행 가능한 판은 12.13 하나뿐이다."
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 10
+location = "src/ch12/listings/12.14"
+kind = "code"
+status = "upstream"
+observation = "`import numpy as np` 가 빠져 operator_l1/operator_l2 가 깨진다. catenate 는 list, 나머지는 ndarray 를 요구해 입력 타입이 섞인다."
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 10
+location = "src/ch12/listings/12.19 (ReFeX)"
+kind = "code"
+status = "upstream"
+observation = "반복마다 원본 열에도 .sum/.mean 을 다시 붙여 같은 이름·같은 값의 열 12쌍이 생긴다 (54개 중 고유 42개). 가지치기를 끄면 df[name] 이 Series 를 돌려줘 조용히 깨진다. 책 10.18 과 달리 가지치기를 반복마다 수행해 결과 열 집합도 다르다."
+notebook = "chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches/src/ch12/10_chapter_guide.ipynb"
+
+# ────────────────────────────────────────────── 11장
+[[erratum]]
+chapter = 11
+location = "Listing 11.2"
+kind = "code"
+status = "confirmed"
+observation = "`self.head_dim = input_dim` 이지만 torch.chunk 는 input_dim // num_heads 크기로 쪼개므로 헤드 차원이 어긋난다. 또 이 리스팅이 쓰는 GraphAttentionHead 의 정의가 책에 없다 (저장소 L8-34 에만 있다) — 그대로 옮기면 NameError 다."
+correction = "저장소는 input_dim // num_heads + divisibility assert 로 고쳤다."
+notebook = "chapter_11_graph_representation_learning_and_graph_neural_networks/src/ch13/11_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 11
+location = "Listing 11.3"
+kind = "code"
+status = "confirmed"
+observation = "Q [batch,nodes,dim] 와 K [batch,nodes,neighbors,dim] 를 그대로 matmul 해 shape 이 맞지 않는다."
+correction = "저장소는 node_features.unsqueeze(2) 로 이웃 축에 브로드캐스트한다."
+notebook = "chapter_11_graph_representation_learning_and_graph_neural_networks/src/ch13/11_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 11
+location = "Listing 11.4"
+kind = "code"
+status = "confirmed"
+observation = "정의되지 않은 전역 max_degree 를 참조해 NameError 다."
+correction = "저장소는 max_degree 를 생성자 인자로 받고 nn.Embedding(max_degree + 1, ...) 로 여유를 둔다."
+notebook = "chapter_11_graph_representation_learning_and_graph_neural_networks/src/ch13/11_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 11
+location = "Listing 11.5 · 11.6"
+kind = "code"
+status = "confirmed"
+observation = "torch.cat(..., dim=1) 을 쓴다. [batch, nodes, features] 에서 dim=1 은 노드 축이라 잘못이다. 노트북이 재현한 오류: RuntimeError: mat1 and mat2 shapes cannot be multiplied (40x64 and 128x64)."
+correction = "dim=-1 이 맞다 (저장소가 그렇게 한다)."
+notebook = "chapter_11_graph_representation_learning_and_graph_neural_networks/src/ch13/11_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 11
+location = "src/ch13/listings/GNN_all_in_one.py (FlexibleGNN)"
+kind = "code"
+status = "upstream"
+observation = """
+책에 없는 통합 예제다. 결함 둘. (1) architecture='gat' 은 순전파에서 TypeError — forward 의
+else 분기가 인자 셋을 넘기는데 MultiHeadGraphAttention.forward 는 둘만 받는다 (책 11.2 자체는
+정상이다). (2) 층마다 최초 neighbor_features 를 다시 집계해 num_layers 를 늘려도 진짜 k-홉
+전파가 아니다.
+"""
+correction = "노트북이 '교육용 조립대' 로 읽어야 한다고 명시한다."
+notebook = "chapter_11_graph_representation_learning_and_graph_neural_networks/src/ch13/11_chapter_guide.ipynb"
+
+# ────────────────────────────────────────────── 12장
+[[erratum]]
+chapter = 12
+location = "12.1.2 절 본문 (라벨 순서)"
+kind = "semantics"
+status = "confirmed"
+severity = "high"
+observation = """
+본문은 라벨 0 이 합법(licit)이라고 적었다. 그런데 LabelEncoder 는 ['1','2','unknown'] 을
+사전순 정렬하므로 0 = illicit 이다. 표 12.1(불법=원본 1)과 혼동 행렬 그림(첫 행이 illicit)도
+0 = 불법을 가리킨다. 이 오류를 그대로 믿으면 혼동 행렬 해석이 정반대로 뒤집힌다.
+"""
+correction = "노트북이 le.classes_ 실측으로 바로잡는다."
+notebook = "chapter_12_node_classification_and_link_prediction_with_gnns/src/ch14/12_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 12
+location = "Listing 12.21"
+kind = "code"
+status = "confirmed"
+observation = """
+LinkNeighborLoader 에 분할 전 전체 그래프(data=data)를 넘긴다. 검증·테스트용으로 떼어 둔
+엣지가 학습 중 메시지 전달에 쓰여, 12.2.3 절이 disjoint_train_ratio 로 막은 누출이 더 큰
+규모로 되돌아온다. PyG 공식 이질 링크 예측 예제는 data=train_data 를 쓴다.
+"""
+correction = "노트북 기본값은 train_data 이고 LEAKY_BOOK_LOADER = True 로 책 재현이 가능하다."
+notebook = "chapter_12_node_classification_and_link_prediction_with_gnns/src/ch14/12_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 12
+location = "Listing 12.21 + RandomLinkSplit 조합 (평가 라벨 손상)"
+kind = "code"
+status = "confirmed"
+severity = "high"
+observation = """
+검증·테스트 로더의 라벨이 3개 클래스로 오염된다. `RandomLinkSplit(neg_sampling_ratio=2)`
+가 이미 `edge_label` 에 음성(0)을 넣어 두는데, 리스팅 12.21 형태로 `LinkNeighborLoader` 에
+`neg_sampling_ratio=2` 를 **다시** 넘기면 PyG(`link_loader.py`)가 `edge_label.min() == 0`
+을 보고 `edge_label + 1` 로 밀어 올린다. 원래 음성 0->1, 양성 1->2, 새 음성이 0 이 된다.
+실측 라벨 분포 90,747건 = {0: 60,498, 1: 20,166, 2: 10,083}.
+
+그래서 이 채점표로는 **완벽한 이진 예측기도 가중 F1 0.5776 이 상한** 이고 "전부 링크 없음"
+이 0.5333 이다. 관측된 0.5691/0.5374/0.5672 는 상한의 98.5%/93.0%/98.2% 다 — 모델은
+거의 최적으로 동작했고 깨진 것은 채점이었다.
+"""
+correction = """
+학습용 배치는 정상(1:2 이진)이고 평가 경로만 깨진다. 로더에 넘기는 음성 비율을 빼거나
+분할 단계의 음성을 쓰지 않아야 한다. 노트북 「원인 후보 검증」 절이 정정 로더로 재채점한다.
+
+이 오염이 앞선 두 오판을 낳았다.
+  * "책 0.93 대비 크게 미달" — 서로 다른 채점표라 비교가 성립하지 않는다
+  * "거짓 음성률 82~98%" — 3x3 혼동 행렬을 2x2 로 오독한 값이다 (실제로는 원래 음성의
+    참 음성률). eval/eval_funcs.py 의 generate_confusion_matrices_batched 가 3x3 을 낸다
+  * "임베딩 암기" 가설의 근거였던 "학습 F1 0.90 대 검증 0.57" 도 서로 다른 채점표다
+정보 누출 가설 기각은 유효하다 — 누출판·비누출판이 같은 채점표를 썼으므로 서로 간 비교는
+성립한다.
+"""
+notebook = "chapter_12_node_classification_and_link_prediction_with_gnns/src/ch14/12_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 12
+location = "12.2 절 링크 예측 성능 (책 수치 재현)"
+kind = "value"
+status = "open"
+observation = """
+위 라벨 오염을 바로잡은 뒤에도 책이 보고한 약 0.93/0.91/0.93 에 이르는지는 확인하지 못했다.
+정정 로더로 재채점한 값은 노트북 「원인 후보 검증」 절에 있다.
+"""
+correction = "라벨 오염이 확정됐으므로 이 항목은 '깨진 채점표를 고친 뒤 남는 격차' 만 가리킨다."
+notebook = "chapter_12_node_classification_and_link_prediction_with_gnns/src/ch14/12_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 12
+location = "해설판 그림 12.6 · 12.11 캡션"
+kind = "extraction"
+status = "editorial"
+observation = "해설판이 세 조각을 '(1/3) GCN · (2/3) GAT · (3/3) SAGE' 로 적었지만 원서 원문 등장 순서는 SAGE -> GCN -> GAT 다 (각 이미지의 제목 텍스트로 확인)."
+correction = "노트북은 모델 순서(GCN -> GAT -> SAGE)로 재정렬해 실었다."
+notebook = "chapter_12_node_classification_and_link_prediction_with_gnns/src/ch14/12_chapter_guide.ipynb"
+
+# ────────────────────────────────────────────── 2장
+[[erratum]]
+chapter = 2
+location = "Listing 2.1 · 그림 2.9"
+kind = "value"
+status = "version-drift"
+observation = """
+책은 Claude 3.5 Sonnet 이 농부·양 문제에서 늑대·양배추 퍼즐 풀이로 미끄러진다고 보고한다.
+2026-07-25 재측정에서 gpt-5.4-mini·gpt-5.4 둘 다 정답('1회')을 냈다. 저자들도 "출간 무렵
+같은 실험은 다른 결과를 낼 것이 거의 확실하다" 고 예고했다.
+"""
+correction = """
+오류가 아니다. 다만 이 한 사례가 통과한 것이 이 절의 논지를 뒤집지는 않는다 — 근거는 Wu 등의
+11개 과제 결과이고, 이 예시가 출간 후 학습 데이터에 들어갔을 가능성도 배제할 수 없다.
+"""
+notebook = "chapter_02_intelligent_systems_a_hybrid_approach/src/ch02/02_chapter_guide.ipynb"

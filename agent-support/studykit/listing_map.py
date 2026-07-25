@@ -59,18 +59,54 @@ def similarity(book_title: str, repo_name: str) -> float:
     return 0.75 * overlap + 0.25 * ratio
 
 
+#: 리스팅 캡션 후보. 앞선 것이 우선한다.
+#:
+#: 최장 일치를 쓰면 안 된다 — 본문이 리스팅을 **산문으로 참조** 하는 문장이 실제 캡션보다
+#: 길어서 제목이 오염된다. 이 교재에서만 8건이었다. 예를 들어
+#:
+#:   L324  ... Listing 9.6 uses all the components (functions) from previous listings ...
+#:   L326  #### Listing 9.6 The full node classification process
+#:
+#: 산문이 89자, 캡션이 36자여서 산문이 이겼다. coverage 개수를 세는 데만 쓰던 동안은
+#: 값이 드러나지 않아 무증상이었고, 노트북 대조표에 제목을 싣기 시작하자 보였다.
+#: 산문 패턴을 아예 버리지는 않는다 — 캡션이 유실된 번호는 그것이라도 있어야
+#: 리스팅 번호 집합에서 빠지지 않는다.
+_CAPTION_PATTERNS = (
+    # ① 헤딩 캡션: "#### Listing 9.6 The full node classification process"
+    re.compile(r"^\s*#{1,6}\s*(?:\*\*)?Listing (\d+\.\d+)(?:\*\*)?\s+([^\n]{0,90})", re.M),
+    # ② 줄머리 캡션: "Listing 9.1 Creating and drawing a karate club network"
+    re.compile(r"^\s*(?:\*\*)?Listing (\d+\.\d+)(?:\*\*)?\s+([^\n]{0,90})", re.M),
+    # ③ 산문 참조 (폴백): "... see Listing 9.9 for the results ..."
+    re.compile(r"Listing (\d+\.\d+)\s+([^\n]{0,90})"),
+)
+
+
 def book_listings(study: Study, chapter_dir: Path) -> dict[str, str]:
-    """챕터 원문 md 에서 {리스팅 번호: 제목} 추출."""
+    """챕터 원문 md 에서 {리스팅 번호: 제목} 추출.
+
+    같은 번호가 여러 형태로 나오면 캡션 우선순위가 높은 것을 쓰고, 같은 우선순위 안에서는
+    **처음 나온 것** 을 쓴다 (길이로 고르지 않는다 — 위 `_CAPTION_PATTERNS` 주석 참고).
+    """
     original = study.original_md_for(chapter_dir)
     if original is None:
         return {}
     text = original.read_text(encoding="utf-8")
     found: dict[str, str] = {}
-    for number, title in re.findall(r"Listing (\d+\.\d+)\s+([^\n]{0,90})", text):
-        title = title.strip().rstrip("|").strip()
-        if number not in found or len(title) > len(found[number]):
-            found[number] = title
+    for pattern in _CAPTION_PATTERNS:
+        for number, title in pattern.findall(text):
+            if number in found:
+                continue
+            found[number] = _clean_title(title)
     return found
+
+
+#: PDF -> md 변환이 밑줄·별표를 이스케이프한다 (`edge\_index`). 제목은 사람이 읽는 값이라
+#: 그대로 노출하면 노트북 표에 백슬래시가 남는다.
+_MD_ESCAPE = re.compile(r"\\([\\`*_{}\[\]()#+\-.!~])")
+
+
+def _clean_title(title: str) -> str:
+    return _MD_ESCAPE.sub(r"\1", title.strip()).rstrip("|").strip()
 
 
 def repo_listings(src_dir: Path) -> list[tuple[str, str]]:

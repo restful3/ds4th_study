@@ -91,6 +91,11 @@ def main() -> int:
     failures += report(offset_failures,
                        f"{len(study.listing_offsets)}개 오프셋이 도출값과 일치")
 
+    section("리스팅 선언")
+    declared_count = sum(len(v) for v in study.listing_overrides.values())
+    failures += report(verify.check_declared_listings(study),
+                       f"{declared_count}개 선언이 파일·심볼까지 해결됨")
+
     section("Makefile 등가성")
     failures += report(verify.check_makefile_parity(study),
                        "업스트림 타깃·액션 순서가 tasks.py 와 등가")

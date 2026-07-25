@@ -222,7 +222,7 @@ def _check_external_urls(study: Study, markdown: str, label: str) -> list[str]:
 
 # ---------------------------------------------------------------- 완성 게이트
 #: 책 리스팅이 노트북에서 설명되는 방식. 전부 이 중 하나로 분류돼야 한다.
-COVERAGE_KINDS = ("executed", "substituted", "documented-only", "optional")
+COVERAGE_KINDS = ("executed", "reproduced", "substituted", "documented-only", "optional")
 
 TODO_MARKER = re.compile(r"TODO\(agent\)")
 
@@ -297,16 +297,68 @@ def check_listing_coverage(study: Study, path: Path, repo_dir: str) -> list[str]
             f"({', '.join(COVERAGE_KINDS)})"
         ]
 
-    failures = []
-    missing = sorted(set(book) - set(declared), key=lambda n: [int(x) for x in n.split(".")])
+    mapped = set(study.listing_overrides.get(repo_dir, {}))
+    return check_coverage_numbers(declared, book, mapped, path.name)
+
+
+def check_coverage_numbers(declared: dict, book: dict, mapped: set, label: str) -> list[str]:
+    """선언된 coverage 번호 집합이 옳은지.
+
+    기대 집합은 `book_listings() ∪ study.toml 명시 매핑` 이다. 원서 md 에서 캡션이
+    유실되거나 코드 스캔 이미지로 실려 자동 추출이 놓치는 리스팅이 있어서
+    (ch11 의 9.5, ch12 의 10.5) 여분 선언을 허용해야 하지만, 아무 여분이나 통과시키면
+    오타("12.99")가 조용히 살아남는다. 그래서 study.toml 이 선언한 번호만 허용한다.
+    """
+    failures: list[str] = []
+    order = lambda n: [int(x) for x in n.split(".")]  # noqa: E731
+
+    missing = sorted(set(book) - set(declared), key=order)
     if missing:
-        failures.append(f"{path.name}: 분류되지 않은 책 리스팅 — {', '.join(missing)}")
-    for number, kind in sorted(declared.items()):
+        failures.append(f"{label}: 분류되지 않은 책 리스팅 — {', '.join(missing)}")
+
+    unexpected = sorted(set(declared) - set(book) - mapped, key=order)
+    if unexpected:
+        failures.append(
+            f"{label}: 책에도 study.toml 에도 없는 번호를 분류했다 — {', '.join(unexpected)}. "
+            f"오타이거나, 실재하는 리스팅이면 [mapping.listings] 에 먼저 선언하라"
+        )
+
+    for number, kind in sorted(declared.items(), key=lambda kv: order(kv[0])):
         if kind not in COVERAGE_KINDS:
             failures.append(
-                f"{path.name}: 리스팅 {number} 의 분류 '{kind}' 가 유효하지 않다 "
+                f"{label}: 리스팅 {number} 의 분류 '{kind}' 가 유효하지 않다 "
                 f"({', '.join(COVERAGE_KINDS)} 중 하나여야 한다)"
             )
+    return failures
+
+
+def check_declared_listings(study: Study) -> list[str]:
+    """study.toml 의 리스팅 선언이 실제로 해결되는가.
+
+    `[mapping.listings.chXX]` 를 정본이라고 선언해 놓고 검증하지 않으면, 경로 오타나
+    이름이 바뀐 심볼이 노트북 실행 시점까지 드러나지 않는다.
+    """
+    from studykit import listing_source
+
+    failures: list[str] = []
+    src_dirs = study.src_dirs()
+    for repo_dir, entries in sorted(study.listing_overrides.items()):
+        base = src_dirs.get(repo_dir)
+        if base is None:
+            failures.append(f"{repo_dir}: [mapping.listings] 에 있으나 src 폴더가 없다")
+            continue
+        for number, raw in sorted(entries.items()):
+            try:
+                spec = listing_source.parse(raw)
+            except listing_source.ListingSpecError as exc:
+                failures.append(f"{repo_dir} 리스팅 {number}: {exc}")
+                continue
+            if spec.kind != "repo-file":
+                continue
+            try:
+                listing_source.read(spec, base)
+            except listing_source.ListingSpecError as exc:
+                failures.append(f"{repo_dir} 리스팅 {number}: {exc}")
     return failures
 
 
