@@ -48,8 +48,13 @@ def _listing_sort_key(path: Path) -> tuple:
 
 
 def find(number: str, directory: str | Path = "listings") -> Path:
-    """'3.19' 또는 파일명 일부로 리스팅 파일 하나를 찾는다."""
-    candidates = [p for p in listings(directory) if p.name.startswith(str(number))]
+    """'3.19' 또는 파일명 일부로 리스팅 파일 하나를 찾는다.
+
+    번호 뒤에 숫자가 이어지면 다른 리스팅이다. '4.1' 은 '4.10' 을 잡아선 안 된다
+    (3장은 번호가 모두 두 자리라 이 문제가 드러나지 않았다).
+    """
+    prefix = re.compile(rf"^{re.escape(str(number))}(?!\d)")
+    candidates = [p for p in listings(directory) if prefix.match(p.name)]
     if not candidates:
         candidates = [
             p for p in listings(directory) if str(number).lower() in p.name.lower()
