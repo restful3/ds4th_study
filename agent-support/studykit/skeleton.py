@@ -155,7 +155,18 @@ def header_cell(study: Study, book_chapter: int, repo_dir: str,
 """)
 
 
-def environment_cells(study: Study) -> list[dict]:
+def environment_cells(study: Study, src_dir: Path | None = None) -> list[dict]:
+    anchor = "listings"
+    if src_dir is not None and not (src_dir / "listings").is_dir():
+        # listings/ 가 없는 챕터가 있다 (ch09·ch10·ch11·ch14·ch17).
+        # 실제 있는 디렉터리로 cwd 를 확인한다.
+        others = [d.name for d in sorted(src_dir.iterdir())
+                  if d.is_dir() and d.name != "__pycache__"]
+        anchor = others[0] if others else ""
+    check = (f'assert (HERE / "{anchor}").is_dir(), f"cwd 가 챕터 폴더가 아니다: {{HERE}}"'
+             if anchor else
+             'assert (HERE / "tasks.py").exists() or any(HERE.glob("*.py")), \\\n    f"cwd 가 챕터 폴더가 아니다: {HERE}"')
+
     return [
         markdown(f"""---
 ## 실행 환경
@@ -171,7 +182,7 @@ python3 setup_env.py
 에디션 제약이나 플러그인 충돌이 있으면 반드시 적는다 — 없으면 스터디원이 막힌다.
 오래 걸리는 단계는 실측 시간과 용량을 적는다.
 """),
-        code('''"""환경 점검 — 이 셀이 통과하면 이후 모든 셀을 돌릴 수 있다."""
+        code(f'''"""환경 점검 — 이 셀이 통과하면 이후 모든 셀을 돌릴 수 있다."""
 from pathlib import Path
 
 from studykit import config, cypher
@@ -179,13 +190,12 @@ from studykit import config, cypher
 STUDY = config.load()     # 위로 올라가며 study.toml 을 찾는다
 HERE = Path.cwd()         # 주피터는 노트북 폴더를 cwd 로 둔다
 
-assert (HERE / "listings").is_dir(), f"리스팅 폴더가 없다. cwd 확인: {HERE}"
+{check}
 
 print("교재      :", STUDY.title)
-print("config.ini:", cypher.neo4j_params())
 
 # TODO(agent): 이 장이 요구하는 것을 검사하고, 실패 시 무엇을 하라고 알려라.
-#   예) 에디션 확인, 플러그인 존재 확인, 필요한 데이터베이스 목록
+#   예) Neo4j 연결·에디션·플러그인, API 키 존재, 필요한 파이썬 패키지
 '''),
     ]
 
@@ -244,10 +254,20 @@ def run(book_no: str, db: str = "neo4j", limit: int = 5, **params):
     return rows
 
 
-# 책 리스팅 -> 저장소 파일 대조표
-print(f"{'책':<8}저장소 파일")
-for path in cypher.listings(HERE / "listings"):
-    print(f"{path.name.split(' ')[0]:<8}{path.name}")
+# 책 리스팅 -> 저장소 파일 대조표.
+# listings/ 가 없는 챕터가 있다 (코드가 importer/·analysis/ 등에만 있는 경우).
+if (HERE / "listings").is_dir():
+    print(f"{'책':<8}저장소 파일")
+    for path in cypher.listings(HERE / "listings"):
+        print(f"{path.name.split(' ')[0]:<8}{path.name}")
+else:
+    print("listings/ 가 없다. 이 챕터의 코드는 아래 위치에 있다:")
+    for entry in sorted(HERE.iterdir()):
+        if entry.is_dir() and entry.name != "__pycache__":
+            files = sorted(f.name for f in entry.rglob("*.py"))
+            print(f"  {entry.name}/  {', '.join(files[:6])}")
+    print()
+    print("책 리스팅 번호는 원문 md 에서 확인해 study.toml 에 선언하라.")
 '''.replace("__REPO_DIR__", repo_dir))
 
 
@@ -352,7 +372,7 @@ def build(study: Study, repo_dir: str, output: Path | None = None,
 
     cells = [header_cell(study, book_chapter, repo_dir, chapter_title,
                          explainer.name, sections, src_dir)]
-    cells += environment_cells(study)
+    cells += environment_cells(study, src_dir)
     cells.append(listing_helper_cell(repo_dir))
     for section in body:
         cells += section_cells(section, book_chapter, letters)

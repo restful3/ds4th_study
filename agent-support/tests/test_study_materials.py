@@ -224,6 +224,42 @@ class SkeletonTests(unittest.TestCase):
                         "골격이 완성 게이트를 통과하면 미완성 노트북이 완성으로 보고된다",
                     )
 
+    @skip_without_study
+    def test_generated_code_cells_compile(self) -> None:
+        """생성된 코드 셀이 문법적으로 유효한가.
+
+        골격은 파이썬 소스를 문자열로 만들어 넣는다. 이스케이프 층이 하나 어긋나면
+        \\n 이 실제 개행으로 풀려 문자열 리터럴이 끊긴다. 골격을 실행해 보지 않으면
+        드러나지 않으므로 여기서 컴파일해 확인한다.
+        """
+        import tempfile
+
+        for study in STUDIES:
+            for repo_dir in sorted(study.chapter_map.values()):
+                if listing_map.chapter_dir_for(study, repo_dir) is None:
+                    continue
+                with self.subTest(study=study.slug, chapter=repo_dir):
+                    with tempfile.TemporaryDirectory() as tmp:
+                        output = Path(tmp) / "probe.ipynb"
+                        try:
+                            skeleton.build(study, repo_dir, output=output)
+                        except (FileNotFoundError, KeyError) as exc:
+                            self.skipTest(str(exc))
+                        import json
+                        cells = json.loads(output.read_text(encoding="utf-8"))["cells"]
+                        for index, cell in enumerate(cells):
+                            if cell["cell_type"] != "code":
+                                continue
+                            source = "".join(cell["source"])
+                            try:
+                                compile(source, f"{repo_dir}-cell{index}", "exec")
+                            except SyntaxError as exc:
+                                self.fail(
+                                    f"{repo_dir} 셀 {index} 문법 오류 — "
+                                    f"{exc.msg} (line {exc.lineno})"
+                                )
+
+
 
 if __name__ == "__main__":
     unittest.main()
