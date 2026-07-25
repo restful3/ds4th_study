@@ -606,3 +606,41 @@ correction = """
 11개 과제 결과이고, 이 예시가 출간 후 학습 데이터에 들어갔을 가능성도 배제할 수 없다.
 """
 notebook = "chapter_02_intelligent_systems_a_hybrid_approach/src/ch02/02_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 15
+location = "Listing 15.7 (Schema extraction agent)"
+kind = "extraction"
+status = "confirmed"
+observation = "원서 md 에 리스팅 15.7 의 캡션 줄이 없다. 코드가 텍스트가 아니라 스캔 이미지(images/baa1236f….jpg)로 실렸기 때문이고, book_listings() 가 이 번호를 아예 잡지 못한다. 해설판도 같은 이미지를 싣는다."
+correction = "study.toml 의 [mapping.listings.ch15] 에 15.7 을 chains/investigator.py 의 Agent.schema_extraction 으로 선언하고, 제목은 이미지 안에 인쇄된 'Schema extraction agent' 를 읽어 title 로 적었다."
+notebook = "chapter_15_building_a_qa_agent_with_langgraph/src/ch15/15_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 15
+location = "Listing 15.9 (Query execution agent)"
+kind = "extraction"
+status = "confirmed"
+observation = "리스팅 15.9 의 캡션 줄만 사라졌다. 코드(query_execution)는 원서 md 에 텍스트로 남아 있고 앞 문장이 'The query execution agent, shown next, …' 로 리스팅을 예고한다. 15.8 과 15.10 사이의 번호가 비어 있어 실재가 확인된다."
+correction = "study.toml 에 Agent.query_execution 으로 선언했다. title 은 원문 절 제목 'QUERY EXECUTION AGENT'(해설판 '질의 실행 에이전트')에서 복원한 것이라 인쇄된 캡션과 글자까지 같다고 보증할 수 없다."
+notebook = "chapter_15_building_a_qa_agent_with_langgraph/src/ch15/15_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 15
+location = "Figure 15.14 (b)"
+kind = "extraction"
+status = "confirmed"
+observation = "그림 15.14 는 이미지 두 장으로 나뉘는데, 원서 md 에 (a) 마커만 있고 (b) 마커 줄이 없다. 자동 대응이 두 번째 이미지를 15.15 로 밀어낼 수 있다. 실제 (b) 표기는 이미지(images/140e4087….jpg) **안에** 인쇄돼 있다."
+correction = "이미지를 직접 열어 확인하고 fig15-14a(3280ffb5…) · fig15-14b(140e4087…) 로 확정했다. 같은 방식으로 15.12·15.13·15.15 도 (a)(b) 두 장이고, 15.16 은 한 파일 안에 (a)(b) 패널이 함께 있다."
+notebook = "chapter_15_building_a_qa_agent_with_langgraph/src/ch15/15_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 15
+location = "importer/import_seed.py"
+kind = "code"
+status = "upstream"
+severity = "high"
+observation = "GraphDBBase 의 database 기본값이 'neo4j' 라, 인자 없이 실행하면 `CREATE DATABASE neo4j OPTIONS { seedUri: … }` 가 된다. 그 이름은 책 6장 임포터가 만든 KG 와 책 13장이 쓴 벡터 임베딩이 들어 있는 기존 DB 다. Readme 도 -d 옵션을 안내하지 않는다."
+correction = "기존 DB 가 있으면 CREATE DATABASE 가 실패하므로 데이터가 지워지지는 않지만 시드도 되지 않는다. 반드시 `-d <새 이름>` 을 넘겨 별도 DB 로 만든다."
+notebook = "chapter_15_building_a_qa_agent_with_langgraph/src/ch15/15_chapter_guide.ipynb"
+
