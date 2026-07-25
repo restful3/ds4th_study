@@ -33,10 +33,11 @@
     * 지식 그래프(KG)와 대규모 언어 모델(LLM) 소개
     * LLM의 환각·맥락 부족 한계와 KG의 보완 관계
     * KG와 LLM을 결합한 데이터 기반 애플리케이션 구축
+* Chapter 1 자료: [상세 리포트](https://restful3.github.io/ds4th_study/studies/knowledge-graphs-and-llms-in-action/presentations/2026-07-25-ch01/report.html) · [발표자료](https://restful3.github.io/ds4th_study/studies/knowledge-graphs-and-llms-in-action/presentations/2026-07-25-ch01/)
 * **Chapter 2. 지능형 시스템: 하이브리드 접근 (Intelligent Systems: A Hybrid Approach)** — pp. 17–36
     * 지능형 자문 시스템(IAS)을 위한 설계 개념과 아키텍처
     * 하이브리드 시스템이 KG와 LLM의 상호 보완적 강점을 활용하는 방식
-* 자료: 추후 공유
+* Chapter 2 자료: 추후 공유
 
 
 #### **2026년 8월 1일**: [Webex](#)
