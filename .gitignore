@@ -130,3 +130,9 @@ sample_submission.csv
 # GitHub Pages 게시물(docs/)은 전역 데이터 패턴(*.json, *.csv, **/data/ 등)보다 우선해 항상 추적한다
 !docs/**/
 !docs/**
+
+# KGLM 교재: setup_env.py 가 재생성하는 항목은 추적하지 않는다
+# - code/ 는 업스트림 저장소 클론이라 자체 .git 을 가진다 (embedded repo 방지)
+# - config.ini 는 로컬 Neo4j 접속정보라서 실제 비밀번호가 들어갈 수 있다
+source/Alessandro Negro - Knowledge Graphs and LLMs in Action/code/
+source/Alessandro Negro - Knowledge Graphs and LLMs in Action/config.ini
