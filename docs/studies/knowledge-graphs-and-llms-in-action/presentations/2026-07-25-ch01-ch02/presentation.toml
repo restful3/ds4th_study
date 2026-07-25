@@ -1,0 +1,11 @@
+study_id = "kg-llm-in-action-2026"
+session_id = "2026-07-25-ch01-ch02"
+title = "지식 그래프와 LLM: 강력한 조합과 하이브리드 지능형 시스템"
+date = "2026-07-25"
+presenters = ["수경"]
+chapters = ["Chapter 1", "Chapter 2"]
+template = "study-deck-v1"
+report_template = "study-report-v1"
+workflow = "raw-report-deck-v1"
+report_source = "report.html"
+artifacts = ["report", "slides"]

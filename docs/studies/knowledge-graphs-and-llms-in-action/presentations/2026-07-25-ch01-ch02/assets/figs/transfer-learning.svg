@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 500" role="img" aria-labelledby="title desc">
+  <title id="title">전이 학습에 의한 패러다임 전환</title>
+  <desc id="desc">과제마다 소형 전용 모델을 다수 학습하던 방식에서, 하나의 대형 사전학습 모델을 여러 과제에 재사용하는 방식으로 바뀐다.</desc>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B6B72"/></marker><style>.t{font-family:Inter,'Noto Sans KR',sans-serif}.h{font-size:19px;font-weight:800}.sh{font-size:14px;font-weight:800}.b{font-size:12.5px}.m{font-size:12px;fill:#6B6B72}.box{fill:#fff;stroke:#B7C2D1;stroke-width:1.5}.soft{fill:#F2F5F9;stroke:#B7C2D1;stroke-width:1.5}.navy{fill:#0F2C59}.line{stroke:#6B6B72;stroke-width:2;fill:none;marker-end:url(#a)}</style></defs>
+  <rect width="920" height="500" rx="12" fill="#FAFAF9"/>
+  <text class="t h" x="34" y="44">전이 학습은 ‘소형 모델 다수’를 ‘범용 대형 모델 소수’로 바꿨다</text>
+  <text class="t m" x="34" y="68">일반 과제에서 배운 언어 패턴을 특정 과제에 재사용해, 학습 데이터와 연산 비용을 크게 줄인다.</text>
+  <text class="t sh" x="34" y="104" fill="#0F2C59">이전 · 과제마다 소형 전용 모델</text>
+  <g class="t" font-size="12" text-anchor="middle">
+    <g transform="translate(60 120)"><rect class="soft" width="118" height="40" rx="6"/><text x="59" y="25" class="m">라벨 데이터 ①</text><rect class="box" x="146" y="0" width="96" height="40" rx="6"/><text x="194" y="25" class="b">소형 모델</text><rect class="navy" x="260" y="0" width="96" height="40" rx="6"/><text x="308" y="25" fill="#fff" class="b">과제 ①</text></g>
+    <g transform="translate(60 172)"><rect class="soft" width="118" height="40" rx="6"/><text x="59" y="25" class="m">라벨 데이터 ②</text><rect class="box" x="146" y="0" width="96" height="40" rx="6"/><text x="194" y="25" class="b">소형 모델</text><rect class="navy" x="260" y="0" width="96" height="40" rx="6"/><text x="308" y="25" fill="#fff" class="b">과제 ②</text></g>
+    <g transform="translate(60 224)"><rect class="soft" width="118" height="40" rx="6"/><text x="59" y="25" class="m">라벨 데이터 ③</text><rect class="box" x="146" y="0" width="96" height="40" rx="6"/><text x="194" y="25" class="b">소형 모델</text><rect class="navy" x="260" y="0" width="96" height="40" rx="6"/><text x="308" y="25" fill="#fff" class="b">과제 ③</text></g>
+  </g>
+  <text class="t m" x="470" y="196" width="200">과제가 늘 때마다</text><text class="t m" x="470" y="214">전용 데이터 수집과</text><text class="t m" x="470" y="232">재학습이 필요</text>
+  <line x1="34" y1="292" x2="886" y2="292" stroke="#B7C2D1" stroke-dasharray="4 4"/>
+  <text class="t sh" x="34" y="324" fill="#0F2C59">이후 · 하나의 사전학습 모델을 재사용</text>
+  <g class="t" text-anchor="middle">
+    <rect class="soft" x="48" y="340" width="150" height="70" rx="7"/><text x="123" y="372" class="b">대규모 말뭉치</text><text x="123" y="392" class="m">방대한 비정형 텍스트</text>
+    <path class="line" d="M198 375H246"/>
+    <rect class="box" x="248" y="340" width="172" height="70" rx="7"/><text x="334" y="368" class="sh">사전학습</text><text x="334" y="390" class="m">마스킹 토큰 예측</text>
+    <path class="line" d="M420 375H468"/>
+    <rect class="navy" x="470" y="336" width="172" height="78" rx="7"/><text x="556" y="368" fill="#fff" class="sh">대형 모델 (PLM · LLM)</text><text x="556" y="392" fill="#fff" opacity=".76" class="m">전이 가능한 표현</text>
+    <path class="line" d="M642 360C690 340 700 350 726 360"/><path class="line" d="M642 375H726"/><path class="line" d="M642 390C690 410 700 400 726 390"/>
+    <rect class="box" x="728" y="336" width="150" height="34" rx="6"/><text x="803" y="358" class="b">개체 추출</text>
+    <rect class="box" x="728" y="374" width="150" height="34" rx="6"/><text x="803" y="396" class="b">관계 추출</text>
+    <rect class="box" x="728" y="412" width="150" height="34" rx="6"/><text x="803" y="434" class="b">요약 · 질의</text>
+  </g>
+  <text class="t m" x="470" y="470" text-anchor="middle">KG 구축에서는 도메인마다 추출기를 새로 만들 필요 없이, 프롬프트만 바꿔 개체·관계를 뽑는다.</text>
+</svg>

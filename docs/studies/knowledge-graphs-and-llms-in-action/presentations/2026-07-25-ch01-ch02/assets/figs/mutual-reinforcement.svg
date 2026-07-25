@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 470" role="img" aria-labelledby="title desc">
+  <title id="title">LLM과 지식 그래프의 상호 보완 매트릭스</title>
+  <desc id="desc">왼쪽은 LLM의 약점을 지식 그래프가 처방하고, 오른쪽은 지식 그래프의 약점을 LLM이 처방하는 대응 구조다.</desc>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B6B72"/></marker><style>.t{font-family:Inter,'Noto Sans KR',sans-serif}.h{font-size:19px;font-weight:800}.sh{font-size:15px;font-weight:800}.b{font-size:12.5px}.m{font-size:11.5px;fill:#6B6B72}.box{fill:#fff;stroke:#B7C2D1;stroke-width:1.5}.soft{fill:#F2F5F9;stroke:#B7C2D1;stroke-width:1.5}.navy{fill:#0F2C59}.line{stroke:#6B6B72;stroke-width:2;fill:none;marker-end:url(#a)}</style></defs>
+  <rect width="920" height="470" rx="12" fill="#FAFAF9"/>
+  <text class="t h" x="34" y="44">서로를 대체하지 않고, 약점 위에 상대의 강점을 얹는다</text>
+  <text class="t m" x="34" y="68">각 행은 한쪽의 약점(왼쪽 칸)을 다른 쪽의 능력(오른쪽 칸)이 메우는 대응을 보여준다.</text>
+  <rect class="navy" x="40" y="92" width="410" height="40" rx="7"/><text x="245" y="118" text-anchor="middle" fill="#fff" class="t sh">LLM의 약점 → KG의 처방</text>
+  <rect class="soft" x="470" y="92" width="410" height="40" rx="7"/><text x="675" y="118" text-anchor="middle" class="t sh">KG의 약점 → LLM의 처방</text>
+  <g class="t" text-anchor="middle">
+    <g transform="translate(0 150)">
+      <rect class="box" x="48" y="0" width="150" height="72" rx="7"/><text x="123" y="32" class="b" font-weight="700">환각</text><text x="123" y="54" class="m">사실을 지어냄</text>
+      <path class="line" d="M200 36H244"/>
+      <rect class="box" x="246" y="0" width="196" height="72" rx="7"/><text x="344" y="30" class="b" font-weight="700">검증된 사실 토대</text><text x="344" y="52" class="m">구조화·검증된 지식으로 근거화</text>
+      <rect class="box" x="478" y="0" width="150" height="72" rx="7"/><text x="553" y="32" class="b" font-weight="700">구축 비용</text><text x="553" y="54" class="m">비정형에서 추출 난제</text>
+      <path class="line" d="M630 36H674"/>
+      <rect class="box" x="676" y="0" width="196" height="72" rx="7"/><text x="774" y="30" class="b" font-weight="700">개체·관계 추출</text><text x="774" y="52" class="m">프롬프트만으로 범용 추출</text>
+    </g>
+    <g transform="translate(0 238)">
+      <rect class="box" x="48" y="0" width="150" height="72" rx="7"/><text x="123" y="32" class="b" font-weight="700">오래된 정보</text><text x="123" y="54" class="m">재학습이 어려움</text>
+      <path class="line" d="M200 36H244"/>
+      <rect class="box" x="246" y="0" width="196" height="72" rx="7"/><text x="344" y="30" class="b" font-weight="700">동적 갱신</text><text x="344" y="52" class="m">GraphRAG · KG 프롬프팅</text>
+      <rect class="box" x="478" y="0" width="150" height="72" rx="7"/><text x="553" y="32" class="b" font-weight="700">질의 난이도</text><text x="553" y="54" class="m">스키마·질의어 필요</text>
+      <path class="line" d="M630 36H674"/>
+      <rect class="box" x="676" y="0" width="196" height="72" rx="7"/><text x="774" y="30" class="b" font-weight="700">자연어 질의</text><text x="774" y="52" class="m">text-to-cypher 변환</text>
+    </g>
+    <g transform="translate(0 326)">
+      <rect class="box" x="48" y="0" width="150" height="72" rx="7"/><text x="123" y="32" class="b" font-weight="700">설명 불가</text><text x="123" y="54" class="m">경로가 불투명</text>
+      <path class="line" d="M200 36H244"/>
+      <rect class="box" x="246" y="0" width="196" height="72" rx="7"/><text x="344" y="30" class="b" font-weight="700">추적 가능한 경로</text><text x="344" y="52" class="m">검증 가능한 정보 경로 제공</text>
+      <rect class="box" x="478" y="0" width="150" height="72" rx="7"/><text x="553" y="32" class="b" font-weight="700">결과 분산</text><text x="553" y="54" class="m">여러 노드에 흩어짐</text>
+      <path class="line" d="M630 36H674"/>
+      <rect class="box" x="676" y="0" width="196" height="72" rx="7"/><text x="774" y="30" class="b" font-weight="700">텍스트 요약</text><text x="774" y="52" class="m">읽기 쉬운 서술로 합성</text>
+    </g>
+  </g>
+  <text class="t m" x="460" y="438" text-anchor="middle">결합의 산출물 = 자연어로 접근 가능하고 근거가 남는 하이브리드 지능형 시스템 · [11]에서 영감</text>
+</svg>

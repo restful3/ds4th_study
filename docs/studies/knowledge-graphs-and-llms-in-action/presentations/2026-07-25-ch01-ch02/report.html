@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="ko" class="theme-light" data-report-template="study-report-v1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="지식 그래프와 LLM 실전 Chapter 1 · Chapter 2 상세 스터디 리포트">
+  <title>지식 그래프와 LLM: 강력한 조합과 하이브리드 지능형 시스템 · 상세 리포트</title>
+  <link rel="icon" href="../../../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/report.css">
+  <link rel="stylesheet" href="assets/katex/katex.min.css">
+</head>
+<body>
+  <a class="skip-link" href="#summary">리포트 본문으로 건너뛰기</a>
+  <button id="tocToggle" class="report-nav-toggle" type="button" aria-label="목차 열기" aria-controls="tocDrawer" aria-expanded="false" title="목차"><span aria-hidden="true">☰</span></button>
+  <div class="report-settings" aria-label="설정">
+    <button id="settingsToggle" class="report-settings-toggle" type="button" aria-label="설정 열기" aria-controls="settingsPanel" aria-expanded="false" title="설정">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M9.67 4.14a2.34 2.34 0 0 1 4.66 0 2.34 2.34 0 0 0 3.32 1.91 2.34 2.34 0 0 1 2.33 4.04 2.34 2.34 0 0 0 0 3.82 2.34 2.34 0 0 1-2.33 4.04 2.34 2.34 0 0 0-3.32 1.91 2.34 2.34 0 0 1-4.66 0 2.34 2.34 0 0 0-3.32-1.91 2.34 2.34 0 0 1-2.33-4.04 2.34 2.34 0 0 0 0-3.82 2.34 2.34 0 0 1 2.33-4.04 2.34 2.34 0 0 0 3.32-1.91"/></svg>
+    </button>
+    <div id="settingsPanel" class="report-settings-panel" aria-hidden="true">
+      <div class="report-settings-panel__group"><span class="report-settings-panel__label">화면</span><button id="themeToggle" type="button" onclick="cycleTheme()" aria-label="나이트 모드 전환">☀</button></div>
+      <div class="report-settings-panel__group"><span class="report-settings-panel__label">출력</span><button class="report-settings-action" type="button" onclick="window.print()">Print / PDF</button></div>
+      <div class="report-settings-panel__group"><span class="report-settings-panel__label">이동</span><nav class="report-quick-links" aria-label="회차 링크"><a href="../../">Index</a><a href="report.html">Report</a><a href="./">Slides</a></nav></div>
+    </div>
+  </div>
+  <div id="tocBackdrop" class="report-toc-backdrop" hidden></div>
+  <nav id="tocDrawer" class="report-toc-drawer" aria-label="문서 목차" aria-hidden="true">
+    <div class="report-toc-drawer__head"><span>목차</span><button id="tocClose" type="button" aria-label="목차 닫기">×</button></div>
+    <ol id="tocDrawerList" class="report-toc-drawer__list"></ol>
+  </nav>
+
+  <article class="report continuous-mode">
+    <section class="report-cover">
+      <div class="report-cover__wordmark"><span class="report-cover__wordmark-name">ds4th study</span><span class="report-cover__wordmark-sub">지식 그래프와 LLM 실전</span></div>
+      <span class="report-cover__kicker">Study Report · Chapter 1 · Chapter 2</span>
+      <h1 class="report-cover__title">지식 그래프와 LLM: 강력한 조합과 하이브리드 지능형 시스템</h1>
+      <p class="report-cover__subtitle">Chapter 1–2 · 지식 그래프와 LLM의 결합, 그리고 지능형 시스템 설계</p>
+      <dl class="report-cover__meta">
+        <div><dt>발표자</dt><dd>수경</dd></div>
+        <div><dt>범위</dt><dd>Chapter 1 · Chapter 2</dd></div>
+        <div><dt>발행</dt><dd>2026-07-25</dd></div>
+      </dl>
+    </section>
+
+    <section class="report-section s0 page-break" id="summary">
+      <div class="report-section__kicker">Section 00 · Executive Summary</div>
+      <h1>0. 핵심 요약</h1>
+      <div class="callout--hero">
+        <span class="callout__kicker">One Sentence</span>
+        <span class="callout__body"><strong>KG와 LLM은 강점이 정확히 상반되어 서로의 약점을 메우는 ‘환상의 조합’이며, 데이터가 아니라 비즈니스 목적에서 출발하는 목적 주도 하이브리드 지능형 자문 시스템으로 구현될 때 비로소 신뢰할 수 있다.</strong></span>
+      </div>
+      <p>Chapter 1과 2는 하나의 문제를 두 각도에서 다룬다. LLM은 자연어를 유창하게 다루지만 <strong>환각·오래된 정보·맥락과 관계 정보의 부재</strong>로 미션 크리티컬한 영역에서 흔들린다. 반대로 지식 그래프(KG)는 검증된 사실과 관계를 정확히 담지만 <strong>구축·유지 비용, 다중 홉 질의의 복잡성, 결과의 분산</strong> 때문에 널리 쓰이기 어려웠다. 두 기술의 약점이 서로의 강점과 맞물린다는 관찰이 이 두 장을 관통하는 출발점이다.</p>
+      <p>Chapter 1은 <strong>왜·무엇</strong>을 설명한다. KG의 정의와 네 기둥, LLM의 토대인 전이 학습, 그리고 둘이 서로를 떠받치는 상호 보완의 논리를 세운다. Chapter 2는 <strong>어떻게</strong>를 설계한다. 지능을 지식 표현과 추론으로 해부하고, 자율 시스템과 자문 시스템(IAS)을 구분하며, 하이브리드 추론 엔진과 피드백 루프, 그리고 목적 주도 구축 방법론까지 이어간다. 이 리포트는 슬라이드 문장을 늘인 것이 아니라, 처음 읽는 사람이 두 장의 논리를 스스로 따라갈 수 있도록 정의·작동 방식·판단 기준을 함께 남긴 독립 문서다.</p>
+      <div class="section-summary">
+        <div class="section-summary__kicker">핵심 질문</div>
+        <div class="section-summary__body"><ul>
+          <li><strong>문제</strong> — LLM만으로도 KG만으로도 부족한 이유는 무엇인가?</li>
+          <li><strong>메커니즘</strong> — 두 기술이 어떤 책임을 주고받아 서로를 강화하는가?</li>
+          <li><strong>판단</strong> — 언제 결합하고, 어디에서 사람이 통제하며, 무엇에서 출발해야 하는가?</li>
+        </ul></div>
+      </div>
+      <table class="cmp-table" id="table-overview">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 1</span><span class="asset-caption__title">Chapter 1–2의 전체 논리</span></div></caption>
+        <thead><tr><th>단계</th><th>핵심 질문</th><th>저자의 주장</th><th>실무 판단</th></tr></thead>
+        <tbody>
+          <tr><td>문제</td><td>왜 LLM만으로도, KG만으로도 부족한가?</td><td>각 기술의 강점이 상대의 약점을 정확히 메운다.</td><td>한쪽만으로 정확성·설명 가능성 요구를 충족하지 못한다.</td></tr>
+          <tr><td>개념</td><td>지식 그래프란 무엇인가?</td><td>진화·의미·통합·학습 네 기둥을 갖춘 진화형 지식 구조다.</td><td>그래프 저장소가 아니라 지식 수명주기를 먼저 설계한다.</td></tr>
+          <tr><td>메커니즘</td><td>왜 함께일 때 더 강한가?</td><td>전이 학습이 낮춘 장벽 위에서 LLM과 KG가 상호 보완한다.</td><td>검증 게이트가 있는 양방향 루프로 운영한다.</td></tr>
+          <tr><td>표현 기술</td><td>어떤 그래프·의미 모델을 쓰나?</td><td>RDF와 LPG는 배타적 정답이 아니며 필요한 의미만 단계적으로 넣는다.</td><td>질의·통합·추론 요구에서 선택을 시작한다.</td></tr>
+          <tr><td>지능형 시스템 설계</td><td>지능을 어떻게 구현하나?</td><td>지능은 지식 표현과 추론이며, 사람을 돕는 자문 시스템(IAS)이 중심이다.</td><td>최종 결정은 항상 인간이 내린다.</td></tr>
+          <tr><td>추론·목적 주도</td><td>무엇을 신뢰하고 어디서 출발하나?</td><td>세 추론에는 한계가 있고, 상향식 대신 목적 주도로 구축해야 한다.</td><td>비즈니스 목적에서 출발해 KG를 중심에 둔다.</td></tr>
+        </tbody>
+      </table>
+      <div class="report-jump-links"><a href="./">발표자료 보기</a><a href="../../">회차 목록</a><a href="#decision">도입 판단표로 이동</a></div>
+    </section>
+
+    <section class="report-section s1 page-break" id="problem">
+      <div class="report-section__kicker">Section 01 · The Problem</div>
+      <h1>1. 왜 LLM만으로도, KG만으로도 부족한가</h1>
+      <div class="section-summary">
+        <div class="section-summary__kicker">섹션 요약</div>
+        <div class="section-summary__body"><ul>
+          <li>생성형 AI는 산업을 바꿨지만 전문 지식·정확성·설명 가능성이 필수인 영역에서 흔들린다.</li>
+          <li>KG는 유용하지만 구축·유지 비용, 다중 홉 접근, 결과의 분산이라는 세 장벽에 막혔다.</li>
+          <li>진짜 병목은 정형 데이터가 아니라 비정형 텍스트에서 개체·관계를 뽑아내는 일이다.</li>
+        </ul></div>
+      </div>
+
+      <h2>1.1 생성형 AI의 힘과 구멍</h2>
+      <p>구글의 Gemini나 OpenAI의 GPT가 이끄는 <strong>생성형 AI(GenAI)</strong>는 일하고 살아가는 방식을 바꾸며 여러 산업을 혁신했다. 그러나 특정 도메인의 전문 지식, 높은 정확성, 설명 가능성이 필수인 영역에서는 힘을 잃는다. 근본 한계는 세 가지다. 그럴듯하지만 사실이 아닌 내용을 지어내는 <strong>환각(hallucination)</strong>, 경험·환경·문화·사회 규범 같은 <strong>맥락과 관계 정보의 부재</strong>, 그리고 답이 어떤 근거에서 나왔는지 밝히지 못하는 <strong>설명 가능성의 부족</strong>이다. 저자들은 바로 이 지점에서 KG가 맥락을 제공해, 실패가 허용되지 않는 애플리케이션을 위한 이른바 <strong>“AI의 제3의 물결”</strong>[Ch1 1]을 세운다고 말한다.</p>
+      <p>KG는 현실의 개체를 표현하고 그 사이의 의미 있는 연결을 정의하며 맥락을 부여한다. 구조적이고 설명 가능하지만 만들고 질의하기 어렵다. LLM은 자연어 처리에 뛰어나지만 환각·오래된 정보·도메인 미착근 문제를 안는다. 두 기술을 합치면 서로의 빈틈을 정확히 채우는 <strong>“환상의 조합(killer combination)”</strong>이 된다.</p>
+
+      <h2>1.2 지식 그래프의 벽</h2>
+      <p>지능형 시스템 개발에 효과적임에도 KG가 널리 채택되지 못한 데는 세 가지 이유가 있다. <strong>첫째, 비용.</strong> 만들고 유지하는 데 시간·노력·돈이 많이 든다. <strong>둘째, 까다로운 접근 패턴.</strong> 여러 단계(hop)를 건너뛰며 탐색하려면 복잡한 질의가 필요하다. <strong>셋째, 결과의 분산.</strong> 원하는 정보가 여러 노드와 관계에 걸쳐 흩어져 있어 비전문가가 읽을 형태로 다시 합쳐야 한다.</p>
+      <p>KG를 구축하려면 이질적 원천에서 개체와 연결을 인식하고 뽑아내야 한다. 이때 정형·반정형 데이터(관계형 DB, CSV·XML·JSON)는 각 항목이 이미 분리·식별·유형화되어 있어, 원 스키마에서 공통 그래프 스키마로 옮기는 <strong>매핑</strong>이 통제 가능하고 예측 가능하다. 문제는 정형 데이터가 아니다.</p>
+
+      <h2>1.3 비정형 데이터 추출이라는 진짜 병목</h2>
+      <p>비정형 텍스트에서 정보를 뽑는 일은 다섯 가지 이유로 늘 까다로웠다. <strong>다국어·문자 체계</strong>(언어별 문법·어휘와 라틴·키릴·한자 등 인코딩), <strong>오타·맞춤법 오류</strong>, <strong>대명사</strong> 즉 상호참조 해소(예: “John saw Bob and he waved”에서 “he”가 누구인지 불명확), <strong>저자별 다양한 문체</strong>(동의어·문장 구조·독특한 표현), 그리고 <strong>도메인 고유의 전문 용어와 개념</strong>이다. 사람의 언어에서 개체와 관계의 경계를 정확히 찾으려면 고도의 기법이 필요하다.</p>
+      <p>여기서 LLM의 역할은 완성된 사실을 생산하는 것이 아니라, <strong>후보 개체·관계·속성을 빠르게 제안하는 해석 계층</strong>이다. 구글이 KG로 검색을 “문자열이 아니라 사물(things, not strings)”로 끌어올린 사례처럼 KG의 가치는 분명하지만, 그 접근을 대중화하려면 자연어로 질문하고 알기 쉬운 요약으로 답을 돌려주는 인터페이스가 필요하다. 이 병목을 도식으로 정리하면 다음과 같다.</p>
+      <figure class="report-figure" id="fig-extraction">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 1</span><span class="asset-caption__title">정형 데이터의 예측 가능한 매핑과 비정형 데이터의 다섯 가지 난제</span></figcaption>
+        <img src="assets/figs/extraction-bottleneck.svg" alt="이질적 원천 데이터가 정형·반정형과 비정형 텍스트로 갈라져, 정형은 통제 가능한 매핑으로 비정형은 다국어·오타·상호참조·문체·전문용어의 다섯 난제를 거쳐 지식 그래프로 통합되는 흐름">
+        <small class="asset-note">교재 §1.1의 정형·비정형 데이터 논의를 발표용으로 재구성. 오른쪽 다섯 난제는 텍스트 추출이 어려운 이유를 정리한 것이다.</small>
+      </figure>
+    </section>
+
+    <section class="report-section s2 page-break" id="kg">
+      <div class="report-section__kicker">Section 02 · What Is a Knowledge Graph</div>
+      <h1>2. 지식 그래프란 무엇인가 — 정의와 네 기둥</h1>
+      <div class="section-summary">
+        <div class="section-summary__kicker">섹션 요약</div>
+        <div class="section-summary__body"><ul>
+          <li>KG는 노드(개체)·관계(연결의 의미)·속성(맥락)이라는 세 요소로 지식을 명시적으로 담는다.</li>
+          <li>저자들은 진화·의미·통합·학습의 네 기둥을 갖춘 진화형 그래프 구조로 KG를 재정의한다.</li>
+          <li>의미 기둥은 identity·transitive·inverse 관계와 설명 가능성을, 학습 기둥은 그래프 분석을 뒷받침한다.</li>
+        </ul></div>
+      </div>
+
+      <h2>2.1 노드·관계·속성</h2>
+      <p>KG는 사람의 지식을 구조화된 형태로 기계에 담아 더 지능적으로 행동하게 만든다. 이를 위해 세 요소를 쓴다. <strong>노드(Node)</strong>는 사람·장소·조직·질병·단백질·유전자 같은 현실의 개체를 나타낸다. <strong>관계(Relationship)</strong>는 노드 사이의 의미 있는 연결을 정의한다(어떤 약물이 어떤 질병을 치료한다, 어떤 유전자가 어떤 단백질을 암호화한다). <strong>속성(Property)</strong>은 맥락을 제공한다(승인일, 지리 좌표, 여러 언어로 된 질병 설명, 출처, 갱신 시각).</p>
+      <p>핵심은 데이터가 선으로 이어졌다는 데 있지 않다. <strong>연결의 뜻과 개체의 유형이 명시되어 있다는 것</strong>이 중요하다. 그래야 기계가 구조화된 지식 위에서 추론과 추정을 수행하고, 관계 경로를 탐색하며, 결과가 어떤 사실에서 나왔는지 설명할 수 있다. 그림 2는 의료 도메인에서 질병·약물·화합물·해부구조 같은 개체가 의미 있는 관계로 연결된 KG를 재구성한 것이다.</p>
+      <figure class="report-figure" id="fig-kg-anatomy">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 2</span><span class="asset-caption__title">의료 지식 그래프의 해부 — 노드·관계·속성</span></figcaption>
+        <img src="assets/figs/kg-anatomy.svg" alt="약물 A가 질병 B를 치료하고 질병 B가 해부구조 C를 침범하며 화합물 D가 약물을 구성하고 질병을 표적하는 의료 지식 그래프. 각 노드는 승인일·분류 코드·분자식 같은 속성을 가짐">
+        <small class="asset-note">교재 그림 1.1의 개념을 재구성. 실제 의료 KG가 아니라 노드·관계·속성을 읽는 법을 설명하기 위한 예시다.</small>
+      </figure>
+
+      <h2>2.2 KG의 정의와 네 기둥</h2>
+      <p>저자들은 기술적·비즈니스적 특징을 아우르는 정의를 제안한다. <strong>KG란, 유형이 지정된 개체와 그 속성, 의미 있는 이름을 가진 관계로 구성된, 끊임없이 진화하는 그래프 데이터 구조</strong>다. 특정 도메인을 위해 만들어지며 정형·비정형 데이터를 통합해 사람과 기계를 위한 지식을 빚는다. 이 정의는 <strong>네 기둥</strong>으로 이어진다.</p>
+      <p><strong>진화(Evolution)</strong>는 기존 구조를 뜯어고치지 않고도 새 정보를 계속 수집·통합해 확장한다. <strong>의미(Semantics)</strong>는 유형이 지정된 개체와 의미 있는 관계로 데이터의 뜻을 명시하며, 동일성(identity)·이행적(transitive)·역(inverse) 관계 등을 뒷받침해 일관성 검사부터 인과 추론까지의 척추가 되고 <strong>설명 가능성</strong>[Ch1 13]으로 가는 문을 연다. <strong>통합(Integration)</strong>은 데이터의 의미에 초점을 맞춰 형식·출처의 차이를 넘어 여러 원천을 연결하는 중심 기준점이 된다. <strong>학습(Learning)</strong>은 영향력 있는 노드를 찾는 <strong>중심성 분석</strong>, 최단 경로를 보는 <strong>네트워크 분석</strong>, 비슷한 노드 무리를 찾는 <strong>커뮤니티 분석</strong>과 규칙·ML로 명시되지 않은 정보를 추정한다.</p>
+      <figure class="report-figure" id="fig-four-pillars" data-deck-use="required">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 3</span><span class="asset-caption__title">진화·의미·통합·학습, 서로 의존하는 네 기둥</span></figcaption>
+        <img src="assets/figs/four-pillars.svg" alt="중심의 지식 그래프를 진화·의미·통합·학습 네 기둥이 2×2로 둘러싼 구조. 각 기둥은 흡수·확장, 유형·규칙·설명 가능성, 출처 연결, 그래프 분석의 역할을 가짐">
+        <small class="asset-note">교재 그림 1.6과 §1.4.1을 재구성. 네 요소는 독립 기능 목록이 아니라 함께 있어야 살아 있는 지식 계층이 되는 품질 조건이다.</small>
+      </figure>
+    </section>
+
+    <section class="report-section s3 page-break" id="synergy">
+      <div class="report-section__kicker">Section 03 · Mutual Reinforcement</div>
+      <h1>3. 왜 함께일 때 더 강한가 — LLM과 전이 학습, 그리고 상호 보완</h1>
+      <div class="section-summary">
+        <div class="section-summary__kicker">섹션 요약</div>
+        <div class="section-summary__body"><ul>
+          <li>LLM의 토대인 전이 학습은 과제별 소형 모델 다수를 범용 대형 모델 소수로 바꿨다.</li>
+          <li>LLM은 KG의 구축·질의·요약을 도와 접근 장벽을 낮춘다.</li>
+          <li>KG는 LLM의 환각·오래된 정보·설명 불가를 사실 토대·동적 갱신·추적 경로로 떠받친다.</li>
+        </ul></div>
+      </div>
+
+      <h2>3.1 LLM의 토대: 전이 학습</h2>
+      <p>LLM의 토대는 <strong>전이 학습(transfer learning)</strong>이다[Ch1 2]. 일반 과제(예: 가려진 토큰 맞히기)에서 배운 패턴을 특정 과제(예: 관계 추출)에 다시 쓰는 능력이다. 이 돌파구는 패러다임을 뒤집었다. <strong>과제마다 작은 전용 모델을 여럿 학습하던 방식</strong>에서 <strong>여러 과제에 재사용하는 소수의 거대 모델</strong>로 옮겨가면서, 지도 학습에 필요한 데이터와 연산이 크게 줄었다. 트랜스포머 아키텍처[Ch1 3]로 대규모 말뭉치를 학습한 <strong>사전학습 언어 모델(PLM)</strong>은 하나의 큰 모델로 여러 NLP 과제를 수행할 수 있음을 보였고, 규모를 키우자 능력도 커졌다.</p>
+      <p>논문 <strong>“Scaling Laws for Neural Language Models”</strong>[Ch1 9]는 더 큰 모델일수록 같은 성능(테스트 손실)에 도달하는 데 <strong>더 적은 데이터 샘플</strong>이 필요함을 보인다. “큰 모델은 더 많은 데이터가 필요하다”는 직관과 반대로, 큰 모델은 데이터 한 조각에서 더 효율적으로 배운다. 여기에 데이터의 품질을 끌어올리는 <strong>데이터 중심(data-centric)</strong> 패러다임이 더해지면서, 방대하고 양질인 데이터가 만든 성능은 <strong>“데이터의 불합리한 효과성(unreasonable effectiveness of data)”</strong>[Ch1 8]이라는 표현에 새 생명을 불어넣었다. 그 결과 과제를 자연어로 기술하기만 해도 정확한 답이 나오는 수준에 이르렀다.</p>
+      <figure class="report-figure" id="fig-transfer">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 4</span><span class="asset-caption__title">과제별 소형 모델 다수에서 범용 대형 모델 소수로</span></figcaption>
+        <img src="assets/figs/transfer-learning.svg" alt="이전에는 과제마다 라벨 데이터와 소형 전용 모델을 각각 만들었고, 전이 학습 이후에는 대규모 말뭉치로 마스킹 토큰 예측을 사전학습한 대형 모델 하나를 개체 추출·관계 추출·요약에 재사용하는 대비">
+        <small class="asset-note">교재 그림 1.2와 §1.2를 재구성. 초점은 모델 계보가 아니라 과제 수행 비용의 변화다.</small>
+      </figure>
+
+      <h2>3.2 LLM이 KG를 돕는 세 가지</h2>
+      <p>저자들이 주목하는 것은 LLM이 KG 기반 솔루션을 돕는 세 방식이다. <strong>구축</strong>은 비정형 데이터에서 개념과 연결을 뽑는 작업으로, 전통적으로 도메인마다 맞춤 NLP 모델이 필요했지만 LLM은 프롬프트만으로 범용 추출을 제공해 이를 단순화한다. <strong>질의</strong>는 출발 개념에서 목적지까지 여러 홉을 밟는 과정으로, 스키마와 질의 언어 이해가 필요한데 LLM이 자연어 질문을 <strong>text-to-cypher</strong>처럼 정밀한 그래프 질의로 바꿔 돕는다. <strong>요약</strong>은 표·차트가 아니라 글(텍스트) 형태로 결과를 돌려준다.</p>
+
+      <h2>3.3 KG가 LLM을 떠받치는 세 가지</h2>
+      <p>거꾸로 KG는 LLM의 도메인 정확성·투명성·시의성 한계를 극복하도록 돕는다[Ch1 10]. <strong>환각</strong>에 대해서는 구조적이고 검증된 지식으로 <strong>사실의 토대</strong>가 되어 지어내기를 줄인다. <strong>오래된 정보</strong>에 대해서는, LLM을 끊임없이 재학습할 수는 없지만 KG는 계속 갱신할 수 있어 <strong>KG 기반 프롬프팅</strong>이나 <strong>GraphRAG</strong>(지식을 군집·커뮤니티 요약으로 조직)로 최신 정보를 공급한다. <strong>설명 가능성</strong>에 대해서는, 추적·검증 가능한 정보 경로와 구조적 추론을 제공해 신뢰를 쌓는다. 그림 5는 이 양방향 보완을 매트릭스로 정리한다.</p>
+      <figure class="report-figure" id="fig-mutual" data-deck-use="required">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 5</span><span class="asset-caption__title">LLM의 약점 → KG 처방 / KG의 약점 → LLM 처방</span></figcaption>
+        <img src="assets/figs/mutual-reinforcement.svg" alt="왼쪽은 LLM의 환각·오래된 정보·설명 불가를 KG의 사실 토대·동적 갱신·추적 경로가 처방하고, 오른쪽은 KG의 구축 비용·질의 난이도·결과 분산을 LLM의 개체 추출·자연어 질의·텍스트 요약이 처방하는 대응 매트릭스">
+        <small class="asset-note">교재 그림 1.5를 재구성. 출처 [Ch1 11]에서 영감을 받았다. 화살표는 단순 검색 한 번이 아니라 구축과 이용의 양방향 수명주기를 뜻한다.</small>
+      </figure>
+    </section>
+
+    <section class="report-section s4 page-break" id="technology">
+      <div class="report-section__kicker">Section 04 · Representation Technology</div>
+      <h1>4. 표현 기술 — RDF·LPG와 온톨로지, 그리고 패러다임 전환</h1>
+      <div class="section-summary">
+        <div class="section-summary__kicker">섹션 요약</div>
+        <div class="section-summary__body"><ul>
+          <li>KG는 지능적 행동의 근거를 단일 신뢰 원천에 담는 패러다임 전환을 가능하게 한다.</li>
+          <li>RDF는 표준 진술·상호운용·연합에, LPG는 고유 엣지·경로 탐색·순회에 강하다.</li>
+          <li>분류체계는 수직 계층을, 온톨로지는 수평 규칙을 더해 그래프에 의미를 불어넣는다.</li>
+        </ul></div>
+      </div>
+
+      <h2>4.1 단일 진실의 원천으로의 전환</h2>
+      <p>전통적 패러다임은 구조화되고 동질적인 데이터베이스 위에 특정 목적의 시스템을 만든다. 정해진 요구에는 맞지만, 사용자 특성에 적응하고 이질적 데이터를 통합해야 하는 복잡한 도메인에는 비현실적이다. KG는 연결을 포착해 <strong>그래프 패턴 매칭</strong>과 <strong>순회(traversal)</strong>로 관계를 발견하게 하며, 지능적 행동이 <strong>단일한 진실의 원천(single source of truth)</strong>에 담기는 전환을 가능하게 한다. 이는 모든 원본을 한 곳에 복사한다는 뜻이 아니라, 같은 대상을 가리키는 식별자·관계의 뜻·출처·검증 규칙을 공유하고 필요할 때 원천으로 추적할 수 있다는 뜻에 가깝다. 맥킨지앤드컴퍼니에 따르면 <strong>데이터 파편화</strong> 문제를 해결하면 단기적으로 연간 데이터 지출을 <strong>5~15%</strong>까지 줄일 수 있다[Ch1 12].</p>
+
+      <h2>4.2 RDF와 LPG, 두 갈래 길</h2>
+      <p>이 책은 기술 중립적 접근을 취하며 두 대표 패러다임을 오간다. <strong>RDF</strong>는 W3C가 정의한 데이터 모델로 그래프를 진술(트리플)의 모음으로 인코딩하고 SPARQL로 질의한다. 웹에서 데이터를 표준적으로 발행·공유하는 데 목표를 두어 상호운용성과 연합에 강하다. <strong>LPG</strong>는 노드·엣지의 <strong>구조(속성과 관계)</strong>에 초점을 두고 openCypher나 Gremlin으로 질의한다. 결정적 차이는 관계의 성질이다. LPG에서는 각 엣지가 고유한 정체성과 속성을 가져 “A가 B에서 태어났다”는 관계 하나에 출처·신뢰도를 직접 붙일 수 있는 반면, RDF에서 ‘태어났다’는 지식 베이스 전체가 공유하는 <strong>전역 술어(global predicate)</strong>다.</p>
+      <table class="cmp-table" id="table-rdf-lpg">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 2</span><span class="asset-caption__title">RDF와 LPG 비교</span></div></caption>
+        <thead><tr><th>구분</th><th>RDF (+ SPARQL)</th><th>LPG (+ openCypher / Gremlin)</th></tr></thead>
+        <tbody>
+          <tr><td>표준화</td><td>W3C 표준, 트리플(진술) 기반</td><td>사실상 구현 중심, 속성 그래프 모델</td></tr>
+          <tr><td>질의어</td><td>SPARQL</td><td>openCypher · Gremlin</td></tr>
+          <tr><td>초점</td><td>지식 표현과 의미 계층</td><td>그래프 구조(속성·관계)</td></tr>
+          <tr><td>관계의 성질</td><td>재사용되는 전역 술어</td><td>엣지마다 고유한 정체성</td></tr>
+          <tr><td>강점</td><td>상호운용성·일관성·연합(federation)</td><td>경로 탐색·그래프 순회</td></tr>
+          <tr><td>관계에 속성 부착</td><td>개별 관계에 직접 붙이기 번거로움</td><td>엣지에 출처·신뢰도·시간 직접 부착</td></tr>
+        </tbody>
+      </table>
+
+      <h2>4.3 분류체계와 온톨로지 — 그래프에 의미를 불어넣기</h2>
+      <p>구조적 정보만으로는 데이터 안의 관계를 온전히 담지 못한다. 저자들은 <strong>의미가 가능케 하는 조직 원리</strong>[Ch1 15]로 <strong>분류체계</strong>와 <strong>온톨로지</strong>를 든다. <strong>분류체계(taxonomy)</strong>는 데이터의 <strong>수직 계층</strong>을 표현한다. 예를 들어 “탈것(Vehicle) ⊃ 자동차(Car) ⊃ 세단(Sedan)”처럼 넓음–좁음의 질서를 잡는다. <strong>온톨로지(ontology)</strong>는 계층을 넘어 <strong>수평 규칙</strong>을 명시한다. “자동차(Car)=오토모빌(Automobile)”이 동일하다거나 “자동차와 자전거(Bicycle)는 서로소(disjoint)여서 같은 것일 수 없다”고 선언하고, 합집합·여집합·개수 제약을 포함한 클래스 정의를 뒷받침한다.</p>
+      <p>정리하면 분류체계가 “무엇이 무엇의 하위인가”라는 세로 질서만 잡는다면, 온톨로지는 “같다/다르다/공존할 수 없다”는 가로 규칙까지 명시해 기계가 스스로 추론할 근거를 마련한다. 전통적 접근은 이런 체계를 완전하게 정의하려다 경직된다. 현대 KG는 <strong>“딱 필요한 만큼의 의미(just enough semantics)”</strong>를 취해, 당면 문제에 필요한 온톨로지 기능 일부만 골라 쓰고 <strong>부분 온톨로지</strong>를 유기적으로 확장한다.</p>
+      <table class="cmp-table" id="table-taxonomy-ontology">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 3</span><span class="asset-caption__title">분류체계 vs 온톨로지</span></div></caption>
+        <thead><tr><th>구분</th><th>분류체계(Taxonomy)</th><th>온톨로지(Ontology)</th></tr></thead>
+        <tbody>
+          <tr><td>표현 차원</td><td>수직 계층 (세로 질서)</td><td>수평 규칙 (가로 관계)</td></tr>
+          <tr><td>관계 유형</td><td>넓음–좁음(상위–하위)</td><td>동일성·차이·서로소·합/여집합·개수 제약</td></tr>
+          <tr><td>예시</td><td>Vehicle ⊃ Car ⊃ Sedan</td><td>Car = Automobile · Car ⊥ Bicycle</td></tr>
+          <tr><td>기능</td><td>범주의 계층 조직</td><td>일관성 검사와 기계 추론의 근거</td></tr>
+        </tbody>
+      </table>
+      <figure class="report-figure" id="fig-technology">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 6</span><span class="asset-caption__title">그래프 구조 위에 의미가 쌓이는 계층</span></figcaption>
+        <img src="assets/figs/technology-semantics.svg" alt="RDF 트리플 또는 LPG 속성 그래프의 구조 위에 분류체계(수직 계층)와 온톨로지(수평 규칙)가 차례로 더해져 기계가 추론하는 지식 그래프가 되는 계층 구조">
+        <small class="asset-note">교재 §1.6–1.6.1을 재구성. RDF/LPG 선택과 의미 모델링 수준은 서로 다른 설계 축이다.</small>
+      </figure>
+    </section>
+
+    <section class="report-section s5 page-break" id="intelligent-systems">
+      <div class="report-section__kicker">Section 05 · Intelligent Systems (Ch.2)</div>
+      <h1>5. 지능형 시스템 설계 — 지식 표현과 추론의 해부</h1>
+      <div class="section-summary">
+        <div class="section-summary__kicker">섹션 요약</div>
+        <div class="section-summary__body"><ul>
+          <li>지능은 지식 표현과 추론으로 해부되며, 표현력과 처리 효율 사이에는 상충 관계가 있다.</li>
+          <li>이 책은 사용자를 대체하지 않고 지원하는 자문 시스템(IAS)에 집중한다.</li>
+          <li>지식 습득은 명시적(KG)과 암묵적(LLM)으로 갈리며 접근성·갱신·능력에서 다르다.</li>
+        </ul></div>
+      </div>
+
+      <h2>5.1 지능 = 지식 표현 + 추론</h2>
+      <p>Chapter 2는 지능을 <strong>지식을 습득하고 적용하는 능력</strong>으로 보고, 지능형 시스템을 두 구성 요소로 분해한다. <strong>지식 표현(knowledge representation)</strong>은 AI 시스템이 도메인 정보를 구조화·부호화·전달할 때 쓰는 “언어”다. 시스템이 추론·예측하려면 이 언어가 필요하고, 우리가 결과를 해석할 때도 이 언어를 본다. 그래서 지식 표현의 선택은 시스템의 <strong>능력과 한계</strong>를 크게 좌우한다. <strong>추론(reasoning)</strong>은 정보를 분석하고 규칙을 적용해 증거·전제로부터 결론을 이끄는 인지 과정이다. 지식 표현이 얼마나 풍부한가와 얼마나 효율적으로 처리되는가 사이에는 흔히 <strong>상충 관계(trade-off)</strong>가 있으며, 둘은 서로 긴밀히 얽혀 영향을 준다.</p>
+
+      <h2>5.2 자율 시스템 vs 자문 시스템(IAS)</h2>
+      <p>저자들은 Geoff Hulten의 정의를 따른다[Ch2 1]. <strong>지능형 시스템은 사용자를 AI·ML과 연결해 의미 있는 목표를 달성하게 하고, 사용자와의 상호작용을 관찰함으로써 시간이 지날수록 스스로 개선되는 시스템</strong>이다. 이 정의는 사용자의 핵심 역할을 강조한다. 일차 목표는 사용자를 <strong>대체</strong>가 아니라 <strong>지원</strong>하는 것이다. 사용자를 지원하는가, 대신 행동하는가에 따라 시스템은 두 범주로 갈린다. <strong>지능형 자율 시스템</strong>은 사람 입력 없이 실시간으로 결정·실행한다(예: 자율주행차). <strong>지능형 자문 시스템(IAS)</strong>은 통찰·제안·권고를 제공하되 조치를 스스로 실행하지 않는다.</p>
+      <p>이 책은 IAS에 집중한다. 그 특징(의사결정 지원, 맥락 인식, 상호작용적 사용자 경험)이 KG의 강점과 맞물리기 때문이다. IAS의 사례로는 범죄 데이터를 분석하는 <strong>예측 치안</strong>, 거래 패턴에서 의심 활동을 표시하는 <strong>사기 탐지</strong>, 가능한 진단 목록과 치료 선택지를 권고하는 <strong>의료 진단 권고</strong>가 있다. 모든 경우에서 <strong>어떤 조치를 취할지에 대한 최종 결정은 사람이 내린다</strong>.</p>
+      <table class="cmp-table" id="table-autonomous-advisory">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 4</span><span class="asset-caption__title">자율 시스템 vs 자문 시스템(IAS)</span></div></caption>
+        <thead><tr><th>구분</th><th>지능형 자율 시스템</th><th>지능형 자문 시스템(IAS)</th></tr></thead>
+        <tbody>
+          <tr><td>역할</td><td>사용자를 대신해 행동</td><td>정보와 권고를 제공</td></tr>
+          <tr><td>특징</td><td>완전 자동화·실시간 결정·환경 적응</td><td>의사결정 지원·맥락 인식·사용자 상호작용</td></tr>
+          <tr><td>최종 결정 주체</td><td>시스템</td><td>사람(사용자)</td></tr>
+          <tr><td>예시</td><td>자율주행차</td><td>예측 치안·사기 탐지·의료 진단 권고</td></tr>
+        </tbody>
+      </table>
+      <figure class="report-figure" id="fig-architecture" data-deck-use="required">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 7</span><span class="asset-caption__title">지능형 시스템의 확장 모델 — 구성 요소·과정·피드백</span></figcaption>
+        <img src="assets/figs/intelligent-architecture.svg" alt="데이터 소스·환경·도메인 전문가가 지식 습득으로 들어가고, 여러 지식 베이스와 여러 추론 엔진이 최종 사용자에게 통찰·제안을 제공하며, 사용자·환경의 피드백이 다시 지식 습득으로 순환하는 지능형 시스템 확장 모델">
+        <small class="asset-note">교재 §2.1~2.5(그림 2.4·2.10)을 종합해 재구성. 지식 베이스와 추론 엔진은 각각 여러 인스턴스를 가질 수 있다.</small>
+      </figure>
+
+      <h2>5.3 지식 습득: 명시적(KG) vs 암묵적(LLM)</h2>
+      <p>지식 습득은 원시 데이터를 구조화된 지식 표현으로 바꾼다. 그 방식은 밑바탕의 추론 메커니즘에 따라 갈린다. <strong>KG</strong>는 정형·반정형 데이터를 그래프 형식으로 변환하며, 온톨로지·스키마가 변환을 이끌고 <strong>도메인 전문가가 다수 참여</strong>해 데이터의 의미와 관계를 다듬는다. 준비 비용이 크지만 유연성으로 값을 치른다. <strong>LLM</strong>은 방대한 비정형 텍스트를 조밀한 고차원 <strong>벡터 공간</strong>으로 부호화하며, 과정은 대부분 <strong>비지도(unsupervised)</strong>이고 주된 노력은 데이터 소스를 고르고 정제하는 데 든다. 정보는 명시적 관계가 아니라 통계적 패턴으로 담겨, 미묘한 맥락을 포착하지만 불투명해 들여다보거나 수정하기 어렵다. 두 방식은 접근성·갱신·능력이라는 세 축에서 갈린다.</p>
+      <table class="cmp-table" id="table-acquisition">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 5</span><span class="asset-caption__title">지식 습득·표현: KG vs LLM</span></div></caption>
+        <thead><tr><th>구분</th><th>지식 그래프(KG)</th><th>대규모 언어 모델(LLM)</th></tr></thead>
+        <tbody>
+          <tr><td>표현 방식</td><td>명시적 — 노드·관계·속성</td><td>암묵적 — 벡터 공간의 매개변수</td></tr>
+          <tr><td>데이터</td><td>정형·반정형</td><td>비정형 텍스트</td></tr>
+          <tr><td>학습 방식</td><td>스키마·온톨로지가 안내</td><td>대부분 비지도</td></tr>
+          <tr><td>접근성</td><td>사람·기계가 직접 해석</td><td>불투명, 해석 어려움</td></tr>
+          <tr><td>갱신</td><td>노드·관계 추가·삭제·수정</td><td>재학습 또는 미세 조정 필요</td></tr>
+          <tr><td>도메인 전문가 역할</td><td>소스 식별·모델 지원·평가에 다수 참여</td><td>소스 선택·결과 평가에 참여</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="report-section s6 page-break" id="reasoning">
+      <div class="report-section__kicker">Section 06 · Reasoning &amp; Hybrid Engine (Ch.2)</div>
+      <h1>6. 추론 전략과 하이브리드 추론 엔진</h1>
+      <div class="section-summary">
+        <div class="section-summary__kicker">섹션 요약</div>
+        <div class="section-summary__body"><ul>
+          <li>연역·귀납·확률적 추론은 각각 결론 확실성과 전제 조건이 다르다.</li>
+          <li>LLM은 사람 수준의 상식·직관이 없어 익숙한 문제로 방향을 트는 착시를 보인다.</li>
+          <li>하이브리드 엔진은 KB를 읽고 쓰며 순수 연역의 비현실성을 ML과 LLM으로 보완한다.</li>
+        </ul></div>
+      </div>
+
+      <h2>6.1 세 가지 추론과 그 한계</h2>
+      <p><strong>연역적 추론</strong>은 일반 전제에서 구체적 결론에 이른다. “모든 사람은 죽는다. Alessandro는 사람이다. 따라서 Alessandro는 죽는다”처럼, 전제가 참이면 결론도 반드시 참이다. <strong>귀납적 추론</strong>은 구체적 관찰에서 폭넓은 일반화를 이끈다. 다만 전제가 모두 참이어도 결론이 거짓일 수 있다. “주머니에서 꺼낸 동전이 페니였고 두세 번째도 페니이니 주머니의 모든 동전은 페니다”, 또는 “Harold는 할아버지이고 대머리이니 모든 할아버지는 대머리다”가 그런 경우다. <strong>확률적 추론</strong>은 LLM의 방식으로, 불확실성 아래에서 여러 가능성을 저울질한다. 추론에는 세 가지 열린 질문이 있다. <strong>불확실성</strong>을 어떻게 다룰지, 필요한 지식 일부를 어떻게 <strong>도출</strong>할지, 본 것에서 어떻게 더 넓은 이해로 <strong>일반화</strong>할지다. 스팸 필터로 비유하면, 표시된 이메일을 모두 외워 대조하는 방식은 작동할 수 있어도 처음 보는 메일에 라벨을 붙이는 <strong>일반화 능력</strong>이 없으므로 진정한 학습이 아니다.</p>
+      <table class="cmp-table" id="table-reasoning">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 6</span><span class="asset-caption__title">추론 전략 비교</span></div></caption>
+        <thead><tr><th>추론</th><th>방향</th><th>결론 확실성</th><th>전제 조건</th><th>강점 / 한계</th><th>담당 기술</th></tr></thead>
+        <tbody>
+          <tr><td>연역</td><td>일반 → 구체</td><td>전제 참이면 반드시 참</td><td>완전·정확한 전제</td><td>정밀 / 완전한 KB 필요</td><td>KG·규칙</td></tr>
+          <tr><td>귀납</td><td>구체 → 일반</td><td>참이어도 거짓 가능</td><td>관찰 표본</td><td>일반화 / 성급한 일반화 위험</td><td>ML</td></tr>
+          <tr><td>확률적</td><td>불확실성 하 가중</td><td>가능성으로 표현</td><td>패턴·문맥</td><td>빈틈 보완 / 정답 보증 아님</td><td>LLM</td></tr>
+        </tbody>
+      </table>
+
+      <h2>6.2 LLM 추론의 착시</h2>
+      <p>저자들은 가정을 검증하려고 Claude.ai(테스트 버전 3.5 Sonnet)에 단순화한 문제를 주었다. “농부가 양 한 마리와 강가에 있고, 한 사람과 동물 하나가 탈 수 있는 배로 최소 횟수로 강을 건너라”는 프롬프트였다. 이는 늑대와 양배추가 등장하는 잘 알려진 문제의 단순한 변형이고, 학습 데이터에 비슷한 예가 많으므로 모델이 실제 질문을 이해하기보다 <strong>완전한(늑대·양배추 있는) 문제 쪽으로 방향을 틀 것</strong>이라 예상했다. 결과는 가정을 확인시켰다. 답변은 농부가 양 없이 강을 왕복하는 등 1단계 이후 이미 풀린 문제를 불필요하게 이어갔다. 확률적으로 가장 가까운 익숙한 해법으로 흘러간 것이다(원문의 화면 캡처는 재현하지 않고 서술로만 설명한다).</p>
+      <p>이는 특정 유형의 추론에서 LLM의 한계를 보여준다. Wu 등[Ch2 4]은 코딩·그림·논리·공간 추론·체스·산술 등 11개 과제에서 <strong>반사실적(counterfactual) 변형</strong>(기본값이나 익숙한 형태에서 벗어난 경우)을 테스트해, 기본 조건 대비 성능이 <strong>상당히 그리고 일관되게 저하</strong>됨을 발견했다. LLM은 흔히 좁고 전이되지 않는 절차에 의존한다. 결론은 분명하다. KG도 LLM도 인간 수준의 상식·직관을 본질적으로 갖추지 못한다. 그래서 정밀·규칙 기반·명시적 지식이 필요한 과제에는 KG를, 패턴 인식·맥락 이해·모호하거나 불완전한 정보 처리가 필요한 과제에는 LLM을 쓰며 서로 보완한다.</p>
+
+      <h2>6.3 하이브리드 추론 엔진과 피드백 루프</h2>
+      <p>추론 엔진은 한 유형만 쓸 수도, 여러 전략을 조합할 수도 있다. 중요한 것은 엔진이 지식 베이스에서 <strong>읽기만 하지 않고 다시 쓰기도 한다</strong>는 점이다. 엔진이 만든 조치·제안은 환경에 영향을 주고, 환경은 새 관찰을 만들며, 그 관찰을 엔진이 처리해 새 지식을 쌓아 다음 조치를 이끈다. 이 <strong>피드백 루프</strong>가 반복적 개선을 만든다. 저자들은 의료 진단 맥락에서 세 시나리오를 대비한다. <strong>순수 연역</strong>은 최적 조치를 논리적으로 추론하지만 매우 완전하고 정확한 KB를 요구해 현실에서 비현실적이다. <strong>귀납·ML</strong>은 관련 온톨로지와 관계를 학습·구축해 KB를 확장하고, 불확실성 아래에서 일반화해 정보가 부족해도 예측한다. <strong>LLM 계층</strong>은 결정적 정보가 빠졌을 때 방대한 문헌에서 배운 패턴으로 여러 진단 가능성을 동시에 저울질해, 하나의 확정 답 대신 <strong>우선순위가 매겨진 권고</strong>를 제공한다.</p>
+      <figure class="report-figure" id="fig-hybrid-loop" data-deck-use="required">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 8</span><span class="asset-caption__title">KG 규칙과 LLM 확률을 결합한 하이브리드 추론 루프</span></figcaption>
+        <img src="assets/figs/hybrid-loop.svg" alt="사용자 요청이 KG 규칙과 LLM 확률을 결합한 추론 엔진으로 들어가 조치·제안을 만들고, 환경 변화와 새 관찰이 지식 베이스를 읽고 쓰며 다음 판단을 개선하는 순환 루프">
+        <small class="asset-note">교재 §2.5(그림 2.10)을 재구성. 엔진은 지식 베이스를 읽고 쓰며, 조치→환경→관찰이 다음 제안을 개선한다.</small>
+      </figure>
+    </section>
+
+    <section class="report-section s7 page-break" id="decision">
+      <div class="report-section__kicker">Section 07 · Purpose-Driven Design &amp; Adoption</div>
+      <h1>7. 목적 주도 설계와 도입 판단</h1>
+      <div class="section-summary">
+        <div class="section-summary__kicker">섹션 요약</div>
+        <div class="section-summary__body"><ul>
+          <li>모든 데이터부터 쌓는 상향식은 소스 과다·정규화 비용 때문에 흔히 실패한다.</li>
+          <li>목적 주도 접근은 CRISP-DM을 재해석해 비즈니스 이해에서 출발한다.</li>
+          <li>도입 판단은 기술 이름이 아니라 문제의 모양(관계·통합·자연어·근거)에서 시작한다.</li>
+        </ul></div>
+      </div>
+
+      <h2>7.1 상향식의 함정 vs 목적 주도 접근</h2>
+      <p>KG를 단지 지식의 집계자로만 보면, 애초에 KG를 도입한 목표인 지능형 시스템 구축을 놓친다. 데이터부터 쌓아 올리는 <strong>상향식(bottom-up)</strong>은 여러 소스를 하나의 진실의 원천으로 통합한 뒤, 최종 사용자가 무엇을 찾는지에 대한 생각 없이 <strong>데이터가 알아서 이야기해 주길</strong> 기대한다. 저자들의 경험상 이 방식은 흔히 실패한다. 소스가 너무 많고 저마다 구조·식별자가 다르며, 하나의 동질적 구조로 정규화하는 비용이 크고, 내용의 상당 부분이 특정 과제에만 해당해 전역적 사고에는 무관하기 때문이다.</p>
+      <p>대안은 <strong>목적 주도(purpose-driven)</strong> 접근이다. 정립된 ML 방법론인 <strong>CRISP-DM</strong>[Ch2 12]을 재해석해, 모든 것이 <strong>비즈니스 이해(business understanding)</strong>에서 출발한다. 이 목표가 데이터 이해를 이끌어 필요한 데이터에만 집중하게 하고, 그것이 KG의 내용·구조를 정의하는 요구사항을 결정한다. 습득 단계에서 LLM은 비정형 데이터에서 개체·관계를 추출하고 감성 분석·주제 식별을 제공한다. <strong>모델링</strong> 단계에서 알고리즘을 시험하고, LLM은 KG 위에서 추론해 자연어로 답한다. 평가·배포 후 <strong>2차 라운드</strong>는 빈 KG에서 출발하지 않고 <strong>차이와 확장</strong>으로 작업하며, 그래프의 <strong>스키마리스(schemaless)</strong> 성질이 기존 데이터를 손상하지 않고 새 노드·관계 유형을 더하게 한다.</p>
+      <figure class="report-figure" id="fig-purpose" data-deck-use="required">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 9</span><span class="asset-caption__title">상향식의 실패 vs 목적 주도 CRISP-DM 파이프라인</span></figcaption>
+        <img src="assets/figs/purpose-driven.svg" alt="왼쪽은 모든 데이터 수집·통합 후 데이터가 말하길 기대하다 실패하는 상향식과 그 원인, 오른쪽은 비즈니스 이해에서 출발해 데이터 이해·KG 요구사항·모델링(LLM 참여)·평가·배포로 이어지고 2차 라운드로 순환하는 목적 주도 CRISP-DM의 대비">
+        <small class="asset-note">교재 §2.6(그림 2.13·2.14)을 재구성. KG는 재해석된 CRISP-DM 과정의 중심 지식 표현으로 기능한다.</small>
+      </figure>
+
+      <h2>7.2 KG·LLM 도입 판단</h2>
+      <p>다음 질문 중 하나라도 “그렇다”면, KG 기반 솔루션에 LLM을 결합하는 것이 유효하다. 표 7은 Chapter 1의 판단 질문을 두 블록으로 정리한다.</p>
+      <table class="cmp-table" id="table-decision">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 7</span><span class="asset-caption__title">KG·LLM 도입 판단 체크리스트</span></div></caption>
+        <thead><tr><th>KG를 고려하라</th><th>LLM을 고려하라</th></tr></thead>
+        <tbody>
+          <tr><td>흩어진 데이터 사일로를 일관된 개관으로 조화</td><td>비정형 데이터에서 개체·관계 추출</td></tr>
+          <tr><td>정형·비정형 원천을 의미 있게 연결</td><td>정확한 답을 위해 복잡한 질의 해석</td></tr>
+          <tr><td>구조가 진화하는 유연한 데이터 표현</td><td>대화형 인터페이스 제공</td></tr>
+          <tr><td>파이프라인의 출처·일관성 추적</td><td>종합 결과를 글로 요약</td></tr>
+          <tr><td>고급 검색·추천 서비스</td><td rowspan="3">→ 하나라도 “예”라면, KG 기반 솔루션에 LLM을 결합한다.</td></tr>
+          <tr><td>네트워크 구조 시각화(커뮤니티·상호의존성)</td></tr>
+          <tr><td>관계적 성질에서 이점을 얻는 ML 적용</td></tr>
+        </tbody>
+      </table>
+
+      <h2>7.3 두 대표 사례로 확인하기</h2>
+      <p><strong>신약 발견과 개발.</strong> 생물학에서 화학까지 여러 분야의 지식을 통합해야 하고 비용·실패 위험이 큰 문제다. KG는 서로 다른 규모의 생물학적 개체(유전자·질병·약물)를 유형화된 관계로 연결해 이행적 연결과 추론을 가능하게 한다. LLM은 논문·임상 보고서·데이터베이스의 비정형 데이터를 처리해 일관성을 보장하고, 문헌을 분석해 잠재적 관계를 추정하며 KG를 확장하고, 텍스트 마이닝을 수행한다. 그 결과 데이터 통합 강화, 가설 생성, 정보 검색 개선으로 새 치료제 개발이 가속된다. 다만 문헌에서 추출한 주장은 검증 상태와 출처를 함께 가져 가설과 확정 사실이 섞이지 않아야 한다.</p>
+      <p><strong>고객 지원을 위한 대화형 AI.</strong> 개인화된 어시스턴트는 답하는 것뿐 아니라 필요하면 되물어야 한다. Zhang 등[Ch1 14]은 <strong>“대화는 흔히 지식을 중심으로 전개된다”</strong>고 말한다. KG는 그 개념들을 연결하고 관계를 세워 대화를 사실에 붙들어 매고 응답 생성을 뒷받침하며, LLM은 폭넓은 주제와 일관된 응답을 담당한다. 다만 <strong>추가 맥락의 뒷받침이 없으면 LLM의 응답은 뻔하고 깊이가 없어질 수 있다</strong>. 두 기술을 통합하면 시스템은 복잡한 질의를 헤쳐 나가고 정밀한 정보를 제공하며 자연스러운 대화 흐름을 유지한다.</p>
+      <div class="callout--hero"><span class="callout__kicker">Final Takeaway</span><span class="callout__body">하이브리드 지능형 시스템의 출발점은 더 큰 모델도, 더 많은 데이터도 아니라 <strong>비즈니스 목적</strong>이다. 목적이 필요한 데이터를 정하고, 데이터가 KG를 빚고, KG가 LLM의 답을 사실에 붙들어 맬 때 시스템은 비로소 신뢰할 수 있다.</span></div>
+    </section>
+
+    <section class="report-appendix s-glossary page-break" id="glossary">
+      <div class="report-section__kicker">Appendix A · Glossary</div>
+      <h1>핵심 용어</h1>
+      <table class="cmp-table" id="table-glossary">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 8</span><span class="asset-caption__title">핵심 용어 사전</span></div></caption>
+        <thead><tr><th>용어</th><th>이 장에서의 의미</th></tr></thead>
+        <tbody>
+          <tr><td>지식 그래프(KG)</td><td>유형이 지정된 개체·속성·의미 있는 관계로 지식을 명시적으로 담은 진화형 그래프 구조.</td></tr>
+          <tr><td>대규모 언어 모델(LLM)</td><td>방대한 텍스트를 학습해 자연어를 이해·생성하며 지식을 벡터로 암묵적으로 저장하는 모델.</td></tr>
+          <tr><td>생성형 AI(GenAI)</td><td>LLM이 이끄는, 새로운 텍스트·콘텐츠를 생성하는 AI.</td></tr>
+          <tr><td>환각(Hallucination)</td><td>모델이 그럴듯하지만 사실이 아닌 내용을 지어내는 현상. KG가 완화한다.</td></tr>
+          <tr><td>노드·관계·속성</td><td>KG의 세 요소. 노드=개체, 관계=연결의 의미, 속성=맥락 정보.</td></tr>
+          <tr><td>홉(Hop)</td><td>그래프에서 한 개념에서 다른 개념으로 건너가는 한 단계.</td></tr>
+          <tr><td>전이 학습(Transfer Learning)</td><td>일반 과제에서 배운 패턴을 특정 과제에 재사용하는 학습 방식.</td></tr>
+          <tr><td>트랜스포머(Transformer)</td><td>오늘날 LLM의 기반이 되는 신경망 아키텍처.</td></tr>
+          <tr><td>PLM(사전학습 언어 모델)</td><td>대규모 말뭉치로 미리 학습된 언어 모델. LLM은 규모가 큰 PLM.</td></tr>
+          <tr><td>토큰화(Tokenization)</td><td>텍스트를 토큰이라는 작은 단위로 나누는 과정.</td></tr>
+          <tr><td>데이터 중심 패러다임</td><td>모델 구조보다 데이터의 품질·양을 끌어올리는 데 집중하는 접근.</td></tr>
+          <tr><td>상호참조 해소(Coreference Resolution)</td><td>대명사 등이 어떤 개체를 가리키는지 문맥에서 해소하는 작업.</td></tr>
+          <tr><td>GraphRAG</td><td>지식을 군집·커뮤니티 요약으로 조직해 최신 정보를 LLM에 공급하는 검색 증강 기법.</td></tr>
+          <tr><td>text-to-cypher</td><td>자연어 질문을 그래프 질의 언어(Cypher)로 변환하는 패턴.</td></tr>
+          <tr><td>단일 진실의 원천(Single Source of Truth)</td><td>지능적 행동의 근거를 식별자·의미·출처로 통일해 공유하는 신뢰 원천.</td></tr>
+          <tr><td>RDF / SPARQL</td><td>그래프를 트리플(진술)로 인코딩하는 W3C 표준과 그 질의 언어. 상호운용·연합에 강함.</td></tr>
+          <tr><td>LPG / openCypher / Gremlin</td><td>노드·엣지의 속성과 구조를 강조하는 그래프 모델과 그 질의 언어. 순회에 강함.</td></tr>
+          <tr><td>분류체계(Taxonomy)</td><td>범주를 넓음–좁음의 수직 계층으로 조직한 것.</td></tr>
+          <tr><td>온톨로지(Ontology)</td><td>동일성·차이·서로소·개수 제약 등 개념 간 수평 규칙을 정의한 것.</td></tr>
+          <tr><td>KG의 네 기둥</td><td>진화(Evolution)·의미(Semantics)·통합(Integration)·학습(Learning).</td></tr>
+          <tr><td>지능형 자문 시스템(IAS)</td><td>통찰·권고를 제공하되 최종 결정은 사용자가 내리는 시스템. 이 책의 초점.</td></tr>
+          <tr><td>지식 습득(Knowledge Acquisition)</td><td>데이터·환경·전문가로부터 정보를 수집해 구조화된 지식으로 변환하는 과정.</td></tr>
+          <tr><td>추론(연역·귀납·확률적)</td><td>전제·관찰·패턴으로부터 결론을 이끄는 인지 과정의 세 유형.</td></tr>
+          <tr><td>추론 엔진 / 피드백 루프</td><td>KB를 읽고 쓰는 엔진과, 조치→환경→관찰→새 지식으로 이어지는 반복 순환.</td></tr>
+          <tr><td>CRISP-DM</td><td>정립된 ML 프로젝트 방법론. 비즈니스 이해에서 출발하는 목적 주도 KG 구축의 토대.</td></tr>
+          <tr><td>상향식 / 목적 주도</td><td>모든 데이터부터 통합하는 방식(흔히 실패) vs 비즈니스 목표가 데이터·구조를 이끄는 방식.</td></tr>
+          <tr><td>스키마리스(Schemaless)</td><td>데이터 형식·관계 제약이 적거나 없는 저장 유연성. 그래프 DB의 특성.</td></tr>
+          <tr><td>반사실적 과제(Counterfactual Task)</td><td>기본값·익숙한 형태에서 벗어난 과제. LLM의 성능이 저하되는 지점.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="report-appendix s-refs page-break" id="references">
+      <div class="report-section__kicker">Appendix B · References</div>
+      <h1>참고 자료와 도형 출처</h1>
+      <p style="color:var(--muted,#6B6B72);font-size:14px;">Chapter 1의 참고문헌 번호와 Chapter 2의 참고문헌 번호는 서로 독립된 체계다. 본문 인용은 <code>[Ch1 N]</code>, <code>[Ch2 N]</code>로 구분해 표기했다. 아래 목록은 본문에서 인용한 항목만 정리했으며, 정확한 저자·연도가 확인되지 않는 항목은 지어내지 않고 성격만 기재한다.</p>
+      <ol class="references" style="list-style:none;padding:0;">
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:60px;font-weight:800;color:var(--brand-primary);">교재</span><span>Alessandro Negro. <em>Knowledge Graphs and LLMs in Action</em>, Chapter 1 “Knowledge graphs and LLMs: A killer combination” · Chapter 2 “Intelligent systems: A hybrid approach.” Manning Publications. 본 리포트의 1차 교재.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:60px;font-weight:800;color:var(--brand-primary);">Ch1 1</span><span>“AI의 제3의 물결(third wave of AI)” 관련 문헌. 맥락 기반 AI 논의.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:60px;font-weight:800;color:var(--brand-primary);">Ch1 8</span><span>“The Unreasonable Effectiveness of Data.” 데이터의 규모·품질이 성능에 미치는 효과에 관한 논의.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:60px;font-weight:800;color:var(--brand-primary);">Ch1 9</span><span>“Scaling Laws for Neural Language Models.” 더 큰 모델이 더 적은 데이터로 같은 성능에 도달함을 보인 논문.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:60px;font-weight:800;color:var(--brand-primary);">Ch1 10</span><span>KG로 완화 가능한 LLM 약점(환각·오래된 정보·설명 가능성)에 관한 문헌.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:60px;font-weight:800;color:var(--brand-primary);">Ch1 11</span><span>LLM과 KG의 상호 보완 구조에 관한 문헌. 그림 5(상호 보완 매트릭스)의 영감 출처.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:60px;font-weight:800;color:var(--brand-primary);">Ch1 12</span><span>McKinsey &amp; Company. 데이터 파편화 해소 시 단기 연간 데이터 지출 5~15% 절감에 관한 리포트.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:60px;font-weight:800;color:var(--brand-primary);">Ch1 13</span><span>KG의 의미(semantics)와 설명 가능성(explainability)에 관한 문헌.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:60px;font-weight:800;color:var(--brand-primary);">Ch1 14</span><span>Zhang 외. 대화형 시스템 관련 연구. “대화는 흔히 지식을 중심으로 전개된다”는 인용의 출처.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:60px;font-weight:800;color:var(--brand-primary);">Ch1 15</span><span>그래프에 의미를 부여하는 조직 원리(분류체계·온톨로지)에 관한 문헌.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:60px;font-weight:800;color:var(--brand-primary);">Ch2 1</span><span>Geoff Hulten. <em>Building Intelligent Systems</em>. 지능형 시스템의 정의(사용자를 지원하고 상호작용으로 진화)의 출처.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:60px;font-weight:800;color:var(--brand-primary);">Ch2 4</span><span>Wu 외. LLM의 반사실적(counterfactual) 과제 성능 저하를 보인 연구(11개 과제 평가).</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:60px;font-weight:800;color:var(--brand-primary);">Ch2 12</span><span>CRISP-DM. 정립된 ML/데이터 마이닝 프로젝트 방법론. 목적 주도 KG 구축의 토대.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:60px;font-weight:800;color:var(--brand-primary);">외부</span><span>구글 Knowledge Graph의 “things, not strings” 발상 · RDF/SPARQL(W3C) · openCypher · Apache TinkerPop Gremlin은 본문에서 언급한 공개 기술·표준이다.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:60px;font-weight:800;color:var(--brand-primary);">도형</span><span>그림 1–9는 ds4th study가 교재의 개념·서술을 재구성해 새로 작성한 발표용 도해다. 그림 1=§1.1 병목, 2=그림 1.1 재구성, 3=그림 1.6, 4=그림 1.2, 5=그림 1.5, 6=§1.6, 7=그림 2.4·2.10 종합, 8=그림 2.10, 9=그림 2.13·2.14. 교재 원본 그림을 복제하지 않았다.</span></li>
+      </ol>
+      <div class="callout--insight"><span class="callout__kicker">자료 사용 원칙</span><div class="callout__body"><p>본문은 교재의 논지를 발표자의 언어로 요약·재구성했다. 실제 도입 시에는 원 논문, 제품 문서, 개인정보·의료 안전·보안·규제 요구사항을 별도로 확인해야 한다.</p></div></div>
+      <div class="report-jump-links"><a href="./">발표자료</a><a href="../../">회차 목록</a><a href="#summary">문서 처음</a></div>
+    </section>
+  </article>
+  <script src="assets/report.js"></script>
+  <script defer src="assets/katex/katex.min.js"></script>
+  <script defer src="assets/katex/auto-render.min.js"></script>
+  <script defer src="assets/katex/katex-init.js"></script>
+</body>
+</html>

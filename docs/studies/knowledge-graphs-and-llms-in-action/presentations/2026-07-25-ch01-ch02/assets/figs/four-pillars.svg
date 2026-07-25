@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 470" role="img" aria-labelledby="title desc">
+  <title id="title">지식 그래프의 네 기둥</title>
+  <desc id="desc">진화, 의미, 통합, 학습 네 기둥이 중심의 지식 그래프를 살아 있는 지식 계층으로 만든다.</desc>
+  <defs><style>.t{font-family:Inter,'Noto Sans KR',sans-serif}.h{font-size:19px;font-weight:800}.sh{font-size:16px;font-weight:800}.m{font-size:12px;fill:#6B6B72}.box{fill:#fff;stroke:#B7C2D1;stroke-width:1.5}.navy{fill:#0F2C59}.soft{fill:#F2F5F9;stroke:#B7C2D1;stroke-width:1.5}.line{stroke:#B7C2D1;stroke-width:2}</style></defs>
+  <rect width="920" height="470" rx="12" fill="#FAFAF9"/>
+  <text class="t h" x="34" y="44">네 기둥이 함께 작동해야 그래프는 진정한 지식 그래프가 된다</text>
+  <text class="t m" x="34" y="68">한 기둥만 강해서는 부족하다. 진화·의미·통합·학습이 서로 의존하는 품질 조건이다.</text>
+  <line class="line" x1="370" y1="200" x2="240" y2="168"/><line class="line" x1="550" y1="200" x2="680" y2="168"/><line class="line" x1="370" y1="300" x2="240" y2="332"/><line class="line" x1="550" y1="300" x2="680" y2="332"/>
+  <circle cx="460" cy="250" r="66" class="navy"/><text x="460" y="244" text-anchor="middle" fill="#fff" class="t sh">지식 그래프</text><text x="460" y="266" text-anchor="middle" fill="#fff" opacity=".78" class="t m">살아 있는 지식 계층</text>
+  <g transform="translate(70 110)"><rect class="box" width="300" height="112" rx="8"/><text class="t sh" x="20" y="34">진화 · Evolution</text><text class="t m" x="20" y="60">새 사실·관계를 계속 흡수</text><text class="t m" x="20" y="82">구조를 유기적으로 확장</text><text class="t m" x="20" y="104">재구축 없이 진화</text></g>
+  <g transform="translate(550 110)"><rect class="box" width="300" height="112" rx="8"/><text class="t sh" x="20" y="34">의미 · Semantics</text><text class="t m" x="20" y="60">유형·관계를 명시적으로 정의</text><text class="t m" x="20" y="82">identity · transitive · inverse</text><text class="t m" x="20" y="104">일관성 검사 · 설명 가능성</text></g>
+  <g transform="translate(70 300)"><rect class="box" width="300" height="112" rx="8"/><text class="t sh" x="20" y="34">통합 · Integration</text><text class="t m" x="20" y="60">정형·비정형을 의미로 연결</text><text class="t m" x="20" y="82">형식·출처 차이를 극복</text><text class="t m" x="20" y="104">도메인의 중심 기준점</text></g>
+  <g transform="translate(550 300)"><rect class="box" width="300" height="112" rx="8"/><text class="t sh" x="20" y="34">학습 · Learning</text><text class="t m" x="20" y="60">중심성·네트워크·커뮤니티 분석</text><text class="t m" x="20" y="82">규칙·ML로 새 정보 추정</text><text class="t m" x="20" y="104">명시되지 않은 통찰 도출</text></g>
+</svg>
