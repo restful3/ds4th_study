@@ -127,6 +127,50 @@ meap_only = ["ch05", "ch06"]
 "12.24" = { source = "repo-file", path = "model/hetero_model.py", symbol = "HeteroBaseModel" }
 "12.25" = { source = "repo-file", path = "model/hetero_model.py", symbol = "HeteroSAGE" }
 
+# ch11 도 listings/ 가 없다. 코드는 analysis/ 두 파일에만 있다.
+# 책 9.5 는 원서 md 에서 캡션이 유실돼 번호 붙은 리스팅으로 잡히지 않는다 (게이트도 요구하지 않는다).
+# 9.4 의 symbol 은 클래스 안 메서드라 dotted 표기다 — 이 챕터 노트북 헬퍼만 해석한다.
+# [mapping.listing_offsets] 에 ch11 을 넣지 말 것 — 번호 붙은 파일이 하나도 없다.
+[mapping.listings.ch11]
+"9.1"  = { source = "repo-file", path = "analysis/simple_classification_example.py", symbol = "draw_and_save_graph_picture" }
+"9.2"  = { source = "repo-file", path = "analysis/simple_classification_example.py", symbol = "compute_degree_embeddings" }
+"9.3"  = { source = "repo-file", path = "analysis/simple_classification_example.py", symbol = "compute_complex_embeddings" }
+"9.4"  = { source = "repo-file", path = "analysis/simple_classification_example.py", symbol = "EvaluateEmbedding.train" }
+"9.6"  = { source = "repo-file", path = "analysis/simple_classification_example.py", start = 96, end = 112 }
+"9.7"  = { source = "explainer", reason = "book-only" }    # 출력 예시 — 9.6 + 9.2/9.3 이 만든다
+"9.8"  = { source = "repo-file", path = "analysis/simple_classification_example.py", symbol = "compute_specific_degree_embeddings" }
+"9.9"  = { source = "explainer", reason = "book-only" }    # 출력 예시 — 9.6 + 9.8 이 만든다
+"9.10" = { source = "repo-file", path = "analysis/simple_clustering_example.py", symbol = "__main__" }
+
+# ch12 는 저장소가 MEAP 번호(12.x)를 쓴다. 책 major(10) 와 다르므로 listing_offsets 로
+# 표현할 수 없다 — resolve_listing 이 책 major 를 그대로 파일명에 쓰기 때문이다.
+# minor 는 대체로 일치하지만 책 10.18 만 저장소 12.19 다 (저장소 12.18 이 프롬프트라
+# 책에서 번호를 못 받아 뒤가 밀렸다). src/ch12/tasks.py 독스트링의 "번호 -2" 주장은
+# 이 한 건에서 틀리므로 함께 고쳤다.
+#
+# symbol 의 특수값 두 개 (노트북 헬퍼가 ast 로 해석한다):
+#   __main__   파일 전체 (스크립트, 또는 확장자 없는 Cypher·프롬프트 파일)
+#   __entry__  파일의 `if __name__ == '__main__':` 블록만
+[mapping.listings.ch12]
+"10.2"  = { source = "repo-file", path = "listings/12.3 Computing different types of node degrees in a fraud detection network.py", symbol = "__entry__" }
+"10.4"  = { source = "repo-file", path = "listings/12.4 Computing triangle metrics in a fraud detection network.py", symbol = "compute_triangle_metrics" }
+"10.6"  = { source = "repo-file", path = "listings/12.6 Computing geodesic path metrics in a fraud detection network.py", symbol = "compute_geodesic_metrics" }
+"10.7"  = { source = "repo-file", path = "listings/12.7 Computing closeness centrality in a fraud detection network.py", symbol = "compute_closeness_metrics" }
+"10.8"  = { source = "repo-file", path = "listings/12.8 Computing betweenness centrality in a fraud detection network.py", symbol = "compute_betweenness_metrics" }
+"10.9"  = { source = "repo-file", path = "listings/12.9 Computing PageRank variations for fraud detection.py", symbol = "compute_pagerank_metrics" }
+"10.10" = { source = "repo-file", path = "listings/12.10 Create node features using the metrics described before.py", symbol = "create_node_features_dataset" }
+"10.11" = { source = "repo-file", path = "listings/12.11 Train a fraud classifier and evaluate the accuracy.py", symbol = "train_fraud_classifier" }
+"10.13" = { source = "repo-file", path = "listings/12.13 All together code to present the results of the entire process.py", symbol = "__entry__" }
+"10.14" = { source = "repo-file", path = "listings/12.14 How to combine two nodes representation in one link representation.py", symbol = "__main__" }
+"10.15" = { source = "repo-file", path = "listings/12.15 DWPC between Metformin and Type 2 Diabetes for the CbGaD", symbol = "__main__" }
+"10.16" = { source = "repo-file", path = "listings/12.16 DWPC value for CbGeAlD", symbol = "__main__" }
+"10.17" = { source = "repo-file", path = "listings/12.17 DWPC value for CbGpPWpGaD", symbol = "__main__" }
+"10.18" = { source = "repo-file", path = "listings/12.19 ReFeX implementation.py", symbol = "ReFeX" }
+
+# 책 10.5 는 실재하지만 원서 md 에 **코드 스캔 이미지** 로 실려 있어 book_listings() 가
+# 잡지 못한다 (원문 L237·L239). 게이트가 요구하지 않지만 사실이므로 선언해 둔다.
+"10.5"  = { source = "repo-file", path = "listings/12.5 Computing egonet density in a fraud detection network.py", symbol = "compute_density_metrics" }
+
 # OpenAI 호환 엔드포인트 설정. 비밀값을 저장소에 복사하지 않고 **참조만** 한다.
 # 이 파일은 저장소 밖에 있어 git 에 들어가지 않는다.
 # 교재 코드가 OPENAI_KEY / OPENAI_API_KEY 를 섞어 쓰므로 studykit.llm 이 양쪽을 채운다.
