@@ -66,6 +66,9 @@ class Study:
     meap_only: tuple[str, ...] = ()
     #: 봇 차단으로 200 이 아니지만 유효한 URL
     url_allow_non_200: tuple[str, ...] = ()
+    #: OpenAI 호환 엔드포인트 설정을 담은 파일. **저장소 밖** 경로를 참조만 한다.
+    #: 비밀값을 저장소에 복사하지 않기 위한 것이다.
+    llm_env_file_raw: str | None = None
 
     # ---------------- 경로 ----------------
     @property
@@ -97,6 +100,14 @@ class Study:
     @property
     def meap_dir(self) -> Path:
         return self.root / "meap-only"
+
+    @property
+    def llm_env_file(self) -> Path | None:
+        """OpenAI 호환 설정 파일의 절대경로. 상대경로는 저장소 루트 기준."""
+        if not self.llm_env_file_raw:
+            return None
+        candidate = Path(self.llm_env_file_raw).expanduser()
+        return candidate if candidate.is_absolute() else (REPO_ROOT / candidate)
 
     def venv_python(self) -> Path:
         candidate = self.venv / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
@@ -195,6 +206,7 @@ def load(study_root: Path | str | None = None) -> Study:
 
     upstream = raw.get("upstream", {})
     notebook = raw.get("notebook", {})
+    llm = raw.get("llm", {})
     mapping = raw.get("mapping", {})
 
     return Study(
@@ -216,4 +228,5 @@ def load(study_root: Path | str | None = None) -> Study:
         },
         meap_only=tuple(mapping.get("meap_only", ())),
         url_allow_non_200=tuple(notebook.get("url_allow_non_200", ())),
+        llm_env_file_raw=llm.get("env_file"),
     )

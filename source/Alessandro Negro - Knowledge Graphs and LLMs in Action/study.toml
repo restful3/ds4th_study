@@ -66,3 +66,9 @@ meap_only = ["ch05", "ch06"]
 [mapping.listings.ch03]
 "3.21" = { source = "explainer" }   # 저장소 3.24 가 3.25 와 내용 중복
 "3.25" = { source = "explainer" }   # 저장소 3.28 이 0바이트
+
+# OpenAI 호환 엔드포인트 설정. 비밀값을 저장소에 복사하지 않고 **참조만** 한다.
+# 이 파일은 저장소 밖에 있어 git 에 들어가지 않는다.
+# 교재 코드가 OPENAI_KEY / OPENAI_API_KEY 를 섞어 쓰므로 studykit.llm 이 양쪽을 채운다.
+[llm]
+env_file = "../paperflow/.env"

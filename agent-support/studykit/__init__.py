@@ -12,7 +12,7 @@ study.toml 에 있고, 교재별 가상환경은 그 폴더의 .venv 다.
 절차와 규칙은 agent-support/procedures/study-materials.md 와
 agent-support/templates/study-materials/DESIGN.md 를 따른다.
 """
-from studykit import config
+from studykit import config, llm
 from studykit.actions import (
     Download,
     Gunzip,
@@ -43,6 +43,7 @@ __all__ = [
     "StudyConfigError",
     "Unzip",
     "config",
+    "llm",
     "main",
     "run",
     "study",
