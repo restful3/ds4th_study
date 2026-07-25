@@ -1,0 +1,4 @@
+interface:
+  display_name: "교재 학습자료·해설 노트북"
+  short_description: "Set up textbook code/data and build explainer-based chapter notebooks"
+  default_prompt: "Use $study-materials to set up the textbook environment and build the chapter notebook, then pass the verification gate."

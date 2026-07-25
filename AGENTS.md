@@ -47,6 +47,16 @@
 - 공용 리포트 템플릿의 전체화면 이미지 뷰어와 공용 슬라이드 템플릿의 키보드·목차·전체화면 기능을 유지한다. 두 산출물의 우측 상단 설정 패널에서 `Index / Slides / Report`를 오갈 수 있어야 한다.
 - 리포트·발표 HTML과 자산만 `docs/`에 둔다. 원문 PDF와 학습용 대용량 파일은 복사하지 않는다.
 
+## Study materials workflow
+
+- 교재 코드·데이터 확보, 챕터별 `src/` 배치, 해설판 기반 노트북 작업에는 `study-materials` 스킬과 `agent-support/procedures/study-materials.md`를 사용한다. 리포트·발표자료와는 별개 절차다.
+- 공용 도구는 `agent-support/studykit/`에 한 벌만 둔다. 교재 폴더로 복사하지 않는다. 교재별로는 `study.toml`과 `.venv`만 둔다.
+- 챕터↔소스 대응을 디렉터리 개수나 제목 인상으로 추측하지 않는다. 챕터 원문 md의 고유 키워드 빈도로 확인하고, 최종 출간본에 대응 챕터가 없는 디렉터리는 `meap-only/`로 분리한다.
+- 리스팅 번호 대응은 `study.toml`의 `[mapping.listings.chXX]`가 정본이다. 오프셋은 챕터마다 다르므로 한 챕터의 값을 다른 챕터에 적용하지 않는다.
+- 노트북은 `src`에 코드가 있는 챕터에만 만든다. 그림은 attachment로 내장하고, 저장소 안의 대상은 상대경로로 링크한다.
+- 완성 보고 전에 `python3 agent-support/scripts/study-verify.py "source/<교재>"`를 통과시킨다. `status = "draft"`인 노트북은 lint만 통과하면 되고, 완성은 리스팅 coverage 100%와 TODO 0을 요구한다.
+- 대용량 데이터는 git에 올리지 않는다. `data-manifest.toml`에 출처를 적고 각자 받는다. 비밀값은 저장소 밖 파일을 참조만 한다.
+
 ## Required verification
 
 사이트 파일을 바꾼 뒤 다음을 실행한다.
