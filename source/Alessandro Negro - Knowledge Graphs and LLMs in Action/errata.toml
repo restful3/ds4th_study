@@ -644,3 +644,22 @@ observation = "GraphDBBase 의 database 기본값이 'neo4j' 라, 인자 없이 
 correction = "기존 DB 가 있으면 CREATE DATABASE 가 실패하므로 데이터가 지워지지는 않지만 시드도 되지 않는다. 반드시 `-d <새 이름>` 을 넘겨 별도 DB 로 만든다."
 notebook = "chapter_15_building_a_qa_agent_with_langgraph/src/ch15/15_chapter_guide.ipynb"
 
+[[erratum]]
+chapter = 15
+location = "chains/investigator.py get_prompt · chains/templates/*.template"
+kind = "code"
+status = "version-drift"
+severity = "high"
+observation = "langchain-core 0.3.86 의 jinja2_formatter 는 _RestrictedSandboxedEnvironment 를 쓰고 템플릿 안의 속성 접근을 막는다. 업스트림 템플릿 셋이 dict 에 점으로 접근한다 — text_to_cypher.template 의 annotations.examples · annotations.notes · e.question · e.answer · e.reasoning · node.label, summary.template 의 node.label · node.properties. 그대로 두면 text_to_cypher 단계에서 SecurityError 로 파이프라인이 죽는다."
+correction = "책이 틀린 것이 아니라 집필 이후 langchain-core 가 보안 강화를 넣은 것이다. 원본 템플릿·소스를 고치지 않고 임포트 뒤 모듈 전역의 jinja2_formatter 를 평범한 jinja2.Environment 렌더러로 교체해 실행했다 (템플릿은 저장소 안의 신뢰된 파일이다). 다운그레이드는 하지 않았다 — 책 13장이 같은 langchain-core 에서 실행돼 출력이 커밋됐다."
+notebook = "chapter_15_building_a_qa_agent_with_langgraph/src/ch15/15_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 15
+location = "chains/investigator.py L38 (모듈 최상위 AzureChatOpenAI)"
+kind = "code"
+status = "upstream"
+observation = "llm_model = AzureChatOpenAI(azure_deployment=os.environ['AZURE_OPENAI_DEPLOYMENT'], …) 이 **임포트 시점** 에 실행된다. Azure 환경변수가 없으면 KeyError 로 모듈 임포트 자체가 실패해, Ollama·OpenAI 로 바꾸려 해도 그 지점까지 갈 수 없다. 파일 위쪽에 주석 처리된 Ollama·OpenAI 대안이 있지만 활성 코드는 Azure 하나뿐이다."
+correction = "자리표시자 환경변수 넷을 채워 임포트만 통과시킨 뒤(생성자는 API 를 호출하지 않는다), chains.investigator.abot.model 을 프록시를 가리키는 ChatOpenAI 로 교체했다. 실측: 프록시 gpt-5.4-mini 로 15.13 파이프라인 완주 13.0초."
+notebook = "chapter_15_building_a_qa_agent_with_langgraph/src/ch15/15_chapter_guide.ipynb"
+
