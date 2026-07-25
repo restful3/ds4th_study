@@ -1,0 +1,53 @@
+# 교재 설정. agent-support/studykit 이 이 파일을 읽는다.
+# 절차: agent-support/procedures/study-materials.md
+
+[study]
+slug = "knowledge-graphs-and-llms-in-action"
+title = "Knowledge Graphs and LLMs in Action"
+# 업스트림이 3.8/3.9/3.10 만 테스트했고, scispacy 가 요구하는 nmslib 는
+# 3.11+ 에 휠이 없어 빌드가 깨진다. 올리지 말 것.
+python = "3.10"
+base_packages = ["neo4j>=5,<6", "tqdm", "ipykernel", "jupyterlab"]
+kernel_name = "kglm"
+
+[upstream]
+url = "https://github.com/alenegro81/knowledge-graphs-and-llms-in-action.git"
+dir = "code"
+# 업스트림 코드가 `from util...` 로 임포트하고 util/../config.ini 를 읽으므로
+# 이 셋은 교재 루트에 있어야 한다.
+shared = ["util", "config.ini", "data"]
+
+[notebook]
+explainer_suffix = "_ko_explained.md"
+# 봇 차단으로 200 이 아니지만 브라우저에서는 정상인 URL
+url_allow_non_200 = ["https://www.omim.org/"]
+
+# 챕터 원문 md 의 고유 키워드 빈도로 검증한 대응이다.
+# 개수를 맞춰 짝지으면 틀린다 — 실제로 ch05·ch06 을 잘못 배치했었다.
+# study-map-sources.py 로 재도출할 수 있다.
+[mapping.chapters]
+chapter_02_intelligent_systems_a_hybrid_approach = "ch02"
+chapter_03_create_your_first_knowledge_graph_from_ontologies = "ch03"
+chapter_04_from_simple_networks_to_multisource_integration = "ch04"
+chapter_05_extracting_domain_specific_knowledge_from_unstructured_data = "ch07"
+chapter_06_building_knowledge_graphs_with_large_language_models = "ch08"
+chapter_07_named_entity_disambiguation = "ch09"
+chapter_08_ned_with_open_llms_and_domain_ontologies = "ch10"
+chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach = "ch11"
+chapter_10_graph_feature_engineering_manual_and_semiautomated_approaches = "ch12"
+chapter_11_graph_representation_learning_and_graph_neural_networks = "ch13"
+chapter_12_node_classification_and_link_prediction_with_gnns = "ch14"
+chapter_13_knowledge_graph_powered_retrieval_augmented_generation = "ch15"
+chapter_15_building_a_qa_agent_with_langgraph = "ch17"
+
+# 리스팅 minor 번호 오프셋. 책 번호 = 파일 번호 - 오프셋.
+# 챕터마다 다르므로 한 챕터의 값을 다른 챕터에 적용하면 안 된다.
+[mapping.listing_offsets]
+ch03 = 3
+ch04 = 0
+
+# 최종 출간본에 대응 챕터가 없는 MEAP 잔여 디렉터리. meap-only/ 에 둔다.
+# ch05 는 전체가 miRNA 인데 miRNA 는 책 4장에 1회뿐이고,
+# ch06 은 BBC+spaCy 문서 파이프라인인데 Jaccard 는 0회다.
+[mapping]
+meap_only = ["ch05", "ch06"]

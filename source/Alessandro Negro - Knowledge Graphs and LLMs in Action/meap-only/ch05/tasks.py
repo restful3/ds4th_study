@@ -15,8 +15,8 @@ download 는 교재 루트의 dataset/hmdd/ 에 내려받는다. 이미 있는 �
 """
 from pathlib import Path
 
-from kgbook import Download, Gunzip, Mkdir, Move, PipInstall, RunScript, Unzip, main
-from kgbook.actions import run as _run
+from studykit import Download, Gunzip, Mkdir, Move, PipInstall, RunScript, Unzip, main
+from studykit.actions import run as _run
 
 HERE = Path(__file__).resolve().parent
 

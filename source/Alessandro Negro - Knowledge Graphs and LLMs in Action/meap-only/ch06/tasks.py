@@ -14,8 +14,8 @@ import 는 교재 루트의 data/bbc/ (2,225개 기사)를 읽는다. 이미 동
 """
 from pathlib import Path
 
-from kgbook import PipInstall, RunModule, RunScript, main
-from kgbook.actions import run as _run
+from studykit import PipInstall, RunModule, RunScript, main
+from studykit.actions import run as _run
 
 HERE = Path(__file__).resolve().parent
 

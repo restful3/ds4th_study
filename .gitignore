@@ -136,3 +136,4 @@ sample_submission.csv
 # - config.ini 는 로컬 Neo4j 접속정보라서 실제 비밀번호가 들어갈 수 있다
 source/Alessandro Negro - Knowledge Graphs and LLMs in Action/code/
 source/Alessandro Negro - Knowledge Graphs and LLMs in Action/config.ini
+source/Alessandro Negro - Knowledge Graphs and LLMs in Action/util/

@@ -5,7 +5,7 @@
 책이 가르치는 대상이 Cypher 자체이므로 파일은 원문 그대로 두고,
 노트북·스크립트에서 호출할 수 있는 얇은 러너만 제공한다.
 
-    from kgbook import cypher
+    from studykit import cypher
     cypher.listings()                       # 현재 폴더의 리스팅 목록
     print(cypher.read("3.19"))              # 원문 확인 (번호 접두사로 검색)
     cypher.run("3.19")                      # Neo4j에 실행
@@ -14,7 +14,7 @@ import configparser
 import re
 from pathlib import Path
 
-from kgbook.paths import CONFIG
+from studykit.actions import study
 
 # Path.suffix 는 '3.16 - create_database' 를 확장자 '.16 - create_database' 로 읽으므로
 # 화이트리스트를 쓸 수 없다. Python·설정·바이너리 파일만 제외한다.
@@ -82,9 +82,10 @@ def statements(number: str, directory: str | Path = "listings") -> list[str]:
 def neo4j_params() -> dict:
     """config.ini 의 [neo4j] 섹션을 읽는다."""
     parser = configparser.ConfigParser()
-    if not CONFIG.exists():
-        raise FileNotFoundError(f"config.ini 가 없다: {CONFIG}")
-    parser.read(CONFIG)
+    config_path = study().config_ini
+    if not config_path.exists():
+        raise FileNotFoundError(f"config.ini 가 없다: {config_path}")
+    parser.read(config_path)
     return dict(parser["neo4j"])
 
 

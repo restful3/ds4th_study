@@ -5,17 +5,17 @@
 
 업스트림 Makefile에는 init 만 있다. 본문 리스팅은 listings/ 에 책 번호 -2 로
 들어 있다 (책 10.4 = listings/'12.4 Computing triangle metrics...py').
-Python 리스팅은 직접 실행하고, Cypher 리스팅은 kgbook.cypher 로 실행한다:
+Python 리스팅은 직접 실행하고, Cypher 리스팅은 studykit.cypher 로 실행한다:
 
-    from kgbook import cypher
+    from studykit import cypher
     cypher.listings()             # 목록
     print(cypher.read("12.15"))   # 원문
     cypher.run("12.15")           # Neo4j 실행
 """
 from pathlib import Path
 
-from kgbook import PipInstall, main
-from kgbook.actions import run as _run
+from studykit import PipInstall, main
+from studykit.actions import run as _run
 
 HERE = Path(__file__).resolve().parent
 

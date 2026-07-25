@@ -16,7 +16,18 @@ import urllib.request
 import zipfile
 from pathlib import Path
 
-from kgbook.paths import BOOK_ROOT, normalize_path, resolve, venv_bin, venv_python
+from studykit import config
+from studykit.config import normalize_path
+
+_STUDY: config.Study | None = None
+
+
+def study() -> config.Study:
+    """현재 교재 설정. 액션은 교재 폴더 안에서 실행되므로 cwd 에서 찾는다."""
+    global _STUDY
+    if _STUDY is None:
+        _STUDY = config.load()
+    return _STUDY
 
 
 class Action:
@@ -52,12 +63,10 @@ class RunScript(Action):
     def run(self, chapter_dir: Path) -> None:
         env = os.environ.copy()
         # .pth 로 이미 잡히지만, 다른 인터프리터로 돌릴 때를 위한 보험
-        env["PYTHONPATH"] = os.pathsep.join(
-            [str(BOOK_ROOT), env.get("PYTHONPATH", "")]
-        ).rstrip(os.pathsep)
+        env["PYTHONPATH"] = _pythonpath(env)
         for key, default in self.env.items():
             env.setdefault(key, default)
-        _check_call([str(venv_python()), self.script], cwd=chapter_dir, env=env)
+        _check_call([str(study().venv_python()), self.script], cwd=chapter_dir, env=env)
 
 
 class RunModule(Action):
@@ -73,7 +82,7 @@ class RunModule(Action):
 
     def run(self, chapter_dir: Path) -> None:
         _check_call(
-            [str(venv_python()), "-m", *self.args.split()], cwd=chapter_dir
+            [str(study().venv_python()), "-m", *self.args.split()], cwd=chapter_dir
         )
 
 
@@ -90,7 +99,7 @@ class PipInstall(Action):
 
     def run(self, chapter_dir: Path) -> None:
         _check_call(
-            [str(venv_python()), "-m", "pip", "install", "-r", self.requirements],
+            [str(study().venv_python()), "-m", "pip", "install", "-r", self.requirements],
             cwd=chapter_dir,
         )
 
@@ -108,11 +117,9 @@ class Streamlit(Action):
 
     def run(self, chapter_dir: Path) -> None:
         env = os.environ.copy()
-        env["PYTHONPATH"] = os.pathsep.join(
-            [str(BOOK_ROOT), env.get("PYTHONPATH", "")]
-        ).rstrip(os.pathsep)
+        env["PYTHONPATH"] = _pythonpath(env)
         _check_call(
-            [str(venv_bin("streamlit")), "run", self.script],
+            [str(study().venv_bin("streamlit")), "run", self.script],
             cwd=chapter_dir,
             env=env,
         )
@@ -131,7 +138,7 @@ class Mkdir(Action):
         return ("mkdir", self.path)
 
     def run(self, chapter_dir: Path) -> None:
-        resolve(self.path).mkdir(parents=True, exist_ok=True)
+        study().resolve(self.path).mkdir(parents=True, exist_ok=True)
 
 
 class Download(Action):
@@ -164,7 +171,7 @@ class Download(Action):
         return self.url.replace("<KEY>", key)
 
     def run(self, chapter_dir: Path) -> None:
-        target = resolve(self.dest)
+        target = study().resolve(self.dest)
         target.parent.mkdir(parents=True, exist_ok=True)
         if target.exists() and target.stat().st_size > 0:
             print(f"    이미 존재하므로 건너뜀: {self.dest}")
@@ -193,9 +200,9 @@ class Unzip(Action):
         return ("unzip", self.archive, self.dest)
 
     def run(self, chapter_dir: Path) -> None:
-        target = resolve(self.dest) if self.dest else resolve(self.archive).parent
+        target = study().resolve(self.dest) if self.dest else study().resolve(self.archive).parent
         target.mkdir(parents=True, exist_ok=True)
-        with zipfile.ZipFile(resolve(self.archive)) as zf:
+        with zipfile.ZipFile(study().resolve(self.archive)) as zf:
             zf.extractall(target)
 
 
@@ -209,7 +216,7 @@ class Gunzip(Action):
         return ("gunzip", self.path)
 
     def run(self, chapter_dir: Path) -> None:
-        source = resolve(self.path)
+        source = study().resolve(self.path)
         target = source.with_suffix("")  # .gz 제거
         with gzip.open(source, "rb") as fin, open(target, "wb") as fout:
             shutil.copyfileobj(fin, fout)
@@ -227,14 +234,26 @@ class Move(Action):
         return ("mv", self.src, self.dst)
 
     def run(self, chapter_dir: Path) -> None:
-        target = resolve(self.dst)
+        target = study().resolve(self.dst)
         target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.move(str(resolve(self.src)), str(target))
+        shutil.move(str(study().resolve(self.src)), str(target))
 
 
 # --------------------------------------------------------------------------
 # 러너
 # --------------------------------------------------------------------------
+def _pythonpath(env: dict) -> str:
+    """업스트림 코드가 임포트하는 교재 루트와, studykit 이 있는 agent-support 를 넣는다.
+
+    부트스트랩이 .pth 로도 등록하지만, 다른 인터프리터로 돌릴 때를 위한 보험이다.
+    """
+    parts = [str(study().root), str(config.REPO_ROOT / "agent-support")]
+    existing = env.get("PYTHONPATH", "")
+    if existing:
+        parts.append(existing)
+    return os.pathsep.join(parts)
+
+
 def _check_call(cmd: list[str], cwd: Path, env: dict | None = None) -> None:
     # subprocess가 같은 fd에 직접 쓰므로, 파이프로 넘길 때 순서가 섞이지 않도록 flush
     print(f"    $ {' '.join(cmd)}", flush=True)

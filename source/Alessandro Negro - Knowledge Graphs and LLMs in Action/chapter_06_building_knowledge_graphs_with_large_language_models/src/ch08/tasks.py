@@ -16,8 +16,8 @@ import 는 OpenAI 호환 API를 호출한다. 업스트림 Makefile이 하드코
 """
 from pathlib import Path
 
-from kgbook import PipInstall, RunScript, main
-from kgbook.actions import run as _run
+from studykit import PipInstall, RunScript, main
+from studykit.actions import run as _run
 
 HERE = Path(__file__).resolve().parent
 

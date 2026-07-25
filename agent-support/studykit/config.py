@@ -1,0 +1,191 @@
+"""교재 설정(study.toml) 로드와 경로 해석.
+
+studykit 은 저장소에 한 벌만 있고 교재는 여러 개다. 그래서 "어느 교재인가"를
+매번 알아내야 한다. 노트북과 tasks.py 는 교재 폴더 안에서 실행되므로 cwd 에서
+위로 올라가며 study.toml 을 찾는다.
+"""
+from __future__ import annotations
+
+import os
+import re
+import sys
+from dataclasses import dataclass, field
+from pathlib import Path
+
+# tomllib 은 3.11+ 에만 있다. 교재 .venv 는 업스트림이 테스트한 3.10 일 수 있어
+# tomli 로 폴백한다. bootstrap 이 3.11 미만이면 tomli 를 기반 패키지에 넣는다.
+try:
+    import tomllib
+except ModuleNotFoundError:  # pragma: no cover - 3.10 이하
+    try:
+        import tomli as tomllib  # type: ignore[no-redef]
+    except ModuleNotFoundError as exc:  # pragma: no cover
+        raise ModuleNotFoundError(
+            "TOML 파서가 없다. Python 3.11+ 를 쓰거나 `pip install tomli` 하라."
+        ) from exc
+
+#: 저장소 루트 (agent-support/studykit/config.py 기준)
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+
+CONFIG_NAME = "study.toml"
+
+# 업스트림 코드가 임포트하는 공용 자원. 부트스트랩이 code/ 에서 교재 루트로 올린다.
+# util/graphdb_base.py 처럼 자기 위치의 상위에서 설정 파일을 읽는 코드가 있어서
+# 디렉터리 구조를 업스트림 저장소 루트와 같게 맞춰야 한다.
+DEFAULT_SHARED = ("util", "config.ini", "data")
+
+
+class StudyConfigError(RuntimeError):
+    """study.toml 을 찾지 못했거나 필수 키가 빠진 경우."""
+
+
+@dataclass
+class Study:
+    """교재 하나의 설정과 경로."""
+
+    root: Path
+    slug: str
+    title: str
+    python: str = "3.10"
+    upstream_url: str | None = None
+    upstream_dir: str = "code"
+    shared: tuple[str, ...] = DEFAULT_SHARED
+    base_packages: tuple[str, ...] = ("ipykernel", "jupyterlab")
+    kernel_name: str | None = None
+    explainer_suffix: str = "_ko_explained.md"
+    #: 책 챕터 폴더명 -> 업스트림 챕터 디렉터리명. study-map-sources.py 가 채운다.
+    chapter_map: dict[str, str] = field(default_factory=dict)
+    #: 업스트림 챕터 디렉터리명 -> 리스팅 minor 번호 오프셋 (챕터마다 다르다)
+    listing_offsets: dict[str, int] = field(default_factory=dict)
+    #: 최종 출간본에 대응 챕터가 없는 업스트림 디렉터리
+    meap_only: tuple[str, ...] = ()
+    #: 봇 차단으로 200 이 아니지만 유효한 URL
+    url_allow_non_200: tuple[str, ...] = ()
+
+    # ---------------- 경로 ----------------
+    @property
+    def venv(self) -> Path:
+        return self.root / ".venv"
+
+    @property
+    def upstream(self) -> Path:
+        return self.root / self.upstream_dir
+
+    @property
+    def dataset(self) -> Path:
+        """매니페스트로 내려받는 대용량 데이터."""
+        return self.root / "dataset"
+
+    @property
+    def data(self) -> Path:
+        """업스트림에 동봉된 데이터."""
+        return self.root / "data"
+
+    @property
+    def config_ini(self) -> Path:
+        return self.root / "config.ini"
+
+    @property
+    def manifest(self) -> Path:
+        return self.root / "data-manifest.toml"
+
+    @property
+    def meap_dir(self) -> Path:
+        return self.root / "meap-only"
+
+    def venv_python(self) -> Path:
+        candidate = self.venv / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
+        return candidate if candidate.exists() else Path(sys.executable)
+
+    def venv_bin(self, name: str) -> Path:
+        bindir = self.venv / ("Scripts" if os.name == "nt" else "bin")
+        candidate = bindir / (f"{name}.exe" if os.name == "nt" else name)
+        return candidate if candidate.exists() else Path(name)
+
+    def resolve(self, relative: str) -> Path:
+        """교재 루트 기준 상대경로를 절대경로로."""
+        return self.root / normalize_path(relative)
+
+    def chapter_dirs(self) -> list[Path]:
+        return sorted(p for p in self.root.glob("chapter_*") if p.is_dir())
+
+    def src_dirs(self) -> dict[str, Path]:
+        """업스트림 디렉터리명 -> 사본 경로. meap-only 도 포함한다."""
+        found: dict[str, Path] = {}
+        parents = [c / "src" for c in self.chapter_dirs()] + [self.meap_dir]
+        for parent in parents:
+            if not parent.is_dir():
+                continue
+            for path in sorted(parent.glob("ch*")):
+                if path.is_dir():
+                    found[path.name] = path
+        return found
+
+    def explainer_for(self, chapter_dir: Path) -> Path | None:
+        """챕터 폴더의 해설판 마크다운."""
+        matches = sorted(chapter_dir.glob(f"*{self.explainer_suffix}"))
+        return matches[0] if matches else None
+
+    def original_md_for(self, chapter_dir: Path) -> Path | None:
+        """챕터 폴더의 원서 원문 마크다운 (해설판·번역본 제외)."""
+        for path in sorted(chapter_dir.glob("*.md")):
+            name = path.name
+            if name.endswith(self.explainer_suffix) or name.endswith("_ko.md"):
+                continue
+            return path
+        return None
+
+
+def normalize_path(raw: str) -> str:
+    """'../../dataset/x/' -> 'dataset/x'. 교재 루트 기준으로 통일한다.
+
+    업스트림 Makefile 이 챕터 디렉터리 기준 상대경로를 쓰기 때문에 필요하다.
+    """
+    return re.sub(r"^(\.\./)+", "", raw).rstrip("/")
+
+
+def find_study_root(start: Path | None = None) -> Path:
+    """cwd(또는 start)에서 위로 올라가며 study.toml 이 있는 디렉터리를 찾는다."""
+    current = (start or Path.cwd()).resolve()
+    for candidate in [current, *current.parents]:
+        if (candidate / CONFIG_NAME).is_file():
+            return candidate
+    raise StudyConfigError(
+        f"{CONFIG_NAME} 을 찾지 못했다 (탐색 시작: {current}).\n"
+        f"교재 폴더 안에서 실행하거나, 교재 경로를 명시하라."
+    )
+
+
+def load(study_root: Path | str | None = None) -> Study:
+    """study.toml 을 읽어 Study 를 만든다. 경로를 주지 않으면 cwd 에서 찾는다."""
+    root = Path(study_root).resolve() if study_root else find_study_root()
+    config_path = root / CONFIG_NAME
+    if not config_path.is_file():
+        raise StudyConfigError(f"{config_path} 가 없다")
+
+    raw = tomllib.loads(config_path.read_text(encoding="utf-8"))
+    study = raw.get("study", {})
+    for key in ("slug", "title"):
+        if key not in study:
+            raise StudyConfigError(f"{config_path}: [study].{key} 가 필요하다")
+
+    upstream = raw.get("upstream", {})
+    notebook = raw.get("notebook", {})
+    mapping = raw.get("mapping", {})
+
+    return Study(
+        root=root,
+        slug=study["slug"],
+        title=study["title"],
+        python=str(study.get("python", "3.10")),
+        upstream_url=upstream.get("url"),
+        upstream_dir=upstream.get("dir", "code"),
+        shared=tuple(upstream.get("shared", DEFAULT_SHARED)),
+        base_packages=tuple(study.get("base_packages", ("ipykernel", "jupyterlab"))),
+        kernel_name=study.get("kernel_name") or study["slug"],
+        explainer_suffix=notebook.get("explainer_suffix", "_ko_explained.md"),
+        chapter_map=dict(mapping.get("chapters", {})),
+        listing_offsets={k: int(v) for k, v in mapping.get("listing_offsets", {}).items()},
+        meap_only=tuple(mapping.get("meap_only", ())),
+        url_allow_non_200=tuple(notebook.get("url_allow_non_200", ())),
+    )

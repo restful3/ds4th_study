@@ -16,8 +16,8 @@ download 는 UMLS 계정의 API 키가 필요하다:
 """
 from pathlib import Path
 
-from kgbook import Download, Mkdir, Move, PipInstall, RunScript, Unzip, main
-from kgbook.actions import run as _run
+from studykit import Download, Mkdir, Move, PipInstall, RunScript, Unzip, main
+from studykit.actions import run as _run
 
 HERE = Path(__file__).resolve().parent
 
