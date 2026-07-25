@@ -4,7 +4,24 @@
 
 검증 도구 실행에는 Python 3.11 이상이 필요하다. 별도 Python 패키지는 설치하지 않는다.
 
+이 문서의 `bash` 블록은 macOS·Linux와 Windows의 Git Bash 기준이고, `powershell` 블록은 Windows PowerShell 기준이다. Windows에서는 [Git for Windows](https://gitforwindows.org/)와 [python.org 설치본](https://www.python.org/downloads/windows/)을 권장한다.
+
+Windows에서 Python 실행 명령은 `python3`이 아니라 `py -3`이다(`py`가 없으면 `python`). Git Bash를 쓰더라도 마찬가지다. Windows에서 `python3`을 그대로 입력하면 Python이 설치돼 있어도 앱 실행 별칭 때문에 Microsoft Store가 열릴 수 있다.
+
 ## 1. 저장소 받기
+
+### Windows 사전 설정
+
+Windows 사용자는 저장소를 받기 전에 다음을 한 번만 실행한다.
+
+```powershell
+git config --global core.longpaths true
+git config --global core.autocrlf input
+```
+
+이 저장소에서 가장 긴 파일 경로는 215자다. Windows 기본 경로 길이 제한은 260자여서 clone 위치에 따라 checkout이 중간에 실패할 수 있으므로 `core.longpaths`가 필요하다. `core.autocrlf input`은 편집하지 않은 HTML·CSS가 줄바꿈 차이만으로 통째로 변경된 것처럼 보이는 일을 막는다.
+
+### 내려받기
 
 저장소가 크므로 새로 받을 때는 전체 이력을 내려받지 않는 sparse checkout을 권장한다.
 
@@ -16,11 +33,21 @@ git sparse-checkout set \
   "source/Alessandro Negro - Knowledge Graphs and LLMs in Action"
 ```
 
+PowerShell에서는 줄 잇기 문자가 다르므로 `git sparse-checkout set`을 한 줄로 적는다.
+
+```powershell
+git clone --filter=blob:none --sparse --depth=1 https://github.com/restful3/ds4th_study.git
+cd ds4th_study
+git sparse-checkout set docs agent-support .agents .claude .github "source/Alessandro Negro - Knowledge Graphs and LLMs in Action"
+```
+
 다른 스터디를 준비한다면 마지막 경로를 `agent-support/studies.toml`의 해당 `materials_path`로 바꾼다. 이미 전체 저장소가 있다면 이 단계는 생략한다.
 
 ## 2. 에이전트 시작하기
 
 Codex 또는 Claude Code를 저장소 루트에서 시작한다. 프로젝트를 신뢰할지 묻는 경우 이 저장소와 변경사항을 검토한 뒤 결정한다.
+
+Windows에서 작업한다면 첫 요청에 그 사실을 함께 알려준다. 저장소의 절차 문서가 검증 명령을 `python3` 기준으로 적어 두었으므로, 에이전트가 이를 `py -3`으로 바꿔 실행해야 한다.
 
 처음에는 다음처럼 요청할 수 있다.
 
@@ -56,7 +83,11 @@ Codex 또는 Claude Code를 저장소 루트에서 시작한다. 프로젝트를
 python3 -m http.server 8000 -d docs
 ```
 
-브라우저에서 `http://localhost:8000/`을 연다. 회차별 경로는 다음 형식이다.
+```powershell
+py -3 -m http.server 8000 -d docs
+```
+
+브라우저에서 `http://localhost:8000/`을 연다. 서버는 `Ctrl+C`로 멈춘다. 회차별 경로는 다음 형식이다.
 
 ```text
 http://localhost:8000/studies/<study-slug>/presentations/<session-slug>/
