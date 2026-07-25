@@ -663,3 +663,12 @@ observation = "llm_model = AzureChatOpenAI(azure_deployment=os.environ['AZURE_OP
 correction = "자리표시자 환경변수 넷을 채워 임포트만 통과시킨 뒤(생성자는 API 를 호출하지 않는다), chains.investigator.abot.model 을 프록시를 가리키는 ChatOpenAI 로 교체했다. 실측: 프록시 gpt-5.4-mini 로 15.13 파이프라인 완주 13.0초."
 notebook = "chapter_15_building_a_qa_agent_with_langgraph/src/ch15/15_chapter_guide.ipynb"
 
+[[erratum]]
+chapter = 15
+location = "chains/investigator.py Agent.query_execution"
+kind = "code"
+status = "upstream"
+observation = "except 절이 neo4j.exceptions.ClientError 하나만 잡는다. 그런데 LLM 이 빈 문자열을 query 로 돌려주는 일이 실제로 있고(선택 없이 'the selected crime' 을 물으면 재현된다), 그때 driver 가 ValueError('Cannot run an empty query') 를 던져 재시도 루프에 들어가지 못하고 파이프라인 전체가 죽는다. 실측 3회 재현."
+correction = "빈 쿼리야말로 재시도가 필요한 경우인데 설계상 그 경로로 가지 못한다. 노트북은 업스트림을 고치지 않고 run_guarded() 로 감싸 노트북이 죽지 않게만 했다. 실제 시스템이라면 except 를 (ClientError, ValueError) 로 넓히거나 query 가 비었는지 먼저 확인해야 한다."
+notebook = "chapter_15_building_a_qa_agent_with_langgraph/src/ch15/15_chapter_guide.ipynb"
+
