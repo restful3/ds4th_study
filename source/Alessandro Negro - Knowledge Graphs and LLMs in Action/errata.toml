@@ -39,6 +39,176 @@ observation = """
 correction = "study.toml 의 [mapping.listings.ch04] 에 4.8 을 선언해 coverage 게이트가 인식하게 했다."
 notebook = "chapter_04_from_simple_networks_to_multisource_integration/src/ch04/04_chapter_guide.ipynb"
 
+# ────────────────────────────────────────────── 5장
+[[erratum]]
+chapter = 5
+location = "Listing 5.6 task 설명"
+kind = "semantics"
+status = "confirmed"
+observation = """
+책 5.6 은 task 를 "The same task formulation as in listing 5.1" 로 줄여 실었다.
+그러나 저장소 listings/listing_7.py 의 실제 task 는 5.1(v1)의 짧은 task 가 아니라
+5.4(v2)의 긴 task(관심 엔티티·관계 목록 + 약칭 안내 두 문단) 에
+"which represents diary entry of Warren Weaver (often referred to as WW)" 절을 더한 것이다.
+책 표기대로 v1 의 task 에 v3 의 예시만 붙이면 v2 가 이미 얻은 정규화 효과를 잃는다.
+"""
+correction = "저장소 listing_7.py 가 정본이다. 노트북은 세 프롬프트의 task 를 나란히 놓고 차이를 보인다."
+notebook = "chapter_05_extracting_domain_specific_knowledge_from_unstructured_data/src/ch07/05_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 5
+location = "src/ch07/listings/ 번호 체계"
+kind = "code"
+status = "upstream"
+observation = """
+저장소 파일이 listing_1.py ~ listing_7.py 인데 이 번호가 책 리스팅 번호와 한 칸 어긋난다.
+listing_1.py 는 UBIAI 어노테이션 API 호출인데 최종 출간본에는 그 리스팅이 없다
+(원서 원문 md 에 'ubiai' 가 0회). 그래서 listing_2 = 책 5.1, listing_3 = 책 5.2,
+listing_5 = 책 5.4, listing_7 = 책 5.6 이다. 출력 예시 자리(listing_4·6·8)에는 파일이 없다.
+게다가 listing_1.py 는 my_token = "XXX" 자리표시자라 그대로는 실행되지 않는다.
+"""
+correction = "study.toml 의 [mapping.listings.ch07] 이 path 로 직접 가리킨다. listing_1.py 는 어떤 책 번호에도 대응하지 않는다."
+notebook = "chapter_05_extracting_domain_specific_knowledge_from_unstructured_data/src/ch07/05_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 5
+location = "Listing 5.7 캡션"
+kind = "extraction"
+status = "editorial"
+observation = """
+원서 md 의 캡션 줄이 같은 문장을 두 번 담고 있다 —
+"Listing 5.7 GPT output of the prompt in listing 5.6 Listing 5.7 GPT output of the prompt in listing 5.6".
+그래서 book_listings() 가 뽑아 주는 제목이 이어붙은 형태가 된다. 번호 자체는 정확해
+대응에는 영향이 없다.
+"""
+correction = """
+study.toml 에 title 을 덮어쓰지 않았다 — 원문의 손상을 감추는 쪽보다 드러내는 쪽이 낫다고
+보았다. 노트북 대조표가 이 사정을 출력으로 함께 알린다.
+"""
+notebook = "chapter_05_extracting_domain_specific_knowledge_from_unstructured_data/src/ch07/05_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 5
+location = "그림 5.2"
+kind = "extraction"
+status = "editorial"
+observation = """
+원서 md 에서 그림 5.2 가 이미지 두 장으로 쪼개져 있고 그 사이에 일기 본문이 OCR 텍스트로
+끼어 있다 (md L84 · L90). 캡션은 둘째 이미지 뒤에만 있다. 첫 이미지가 Person/Organization
+주석 부분, 둘째가 Topic 주석 부분이다.
+"""
+correction = "노트북은 fig5-2a · fig5-2b 두 attachment 로 나눠 싣고 무엇이 잘렸는지 밝힌다."
+notebook = "chapter_05_extracting_domain_specific_knowledge_from_unstructured_data/src/ch07/05_chapter_guide.ipynb"
+
+# ────────────────────────────────────────────── 6장
+[[erratum]]
+chapter = 6
+location = "importer/ingest_and_process.py QUERY_TITLES (L204-213)"
+kind = "code"
+status = "upstream"
+severity = "high"
+observation = """
+직함 엔티티를 CREATE (t:Entity {name: tit}) 로만 만들고 label 속성을 넣지 않는다.
+그런데 create_kg() 의 QUERY_CREATE_KG 는 label2 = kg_rel[2] 로 스키마와 대조하므로
+['Person','HAS_TITLE','Title'] 규칙이 절대 발화하지 않는다.
+실측(2026-07-25, 100쪽 처리): label 이 없는 Entity 214개,
+RELATED_TO_ENTITY {type:"HAS_TITLE"} 214개, 그런데 Title 노드 0개, KG 층 HAS_TITLE 0개.
+직함 정보는 Person.titles 속성으로만 살아남는다 (titles 가 빈 배열이 아닌 Person 132명).
+그림 6.2 의 스키마와 13장의 KG_SCHEMA 가 모두 Title 을 포함하므로 영향이 두 장에 걸친다.
+"""
+correction = "업스트림 파일은 고치지 않는다. 노트북이 재현 질의로 0개임을 보이고 Person.titles 로 대체 조회하는 법을 싣는다."
+notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch08/06_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 6
+location = "src/ch08/requirements.lock"
+kind = "code"
+status = "version-drift"
+observation = """
+lock 이 neo4j==4.4.11 · openai==1.12.0 을 pin 한다. 그러나 이 저장소의 .venv 는
+neo4j 5.28.4 · openai 1.69.0 이고 그 위에서 importer/ingest_and_process.py 전체가
+정상 완주했다 (2026-07-25, EXIT=0).
+"""
+correction = """
+오류가 아니다. lock 은 출처 기록으로 두고 다운그레이드하지 않는다 — 내리면 이미 완성된
+7개 챕터의 저장 출력과 어긋난다. 노트북 실행 환경 셀에 업스트림 pin 과 실제 검증 버전을
+나란히 적었다.
+"""
+notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch08/06_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 6
+location = "Listing 6.2 (책 지면)"
+kind = "code"
+status = "confirmed"
+observation = """
+인쇄된 Cypher 가 `NOT ANY(x IN nodes(path1) WHERE x.name = "WW")` 로 되어 있는데
+이 질의가 바인딩하는 변수는 `path` 다 (`MATCH path = …`). `path1` 은 어디에도 없다.
+그대로 실행하면 Neo4j 가 "Variable `path1` not defined" 로 거부한다.
+저장소의 `listings/8.2 … .txt` 는 `nodes(path)` 로 정확하다.
+"""
+correction = "저장소 .txt 가 정본이다. 노트북은 그것을 실행한다 (occupation='cyclotron' 에서 242행)."
+notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch08/06_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 6
+location = "그림 6.4 캡션 ↔ run_gds() 투영"
+kind = "semantics"
+status = "confirmed"
+observation = """
+캡션은 "the relations TALKED_ABOUT, TALKED_WITH, WORKS_WITH, and STUDENT_OF" 로 관계
+네 종을 든다. 그런데 run_gds() 의 GDS 투영 두 개(QUERY_GRAPH_PROJECTION_SELECTED ·
+QUERY_PROJECTION_INFLUENCERS)는 모두 TALKED_ABOUT|TALKED_WITH|WORKS_WITH 세 종만 넣는다.
+STUDENT_OF(실측 69건)는 betweenness · PageRank · Louvain 어느 값에도 기여하지 않는다.
+그림이 STUDENT_OF 를 반영한 것처럼 읽으면 틀린다.
+"""
+correction = "노트북이 투영에 실제로 들어가는 관계 유형을 코드에서 뽑아 캡션과 나란히 보인다."
+notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch08/06_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 6
+location = "importer 의 LIMIT 100 (build_kg 의 n_docs=100)"
+kind = "semantics"
+status = "upstream"
+observation = """
+일기는 150쪽인데 build_kg() 가 n_docs=100 으로 고정돼 있어 page_idx 2~101 만 LLM 을 태운다.
+그래서 Page 노드는 150개인데 GPTProcessed 는 100개다 (실측). 캐시에는 150쪽 전부 있으므로
+상한 때문이지 데이터가 없어서가 아니다.
+책 본문·그림이 드는 사례 일부가 이 범위 밖이라 기본 실행으로는 재현되지 않는다 —
+예: Laurence Irving(132·133·135쪽), Ernest O. Lawrence(126쪽).
+게다가 이 질의가 `WHERE NOT p:GPTProcessed` 라서 **두 번 돌리면 나머지 50쪽을 처리하고**
+create_kg() 가 KG 층을 다시 만든다. 즉 임포터는 멱등이 아니고 재실행하면 모든 수치가 바뀐다.
+"""
+correction = "노트북은 그래프가 비어 있을 때만 파이프라인을 돌리고, 재실행 시 무엇이 달라지는지 설명한다."
+notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch08/06_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 6
+location = "src/ch08/Readme.md — 캐시 동작 설명"
+kind = "semantics"
+status = "upstream"
+observation = """
+Readme 는 캐시 덕분에 "the entire process to run even without a valid OpenAI key" 라고
+적었다. 그러나 임포터는 캐시를 보기 **전에** OpenAI 클라이언트를 만든다
+(process_diaries_gpt 의 첫 줄). 키가 비어 있으면 그 지점에서 OpenAIError 로 죽는다.
+캐시가 100% 적중해도 마찬가지다.
+"""
+correction = "업스트림은 고치지 않는다. 노트북이 실행 전에 자리표시자 값을 주입하고 그 이유를 밝힌다."
+notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch08/06_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 6
+location = "그림 6.3"
+kind = "extraction"
+status = "editorial"
+observation = """
+원서 md L114 의 이미지에 캡션 줄이 붙지 않았다 (6.2 다음이 6.4 로 건너뛴다).
+본문 L112 가 "the concrete case shown in figure 6.3" 이라 부르고,
+캡션 "Figure 6.3 Graph-based entity resolution example" 은 이미지 오른쪽 안에 인쇄돼 있다.
+"""
+correction = "노트북은 이 이미지를 fig6-3 으로 싣는다."
+notebook = "chapter_06_building_knowledge_graphs_with_large_language_models/src/ch08/06_chapter_guide.ipynb"
+
 # ────────────────────────────────────────────── 9장
 [[erratum]]
 chapter = 9
@@ -324,6 +494,101 @@ status = "editorial"
 observation = "해설판이 세 조각을 '(1/3) GCN · (2/3) GAT · (3/3) SAGE' 로 적었지만 원서 원문 등장 순서는 SAGE -> GCN -> GAT 다 (각 이미지의 제목 텍스트로 확인)."
 correction = "노트북은 모델 순서(GCN -> GAT -> SAGE)로 재정렬해 실었다."
 notebook = "chapter_12_node_classification_and_link_prediction_with_gnns/src/ch14/12_chapter_guide.ipynb"
+
+# ────────────────────────────────────────────── 13장
+[[erratum]]
+chapter = 13
+location = "Listing 13.5 예시 호출"
+kind = "value"
+status = "confirmed"
+observation = """
+책이 인쇄한 예시는 kg_doc_selector("August Krogh", "Person", "Lawrence Irving", "Person",
+"TALKED_ABOUT") 인데 그대로 호출하면 0건이 나온다 (실측). 원인은 두 겹이다.
+
+1) 철자. 일기 원문의 표기는 "Laurence Irving"(132·133·135쪽)이고 "Lawrence Irving" 은
+   150쪽 어디에도 없다. 책 6장 본문이 이 사정을 스스로 밝힌다 — 같은 쪽에 Ernest
+   Lawrence 가 있어 GPT 가 이름을 Lawrence 로 잘못 옮겼다는 것이다. 그런데 저장소에
+   동봉된 응답 캐시 156개는 세 쪽 모두 "Laurence Irving" 으로 **정확히** 담고 있어
+   책이 말한 그 오식을 재현하지 않는다.
+2) 처리 범위. 그 세 쪽은 page_idx 132·133·135 라 임포터의 LIMIT 100(page_idx 2~101)
+   **밖** 이다. 그래서 어느 철자로 부르든 기본 실행으로 만든 KG 에는 그 인물이 없다.
+
+즉 책의 예시는 100쪽 넘게 처리하고 + 지금 캐시에는 없는 오식이 일어난 KG 를 전제한다.
+"""
+correction = """
+기본 실행 범위 안에서 같은 메커니즘을 보이려면 "Irving" 으로 부른다 — 1건(1939-05-08
+August Krogh 면담 페이지)이 나오고 내용이 책 표 13.2 의 답과 부합한다. 노트북은 책
+그대로의 호출과 정정 호출을 나란히 실행해 보인다. 6장의 "임포터 LIMIT 100" 항목을 함께 보라.
+"""
+notebook = "chapter_13_knowledge_graph_powered_retrieval_augmented_generation/src/ch15/13_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 13
+location = "code/definitions.py KG_SCHEMA · REDiarySelectorInput"
+kind = "semantics"
+status = "upstream"
+observation = """
+KG_SCHEMA 가 LLM 에게 (:Person)-[:HAS_TITLE]->(:Title) 을 알려 주고 REDiarySelectorInput 이
+Title 을 대상 클래스로, HAS_TITLE 을 관계 선택지로 광고한다. 그러나 6장 임포터의 버그로
+Title 노드가 0개라 그 조합은 항상 빈 결과다. 게다가 KG_SCHEMA 의 Nodes 절에는 (:Title …)
+노드 정의 자체가 없어서 스키마 자체가 불완전하다.
+"""
+correction = "6장 QUERY_TITLES 항목을 함께 보라. 노트북은 이 조합이 왜 비는지 재현 질의로 보인다."
+notebook = "chapter_13_knowledge_graph_powered_retrieval_augmented_generation/src/ch15/13_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 13
+location = "Listing 13.4 · 표 13.1 유사도 점수"
+kind = "value"
+status = "version-drift"
+observation = """
+책은 "How is Lauritsen related to cyclotron research?" 에 대해 코사인 유사도 0.906 / 0.903 /
+0.902 를 싣는다. 로컬 프록시에 /v1/embeddings 가 없어(HTTP 404) OpenAI 임베딩을 쓸 수 없고,
+Ollama nomic-embed-text(768차원, 책은 1536차원 계열)로 대체해 측정하면 0.8169 / 0.8135 /
+0.8123 이 나온다. 책이 1위로 실은 Lark-Horovitz 문서가 3위로 내려온다.
+"""
+correction = """
+오류가 아니다. 임베딩 모델이 다르면 코사인 점수의 스케일이 달라 절대값 비교가 성립하지
+않는다. 비교해야 할 것은 점수가 아니라 상위 문서 집합과 순위다.
+"""
+notebook = "chapter_13_knowledge_graph_powered_retrieval_augmented_generation/src/ch15/13_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 13
+location = "Listing 13.6 에이전트의 도구 사용"
+kind = "value"
+status = "version-drift"
+observation = """
+그림 13.5 는 에이전트가 KG 리더 → 문서 선택기를 차례로 쓰는 흐름을 보인다. 프록시 모델로
+재현하면 도구 사용이 비결정적이다 — 같은 질문·같은 모델(gpt-5.4)로 steps=0(도구 없이 즉답)과
+steps=5(max_iterations 한계로 중단)가 모두 관측됐다. gpt-5.4-mini 는 같은 질문에 steps=3 이었다.
+표 13.2 의 "astronomy and climatology" 대신 "biology, chemistry, physics" 가 나온다.
+"""
+correction = """
+오류가 아니다. 프롬프트가 "Respond directly if appropriate" 를 허용하고, 최신 모델은
+파라메트릭 지식만으로 답해 버리기도 한다. 노트북은 이 수치들을 단일값이 아니라 관측 범위로 적는다.
+"""
+notebook = "chapter_13_knowledge_graph_powered_retrieval_augmented_generation/src/ch15/13_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 13
+location = "src/ch15/ 의존성 선언 부재 · cwd 상대경로"
+kind = "code"
+status = "upstream"
+observation = """
+이 챕터에는 requirements.txt 도 requirements.lock 도 Makefile 도 없어 필요한 패키지를
+임포트문으로 판정해야 한다. 게다가 code/tools.py 는 load_dotenv("../.env") 를,
+listings/15.6 은 load_custom_prompt("../prompts/prompt_structured.txt") 를 쓰는데 둘 다
+cwd 상대경로라 src/ch15/listings/ 에서 실행할 때만 맞는다.
+또 업스트림 임포트가 구버전 LangChain 을 전제한다 — langchain 1.x 는
+langchain.agents.create_structured_chat_agent 와 langchain_community.graphs.Neo4jGraph 를
+각각 langchain-classic · langchain-neo4j 로 옮겨 그대로는 ImportError 다.
+"""
+correction = """
+업스트림 파일은 고치지 않는다. langchain 0.3.x 를 설치해 검증했고(0.3.30 계열),
+노트북이 실행 시점에만 cwd 를 listings/ 로 옮긴다. 검증 버전은 노트북 실행 환경 셀에 있다.
+"""
+notebook = "chapter_13_knowledge_graph_powered_retrieval_augmented_generation/src/ch15/13_chapter_guide.ipynb"
 
 # ────────────────────────────────────────────── 2장
 [[erratum]]
