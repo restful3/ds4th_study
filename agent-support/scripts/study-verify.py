@@ -49,6 +49,8 @@ def main() -> int:
                         help="외부 URL 응답 확인을 건너뛴다 (느림)")
     parser.add_argument("--execute", action="store_true",
                         help="노트북을 실제로 재실행해 오류를 확인한다")
+    parser.add_argument("--lint", action="store_true",
+                        help="정적 검사만 한다 (완결성·리스팅 coverage 는 보지 않는다)")
     args = parser.parse_args()
 
     try:
@@ -98,10 +100,24 @@ def main() -> int:
     if not notebooks:
         print("   - 노트북이 없다 (src 에 코드가 있는 챕터에만 만든다)")
     for notebook in notebooks:
+        status = verify.notebook_status(notebook)
         problems = verify.check_notebook(study, notebook, check_urls=not args.no_urls)
+
+        # draft 는 lint 만, complete 는 완결성까지 본다.
+        # 이 구분이 없으면 60% 노트북도 "모든 검증 통과" 가 된다.
+        if not args.lint and status != "draft":
+            repo_dir = verify.repo_dir_for_notebook(study, notebook)
+            if repo_dir:
+                problems.extend(verify.check_notebook_complete(study, notebook, repo_dir))
         if args.execute:
             problems.extend(execute_notebook(study, notebook))
-        failures += report(problems, f"{notebook.name} 규격 통과")
+
+        label = f"{notebook.name} 규격 통과"
+        if status == "draft":
+            label += " (draft — lint 만)"
+        elif args.lint:
+            label += " (lint 만)"
+        failures += report(problems, label)
 
     section("리스팅 상태 (참고)")
     notes = verify.check_listings(study)

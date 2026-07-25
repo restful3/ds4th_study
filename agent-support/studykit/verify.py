@@ -13,6 +13,8 @@ from __future__ import annotations
 import importlib.util
 import json
 import re
+import subprocess
+import sys
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -217,3 +219,106 @@ def _check_external_urls(study: Study, markdown: str, label: str) -> list[str]:
         except Exception as exc:  # 네트워크 단절 등
             failures.append(f"{label}: URL 확인 실패 — {url} ({type(exc).__name__})")
     return failures
+
+# ---------------------------------------------------------------- 완성 게이트
+#: 책 리스팅이 노트북에서 설명되는 방식. 전부 이 중 하나로 분류돼야 한다.
+COVERAGE_KINDS = ("executed", "substituted", "documented-only", "optional")
+
+TODO_MARKER = re.compile(r"TODO\(agent\)")
+
+
+def notebook_status(path: Path) -> str:
+    """노트북 metadata 의 status. draft 면 lint 만 통과하면 된다."""
+    try:
+        notebook = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return "unknown"
+    return str(notebook.get("metadata", {}).get("studykit", {}).get("status", "complete"))
+
+
+def validate_nbformat(path: Path, study: Study | None = None) -> list[str]:
+    """nbformat 스키마 검증. JSON 파싱만으로는 잡히지 않는 구조 오류를 잡는다.
+
+    게이트는 저장소 python3 로 돌지만 nbformat 은 교재 .venv 에만 있다. 그래서
+    .venv 가 있으면 그쪽 인터프리터로 위임한다.
+    """
+    probe = (
+        "import sys,nbformat;"
+        "nbformat.validate(nbformat.read(sys.argv[1], as_version=4));"
+        "print('ok')"
+    )
+    interpreters = []
+    if study is not None:
+        candidate = study.venv_python()
+        if candidate.is_relative_to(study.venv):
+            interpreters.append(candidate)
+    interpreters.append(Path(sys.executable))
+
+    for interpreter in interpreters:
+        result = subprocess.run([str(interpreter), "-c", probe, str(path)],
+                                capture_output=True, text=True)
+        if result.returncode == 0:
+            return []
+        if "ModuleNotFoundError" in (result.stderr or ""):
+            continue          # 이 인터프리터엔 nbformat 이 없다 → 다음 것 시도
+        tail = (result.stderr or "").strip().splitlines()[-1:]
+        return [f"{path.name}: nbformat 검증 실패 — {' '.join(tail)[:140]}"]
+    return [f"{path.name}: nbformat 이 없어 스키마 검증을 못 했다 (교재 .venv 를 만들어라)"]
+
+
+def check_todos(path: Path) -> list[str]:
+    """골격 생성기가 남긴 TODO(agent) 가 남아 있으면 미완성이다."""
+    text = path.read_text(encoding="utf-8")
+    count = len(TODO_MARKER.findall(text))
+    return [f"{path.name}: TODO(agent) {count}개 남음 — 서술이 끝나지 않았다"] if count else []
+
+
+def check_listing_coverage(study: Study, path: Path, repo_dir: str) -> list[str]:
+    """책 리스팅이 전부 노트북에서 다뤄졌는지.
+
+    노트북 metadata 의 studykit.listing_coverage 를 정본으로 본다.
+    빠진 번호나 분류되지 않은 항목이 있으면 실패다.
+    """
+    from studykit import listing_map
+
+    chapter_dir = listing_map.chapter_dir_for(study, repo_dir)
+    if chapter_dir is None:
+        return []
+    book = listing_map.book_listings(study, chapter_dir)
+    if not book:
+        return []
+
+    notebook = json.loads(path.read_text(encoding="utf-8"))
+    declared = notebook.get("metadata", {}).get("studykit", {}).get("listing_coverage", {})
+    if not declared:
+        return [
+            f"{path.name}: metadata.studykit.listing_coverage 가 없다 — "
+            f"책 리스팅 {len(book)}개가 어떻게 다뤄졌는지 선언해야 한다 "
+            f"({', '.join(COVERAGE_KINDS)})"
+        ]
+
+    failures = []
+    missing = sorted(set(book) - set(declared), key=lambda n: [int(x) for x in n.split(".")])
+    if missing:
+        failures.append(f"{path.name}: 분류되지 않은 책 리스팅 — {', '.join(missing)}")
+    for number, kind in sorted(declared.items()):
+        if kind not in COVERAGE_KINDS:
+            failures.append(
+                f"{path.name}: 리스팅 {number} 의 분류 '{kind}' 가 유효하지 않다 "
+                f"({', '.join(COVERAGE_KINDS)} 중 하나여야 한다)"
+            )
+    return failures
+
+
+def check_notebook_complete(study: Study, path: Path, repo_dir: str) -> list[str]:
+    """완성 게이트. lint 를 통과한 뒤 완결성까지 본다."""
+    failures = validate_nbformat(path, study)
+    failures += check_todos(path)
+    failures += check_listing_coverage(study, path, repo_dir)
+    return failures
+
+
+def repo_dir_for_notebook(study: Study, path: Path) -> str | None:
+    """노트북 경로에서 업스트림 챕터 디렉터리명을 알아낸다."""
+    name = path.parent.name
+    return name if name in study.src_dirs() else None

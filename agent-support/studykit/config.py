@@ -55,8 +55,13 @@ class Study:
     explainer_suffix: str = "_ko_explained.md"
     #: 책 챕터 폴더명 -> 업스트림 챕터 디렉터리명. study-map-sources.py 가 채운다.
     chapter_map: dict[str, str] = field(default_factory=dict)
-    #: 업스트림 챕터 디렉터리명 -> 리스팅 minor 번호 오프셋 (챕터마다 다르다)
+    #: 업스트림 챕터 디렉터리명 -> 리스팅 minor 번호 오프셋.
+    #: **편의용 기본값일 뿐이다.** 책이 코드 없는 리스팅(프롬프트 등)을 중간에
+    #: 끼워넣으면 그 뒤가 밀려 단일 오프셋으로 표현할 수 없다 (ch04 의 4.20 이 그렇다).
+    #: 정본은 listing_overrides 다.
     listing_offsets: dict[str, int] = field(default_factory=dict)
+    #: 업스트림 디렉터리명 -> {책 리스팅 번호: {"repo": 파일번호} 또는 {"source": "explainer"}}
+    listing_overrides: dict[str, dict[str, dict]] = field(default_factory=dict)
     #: 최종 출간본에 대응 챕터가 없는 업스트림 디렉터리
     meap_only: tuple[str, ...] = ()
     #: 봇 차단으로 200 이 아니지만 유효한 URL
@@ -120,6 +125,25 @@ class Study:
                 if path.is_dir():
                     found[path.name] = path
         return found
+
+    def resolve_listing(self, repo_dir: str, book_no: str) -> tuple[str, str]:
+        """책 리스팅 번호 -> (kind, value).
+
+        kind 는 "repo"(저장소 파일 번호) 또는 "explainer"(해설판 본문에서 가져와야 함).
+        listing_overrides 가 정본이고, 없으면 챕터 오프셋으로 계산한다.
+
+        오프셋만으로는 부족한 이유: 최종 교재가 코드 없는 리스팅(LLM 프롬프트 등)을
+        중간에 끼워넣으면 그 뒤 번호가 전부 밀린다. ch04 는 책 4.20 이 프롬프트라
+        4.21~4.22 가 업스트림 4.20~4.21 에 대응한다.
+        """
+        override = self.listing_overrides.get(repo_dir, {}).get(str(book_no))
+        if override:
+            if "repo" in override:
+                return ("repo", str(override["repo"]))
+            return (str(override.get("source", "explainer")), str(book_no))
+        offset = self.listing_offsets.get(repo_dir, 0)
+        major, minor = str(book_no).split(".")
+        return ("repo", f"{major}.{int(minor) + offset}")
 
     def explainer_for(self, chapter_dir: Path) -> Path | None:
         """챕터 폴더의 해설판 마크다운."""
@@ -186,6 +210,10 @@ def load(study_root: Path | str | None = None) -> Study:
         explainer_suffix=notebook.get("explainer_suffix", "_ko_explained.md"),
         chapter_map=dict(mapping.get("chapters", {})),
         listing_offsets={k: int(v) for k, v in mapping.get("listing_offsets", {}).items()},
+        listing_overrides={
+            chapter: {str(num): dict(spec) for num, spec in entries.items()}
+            for chapter, entries in (mapping.get("listings", {}) or {}).items()
+        },
         meap_only=tuple(mapping.get("meap_only", ())),
         url_allow_non_200=tuple(notebook.get("url_allow_non_200", ())),
     )

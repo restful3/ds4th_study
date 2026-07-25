@@ -51,3 +51,18 @@ ch04 = 0
 # ch06 은 BBC+spaCy 문서 파이프라인인데 Jaccard 는 0회다.
 [mapping]
 meap_only = ["ch05", "ch06"]
+
+# 리스팅 대응의 **정본**. 오프셋만으로는 표현할 수 없는 경우를 여기 명시한다.
+# 최종 교재가 코드 없는 리스팅(LLM 프롬프트 등)을 중간에 끼워넣으면 그 뒤 번호가
+# 전부 밀린다. ch04 는 책 4.20 이 프롬프트여서 4.21~4.22 가 업스트림 4.20~4.21 이다.
+# 여기 없는 번호는 listing_offsets 로 계산한다.
+[mapping.listings.ch04]
+"4.20" = { source = "explainer" }   # Example LLM analysis prompt — 코드 파일 없음
+"4.21" = { repo = "4.20" }          # Importing the CKG database
+"4.22" = { repo = "4.21" }          # Finding known protein-disease associations
+"4.23" = { source = "explainer" }   # Example LLM clinical analysis prompt
+
+# ch03 은 업스트림 파일이 망가져 해설판 본문을 써야 하는 두 건이 있다.
+[mapping.listings.ch03]
+"3.21" = { source = "explainer" }   # 저장소 3.24 가 3.25 와 내용 중복
+"3.25" = { source = "explainer" }   # 저장소 3.28 이 0바이트
