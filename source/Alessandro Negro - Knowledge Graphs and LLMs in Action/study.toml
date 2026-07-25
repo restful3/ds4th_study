@@ -67,6 +67,66 @@ meap_only = ["ch05", "ch06"]
 "3.21" = { source = "explainer" }   # 저장소 3.24 가 3.25 와 내용 중복
 "3.25" = { source = "explainer" }   # 저장소 3.28 이 0바이트
 
+# ch02 는 책에 리스팅이 2.1 하나뿐인데 저장소에는 파일이 둘이다.
+# 책 2.1 "Prompt for checking reasoning capabilities"(농부·양·강 건너기)의 본문이
+# 저장소 파일 "2.3" 과 글자까지 일치한다. 저장소 "2.1 - ChatGPT example Prompt"
+# (가상 의사 프롬프트)는 최종 출간본에 번호 붙은 리스팅으로 실려 있지 않다.
+# 오프셋 기본값 0 으로 두면 엉뚱한 파일을 읽으므로 여기 명시한다.
+[mapping.listings.ch02]
+"2.1" = { repo = "2.3" }
+
+# ch13 은 리스팅이 Cypher 가 아니라 파이썬이다. studykit.cypher.listings() 가 '.py' 를
+# 의도적으로 제외하므로 `repo = "N.M"` 해석 경로를 쓸 수 없고, 게다가 책 11.2~11.7 은
+# 파일 하나(GNN_all_in_one.py) 안의 개별 클래스라 '파일 하나 = 리스팅 하나' 가정이 깨진다.
+# 그래서 source 를 "repo-file" 로 두고 path·symbol 로 실제 위치를 가리킨다.
+#   repo       : 번호 접두사 붙은 리스팅 파일 (Cypher)
+#   repo-file  : 코드가 저장소 안에 있으나 번호 파일이 아님 (path + symbol 또는 start/end)
+#   explainer  : 정본이 해설판 본문 (reason 으로 이유를 밝힌다)
+# 줄 번호는 소스가 갱신되면 조용히 어긋나므로 symbol(클래스명)을 정본으로 둔다.
+# [mapping.listing_offsets] 에 ch13 을 넣지 말 것 — 번호 붙은 파일이 13.1 하나뿐이라
+# 오프셋 +2 는 존재하지 않는 파일 13.3~13.8 을 가리킨다.
+[mapping.listings.ch13]
+"11.1" = { source = "repo-file", path = "listings/13.1 Applying node2vec embeddings to Karate Club’s Network.py", symbol = "__main__" }
+"11.2" = { source = "repo-file", path = "listings/GNN_all_in_one.py", symbol = "MultiHeadGraphAttention" }
+"11.3" = { source = "repo-file", path = "listings/GNN_all_in_one.py", symbol = "TransformerStyleGraphAttention" }
+"11.4" = { source = "repo-file", path = "listings/GNN_all_in_one.py", symbol = "StructuralGraphTransformer" }
+"11.5" = { source = "repo-file", path = "listings/GNN_all_in_one.py", symbol = "GraphSAGEUpdate" }
+"11.6" = { source = "repo-file", path = "listings/GNN_all_in_one.py", symbol = "GatedGraphUpdate" }
+"11.7" = { source = "repo-file", path = "listings/GNN_all_in_one.py", symbol = "JumpingKnowledge" }
+
+# ch14 는 listings/ 디렉터리가 아예 없다. 업스트림은 재사용 부품(model/·eval/·plot/)과
+# 학습 함수 라이브러리(train_for_*.py)만 담고 진입점이 없다 — 실제 실행 코드는 Readme 가
+# 안내하는 Colab 노트북에만 있다. 그래서 책 리스팅 25개 중 모델 클래스 8건만 저장소에
+# 있고, 데이터 준비·분할·로더 17건은 해설판 본문이 정본이다.
+#   upstream-missing : 있어야 할 코드가 저장소에 없다 (노트북이 해설판 본문을 실행한다)
+#   book-only        : 코드가 아니라 출력 예시다
+[mapping.listings.ch14]
+"12.1"  = { source = "explainer", reason = "upstream-missing" }   # 증분 노드 ID 부여
+"12.2"  = { source = "explainer", reason = "upstream-missing" }   # edge_index 텐서 생성
+"12.3"  = { source = "explainer", reason = "book-only" }          # edge_index 출력 예시
+"12.4"  = { source = "explainer", reason = "upstream-missing" }   # 노드 특징 텐서
+"12.5"  = { source = "explainer", reason = "upstream-missing" }   # 클래스 수치화 (LabelEncoder)
+"12.6"  = { source = "explainer", reason = "upstream-missing" }   # PyG Data 객체 구성
+"12.7"  = { source = "explainer", reason = "upstream-missing" }   # 라벨 있는 노드 마스크
+"12.8"  = { source = "explainer", reason = "upstream-missing" }   # 학습·검증·시험 크기
+"12.9"  = { source = "explainer", reason = "upstream-missing" }   # 마스크를 Data 에 부착
+"12.10" = { source = "repo-file", path = "model/task_model.py", symbol = "NodeClassifier" }
+"12.11" = { source = "repo-file", path = "model/gnn_model.py", symbol = "BaseGraphModel" }
+"12.12" = { source = "repo-file", path = "model/gnn_model.py", symbol = "SAGE" }
+"12.13" = { source = "repo-file", path = "model/gnn_model.py", symbol = "GAT" }
+"12.14" = { source = "explainer", reason = "upstream-missing" }   # 장르 → 특징 벡터
+"12.15" = { source = "explainer", reason = "upstream-missing" }   # 사용자·영화 ID → edge_index
+"12.16" = { source = "explainer", reason = "book-only" }          # ID 매핑 출력 예시
+"12.17" = { source = "explainer", reason = "upstream-missing" }   # HeteroData 구성
+"12.18" = { source = "explainer", reason = "upstream-missing" }   # RandomLinkSplit
+"12.19" = { source = "explainer", reason = "book-only" }          # 학습 데이터 상세 출력
+"12.20" = { source = "explainer", reason = "book-only" }          # 검증·시험 데이터 상세 출력
+"12.21" = { source = "explainer", reason = "upstream-missing" }   # LinkNeighborLoader 이웃 표집
+"12.22" = { source = "repo-file", path = "model/task_model.py", symbol = "MovieLensLinkPredictor" }
+"12.23" = { source = "repo-file", path = "model/util_model.py", symbol = "MovieLensEmbedding" }
+"12.24" = { source = "repo-file", path = "model/hetero_model.py", symbol = "HeteroBaseModel" }
+"12.25" = { source = "repo-file", path = "model/hetero_model.py", symbol = "HeteroSAGE" }
+
 # OpenAI 호환 엔드포인트 설정. 비밀값을 저장소에 복사하지 않고 **참조만** 한다.
 # 이 파일은 저장소 밖에 있어 git 에 들어가지 않는다.
 # 교재 코드가 OPENAI_KEY / OPENAI_API_KEY 를 섞어 쓰므로 studykit.llm 이 양쪽을 채운다.
