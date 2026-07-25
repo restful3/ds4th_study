@@ -8,7 +8,7 @@
 
 ### **2. 스터디 시간**
 
-* 격주 토요일 **09:00–10:00** (기존 08:30 시작에서 09:00 시작으로 변경)
+* 매주 토요일 **09:00–10:00** (기존 08:30 시작에서 09:00 시작으로 변경)
 
 ---
 
@@ -18,11 +18,11 @@
 
 ---
 
-### **4. 스터디 운영 계획 (2026년 7월 \~ 2026년 11월)**
+### **4. 스터디 운영 계획 (2026년 7월 \~ 2026년 10월)**
 
 > 2026년 7월 18일(토)은 휴식하고, 7월 25일(토)부터 재개한다.
 >
-> 쪽수는 교재의 인쇄 쪽수 기준이며, 회당 40\~60쪽을 목표로 하되 챕터 경계를 우선해 일부 회차는 범위를 벗어난다. 발표 담당은 확정되는 대로 갱신한다.
+> 쪽수는 교재의 인쇄 쪽수 기준이다. 첫 회차는 Chapter 1·2를 함께 다루고, 이후에는 매주 한 챕터씩 진행한다. 발표 담당은 확정되는 대로 갱신한다.
 
 ---
 
@@ -39,13 +39,19 @@
 * 자료: 추후 공유
 
 
-#### **2026년 8월 8일**: [Webex](#)
+#### **2026년 8월 1일**: [Webex](#)
 
-* 발표자 - 추후 확정
+* 발표자 - 태영
 * **Chapter 3. 온톨로지로 첫 지식 그래프 만들기 (Create Your First Knowledge Graph from Ontologies)** — pp. 37–64
     * 사용 사례에 기반한 KG 기술 선택
     * 인간 표현형 온톨로지(HPO) 기반 임상 지원 KG 구축
     * KG 위에서의 분석과 온톨로지 기반 추론
+* 자료: 추후 공유
+
+
+#### **2026년 8월 8일**: [Webex](#)
+
+* 발표자 - 추후 확정
 * **Chapter 4. 단순 네트워크에서 멀티소스 통합으로 (From Simple Networks to Multisource Integration)** — pp. 65–94
     * 여러 구조화 데이터 소스로부터 복잡한 KG 구축·통합
     * 엔터티·관계 병합 후처리와 분석·질의 기법
@@ -53,13 +59,19 @@
 * 자료: 추후 공유
 
 
-#### **2026년 8월 22일**: [Webex](#)
+#### **2026년 8월 15일**: [Webex](#)
 
 * 발표자 - 추후 확정
 * **Chapter 5. 비정형 데이터에서 도메인 특화 지식 추출 (Extracting Domain-Specific Knowledge from Unstructured Data)** — pp. 95–114
     * 비정형 데이터로부터 지식 그래프 구축
     * 록펠러 아카이브 센터 사례로 보는 아카이브 관리의 복잡성
     * LLM을 사용한 개체·관계 추출
+* 자료: 추후 공유
+
+
+#### **2026년 8월 22일**: [Webex](#)
+
+* 발표자 - 추후 확정
 * **Chapter 6. LLM으로 지식 그래프 구축하기 (Building Knowledge Graphs with Large Language Models)** — pp. 115–128
     * 아카이브를 지식 그래프로 변환하는 그래프 모델링
     * 데이터 정규화·정제와 엔터티 해소(entity resolution)
@@ -67,7 +79,7 @@
 * 자료: 추후 공유
 
 
-#### **2026년 9월 5일**: [Webex](#)
+#### **2026년 8월 29일**: [Webex](#)
 
 * 발표자 - 추후 확정
 * **Chapter 7. 개체명 중의성 해소 (Named Entity Disambiguation)** — pp. 129–179
@@ -77,13 +89,19 @@
 * 자료: 추후 공유
 
 
-#### **2026년 9월 19일**: [Webex](#)
+#### **2026년 9월 5일**: [Webex](#)
 
 * 발표자 - 추후 확정
 * **Chapter 8. 오픈 LLM과 도메인 온톨로지를 활용한 NED (NED with Open LLMs and Domain Ontologies)** — pp. 180–206
     * 전통적인 NED 도구의 한계
     * 범용 LLM과 도메인 온톨로지를 결합한 중의성 해소
     * 최단 경로 탐지·경로-텍스트 변환 기반 다단계 중의성 해소
+* 자료: 추후 공유
+
+
+#### **2026년 9월 12일**: [Webex](#)
+
+* 발표자 - 추후 확정
 * **Chapter 9. 지식 그래프 위의 머신러닝 입문 (Machine Learning on Knowledge Graphs: A Primer Approach)** — pp. 207–232
     * 지식 그래프에서의 머신러닝 이해
     * 그래프에서 수행되는 일반적인 ML 과제
@@ -91,7 +109,7 @@
 * 자료: 추후 공유
 
 
-#### **2026년 10월 3일**: [Webex](#)
+#### **2026년 9월 19일**: [Webex](#)
 
 * 발표자 - 추후 확정
 * **Chapter 10. 그래프 특성 공학: 수동·반자동 접근 (Graph Feature Engineering: Manual and Semiautomated Approaches)** — pp. 233–271
@@ -101,13 +119,19 @@
 * 자료: 추후 공유
 
 
-#### **2026년 10월 17일**: [Webex](#)
+#### **2026년 9월 26일**: [Webex](#)
 
 * 발표자 - 추후 확정
 * **Chapter 11. 그래프 표현 학습과 그래프 신경망 (Graph Representation Learning and Graph Neural Networks)** — pp. 272–301
     * 그래프 표현 학습(GRL)과 그래프 ML의 확장
     * 딥러닝을 통한 특성 공학 자동화와 그래프 임베딩
     * 그래프 신경망(GNN) 기초
+* 자료: 추후 공유
+
+
+#### **2026년 10월 3일**: [Webex](#)
+
+* 발표자 - 추후 확정
 * **Chapter 12. GNN 기반 노드 분류와 링크 예측 (Node Classification and Link Prediction with GNNs)** — pp. 302–334
     * 실제 시나리오에서의 GNN 활용
     * 자금세탁방지(AML) 노드 분류 시스템 구축
@@ -115,13 +139,19 @@
 * 자료: 추후 공유
 
 
-#### **2026년 10월 31일**: [Webex](#)
+#### **2026년 10월 10일**: [Webex](#)
 
 * 발표자 - 추후 확정
 * **Chapter 13. 지식 그래프 기반 검색 증강 생성 (Knowledge Graph-Powered Retrieval-Augmented Generation)** — pp. 335–355
     * LLM을 AI 에이전트로서 유용하게 만드는 방법
     * 검색 증강 생성(RAG)을 통한 LLM 기반화(grounding)
     * KG 기반 RAG 시스템 구축
+* 자료: 추후 공유
+
+
+#### **2026년 10월 17일**: [Webex](#)
+
+* 발표자 - 추후 확정
 * **Chapter 14. 자연어로 지식 그래프에 질문하기 (Asking a KG Questions with Natural Language)** — pp. 356–396
     * 복잡한 시나리오에서 RAG의 한계
     * 도메인 전문성을 모방하는 고급 질의응답 시스템 구축
@@ -129,7 +159,7 @@
 * 자료: 추후 공유
 
 
-#### **2026년 11월 14일**: [Webex](#)
+#### **2026년 10월 24일**: [Webex](#)
 
 * 발표자 - 추후 확정
 * **Chapter 15. LangGraph로 QA 에이전트 구축 (Building a QA Agent with LangGraph)** — pp. 397–428
@@ -144,7 +174,7 @@
 
 * **교재**: [Knowledge Graphs and LLMs in Action (Alessandro Negro 외, Manning)](https://www.manning.com/books/knowledge-graphs-and-llms-in-action)
 * **학습 자료**: [`source/Alessandro Negro - Knowledge Graphs and LLMs in Action`](source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action) — 챕터별 원문 Markdown·한국어 번역본·PDF
-* **학습 공유**: 격주 학습한 내용을 발표자료와 함께 GitHub에 공유
+* **학습 공유**: 매주 학습한 내용을 발표자료와 함께 GitHub에 공유
 * **AI 에이전트 활용**: [Codex·Claude Code 시작 가이드](QUICKSTART.md) — 담당 날짜와 챕터를 알려주면 자료 탐색부터 HTML 발표자료 생성·검증까지 지원
 * **웹 발표자료**: [`docs/studies`](docs/studies) — 스터디 종료 후 학습자료가 `archive/`로 이동해도 공개 발표 URL은 유지
 * **HTML 산출물 템플릿**: [공통 청사진](agent-support/templates/STUDY_SESSION_BLUEPRINT.md) + [`study-report-v1`](agent-support/templates/study-report/DESIGN.md) + [`study-deck-v1`](agent-support/templates/study-deck/DESIGN.md) — Chapter 1 완성본의 상세 리포트·28장 리포트 파생 발표 흐름·자동 목차·표/도형·전체화면 이미지 줌을 기준으로, 에이전트가 원자료 → 리포트 품질 게이트 → 발표자료 순서로 생성
