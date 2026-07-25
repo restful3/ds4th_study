@@ -52,7 +52,7 @@
 
 #### **2026년 8월 8일**: [Webex](#)
 
-* 발표자 - 추후 확정
+* 발표자 - 종훈(S)
 * **Chapter 4. 단순 네트워크에서 멀티소스 통합으로 (From Simple Networks to Multisource Integration)** — pp. 65–94
     * 여러 구조화 데이터 소스로부터 복잡한 KG 구축·통합
     * 엔터티·관계 병합 후처리와 분석·질의 기법
@@ -62,7 +62,7 @@
 
 #### **2026년 8월 15일**: [Webex](#)
 
-* 발표자 - 추후 확정
+* 발표자 - 두균
 * **Chapter 5. 비정형 데이터에서 도메인 특화 지식 추출 (Extracting Domain-Specific Knowledge from Unstructured Data)** — pp. 95–114
     * 비정형 데이터로부터 지식 그래프 구축
     * 록펠러 아카이브 센터 사례로 보는 아카이브 관리의 복잡성
@@ -72,7 +72,7 @@
 
 #### **2026년 8월 22일**: [Webex](#)
 
-* 발표자 - 추후 확정
+* 발표자 - 종훈(L)
 * **Chapter 6. LLM으로 지식 그래프 구축하기 (Building Knowledge Graphs with Large Language Models)** — pp. 115–128
     * 아카이브를 지식 그래프로 변환하는 그래프 모델링
     * 데이터 정규화·정제와 엔터티 해소(entity resolution)
@@ -82,7 +82,7 @@
 
 #### **2026년 8월 29일**: [Webex](#)
 
-* 발표자 - 추후 확정
+* 발표자 - 재익
 * **Chapter 7. 개체명 중의성 해소 (Named Entity Disambiguation)** — pp. 129–179
     * 개체명 인식(NER)에서 개체명 중의성 해소(NED)로
     * NED와 지식 그래프 기술의 결합
@@ -92,7 +92,7 @@
 
 #### **2026년 9월 5일**: [Webex](#)
 
-* 발표자 - 추후 확정
+* 발표자 - 태호
 * **Chapter 8. 오픈 LLM과 도메인 온톨로지를 활용한 NED (NED with Open LLMs and Domain Ontologies)** — pp. 180–206
     * 전통적인 NED 도구의 한계
     * 범용 LLM과 도메인 온톨로지를 결합한 중의성 해소
@@ -102,7 +102,7 @@
 
 #### **2026년 9월 12일**: [Webex](#)
 
-* 발표자 - 추후 확정
+* 발표자 - 정훈
 * **Chapter 9. 지식 그래프 위의 머신러닝 입문 (Machine Learning on Knowledge Graphs: A Primer Approach)** — pp. 207–232
     * 지식 그래프에서의 머신러닝 이해
     * 그래프에서 수행되는 일반적인 ML 과제
