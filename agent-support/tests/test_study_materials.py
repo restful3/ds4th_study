@@ -7,6 +7,7 @@ CI 는 docs/ 와 agent-support/ 만 sparse checkout 하므로 source/ 가 없다
 """
 from __future__ import annotations
 
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -14,7 +15,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT / "agent-support"))
 
-from studykit import config, listing_map, verify  # noqa: E402
+from studykit import config, listing_map, skeleton, verify  # noqa: E402
 
 
 def discover_studies() -> list[config.Study]:
@@ -126,6 +127,102 @@ class EnvironmentTests(unittest.TestCase):
             with self.subTest(study=study.slug):
                 failures = verify.check_environment(study)
                 self.assertEqual([], failures, "\n".join(failures))
+
+
+class SkeletonTests(unittest.TestCase):
+    """골격 생성기의 해설판 파싱. ch03·ch04 완성본을 정답으로 쓴다."""
+
+    @skip_without_study
+    def test_parses_sections_and_listings(self) -> None:
+        """해설판에서 본문 절과 리스팅을 뽑아내는가.
+
+        해설판은 "#### Listing 3.19" 와 "### 리스팅 5.3" 표기를 섞어 쓴다. 리스팅
+        제목을 새 절로 오인하면 절 목록이 오염된다.
+        """
+        for study in STUDIES:
+            for repo_dir in sorted(study.chapter_map.values()):
+                chapter_dir = listing_map.chapter_dir_for(study, repo_dir)
+                if chapter_dir is None:
+                    continue
+                explainer = study.explainer_for(chapter_dir)
+                if explainer is None:
+                    continue
+                with self.subTest(study=study.slug, chapter=repo_dir):
+                    title, sections = skeleton.parse_explainer(explainer)
+                    body = skeleton.body_sections(sections)
+                    self.assertTrue(title, f"{repo_dir}: 장 제목을 뽑지 못했다")
+                    self.assertNotIn("해설판", title,
+                                     f"{repo_dir}: 제목에 해설판 접미사가 남았다")
+                    self.assertTrue(body, f"{repo_dir}: 본문 절이 하나도 없다")
+                    for section in body:
+                        self.assertIsNotNone(section.number)
+                        self.assertNotRegex(
+                            section.title, r"^(리스팅|Listing)\s+\d",
+                            f"{repo_dir}: 리스팅 제목을 절로 오인했다 — {section.title}",
+                        )
+
+    @skip_without_study
+    def test_listings_attach_to_numbered_sections(self) -> None:
+        """리스팅이 번호 있는 절에만 붙는가. 도입부 리스팅이 유실되지 않는가."""
+        for study in STUDIES:
+            for repo_dir in sorted(study.chapter_map.values()):
+                chapter_dir = listing_map.chapter_dir_for(study, repo_dir)
+                if chapter_dir is None:
+                    continue
+                explainer = study.explainer_for(chapter_dir)
+                if explainer is None:
+                    continue
+                declared = listing_map.book_listings(study, chapter_dir)
+                if not declared:
+                    continue
+                text = explainer.read_text(encoding="utf-8")
+                mentioned = set(re.findall(
+                    rf"{skeleton.LISTING_WORD}\s+(\d+\.\d+)", text))
+                _, sections = skeleton.parse_explainer(explainer)
+                collected = {n for s in sections for n in s.listings}
+                with self.subTest(study=study.slug, chapter=repo_dir):
+                    if not mentioned:
+                        # 해설판이 리스팅 번호를 아예 언급하지 않는 챕터가 있다.
+                        # 원자료 특성이므로 실패가 아니다. 이 경우 노트북 작성자는
+                        # 원문 md 에서 번호를 가져와야 한다.
+                        self.assertEqual(set(), collected)
+                        continue
+                    # 언급된 번호는 빠짐없이 어떤 절에 붙어야 한다.
+                    self.assertEqual(
+                        set(), mentioned - collected,
+                        f"{repo_dir}: 해설판이 언급한 리스팅이 절에 붙지 않았다 — "
+                        f"{sorted(mentioned - collected)}",
+                    )
+
+    @skip_without_study
+    def test_generated_skeleton_lints_but_is_not_complete(self) -> None:
+        """생성 직후 골격은 lint 는 통과하고 완성 게이트는 실패해야 한다."""
+        import tempfile
+
+        for study in STUDIES:
+            target_dirs = [d for d in sorted(study.chapter_map.values())]
+            if not target_dirs:
+                continue
+            repo_dir = target_dirs[0]
+            if listing_map.chapter_dir_for(study, repo_dir) is None:
+                continue
+            with self.subTest(study=study.slug, chapter=repo_dir):
+                with tempfile.TemporaryDirectory() as tmp:
+                    output = Path(tmp) / "probe.ipynb"
+                    try:
+                        _, stats = skeleton.build(study, repo_dir, output=output)
+                    except (FileNotFoundError, KeyError) as exc:
+                        self.skipTest(str(exc))
+                    self.assertGreater(stats["todos"], 0,
+                                       "골격에 TODO 가 없으면 완성 게이트가 통과해 버린다")
+                    self.assertEqual("draft", verify.notebook_status(output))
+                    # lint: JSON·구조 오류가 없어야 한다
+                    self.assertEqual([], verify.validate_nbformat(output, study))
+                    # 완성 게이트: TODO 와 coverage 미선언으로 실패해야 한다
+                    self.assertNotEqual(
+                        [], verify.check_notebook_complete(study, output, repo_dir),
+                        "골격이 완성 게이트를 통과하면 미완성 노트북이 완성으로 보고된다",
+                    )
 
 
 if __name__ == "__main__":
