@@ -47,7 +47,7 @@
     * 사용 사례에 기반한 KG 기술 선택
     * 인간 표현형 온톨로지(HPO) 기반 임상 지원 KG 구축
     * KG 위에서의 분석과 온톨로지 기반 추론
-* 자료: 추후 공유
+* Chapter 3 자료: [상세 리포트](https://restful3.github.io/ds4th_study/studies/knowledge-graphs-and-llms-in-action/presentations/2026-08-01-ch03/report.html) · [발표자료](https://restful3.github.io/ds4th_study/studies/knowledge-graphs-and-llms-in-action/presentations/2026-08-01-ch03/)
 
 
 #### **2026년 8월 8일**: [Webex](#)

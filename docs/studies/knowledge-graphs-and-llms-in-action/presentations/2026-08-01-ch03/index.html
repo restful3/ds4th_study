@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="ko" class="theme-light" data-deck-template="study-deck-v1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Knowledge Graphs and LLMs in Action Chapter 3 온톨로지 기반 HPO 지식 그래프 구축 발표자료">
+  <title>온톨로지로 첫 지식 그래프 만들기</title>
+  <link rel="icon" href="../../../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/deck.css">
+  <link rel="stylesheet" href="assets/katex/katex.min.css">
+</head>
+<body>
+  <a class="skip-link" href="#deck">발표자료로 건너뛰기</a>
+  <div class="deck-settings" aria-label="설정">
+    <button id="settingsToggle" class="deck-settings-toggle" type="button" aria-label="설정 열기" aria-controls="settingsPanel" aria-expanded="false" title="설정">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M9.67 4.14a2.34 2.34 0 0 1 4.66 0 2.34 2.34 0 0 0 3.32 1.91 2.34 2.34 0 0 1 2.33 4.04 2.34 2.34 0 0 0 0 3.82 2.34 2.34 0 0 1-2.33 4.04 2.34 2.34 0 0 0-3.32 1.91 2.34 2.34 0 0 1-4.66 0 2.34 2.34 0 0 0-3.32-1.91 2.34 2.34 0 0 1-2.33-4.04 2.34 2.34 0 0 0 0-3.82 2.34 2.34 0 0 1 2.33-4.04 2.34 2.34 0 0 0 3.32-1.91"/></svg>
+    </button>
+    <div id="settingsPanel" class="deck-settings-panel" aria-hidden="true">
+      <div class="deck-settings-panel__group"><span class="deck-settings-panel__label">화면</span><button id="themeButton" type="button" aria-label="화면 테마 전환">☀</button></div>
+      <div class="deck-settings-panel__group"><span class="deck-settings-panel__label">발표</span><button class="deck-settings-action" type="button" id="fullscreenButton">Fullscreen</button></div>
+      <div class="deck-settings-panel__group"><span class="deck-settings-panel__label">이동</span><nav class="deck-quick-links" aria-label="회차 링크"><a href="../../">Index</a><a href="./" aria-current="page">Slides</a><a href="report.html">Report</a></nav></div>
+    </div>
+  </div>
+
+  <main class="stage" id="deck" aria-live="polite" data-report-source="report.html">
+    <section class="slide slide--cover" aria-label="표지" data-report-refs="summary">
+      <header class="cover-brand"><span class="brand-name">ds4th study</span><span class="brand-sub">REPORT → PRESENTATION</span></header>
+      <div class="cover-hero">
+        <p class="eyebrow">Knowledge Graphs &amp; LLMs in Action · Chapter 03</p>
+        <h1>온톨로지로 첫<br>지식 그래프 만들기</h1>
+        <p class="cover-subtitle">임상 질문에서 HPO 그래프·질의·추론까지</p>
+      </div>
+      <dl class="cover-meta">
+        <div><dt>발표자</dt><dd>태영</dd></div>
+        <div><dt>학습 범위</dt><dd>Chapter 3 · pp. 37–64</dd></div>
+        <div><dt>일시</dt><dd>2026-08-01</dd></div>
+      </dl>
+    </section>
+
+    <section class="slide" aria-label="핵심 질문" data-report-refs="summary table-overview">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">OPENING</span></header>
+      <h1>데이터를 연결했다고, 의미까지 연결된 걸까?</h1>
+      <p class="lead">희귀질환 후보를 찾으려면 형식 통합보다 먼저 질문·표준 의미·연결 근거를 고정해야 합니다.</p>
+      <div class="slide-body">
+        <div class="two-col">
+          <article class="panel"><p class="eyebrow">RAW INTEGRATION</p><h2>형식만 맞춘 데이터</h2><ul><li>같은 개념이 여러 이름으로 흩어짐</li><li>같은 약어가 서로 다른 뜻을 가짐</li><li>연결의 출처와 증거를 잃기 쉬움</li></ul></article>
+          <article class="panel panel--accent"><p class="eyebrow">ONTOLOGY-GROUNDED KG</p><h2>질문에 답하는 지식</h2><ul><li>표준 ID와 계층으로 의미 정렬</li><li>질병–표현형 관계에 근거 보존</li><li>직접 연결과 추론 경로를 구분</li></ul></article>
+        </div>
+        <p class="takeaway"><strong>오늘의 질문</strong> — 어떤 설계 순서가 그래프를 “저장소”에서 “검토 가능한 임상 지원 도구”로 바꾸는가?</p>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#summary">상세 리포트 §0 · 핵심 요약</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="오늘의 흐름" data-report-refs="summary table-overview">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">OVERVIEW</span></header>
+      <h1>질문에서 근거 있는 후보까지, 다섯 결정을 따라간다</h1>
+      <p class="lead">도구 기능이 아니라 각 단계가 남겨야 할 검증 산출물을 중심으로 봅니다.</p>
+      <div class="slide-body">
+        <div class="flow">
+          <article class="flow__step"><span>01</span><h2>문제·의미</h2><p>임상 질문과 HPO 참조 개념</p></article><b class="flow__arrow" aria-hidden="true">→</b>
+          <article class="flow__step"><span>02</span><h2>모델·적재</h2><p>RDF/LPG 선택과 두 원천 결합</p></article><b class="flow__arrow" aria-hidden="true">→</b>
+          <article class="flow__step"><span>03</span><h2>질의·추론</h2><p>후보 경로와 계층적 포함</p></article>
+        </div>
+        <p class="takeaway"><strong>마지막 결정</strong> — 버전·주석·추론·임상 판단의 경계를 어디에서 검증할 것인가.</p>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-overview">상세 리포트 표 1 · 전체 논리</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--section" aria-label="문제와 의미 섹션" data-report-refs="problem-domain fig-semantic-bridge table-domain-contract">
+      <p class="eyebrow">REPORT §1 · PROBLEM &amp; DOMAIN</p><h1>그래프보다 먼저 임상 질문을 고정한다</h1><p>형식이 아니라 의미 이질성을 해결할 공통 좌표를 만든다</p><span class="section-number">01</span>
+    </section>
+
+    <section class="slide slide--visual" aria-label="온톨로지가 만드는 의미 다리" data-report-refs="problem-domain semantic-heterogeneity fig-semantic-bridge">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 1</span></header>
+      <h1>온톨로지는 서로 다른 표현을 같은 의미 좌표에 놓는다</h1>
+      <div class="slide-body">
+        <figure class="deck-report-figure">
+          <img src="assets/figs/semantic-bridge.svg" alt="동의어, 중의적 약어, 서로 다른 세분성이 HPO 표준 식별자와 계층을 거쳐 통합 질의 공간으로 정렬되는 구조">
+          <figcaption><b>형식 통합 다음의 문제</b><span>동의어는 같은 개념으로 모은다</span><span>중의어는 문맥별 개념으로 나눈다</span><span>세분성은 계층 관계로 보존한다</span></figcaption>
+        </figure>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-semantic-bridge">상세 리포트 그림 1 · 의미 다리</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="임상의에게 필요한 그래프 계약" data-report-refs="problem-domain clinician-question table-domain-contract">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">DOMAIN CONTRACT</span></header>
+      <h1>목표는 자동 진단이 아니라 검토 가능한 후보 탐색이다</h1>
+      <p class="lead">같은 “당뇨병”도 질병과 표현형이라는 서로 다른 역할을 가질 수 있습니다.</p>
+      <div class="slide-body">
+        <div class="fact-grid">
+          <article><span>PHENOTYPE</span><h2>관찰 특징</h2><p>HPO ID와 계층으로 표현한다.</p></article>
+          <article><span>DISEASE</span><h2>질병 실체</h2><p>OMIM 등 독립 식별자로 표현한다.</p></article>
+          <article><span>ANNOTATION</span><h2>근거 있는 연결</h2><p>출처·증거·빈도·작성일을 관계에 둔다.</p></article>
+          <article><span>RESULT</span><h2>검토 후보</h2><p>질병명만 아니라 경로와 근거를 반환한다.</p></article>
+        </div>
+        <p class="takeaway"><strong>모델의 출발점</strong> — 임상의가 결과 화면에서 확인해야 할 연결과 근거가 노드·관계·속성을 결정합니다.</p>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-domain-contract">상세 리포트 표 2 · 도메인 계약</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--visual" aria-label="HPO의 두 데이터 원천" data-report-refs="data-technology hpo-two-sources fig-two-sources table-source-contract">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 2</span></header>
+      <h1>HPO는 ‘정의·계층’과 ‘연관·근거’를 따로 준다</h1>
+      <div class="slide-body">
+        <figure class="deck-report-figure">
+          <img src="assets/figs/two-sources-one-graph.svg" alt="hp.owl의 표현형 정의와 계층, phenotype.hpoa의 질병 표현형 연관과 근거가 표준 ID로 하나의 LPG에 결합되는 구조">
+          <figcaption><b>두 원천, 두 책임</b><span><code>hp.owl</code>: ID·정의·동의어·계층</span><span><code>phenotype.hpoa</code>: 질병 연관·출처·증거</span><span>표준 <code>hpo_id</code>가 결합 키</span></figcaption>
+        </figure>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-two-sources">상세 리포트 그림 2 · 두 원천의 결합</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="두 원천의 입력 계약" data-report-refs="data-technology table-source-contract">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">DATA CONTRACT</span></header>
+      <h1>어느 파일에서 무엇이 정본인지 먼저 고정한다</h1>
+      <p class="lead">두 원천은 형식뿐 아니라 변경 영향과 검증 단위가 다릅니다.</p>
+      <div class="slide-body">
+        <table class="compare-table compare-table--dense">
+          <thead><tr><th>관점</th><th><code>hp.owl</code></th><th><code>phenotype.hpoa</code></th><th>결합 시 확인</th></tr></thead>
+          <tbody>
+            <tr><th>정본</th><td>표현형 ID·정의·계층</td><td>질병–표현형 주석</td><td><code>hpo_id</code> 매칭</td></tr>
+            <tr><th>근거</th><td>개념의 작성·상호참조</td><td>연관의 source·evidence</td><td>관계별 보존</td></tr>
+            <tr><th>변경</th><td>용어·계층의 추가·폐기</td><td>주석·증거의 갱신</td><td>같은 릴리스 조합</td></tr>
+            <tr><th>적재</th><td>Neosemantics RDF import</td><td>Cypher <code>LOAD CSV</code></td><td>건수·결측·ID 감사</td></tr>
+          </tbody>
+        </table>
+        <p class="takeaway"><strong>데이터 계약</strong> — “latest를 읽었다”가 아니라 어떤 스냅샷 조합을 어떤 규칙으로 결합했는지 남깁니다.</p>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-source-contract">상세 리포트 표 3 · 입력 계약</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--section" aria-label="표현 모델 선택 섹션" data-report-refs="data-technology fig-edge-metadata table-rdf-lpg">
+      <p class="eyebrow">REPORT §2 · TECHNOLOGY CHOICE</p><h1>표현 모델은 사용자 질문에서 선택한다</h1><p>RDF와 LPG의 우열이 아니라 관계 메타데이터 요구를 비교한다</p><span class="section-number">02</span>
+    </section>
+
+    <section class="slide slide--visual" aria-label="관계 메타데이터 표현 네 가지" data-report-refs="data-technology rdf-lpg-choice fig-edge-metadata">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 3</span></header>
+      <h1>RDF도 관계의 근거를 표현한다 — 구조와 비용이 다르다</h1>
+      <div class="slide-body">
+        <figure class="deck-report-figure">
+          <img src="assets/figs/edge-metadata-options.svg" alt="RDF n항 관계, 명명 그래프, RDF-star, LPG 관계 속성이 한 질병 표현형 주석의 출처 작성자 날짜를 다르게 표현하는 비교">
+          <figcaption><b>같은 주장, 네 모델</b><span>n-ary: Annotation 개념 추가</span><span>named graph / RDF-star: 문장 맥락</span><span>LPG: 개별 관계의 키–값</span></figcaption>
+        </figure>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-edge-metadata">상세 리포트 그림 3 · 주석 표현 패턴</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="RDF와 LPG 선택 기준" data-report-refs="data-technology rdf-lpg-choice table-rdf-lpg">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">RDF vs LPG</span></header>
+      <h1>이 사례는 RDF 원천 위에 LPG 애플리케이션 모델을 얹는다</h1>
+      <p class="lead">온톨로지 표현은 입력에서, 관계 중심 탐색은 앱 모델에서 활용합니다.</p>
+      <div class="slide-body">
+        <table class="compare-table compare-table--dense">
+          <thead><tr><th>관점</th><th>RDF 계열</th><th>LPG</th><th>Chapter 3</th></tr></thead>
+          <tbody>
+            <tr><th>기본 표현</th><td>전역 식별 트리플</td><td>노드·고유 관계·속성</td><td>HPO는 RDF/OWL</td></tr>
+            <tr><th>관계 근거</th><td>n-ary·named graph·RDF-star</td><td>관계 키–값</td><td>앱은 LPG</td></tr>
+            <tr><th>강점</th><td>교환·연합·의미·추론</td><td>경로·관계 속성·질의</td><td>n10s로 일부 결합</td></tr>
+            <tr><th>경계</th><td>모델·엔진 지원 복잡성</td><td>OWL 의미 전부를 자동 보존하지 않음</td><td>필요한 계층을 검증</td></tr>
+          </tbody>
+        </table>
+        <p class="takeaway"><strong>선택 질문</strong> — 임상의가 특정 연결의 출처·증거·날짜를 얼마나 직접 비교해야 하는가?</p>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-rdf-lpg">상세 리포트 표 4 · RDF/LPG 비교</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--section" aria-label="구축과 운영 섹션" data-report-refs="build-operate fig-build-pipeline table-build-steps fig-annotation-lifecycle table-implementation-audit">
+      <p class="eyebrow">REPORT §3 · BUILD &amp; OPERATE</p><h1>적재는 의미 계약의 구현이다</h1><p>파일을 넣는 순서보다 각 단계가 남길 검증 산출물을 추적한다</p><span class="section-number">03</span>
+    </section>
+
+    <section class="slide slide--visual" aria-label="HPO 지식 그래프 구축 파이프라인" data-report-refs="build-operate crisp-pipeline fig-build-pipeline">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 4</span></header>
+      <h1>임상 질문에서 검증된 질의까지 일곱 단계를 닫는다</h1>
+      <div class="slide-body">
+        <figure class="deck-report-figure">
+          <img src="assets/figs/build-pipeline.svg" alt="임상 질문, 두 HPO 원천 이해, RDF LPG 선택, 온톨로지 적재, 주석 적재, 정제 점검, 질의와 추론이 이어지는 파이프라인">
+          <figcaption><b>CRISP-DM을 산출물로</b><span>질문·원천·모델 선택을 먼저</span><span>온톨로지와 주석 적재를 분리</span><span>정제 후 대표 질의로 검증</span></figcaption>
+        </figure>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-build-pipeline">상세 리포트 그림 4 · 구축 파이프라인</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="구축 단계의 품질 질문" data-report-refs="build-operate table-build-steps">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">BUILD CONTRACT</span></header>
+      <h1>각 적재 명령 뒤에 ‘무엇이 보존됐나’를 묻는다</h1>
+      <p class="lead">성공 로그만으로는 의미·주석·추론이 보존됐는지 알 수 없습니다.</p>
+      <div class="slide-body">
+        <div class="gate-grid">
+          <article><span>CONSTRAINT</span><h2>ID 유일성</h2><p>URI·질병 ID·표현형 ID 중복을 거부한다.</p></article>
+          <article><span>ONTOLOGY</span><h2>계층 보존</h2><p><code>SUBCLASSOF</code> 방향과 건수를 확인한다.</p></article>
+          <article><span>ANNOTATION</span><h2>주석 보존</h2><p>원천 행·관계·근거 속성의 대응을 본다.</p></article>
+          <article><span>CLEANUP</span><h2>필요 정보 유지</h2><p>추론·감사에 쓸 노드까지 지우지 않는다.</p></article>
+        </div>
+        <p class="takeaway"><strong>품질 질문</strong> — 입력 행 하나가 그래프의 어떤 assertion으로 남았는지 역추적할 수 있어야 합니다.</p>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-build-steps">상세 리포트 표 5 · 구축 단계</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--visual" aria-label="HPOA 주석의 생애주기" data-report-refs="build-operate annotation-lifecycle fig-annotation-lifecycle">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 5</span></header>
+      <h1>한 행은 한 건의 감사 가능한 주장으로 남아야 한다</h1>
+      <div class="slide-body">
+        <figure class="deck-report-figure">
+          <img src="assets/figs/annotation-lifecycle.svg" alt="HPOA 한 행을 파싱하고 ID로 매칭해 관계를 생성하고 증거를 풍부화한 뒤 건수와 근거를 점검하는 생애주기">
+          <figcaption><b>구현의 핵심 경계</b><span>결측 필드는 조건부로 설정</span><span>증거 코드는 설명과 URL로 풍부화</span><span>관계 MERGE가 주석을 합치지 않는지 확인</span></figcaption>
+        </figure>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-annotation-lifecycle">상세 리포트 그림 5 · 주석 생애주기</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="코드 감사와 재현 경계" data-report-refs="build-operate implementation-reality table-implementation-audit">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">IMPLEMENTATION AUDIT</span></header>
+      <h1>책의 결과와 현재 실행 결과가 다른 이유를 설명할 수 있어야 한다</h1>
+      <p class="lead">원자료·코드 감사에서 네 가지 재현 경계를 확인했습니다.</p>
+      <div class="slide-body">
+        <div class="audit-grid">
+          <article><span>DATA DRIFT</span><h2>2025-02 → 2026-06-23</h2><p>latest HPOA는 건수와 후보 순위를 바꿀 수 있다.</p></article>
+          <article><span>ANNOTATION LOSS</span><h2>쌍 단위 MERGE</h2><p>같은 질병–표현형 쌍의 여러 근거가 덮일 수 있다.</p></article>
+          <article><span>STAGE DEPENDENCY</span><h2>정제 전용 질의</h2><p>Listing 3.18은 최종 정제 뒤 같은 형태로 실행되지 않는다.</p></article>
+          <article><span>LISTING MAP</span><h2>교재 ↔ 소스 +3</h2><p><code>study.toml</code> 전수 대응표가 리스팅 정본이다.</p></article>
+        </div>
+        <p class="takeaway"><strong>재현성</strong> — 릴리스 URL·체크섬·적재 단계·질의 버전을 결과와 함께 저장합니다.</p>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-implementation-audit">상세 리포트 표 6 · 구현 감사</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--section" aria-label="질의와 추론 섹션" data-report-refs="query-case reasoning fig-clinical-query table-candidate-results fig-hierarchical-inference table-query-reasoning">
+      <p class="eyebrow">REPORT §4–5 · QUERY &amp; REASONING</p><h1>그래프는 관찰을 후보 경로로 바꾼다</h1><p>직접 연결과 계층으로 도출한 포함을 분리해서 읽는다</p><span class="section-number">04</span>
+    </section>
+
+    <section class="slide slide--visual" aria-label="다섯 표현형으로 후보 질병 순위화" data-report-refs="query-case direct-query fig-clinical-query table-candidate-results">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 6</span></header>
+      <h1>공유 표현형 수는 후보 조사 순서를 만든다</h1>
+      <div class="slide-body">
+        <figure class="deck-report-figure">
+          <img src="assets/figs/clinical-query.svg" alt="제1형 당뇨병 등 다섯 표현형과 질병 후보를 연결하고 공유 특징 수 5, 3, 2 순으로 정렬하는 구조">
+          <figcaption><b>교재 2025-02 스냅샷</b><span>다섯 입력 표현형의 연결을 모은다</span><span>겹치는 특징 수로 후보를 정렬한다</span><span>경로의 source·evidence를 다시 검토한다</span></figcaption>
+        </figure>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-clinical-query">상세 리포트 그림 6 · 후보 질의</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="후보 랭킹의 해석 경계" data-report-refs="query-case table-candidate-results">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">QUERY RESULT</span></header>
+      <h1><code>count(*)</code>는 진단 확률이 아니라 겹침 수다</h1>
+      <p class="lead">책의 상위 결과를 무엇이 보장되고 무엇이 빠졌는지 함께 읽습니다.</p>
+      <div class="slide-body query-strip">
+        <pre><code class="language-cypher">MATCH (phe:HpoPhenotype)
+WHERE phe.label IN $observed
+MATCH (dis:HpoDisease)
+  -[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe)
+RETURN dis.label,
+       collect(phe.label) AS features,
+       count(*) AS overlap
+ORDER BY overlap DESC
+LIMIT 5</code></pre>
+        <div class="ranking-list">
+          <article><b>5/5</b><div><p>Odontochondrodysplasia 2 …</p><small>다섯 주석 경로 모두 존재</small></div></article>
+          <article><b>3/5</b><div><p>Holoprosencephaly 12 …</p><small>세 주석 경로 공유</small></div></article>
+          <article><b>2/5</b><div><p>여러 후보 동률</p><small>추가 근거·검사가 필요</small></div></article>
+        </div>
+      </div>
+      <p class="takeaway"><strong>빠진 것</strong> — 희귀도·부정 소견·발현 시점·증거 질·환자 맥락은 이 단순 랭킹에 포함되지 않습니다.</p>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-candidate-results">상세 리포트 표 7 · 후보 해석</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--visual" aria-label="온톨로지 계층 추론" data-report-refs="reasoning explicit-inferred fig-hierarchical-inference">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 7</span></header>
+      <h1>계층은 하위 표현형의 주석을 상위 범주 질의에 포함한다</h1>
+      <div class="slide-body">
+        <figure class="deck-report-figure">
+          <img src="assets/figs/hierarchical-inference.svg" alt="내분비계 이상 상위 범주 아래의 갑상선 췌장 포도당 대사 이상 하위 개념과 연결된 질병이 상위 범주 질의에 포함되는 구조">
+          <figcaption><b>직접 사실 + 암시적 포함</b><span>질병은 하위 표현형에 직접 주석</span><span><code>SUBCLASSOF</code>가 상위 범주를 연결</span><span>새 사실 생성이 아니라 질의 범위 확장</span></figcaption>
+        </figure>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-hierarchical-inference">상세 리포트 그림 7 · 계층 추론</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="직접 질의와 추론 비교" data-report-refs="reasoning reasoning-boundary table-query-reasoning">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">DIRECT vs INFERRED</span></header>
+      <h1>더 넓은 결과가 더 정확한 결과는 아니다</h1>
+      <p class="lead">추론의 가치는 누락을 줄이는 데 있고, 위험은 범위와 설명 경로에 있습니다.</p>
+      <div class="slide-body">
+        <table class="compare-table compare-table--dense">
+          <thead><tr><th>관점</th><th>직접 연결</th><th>계층 추론</th><th>화면에 남길 것</th></tr></thead>
+          <tbody>
+            <tr><th>범위</th><td>명시된 질병–표현형 주석</td><td>하위 표현형을 상위 범주에 포함</td><td>direct / inferred</td></tr>
+            <tr><th>가치</th><td>정확한 provenance 검토</td><td>계층 때문에 숨은 후보 회수</td><td>원 주석·전체 경로</td></tr>
+            <tr><th>위험</th><td>계층 의미를 놓쳐 누락</td><td>관련성 약한 후보 증가</td><td>깊이·규칙·HPO 버전</td></tr>
+            <tr><th>부재</th><td>주석이 없을 수 있음</td><td>하위 개념이 불완전할 수 있음</td><td>없음 ≠ 거짓</td></tr>
+          </tbody>
+        </table>
+        <p class="takeaway"><strong>설명 가능성</strong> — 어떤 하위 표현형과 계층 경로 때문에 포함됐는지 사용자에게 보여줍니다.</p>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-query-reasoning">상세 리포트 표 8 · 직접/추론 비교</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--section" aria-label="검증과 도입 판단 섹션" data-report-refs="evidence-limits decision fig-validation-gates table-failure-modes table-decision">
+      <p class="eyebrow">REPORT §6–7 · VALIDATE &amp; DECIDE</p><h1>신뢰도는 가장 짧은 미검증 구간에서 무너진다</h1><p>원천부터 사용자 검토까지 네 게이트를 닫는다</p><span class="section-number">05</span>
+    </section>
+
+    <section class="slide slide--visual" aria-label="네 검증 게이트" data-report-refs="evidence-limits validation-contract fig-validation-gates">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 8</span></header>
+      <h1>원천·의미·적재·사용을 따로 검증한다</h1>
+      <div class="slide-body">
+        <figure class="deck-report-figure">
+          <img src="assets/figs/validation-gates.svg" alt="원천, 의미, 적재, 사용의 네 검증 게이트를 통과하고 실패하면 이전 단계로 돌아가며 사람의 검토로 이어지는 구조">
+          <figcaption><b>네 개의 실패 위치</b><span>릴리스와 컬럼이 맞는가</span><span>ID와 계층 의미가 맞는가</span><span>주석 건수가 보존됐는가</span><span>후보와 진단을 구분하는가</span></figcaption>
+        </figure>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-validation-gates">상세 리포트 그림 8 · 검증 게이트</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="온톨로지 기반 KG 도입 판단" data-report-refs="decision technology-decision table-decision">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">DECISION GUIDE</span></header>
+      <h1>온톨로지와 그래프는 질문에 필요한 만큼만 쓴다</h1>
+      <p class="lead">기술 이름보다 문제의 모양과 운영 책임으로 도입 여부를 판단합니다.</p>
+      <div class="slide-body">
+        <div class="decision-grid">
+          <article><p class="eyebrow">GOOD SIGNAL</p><h2>도입 가치가 커진다</h2><ul><li>동의어·중의어·세분성 통합 오류가 큼</li><li>관계 경로와 provenance가 답의 근거</li><li>계층으로 검색 누락을 줄여야 함</li><li>릴리스·매핑·품질 소유자가 있음</li></ul></article>
+          <article><p class="eyebrow">WARNING SIGNAL</p><h2>다른 접근이 단순하다</h2><ul><li>단일 시스템의 고정 코드만 사용</li><li>테이블 필터·집계로 충분</li><li>분류체계가 불안정하고 정확 일치만 요구</li><li>질병명만 반환하고 검토 책임자가 없음</li></ul></article>
+        </div>
+        <p class="takeaway"><strong>최소 파일럿</strong> — 대표 질문 3개, 고정 HPO 스냅샷, 주석 보존 모델, 직접/추론 분리 화면으로 시작합니다.</p>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-decision">상세 리포트 표 10 · 도입 판단</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="발표 정리 질문" data-report-refs="decision discussion table-discussion table-glossary">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">CHECKPOINT</span></header>
+      <h1>세 질문으로 우리 시스템의 책임을 드러낸다</h1>
+      <p class="lead">용어 암기보다 설계 결정을 말할 수 있는지 확인합니다.</p>
+      <div class="slide-body">
+        <div class="question-list">
+          <article><span>Q1</span><p>우리 데이터의 “같은 개념”은 누가 승인하고 버전 관리하는가?</p></article>
+          <article><span>Q2</span><p>한 관계에 여러 근거가 있을 때 어떤 모델로 모두 보존할 것인가?</p></article>
+          <article><span>Q3</span><p>추론으로 포함된 후보의 원 주석과 계층 경로를 어떻게 설명할 것인가?</p></article>
+        </div>
+        <p class="takeaway"><strong>토론</strong> — 가장 답하기 어려운 질문이 지금 설계에서 가장 짧은 미검증 구간입니다.</p>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-discussion">상세 리포트 표 11 · 토론 질문</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--closing" aria-label="정리와 질의응답" data-report-refs="summary decision minimum-pilot">
+      <header class="cover-brand"><span class="brand-name">ds4th study</span><span class="brand-sub">QUESTION → EVIDENCE</span></header>
+      <div class="closing-body">
+        <p class="eyebrow">THREE TAKEAWAYS</p>
+        <h1>그래프의 완성은 적재 성공이 아니라 검토 가능한 근거다</h1>
+        <div class="card-grid">
+          <article class="card"><span>01</span><h2>질문이 모델을 고른다</h2><p>임상의의 대표 질문과 오류 비용에서 노드·관계·속성을 도출합니다.</p></article>
+          <article class="card"><span>02</span><h2>온톨로지가 의미를 고정한다</h2><p>표준 ID·동의어·계층으로 여러 원천을 같은 질의 공간에 둡니다.</p></article>
+          <article class="card"><span>03</span><h2>근거 경로가 신뢰를 정한다</h2><p>주석·버전·직접/추론 경로를 남기고 최종 판단은 사람에게 둡니다.</p></article>
+        </div>
+        <p class="closing-question">Q&amp;A</p>
+      </div>
+      <div class="closing-links"><a class="back-link" href="report.html#summary">상세 리포트 처음부터 읽기</a><a class="back-link" href="../../">회차 목록으로 돌아가기</a></div>
+    </section>
+  </main>
+
+  <button class="toc-button control" id="tocButton" type="button" aria-label="목차 열기" aria-expanded="false">☰</button>
+  <aside class="toc" id="toc" aria-label="슬라이드 목차" aria-hidden="true"><h2>목차</h2><p class="toc-intro">모든 슬라이드는 상세 리포트의 근거 위치와 연결됩니다.</p><div id="tocItems"></div></aside>
+  <nav class="deck-controls" aria-label="슬라이드 제어"><button type="button" id="prevButton" aria-label="이전 슬라이드">←</button><span id="deckCounter" aria-live="polite">1 / 1</span><button type="button" id="nextButton" aria-label="다음 슬라이드">→</button></nav>
+  <div class="deck-progress" aria-hidden="true"><span id="progress"></span></div>
+  <script src="assets/deck.js"></script>
+  <script defer src="assets/katex/katex.min.js"></script>
+  <script defer src="assets/katex/auto-render.min.js"></script>
+  <script defer src="assets/katex/katex-init.js"></script>
+</body>
+</html>

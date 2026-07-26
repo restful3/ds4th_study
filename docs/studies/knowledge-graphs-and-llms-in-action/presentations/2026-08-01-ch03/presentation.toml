@@ -1,0 +1,11 @@
+study_id = "kg-llm-in-action-2026"
+session_id = "2026-08-01-ch03"
+title = "온톨로지로 첫 지식 그래프 만들기"
+date = "2026-08-01"
+presenters = ["태영"]
+chapters = ["Chapter 3"]
+template = "study-deck-v1"
+report_template = "study-report-v1"
+workflow = "raw-report-deck-v1"
+report_source = "report.html"
+artifacts = ["report", "slides"]

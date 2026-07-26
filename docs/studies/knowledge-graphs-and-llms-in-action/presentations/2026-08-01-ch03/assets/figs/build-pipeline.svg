@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" role="img" aria-labelledby="title desc">
+  <title id="title">임상 질문에서 HPO 기반 지식 그래프와 검증된 질의까지 이어지는 구축 파이프라인</title>
+  <desc id="desc">비즈니스 질문, 두 데이터 원천 이해, 기술 선택, 제약과 온톨로지 적재, 주석 병합과 관계 풍부화, 정제, 직접 질의와 계층 추론의 일곱 단계가 이어지며 각 전환에 검증 게이트가 있다.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#63728a"/></marker>
+    <style>
+      text{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#172033}
+      .eyebrow{font-size:14px;font-weight:800;letter-spacing:1.3px;fill:#52647d}
+      .head{font-size:18px;font-weight:800}
+      .small{font-size:13px;fill:#56657a}
+      .box{fill:#fff;stroke:#b6c2d1;stroke-width:2}
+      .navy{fill:#0f2c59;stroke:#0f2c59}
+      .line{fill:none;stroke:#63728a;stroke-width:3;marker-end:url(#arrow)}
+      .gate{fill:#e3ebf5;stroke:#8aa0bd}
+    </style>
+  </defs>
+  <rect width="960" height="500" rx="20" fill="#f7f8fa"/>
+  <text x="55" y="44" class="eyebrow">CRISP-DM을 KG 구축 질문으로 구체화</text>
+
+  <g>
+    <rect class="box" x="48" y="77" width="196" height="91" rx="14"/>
+    <text x="70" y="107" class="eyebrow">01 · BUSINESS</text>
+    <text x="70" y="135" class="head">임상 질문 고정</text>
+    <text x="70" y="157" class="small">표현형 조합 → 질병 후보</text>
+    <rect class="box" x="382" y="77" width="196" height="91" rx="14"/>
+    <text x="404" y="107" class="eyebrow">02 · DATA</text>
+    <text x="404" y="135" class="head">두 원천 이해</text>
+    <text x="404" y="157" class="small">OWL 계층 + HPOA 근거</text>
+    <rect class="box" x="716" y="77" width="196" height="91" rx="14"/>
+    <text x="738" y="107" class="eyebrow">03 · DESIGN</text>
+    <text x="738" y="135" class="head">RDF/LPG 선택</text>
+    <text x="738" y="157" class="small">관계 메타데이터 우선</text>
+    <path class="line" d="M244 122H374"/>
+    <path class="line" d="M578 122H708"/>
+    <rect class="gate" x="284" y="103" width="54" height="37" rx="18"/><text x="311" y="127" class="small" text-anchor="middle">질문</text>
+    <rect class="gate" x="618" y="103" width="54" height="37" rx="18"/><text x="645" y="127" class="small" text-anchor="middle">요구</text>
+  </g>
+
+  <path class="line" d="M814 168V218H769"/>
+
+  <g>
+    <rect class="navy" x="620" y="222" width="292" height="96" rx="14"/>
+    <text x="642" y="252" class="eyebrow" style="fill:#c8d6e8">04 · ONTOLOGY LOAD</text>
+    <text x="642" y="282" class="head" style="fill:#fff">제약 → n10s → hp.owl</text>
+    <text x="642" y="305" class="small" style="fill:#d8e2ee">Resource를 HpoPhenotype으로 정렬</text>
+    <rect class="box" x="334" y="222" width="238" height="96" rx="14"/>
+    <text x="356" y="252" class="eyebrow">05 · ANNOTATION LOAD</text>
+    <text x="356" y="282" class="head">질병·관계 생성</text>
+    <text x="356" y="305" class="small">근거·빈도·큐레이터를 관계로</text>
+    <rect class="box" x="48" y="222" width="238" height="96" rx="14"/>
+    <text x="70" y="252" class="eyebrow">06 · CLEAN &amp; CHECK</text>
+    <text x="70" y="282" class="head">불필요 노드 정리</text>
+    <text x="70" y="305" class="small">ID·건수·출처·결측 검증</text>
+    <path class="line" d="M620 270H580"/>
+    <path class="line" d="M334 270H294"/>
+  </g>
+
+  <path class="line" d="M167 318V372"/>
+  <rect class="navy" x="164" y="375" width="632" height="83" rx="16"/>
+  <text x="480" y="407" class="eyebrow" text-anchor="middle" style="fill:#c8d6e8">07 · USE</text>
+  <text x="480" y="435" class="head" text-anchor="middle" style="fill:#fff">직접 연결 질의 + 표현형 조합 랭킹 + subClassOf 계층 추론</text>
+  <text x="480" y="484" class="small" text-anchor="middle">각 게이트의 산출물: 대표 질문, 원천 계약, 모델 선택 근거, 적재 로그, 품질 점검, 재현 가능한 질의</text>
+</svg>

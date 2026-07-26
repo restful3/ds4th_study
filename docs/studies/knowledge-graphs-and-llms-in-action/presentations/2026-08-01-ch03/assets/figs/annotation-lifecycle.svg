@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">HPOA 한 행이 추적 가능한 그래프 관계가 되는 생애주기</title>
+  <desc id="desc">TSV 한 행에서 질병과 표현형 ID를 매칭하고 관계를 생성한 뒤 원시 근거 필드를 추가하고 사람이 읽는 설명과 URL로 풍부화하며 품질 점검을 거친다.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#63728a"/></marker>
+    <style>
+      text{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#172033}
+      .eyebrow{font-size:13px;font-weight:800;letter-spacing:1.2px;fill:#53647d}
+      .head{font-size:18px;font-weight:800}
+      .small{font-size:13px;fill:#56657a}
+      .box{fill:#fff;stroke:#b6c2d1;stroke-width:2}
+      .line{fill:none;stroke:#63728a;stroke-width:3;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="960" height="420" rx="20" fill="#f7f8fa"/>
+  <text x="480" y="42" class="eyebrow" text-anchor="middle">ONE HPOA ROW → ONE AUDITABLE ASSERTION</text>
+  <g>
+    <rect class="box" x="35" y="78" width="166" height="175" rx="15"/>
+    <text x="55" y="108" class="eyebrow">01 · PARSE</text>
+    <text x="55" y="138" class="head">TSV 한 행</text>
+    <text x="55" y="170" class="small">database_id</text>
+    <text x="55" y="192" class="small">hpo_id</text>
+    <text x="55" y="214" class="small">reference · evidence</text>
+    <text x="55" y="236" class="small">frequency · biocuration</text>
+
+    <rect class="box" x="224" y="78" width="166" height="175" rx="15"/>
+    <text x="244" y="108" class="eyebrow">02 · MATCH</text>
+    <text x="244" y="138" class="head">표준 ID 정렬</text>
+    <text x="244" y="175" class="small">HpoDisease</text>
+    <text x="244" y="197" class="small">HpoPhenotype</text>
+    <text x="244" y="229" class="small">없음 · 중복 · 형식 오류?</text>
+
+    <rect x="413" y="78" width="166" height="175" rx="15" fill="#0f2c59"/>
+    <text x="433" y="108" class="eyebrow" style="fill:#c8d6e8">03 · LINK</text>
+    <text x="433" y="138" class="head" style="fill:#fff">관계 생성</text>
+    <text x="433" y="176" class="small" style="fill:#dce6f2">HAS_PHENOTYPIC</text>
+    <text x="433" y="198" class="small" style="fill:#dce6f2">_FEATURE</text>
+    <text x="433" y="229" class="small" style="fill:#dce6f2">주석 단위 보존?</text>
+
+    <rect class="box" x="602" y="78" width="166" height="175" rx="15"/>
+    <text x="622" y="108" class="eyebrow">04 · ENRICH</text>
+    <text x="622" y="138" class="head">사람이 읽게</text>
+    <text x="622" y="175" class="small">IEA / PCS / TAS 설명</text>
+    <text x="622" y="197" class="small">createdBy · date</text>
+    <text x="622" y="229" class="small">PubMed / OMIM URL</text>
+
+    <rect class="box" x="791" y="78" width="134" height="175" rx="15"/>
+    <text x="811" y="108" class="eyebrow">05 · CHECK</text>
+    <text x="811" y="138" class="head">품질 게이트</text>
+    <text x="811" y="175" class="small">출처 있음?</text>
+    <text x="811" y="197" class="small">날짜 파싱?</text>
+    <text x="811" y="219" class="small">건수 보존?</text>
+  </g>
+  <path class="line" d="M201 165H216"/><path class="line" d="M390 165H405"/><path class="line" d="M579 165H594"/><path class="line" d="M768 165H783"/>
+  <rect x="87" y="301" width="786" height="72" rx="14" fill="#e3ebf5" stroke="#8fa3bf"/>
+  <text x="480" y="329" class="head" text-anchor="middle">중요한 구현 경계</text>
+  <text x="480" y="355" class="small" text-anchor="middle">같은 질병–표현형 쌍의 주석이 여러 건이면 관계 식별자 없이 MERGE한 한 엣지에 마지막 값이 덮어써질 수 있다.</text>
+</svg>
