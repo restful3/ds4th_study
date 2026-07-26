@@ -34,12 +34,12 @@
   <rect class="node" x="594" y="220" width="252" height="69" rx="14"/>
   <text x="720" y="250" class="head" text-anchor="middle">Goiter</text><text x="720" y="275" class="small" text-anchor="middle">HP:0000853 · 3 levels</text>
 
-  <rect class="disease" x="72" y="351" width="274" height="69" rx="15"/>
-  <text x="209" y="380" class="head" text-anchor="middle">Disease A</text><text x="209" y="403" class="small" text-anchor="middle">하위 표현형에 직접 주석</text>
-  <path class="direct" d="M209 351V289"/>
+  <rect class="disease" x="68" y="351" width="252" height="69" rx="15"/>
+  <text x="194" y="380" class="head" text-anchor="middle">Disease A</text><text x="194" y="403" class="small" text-anchor="middle">하위 표현형에 직접 주석</text>
+  <path class="direct" d="M194 351V289"/>
 
-  <rect class="disease" x="652" y="351" width="236" height="69" rx="15"/>
-  <text x="770" y="380" class="head" text-anchor="middle">상위 범주 질의</text><text x="770" y="403" class="small" text-anchor="middle">Disease A 포함</text>
-  <path class="infer" d="M346 385C485 385 554 385 652 385"/>
-  <text x="496" y="371" class="small" text-anchor="middle">계층 경로로 암시적 포함</text>
+  <rect class="disease" x="594" y="351" width="252" height="69" rx="15"/>
+  <text x="720" y="380" class="head" text-anchor="middle">상위 범주 질의</text><text x="720" y="403" class="small" text-anchor="middle">Disease A 포함</text>
+  <path class="infer" d="M320 385C435 385 512 385 594 385"/>
+  <text x="457" y="371" class="small" text-anchor="middle">계층 경로로 암시적 포함</text>
 </svg>
