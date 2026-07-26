@@ -40,9 +40,13 @@ Cypher 가 저장소에 없고, 그 자리에 3.22 의 Cypher 가 들어 있다.
 읽기 질의여야 할 리스팅이 그래프를 오염시킨다.
 """
 correction = """
-MERGE 를 MATCH 로 바꿔 실행한다. 정정본은 노트북의 3.21 셀에 `LISTING_3_21` 리터럴로
-한 번만 싣는다. study.toml 은 3.21 을 { source = "explainer", reason = "upstream-wrong" } 로
-선언하므로, 위치는 study.toml 이 정본이고 **정정 내용의 정본은 이 항목과 그 셀** 이다.
+MERGE 를 MATCH 로 바꿔 실행한다. 셋의 역할이 다르다.
+
+  * study.toml `{ source = "explainer", reason = "upstream-wrong" }` — **위치** 의 정본.
+    "저장소에 쓸 수 있는 코드가 없다" 까지만 말한다.
+  * 이 항목 — **오류와 정정 근거** 의 정본. 무엇이 왜 틀렸고 어떻게 고쳤는지.
+  * 노트북 3.21 셀의 `LISTING_3_21` — **실행되는 문자열이 있는 유일한 자리**.
+
 노드 수 변화가 0 인 것을 셀이 매번 출력해 MATCH 임을 확인한다.
 """
 notebook = "chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/03_chapter_guide.ipynb"

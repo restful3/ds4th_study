@@ -337,17 +337,22 @@ def check_notebook_after_execute(study: Study, path: Path, executor, **kwargs) -
     """재실행 -> 정규화 -> 검사. 이 순서가 계약이다.
 
     검사를 먼저 하면 그 실행이 새로 저장한 로컬 절대경로를 이번 회차가 보지 못한다.
-    게이트 자체는 옳아도 재실행 워크플로와 결합하면 false green 이 된다. 실행이
-    실패하면 산출물을 건드리지 않는다 — 실패한 실행의 출력을 정규화할 이유가 없다.
+    게이트 자체는 옳아도 재실행 워크플로와 결합하면 false green 이 된다.
+
+    **실행이 실패하면 원본을 실행 전 상태로 되돌린다.** executor 는 임의의 함수이고
+    nbconvert 도 판마다 다르게 실패하므로, 절반만 돌다 죽은 출력이 산출물로 남지
+    않는다는 보장을 executor 의 예의에 맡기지 않는다.
 
     `executor` 는 노트북 경로를 받아 실패 메시지 목록을 돌려준다. None 이면 검사만 한다.
     """
     from studykit import notebook as notebook_tools
 
-    failures: list[str] = []
     if executor is not None:
-        failures.extend(executor(path))
+        before = path.read_bytes()
+        failures = list(executor(path))
         if failures:
+            if path.read_bytes() != before:
+                path.write_bytes(before)
             return failures
         notebook_tools.normalize_outputs(path, study)
     return check_notebook(study, path, **kwargs)
@@ -401,14 +406,8 @@ def _check_external_urls(study: Study, markdown: str, label: str) -> list[str]:
     return failures
 
 # ---------------------------------------------------------------- 완성 게이트
-#: 책 리스팅이 노트북에서 설명되는 방식. 한 축 표기이고 대부분의 리스팅은 이걸로 족하다.
-COVERAGE_KINDS = ("executed", "reproduced", "substituted", "documented-only", "optional")
-
-#: 두 축 표기. 한 축으로 표현되지 않는 조합이 있어서 나중에 더했다 — 책 15장의 15.2 는
-#: 깨끗한 환경에서 돌지 않으면서(run) 동시에 렌더러가 교체된 상태로 실행된다(fidelity).
-#: 기존 한 축 표기를 버리지 않는다. 두 축이 필요한 리스팅만 표로 적으면 된다.
-#:
-#:     "15.2": {"run": "optional", "fidelity": "substituted", "note": "..."}
+#: 두 축. `run` 은 깨끗한 환경의 기본 Run All 이 이 코드를 실제로 돌리는가이고,
+#: `fidelity` 는 그 리스팅 자신의 코드 경로가 업스트림 원문대로 도는가다.
 RUN_STATES = ("executed", "optional", "documented-only")
 SOURCE_FIDELITY = ("original", "reproduced", "substituted")
 
@@ -422,6 +421,9 @@ COVERAGE_SHORTHAND = {
     "reproduced": ("executed", "reproduced"),
     "substituted": ("executed", "substituted"),
 }
+
+#: 쓸 수 있는 한 축 이름. 변환표에서 도출한다 — 같은 집합을 두 번 적으면 갈라진다.
+COVERAGE_KINDS = tuple(COVERAGE_SHORTHAND)
 
 
 def coverage_axes(kind) -> tuple[str, str]:
@@ -537,30 +539,35 @@ def check_coverage_numbers(declared: dict, book: dict, mapped: set, label: str) 
 
 
 def _check_coverage_kind(number: str, kind, label: str) -> list[str]:
-    """한 축 문자열이거나, run·fidelity 두 축을 가진 표여야 한다."""
+    """한 축 문자열이거나, run·fidelity 두 축을 가진 표여야 한다.
+
+    두 표기 모두 `coverage_axes()` 를 거쳐 같은 (run, fidelity) 로 환산한 뒤 본다.
+    검증이 그 변환을 쓰지 않으면 변환표는 장식이 된다.
+    """
     if isinstance(kind, str):
-        if kind in COVERAGE_KINDS:
-            return []
-        return [
-            f"{label}: 리스팅 {number} 의 분류 '{kind}' 가 유효하지 않다 "
-            f"({', '.join(COVERAGE_KINDS)} 중 하나여야 한다)"
-        ]
-    if not isinstance(kind, dict):
+        if kind not in COVERAGE_SHORTHAND:
+            return [
+                f"{label}: 리스팅 {number} 의 분류 '{kind}' 가 유효하지 않다 "
+                f"({', '.join(COVERAGE_SHORTHAND)} 중 하나여야 한다)"
+            ]
+    elif isinstance(kind, dict):
+        missing = {"run", "fidelity"} - set(kind)
+        if missing:
+            return [
+                f"{label}: 리스팅 {number} 의 두 축 표기에 "
+                f"{', '.join(sorted(missing))} 가 빠졌다"
+            ]
+    else:
         return [f"{label}: 리스팅 {number} 의 분류는 문자열이거나 run·fidelity 표여야 한다"]
 
+    run, fidelity = coverage_axes(kind)
     failures: list[str] = []
-    missing = {"run", "fidelity"} - set(kind)
-    if missing:
-        failures.append(
-            f"{label}: 리스팅 {number} 의 두 축 표기에 {', '.join(sorted(missing))} 가 빠졌다"
-        )
-    run, fidelity = kind.get("run"), kind.get("fidelity")
-    if run is not None and run not in RUN_STATES:
+    if run not in RUN_STATES:
         failures.append(
             f"{label}: 리스팅 {number} 의 run '{run}' 가 유효하지 않다 "
             f"({', '.join(RUN_STATES)} 중 하나여야 한다)"
         )
-    if fidelity is not None and fidelity not in SOURCE_FIDELITY:
+    if fidelity not in SOURCE_FIDELITY:
         failures.append(
             f"{label}: 리스팅 {number} 의 fidelity '{fidelity}' 가 유효하지 않다 "
             f"({', '.join(SOURCE_FIDELITY)} 중 하나여야 한다)"

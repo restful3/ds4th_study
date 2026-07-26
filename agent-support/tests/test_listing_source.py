@@ -308,6 +308,24 @@ class GateIntegrationTests(unittest.TestCase):
             with self.subTest(shorthand=shorthand):
                 self.assertEqual(pair, self.verify.coverage_axes(shorthand))
 
+    def test_shorthand_set_has_one_definition(self) -> None:
+        """COVERAGE_KINDS 와 변환표가 같은 키를 두 번 선언하면 언젠가 갈라진다."""
+        self.assertEqual(set(self.verify.COVERAGE_KINDS),
+                         set(self.verify.COVERAGE_SHORTHAND))
+
+    def test_gate_validates_through_the_same_normalization(self) -> None:
+        """검증 경로가 변환표를 실제로 쓰는가. 안 쓰면 표는 장식이다."""
+        original = dict(self.verify.COVERAGE_SHORTHAND)
+        self.verify.COVERAGE_SHORTHAND.pop("executed")
+        try:
+            failures = self.verify.check_coverage_numbers(
+                declared={"10.4": "executed"}, book={"10.4": "제목"},
+                mapped={"10.4"}, label="x.ipynb")
+            self.assertTrue(failures, "변환표에서 뺐는데도 통과했다 — 게이트가 표를 안 쓴다")
+        finally:
+            self.verify.COVERAGE_SHORTHAND.clear()
+            self.verify.COVERAGE_SHORTHAND.update(original)
+
     def test_two_axis_value_passes_through(self) -> None:
         self.assertEqual(
             ("optional", "substituted"),
@@ -592,3 +610,44 @@ class UnnumberedSymbolTests(unittest.TestCase):
 
     def test_clean_declaration_has_no_failures(self) -> None:
         self.assertEqual([], listing_source.check_unnumbered_symbols(self.study, "ch11"))
+
+
+class Ch03OffsetAuditTests(unittest.TestCase):
+    """전수 선언이 오프셋 규칙에서 벗어나지 않았는가.
+
+    `[mapping.listing_offsets]` 에서 ch03 을 뺐으므로 study-verify 의 오프셋 절이 더는
+    ch03 을 보지 않는다. 개별 선언이 실재하는 파일을 가리키는지는 게이트가 확인하지만,
+    **인접한 엉뚱한 파일** 을 가리켜도 파일이 있으면 통과한다. 도출값으로 그 패턴을
+    다시 검사한다 — 정본이 아니라 정본을 검사하는 assertion 이라 중복 정본이 아니다.
+    """
+
+    @unittest.skipIf(not (REPO_ROOT / "source").is_dir(), "source/ 가 없다")
+    def setUp(self) -> None:
+        from studykit import config
+        paths = sorted((REPO_ROOT / "source").glob(f"*/{config.CONFIG_NAME}"))
+        if not paths:
+            self.skipTest("교재가 없다")
+        self.study = config.load(paths[0].parent)
+        if "ch03" not in self.study.listing_overrides:
+            self.skipTest("ch03 선언이 없다")
+
+    def test_declared_repo_numbers_follow_the_derived_offset(self) -> None:
+        from studykit import listing_map
+
+        derived = listing_map.derive_offset(self.study, "ch03")
+        self.assertIsNotNone(derived, "ch03 오프셋을 도출하지 못했다")
+        self.assertEqual(3, derived.offset)
+
+        for number, raw in sorted(self.study.listing_overrides["ch03"].items()):
+            spec = listing_source.parse(raw)
+            if spec.kind != "repo":
+                continue          # explainer 는 규칙에서 벗어나는 것이 정상이다
+            major, minor = number.split(".")
+            expected = f"{major}.{int(minor) + derived.offset}"
+            with self.subTest(number=number):
+                self.assertEqual(
+                    expected, spec.repo_number,
+                    f"책 {number} 은 오프셋 {derived.offset} 이면 파일 {expected} 인데 "
+                    f"{spec.repo_number} 로 선언됐다. 예외라면 explainer 로 두거나 "
+                    f"왜 벗어나는지 주석으로 적어라",
+                )

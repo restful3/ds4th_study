@@ -232,6 +232,26 @@ class ExecuteThenNormalizeTests(unittest.TestCase):
         self.assertTrue(any("재실행 실패" in f for f in failures), failures)
         self.assertEqual(before, path.read_text(encoding="utf-8"))
 
+    def test_executor_that_writes_then_fails_leaves_the_original(self) -> None:
+        """실패한 실행의 부분 출력을 산출물로 남기면 안 된다.
+
+        executor 는 임의의 함수이고 nbconvert 도 판마다 다르게 실패한다. 그래서
+        "실패 시 원본 불변" 은 executor 의 예의가 아니라 helper 가 보장해야 한다.
+        """
+        path = write_notebook(self.study, outputs=[stream("이전 회차 출력\n")])
+        before = path.read_text(encoding="utf-8")
+
+        def writes_then_fails(target: Path) -> list[str]:
+            document = json.loads(target.read_text(encoding="utf-8"))
+            document["cells"][1]["outputs"] = [stream("절반만 돌다 죽었다\n")]
+            target.write_text(json.dumps(document, ensure_ascii=False), encoding="utf-8")
+            return ["재실행 실패 — 커널이 중간에 죽었다"]
+
+        failures = verify.check_notebook_after_execute(
+            self.study, path, writes_then_fails, check_urls=False)
+        self.assertTrue(any("재실행 실패" in f for f in failures), failures)
+        self.assertEqual(before, path.read_text(encoding="utf-8"))
+
     def test_without_executor_it_only_checks(self) -> None:
         path = write_notebook(self.study, outputs=[stream(f"{self.study.root}\n")])
         failures = verify.check_notebook_after_execute(
