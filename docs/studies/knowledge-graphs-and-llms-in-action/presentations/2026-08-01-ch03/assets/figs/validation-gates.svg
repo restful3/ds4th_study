@@ -2,13 +2,14 @@
   <title id="title">온톨로지 기반 임상 지원 지식 그래프의 네 검증 게이트</title>
   <desc id="desc">원천 스냅샷, 의미 매핑, 적재 보존성, 질의와 추론의 임상 경계를 각각 검증한 뒤 후보 결과를 사람에게 전달하며 실패하면 이전 단계로 되돌아간다.</desc>
   <defs>
-    <marker id="arrow-gray" markerUnits="userSpaceOnUse" viewBox="0 0 8 6" refX="7.5" refY="3" markerWidth="8" markerHeight="6" orient="auto"><path d="M.5.5 7.5 3 .5 5.5Z" fill="#63728a"/></marker>
-    <marker id="arrow-red" markerUnits="userSpaceOnUse" viewBox="0 0 8 6" refX="7.5" refY="3" markerWidth="8" markerHeight="6" orient="auto"><path d="M.5.5 7.5 3 .5 5.5Z" fill="#a15b55"/></marker>
+    <marker id="arrow-gray" markerUnits="userSpaceOnUse" viewBox="0 0 12 10" refX="11.5" refY="5" markerWidth="12" markerHeight="10" orient="auto"><path d="M.5.5 11.5 5 .5 9.5Z" fill="#63728a"/></marker>
+    <marker id="arrow-red" markerUnits="userSpaceOnUse" viewBox="0 0 12 10" refX="11.5" refY="5" markerWidth="12" markerHeight="10" orient="auto"><path d="M.5.5 11.5 5 .5 9.5Z" fill="#a15b55"/></marker>
     <style>
       text{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#172033}
       .eyebrow{font-size:13px;font-weight:800;letter-spacing:1.2px;fill:#52647d}
       .head{font-size:18px;font-weight:800}
       .small{font-size:13px;fill:#56657a}
+      .gate-note{font-size:12px;letter-spacing:.6px}
       .gate{fill:#fff;stroke:#b7c2d1;stroke-width:2}
       .line{fill:none;stroke:#63728a;stroke-width:3;marker-end:url(#arrow-gray)}
       .return{fill:none;stroke:#a15b55;stroke-width:2.5;stroke-dasharray:7 5;marker-end:url(#arrow-red)}
@@ -23,7 +24,7 @@
     <text x="66" y="174" class="small">버전·다운로드 시점</text>
     <text x="66" y="199" class="small">컬럼·결측·식별자</text>
     <text x="66" y="224" class="small">라이선스·출처</text>
-    <text x="66" y="263" class="eyebrow">FAIL → SNAPSHOT FIX</text>
+    <text x="142" y="263" class="eyebrow gate-note" text-anchor="middle">FAIL → SNAPSHOT FIX</text>
 
     <rect class="gate" x="270" y="91" width="196" height="205" rx="16"/>
     <circle cx="310" cy="128" r="19" fill="#0f2c59"/><text x="310" y="134" class="small" text-anchor="middle" style="fill:#fff">2</text>
@@ -31,7 +32,7 @@
     <text x="292" y="174" class="small">질병 vs 표현형 역할</text>
     <text x="292" y="199" class="small">HPO ID 매핑</text>
     <text x="292" y="224" class="small">계층 방향·동의어</text>
-    <text x="292" y="263" class="eyebrow">FAIL → MAPPING REVIEW</text>
+    <text x="368" y="263" class="eyebrow gate-note" text-anchor="middle">FAIL → MAPPING REVIEW</text>
 
     <rect class="gate" x="496" y="91" width="196" height="205" rx="16"/>
     <circle cx="536" cy="128" r="19" fill="#0f2c59"/><text x="536" y="134" class="small" text-anchor="middle" style="fill:#fff">3</text>
@@ -39,7 +40,7 @@
     <text x="518" y="174" class="small">노드·관계 건수</text>
     <text x="518" y="199" class="small">주석 중복 보존</text>
     <text x="518" y="224" class="small">근거 속성 파싱</text>
-    <text x="518" y="263" class="eyebrow">FAIL → MODEL / ETL FIX</text>
+    <text x="594" y="263" class="eyebrow gate-note" text-anchor="middle">FAIL → MODEL / ETL FIX</text>
 
     <rect x="722" y="91" width="196" height="205" rx="16" fill="#0f2c59"/>
     <circle cx="762" cy="128" r="19" fill="#fff"/><text x="762" y="134" class="small" text-anchor="middle">4</text>
@@ -47,10 +48,10 @@
     <text x="744" y="174" class="small" style="fill:#dce6f2">대표 질의 재현</text>
     <text x="744" y="199" class="small" style="fill:#dce6f2">추론 범위·깊이</text>
     <text x="744" y="224" class="small" style="fill:#dce6f2">후보와 진단 분리</text>
-    <text x="820" y="263" class="eyebrow" text-anchor="middle" style="fill:#c8d6e8">PASS → HUMAN REVIEW</text>
+    <text x="820" y="263" class="eyebrow gate-note" text-anchor="middle" style="fill:#c8d6e8">PASS → HUMAN REVIEW</text>
   </g>
   <path class="line" d="M240 193H270"/><path class="line" d="M466 193H496"/><path class="line" d="M692 193H722"/>
-  <path class="return" d="M820 296C820 370 580 380 580 296"/>
-  <path class="return" d="M580 296C580 408 357 408 357 296"/>
-  <path class="return" d="M357 296C357 370 143 370 143 296"/>
+  <path class="return" d="M820 296C820 366 570 366 570 296"/>
+  <path class="return" d="M618 296C618 408 344 408 344 296"/>
+  <path class="return" d="M392 296C392 366 142 366 142 296"/>
 </svg>

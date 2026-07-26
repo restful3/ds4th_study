@@ -2,8 +2,8 @@
   <title id="title">질병과 표현형 사이 주석 메타데이터를 표현하는 네 가지 방법</title>
   <desc id="desc">RDF n항 관계는 주석 노드를 추가하고, 명명 그래프는 문장 묶음에 이름을 붙이며, RDF-star는 인용한 트리플에 메타데이터를 붙이고, LPG는 개별 관계에 속성을 직접 둔다.</desc>
   <defs>
-    <marker id="arrow-navy" markerUnits="userSpaceOnUse" viewBox="0 0 8 6" refX="7.5" refY="3" markerWidth="8" markerHeight="6" orient="auto"><path d="M.5.5 7.5 3 .5 5.5Z" fill="#0f2c59"/></marker>
-    <marker id="arrow-white" markerUnits="userSpaceOnUse" viewBox="0 0 8 6" refX="7.5" refY="3" markerWidth="8" markerHeight="6" orient="auto"><path d="M.5.5 7.5 3 .5 5.5Z" fill="#fff"/></marker>
+    <marker id="arrow-navy" markerUnits="userSpaceOnUse" viewBox="0 0 12 10" refX="11.5" refY="5" markerWidth="12" markerHeight="10" orient="auto"><path d="M.5.5 11.5 5 .5 9.5Z" fill="#0f2c59"/></marker>
+    <marker id="arrow-white" markerUnits="userSpaceOnUse" viewBox="0 0 12 10" refX="11.5" refY="5" markerWidth="12" markerHeight="10" orient="auto"><path d="M.5.5 11.5 5 .5 9.5Z" fill="#fff"/></marker>
     <style>
       text{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#172033}
       .eyebrow{font-size:14px;font-weight:800;letter-spacing:1.3px;fill:#52647d}
@@ -13,7 +13,7 @@
       .card{fill:#fff;stroke:#b8c3d2;stroke-width:2}
       .node{fill:#e7eef7;stroke:#0f2c59;stroke-width:2}
       .edge{fill:none;stroke:#0f2c59;stroke-width:3;marker-end:url(#arrow-navy)}
-      .white-edge{fill:none;stroke:#fff;stroke-width:5;marker-end:url(#arrow-white)}
+      .white-edge{fill:none;stroke:#fff;stroke-width:4;marker-end:url(#arrow-white)}
       .edge-label{paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
       .meta{fill:#0f2c59}
     </style>
@@ -33,14 +33,14 @@
   <g transform="translate(500 68)">
     <rect class="card" width="425" height="150" rx="16"/>
     <text x="22" y="32" class="eyebrow">RDF</text><text x="22" y="61" class="head">NAMED GRAPH</text>
-    <rect x="49" y="79" width="240" height="63" rx="12" fill="#e7eef7" stroke="#0f2c59" stroke-width="2"/>
+    <rect x="49" y="79" width="220" height="63" rx="12" fill="#e7eef7" stroke="#0f2c59" stroke-width="2"/>
     <circle class="node" cx="93" cy="110" r="22"/><circle class="node" cx="245" cy="110" r="22"/>
     <path class="edge" d="M115 110H223"/>
     <text x="169" y="103" class="small edge-label" text-anchor="middle">hasFeature</text>
-    <rect class="meta" x="315" y="79" width="86" height="63" rx="12"/>
-    <text x="358" y="105" class="small" text-anchor="middle" style="fill:#fff">Graph1</text>
-    <text x="358" y="126" class="small" text-anchor="middle" style="fill:#fff">metadata</text>
-    <path class="edge" d="M315 110H289"/>
+    <rect class="meta" x="319" y="79" width="82" height="63" rx="12"/>
+    <text x="360" y="105" class="small" text-anchor="middle" style="fill:#fff">Graph1</text>
+    <text x="360" y="126" class="small" text-anchor="middle" style="fill:#fff">metadata</text>
+    <path class="edge" d="M319 110H269"/>
   </g>
 
   <g transform="translate(35 245)">
@@ -49,10 +49,10 @@
     <rect x="48" y="83" width="223" height="56" rx="12" fill="#e7eef7" stroke="#0f2c59" stroke-width="2"/>
     <text x="159" y="107" class="label" text-anchor="middle">&lt;&lt; D hasFeature F &gt;&gt;</text>
     <text x="159" y="128" class="small" text-anchor="middle">인용된 트리플</text>
-    <path class="edge" d="M271 111H307"/>
-    <rect class="meta" x="307" y="83" width="89" height="56" rx="12"/>
-    <text x="351" y="106" class="small" text-anchor="middle" style="fill:#fff">source</text>
-    <text x="351" y="126" class="small" text-anchor="middle" style="fill:#fff">date</text>
+    <path class="edge" d="M271 111H315"/>
+    <rect class="meta" x="315" y="83" width="81" height="56" rx="12"/>
+    <text x="355" y="106" class="small" text-anchor="middle" style="fill:#fff">source</text>
+    <text x="355" y="126" class="small" text-anchor="middle" style="fill:#fff">date</text>
   </g>
 
   <g transform="translate(500 245)">

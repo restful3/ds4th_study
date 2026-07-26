@@ -2,8 +2,8 @@
   <title id="title">온톨로지 계층이 직접 연결을 상위 범주 질의 결과로 확장하는 과정</title>
   <desc id="desc">HPO의 자식 표현형 세 개가 SUBCLASSOF 관계로 내분비계 이상 상위 개념을 가리킨다. 질병은 하위 표현형에 직접 주석되어 있고 상위 범주 질의에서는 계층 경로를 역방향으로 탐색해 포함된다.</desc>
   <defs>
-    <marker id="arrow-gray" markerUnits="userSpaceOnUse" viewBox="0 0 8 6" refX="7.5" refY="3" markerWidth="8" markerHeight="6" orient="auto"><path d="M.5.5 7.5 3 .5 5.5Z" fill="#63728a"/></marker>
-    <marker id="arrow-navy" markerUnits="userSpaceOnUse" viewBox="0 0 8 6" refX="7.5" refY="3" markerWidth="8" markerHeight="6" orient="auto"><path d="M.5.5 7.5 3 .5 5.5Z" fill="#0f2c59"/></marker>
+    <marker id="arrow-gray" markerUnits="userSpaceOnUse" viewBox="0 0 12 10" refX="11.5" refY="5" markerWidth="12" markerHeight="10" orient="auto"><path d="M.5.5 11.5 5 .5 9.5Z" fill="#63728a"/></marker>
+    <marker id="arrow-navy" markerUnits="userSpaceOnUse" viewBox="0 0 12 10" refX="11.5" refY="5" markerWidth="12" markerHeight="10" orient="auto"><path d="M.5.5 11.5 5 .5 9.5Z" fill="#0f2c59"/></marker>
     <style>
       text{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#172033}
       .eyebrow{font-size:13px;font-weight:800;letter-spacing:1.2px;fill:#52647d}
@@ -25,7 +25,7 @@
   <text x="457" y="108" class="head" text-anchor="middle" style="fill:#fff">endocrine system</text>
   <text x="457" y="133" class="small" text-anchor="middle" style="fill:#dce6f2">HP:0000818 · 상위 범주</text>
 
-  <text x="457" y="166" class="small" text-anchor="middle">SUBCLASSOF · child → parent</text>
+  <text x="720" y="176" class="small" text-anchor="middle">SUBCLASSOF · child → parent</text>
   <path class="tree" d="M194 220V184H420V148"/><path class="tree" d="M457 220V148"/><path class="tree" d="M720 220V184H494V148"/>
   <rect class="node" x="68" y="220" width="252" height="69" rx="14"/>
   <text x="194" y="245" class="head" text-anchor="middle">Abnormality of thyroid</text><text x="194" y="265" class="head" text-anchor="middle">physiology</text><text x="194" y="283" class="small" text-anchor="middle">HP:0002926 · 2 levels</text>
@@ -40,6 +40,6 @@
 
   <rect class="disease" x="652" y="351" width="236" height="69" rx="15"/>
   <text x="770" y="380" class="head" text-anchor="middle">상위 범주 질의</text><text x="770" y="403" class="small" text-anchor="middle">Disease A 포함</text>
-  <path class="infer" d="M346 385C485 385 546 385 644 385"/>
+  <path class="infer" d="M346 385C485 385 554 385 652 385"/>
   <text x="496" y="371" class="small" text-anchor="middle">계층 경로로 암시적 포함</text>
 </svg>

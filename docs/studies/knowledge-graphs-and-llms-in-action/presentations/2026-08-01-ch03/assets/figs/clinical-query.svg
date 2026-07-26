@@ -17,6 +17,7 @@
   </defs>
   <rect width="960" height="405" rx="20" fill="#f7f8fa"/>
   <text x="53" y="44" class="eyebrow">OBSERVED PHENOTYPIC FEATURES</text>
+  <text x="480" y="44" class="small" text-anchor="middle">선 = 공유 주석 존재 · 방향 미표현</text>
   <text x="912" y="44" class="eyebrow" text-anchor="end">CANDIDATE DISEASES · OVERLAP COUNT</text>
 
   <g>

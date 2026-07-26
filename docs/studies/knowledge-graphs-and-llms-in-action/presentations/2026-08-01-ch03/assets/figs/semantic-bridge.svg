@@ -2,7 +2,7 @@
   <title id="title">서로 다른 임상 표현을 온톨로지의 표준 개념으로 연결하는 의미 다리</title>
   <desc id="desc">왼쪽의 동의어, 중의적 약어, 서로 다른 세분성이 매핑을 거쳐 가운데 HPO 표준 식별자와 계층으로 정렬되고 오른쪽의 통합 질의로 이어진다.</desc>
   <defs>
-    <marker id="arrow" markerUnits="userSpaceOnUse" viewBox="0 0 8 6" refX="7.5" refY="3" markerWidth="8" markerHeight="6" orient="auto"><path d="M.5.5 7.5 3 .5 5.5Z" fill="#617089"/></marker>
+    <marker id="arrow" markerUnits="userSpaceOnUse" viewBox="0 0 12 10" refX="11.5" refY="5" markerWidth="12" markerHeight="10" orient="auto"><path d="M.5.5 11.5 5 .5 9.5Z" fill="#617089"/></marker>
     <style>
       text{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#172033}
       .eyebrow{font-size:15px;font-weight:800;letter-spacing:1.5px;fill:#49607d}
