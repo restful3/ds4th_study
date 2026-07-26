@@ -23,6 +23,10 @@ EXPECTED_CONTROLLERS = {
 }
 RUN_MARKER_NAME = "DS4TH_SAFE_BROWSER_RUN_ID"
 POLL_SECONDS = 0.25
+# Containment comes from one cgroup.procs read per poll. The all-process environ
+# scan only catches a process that was reparented before we ever saw it as a
+# descendant, so it runs as a low-frequency backstop instead of every poll.
+MARKER_SCAN_EVERY = 8
 TERM_GRACE_SECONDS = 0.50
 POST_EXIT_GRACE_SECONDS = 0.50
 
@@ -32,9 +36,9 @@ def fail(message: str, status: int = 70) -> "NoReturn":
     raise SystemExit(status)
 
 
-def current_cgroup(pid: int | str = "self") -> str:
+def current_cgroup() -> str:
     try:
-        for line in Path(f"/proc/{pid}/cgroup").read_text().splitlines():
+        for line in Path("/proc/self/cgroup").read_text().splitlines():
             hierarchy, _, path = line.partition("::")
             if hierarchy == "0":
                 return path
@@ -43,7 +47,7 @@ def current_cgroup(pid: int | str = "self") -> str:
     return ""
 
 
-def verify_own_cgroup() -> str:
+def verify_own_cgroup() -> Path:
     if not os.environ.get("INVOCATION_ID"):
         fail("systemd INVOCATION_ID is absent")
 
@@ -59,7 +63,41 @@ def verify_own_cgroup() -> str:
             fail(f"cannot read {filename}: {exc}")
         if actual != wanted:
             fail(f"{filename}={actual!r}, expected {wanted!r}")
-    return expected
+    return root
+
+
+def contained_pids(cgroup_root: Path) -> set[int]:
+    """Read the whole service cgroup subtree membership from its cgroup.procs files."""
+    cgroup_root = Path(cgroup_root)
+    root_procs = cgroup_root / "cgroup.procs"
+    try:
+        texts = [root_procs.read_text()]
+    except OSError as exc:
+        fail(f"cannot read {root_procs}: {exc}")
+
+    for nested in sorted(cgroup_root.rglob("cgroup.procs")):
+        if nested == root_procs:
+            continue
+        try:
+            texts.append(nested.read_text())
+        except OSError:
+            continue
+
+    pids: set[int] = set()
+    for text in texts:
+        for token in text.split():
+            if token.isdigit():
+                pids.add(int(token))
+    return pids
+
+
+def escaped_pids(live: set[int], contained: set[int]) -> set[int]:
+    """Run processes that are alive but no longer inside the service cgroup."""
+    return set(live) - set(contained)
+
+
+def should_scan_marker(poll_index: int) -> bool:
+    return poll_index % MARKER_SCAN_EVERY == 0
 
 
 def proc_snapshot() -> dict[int, tuple[int, int]]:
@@ -121,9 +159,10 @@ def collect_run_processes(
     marker: bytes,
     known: set[tuple[int, int]],
     root_key: tuple[int, int],
+    scan_marker: bool = True,
 ) -> tuple[dict[int, tuple[int, int]], set[tuple[int, int]]]:
     snapshot = proc_snapshot()
-    tagged = marker_pids(marker)
+    tagged = marker_pids(marker) if scan_marker else set()
     root_pid, root_start = root_key
     roots = set(tagged)
     if snapshot.get(root_pid, (0, -1))[1] == root_start:
@@ -136,21 +175,31 @@ def collect_run_processes(
 
 
 def assert_contained(
-    expected_cgroup: str,
+    cgroup_root: Path,
     snapshot: dict[int, tuple[int, int]],
     known: set[tuple[int, int]],
 ) -> None:
-    prefix = expected_cgroup + "/"
-    for pid, start in sorted(known):
-        if snapshot.get(pid, (0, -1))[1] != start:
-            continue
-        actual = current_cgroup(pid)
-        if not actual:
-            if pid in proc_snapshot():
-                fail(f"cannot verify cgroup for live run process {pid}")
-            continue
-        if actual != expected_cgroup and not actual.startswith(prefix):
-            fail(f"run process {pid} escaped to {actual}")
+    live = live_pids(snapshot, known)
+    if not live:
+        return
+
+    escaped = escaped_pids(live, contained_pids(cgroup_root))
+    if not escaped:
+        return
+
+    # A process that exited between the two reads left the membership list
+    # without escaping it, so confirm the candidates are still alive.
+    recheck = proc_snapshot()
+    surviving = {
+        pid
+        for pid, start in known
+        if pid in escaped and recheck.get(pid, (0, -1))[1] == start
+    }
+    if surviving:
+        fail(
+            "run processes escaped the service cgroup: "
+            + ",".join(map(str, sorted(surviving)))
+        )
 
 
 def live_pids(
@@ -183,7 +232,9 @@ def cleanup_processes(
     deadline = time.monotonic() + TERM_GRACE_SECONDS
     while time.monotonic() < deadline:
         proc.poll()
-        snapshot, known = collect_run_processes(marker, known, root_key)
+        snapshot, known = collect_run_processes(
+            marker, known, root_key, scan_marker=False
+        )
         if not live_pids(snapshot, known):
             return known, set()
         time.sleep(0.05)
@@ -192,7 +243,9 @@ def cleanup_processes(
     deadline = time.monotonic() + TERM_GRACE_SECONDS
     while time.monotonic() < deadline:
         proc.poll()
-        snapshot, known = collect_run_processes(marker, known, root_key)
+        snapshot, known = collect_run_processes(
+            marker, known, root_key, scan_marker=False
+        )
         remaining = live_pids(snapshot, known)
         if not remaining:
             return known, set()
@@ -224,7 +277,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    expected_cgroup = verify_own_cgroup()
+    cgroup_root = verify_own_cgroup()
     marker = secrets.token_hex(16).encode()
     env = os.environ.copy()
     env[RUN_MARKER_NAME] = marker.decode()
@@ -282,9 +335,13 @@ def main() -> int:
         signal.signal(sig, request_stop)
 
     try:
+        poll_index = 0
         while proc.poll() is None and not stop_signal:
-            snapshot, known = collect_run_processes(marker, known, root_key)
-            assert_contained(expected_cgroup, snapshot, known)
+            snapshot, known = collect_run_processes(
+                marker, known, root_key, scan_marker=should_scan_marker(poll_index)
+            )
+            assert_contained(cgroup_root, snapshot, known)
+            poll_index += 1
             time.sleep(POLL_SECONDS)
 
         if stop_signal:
@@ -300,8 +357,10 @@ def main() -> int:
         status = proc.wait()
         deadline = time.monotonic() + POST_EXIT_GRACE_SECONDS
         while time.monotonic() < deadline:
-            snapshot, known = collect_run_processes(marker, known, root_key)
-            assert_contained(expected_cgroup, snapshot, known)
+            snapshot, known = collect_run_processes(
+                marker, known, root_key, scan_marker=False
+            )
+            assert_contained(cgroup_root, snapshot, known)
             if not live_pids(snapshot, known):
                 return status
             time.sleep(0.05)

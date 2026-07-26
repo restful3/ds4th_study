@@ -116,12 +116,24 @@ browser 실행과 runner 밖에서의 반복적인 GUI browser inspection은
 user cgroup 안에서 실행하고, unique profile과 atomic PNG 검증을
 강제한다.
 
-먼저 Chrome을 띄우지 않는 preflight를 통과시킨다.
+설치와 갱신은 `agent-support/scripts/install-safe-browser-shot.sh`로만 한다.
+이 스크립트가 mode(디렉터리·wrapper 700, guard 600)를 맞추고, 직전 설치본을
+`rollback-*`로 백업하고, 설치 시점 해시를 `manifest.sha256`에 남긴다.
+저장소 source를 수정했으면 반드시 재설치한다 — runner는 설치본만 실행하므로
+저장소 수정은 자동 반영되지 않는다.
+
+먼저 저장소 source와 설치본이 어긋나지 않았는지 확인하고, 이어서 Chrome을
+띄우지 않는 preflight를 통과시킨다.
 
 ```bash
+agent-support/scripts/install-safe-browser-shot.sh --verify
+
 runner="$HOME/.local/libexec/ds4th-safe-browser-shot/safe-browser-shot.sh"
 "$runner" --check
 ```
+
+`--verify`가 `stale`을 보고하면 저장소가 앞서 있으니 재설치한다. `altered`를
+보고하면 설치본이 설치 후 변경된 것이므로 재설치 전에 원인을 확인한다.
 
 실제 screenshot은 절대 output path를 사용한다.
 
