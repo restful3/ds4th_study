@@ -62,6 +62,8 @@
           <li><strong>경계</strong> — 후보 랭킹과 계층 추론을 어디까지 믿고, 무엇을 임상의에게 남겨야 하는가?</li>
         </ul></div>
       </div>
+      <p>이 장은 개념 장이 아니라 <strong>구현 장</strong>이다. 그래서 이 리포트는 교재 Listing 3.5–3.28의 코드를 본문에 함께 싣고 한 줄씩 쉬운 말로 풀었다. §2.2는 같은 사실 하나를 RDF 세 방식과 LPG로 각각 적어 비교하고, §3은 온톨로지 적재부터 정제까지의 파이프라인을, §5–6은 추론과 근거 추적 질의를 다룬다.</p>
+      <p>아울러 이 회차의 학습 노트북 <code>03_chapter_guide.ipynb</code>가 모든 리스팅을 <strong>실제 Neo4j에서 끝까지 실행한 기록</strong>을 남겼다. 그 실측치를 책 값과 나란히 놓으면 재현에 관한 사실이 드러난다 — 적재 트리플은 899,558에서 <strong>926,450</strong>으로 늘었고, 진단 질의의 <strong>1위 후보는 그대로지만 2위 이하는 바뀌었으며</strong>, 책 표 3.3이 강조한 <em>Hyperglycemia</em>는 <strong>더 이상 내분비계 이상의 하위가 아니다</strong>. 코드는 그대로인데 결과가 달라지는 이 세 가지가 §3.4·4.2·5.2의 주제다.</p>
       <table class="cmp-table" id="table-overview">
         <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 1</span><span class="asset-caption__title">Chapter 3의 전체 논리</span></div></caption>
         <thead><tr><th>단계</th><th>핵심 질문</th><th>장의 답</th><th>검증 산출물</th></tr></thead>
@@ -145,6 +147,78 @@
         <img src="assets/figs/edge-metadata-options.svg" alt="RDF n항 관계, RDF 명명 그래프, RDF-star, LPG 관계 속성이 질병 표현형 연결의 출처 작성자 날짜를 각기 다른 구조로 표현하는 비교">
         <small class="asset-note">교재 §3.2.2, Listing 3.5–3.12의 구조를 관계 메타데이터라는 동일 질문으로 재구성. n항 관계는 Annotation 자원에서 질병·표현형으로 나가는 관계를, 명명 그래프는 문장 묶음의 맥락을, RDF-star는 인용된 트리플의 메타데이터를, LPG는 개별 관계의 키–값을 보여준다.</small>
       </figure>
+
+      <div id="code-edge-metadata">
+        <h4>같은 한 문장을 네 가지로 적어 보기</h4>
+        <p>네 방식 모두 <strong>똑같은 사실 하나</strong>를 적는다. “질병 <code>OMIM:222100</code>과 표현형 <code>HP:0410050</code>이 연결되며, 그 근거는 논문 <code>PMID:9357814</code>이고 Nicole Vasilevsky가 2018-02-23에 기록했다.” 차이는 <em>근거를 어디에 붙이느냐</em> 하나뿐이다. 아래 네 블록은 각각 <strong>적는 법</strong>과 <strong>꺼내는 법</strong>을 한 쌍으로 묶었다. 마지막 LPG만 유일하게 우회 없이 끝난다.</p>
+
+        <h4>① N항 관계 — 근거를 담을 노드를 하나 새로 만든다 <span class="asset-note">(책 Listing 3.5 · 3.6)</span></h4>
+        <pre><code class="language-turtle"># 적는 법 — 이름 없는 노드(_:Annotation)를 만들어 질병·표현형·근거를 모두 매단다
+_:Annotation rdf:type :PhenotypicAnnotation ;
+    :forDisease        OMIM:222100 ;
+    :phenotypicFeature HP:0410050 ;
+    :source            PMID:9357814 ;
+    :createdBy         "Nicole Vasilevsky" ;
+    :creationDate      "2018-02-23"^^xsd:date .
+
+# 꺼내는 법 (SPARQL) — 질병·표현형으로 그 노드를 먼저 찾고 나서 근거를 읽는다
+SELECT ?source ?author ?date WHERE {
+  ?annotation a :PhenotypicAnnotation ;
+      :forDisease        OMIM:222100 ;
+      :phenotypicFeature HP:0410050 ;
+      :source ?source ; :createdBy ?author ; :creationDate ?date .
+}</code></pre>
+        <p><strong>쉽게 말하면</strong> — “A와 B가 연결됨”이라는 한 줄을 적을 수 없어서, <em>연결 그 자체를 대신할 노드</em>를 하나 발명한다. 질병과 표현형은 이제 직접 이어지지 않고 이 중간 노드를 거친다. 모델이 한 단계 깊어지고, 질의도 “중간 노드부터 찾기”로 길어진다. <code>_:Annotation</code>의 <code>_:</code>는 <strong>공백 노드(blank node)</strong>, 즉 이름을 붙일 필요가 없는 익명 자원이라는 표시다.</p>
+
+        <h4>② 명명 그래프 — 문장을 묶어 이름표를 붙인다 <span class="asset-note">(책 Listing 3.7 · 3.8)</span></h4>
+        <pre><code class="language-trig"># 적는 법 (TriG) — 문장을 :Graph1 이라는 상자에 넣고, 상자에 근거를 붙인다
+:Graph1 {
+    OMIM:222100 :hasPhenotypicFeature HP:0410050
+}
+:Graph1
+    :source       PMID:9357814 ;
+    :createdBy    "Nicole Vasilevsky" ;
+    :creationDate "2018-02-23"^^xsd:date .
+
+# 꺼내는 법 (SPARQL) — 상자 안을 확인하고, 상자 바깥의 근거를 읽는다
+SELECT ?source ?author ?date WHERE {
+  GRAPH :Graph1 { OMIM:222100 :hasPhenotypicFeature HP:0410050 . }
+  :Graph1 :source ?source ; :createdBy ?author ; :creationDate ?date .
+}</code></pre>
+        <p><strong>쉽게 말하면</strong> — 문장은 그대로 두고, 문장을 담은 <em>봉투</em>에 근거를 적는다. 트리플(3요소)에 “어느 봉투 소속인가”라는 네 번째 요소가 붙는 셈이다. 맥락을 담기엔 강력하지만, 주석이 28만 건이면 봉투도 28만 개가 필요해 저장·교환이 무거워지고 봉투 안 문장 하나만 고치기도 까다롭다.</p>
+
+        <h4>③ RDF-star — 문장 자체를 주어로 삼는다 <span class="asset-note">(책 Listing 3.9 · 3.10)</span></h4>
+        <pre><code class="language-turtle"># 적는 법 — &lt;&lt; &gt;&gt; 로 문장 하나를 통째로 감싸 그것을 다시 주어로 쓴다
+&lt;&lt;OMIM:222100 :hasPhenotypicFeature HP:0410050&gt;&gt;
+    :source       PMID:9357814 ;
+    :createdBy    "Nicole Vasilevsky" ;
+    :creationDate "2018-02-23"^^xsd:date .
+
+# 꺼내는 법 (SPARQL-star) — 같은 &lt;&lt; &gt;&gt; 표기로 바로 읽는다
+SELECT ?source ?author ?date {
+  &lt;&lt;OMIM:222100 :hasPhenotypicFeature HP:0410050&gt;&gt;
+      :source ?source ; :createdBy ?author ; :creationDate ?date .
+}</code></pre>
+        <p><strong>쉽게 말하면</strong> — 우회를 없애고 “이 문장에 대해 말하기”를 문법으로 직접 지원한다. 셋 중 가장 읽기 쉽다. 다만 표준 확장이라 <strong>엔진이 지원해야만 쓸 수 있고</strong>, 질의 성능도 아직 개선 중이다. 교재는 Orlandi 등을 인용해 “새 구문 확장을 쓰려면 RDF 엔진의 특정 구현이 필요하고, 그래서 채택이 제한된다”고 짚는다.</p>
+
+        <h4>④ LPG — 관계 안에 그냥 적는다 <span class="asset-note">(책 Listing 3.11 · 3.12)</span></h4>
+        <pre><code class="language-cypher">// 적는 법 — 화살표 안 중괄호에 키–값을 그대로 넣는다
+(d {id: "OMIM:222100"})
+  -[:HAS_PHENOTYPIC_FEATURE {
+      source:       "PMID:9357814",
+      createdBy:    "Nicole Vasilevsky",
+      creationDate: "2018-02-23"
+  }]-&gt;
+(p {id: "HP:0410050"})
+
+// 꺼내는 법 (Cypher) — 관계에 변수 r 을 붙이고 r 의 속성을 읽는다
+MATCH (d)-[r:HAS_PHENOTYPIC_FEATURE]-&gt;(p)
+WHERE d.id = "OMIM:222100" AND p.id = "HP:0410050"
+RETURN r.source, r.createdBy, r.creationDate</code></pre>
+        <p><strong>쉽게 말하면</strong> — 새 노드도, 봉투도, 확장 문법도 필요 없다. 관계에 이름(<code>r</code>)을 붙이고 속성을 읽으면 끝이다. 앞의 세 방식이 “근거를 어디 둘까”를 먼저 설계해야 했다면, LPG는 그 질문 자체가 생기지 않는다. <strong>이 3줄짜리 질의가 이 장이 LPG를 고른 이유의 전부다.</strong></p>
+        <small class="asset-note">교재 Listing 3.5–3.12를 그대로 옮기되, 원서 조판 과정에서 깨진 닫는 괄호·구두점(예: Listing 3.11의 미종료 문자열, Listing 3.10의 <code>? date</code> 띄어쓰기)은 실행 가능한 형태로 바로잡았다. 주석 줄과 들여쓰기는 읽기 편하도록 발표자가 붙였다.</small>
+      </div>
+
       <table class="cmp-table" id="table-rdf-lpg">
         <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 4</span><span class="asset-caption__title">RDF와 LPG의 선택 기준</span></div></caption>
         <thead><tr><th>관점</th><th>RDF 계열</th><th>LPG</th><th>이 사례의 판단</th></tr></thead>
@@ -164,6 +238,7 @@
         <li>제약과 인덱스를 먼저 만들고, Neosemantics 설정 뒤 HPO 온톨로지를 적재한다.</li>
         <li>표현형 ID를 정렬한 다음 질병 노드와 관계를 만들고, 주석 필드를 관계 속성으로 풍부화한다.</li>
         <li>적재 성공 로그만으로 끝내지 않고 원천 행·노드·관계·근거 속성의 보존성을 확인한다.</li>
+        <li>노트북 재실행 실측으로 책 값과의 차이(트리플 926,450 대 899,558, 3.22 단계 약 8분)를 확인한다.</li>
       </ul></div></div>
 
       <h3 id="crisp-pipeline">3.1 CRISP-DM을 일곱 개의 산출물로 바꾼다</h3>
@@ -187,14 +262,107 @@
       </table>
       <p class="asset-note"><sup>*</sup> 899,558은 Neo4j/APOC/n10s 5.20.0과 HPO 2025-02를 사용한 교재 실행값이다. 현재 릴리스의 정답 건수가 아니라 스냅샷 재현 기준선으로 사용한다.</p>
 
+      <div id="code-ontology-load">
+        <h4>전반부 코드 — 온톨로지가 들어오기까지 네 줄</h4>
+        <p>표 5의 앞 세 단계는 코드로 보면 놀랄 만큼 짧다. 무거운 일은 전부 Neosemantics가 대신하고, 우리가 하는 일은 <strong>규칙을 미리 정해 두는 것</strong>뿐이다.</p>
+        <pre><code class="language-cypher">// ① 그릇 만들기 (책 3.13) — Enterprise 전용 명령이다
+CREATE DATABASE hpo IF NOT EXISTS
+
+// ② 중복을 막는 장치 (책 3.14) — 단순 무결성 장치가 아니다.
+//    uri 유일성이 있어야 n10s 가 온톨로지를 MERGE 로 '몇 번 돌려도 같게' 적재한다
+CREATE CONSTRAINT n10s_unique_uri IF NOT EXISTS FOR (r:Resource) REQUIRE r.uri IS UNIQUE;
+CREATE CONSTRAINT IF NOT EXISTS FOR (n:Resource) REQUIRE (n.id) IS UNIQUE;
+CREATE INDEX disease_id   IF NOT EXISTS FOR (n:HpoDisease)   ON (n.id);
+CREATE INDEX phenotype_id IF NOT EXISTS FOR (n:HpoPhenotype) ON (n.id);
+
+// ③ 변환 규칙 정하기 (책 3.15) — 이 두 줄이 이후 모든 Cypher 의 생김새를 결정한다
+CALL n10s.graphconfig.init();
+CALL n10s.graphconfig.set({ handleVocabUris: "IGNORE" });   // 네임스페이스를 버린다
+CALL n10s.graphconfig.set({ applyNeo4jNaming: True });      // 관계 타입을 대문자로
+
+// ④ 적재 (책 3.16) — 딱 한 줄이다
+CALL n10s.rdf.import.fetch("http://purl.obolibrary.org/obo/hp.owl", "RDF/XML");</code></pre>
+        <p><strong>③이 왜 중요한가</strong> — <code>handleVocabUris: "IGNORE"</code>는 임포트할 때 네임스페이스를 떼어 낸다. 그래서 속성 이름이 <code>obo:IAO_0000115</code>가 아니라 <code>iAO_0000115</code>가 된다. <code>applyNeo4jNaming: True</code>는 관계 타입을 대문자로 바꾼다. 그래서 OWL의 <code>rdfs:subClassOf</code>가 LPG 관용 표기인 <code>:SUBCLASSOF</code>로 들어온다. <strong>§5의 추론이 <code>SUBCLASSOF</code>라는 이름으로 계층을 훑을 수 있는 건 이 한 줄 덕분이다.</strong></p>
+        <pre><code class="language-cypher">// ⑤ 접합면 만들기 (책 3.17) — 이 장에서 가장 중요한 다섯 줄
+MATCH (n:Resource)
+WHERE n.uri STARTS WITH "http://purl.obolibrary.org/obo/HP"
+SET n:HpoPhenotype,
+    n.id = coalesce(n.id,
+      replace(apoc.text.replace(n.uri, '(.*)obo/', ''), '_', ':'))</code></pre>
+        <p><strong>쉽게 말하면</strong> — 온톨로지에서 온 노드의 주소는 <code>http://purl.obolibrary.org/obo/HP_0410050</code>이고, TSV 주석 파일이 쓰는 표기는 <code>HP:0410050</code>이다. 생김새가 달라서 그냥 두면 두 파일은 영영 만나지 못한다. 이 질의는 URI 앞부분을 잘라내고 <code>_</code>를 <code>:</code>로 바꿔 <strong>두 파일이 같은 언어를 쓰게 만든다</strong>. <code>coalesce</code>는 “이미 <code>id</code>가 있으면 건드리지 말라”는 뜻이라 여러 번 실행해도 안전하다. 그림 2가 말한 “표준 ID로 결합”이 실제로 일어나는 곳이 바로 이 다섯 줄이다.</p>
+      </div>
+
       <h3 id="annotation-lifecycle">3.2 한 행을 한 건의 감사 가능한 주장으로 보존한다</h3>
       <p>교재의 Cypher는 TSV를 읽어 질병과 표현형을 <code>MERGE</code>하고, 관계가 만들어진 뒤 원시 필드와 사람이 읽을 설명을 순차적으로 추가한다. <code>FOREACH(CASE …)</code> 패턴은 값이 있는 필드만 설정해 null로 기존 값을 덮지 않는다. APOC 정규식은 <code>biocuration</code>에서 큐레이터와 날짜를 뽑고, 증거 코드 IEA·PCS·TAS를 설명으로 바꾼다.</p>
-      <pre><code class="language-cypher">MATCH (dis:HpoDisease)-[rel:HAS_PHENOTYPIC_FEATURE]-&gt;(phe:HpoPhenotype)
-WHERE dis.id = row[0] AND phe.id = row[3]
-FOREACH (_ IN CASE WHEN row[4] IS NOT NULL THEN [1] ELSE [] END |
-  SET rel.source = row[4])
-FOREACH (_ IN CASE WHEN row[5] IS NOT NULL THEN [1] ELSE [] END |
-  SET rel.evidence = row[5])</code></pre>
+
+      <div id="code-annotation-load">
+        <h4>후반부 코드 — TSV 한 행이 관계 하나가 되기까지</h4>
+        <p>같은 파일을 <strong>세 번 읽는다</strong>. 첫 번째는 노드를 만들고, 두 번째는 선을 잇고, 세 번째는 그 선에 근거를 붙인다. 한 번에 못 하는 이유는 관계를 만들려면 양쪽 노드가 이미 있어야 하기 때문이다.</p>
+        <pre><code class="language-cypher">// ① 질병 노드 만들기 (책 3.19)
+LOAD CSV FROM 'https://mng.bz/qRyr' AS row
+FIELDTERMINATOR '\t'
+WITH row
+SKIP 5                                        // 메타데이터 4줄 + 헤더 1줄을 건너뛴다
+MERGE (dis:Resource:HpoDisease {id: row[0]})  // 같은 질병이 여러 행에 나오므로 MERGE
+ON CREATE SET dis.label = row[1];             // 이름은 처음 만들 때만 채운다
+
+// ② 질병 ↔ 표현형 잇기 (책 3.20)
+LOAD CSV FROM 'https://mng.bz/qRyr' AS row
+FIELDTERMINATOR '\t'
+WITH row
+SKIP 5
+MATCH (dis:HpoDisease)   WHERE dis.id = row[0]   // TSV 0번 열 = OMIM:222100
+MATCH (phe:HpoPhenotype) WHERE phe.id = row[3]   // TSV 3번 열 = HP:0410050
+MERGE (dis)-[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe)</code></pre>
+        <p><strong>여기가 두 파일이 만나는 지점이다.</strong> <code>phe.id</code>는 ①에서 <code>hp.owl</code>의 URI를 가공해 만든 값이고, <code>row[3]</code>은 TSV가 원래 갖고 있던 값이다. 형식이 전혀 다른 두 파일이 <strong>온톨로지의 표준 식별자를 공통 언어로 삼아</strong> 하나의 그래프가 된다. §1에서 말한 “의미 통합”의 구체적 실체가 이 두 줄이다.</p>
+        <pre><code class="language-cypher">// ③ 관계에 근거 붙이기 (책 3.22) — 열 8개를 그대로 관계 속성으로
+LOAD CSV FROM 'https://mng.bz/qRyr' AS row
+FIELDTERMINATOR '\t'
+WITH row
+SKIP 5
+MATCH (dis:HpoDisease)-[rel:HAS_PHENOTYPIC_FEATURE]-&gt;(phe:HpoPhenotype)
+WHERE phe.id = row[3] AND dis.id = row[0]
+FOREACH(_ IN CASE WHEN row[4]  IS NOT NULL THEN [1] ELSE [] END | SET rel.source      = row[4])
+FOREACH(_ IN CASE WHEN row[5]  IS NOT NULL THEN [1] ELSE [] END | SET rel.evidence    = row[5])
+FOREACH(_ IN CASE WHEN row[6]  IS NOT NULL THEN [1] ELSE [] END | SET rel.onset       = row[6])
+FOREACH(_ IN CASE WHEN row[7]  IS NOT NULL THEN [1] ELSE [] END | SET rel.frequency   = row[7])
+FOREACH(_ IN CASE WHEN row[8]  IS NOT NULL THEN [1] ELSE [] END | SET rel.sex         = row[8])
+FOREACH(_ IN CASE WHEN row[9]  IS NOT NULL THEN [1] ELSE [] END | SET rel.modifier    = row[9])
+FOREACH(_ IN CASE WHEN row[10] IS NOT NULL THEN [1] ELSE [] END | SET rel.aspect      = row[10])
+FOREACH(_ IN CASE WHEN row[11] IS NOT NULL THEN [1] ELSE [] END | SET rel.biocuration = row[11])</code></pre>
+        <p><strong><code>FOREACH(CASE …)</code>가 왜 이렇게 생겼나</strong> — Cypher에는 “조건이 맞을 때만 <code>SET</code>”이라는 문법이 없다. 그래서 <em>원소가 1개인 리스트를 도는 반복문</em>과 <em>빈 리스트를 도는 반복문</em>(=아무것도 안 함)으로 if를 흉내 낸다. 목적은 단순하다. TSV에서 빈 칸인 열이 기존 값을 <code>null</code>로 덮어쓰지 못하게 막는 것이다. 여덟 번 반복되는 건 열이 여덟 개이기 때문이지 다른 뜻은 없다.</p>
+        <pre><code class="language-cypher">// ④ 사람이 읽을 수 있게 바꾸기 (책 3.23) — 약어를 문장으로, 출처를 링크로
+CALL apoc.periodic.iterate(
+  "MATCH (dis:HpoDisease)-[rel:HAS_PHENOTYPIC_FEATURE]-&gt;(phe:HpoPhenotype) RETURN rel",
+  "SET rel.createdBy    = apoc.text.regexGroups(rel.biocuration, 'HPO:(\\w+)\\[')[0][1],
+       rel.creationDate = apoc.text.regexGroups(rel.biocuration, '\\[(\\d{4}-\\d{2}-\\d{2})\\]')[0][1],
+       rel.aspectName = CASE
+         WHEN rel.aspect = 'P' THEN 'Phenotypic abnormality'
+         WHEN rel.aspect = 'I' THEN 'Inheritance' END,
+       rel.evidenceName = CASE
+         WHEN rel.evidence = 'IEA' THEN 'Inferred from electronic annotation'
+         WHEN rel.evidence = 'PCS' THEN 'Published clinical study'
+         WHEN rel.evidence = 'TAS' THEN 'Traceable author statement' END,
+       rel.url = CASE
+         WHEN rel.source STARTS WITH 'PMID:' THEN
+           'https://pubmed.ncbi.nlm.nih.gov/' + apoc.text.replace(rel.source, '(.*)PMID:', '')
+         WHEN rel.source STARTS WITH 'OMIM:' THEN
+           'https://omim.org/entry/' + apoc.text.replace(rel.source, '(.*)OMIM:', '') END",
+  {batchSize: 1000})
+
+// ⑤ 안 쓰는 것 치우기 (책 3.24)
+CALL apoc.periodic.iterate(
+  "MATCH (n:Resource) RETURN id(n) AS id",
+  "MATCH (n) WHERE id(n) = id
+     AND NOT 'HpoPhenotype' IN labels(n)
+     AND NOT 'HpoDisease'   IN labels(n)
+   DETACH DELETE n",
+  {batchSize: 10000})
+YIELD batches, total RETURN batches, total</code></pre>
+        <p><strong>④는 “친절함”을 데이터에 새겨 넣는 단계다.</strong> <code>biocuration</code> 칸에 <code>HPO:NicoleVasilevsky[2018-02-23]</code>이라고만 적혀 있으면 사람이 읽기 불편하다. 정규식으로 이름과 날짜를 뽑아 별도 속성으로 만들고, <code>PCS</code> 같은 세 글자 약어를 <code>Published clinical study</code>라는 문장으로 풀고, <code>PMID:9357814</code>를 클릭 가능한 PubMed 주소로 바꾼다. §6이 요구하는 “임상의가 근거를 열어볼 수 있어야 한다”가 여기서 준비된다. <code>apoc.periodic.iterate</code>는 28만 건을 1,000건씩 나눠 처리해 메모리를 아끼는 장치다.</p>
+        <p><strong>⑤는 되돌릴 수 없는 단계다.</strong> 표현형도 질병도 아닌 <code>Resource</code> 노드를 전부 지운다. 온톨로지의 동의어 타입·주석 출처 같은 메타데이터가 여기서 사라지고, 그래서 <strong>책 3.18의 중간 점검 질의는 이 단계 이후 빈 결과를 낸다</strong>(§3.3 참조).</p>
+      </div>
+
       <p>하지만 이 구현에는 중요한 보존성 경계가 있다. 관계를 <code>MERGE (dis)-[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe)</code>처럼 질병–표현형 쌍만으로 합치면, 같은 쌍에 서로 다른 출처·작성일의 주석이 여러 건 있어도 하나의 관계가 된다. 이후 모든 일치 관계에 속성을 설정하면 마지막 처리 행의 값이 앞선 근거를 덮을 수 있다. 장의 개념 목표인 “주석별 provenance”를 구현하려면 주석 ID를 별도 노드로 승격하거나, 관계의 고유 키를 모델에 포함하고 행 수 보존 테스트를 두어야 한다.</p>
       <figure class="report-figure" id="fig-annotation-lifecycle" data-deck-use="required">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 5</span><span class="asset-caption__title">HPOA 한 행이 그래프 주장이 되는 생애주기</span></figcaption>
@@ -218,6 +386,30 @@ FOREACH (_ IN CASE WHEN row[5] IS NOT NULL THEN [1] ELSE [] END |
           <tr><td>리스팅 번호</td><td>업스트림 ch03 파일은 교재 번호와 +3</td><td>잘못된 코드 참조 위험</td><td><code>study.toml</code> 전수 대응표 사용</td></tr>
         </tbody>
       </table>
+
+      <h3 id="notebook-rerun">3.4 직접 돌려 보면 숫자가 이만큼 달라진다</h3>
+      <p>이 회차의 학습 노트북 <code>src/ch03/03_chapter_guide.ipynb</code>는 책의 리스팅을 <strong>실제 Neo4j에 처음부터 끝까지 실행</strong>한 기록이다. 앞 절의 “드리프트가 있을 수 있다”는 말을 추상으로 두지 않고, 실측치를 책 값과 나란히 두면 무엇이 얼마나 움직이는지 눈으로 보인다.</p>
+      <div class="callout--insight"><span class="callout__kicker">따라 하기 전에 알아야 할 것</span><div class="callout__body">
+        <p>노트북은 Docker로 띄운 <strong>Neo4j 5.26.28 Community</strong>에서 돌렸다(플러그인 <code>n10s</code>·<code>apoc</code>·<code>gds</code>). 그런데 <strong>책의 첫 명령 <code>CREATE DATABASE hpo</code>가 Community 에디션에서는 실패한다</strong> — 멀티 데이터베이스는 Enterprise 전용 기능이라 <code>UnsupportedAdministrationCommand</code> 오류가 난다. 노트북은 기본 <code>neo4j</code> 데이터베이스를 그대로 쓰는 것으로 우회했고, 학습 내용에는 영향이 없다. 교재가 Enterprise 5.20 기준이라는 점을 모르면 <strong>첫 줄에서 막힌다.</strong></p>
+      </div></div>
+      <table class="cmp-table" id="table-notebook-measurements">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 7</span><span class="asset-caption__title">책 실행값과 노트북 재실행 실측값</span></div></caption>
+        <thead><tr><th>항목</th><th>교재 (HPO 2025-02)</th><th>노트북 (HPOA 2026-06-23)</th><th>읽는 법</th></tr></thead>
+        <tbody>
+          <tr><td>적재된 트리플</td><td>899,558</td><td><strong>926,450</strong></td><td>16개월 사이 약 2.7만 건 증가. 숫자가 다른 것이 정상이다</td></tr>
+          <tr><td><code>HpoPhenotype</code> 노드</td><td>—</td><td>20,413</td><td>표현형 어휘 규모</td></tr>
+          <tr><td><code>HpoDisease</code> 노드</td><td>—</td><td>12,956</td><td>HPOA 헤더의 <code>8574 OMIM · 47 DECIPHER · 4337 ORPHANET</code>과 대조 가능</td></tr>
+          <tr><td><code>HAS_PHENOTYPIC_FEATURE</code> 관계</td><td>—</td><td>284,994</td><td>주석 행 수와 이 값을 비교하는 것이 §3.2가 지적한 보존성 테스트다</td></tr>
+          <tr><td>정제 단계 삭제 노드</td><td>—</td><td>207,754</td><td>적재한 것의 상당수가 최종 그래프에 남지 않는다</td></tr>
+          <tr><td><code>SUBCLASSOF</code> 관계</td><td>—</td><td>24,378</td><td>§5 추론이 훑는 계층의 크기</td></tr>
+        </tbody>
+      </table>
+      <p>소요 시간도 실습 준비에 직결된다. 대부분의 단계는 <strong>1초 안팎</strong>이고 온톨로지 적재(3.16)가 9.5초, 질병 노드·관계 생성(3.19·3.20)이 각 3초 남짓이다. 그런데 <strong>관계에 속성을 붙이는 3.22 한 단계만 약 8분(496초)</strong> 걸린다. 28만 5천 개 관계에 <code>FOREACH</code> 여덟 개를 배치 처리 없이 돌리기 때문이다. 전체를 처음부터 다시 만들면 9분 남짓 걸리므로, <strong>시연 중에 이 셀을 실행하면 안 된다.</strong></p>
+      <div class="callout--insight"><span class="callout__kicker">노트북이 추가로 바로잡은 것</span><div class="callout__body"><ul>
+        <li><strong>업스트림 파일 2건이 망가져 있다</strong> — 책 3.21에 해당하는 저장소 파일은 다음 파일과 내용이 완전히 중복돼 엉뚱한 질의가 들어 있고, 책 3.25에 해당하는 파일은 <strong>0바이트 빈 파일</strong>이다. 두 건 모두 해설판 본문으로 대체했고, <code>study.toml</code>이 각각 <code>upstream-wrong</code>·<code>upstream-missing</code>으로 선언한다.</li>
+        <li><strong>해설판 본문의 3.21도 그대로 쓰면 안 된다</strong> — <code>MERGE (dis:HpoDisease)-[…]-&gt;(phe:HpoPhenotype)</code>로 시작하는데, 바인딩되지 않은 변수에 <code>MERGE</code>를 쓰면 조회가 아니라 <strong>노드와 관계를 새로 만들어 그래프를 오염시킨다.</strong> 의도가 조회이므로 <code>MATCH</code>로 고쳐 실행했다.</li>
+        <li><strong>교재의 HPO 용어 링크가 지금은 404다</strong> — <code>hpo.jax.org/app/browse/term/…</code> 체계가 바뀌었다. 노트북은 같은 용어를 EBI OLS4에서 여는 링크로 대체했다.</li>
+      </ul></div></div>
     </section>
 
     <section class="report-section s4 page-break" id="query-case">
@@ -227,11 +419,19 @@ FOREACH (_ IN CASE WHEN row[5] IS NOT NULL THEN [1] ELSE [] END |
         <li>직접 질의는 특정 질병과 연결된 표현형을 먼저 펼쳐 기준 패턴을 확인한다.</li>
         <li>새로 관찰한 표현형들을 공유하는 질병을 찾고 겹치는 특징 수로 후보를 정렬한다.</li>
         <li>결과는 후보 생성과 근거 탐색을 지원할 뿐, 진단 확정이나 확률 추정이 아니다.</li>
+        <li>같은 질의를 최신 스냅샷에서 다시 돌리면 1위는 유지되지만 2위 이하는 바뀐다.</li>
       </ul></div></div>
 
       <h3 id="direct-query">4.1 직접 연결은 답보다 검토 경로를 준다</h3>
-      <p>첫 질의는 <code>OMIM:222100</code> 제1형 당뇨병 노드에 직접 연결된 표현형을 가져온다. 이어 임상의가 환자에게서 성장 지연(<code>HP:0001510</code>), 큰 무릎(<code>HP:0030866</code>), 감각신경성 청각 장애(<code>HP:0000407</code>), 소양증(<code>HP:0000989</code>)을 추가로 관찰했다고 가정한다. 두 번째 질의는 다섯 표현형과 연결된 질병을 모으고, 겹치는 특징 수를 내림차순으로 정렬한다.</p>
-      <pre><code class="language-cypher">MATCH (phe:HpoPhenotype)
+      <p>첫 질의는 <code>OMIM:222100</code> 제1형 당뇨병 노드에 직접 연결된 표현형을 가져온다. 질문은 <strong>“이 질병의 증상은 무엇인가”</strong>다.</p>
+      <pre><code class="language-cypher">// 책 3.25 — 한 질병에서 뻗어 나가는 모든 표현형
+MATCH path=(dis:HpoDisease)-[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe:HpoPhenotype)
+WHERE dis.id = "OMIM:222100"
+RETURN path</code></pre>
+      <p>노트북 재실행 결과 <code>OMIM:222100</code>에는 표현형 <strong>8개</strong>가 달려 있다 — Autoimmunity, Decreased circulating 1,5 anhydroglucitol concentration, Diabetes mellitus, Hyperglycemia, Ketoacidosis, Polydipsia, Polyphagia, Polyuria. 다음(그림 6)에서 중심 노드를 둘러싼 별 모양이 이것이다.</p>
+      <p>이어 임상의가 환자에게서 성장 지연(<code>HP:0001510</code>), 큰 무릎(<code>HP:0030866</code>), 감각신경성 청각 장애(<code>HP:0000407</code>), 소양증(<code>HP:0000989</code>)을 추가로 관찰했다고 가정한다. 위 목록에 없는 증상들이다. 이제 <strong>질문이 뒤집힌다</strong> — “이 질병의 증상은?”이 아니라 <strong>“이 증상 조합을 가진 질병은?”</strong>이다. 그래프에서는 <em>화살표를 반대로 따라가기만 하면</em> 되는 같은 질의다. 두 번째 질의는 다섯 표현형과 연결된 질병을 모으고, 겹치는 특징 수를 내림차순으로 정렬한다.</p>
+      <pre><code class="language-cypher">// 책 3.26 — 증상 조합에서 질병 후보로
+MATCH (phe:HpoPhenotype)
 WHERE phe.label IN [
   "Growth delay", "Large knee",
   "Sensorineural hearing impairment", "Pruritus",
@@ -250,10 +450,10 @@ LIMIT 5</code></pre>
       <figure class="report-figure" id="fig-clinical-query" data-deck-use="required">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 6</span><span class="asset-caption__title">관찰한 다섯 표현형으로 질병 후보를 순위화하기</span></figcaption>
         <img src="assets/figs/clinical-query.svg" alt="제1형 당뇨병과 성장 지연, 큰 무릎, 감각신경성 청각 장애, 소양증이 연결된 질병 후보들을 공유 특징 수 5개, 3개, 2개 순으로 정렬하는 구조">
-        <small class="asset-note">교재 §3.4, Listing 3.25–3.26과 표 3.2를 경로와 겹침 수 중심으로 재구성. 선은 후보 랭킹에서 공유 주석의 존재만 나타내며 관계 방향은 그림 2의 질병→표현형을 따른다. 질병명과 수치는 HPO 2025-02 교재 스냅샷이며, 교재의 <em>Ondontochondrodysplasia</em> 오타는 OMIM:619269의 정식 표기 <em>Odontochondrodysplasia</em>로 교정했다.</small>
+        <small class="asset-note">교재 §3.4, Listing 3.25–3.26과 표 3.2를 경로와 겹침 수 중심으로 재구성. 선은 후보 랭킹에서 공유 주석의 존재만 나타내며 관계 방향은 그림 2의 질병→표현형을 따른다. 질병명과 수치는 HPO 2025-02 교재 스냅샷이다. 표기 주의 — 교재와 현재 HPOA 데이터는 모두 <em>Ondontochondrodysplasia</em>로 적혀 있고, 이 리포트 본문은 OMIM:619269의 정식 표기 <em>Odontochondrodysplasia</em>를 쓴다. 노트북을 직접 돌리면 데이터 원문 표기가 그대로 출력된다.</small>
       </figure>
       <table class="cmp-table" id="table-candidate-results">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 7</span><span class="asset-caption__title">교재 스냅샷의 상위 후보와 해석 경계</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 8</span><span class="asset-caption__title">교재 스냅샷의 상위 후보와 해석 경계</span></div></caption>
         <thead><tr><th>후보</th><th>공유 특징</th><th>이 결과가 말하는 것</th><th>말하지 않는 것</th></tr></thead>
         <tbody>
           <tr><td>Odontochondrodysplasia 2 with hearing loss and diabetes</td><td>5</td><td>입력 다섯 표현형 모두와 주석 경로가 있음</td><td>환자가 이 질병일 확률 또는 확정 진단</td></tr>
@@ -261,7 +461,23 @@ LIMIT 5</code></pre>
           <tr><td>3-methylglutaconic aciduria VIII (OMIM:614700), Alobar holoprosencephaly (OMIM:616192), Alpha-thalassemia/mental retardation syndrome, X-linked (OMIM:602782)</td><td>각 2</td><td>교재 스냅샷의 동률 3건</td><td>빈도·부정 표현형·환자 맥락을 반영한 랭킹</td></tr>
         </tbody>
       </table>
-      <div class="callout--insight"><span class="callout__kicker">임상 경계</span><div class="callout__body"><p>단순 겹침 수 <code>count(nodes)</code>는 표현형의 희귀도, 부정 소견, 발현 시점, 증거 질, 환자 인구집단을 가중하지 않는다. 결과 화면은 후보·경로·근거를 함께 보여주고 임상의의 다음 검토를 지원해야 한다.</p></div></div>
+
+      <h3 id="rerun-drift">4.2 같은 질의를 지금 돌리면 2위 이하가 바뀐다</h3>
+      <p>§3.4의 노트북으로 <strong>똑같은 책 3.26 질의</strong>를 2026-06-23 HPOA에서 다시 돌린 결과다. 결론(1위)은 그대로지만 <strong>그 아래는 상당히 달라졌다.</strong></p>
+      <table class="cmp-table" id="table-rerun-candidates">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 9</span><span class="asset-caption__title">같은 질의, 다른 스냅샷 — 후보 순위 대조</span></div></caption>
+        <thead><tr><th>순위</th><th>교재 (HPO 2025-02)</th><th>노트북 재실행 (HPOA 2026-06-23)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>OMIM:619269 Ondontochondrodysplasia 2 … <strong>(5)</strong></td><td>OMIM:619269 동일 <strong>(5)</strong> — 변화 없음</td></tr>
+          <tr><td>2</td><td>OMIM:618500 Holoprosencephaly 12 … (3)</td><td>OMIM:618500 동일 (3) — 변화 없음</td></tr>
+          <tr><td>3</td><td>OMIM:614700 3-methylglutaconic aciduria VIII (2)</td><td><strong>OMIM:621585 Mendez-Johnson immunoneurologic syndrome (3)</strong> — 신규</td></tr>
+          <tr><td>4</td><td>OMIM:616192 Alobar holoprosencephaly (2)</td><td><strong>OMIM:256500 Netherton syndrome (3)</strong> — 신규</td></tr>
+          <tr><td>5</td><td>OMIM:602782 Alpha-thalassemia/mental retardation, X-linked (2)</td><td>OMIM:<strong>617248</strong> 3-methylglutaconic aciduria, type VIII (2) — 같은 병, <strong>다른 OMIM 번호</strong></td></tr>
+        </tbody>
+      </table>
+      <p><strong>세 가지를 읽어야 한다.</strong> 첫째, <strong>진단 결론은 견고하다</strong> — 다섯 특징을 모두 공유하는 1위는 16개월이 지나도 그대로다. 둘째, <strong>3개 공유 후보가 두 건 새로 생겼다</strong>. 교재에서는 3개 공유가 1건뿐이라 2위가 도드라져 보였지만, 지금은 3개 공유가 3건이라 <strong>“2위와 3위의 격차”라는 인상 자체가 사라진다.</strong> 셋째, 3-methylglutaconic aciduria VIII의 <strong>OMIM 번호가 614700에서 617248로 바뀌었다</strong> — 질병 식별자조차 고정된 상수가 아니다.</p>
+      <p>이것이 §3.3이 말한 드리프트의 실물이다. 슬라이드에 표 8만 띄우고 <em>“이 목록이 나옵니다”</em>라고 말하면, 청중이 노트북을 돌렸을 때 다른 화면을 보고 코드가 틀렸다고 생각하게 된다. <strong>결과를 보여줄 때는 반드시 어느 릴리스에서 나온 값인지 함께 적어야 한다.</strong></p>
+      <div class="callout--insight"><span class="callout__kicker">임상 경계</span><div class="callout__body"><p>단순 겹침 수 <code>count(nodes)</code>는 표현형의 희귀도, 부정 소견, 발현 시점, 증거 질, 환자 인구집단을 가중하지 않는다. 결과 화면은 후보·경로·근거를 함께 보여주고 임상의의 다음 검토를 지원해야 한다. 위의 순위 변동이 보여주듯 <strong>“2위”라는 자리 자체가 데이터 갱신에 흔들린다.</strong></p></div></div>
     </section>
 
     <section class="report-section s5 page-break" id="reasoning">
@@ -271,11 +487,31 @@ LIMIT 5</code></pre>
         <li>직접 연결만 찾으면 상위 범주 아래의 더 구체적인 표현형 주석을 놓친다.</li>
         <li><code>SUBCLASSOF</code> 경로 또는 Neosemantics 추론은 하위 표현형을 상위 범주 질의에 포함한다.</li>
         <li>추론은 새 임상 사실을 발명하지 않으며, 계층·깊이·방향·주석 품질의 영향을 그대로 받는다.</li>
+        <li>깊이 <code>*1..3</code>은 실제 계층의 절반만 보고, 온톨로지 재분류는 코드 없이도 결과를 바꾼다.</li>
       </ul></div></div>
 
       <h3 id="explicit-inferred">5.1 직접 사실과 암시적 포함을 분리한다</h3>
       <p>“내분비계 이상(<em>Abnormality of the endocrine system</em>, <code>HP:0000818</code>)과 관련된 질병은?”이라는 질문을 생각해 보자. 어떤 질병은 이 상위 범주에 직접 주석되어 있지만, 더 많은 질병은 갑상선 생리 이상(<code>HP:0002926</code>), 갑상선기능저하증(<code>HP:0000821</code>), 갑상선종(<code>HP:0000853</code>)처럼 검증된 하위 표현형에 연결되어 있다. 직접 관계만 조회하면 후자를 놓친다.</p>
       <p>교재는 먼저 자식에서 부모로 향하는 <code>[:SUBCLASSOF*1..3]</code> 경로를 역방향으로 탐색해 상위 범주 아래의 하위 표현형을 찾고, 이어 <code>n10s.inference.nodesInCategory</code>로 이 계층을 따라 질병을 포함한다. 반환된 질병–표현형 주석은 원래 그래프에 명시적으로 존재하지만, 상위 범주와 질병의 포함 관계는 계층 규칙에서 도출된다. 교재 표 3.3은 재현성을 위해 5개 질병 화이트리스트로 제한한 부분집합이고, 저장소 Listing 3.31은 화이트리스트 대신 <code>SKIP 100 LIMIT 5</code>를 사용하므로 표시 결과가 같지 않다.</p>
+
+      <div id="code-inference">
+        <h4>코드로 보면 두 줄 차이다</h4>
+        <pre><code class="language-cypher">// 책 3.27 — 계층을 손으로 훑는다
+MATCH (p:HpoPhenotype)&lt;-[:SUBCLASSOF*1..3]-(n:HpoPhenotype)
+WHERE p.id = "HP:0000818"
+RETURN p, n
+
+// 책 3.28 — 같은 일을 Neosemantics 프로시저에 맡기고, 그 결과로 질병까지 끌어온다
+MATCH (cat:HpoPhenotype {label: "Abnormality of the endocrine system"})
+CALL n10s.inference.nodesInCategory(cat, {
+    inCatRel: "HAS_PHENOTYPIC_FEATURE",   // 질병을 표현형에 잇는 관계
+    subCatRel: "SUBCLASSOF"})             // 하위 개념을 잇는 관계
+YIELD node AS dis
+MATCH (dis)-[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe:HpoPhenotype)
+RETURN dis.label AS disease, collect(DISTINCT phe.label) AS features
+ORDER BY size(features) ASC, disease</code></pre>
+        <p><strong>쉽게 말하면</strong> — <code>*1..3</code>은 “하위 클래스 관계를 1단계에서 3단계까지 따라가라”는 뜻이다. 화살표 방향(<code>&lt;-</code>)에 주의해야 한다. HPO는 <em>자식 → 부모</em> 방향으로 <code>SUBCLASSOF</code>를 저장하므로, 부모에서 자식을 찾으려면 화살표를 거꾸로 읽어야 한다. 3.28의 <code>nodesInCategory</code>는 이 순회를 대신 해 주면서 <strong>깊이 제한 없이</strong> 훑고, 찾은 표현형에 주석된 질병까지 한 번에 돌려준다.</p>
+      </div>
       <figure class="report-figure" id="fig-hierarchical-inference" data-deck-use="required">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 7</span><span class="asset-caption__title">하위 표현형 주석을 상위 범주 질의에 포함하기</span></figcaption>
         <img src="assets/figs/hierarchical-inference.svg" alt="갑상선 생리 이상, 갑상선기능저하증, 갑상선종에서 내분비계 이상 상위 범주로 향하는 SUBCLASSOF 관계가 있고, 하위 표현형에 직접 주석된 질병이 상위 범주 질의에 추론으로 포함되는 구조">
@@ -284,9 +520,24 @@ LIMIT 5</code></pre>
 
       <h3 id="reasoning-boundary">5.2 더 넓은 결과가 더 정확한 결과는 아니다</h3>
       <p>계층 추론은 검색 누락을 줄이지만 품질을 자동 보장하지 않는다. <code>1..3</code> 깊이는 구현자가 정한 범위이고, 더 깊은 하위 개념을 놓칠 수 있다. 반대로 범위를 무제한으로 넓히면 너무 일반적인 상위 개념을 통해 관련성이 약한 후보가 늘 수 있다. 또한 HPO와 주석은 불완전하게 갱신되므로 “연결 없음”을 “관련 없음”으로 해석해서는 안 된다.</p>
+      <p>노트북이 이 두 문장을 숫자로 확인했다. <code>HP:0000818</code>의 하위 표현형은 <strong>깊이 1\~3으로 세면 256개, 깊이 제한을 풀면 474개</strong>다. 즉 책 3.27의 <code>*1..3</code>은 <strong>실제 계층의 절반가량만 본다.</strong> 무엇을 놓치는지도 구체적이다. 책 표 3.3에 나오는 <em>Transient neonatal diabetes mellitus</em>는 <code>HP:0000818</code>에서 <strong>4단계 아래</strong>라 <code>*1..3</code>으로는 잡히지 않는다. 3.28이 프로시저를 쓰는 이유가 바로 이것이다.</p>
+      <table class="cmp-table" id="table-inference-drift">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 10</span><span class="asset-caption__title">추론 범위와 온톨로지 변경의 실측 영향</span></div></caption>
+        <thead><tr><th>관찰</th><th>실측</th><th>무엇을 뜻하는가</th></tr></thead>
+        <tbody>
+          <tr><td>깊이 <code>*1..3</code> 하위 표현형</td><td>256개</td><td>책 3.27이 실제로 보는 범위</td></tr>
+          <tr><td>깊이 무제한 하위 표현형</td><td><strong>474개</strong></td><td>3.28의 <code>nodesInCategory</code>가 보는 범위. 임의로 정한 깊이는 절반을 가린다</td></tr>
+          <tr><td><em>Transient neonatal diabetes mellitus</em></td><td>깊이 4</td><td>책 표 3.3에 실제로 등장하는 항목인데 <code>*1..3</code>으로는 못 찾는다</td></tr>
+          <tr><td><em>Hyperglycemia</em>의 소속</td><td><strong>더 이상 내분비계 이상의 하위가 아님</strong></td><td>책 표 3.3은 굵게 표시했지만 현재 HPO는 대사 이상 쪽으로 재분류했다</td></tr>
+        </tbody>
+      </table>
+      <div class="callout--insight"><span class="callout__kicker">추론은 온톨로지가 바뀌면 함께 바뀐다</span><div class="callout__body">
+        <p>마지막 행이 이 절에서 가장 중요한 관찰이다. 책 표 3.3은 <em>Diabetes mellitus, transient neonatal, 1</em>의 특징 가운데 <strong>Hyperglycemia</strong>를 “내분비계 이상의 하위”로 굵게 강조한다. 그런데 지금 HPO에서 이 용어는 내분비계가 아니라 <strong>대사 이상 쪽으로 옮겨졌다.</strong> 코드는 한 글자도 바뀌지 않았고 데이터도 그대로인데, <strong>온톨로지의 분류가 바뀌었다는 이유만으로 추론 결과가 달라진 것이다.</strong></p>
+        <p>§4.2의 순위 변동이 “데이터가 늘면 결과가 바뀐다”였다면, 이것은 <strong>“의미 구조가 바뀌면 결과가 바뀐다”</strong>다. 추론은 그래프에 저장된 사실뿐 아니라 <em>계층 자체</em>를 재료로 쓰기 때문에, 온톨로지 버전이 곧 결과의 일부다. 재현 가능한 운영이라면 주석 릴리스와 함께 <strong>온톨로지 릴리스도 고정</strong>해야 한다.</p>
+      </div></div>
       <p>따라서 결과에는 직접 연결인지 계층으로 포함됐는지, 어떤 <code>SUBCLASSOF</code> 경로를 따라왔는지, 어느 HPO 릴리스를 썼는지를 함께 표시해야 한다. 임상의가 추론 경로를 검토할 수 없다면 추론의 설명 가능성은 저장소 내부에만 머문다.</p>
       <table class="cmp-table" id="table-query-reasoning">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 8</span><span class="asset-caption__title">직접 질의와 계층 추론의 역할·위험 비교</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 11</span><span class="asset-caption__title">직접 질의와 계층 추론의 역할·위험 비교</span></div></caption>
         <thead><tr><th>관점</th><th>직접 연결 질의</th><th>계층 추론</th><th>화면에 남길 근거</th></tr></thead>
         <tbody>
           <tr><td>범위</td><td>명시된 질병–표현형 주석</td><td>하위 표현형을 상위 범주에 포함</td><td>direct / inferred 상태</td></tr>
@@ -304,6 +555,7 @@ LIMIT 5</code></pre>
         <li>버전이 다른 두 HPO 원천을 섞으면 재현성과 의미 정합성이 흔들린다.</li>
         <li>식별자 매핑, 주석 다중성, 파싱, 정제, 추론 범위를 단계별로 검증해야 한다.</li>
         <li>기술적으로 재현된 후보도 임상적 타당성을 자동 증명하지 않는다.</li>
+        <li>근거 화면은 개념이 아니라 이미 만들 수 있는 질의다 — 관계 속성 하나를 더 반환하면 된다.</li>
       </ul></div></div>
 
       <h3 id="validation-contract">6.1 네 게이트가 후보 결과의 감사 경로를 만든다</h3>
@@ -314,7 +566,7 @@ LIMIT 5</code></pre>
         <small class="asset-note">교재의 데이터 품질 강조와 Chapter 3 구현 감사를 운영 통제 관점으로 재구성. 게이트 통과는 의료적 타당성의 자동 증명이 아니라 임상의가 검토할 후보와 근거를 만들었다는 뜻이다.</small>
       </figure>
       <table class="cmp-table" id="table-failure-modes">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 9</span><span class="asset-caption__title">주장–조건–실패 신호 추적표</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 12</span><span class="asset-caption__title">주장–조건–실패 신호 추적표</span></div></caption>
         <thead><tr><th>핵심 주장</th><th>근거</th><th>적용 조건</th><th>실패 신호</th></tr></thead>
         <tbody>
           <tr><td>온톨로지가 의미 통합을 돕는다</td><td>표준 ID·동의어·계층으로 원천을 정렬</td><td>매핑 규칙과 온톨로지 범위가 맞음</td><td>동일 개념의 복수 ID·잘못된 계층</td></tr>
@@ -324,7 +576,39 @@ LIMIT 5</code></pre>
         </tbody>
       </table>
 
-      <h3 id="medical-boundary">6.2 이 장은 임상 의사결정 지원의 개념 증명이다</h3>
+      <h3 id="evidence-drilldown">6.2 근거 화면은 이미 만들 수 있다</h3>
+      <p>지금까지 “임상의가 근거를 열어볼 수 있어야 한다”를 반복했다. 그것이 실제로 어떤 모습인지 보여주는 것이 교재 §3.4의 연습문제다 — <em>“Listing 3.26의 질의를 확장해 <code>evidence_name</code>, <code>evidence_description</code>, <code>source</code>, <code>url</code>을 포함한 관계 속성까지 조회하라.”</em> 노트북이 이 문제를 풀어 두었다.</p>
+      <pre><code class="language-cypher">// 책 3.26 + 관계 속성 — 후보와 '왜 그렇게 판단했는지'를 함께 반환한다
+MATCH (phe:HpoPhenotype) WHERE phe.label IN $features
+MATCH (dis:HpoDisease)-[rel:HAS_PHENOTYPIC_FEATURE]-&gt;(phe)
+WITH dis, count(DISTINCT phe) AS matched,
+     collect({feature: phe.label, evidence: rel.evidenceName,
+              description: rel.evidenceDescription, source: rel.source,
+              url: rel.url, curator: rel.createdBy, date: rel.creationDate}) AS grounds
+RETURN dis.id AS disease_id, dis.label AS disease, matched, grounds
+ORDER BY matched DESC, disease</code></pre>
+      <p>달라진 것은 <strong>한 군데뿐이다.</strong> 관계에 <code>rel</code>이라는 이름을 붙이고, <code>rel.source</code>·<code>rel.url</code>·<code>rel.createdBy</code>를 함께 담았다. 실행 결과는 이렇게 나온다.</p>
+      <pre><code class="language-text">OMIM:619269  Ondontochondrodysplasia 2 with hearing loss and diabetes — 특징 5개 일치
+  · Pruritus
+      증거   : Published clinical study
+      출처   : PMID:32101163  ->  https://pubmed.ncbi.nlm.nih.gov/32101163
+      큐레이션: probinson (2021-06-20)
+  · Growth delay                     (이하 3건 동일 근거)
+      ...
+
+OMIM:618500  Holoprosencephaly 12 with or without pancreatic agenesis — 특징 3개 일치
+  · Growth delay
+      증거   : Published clinical study
+      출처   : PMID:31006513  ->  https://pubmed.ncbi.nlm.nih.gov/31006513
+      큐레이션: probinson (2023-03-16)
+  · Sensorineural hearing impairment
+      증거   : Inferred from electronic annotation
+      출처   : OMIM:618500   ->  https://omim.org/entry/618500
+      큐레이션: skoehler (2019-09-07)</code></pre>
+      <p><strong>여기서 두 후보의 성격이 갈린다.</strong> 1위 후보는 다섯 특징이 <strong>전부 같은 논문 하나(PMID:32101163)</strong>에서 왔다. 즉 이 증후군을 기술한 단일 임상 연구가 근거다. 2위 후보는 근거가 섞여 있다 — 하나는 <em>Published clinical study</em>(사람이 논문을 읽고 기록), 둘은 <em>Inferred from electronic annotation</em>(OMIM 텍스트를 기계가 파싱). <strong>같은 “3개 일치”라도 근거의 무게가 다르다.</strong></p>
+      <p>겹침 수만 보면 이 차이가 보이지 않는다. §4.2의 “단순 겹침 수는 증거 질을 가중하지 않는다”는 경고가 추상이 아닌 이유가 이것이고, <strong>§2.2에서 LPG를 고른 결정이 최종적으로 값을 치르는 지점</strong>이기도 하다. RDF였다면 이 화면을 만들기 위해 n항 관계·명명 그래프·RDF-star 중 하나로 우회해야 했다.</p>
+
+      <h3 id="medical-boundary">6.3 이 장은 임상 의사결정 지원의 개념 증명이다</h3>
       <p>교재 사례는 HPO 데이터 위에서 질의와 추론이 어떻게 작동하는지 보여주는 교육용 예시다. 환자 EHR의 실제 수집·동의·권한·비식별화, 부정 표현형, 발현 시점, 환자군별 빈도, 임상 검증, 규제와 책임 배분은 다루지 않는다. 따라서 결과를 “진단”이라고 표현하기보다 <strong>검토 가능한 후보 생성</strong>으로 제한해야 한다.</p>
       <div class="callout--hero"><span class="callout__kicker">Safety Boundary</span><span class="callout__body">그래프가 반환한 질병명은 <strong>정답이 아니라 조사 순서</strong>다. 원 주석·추론 경로·데이터 버전을 함께 보여주고, 최종 판단은 임상의와 검증 절차에 남긴다.</span></div>
     </section>
@@ -340,7 +624,7 @@ LIMIT 5</code></pre>
 
       <h3 id="technology-decision">7.1 기술 이름이 아니라 지식 질문으로 선택한다</h3>
       <table class="cmp-table" id="table-decision">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 10</span><span class="asset-caption__title">온톨로지 기반 KG 도입 판단표</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 13</span><span class="asset-caption__title">온톨로지 기반 KG 도입 판단표</span></div></caption>
         <thead><tr><th>질문</th><th>도입 가치가 커지는 신호</th><th>다른 접근이 나은 신호</th><th>작은 실험</th></tr></thead>
         <tbody>
           <tr><td>의미 정렬이 핵심인가?</td><td>동의어·중의어·세분성 때문에 통합 오류가 큼</td><td>단일 시스템의 고정 코드만 사용</td><td>상위 100개 값의 표준 ID 매핑 감사</td></tr>
@@ -358,7 +642,7 @@ LIMIT 5</code></pre>
 
       <h3 id="discussion">7.3 토론 질문</h3>
       <table class="cmp-table" id="table-discussion">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 11</span><span class="asset-caption__title">책의 개념을 우리 설계로 옮기는 질문</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 14</span><span class="asset-caption__title">책의 개념을 우리 설계로 옮기는 질문</span></div></caption>
         <thead><tr><th>질문</th><th>드러나는 설계 결정</th><th>좋은 답의 증거</th></tr></thead>
         <tbody>
           <tr><td>우리 데이터의 “같은 개념”은 누가 승인하는가?</td><td>매핑 소유권·변경 이력·충돌 정책</td><td>표본 감사와 되돌릴 수 있는 매핑 버전</td></tr>
@@ -372,7 +656,7 @@ LIMIT 5</code></pre>
       <div class="report-section__kicker">Appendix A · Glossary</div>
       <h1>핵심 용어</h1>
       <table class="cmp-table" id="table-glossary">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 12</span><span class="asset-caption__title">Chapter 3 용어 사전</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 15</span><span class="asset-caption__title">Chapter 3 용어 사전</span></div></caption>
         <thead><tr><th>용어</th><th>이 리포트에서의 의미</th></tr></thead>
         <tbody>
           <tr><td>온톨로지</td><td>도메인의 표준 개념·식별자·속성·범주·관계를 명시한 참조 어휘와 스키마.</td></tr>
@@ -395,8 +679,10 @@ LIMIT 5</code></pre>
         <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[1]</span><span>Alessandro Negro et al., <em>Knowledge Graphs and LLMs in Action</em>, Chapter 3 “Create Your First Knowledge Graph from Ontologies,” Manning, pp. 37–64. 본문의 개념·코드·예제·수치는 이 장을 자체 해설로 재구성했다.</span></li>
         <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[2]</span><span><a href="https://hpo.jax.org/" rel="noreferrer">Human Phenotype Ontology</a> 공식 포털과 <a href="https://purl.obolibrary.org/obo/hp.owl" rel="noreferrer">hp.owl 배포 경로</a>. 교재와 로컬 실습이 참조한 온톨로지 원천.</span></li>
         <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[3]</span><span><a href="https://github.com/obophenotype/human-phenotype-ontology/releases/latest/download/phenotype.hpoa" rel="noreferrer">HPOA release data</a>. 이 URL은 latest이므로 재현 가능한 운영에서는 고정 릴리스와 체크섬을 기록해야 한다.</span></li>
-        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[4]</span><span>저장소의 Chapter 3 원문·한국어 번역·해설판, <code>src/ch03/importer/import_hpo.py</code>, <code>03_chapter_guide.ipynb</code>, <code>study.toml</code> 리스팅 대응표를 원자료 감사에 사용했다.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[4]</span><span>저장소의 Chapter 3 원문·한국어 번역·해설판, <code>src/ch03/importer/import_hpo.py</code>, <code>study.toml</code> 리스팅 대응표를 원자료 감사에 사용했다.</span></li>
         <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[5]</span><span>그림 1–8은 교재 도형을 복제하지 않고 Chapter 3의 논리 관계를 발표자가 새로 구성한 SVG다. 임상 결과 그림의 질병명과 공유 특징 수만 교재의 HPO 2025-02 결과 스냅샷을 따른다.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[6]</span><span>학습 노트북 <code>source/…/chapter_03_…/src/ch03/03_chapter_guide.ipynb</code>. 표 7·9·10과 §3.4·4.2·5.2·6.2의 모든 실측 수치·실행 결과·소요 시간은 이 노트북을 Neo4j 5.26.28 Community(플러그인 <code>n10s</code>·<code>apoc</code>·<code>gds</code>)에서 HPOA 2026-06-23 스냅샷으로 끝까지 실행한 기록에서 가져왔다. 교재 값과 다른 숫자는 모두 이 재실행 결과다.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[7]</span><span>본문의 Cypher·Turtle·TriG·SPARQL 코드는 교재 Listing 3.5–3.28을 옮긴 것이다. 실행 가능한 리스팅은 저장소 <code>src/ch03/listings/</code>의 원문을 따랐고(파일 번호는 교재 번호 +3), 원서 조판 과정에서 깨진 구두점만 바로잡았다. 주석 줄과 들여쓰기는 읽기 편하도록 발표자가 붙인 것이며 교재 원문에는 없다.</span></li>
       </ol>
       <div class="report-jump-links"><a href="./">발표자료</a><a href="../../">회차 목록</a><a href="#summary">문서 처음</a></div>
     </section>

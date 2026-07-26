@@ -841,6 +841,10 @@ pre:has(code.language-javascript)::after { content: "JS";     color: rgba(251, 1
 pre:has(code.language-css)::after        { content: "CSS";    color: rgba(96, 165, 250, 0.55); }
 pre:has(code.language-html)::after       { content: "HTML";   color: rgba(251, 113, 133, 0.55); }
 pre:has(code.language-markdown)::after   { content: "MD";     color: rgba(167, 167, 175, 0.55); }
+pre:has(code.language-cypher)::after     { content: "CYPHER"; color: rgba(126, 231, 135, 0.55); }
+pre:has(code.language-turtle)::after     { content: "TURTLE"; color: rgba(210, 168, 255, 0.55); }
+pre:has(code.language-trig)::after       { content: "TRIG";   color: rgba(210, 168, 255, 0.55); }
+pre:has(code.language-sparql)::after     { content: "SPARQL"; color: rgba(255, 166, 87, 0.55); }
 /* <pre> 내부 <code> 는 인라인 code 룰(line 533) 의 background/padding 을 모두 unset */
 pre code {
   background: transparent !important;
