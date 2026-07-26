@@ -381,8 +381,28 @@ llm.override_module_model(listing_3)   # OPENAI_MODEL 상수를 현재 모델로
 "15.2": {"run": "executed", "fidelity": "substituted", "note": "왜 원문 그대로가 아닌가"}
 ```
 
-`run` 은 `executed`·`optional`·`documented-only`, `fidelity` 는 `original`·`reproduced`·
-`substituted` 다. 대부분의 리스팅은 한 축 문자열로 족하므로 필요할 때만 표로 바꾼다.
+`run` 은 **깨끗한 환경의 기본 Run All 이 이 코드를 실제로 돌리는가** 이고
+(`executed`·`optional`·`documented-only`), `fidelity` 는 **그 리스팅 자신의 코드 경로가
+업스트림 원문대로 도는가** 다 (`original`·`reproduced`·`substituted`).
+
+경계가 헷갈리기 쉽다. 모듈이 임포트되게 하려고 자리표시자 환경변수를 채우거나 모델
+객체를 바꾸는 것은 그 리스팅이 **받는 설정** 이 달라지는 것이지 코드가 달라지는 것이
+아니다 — `original` 이다. 그 리스팅이 **직접 부르는** 의존물을 런타임에 갈아 끼웠을
+때만 `substituted` 다 (책 15장의 15.2 가 `jinja2_formatter` 를 그렇게 한다).
+
+한 축 문자열은 두 축의 **줄임말** 이고, 게이트의 `verify.coverage_axes()` 가 그 변환을
+정의한다.
+
+| 줄임말 | run | fidelity |
+| --- | --- | --- |
+| `executed` | executed | original |
+| `optional` | optional | original |
+| `documented-only` | documented-only | original |
+| `reproduced` | executed | reproduced |
+| `substituted` | executed | substituted |
+
+이 표로 표현되지 않는 조합만 표로 바꾼다. 두 표기가 섞여 있어도 게이트는 같은 질문에
+답할 수 있다.
 내가 한 번 돌려 봤는지가 아니라, 저장소를 새로 클론한 스터디원이 겪을 일로 판단한다.
 
 | 분류 | 뜻 |
@@ -438,6 +458,23 @@ python3 agent-support/scripts/validate-site.py --check-materials
 
 `AGENTS.md` 규칙 9 를 따른다 — 커밋·푸시·PR 은 사용자가 명시적으로 요청한 범위에서만 한다.
 `.venv`·`code/`·`config.ini`·`util/`·`data/`·`dataset/` 은 부트스트랩이 재생성하므로 추적하지 않는다.
+
+## 책 그림·표의 공개 범위
+
+**업스트림 코드의 라이선스나 공개 승인은 책 본문·표·그림에 전이되지 않는다.** 저자 코드
+저장소를 공개해도 되는지와 출판사의 책 그림을 공개해도 되는지는 서로 다른 문서가 정한다.
+base64 로 노트북에 심는 것은 저장 형태를 바꿀 뿐 공개 복제라는 성격을 바꾸지 않는다.
+
+**앞으로의 규칙 — 권리 확인 없는 책 그림·표 스캔을 public git 에 새로 추가하지 않는다.**
+대신 직접 그린 변형 도식, 텍스트 해설, 출처를 밝힌 최소 인용을 쓴다.
+
+**현재 상태 — 이 규칙을 지키지 못하는 자료가 이미 있다.** 『Knowledge Graphs and LLMs in
+Action』 노트북 11개가 Manning 책 그림 131장을 attachment 로 담고 있고, 저장소는 public
+이다. 이것은 "승인된 예외" 가 아니라 **사용자 결정을 기다리는 알려진 미해결 상태** 다.
+처리 방침(삭제 · 자체 재도식화 · 비공개 전환)이 정해지기 전까지 그 자료를 공개 준비
+완료로 판정하지 않는다. 이미 push 된 이력의 정리는 별도 결정이 필요하다.
+
+이 절은 법률 자문이 아니라 공개 저장소의 보수적 운영 기준이다.
 
 ## 금지
 

@@ -295,6 +295,25 @@ class GateIntegrationTests(unittest.TestCase):
         )
         self.assertEqual(failures, [])
 
+    def test_shorthand_normalizes_to_two_axes(self) -> None:
+        """한 축 문자열은 두 축의 줄임말이다. 그 변환이 정의돼야 혼재가 정당해진다."""
+        expected = {
+            "executed": ("executed", "original"),
+            "optional": ("optional", "original"),
+            "documented-only": ("documented-only", "original"),
+            "reproduced": ("executed", "reproduced"),
+            "substituted": ("executed", "substituted"),
+        }
+        for shorthand, pair in expected.items():
+            with self.subTest(shorthand=shorthand):
+                self.assertEqual(pair, self.verify.coverage_axes(shorthand))
+
+    def test_two_axis_value_passes_through(self) -> None:
+        self.assertEqual(
+            ("optional", "substituted"),
+            self.verify.coverage_axes({"run": "optional", "fidelity": "substituted"}),
+        )
+
     def test_two_axis_coverage_is_accepted(self) -> None:
         """한 축으로는 "돌지 않았고 대체됐다" 를 적을 수 없다 (책 15장의 15.2)."""
         failures = self.verify.check_coverage_numbers(
@@ -502,6 +521,20 @@ class OffsetFallbackTests(unittest.TestCase):
         self.study.listing_overrides["ch03"] = {"3.20": {"repo": "3.16"}}
         chunk = listing_source.chunk_for(self.study, "ch03", "3.20")
         self.assertIn("CREATE DATABASE hpo", chunk.text)
+
+    def test_chapter_without_declared_offset_is_not_guessed(self) -> None:
+        """오프셋 선언이 없는 장을 0 으로 추정하면 안 된다.
+
+        추정하면 "번호가 같은 파일이 우연히 있다" 는 이유로 통과해 버린다. 정본이
+        없는데 identity mapping 을 지어내는 셈이라, 리더가 해석하는 것은 선언된
+        규칙뿐이라는 성질이 깨진다.
+        """
+        del self.study.listing_offsets["ch03"]
+        with self.assertRaises(listing_source.ListingSpecError) as ctx:
+            listing_source.chunk_for(self.study, "ch03", "3.16")
+        message = str(ctx.exception)
+        self.assertIn("mapping.listings.ch03", message)
+        self.assertIn("listing_offsets", message)
 
 
 class UnnumberedSymbolTests(unittest.TestCase):

@@ -233,9 +233,20 @@ def _from_offset(study, repo_dir: str, book_no: str) -> ListingChunk:
     `[mapping.listings]` 는 예외를 적는 곳이고, 규칙적인 챕터는 오프셋 하나로 끝난다.
     그 경로를 여기 두지 않으면 노트북이 `minor + offset` 을 직접 계산하게 되고,
     번호 해석이 두 곳으로 갈라진다 — 책 3장이 실제로 그렇게 갈라져 있었다.
+
+    **오프셋 선언이 없는 장은 추정하지 않는다.** `resolve_listing()` 의 기본값 0 을
+    그대로 쓰면 "번호가 같은 파일이 우연히 있다" 는 이유로 통과해 버리고, 그 순간
+    리더는 선언된 규칙이 아니라 identity mapping 을 지어내는 것이 된다.
     """
     from studykit import cypher
 
+    if repo_dir not in study.listing_offsets:
+        raise ListingSpecError(
+            f"{repo_dir} 의 책 {book_no} 을 풀 수 없다 — "
+            f"[mapping.listings.{repo_dir}] 에 선언이 없고 "
+            f"[mapping.listing_offsets] 에 {repo_dir} 오프셋도 없다. "
+            f"둘 중 하나를 적어라 (오프셋이 0 이어도 명시해야 한다)"
+        )
     kind, value = study.resolve_listing(repo_dir, book_no)
     if kind != "repo":
         raise ListingSpecError(

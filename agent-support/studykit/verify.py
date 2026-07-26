@@ -333,6 +333,26 @@ def _check_renumber_residue(study: Study, cells: list, path: Path, label: str) -
     return failures
 
 
+def check_notebook_after_execute(study: Study, path: Path, executor, **kwargs) -> list[str]:
+    """재실행 -> 정규화 -> 검사. 이 순서가 계약이다.
+
+    검사를 먼저 하면 그 실행이 새로 저장한 로컬 절대경로를 이번 회차가 보지 못한다.
+    게이트 자체는 옳아도 재실행 워크플로와 결합하면 false green 이 된다. 실행이
+    실패하면 산출물을 건드리지 않는다 — 실패한 실행의 출력을 정규화할 이유가 없다.
+
+    `executor` 는 노트북 경로를 받아 실패 메시지 목록을 돌려준다. None 이면 검사만 한다.
+    """
+    from studykit import notebook as notebook_tools
+
+    failures: list[str] = []
+    if executor is not None:
+        failures.extend(executor(path))
+        if failures:
+            return failures
+        notebook_tools.normalize_outputs(path, study)
+    return check_notebook(study, path, **kwargs)
+
+
 def check_saved_output_paths(study: Study, path: Path) -> list[str]:
     """노트북 하나의 저장 출력에 로컬 절대경로가 남았는가 (정규화 도구용)."""
     document = json.loads(path.read_text(encoding="utf-8"))
@@ -391,6 +411,26 @@ COVERAGE_KINDS = ("executed", "reproduced", "substituted", "documented-only", "o
 #:     "15.2": {"run": "optional", "fidelity": "substituted", "note": "..."}
 RUN_STATES = ("executed", "optional", "documented-only")
 SOURCE_FIDELITY = ("original", "reproduced", "substituted")
+
+#: 한 축 문자열은 두 축의 **줄임말** 이다. 이 표가 있어야 두 표기가 섞여 있어도
+#: 기계가 같은 질문("이 리스팅은 돌았나?")에 답할 수 있다. 없으면 `substituted` 가
+#: 실행됐다는 뜻인지 대체됐다는 뜻인지 알 수 없다.
+COVERAGE_SHORTHAND = {
+    "executed": ("executed", "original"),
+    "optional": ("optional", "original"),
+    "documented-only": ("documented-only", "original"),
+    "reproduced": ("executed", "reproduced"),
+    "substituted": ("executed", "substituted"),
+}
+
+
+def coverage_axes(kind) -> tuple[str, str]:
+    """coverage 값 하나를 (run, fidelity) 로 정규화한다."""
+    if isinstance(kind, str):
+        if kind not in COVERAGE_SHORTHAND:
+            raise ValueError(f"알 수 없는 coverage 분류: {kind!r}")
+        return COVERAGE_SHORTHAND[kind]
+    return (str(kind["run"]), str(kind["fidelity"]))
 
 TODO_MARKER = re.compile(r"TODO\(agent\)")
 

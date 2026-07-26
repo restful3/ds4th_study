@@ -197,3 +197,43 @@ class RealNotebookTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ExecuteThenNormalizeTests(unittest.TestCase):
+    """재실행 -> 정규화 -> 검사 순서.
+
+    검사를 먼저 하면 그 실행이 새로 저장한 절대경로를 이번 회차가 보지 못한다.
+    게이트가 옳아도 워크플로와 결합하면 false green 이 된다.
+    """
+
+    def setUp(self) -> None:
+        self._tmp = tempfile.TemporaryDirectory()
+        self.study = write_study(Path(self._tmp.name))
+        self.addCleanup(self._tmp.cleanup)
+
+    def _executor_writing_absolute_path(self, path: Path) -> list[str]:
+        document = json.loads(path.read_text(encoding="utf-8"))
+        document["cells"][1]["outputs"] = [stream(f"경고: {self.study.root}/.venv/x.py:1\n")]
+        path.write_text(json.dumps(document, ensure_ascii=False), encoding="utf-8")
+        return []
+
+    def test_normalization_runs_after_a_successful_execution(self) -> None:
+        path = write_notebook(self.study)
+        failures = verify.check_notebook_after_execute(
+            self.study, path, self._executor_writing_absolute_path, check_urls=False)
+        self.assertEqual([], failures, failures)
+        self.assertIn("<교재>", path.read_text(encoding="utf-8"))
+
+    def test_failed_execution_is_reported_and_nothing_is_rewritten(self) -> None:
+        path = write_notebook(self.study, outputs=[stream("깨끗하다\n")])
+        before = path.read_text(encoding="utf-8")
+        failures = verify.check_notebook_after_execute(
+            self.study, path, lambda _p: ["재실행 실패 — 커널이 죽었다"], check_urls=False)
+        self.assertTrue(any("재실행 실패" in f for f in failures), failures)
+        self.assertEqual(before, path.read_text(encoding="utf-8"))
+
+    def test_without_executor_it_only_checks(self) -> None:
+        path = write_notebook(self.study, outputs=[stream(f"{self.study.root}\n")])
+        failures = verify.check_notebook_after_execute(
+            self.study, path, None, check_urls=False)
+        self.assertTrue(any("절대경로" in f for f in failures), failures)

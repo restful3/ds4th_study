@@ -50,7 +50,7 @@ def main() -> int:
     parser.add_argument("--no-urls", action="store_true",
                         help="외부 URL 응답 확인을 건너뛴다 (느림)")
     parser.add_argument("--execute", action="store_true",
-                        help="노트북을 실제로 재실행해 오류를 확인한다")
+                        help="노트북을 재실행하고 출력을 정규화한 뒤 검사한다")
     parser.add_argument("--lint", action="store_true",
                         help="정적 검사만 한다 (완결성·리스팅 coverage 는 보지 않는다)")
     args = parser.parse_args()
@@ -112,7 +112,12 @@ def main() -> int:
         print("   - 노트북이 없다 (src 에 코드가 있는 챕터에만 만든다)")
     for notebook in notebooks:
         status = verify.notebook_status(notebook)
-        problems = verify.check_notebook(study, notebook, check_urls=not args.no_urls)
+
+        # 순서가 중요하다 — 실행 -> 정규화 -> 검사. 그 순서는 verify 가 지키고
+        # test_notebook_hygiene.ExecuteThenNormalizeTests 가 검증한다.
+        executor = (lambda path: execute_notebook(study, path)) if args.execute else None
+        problems = verify.check_notebook_after_execute(
+            study, notebook, executor, check_urls=not args.no_urls)
 
         # draft 는 lint 만, complete 는 완결성까지 본다.
         # 이 구분이 없으면 60% 노트북도 "모든 검증 통과" 가 된다.
@@ -120,8 +125,6 @@ def main() -> int:
             repo_dir = verify.repo_dir_for_notebook(study, notebook)
             if repo_dir:
                 problems.extend(verify.check_notebook_complete(study, notebook, repo_dir))
-        if args.execute:
-            problems.extend(execute_notebook(study, notebook))
 
         label = f"{notebook.name} 규격 통과"
         if status == "draft":

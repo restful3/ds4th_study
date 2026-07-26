@@ -26,6 +26,39 @@ torch_geometric = "2.8.0"
 networkx = "3.4.2"
 verified_on = "2026-07-25"
 
+# ────────────────────────────────────────────── 3장
+[[erratum]]
+chapter = 3
+location = "Listing 3.21 (저장소 파일 '3.24 - explores_disease_phenotype_associations')"
+kind = "code"
+status = "upstream"
+observation = """
+저장소 파일 3.24 의 내용이 파일 3.25 와 바이트 단위로 같다. 즉 책 3.21 에 해당하는
+Cypher 가 저장소에 없고, 그 자리에 3.22 의 Cypher 가 들어 있다.
+해설판 본문에는 3.21 이 실려 있으나 `MERGE (dis:HpoDisease)-[:HAS_PHENOTYPIC_FEATURE]->(phe)`
+로 시작한다. 바인딩되지 않은 변수에 MERGE 를 쓰면 매칭이 아니라 **노드와 관계를 새로 만든다** —
+읽기 질의여야 할 리스팅이 그래프를 오염시킨다.
+"""
+correction = """
+MERGE 를 MATCH 로 바꿔 실행한다. 정정본은 노트북의 3.21 셀에 `LISTING_3_21` 리터럴로
+한 번만 싣는다. study.toml 은 3.21 을 { source = "explainer", reason = "upstream-wrong" } 로
+선언하므로, 위치는 study.toml 이 정본이고 **정정 내용의 정본은 이 항목과 그 셀** 이다.
+노드 수 변화가 0 인 것을 셀이 매번 출력해 MATCH 임을 확인한다.
+"""
+notebook = "chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/03_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 3
+location = "Listing 3.25 (저장소 파일 '3.28 - phenotypes_associated_with_type_1_diabetes')"
+kind = "code"
+status = "upstream"
+observation = "저장소 파일이 0바이트다. 책 3.25 의 Cypher 가 저장소에 없다."
+correction = """
+해설판 본문을 그대로 쓴다 (정정하지 않았다). study.toml 은
+{ source = "explainer", reason = "upstream-missing" } 로 선언한다.
+"""
+notebook = "chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/03_chapter_guide.ipynb"
+
 # ────────────────────────────────────────────── 4장
 [[erratum]]
 chapter = 4
