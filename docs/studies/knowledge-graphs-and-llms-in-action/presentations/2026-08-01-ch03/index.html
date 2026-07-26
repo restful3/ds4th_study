@@ -110,7 +110,7 @@
       <footer class="slide-footer"><a class="report-ref" href="report.html#fig-two-sources">상세 리포트 그림 2 · 두 원천의 결합</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="두 원천의 입력 계약" data-report-refs="data-technology table-source-contract">
+    <section class="slide" aria-label="두 원천의 입력 계약" data-report-refs="data-technology table-source-contract table-build-steps">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">DATA CONTRACT</span></header>
       <h1>어느 파일에서 무엇이 정본인지 먼저 고정한다</h1>
       <p class="lead">두 원천은 형식뿐 아니라 변경 영향과 검증 단위가 다릅니다.</p>
@@ -211,12 +211,14 @@
     <section class="slide" aria-label="코드 감사와 재현 경계" data-report-refs="build-operate implementation-reality table-implementation-audit">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">IMPLEMENTATION AUDIT</span></header>
       <h1>책의 결과와 현재 실행 결과가 다른 이유를 설명할 수 있어야 한다</h1>
-      <p class="lead">원자료·코드 감사에서 네 가지 재현 경계를 확인했습니다.</p>
+      <p class="lead">원자료·교재·실습 코드를 대조해 여섯 가지 재현 경계를 확인했습니다.</p>
       <div class="slide-body">
-        <div class="audit-grid">
-          <article><span>DATA DRIFT</span><h2>2025-02 → 2026-06-23</h2><p>latest HPOA는 건수와 후보 순위를 바꿀 수 있다.</p></article>
+        <div class="audit-grid audit-grid--six">
+          <article><span>DATA DRIFT</span><h2>899,558은 기준값</h2><p>교재 2025-02 적재 건수이며 2026-06-23 latest와 같지 않다.</p></article>
           <article><span>ANNOTATION LOSS</span><h2>쌍 단위 MERGE</h2><p>같은 질병–표현형 쌍의 여러 근거가 덮일 수 있다.</p></article>
-          <article><span>STAGE DEPENDENCY</span><h2>정제 전용 질의</h2><p>Listing 3.18은 최종 정제 뒤 같은 형태로 실행되지 않는다.</p></article>
+          <article><span>STAGE DEPENDENCY</span><h2>정제 뒤 실패</h2><p>Listing 3.18은 최종 정제 뒤 같은 형태로 실행하면 실패한다.</p></article>
+          <article><span>QUERY SIDE EFFECT</span><h2>읽기 질의의 MERGE</h2><p>Listing 3.21은 미바인딩 관계를 만들 수 있어 <code>MATCH</code>로 고친다.</p></article>
+          <article><span>RESULT SUBSET</span><h2>화이트리스트 ≠ SKIP</h2><p>교재 3.28과 소스 3.31은 결과 제한 방식이 달라 출력이 다르다.</p></article>
           <article><span>LISTING MAP</span><h2>교재 ↔ 소스 +3</h2><p><code>study.toml</code> 전수 대응표가 리스팅 정본이다.</p></article>
         </div>
         <p class="takeaway"><strong>재현성</strong> — 릴리스 URL·체크섬·적재 단계·질의 버전을 결과와 함께 저장합니다.</p>
@@ -240,24 +242,31 @@
       <footer class="slide-footer"><a class="report-ref" href="report.html#fig-clinical-query">상세 리포트 그림 6 · 후보 질의</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="후보 랭킹의 해석 경계" data-report-refs="query-case table-candidate-results">
+    <section class="slide" aria-label="후보 랭킹의 해석 경계" data-report-refs="query-case direct-query table-candidate-results">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">QUERY RESULT</span></header>
-      <h1><code>count(*)</code>는 진단 확률이 아니라 겹침 수다</h1>
-      <p class="lead">책의 상위 결과를 무엇이 보장되고 무엇이 빠졌는지 함께 읽습니다.</p>
+      <h1>다섯 표현형의 겹침 수를 집계하고 이름으로 동률을 푼다</h1>
+      <p class="lead"><code>count(nodes)</code>는 주석 경로 수이며 진단 확률이 아닙니다.</p>
       <div class="slide-body query-strip">
         <pre><code class="language-cypher">MATCH (phe:HpoPhenotype)
-WHERE phe.label IN $observed
-MATCH (dis:HpoDisease)
+WHERE phe.label IN [
+  "Growth delay", "Large knee",
+  "Sensorineural hearing impairment", "Pruritus",
+  "Type I diabetes mellitus"
+]
+WITH phe
+MATCH path=(dis:HpoDisease)
   -[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe)
-RETURN dis.label,
+UNWIND dis AS nodes
+RETURN dis.id AS disease_id,
+       dis.label AS disease_name,
        collect(phe.label) AS features,
-       count(*) AS overlap
-ORDER BY overlap DESC
+       count(nodes) AS num_of_features
+ORDER BY num_of_features DESC, disease_name
 LIMIT 5</code></pre>
         <div class="ranking-list">
-          <article><b>5/5</b><div><p>Odontochondrodysplasia 2 …</p><small>다섯 주석 경로 모두 존재</small></div></article>
-          <article><b>3/5</b><div><p>Holoprosencephaly 12 …</p><small>세 주석 경로 공유</small></div></article>
-          <article><b>2/5</b><div><p>여러 후보 동률</p><small>추가 근거·검사가 필요</small></div></article>
+          <article><b>5/5</b><div><p>Odontochondrodysplasia 2 …</p><small>OMIM:619269 · 다섯 주석 경로</small></div></article>
+          <article><b>3/5</b><div><p>Holoprosencephaly 12 …</p><small>OMIM:618500 · 세 주석 경로</small></div></article>
+          <article><b>2/5</b><div class="tie-list"><small>3-methylglutaconic aciduria VIII · OMIM:614700</small><small>Alobar holoprosencephaly · OMIM:616192</small><small>Alpha-thalassemia/mental retardation, X-linked · OMIM:602782</small></div></article>
         </div>
       </div>
       <p class="takeaway"><strong>빠진 것</strong> — 희귀도·부정 소견·발현 시점·증거 질·환자 맥락은 이 단순 랭킹에 포함되지 않습니다.</p>
@@ -269,8 +278,8 @@ LIMIT 5</code></pre>
       <h1>계층은 하위 표현형의 주석을 상위 범주 질의에 포함한다</h1>
       <div class="slide-body">
         <figure class="deck-report-figure">
-          <img src="assets/figs/hierarchical-inference.svg" alt="내분비계 이상 상위 범주 아래의 갑상선 췌장 포도당 대사 이상 하위 개념과 연결된 질병이 상위 범주 질의에 포함되는 구조">
-          <figcaption><b>직접 사실 + 암시적 포함</b><span>질병은 하위 표현형에 직접 주석</span><span><code>SUBCLASSOF</code>가 상위 범주를 연결</span><span>새 사실 생성이 아니라 질의 범위 확장</span></figcaption>
+          <img src="assets/figs/hierarchical-inference.svg" alt="갑상선 생리 이상, 갑상선기능저하증, 갑상선종에서 내분비계 이상 상위 범주로 향하는 자식에서 부모 방향의 SUBCLASSOF 관계와 상위 범주 질의 포함 구조">
+          <figcaption><b>직접 사실 + 암시적 포함</b><span>질병은 하위 표현형에 직접 주석</span><span><code>SUBCLASSOF</code> 저장 방향은 자식→부모</span><span>상위 범주에서 역방향으로 1–3단계를 탐색</span></figcaption>
         </figure>
       </div>
       <footer class="slide-footer"><a class="report-ref" href="report.html#fig-hierarchical-inference">상세 리포트 그림 7 · 계층 추론</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
@@ -311,6 +320,25 @@ LIMIT 5</code></pre>
       <footer class="slide-footer"><a class="report-ref" href="report.html#fig-validation-gates">상세 리포트 그림 8 · 검증 게이트</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
+    <section class="slide" aria-label="임상 안전 경계" data-report-refs="evidence-limits medical-boundary table-failure-modes">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">SAFETY BOUNDARY</span></header>
+      <h1>이 장의 결과는 진단이 아니라 검토 가능한 후보 생성이다</h1>
+      <p class="lead">기술적으로 재현된 경로도 실제 임상 의사결정의 안전성과 유효성을 자동 증명하지 않습니다.</p>
+      <div class="slide-body">
+        <div class="fact-grid fact-grid--safety">
+          <article><span>SCOPE</span><h2>교육용 개념 증명</h2><p>HPO 위에서 질의와 계층 추론이 작동하는 방식을 보여준다.</p></article>
+          <article><span>DATA GOVERNANCE</span><h2>EHR·동의·권한 부재</h2><p>실제 환자 수집, 비식별화, 접근 통제는 이 장의 범위 밖이다.</p></article>
+          <article><span>CLINICAL CONTEXT</span><h2>부정·시점·빈도 부재</h2><p>부정 표현형, 발현 시점, 환자군별 빈도를 단순 겹침 수가 반영하지 않는다.</p></article>
+          <article><span>ACCOUNTABILITY</span><h2>검증·규제·책임 부재</h2><p>임상 검증과 규제 준수, 최종 판단 책임은 별도 절차로 남는다.</p></article>
+        </div>
+        <div class="safety-flow" aria-label="후보명, 원 주석과 추론 경로, 데이터 버전을 함께 제시하고 임상의 검토로 넘기며 진단 확정과 구분한다">
+          <span>후보명</span><b>+</b><span>원 주석·추론 경로</span><b>+</b><span>데이터 버전</span><b>→</b><strong>임상의 검토</strong><em>≠ 진단 확정</em>
+        </div>
+        <p class="takeaway"><strong>안전 원칙</strong> — 질병명만 내보내지 말고 원 주석·추론 경로·데이터 버전을 함께 보여준 뒤 사람의 검토로 넘깁니다.</p>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#medical-boundary">상세 리포트 §6.2 · 임상 안전 경계</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
     <section class="slide" aria-label="온톨로지 기반 KG 도입 판단" data-report-refs="decision technology-decision table-decision">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">DECISION GUIDE</span></header>
       <h1>온톨로지와 그래프는 질문에 필요한 만큼만 쓴다</h1>
@@ -325,7 +353,7 @@ LIMIT 5</code></pre>
       <footer class="slide-footer"><a class="report-ref" href="report.html#table-decision">상세 리포트 표 10 · 도입 판단</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="발표 정리 질문" data-report-refs="decision discussion table-discussion table-glossary">
+    <section class="slide" aria-label="발표 정리 질문" data-report-refs="decision discussion table-discussion">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">CHECKPOINT</span></header>
       <h1>세 질문으로 우리 시스템의 책임을 드러낸다</h1>
       <p class="lead">용어 암기보다 설계 결정을 말할 수 있는지 확인합니다.</p>

@@ -1426,6 +1426,25 @@ body.chrome-hidden .deck-settings {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.audit-grid--six {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.audit-grid--six article {
+  padding: 12px 14px;
+}
+
+.audit-grid--six h2 {
+  margin: 5px 0 4px;
+  font-size: 17px;
+}
+
+.audit-grid--six p {
+  font-size: 12.5px;
+  line-height: 1.32;
+}
+
 .fact-grid article,
 .audit-grid article,
 .gate-grid article,
@@ -1497,8 +1516,52 @@ body.chrome-hidden .deck-settings {
 .query-strip pre {
   margin: 0;
   min-height: 282px;
-  font-size: 13px;
-  line-height: 1.42;
+  padding: 14px 16px;
+  overflow: hidden;
+  color: #eef4ff;
+  background: #0d1624;
+  border: 1px solid #26364f;
+  border-radius: 14px;
+  font-size: 12.5px;
+  line-height: 1.23;
+}
+
+.fact-grid--safety article {
+  min-height: 136px;
+}
+
+.safety-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 22px;
+  padding: 19px 22px;
+  color: #fff;
+  background: var(--primary-deep);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.safety-flow span,
+.safety-flow strong,
+.safety-flow em {
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 850;
+}
+
+.safety-flow b {
+  color: #a9c9f6;
+  font-size: 22px;
+}
+
+.safety-flow em {
+  margin-left: 10px;
+  padding: 7px 11px;
+  color: var(--primary-deep);
+  background: #fff;
+  border-radius: 999px;
 }
 
 .ranking-list {
@@ -1537,6 +1600,16 @@ body.chrome-hidden .deck-settings {
 .ranking-list p,
 .ranking-list small {
   margin: 0;
+}
+
+.ranking-list .tie-list small {
+  display: block;
+  font-size: 11px;
+  line-height: 1.32;
+}
+
+.ranking-list .tie-list small + small {
+  margin-top: 3px;
 }
 
 .ranking-list p {

@@ -1,19 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 425" role="img" aria-labelledby="title desc">
   <title id="title">온톨로지 기반 임상 지원 지식 그래프의 네 검증 게이트</title>
   <desc id="desc">원천 스냅샷, 의미 매핑, 적재 보존성, 질의와 추론의 임상 경계를 각각 검증한 뒤 후보 결과를 사람에게 전달하며 실패하면 이전 단계로 되돌아간다.</desc>
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#63728a"/></marker>
+    <marker id="arrow-gray" markerUnits="userSpaceOnUse" viewBox="0 0 8 6" refX="7.5" refY="3" markerWidth="8" markerHeight="6" orient="auto"><path d="M.5.5 7.5 3 .5 5.5Z" fill="#63728a"/></marker>
+    <marker id="arrow-red" markerUnits="userSpaceOnUse" viewBox="0 0 8 6" refX="7.5" refY="3" markerWidth="8" markerHeight="6" orient="auto"><path d="M.5.5 7.5 3 .5 5.5Z" fill="#a15b55"/></marker>
     <style>
       text{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#172033}
       .eyebrow{font-size:13px;font-weight:800;letter-spacing:1.2px;fill:#52647d}
       .head{font-size:18px;font-weight:800}
       .small{font-size:13px;fill:#56657a}
       .gate{fill:#fff;stroke:#b7c2d1;stroke-width:2}
-      .line{fill:none;stroke:#63728a;stroke-width:3;marker-end:url(#arrow)}
-      .return{fill:none;stroke:#a15b55;stroke-width:2.5;stroke-dasharray:7 5;marker-end:url(#arrow)}
+      .line{fill:none;stroke:#63728a;stroke-width:3;marker-end:url(#arrow-gray)}
+      .return{fill:none;stroke:#a15b55;stroke-width:2.5;stroke-dasharray:7 5;marker-end:url(#arrow-red)}
     </style>
   </defs>
-  <rect width="960" height="460" rx="20" fill="#f7f8fa"/>
+  <rect width="960" height="425" rx="20" fill="#f7f8fa"/>
   <text x="480" y="43" class="eyebrow" text-anchor="middle">A QUERY RESULT IS ONLY AS TRUSTWORTHY AS ITS SHORTEST UNCHECKED GATE</text>
   <g>
     <rect class="gate" x="44" y="91" width="196" height="205" rx="16"/>
@@ -46,11 +47,10 @@
     <text x="744" y="174" class="small" style="fill:#dce6f2">대표 질의 재현</text>
     <text x="744" y="199" class="small" style="fill:#dce6f2">추론 범위·깊이</text>
     <text x="744" y="224" class="small" style="fill:#dce6f2">후보와 진단 분리</text>
-    <text x="744" y="263" class="eyebrow" style="fill:#c8d6e8">PASS → HUMAN REVIEW</text>
+    <text x="820" y="263" class="eyebrow" text-anchor="middle" style="fill:#c8d6e8">PASS → HUMAN REVIEW</text>
   </g>
-  <path class="line" d="M240 193H262"/><path class="line" d="M466 193H488"/><path class="line" d="M692 193H714"/>
-  <path class="return" d="M820 303C820 382 580 390 580 305"/>
-  <path class="return" d="M580 303C580 416 357 416 357 305"/>
-  <path class="return" d="M357 303C357 382 143 382 143 305"/>
-  <text x="480" y="435" class="small" text-anchor="middle">게이트를 통과했다는 것은 의료적 타당성까지 자동 증명했다는 뜻이 아니다. 임상의의 검토 가능한 후보와 근거를 만들었다는 뜻이다.</text>
+  <path class="line" d="M240 193H270"/><path class="line" d="M466 193H496"/><path class="line" d="M692 193H722"/>
+  <path class="return" d="M820 296C820 370 580 380 580 296"/>
+  <path class="return" d="M580 296C580 408 357 408 357 296"/>
+  <path class="return" d="M357 296C357 370 143 370 143 296"/>
 </svg>

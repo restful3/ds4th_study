@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 365" role="img" aria-labelledby="title desc">
   <title id="title">서로 다른 임상 표현을 온톨로지의 표준 개념으로 연결하는 의미 다리</title>
   <desc id="desc">왼쪽의 동의어, 중의적 약어, 서로 다른 세분성이 매핑을 거쳐 가운데 HPO 표준 식별자와 계층으로 정렬되고 오른쪽의 통합 질의로 이어진다.</desc>
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#617089"/></marker>
+    <marker id="arrow" markerUnits="userSpaceOnUse" viewBox="0 0 8 6" refX="7.5" refY="3" markerWidth="8" markerHeight="6" orient="auto"><path d="M.5.5 7.5 3 .5 5.5Z" fill="#617089"/></marker>
     <style>
       text{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#172033}
       .eyebrow{font-size:15px;font-weight:800;letter-spacing:1.5px;fill:#49607d}
@@ -14,7 +14,7 @@
       .line{fill:none;stroke:#617089;stroke-width:3;marker-end:url(#arrow)}
     </style>
   </defs>
-  <rect width="960" height="420" rx="20" fill="#f7f8fa"/>
+  <rect width="960" height="365" rx="20" fill="#f7f8fa"/>
   <text x="54" y="48" class="eyebrow">LOCAL TERMS</text>
   <text x="362" y="48" class="eyebrow">REFERENCE ONTOLOGY</text>
   <text x="746" y="48" class="eyebrow">ONE QUERY SPACE</text>
@@ -31,9 +31,9 @@
     <text x="68" y="323" class="small">necrosis / lobular necrosis</text>
   </g>
 
-  <path class="line" d="M283 114C330 114 320 143 369 143"/>
-  <path class="line" d="M283 209H369"/>
-  <path class="line" d="M283 304C330 304 320 275 369 275"/>
+  <path class="line" d="M283 114C330 114 326 143 375 143"/>
+  <path class="line" d="M283 209H375"/>
+  <path class="line" d="M283 304C330 304 326 275 375 275"/>
   <text x="319" y="190" class="small" text-anchor="middle">mapping</text>
 
   <rect class="navy" x="375" y="82" width="282" height="242" rx="18"/>
@@ -46,7 +46,7 @@
   <path d="M516 276V300" stroke="#fff" stroke-width="3"/>
   <text x="516" y="306" class="small" text-anchor="middle" style="fill:#fff">subClassOf 계층</text>
 
-  <path class="line" d="M657 203H734"/>
+  <path class="line" d="M657 203H740"/>
   <rect class="box" x="740" y="102" width="172" height="202" rx="16"/>
   <text x="826" y="145" class="head" text-anchor="middle">통합 KG</text>
   <text x="826" y="184" class="label" text-anchor="middle">같은 식별자</text>
@@ -55,5 +55,4 @@
   <path d="M775 265H877" stroke="#0f2c59" stroke-width="2"/>
   <text x="826" y="287" class="small" text-anchor="middle">직접 질의 + 계층 추론</text>
 
-  <text x="480" y="378" class="small" text-anchor="middle">온톨로지는 원천 데이터를 없애지 않는다. 각 로컬 표현이 어떤 표준 개념에 대응하는지 명시하는 공통 의미 계층이다.</text>
 </svg>
