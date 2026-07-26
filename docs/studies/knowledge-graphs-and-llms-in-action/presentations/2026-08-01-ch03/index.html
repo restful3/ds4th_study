@@ -145,6 +145,42 @@
       <footer class="slide-footer"><a class="report-ref" href="report.html#fig-edge-metadata">상세 리포트 그림 3 · 주석 표현 패턴</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
+    <section class="slide" aria-label="같은 사실을 적는 네 가지 문법" data-report-refs="data-technology rdf-lpg-choice code-edge-metadata fig-edge-metadata">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">CODE · RDF vs LPG</span></header>
+      <h1>같은 사실 하나를 적는데, 문법은 네 개가 필요하다</h1>
+      <p class="lead">“<code>OMIM:222100</code>–<code>HP:0410050</code> 연결의 근거는 <code>PMID:9357814</code>” — 이 한 문장을 적고 다시 꺼내는 방법입니다.</p>
+      <div class="slide-body code-layout">
+        <pre class="code-block code-block--dense"><span class="code-comment">// ① N항 관계 — 근거를 담을 노드를 새로 만든다</span>
+_:Annotation :forDisease        OMIM:222100 ;
+             :phenotypicFeature HP:0410050 ;
+             :source            PMID:9357814 .
+
+<span class="code-comment">// ② 명명 그래프 — 문장을 봉투에 넣고 봉투에 적는다</span>
+:G1 { OMIM:222100 :hasPhenotypicFeature HP:0410050 }
+:G1 :source PMID:9357814 .
+
+<span class="code-comment">// ③ RDF-star — 문장 자체를 주어로 삼는다</span>
+&lt;&lt;OMIM:222100 :hasPhenotypicFeature HP:0410050&gt;&gt; :source PMID:9357814 .
+
+<span class="code-comment">// ④ LPG — 관계 안에 그냥 적는다</span>
+(d)-[:HAS_PHENOTYPIC_FEATURE { source: "PMID:9357814" }]-&gt;(p)</pre>
+        <div>
+          <article class="panel panel--accent">
+            <p class="eyebrow">꺼낼 때의 차이</p>
+            <h2>LPG만 우회가 없다</h2>
+            <ul>
+              <li><b>①</b> 중간 노드를 먼저 찾고 나서 근거를 읽음 — 모델이 한 단계 깊어짐</li>
+              <li><b>②</b> 봉투 안을 확인하고 봉투 밖을 다시 조회 — 주석 28만 건이면 봉투 28만 개</li>
+              <li><b>③</b> 가장 읽기 좋지만 <b>엔진이 지원해야</b> 쓸 수 있음</li>
+              <li><b>④</b> 관계에 이름 붙이고 속성 읽으면 끝 — <b>3줄</b></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+      <p class="takeaway"><strong>선택의 근거</strong> — “LPG가 RDF보다 낫다”가 아닙니다. <b>주석마다 근거가 다르다</b>는 이 장의 요구가 관계 속성을 필수로 만들었을 뿐입니다.</p>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#code-edge-metadata">상세 리포트 §2.2 · 네 가지 코드 대조</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
     <section class="slide" aria-label="RDF와 LPG 선택 기준" data-report-refs="data-technology rdf-lpg-choice table-rdf-lpg">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">RDF vs LPG</span></header>
       <h1>이 사례는 RDF 원천 위에 LPG 애플리케이션 모델을 얹는다</h1>
@@ -208,6 +244,39 @@
       <footer class="slide-footer"><a class="report-ref" href="report.html#fig-annotation-lifecycle">상세 리포트 그림 5 · 주석 생애주기</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
+    <section class="slide" aria-label="두 파일이 만나는 지점" data-report-refs="build-operate crisp-pipeline annotation-lifecycle code-ontology-load code-annotation-load">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">CODE · 의미 통합</span></header>
+      <h1>형식이 다른 두 파일은 결국 이 두 줄에서 만난다</h1>
+      <p class="lead">온톨로지는 URI(<code>…/obo/HP_0410050</code>), 주석 파일은 콜론 표기(<code>HP:0410050</code>). 그냥 두면 영영 만나지 않습니다.</p>
+      <div class="slide-body code-layout">
+        <pre class="code-block code-block--dense"><span class="code-comment">// 책 3.17 — 온톨로지 노드에 '주석 파일과 같은 모양'의 id 를 만든다</span>
+MATCH (n:Resource)
+WHERE n.uri STARTS WITH "http://purl.obolibrary.org/obo/HP"
+SET n:HpoPhenotype,
+    n.id = coalesce(n.id,
+      replace(apoc.text.replace(n.uri,'(.*)obo/',''), '_', ':'))
+
+<span class="code-comment">// 책 3.20 — 그 id 로 TSV 의 두 열과 맞물린다</span>
+MATCH (dis:HpoDisease)   WHERE dis.id = row[0]  <span class="code-comment">// OMIM:222100</span>
+MATCH (phe:HpoPhenotype) WHERE phe.id = row[3]  <span class="code-comment">// HP:0410050</span>
+MERGE (dis)-[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe)</pre>
+        <div>
+          <article class="panel panel--accent">
+            <p class="eyebrow">이것이 의미 통합의 실체</p>
+            <h2>표준 ID가 공통 언어다</h2>
+            <ul>
+              <li><b>3.17</b>이 URI 앞부분을 잘라내고 <code>_</code>를 <code>:</code>로 바꿔 <b>같은 언어를 쓰게</b> 만듭니다</li>
+              <li><code>coalesce</code> 덕분에 여러 번 실행해도 안전합니다</li>
+              <li><b>3.20</b>은 그 값으로 두 노드를 찾아 선을 잇습니다</li>
+              <li>RDF/XML과 TSV라는 <b>전혀 다른 형식</b>이 여기서 하나의 그래프가 됩니다</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+      <p class="takeaway"><strong>같은 파일을 세 번 읽는 이유</strong> — 노드를 만들고(3.19), 선을 잇고(3.20), 그 선에 근거를 붙입니다(3.22). 관계를 만들려면 양쪽 노드가 먼저 있어야 합니다.</p>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#code-annotation-load">상세 리포트 §3.1–3.2 · 파이프라인 코드</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
     <section class="slide" aria-label="코드 감사와 재현 경계" data-report-refs="build-operate implementation-reality table-implementation-audit">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">IMPLEMENTATION AUDIT</span></header>
       <h1>책의 결과와 현재 실행 결과가 다른 이유를 설명할 수 있어야 한다</h1>
@@ -219,11 +288,26 @@
           <article><span>STAGE DEPENDENCY</span><h2>정제 뒤 실패</h2><p>Listing 3.18은 최종 정제 뒤 같은 형태로 실행하면 실패한다.</p></article>
           <article><span>QUERY SIDE EFFECT</span><h2>읽기 질의의 MERGE</h2><p>Listing 3.21은 미바인딩 관계를 만들 수 있어 <code>MATCH</code>로 고친다.</p></article>
           <article><span>RESULT SUBSET</span><h2>화이트리스트 ≠ SKIP</h2><p>교재 3.28과 소스 3.31은 결과 제한 방식이 달라 출력이 다르다.</p></article>
-          <article><span>LISTING MAP</span><h2>교재 ↔ 소스 +3</h2><p><code>study.toml</code> 전수 대응표가 리스팅 정본이다.</p></article>
+          <article><span>LISTING MAP</span><h2>교재 ↔ 소스 +3</h2><p><a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/study.toml" rel="noreferrer" target="_blank"><code>study.toml</code></a> 전수 대응표가 리스팅 정본이다.</p></article>
         </div>
         <p class="takeaway"><strong>재현성</strong> — 릴리스 URL·체크섬·적재 단계·질의 버전을 결과와 함께 저장합니다.</p>
       </div>
       <footer class="slide-footer"><a class="report-ref" href="report.html#table-implementation-audit">상세 리포트 표 6 · 구현 감사</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="직접 돌려 본 숫자" data-report-refs="build-operate notebook-rerun table-notebook-measurements">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">MEASURED · 노트북 재실행</span></header>
+      <h1>추정이 아니라 직접 돌려 본 숫자입니다</h1>
+      <p class="lead">학습 노트북 <a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/03_chapter_guide.ipynb" rel="noreferrer" target="_blank"><code>03_chapter_guide.ipynb</code></a>로 Neo4j 5.26.28에서 전 과정을 실행한 결과입니다.</p>
+      <div class="slide-body">
+        <div class="kpi-grid">
+          <article class="kpi"><strong>926,450</strong><p>적재된 트리플<br><small>교재 실행값 899,558 → 16개월 사이 약 2.7만 건 증가</small></p></article>
+          <article class="kpi"><strong>284,994</strong><p>질병–표현형 관계<br><small>표현형 20,413개 · 질병 12,956개 · <code>SUBCLASSOF</code> 24,378개</small></p></article>
+          <article class="kpi"><strong>약 8분</strong><p>책 3.22 한 단계<br><small>28만 5천 관계에 <code>FOREACH</code> 8개를 배치 없이 실행 (496초)</small></p></article>
+        </div>
+        <p class="takeaway"><strong>따라 하기 전에</strong> — 교재는 Neo4j <b>Enterprise</b> 기준입니다. <b>Community 에디션에서는 책의 첫 명령 <code>CREATE DATABASE hpo</code>가 실패</b>합니다(멀티 DB 미지원). 기본 <code>neo4j</code> DB를 쓰면 학습에는 지장이 없습니다. 전체 재구축은 9분 남짓 — <b>시연 중에 실행하지 마세요.</b></p>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-notebook-measurements">상세 리포트 표 7 · 실측 대조</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide slide--section" aria-label="질의와 추론 섹션" data-report-refs="query-case reasoning fig-clinical-query table-candidate-results fig-hierarchical-inference table-query-reasoning">
@@ -270,7 +354,41 @@ LIMIT 5</code></pre>
         </div>
       </div>
       <p class="takeaway"><strong>빠진 것</strong> — 희귀도·부정 소견·발현 시점·증거 질·환자 맥락은 이 단순 랭킹에 포함되지 않습니다.</p>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#table-candidate-results">상세 리포트 표 7 · 후보 해석</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-candidate-results">상세 리포트 표 8 · 후보 해석</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="같은 질의 다른 스냅샷" data-report-refs="query-case rerun-drift table-rerun-candidates notebook-rerun">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">DRIFT · 재실행</span></header>
+      <h1>같은 질의를 지금 돌리면 2위 이하가 바뀝니다</h1>
+      <p class="lead">코드는 한 글자도 바뀌지 않았습니다. HPOA 스냅샷만 2025-02 → 2026-06-23으로 바뀌었습니다.</p>
+      <div class="slide-body">
+        <div class="two-col">
+          <article class="panel">
+            <p class="eyebrow">교재 · HPO 2025-02</p>
+            <h2>동률 3건이 2개 공유</h2>
+            <ul>
+              <li><b>5</b> · <a href="https://omim.org/entry/619269" rel="noreferrer" target="_blank">OMIM:619269</a> Ondontochondrodysplasia 2</li>
+              <li><b>3</b> · <a href="https://omim.org/entry/618500" rel="noreferrer" target="_blank">OMIM:618500</a> Holoprosencephaly 12</li>
+              <li><b>2</b> · <a href="https://omim.org/entry/614700" rel="noreferrer" target="_blank">OMIM:614700</a> 3-methylglutaconic aciduria VIII</li>
+              <li><b>2</b> · <a href="https://omim.org/entry/616192" rel="noreferrer" target="_blank">OMIM:616192</a> Alobar holoprosencephaly</li>
+              <li><b>2</b> · <a href="https://omim.org/entry/602782" rel="noreferrer" target="_blank">OMIM:602782</a> Alpha-thalassemia/MR, X-linked</li>
+            </ul>
+          </article>
+          <article class="panel panel--accent">
+            <p class="eyebrow">노트북 재실행 · HPOA 2026-06-23</p>
+            <h2>동률 3건이 3개 공유</h2>
+            <ul>
+              <li><b>5</b> · OMIM:619269 — <b>변화 없음</b></li>
+              <li><b>3</b> · OMIM:618500 — <b>변화 없음</b></li>
+              <li><b>3</b> · <a href="https://omim.org/entry/621585" rel="noreferrer" target="_blank">OMIM:621585</a> Mendez-Johnson syndrome — <b>신규</b></li>
+              <li><b>3</b> · <a href="https://omim.org/entry/256500" rel="noreferrer" target="_blank">OMIM:256500</a> Netherton syndrome — <b>신규</b></li>
+              <li><b>2</b> · <a href="https://omim.org/entry/617248" rel="noreferrer" target="_blank">OMIM:<b>617248</b></a> 3-methylglutaconic VIII — <b>번호 변경</b></li>
+            </ul>
+          </article>
+        </div>
+        <p class="takeaway"><strong>세 가지를 읽습니다</strong> — ① 진단 결론(1위)은 견고합니다. ② 3개 공유가 1건에서 3건으로 늘어 <b>“2위가 도드라진다”는 인상 자체가 사라집니다.</b> ③ 질병 식별자조차 <b>고정된 상수가 아닙니다.</b></p>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-rerun-candidates">상세 리포트 표 9 · 순위 대조</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide slide--visual" aria-label="온톨로지 계층 추론" data-report-refs="reasoning explicit-inferred fig-hierarchical-inference">
@@ -301,7 +419,22 @@ LIMIT 5</code></pre>
         </table>
         <p class="takeaway"><strong>설명 가능성</strong> — 어떤 하위 표현형과 계층 경로 때문에 포함됐는지 사용자에게 보여줍니다.</p>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#table-query-reasoning">상세 리포트 표 8 · 직접/추론 비교</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-query-reasoning">상세 리포트 표 11 · 직접/추론 비교</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide" aria-label="추론은 온톨로지를 따라 바뀐다" data-report-refs="reasoning reasoning-boundary table-inference-drift code-inference">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">MEASURED · 추론 경계</span></header>
+      <h1>깊이를 정하는 순간 절반을 못 보고, 계층이 바뀌면 결과도 바뀝니다</h1>
+      <p class="lead">노트북이 <code>HP:0000818</code>(내분비계 이상) 아래를 직접 세어 본 결과입니다.</p>
+      <div class="slide-body">
+        <div class="kpi-grid">
+          <article class="kpi"><strong>256</strong><p>깊이 <code>*1..3</code> 하위 표현형<br><small>책 3.27이 실제로 보는 범위</small></p></article>
+          <article class="kpi"><strong>474</strong><p>깊이 무제한 하위 표현형<br><small><code>n10s.inference.nodesInCategory</code>가 보는 범위 — <b>임의로 정한 깊이는 절반을 가린다</b></small></p></article>
+          <article class="kpi"><strong>깊이 4</strong><p><em>Transient neonatal diabetes mellitus</em><br><small>책 표 3.3에 실제로 나오는 항목인데 <code>*1..3</code>으로는 못 찾는다</small></p></article>
+        </div>
+        <p class="takeaway"><strong>더 중요한 발견</strong> — 책 표 3.3이 “내분비계 이상의 하위”로 굵게 강조한 <b><em>Hyperglycemia</em>는 현재 HPO에서 대사 이상 쪽으로 재분류</b>되었습니다. 코드도 데이터도 그대로인데 <b>의미 구조가 바뀌어 추론 결과가 달라진 것</b>입니다. 재현하려면 주석 릴리스뿐 아니라 <b>온톨로지 릴리스도 고정</b>해야 합니다.</p>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-inference-drift">상세 리포트 표 10 · 추론 범위 실측</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide slide--section" aria-label="검증과 도입 판단 섹션" data-report-refs="evidence-limits decision fig-validation-gates table-failure-modes table-decision">
@@ -320,6 +453,35 @@ LIMIT 5</code></pre>
       <footer class="slide-footer"><a class="report-ref" href="report.html#fig-validation-gates">상세 리포트 그림 8 · 검증 게이트</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
+    <section class="slide" aria-label="근거 화면은 이미 만들 수 있다" data-report-refs="evidence-limits evidence-drilldown query-case">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">CODE · 근거 추적</span></header>
+      <h1>“근거를 열어볼 수 있어야 한다”는 이미 만들 수 있는 질의다</h1>
+      <p class="lead">교재 §3.4 연습문제 — 3.26에 관계 속성을 더해 보세요. 달라지는 건 한 군데뿐입니다.</p>
+      <div class="slide-body query-strip">
+        <pre><code class="language-cypher">MATCH (phe:HpoPhenotype)
+WHERE phe.label IN $features
+MATCH (dis:HpoDisease)
+  -[rel:HAS_PHENOTYPIC_FEATURE]-&gt;(phe)
+WITH dis, count(DISTINCT phe) AS matched,
+  collect({
+    feature:  phe.label,
+    evidence: rel.evidenceName,
+    source:   rel.source,
+    url:      rel.url,
+    curator:  rel.createdBy,
+    date:     rel.creationDate
+  }) AS grounds
+RETURN dis.id, dis.label, matched, grounds
+ORDER BY matched DESC</code></pre>
+        <div class="ranking-list">
+          <article><b>5/5</b><div><p>OMIM:619269 Ondontochondrodysplasia 2</p><small>다섯 특징이 <b>모두 같은 논문 하나</b>에서 — <a href="https://pubmed.ncbi.nlm.nih.gov/32101163" rel="noreferrer" target="_blank">PMID:32101163</a> · Published clinical study · probinson (2021-06-20)</small></div></article>
+          <article><b>3/5</b><div><p>OMIM:618500 Holoprosencephaly 12</p><small>근거가 <b>섞여 있다</b> — 1건은 논문(<a href="https://pubmed.ncbi.nlm.nih.gov/31006513" rel="noreferrer" target="_blank">PMID:31006513</a>), 2건은 <a href="https://omim.org/entry/618500" rel="noreferrer" target="_blank">OMIM</a> 텍스트를 기계가 파싱한 <em>Inferred from electronic annotation</em></small></div></article>
+        </div>
+      </div>
+      <p class="takeaway"><strong>겹침 수가 감추는 것</strong> — 같은 “3개 일치”라도 <b>근거의 무게가 다릅니다.</b> 관계에 <code>rel</code>이라는 이름 하나를 붙였을 뿐인데 이 차이가 보입니다. §2.2에서 LPG를 고른 결정이 값을 치르는 지점입니다.</p>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#evidence-drilldown">상세 리포트 §6.2 · 근거 화면</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
     <section class="slide" aria-label="임상 안전 경계" data-report-refs="evidence-limits medical-boundary table-failure-modes">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">SAFETY BOUNDARY</span></header>
       <h1>이 장의 결과는 진단이 아니라 검토 가능한 후보 생성이다</h1>
@@ -336,7 +498,7 @@ LIMIT 5</code></pre>
         </div>
         <p class="takeaway"><strong>안전 원칙</strong> — 질병명만 내보내지 말고 원 주석·추론 경로·데이터 버전을 함께 보여준 뒤 사람의 검토로 넘깁니다.</p>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#medical-boundary">상세 리포트 §6.2 · 임상 안전 경계</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#medical-boundary">상세 리포트 §6.3 · 임상 안전 경계</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide" aria-label="온톨로지 기반 KG 도입 판단" data-report-refs="decision technology-decision table-decision">
@@ -350,7 +512,7 @@ LIMIT 5</code></pre>
         </div>
         <p class="takeaway"><strong>최소 파일럿</strong> — 대표 질문 3개, 고정 HPO 스냅샷, 주석 보존 모델, 직접/추론 분리 화면으로 시작합니다.</p>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#table-decision">상세 리포트 표 10 · 도입 판단</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-decision">상세 리포트 표 13 · 도입 판단</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide" aria-label="발표 정리 질문" data-report-refs="decision discussion table-discussion">
@@ -365,7 +527,7 @@ LIMIT 5</code></pre>
         </div>
         <p class="takeaway"><strong>토론</strong> — 가장 답하기 어려운 질문이 지금 설계에서 가장 짧은 미검증 구간입니다.</p>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#table-discussion">상세 리포트 표 11 · 토론 질문</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-discussion">상세 리포트 표 14 · 토론 질문</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide slide--closing" aria-label="정리와 질의응답" data-report-refs="summary decision minimum-pilot">

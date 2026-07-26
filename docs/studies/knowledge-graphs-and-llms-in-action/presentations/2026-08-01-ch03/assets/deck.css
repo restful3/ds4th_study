@@ -462,6 +462,13 @@ a {
   color: #8e9caf;
 }
 
+/* 여러 리스팅을 한 화면에 나란히 놓는 코드 슬라이드용 — 18px 기본값으로는 세로가 잘린다. */
+.code-block--dense {
+  padding: 24px 28px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
 .slide--closing {
   position: relative;
   padding: 50px 84px 46px;
