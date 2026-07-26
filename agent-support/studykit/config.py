@@ -66,6 +66,11 @@ class Study:
     listing_offsets: dict[str, int] = field(default_factory=dict)
     #: 소스 폴더명 -> {책 리스팅 번호: {"repo": 파일번호} 또는 {"source": "explainer"}}
     listing_overrides: dict[str, dict[str, dict]] = field(default_factory=dict)
+    #: 소스 폴더명 -> {파일 상대경로: [{"symbol": 이름, "note": 설명}, ...]}
+    #: 한 파일 안에 책 리스팅과 그렇지 않은 코드가 섞여 있을 때, 어느 심볼이 책이
+    #: 아닌지를 적는다. 업스트림이 여섯 리스팅을 번호 없는 한 파일에 합쳐 둔 ch11 이
+    #: 그런 경우다. 노트북이 이 목록을 들면 파일이 갱신돼도 아무도 모른다.
+    unnumbered_symbols: dict[str, dict[str, list[dict]]] = field(default_factory=dict)
     #: 최종 출간본에 대응 챕터가 없는 MEAP 잔여 디렉터리 (meap-only/ 아래 이름)
     meap_only: tuple[str, ...] = ()
     #: 봇 차단으로 200 이 아니지만 유효한 URL
@@ -254,6 +259,10 @@ def load(study_root: Path | str | None = None) -> Study:
         listing_overrides={
             chapter: {str(num): dict(spec) for num, spec in entries.items()}
             for chapter, entries in (mapping.get("listings", {}) or {}).items()
+        },
+        unnumbered_symbols={
+            chapter: {str(path): [dict(item) for item in items] for path, items in files.items()}
+            for chapter, files in (mapping.get("unnumbered", {}) or {}).items()
         },
         meap_only=tuple(mapping.get("meap_only", ())),
         url_allow_non_200=tuple(notebook.get("url_allow_non_200", ())),

@@ -381,8 +381,16 @@ def _check_external_urls(study: Study, markdown: str, label: str) -> list[str]:
     return failures
 
 # ---------------------------------------------------------------- 완성 게이트
-#: 책 리스팅이 노트북에서 설명되는 방식. 전부 이 중 하나로 분류돼야 한다.
+#: 책 리스팅이 노트북에서 설명되는 방식. 한 축 표기이고 대부분의 리스팅은 이걸로 족하다.
 COVERAGE_KINDS = ("executed", "reproduced", "substituted", "documented-only", "optional")
+
+#: 두 축 표기. 한 축으로 표현되지 않는 조합이 있어서 나중에 더했다 — 책 15장의 15.2 는
+#: 깨끗한 환경에서 돌지 않으면서(run) 동시에 렌더러가 교체된 상태로 실행된다(fidelity).
+#: 기존 한 축 표기를 버리지 않는다. 두 축이 필요한 리스팅만 표로 적으면 된다.
+#:
+#:     "15.2": {"run": "optional", "fidelity": "substituted", "note": "..."}
+RUN_STATES = ("executed", "optional", "documented-only")
+SOURCE_FIDELITY = ("original", "reproduced", "substituted")
 
 TODO_MARKER = re.compile(r"TODO\(agent\)")
 
@@ -484,11 +492,39 @@ def check_coverage_numbers(declared: dict, book: dict, mapped: set, label: str) 
         )
 
     for number, kind in sorted(declared.items(), key=lambda kv: order(kv[0])):
-        if kind not in COVERAGE_KINDS:
-            failures.append(
-                f"{label}: 리스팅 {number} 의 분류 '{kind}' 가 유효하지 않다 "
-                f"({', '.join(COVERAGE_KINDS)} 중 하나여야 한다)"
-            )
+        failures.extend(_check_coverage_kind(number, kind, label))
+    return failures
+
+
+def _check_coverage_kind(number: str, kind, label: str) -> list[str]:
+    """한 축 문자열이거나, run·fidelity 두 축을 가진 표여야 한다."""
+    if isinstance(kind, str):
+        if kind in COVERAGE_KINDS:
+            return []
+        return [
+            f"{label}: 리스팅 {number} 의 분류 '{kind}' 가 유효하지 않다 "
+            f"({', '.join(COVERAGE_KINDS)} 중 하나여야 한다)"
+        ]
+    if not isinstance(kind, dict):
+        return [f"{label}: 리스팅 {number} 의 분류는 문자열이거나 run·fidelity 표여야 한다"]
+
+    failures: list[str] = []
+    missing = {"run", "fidelity"} - set(kind)
+    if missing:
+        failures.append(
+            f"{label}: 리스팅 {number} 의 두 축 표기에 {', '.join(sorted(missing))} 가 빠졌다"
+        )
+    run, fidelity = kind.get("run"), kind.get("fidelity")
+    if run is not None and run not in RUN_STATES:
+        failures.append(
+            f"{label}: 리스팅 {number} 의 run '{run}' 가 유효하지 않다 "
+            f"({', '.join(RUN_STATES)} 중 하나여야 한다)"
+        )
+    if fidelity is not None and fidelity not in SOURCE_FIDELITY:
+        failures.append(
+            f"{label}: 리스팅 {number} 의 fidelity '{fidelity}' 가 유효하지 않다 "
+            f"({', '.join(SOURCE_FIDELITY)} 중 하나여야 한다)"
+        )
     return failures
 
 
@@ -498,7 +534,7 @@ def check_declared_listings(study: Study) -> list[str]:
     `[mapping.listings.chXX]` 를 정본이라고 선언해 놓고 검증하지 않으면, 경로 오타나
     이름이 바뀐 심볼이 노트북 실행 시점까지 드러나지 않는다.
     """
-    from studykit import listing_source
+    from studykit import cypher, listing_source
 
     failures: list[str] = []
     src_dirs = study.src_dirs()
@@ -513,12 +549,26 @@ def check_declared_listings(study: Study) -> list[str]:
             except listing_source.ListingSpecError as exc:
                 failures.append(f"{repo_dir} 리스팅 {number}: {exc}")
                 continue
+            if spec.kind == "repo":
+                # 번호 붙은 리스팅 파일. 이 종류를 건너뛰면 "책 2.1 은 파일 2.1 이
+                # 아니라 2.3 이다" 같은 대응이 틀려도 통과하고, 그래서 노트북이
+                # 같은 기대값을 다시 하드코딩하게 된다.
+                try:
+                    cypher.find(spec.repo_number, base / "listings")
+                except (FileNotFoundError, ValueError) as exc:
+                    failures.append(f"{repo_dir} 리스팅 {number}: {exc}")
+                continue
             if spec.kind != "repo-file":
                 continue
             try:
                 listing_source.read(spec, base)
             except listing_source.ListingSpecError as exc:
                 failures.append(f"{repo_dir} 리스팅 {number}: {exc}")
+
+    # 책 번호가 없는 심볼 선언도 실재해야 한다. 업스트림이 갱신돼 이름이 바뀌면
+    # 노트북의 "책에 없는 조각" 목록이 조용히 빈다.
+    for repo_dir in sorted(study.unnumbered_symbols):
+        failures.extend(listing_source.check_unnumbered_symbols(study, repo_dir))
     return failures
 
 

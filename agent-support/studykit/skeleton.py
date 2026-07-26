@@ -204,31 +204,32 @@ def listing_helper_cell(repo_dir: str) -> dict:
     """리스팅 헬퍼. 대응은 study.toml 이 정본이라 오프셋을 하드코딩하지 않는다."""
     return code('''"""리스팅 접근 헬퍼.
 
-리스팅 번호 대응은 study.toml 이 정본이다. 여기에 하드코딩하면 값이 두 곳에 생겨
-갈라진다. 최종 교재가 코드 없는 리스팅(프롬프트 등)을 끼워넣으면 단일 오프셋으로는
-표현되지 않으므로 resolve_listing() 을 쓴다.
+리스팅 번호 대응은 study.toml 이 정본이고, 그 선언을 해석하는 일은 공용 리더
+studykit.listing_source 가 한다. 노트북은 대응표도 오프셋 산술도 ast 헬퍼도 두지
+않는다 — 챕터마다 재구현하면 정본이 이름만 남는다. 선언이 없는 번호는 리더가
+[mapping.listing_offsets] 로 풀고, 그것으로도 안 되는 번호만 명시 선언하면 된다.
 """
 import time
+
+from studykit import listing_source
 
 REPO_DIR = "__REPO_DIR__"
 
 
 def source_of(book_no: str) -> str:
     """책 리스팅 번호로 원문을 가져온다."""
-    kind, value = STUDY.resolve_listing(REPO_DIR, book_no)
-    if kind != "repo":
-        raise KeyError(
-            f"책 {book_no} 은 저장소에 코드 파일이 없다 (source={kind}). "
-            f"해설판 본문을 실은 마크다운 셀을 보라."
-        )
-    return cypher.read(value, HERE / "listings").strip()
+    return listing_source.chunk_for(STUDY, REPO_DIR, book_no).text.strip()
 
 
 def show(book_no: str) -> None:
-    kind, value = STUDY.resolve_listing(REPO_DIR, book_no)
-    origin = f"파일 {value}" if kind == "repo" else "해설판 본문"
-    print(f"── 책 Listing {book_no}  ({origin}) ──")
-    print(source_of(book_no) if kind == "repo" else "(아래 마크다운 셀에 원문을 실었다)")
+    try:
+        chunk = listing_source.chunk_for(STUDY, REPO_DIR, book_no)
+    except listing_source.ListingSpecError as exc:
+        print(f"── 책 Listing {book_no}  (저장소에 코드 없음) ──")
+        print(f"   {exc}")
+        return
+    print(f"── 책 Listing {book_no}  ({chunk.rel_path}) ──")
+    print(chunk.text.strip())
 
 
 def statements(book_no: str) -> list:
@@ -254,12 +255,15 @@ def run(book_no: str, db: str = "neo4j", limit: int = 5, **params):
     return rows
 
 
-# 책 리스팅 -> 저장소 파일 대조표.
+# 책 리스팅 -> 저장소 위치 대조표. 선언된 번호는 공용 리더가 위치와 제목을 준다.
+for row in listing_source.cross_reference(STUDY, REPO_DIR):
+    print(f"{row.number:<8}{row.title[:44]:<46}{row.where}")
+
 # listings/ 가 없는 챕터가 있다 (코드가 importer/·analysis/ 등에만 있는 경우).
 if (HERE / "listings").is_dir():
-    print(f"{'책':<8}저장소 파일")
-    for path in cypher.listings(HERE / "listings"):
-        print(f"{path.name.split(' ')[0]:<8}{path.name}")
+    leftover = listing_source.unnumbered_listings(STUDY, REPO_DIR)
+    print(f"\\n어떤 책 번호도 가리키지 않는 listings/ 파일: "
+          f"{', '.join(leftover) if leftover else '없다'}")
 else:
     print("listings/ 가 없다. 이 챕터의 코드는 아래 위치에 있다:")
     for entry in sorted(HERE.iterdir()):

@@ -207,10 +207,7 @@ def chunk_for(study, repo_dir: str, book_no: str) -> ListingChunk:
     """
     raw = study.listing_overrides.get(repo_dir, {}).get(str(book_no))
     if raw is None:
-        raise ListingSpecError(
-            f"{repo_dir} 의 책 {book_no} 이 study.toml 에 선언되지 않았다 — "
-            f"[mapping.listings.{repo_dir}] 에 먼저 적어라"
-        )
+        return _from_offset(study, repo_dir, str(book_no))
     spec = parse(raw)
     if spec.kind == "explainer":
         raise ListingSpecError(
@@ -225,9 +222,42 @@ def chunk_for(study, repo_dir: str, book_no: str) -> ListingChunk:
         lines = path.read_text(encoding="utf-8").splitlines()
         return ListingChunk(
             text="\n".join(lines), path=path, start=1, end=max(len(lines), 1),
-            whole_file=True,
+            whole_file=True, rel_path=f"listings/{path.name}",
         )
     return read(spec, study.src_dirs()[repo_dir])
+
+
+def _from_offset(study, repo_dir: str, book_no: str) -> ListingChunk:
+    """선언이 없는 번호를 챕터 오프셋으로 푼다.
+
+    `[mapping.listings]` 는 예외를 적는 곳이고, 규칙적인 챕터는 오프셋 하나로 끝난다.
+    그 경로를 여기 두지 않으면 노트북이 `minor + offset` 을 직접 계산하게 되고,
+    번호 해석이 두 곳으로 갈라진다 — 책 3장이 실제로 그렇게 갈라져 있었다.
+    """
+    from studykit import cypher
+
+    kind, value = study.resolve_listing(repo_dir, book_no)
+    if kind != "repo":
+        raise ListingSpecError(
+            f"{repo_dir} 의 책 {book_no} 은 저장소에 코드가 없다 (source={kind}). "
+            f"노트북이 해설판 본문을 실은 마크다운 셀을 보라"
+        )
+    base = study.src_dirs().get(repo_dir)
+    if base is None:
+        raise ListingSpecError(f"{repo_dir}: 소스 폴더가 없다")
+    try:
+        path = cypher.find(value, base / "listings")
+    except (FileNotFoundError, ValueError) as exc:
+        raise ListingSpecError(
+            f"{repo_dir} 의 책 {book_no} 을 오프셋으로 풀어 파일 {value} 를 찾았으나 "
+            f"실패했다 ({exc}). 규칙에서 벗어나는 번호이면 "
+            f"[mapping.listings.{repo_dir}] 에 명시 선언하라"
+        ) from exc
+    lines = path.read_text(encoding="utf-8").splitlines()
+    return ListingChunk(
+        text="\n".join(lines), path=path, start=1, end=max(len(lines), 1),
+        whole_file=True, rel_path=f"listings/{path.name}",
+    )
 
 
 def cross_reference(study, repo_dir: str) -> list[CrossReferenceRow]:
@@ -314,6 +344,63 @@ def unnumbered_listings(study, repo_dir: str) -> list[str]:
             continue
         out.append(path.name)
     return out
+
+
+@dataclass(frozen=True)
+class UnnumberedSymbol:
+    """책 번호가 붙지 않은 심볼 하나. 줄 범위는 매번 `ast` 로 다시 찾는다."""
+
+    rel_path: str
+    symbol: str
+    note: str
+    start: int
+    end: int
+
+    def origin(self) -> str:
+        return f"{self.rel_path}  L{self.start}-L{self.end}  ({self.symbol})"
+
+
+def unnumbered_symbols(study, repo_dir: str) -> list[UnnumberedSymbol]:
+    """책 번호가 없는 심볼 목록. `[mapping.unnumbered.chXX]` 가 정본이다.
+
+    `unnumbered_listings()` 는 파일 단위로만 본다. 업스트림이 여러 리스팅을 번호 없는
+    한 파일에 합쳐 둔 챕터에서는 그것으로 부족해서 노트북이 심볼 표를 직접 들고 있었다.
+    찾지 못한 심볼은 조용히 빼지 않고 check_unnumbered_symbols 가 실패로 보고한다.
+    """
+    base = study.src_dirs().get(repo_dir)
+    if base is None:
+        return []
+    rows: list[UnnumberedSymbol] = []
+    for rel_path, items in sorted(study.unnumbered_symbols.get(repo_dir, {}).items()):
+        for item in items:
+            symbol = str(item["symbol"])
+            spec = ListingSpec(kind="repo-file", path=rel_path, symbol=symbol)
+            try:
+                chunk = read(spec, base)
+            except ListingSpecError:
+                continue
+            rows.append(UnnumberedSymbol(
+                rel_path=rel_path, symbol=symbol, note=str(item.get("note", "")),
+                start=chunk.start, end=chunk.end,
+            ))
+    return rows
+
+
+def check_unnumbered_symbols(study, repo_dir: str) -> list[str]:
+    """선언한 심볼이 실제로 파일에 있는가. 업스트림이 갱신되면 조용히 사라진다."""
+    base = study.src_dirs().get(repo_dir)
+    if base is None:
+        return [f"{repo_dir}: 소스 폴더가 없다"]
+    failures: list[str] = []
+    for rel_path, items in sorted(study.unnumbered_symbols.get(repo_dir, {}).items()):
+        for item in items:
+            symbol = str(item["symbol"])
+            spec = ListingSpec(kind="repo-file", path=rel_path, symbol=symbol)
+            try:
+                read(spec, base)
+            except ListingSpecError as exc:
+                failures.append(f"{repo_dir} 번호 없는 심볼 {symbol}: {exc}")
+    return failures
 
 
 def _find_symbol(tree: ast.Module, symbol: str) -> ast.AST | None:

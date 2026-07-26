@@ -163,6 +163,42 @@ class RealStudyMappingTests(unittest.TestCase):
                 failures = verify.check_upstream_mapping(study)
                 self.assertEqual([], failures, "\n".join(failures))
 
+class DeclaredRepoListingTests(unittest.TestCase):
+    """`{ repo = "N.M" }` 선언도 실제 파일까지 해결돼야 한다.
+
+    이 종류를 검사에서 빼 두면 "책 2.1 은 파일 2.1 이 아니라 2.3 이다" 같은 대응이
+    틀려도 게이트가 통과한다. 그래서 노트북이 같은 기대값을 다시 하드코딩하게 된다.
+    """
+
+    def setUp(self) -> None:
+        self._tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self._tmp.name)
+        self.addCleanup(self._tmp.cleanup)
+
+    def _study(self, declaration: str) -> config.Study:
+        (self.root / config.CONFIG_NAME).write_text(
+            "[study]\n"
+            'slug = "probe"\n'
+            'title = "Probe"\n\n'
+            "[mapping.chapters]\n"
+            '"chapter_02_probe" = "ch02"\n\n'
+            "[mapping.listings.ch02]\n"
+            f"{declaration}\n",
+            encoding="utf-8",
+        )
+        listings = self.root / "chapter_02_probe" / "src" / "ch02" / "listings"
+        listings.mkdir(parents=True, exist_ok=True)
+        (listings / "2.3 - Prompt for checking reasoning").write_text("prompt\n", encoding="utf-8")
+        return config.load(self.root)
+
+    def test_resolvable_repo_declaration_passes(self) -> None:
+        study = self._study('"2.1" = { repo = "2.3" }')
+        self.assertEqual([], verify.check_declared_listings(study))
+
+    def test_unresolvable_repo_declaration_is_rejected(self) -> None:
+        study = self._study('"2.1" = { repo = "2.1" }')
+        failures = verify.check_declared_listings(study)
+        self.assertTrue(any("2.1" in f for f in failures), failures)
 
 if __name__ == "__main__":
     unittest.main()

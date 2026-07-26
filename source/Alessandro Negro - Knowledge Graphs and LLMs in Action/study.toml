@@ -171,6 +171,20 @@ meap_only = ["meap-ch05", "meap-ch06"]
 "11.6" = { source = "repo-file", path = "listings/GNN_all_in_one.py", symbol = "GatedGraphUpdate" }
 "11.7" = { source = "repo-file", path = "listings/GNN_all_in_one.py", symbol = "JumpingKnowledge" }
 
+# 같은 파일 안에 있지만 책에 번호가 붙지 않은 심볼. 파일을 열었을 때 무엇이 책이고
+# 무엇이 아닌지 구분하지 못하면 책에 없는 코드를 책 내용으로 오해한다.
+# 노트북이 이 표를 들고 있으면 업스트림이 갱신돼 심볼이 사라져도 아무도 모른다 —
+# 여기 두면 study-verify 가 매번 ast 로 실재를 확인한다.
+[mapping.unnumbered.ch11]
+"listings/GNN_all_in_one.py" = [
+  { symbol = "GraphAttentionHead", note = "11.2 가 호출하는 헬퍼. 책에는 정의가 실려 있지 않다" },
+  { symbol = "MeanAggregator", note = "11.6.1 평균 정규화 수식의 구현" },
+  { symbol = "MaxAggregator", note = "11.6.1 에서 언급한 max 집계 변형" },
+  { symbol = "FlexibleGNN", note = "위 조각들을 한 모델로 묶은 통합 예제 (책에 없음)" },
+  { symbol = "create_flexible_gnn", note = "설정 dict 로 FlexibleGNN 을 만드는 팩토리 (책에 없음)" },
+  { symbol = "run_example", note = "tasks.run('gnn') 이 부르는 진입점 (책에 없음)" },
+]
+
 # ch12(업스트림 ch14) 는 listings/ 디렉터리가 아예 없다. 업스트림은 재사용 부품(model/·eval/·plot/)과
 # 학습 함수 라이브러리(train_for_*.py)만 담고 진입점이 없다 — 실제 실행 코드는 Readme 가
 # 안내하는 Colab 노트북에만 있다. 그래서 책 리스팅 25개 중 모델 클래스 8건만 저장소에

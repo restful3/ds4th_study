@@ -295,6 +295,44 @@ class GateIntegrationTests(unittest.TestCase):
         )
         self.assertEqual(failures, [])
 
+    def test_two_axis_coverage_is_accepted(self) -> None:
+        """한 축으로는 "돌지 않았고 대체됐다" 를 적을 수 없다 (책 15장의 15.2)."""
+        failures = self.verify.check_coverage_numbers(
+            declared={"10.4": {"run": "optional", "fidelity": "substituted",
+                               "note": "런타임에 렌더러를 교체한 상태로 돈다"}},
+            book={"10.4": "제목"},
+            mapped={"10.4"},
+            label="x.ipynb",
+        )
+        self.assertEqual(failures, [])
+
+    def test_two_axis_rejects_unknown_run_state(self) -> None:
+        failures = self.verify.check_coverage_numbers(
+            declared={"10.4": {"run": "지어냄", "fidelity": "original"}},
+            book={"10.4": "제목"},
+            mapped={"10.4"},
+            label="x.ipynb",
+        )
+        self.assertTrue(any("지어냄" in f for f in failures), failures)
+
+    def test_two_axis_rejects_unknown_fidelity(self) -> None:
+        failures = self.verify.check_coverage_numbers(
+            declared={"10.4": {"run": "executed", "fidelity": "지어냄"}},
+            book={"10.4": "제목"},
+            mapped={"10.4"},
+            label="x.ipynb",
+        )
+        self.assertTrue(any("지어냄" in f for f in failures), failures)
+
+    def test_two_axis_requires_both_keys(self) -> None:
+        failures = self.verify.check_coverage_numbers(
+            declared={"10.4": {"run": "executed"}},
+            book={"10.4": "제목"},
+            mapped={"10.4"},
+            label="x.ipynb",
+        )
+        self.assertTrue(failures)
+
     def test_missing_book_listing_still_fails(self) -> None:
         failures = self.verify.check_coverage_numbers(
             declared={"10.4": "executed"},
@@ -415,3 +453,109 @@ class TitleTests(unittest.TestCase):
         rows = {r.number: r for r in listing_source.cross_reference(self.study, "ch09")}
         self.assertIn("9.5", rows)
         self.assertIsInstance(rows["9.5"].title, str)
+
+
+class OffsetFallbackTests(unittest.TestCase):
+    """선언이 없는 번호는 챕터 오프셋으로 푼다.
+
+    없으면 노트북이 `f"{major}.{minor + offset}"` 을 직접 계산하게 되고, 그 순간
+    번호 해석이 두 곳에 생긴다. 책 3장이 실제로 그랬다.
+    """
+
+    def setUp(self) -> None:
+        from studykit import config
+
+        self._tmp = tempfile.TemporaryDirectory()
+        root = Path(self._tmp.name)
+        self.addCleanup(self._tmp.cleanup)
+        (root / config.CONFIG_NAME).write_text(
+            "[study]\n"
+            'slug = "probe"\n'
+            'title = "Probe"\n\n'
+            "[mapping.chapters]\n"
+            '"chapter_03_probe" = "ch03"\n\n'
+            "[mapping.listing_offsets]\n"
+            "ch03 = 3\n",
+            encoding="utf-8",
+        )
+        listings = root / "chapter_03_probe" / "src" / "ch03" / "listings"
+        listings.mkdir(parents=True)
+        (listings / "3.16 - create_database").write_text(
+            "CREATE DATABASE hpo IF NOT EXISTS\n", encoding="utf-8")
+        self.study = config.load(root)
+
+    def test_undeclared_number_uses_chapter_offset(self) -> None:
+        chunk = listing_source.chunk_for(self.study, "ch03", "3.13")
+        self.assertIn("CREATE DATABASE hpo", chunk.text)
+        self.assertIn("3.16 - create_database", chunk.origin())
+
+    def test_missing_file_names_the_number_it_tried(self) -> None:
+        """오프셋이 가리킨 파일이 없으면 무엇을 찾았는지 알려야 고칠 수 있다."""
+        with self.assertRaises(listing_source.ListingSpecError) as ctx:
+            listing_source.chunk_for(self.study, "ch03", "3.20")
+        message = str(ctx.exception)
+        self.assertIn("3.23", message)          # 3.20 + 오프셋 3
+        self.assertIn("mapping.listings.ch03", message)
+
+    def test_declaration_wins_over_offset(self) -> None:
+        """명시 선언이 있으면 오프셋 계산은 쓰지 않는다."""
+        self.study.listing_overrides["ch03"] = {"3.20": {"repo": "3.16"}}
+        chunk = listing_source.chunk_for(self.study, "ch03", "3.20")
+        self.assertIn("CREATE DATABASE hpo", chunk.text)
+
+
+class UnnumberedSymbolTests(unittest.TestCase):
+    """한 파일 안에서 어느 심볼이 책 리스팅이 아닌지도 study.toml 이 정본이다.
+
+    `unnumbered_listings()` 는 파일 단위로만 본다. 업스트림이 여섯 리스팅을 번호 없는
+    한 파일에 합쳐 둔 챕터에서는 그것으로 부족해서, 노트북이 심볼 목록을 직접 들고
+    있었다. 그 목록이 노트북 안에 있으면 파일이 갱신돼도 아무도 모른다.
+    """
+
+    def setUp(self) -> None:
+        from studykit import config
+
+        self._tmp = tempfile.TemporaryDirectory()
+        root = Path(self._tmp.name)
+        self.addCleanup(self._tmp.cleanup)
+        (root / config.CONFIG_NAME).write_text(
+            "[study]\n"
+            'slug = "probe"\n'
+            'title = "Probe"\n\n'
+            "[mapping.chapters]\n"
+            '"chapter_11_probe" = "ch11"\n\n'
+            "[mapping.listings.ch11]\n"
+            '"11.2" = { source = "repo-file", path = "listings/all.py", symbol = "Booked" }\n\n'
+            "[mapping.unnumbered.ch11]\n"
+            '"listings/all.py" = [\n'
+            '  { symbol = "Helper", note = "11.2 가 부르는 헬퍼" },\n'
+            "]\n",
+            encoding="utf-8",
+        )
+        listings = root / "chapter_11_probe" / "src" / "ch11" / "listings"
+        listings.mkdir(parents=True)
+        (listings / "all.py").write_text(
+            "class Booked:\n    pass\n\n\nclass Helper:\n    def go(self):\n        return 1\n",
+            encoding="utf-8",
+        )
+        self.study = config.load(root)
+
+    def test_declared_symbol_is_located_by_ast(self) -> None:
+        rows = listing_source.unnumbered_symbols(self.study, "ch11")
+        self.assertEqual(1, len(rows))
+        row = rows[0]
+        self.assertEqual("Helper", row.symbol)
+        self.assertEqual("listings/all.py", row.rel_path)
+        self.assertEqual(5, row.start)
+        self.assertEqual(7, row.end)
+        self.assertIn("헬퍼", row.note)
+
+    def test_missing_symbol_is_reported_not_hidden(self) -> None:
+        """파일이 갱신돼 심볼이 사라지면 게이트가 말해야 한다."""
+        path = self.study.src_dirs()["ch11"] / "listings" / "all.py"
+        path.write_text("class Booked:\n    pass\n", encoding="utf-8")
+        failures = listing_source.check_unnumbered_symbols(self.study, "ch11")
+        self.assertTrue(any("Helper" in f for f in failures), failures)
+
+    def test_clean_declaration_has_no_failures(self) -> None:
+        self.assertEqual([], listing_source.check_unnumbered_symbols(self.study, "ch11"))
