@@ -109,10 +109,39 @@ meap_only = ["meap-ch05", "meap-ch06"]
 "4.22" = { repo = "4.21" }          # Finding known protein-disease associations
 "4.23" = { source = "explainer" }   # Example LLM clinical analysis prompt
 
-# ch03 은 업스트림 파일이 망가져 해설판 본문을 써야 하는 두 건이 있다.
+# ch03 은 오프셋 3 이 전 구간에 들어맞지만(책 3.13 = 파일 3.16), 그렇다고 두 예외만
+# 적어 두면 노트북이 나머지 26건을 스스로 계산하게 된다 — 실제로 노트북이 오프셋 산술과
+# 대체 원문 표를 따로 들고 있었다. 번호 해석은 listing_source 한 곳에서만 하도록
+# 28건을 모두 선언한다. 3.1~3.12 는 OWL·SPARQL·RDF-star 예시라 저장소에 파일이 없다.
 [mapping.listings.ch03]
-"3.21" = { source = "explainer" }   # 저장소 3.24 가 3.25 와 내용 중복
-"3.25" = { source = "explainer" }   # 저장소 3.28 이 0바이트
+"3.1"  = { source = "explainer", reason = "book-only" }   # hpo.owl 의 제1형 당뇨병
+"3.2"  = { source = "explainer", reason = "book-only" }   # rdflib 로 OWL 읽기
+"3.3"  = { source = "explainer", reason = "book-only" }   # OWL 을 트리플 집합으로
+"3.4"  = { source = "explainer", reason = "book-only" }   # phenotype.hpoa 표본
+"3.5"  = { source = "explainer", reason = "book-only" }   # n-ary 관계 예시
+"3.6"  = { source = "explainer", reason = "book-only" }   # n-ary 관계 SPARQL
+"3.7"  = { source = "explainer", reason = "book-only" }   # 명명 그래프 예시
+"3.8"  = { source = "explainer", reason = "book-only" }   # 명명 그래프 SPARQL
+"3.9"  = { source = "explainer", reason = "book-only" }   # RDF-star 예시
+"3.10" = { source = "explainer", reason = "book-only" }   # SPARQL-star 질의
+"3.11" = { source = "explainer", reason = "book-only" }   # LPG 표현 예시
+"3.12" = { source = "explainer", reason = "book-only" }   # Cypher 질의 예시
+"3.13" = { repo = "3.16" }          # Creating the HPO database in Neo4j
+"3.14" = { repo = "3.17" }          # Creating constraints and indexes
+"3.15" = { repo = "3.18" }          # Configuring the Neosemantics plugin
+"3.16" = { repo = "3.19" }          # Loading the HPO vocabulary into Neo4j
+"3.17" = { repo = "3.20" }          # Enriching nodes
+"3.18" = { repo = "3.21" }          # Showing part of the KG at the current stage
+"3.19" = { repo = "3.22" }          # Creating HpoDisease nodes
+"3.20" = { repo = "3.23" }          # Creating relationships between disease/phenotype
+"3.21" = { source = "explainer", reason = "upstream-wrong" }    # 저장소 3.24 가 3.25 와 내용 중복
+"3.22" = { repo = "3.25" }          # Adding properties to HAS_PHENOTYPIC_FEATURE
+"3.23" = { repo = "3.26" }          # Enriching HAS_PHENOTYPIC_FEATURE with more properties
+"3.24" = { repo = "3.27" }          # Cleaning the KG
+"3.25" = { source = "explainer", reason = "upstream-missing" }  # 저장소 3.28 이 0바이트
+"3.26" = { repo = "3.29" }          # Finding diseases associated with phenotypic features
+"3.27" = { repo = "3.30" }          # Finding subclasses of endocrine system abnormalities
+"3.28" = { repo = "3.31" }          # Finding phenotypic features of the subclasses
 
 # ch02 는 책에 리스팅이 2.1 하나뿐인데 저장소에는 파일이 둘이다.
 # 책 2.1 "Prompt for checking reasoning capabilities"(농부·양·강 건너기)의 본문이
