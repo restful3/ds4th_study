@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 285" role="img" aria-labelledby="title desc">
   <title id="title">HPOA 한 행이 추적 가능한 그래프 관계가 되는 생애주기</title>
   <desc id="desc">TSV 한 행에서 질병과 표현형 ID를 매칭하고 관계를 생성한 뒤 원시 근거 필드를 추가하고 사람이 읽는 설명과 URL로 풍부화하며 품질 점검을 거친다.</desc>
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#63728a"/></marker>
+    <marker id="arrow" markerUnits="userSpaceOnUse" viewBox="0 0 8 6" refX="7.5" refY="3" markerWidth="8" markerHeight="6" orient="auto"><path d="M.5.5 7.5 3 .5 5.5Z" fill="#63728a"/></marker>
     <style>
       text{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#172033}
       .eyebrow{font-size:13px;font-weight:800;letter-spacing:1.2px;fill:#53647d}
@@ -12,7 +12,7 @@
       .line{fill:none;stroke:#63728a;stroke-width:3;marker-end:url(#arrow)}
     </style>
   </defs>
-  <rect width="960" height="420" rx="20" fill="#f7f8fa"/>
+  <rect width="960" height="285" rx="20" fill="#f7f8fa"/>
   <text x="480" y="42" class="eyebrow" text-anchor="middle">ONE HPOA ROW → ONE AUDITABLE ASSERTION</text>
   <g>
     <rect class="box" x="35" y="78" width="166" height="175" rx="15"/>
@@ -51,8 +51,5 @@
     <text x="811" y="197" class="small">날짜 파싱?</text>
     <text x="811" y="219" class="small">건수 보존?</text>
   </g>
-  <path class="line" d="M201 165H216"/><path class="line" d="M390 165H405"/><path class="line" d="M579 165H594"/><path class="line" d="M768 165H783"/>
-  <rect x="87" y="301" width="786" height="72" rx="14" fill="#e3ebf5" stroke="#8fa3bf"/>
-  <text x="480" y="329" class="head" text-anchor="middle">중요한 구현 경계</text>
-  <text x="480" y="355" class="small" text-anchor="middle">같은 질병–표현형 쌍의 주석이 여러 건이면 관계 식별자 없이 MERGE한 한 엣지에 마지막 값이 덮어써질 수 있다.</text>
+  <path class="line" d="M201 165H224"/><path class="line" d="M390 165H413"/><path class="line" d="M579 165H602"/><path class="line" d="M768 165H791"/>
 </svg>

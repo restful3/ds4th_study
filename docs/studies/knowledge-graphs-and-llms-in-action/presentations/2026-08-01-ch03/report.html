@@ -124,7 +124,7 @@
       <figure class="report-figure" id="fig-two-sources" data-deck-use="required">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 2</span><span class="asset-caption__title">정의·계층과 연관·근거를 한 그래프에 결합하기</span></figcaption>
         <img src="assets/figs/two-sources-one-graph.svg" alt="hp.owl의 표현형 정의와 계층, phenotype.hpoa의 질병 표현형 연관과 근거가 표준 ID로 결합되어 질병 노드, 표현형 노드, 속성 있는 관계를 만드는 구조">
-        <small class="asset-note">교재 §3.1.2, 그림 3.5–3.6과 Listing 3.1–3.4의 의미를 새로 배치. 원본 도형을 복제하지 않음.</small>
+        <small class="asset-note">교재 §3.1.2, 그림 3.5–3.6과 Listing 3.1–3.4의 의미를 새로 배치. 정의·계층은 표현형 노드에, 한 건의 연관을 뒷받침하는 근거는 질병–표현형 관계에 둔다. 원본 도형을 복제하지 않음.</small>
       </figure>
       <table class="cmp-table" id="table-source-contract">
         <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 3</span><span class="asset-caption__title">HPO 두 원천의 입력 계약</span></div></caption>
@@ -143,7 +143,7 @@
       <figure class="report-figure" id="fig-edge-metadata" data-deck-use="required">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 3</span><span class="asset-caption__title">같은 주석 메타데이터를 표현하는 네 가지 패턴</span></figcaption>
         <img src="assets/figs/edge-metadata-options.svg" alt="RDF n항 관계, RDF 명명 그래프, RDF-star, LPG 관계 속성이 질병 표현형 연결의 출처 작성자 날짜를 각기 다른 구조로 표현하는 비교">
-        <small class="asset-note">교재 §3.2.2, Listing 3.5–3.12의 구조를 관계 메타데이터라는 동일 질문으로 재구성.</small>
+        <small class="asset-note">교재 §3.2.2, Listing 3.5–3.12의 구조를 관계 메타데이터라는 동일 질문으로 재구성. n항 관계는 Annotation 자원에서 질병·표현형으로 나가는 관계를, 명명 그래프는 문장 묶음의 맥락을, RDF-star는 인용된 트리플의 메타데이터를, LPG는 개별 관계의 키–값을 보여준다.</small>
       </figure>
       <table class="cmp-table" id="table-rdf-lpg">
         <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 4</span><span class="asset-caption__title">RDF와 LPG의 선택 기준</span></div></caption>
@@ -171,20 +171,21 @@
       <figure class="report-figure" id="fig-build-pipeline" data-deck-use="required">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 4</span><span class="asset-caption__title">임상 질문에서 검증된 그래프 질의까지</span></figcaption>
         <img src="assets/figs/build-pipeline.svg" alt="임상 질문, HPO 두 원천 이해, RDF LPG 선택, 온톨로지 적재, 주석 적재, 정제와 점검, 직접 질의와 계층 추론이 검증 게이트를 거쳐 이어지는 파이프라인">
-        <small class="asset-note">교재 그림 3.1–3.2, 3.7, 3.9–3.10의 전체 흐름을 산출물과 검증 지점 중심으로 통합 재구성.</small>
+        <small class="asset-note">교재 그림 3.1–3.2, 3.7, 3.9–3.10의 전체 흐름을 산출물과 검증 지점 중심으로 통합 재구성. 각 단계가 남겨야 할 산출물은 대표 질문, 원천 계약, 모델 선택 근거, 적재 로그, 품질 점검과 재현 가능한 질의다.</small>
       </figure>
       <table class="cmp-table" id="table-build-steps">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 5</span><span class="asset-caption__title">구축 단계별 입력·출력·확인 질문</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 5</span><span class="asset-caption__title">설계 이후 여섯 구축 단계의 입력·출력·확인 질문</span></div></caption>
         <thead><tr><th>단계</th><th>주요 작업</th><th>출력</th><th>품질 확인</th></tr></thead>
         <tbody>
           <tr><td>DB 준비</td><td>DB 생성, URI/ID 유일성 제약, ID 인덱스</td><td>중복을 거부하는 저장 공간</td><td>제약 충돌과 기존 데이터 상태</td></tr>
           <tr><td>n10s 설정</td><td>그래프 설정, URI 처리와 Neo4j 명명 규칙 지정</td><td>RDF→LPG 변환 규칙</td><td>namespace를 무시해도 충돌하지 않는가</td></tr>
-          <tr><td>온톨로지 적재</td><td><code>n10s.rdf.import.fetch</code>, phenotype label·ID 부여</td><td>표현형 정의와 계층</td><td>URI·ID·<code>SUBCLASSOF</code> 건수</td></tr>
+          <tr><td>온톨로지 적재</td><td><code>n10s.rdf.import.fetch</code>, phenotype label·ID 부여</td><td>표현형 정의와 계층</td><td>교재 기준 899,558 statements와 URI·ID·<code>SUBCLASSOF</code> 건수 비교<sup>*</sup></td></tr>
           <tr><td>주석 적재</td><td>질병 노드와 <code>HAS_PHENOTYPIC_FEATURE</code> 생성</td><td>두 원천의 연결</td><td>매칭 실패·중복·누락 건수</td></tr>
           <tr><td>풍부화</td><td>evidence·frequency·biocuration 파싱과 URL 생성</td><td>검토 가능한 관계 속성</td><td>결측·복수값·정규식 실패</td></tr>
           <tr><td>정제</td><td>사용하지 않는 Resource 노드 제거</td><td>질의 중심 그래프</td><td>추론·감사에 필요한 정보까지 지우지 않았는가</td></tr>
         </tbody>
       </table>
+      <p class="asset-note"><sup>*</sup> 899,558은 Neo4j/APOC/n10s 5.20.0과 HPO 2025-02를 사용한 교재 실행값이다. 현재 릴리스의 정답 건수가 아니라 스냅샷 재현 기준선으로 사용한다.</p>
 
       <h3 id="annotation-lifecycle">3.2 한 행을 한 건의 감사 가능한 주장으로 보존한다</h3>
       <p>교재의 Cypher는 TSV를 읽어 질병과 표현형을 <code>MERGE</code>하고, 관계가 만들어진 뒤 원시 필드와 사람이 읽을 설명을 순차적으로 추가한다. <code>FOREACH(CASE …)</code> 패턴은 값이 있는 필드만 설정해 null로 기존 값을 덮지 않는다. APOC 정규식은 <code>biocuration</code>에서 큐레이터와 날짜를 뽑고, 증거 코드 IEA·PCS·TAS를 설명으로 바꾼다.</p>
@@ -198,7 +199,7 @@ FOREACH (_ IN CASE WHEN row[5] IS NOT NULL THEN [1] ELSE [] END |
       <figure class="report-figure" id="fig-annotation-lifecycle" data-deck-use="required">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 5</span><span class="asset-caption__title">HPOA 한 행이 그래프 주장이 되는 생애주기</span></figcaption>
         <img src="assets/figs/annotation-lifecycle.svg" alt="HPOA 행을 파싱하고 표준 ID로 노드를 매칭해 관계를 만든 뒤 증거 설명과 URL로 풍부화하고 건수와 근거 보존을 확인하는 단계">
-        <small class="asset-note">교재 Listing 3.19–3.24와 저장소 <code>import_hpo.py</code> 감사를 바탕으로 재구성. 아래 구현 위험은 발표자의 코드 감사 결과.</small>
+        <small class="asset-note">교재 Listing 3.19–3.24와 저장소 <code>import_hpo.py</code> 감사를 바탕으로 재구성. 같은 질병–표현형 쌍의 주석이 여러 건이면 관계 식별자 없이 <code>MERGE</code>한 한 관계에 마지막 값이 덮일 수 있다는 구현 위험은 발표자의 코드 감사 결과다.</small>
       </figure>
 
       <h3 id="implementation-reality">3.3 책의 결과와 현재 실행 결과는 분리한다</h3>
@@ -212,6 +213,8 @@ FOREACH (_ IN CASE WHEN row[5] IS NOT NULL THEN [1] ELSE [] END |
           <tr><td>주석 다중성</td><td>질병–표현형 쌍만으로 관계 <code>MERGE</code></td><td>여러 provenance가 한 관계에서 덮일 수 있음</td><td>주석 식별자 또는 Annotation 노드</td></tr>
           <tr><td>파싱 가정</td><td>큐레이터·날짜 정규식이 첫 패턴을 기대</td><td>결측·복수값에서 오류 또는 정보 손실</td><td>파싱 실패율과 원문 보존</td></tr>
           <tr><td>단계 의존</td><td>중간 조회는 최종 정제 뒤 실패</td><td>실행 순서에 따라 데모 결과가 달라짐</td><td>단계별 스냅샷 또는 독립 검증 질의</td></tr>
+          <tr><td>조회 부작용</td><td>Listing 3.21이 조회 목적에 미바인딩 <code>MERGE</code> 사용</td><td>노드·관계가 새로 생겨 그래프 오염</td><td><code>MATCH</code>로 교정하고 실행 전 스냅샷 보존</td></tr>
+          <tr><td>추론 결과 고정</td><td>교재 3.28은 5개 질병 화이트리스트, 저장소 3.31은 <code>SKIP 100 LIMIT 5</code></td><td>같은 추론도 표시되는 부분집합이 다름</td><td>필터·정렬·페이지 기준을 결과와 함께 기록</td></tr>
           <tr><td>리스팅 번호</td><td>업스트림 ch03 파일은 교재 번호와 +3</td><td>잘못된 코드 참조 위험</td><td><code>study.toml</code> 전수 대응표 사용</td></tr>
         </tbody>
       </table>
@@ -227,34 +230,38 @@ FOREACH (_ IN CASE WHEN row[5] IS NOT NULL THEN [1] ELSE [] END |
       </ul></div></div>
 
       <h3 id="direct-query">4.1 직접 연결은 답보다 검토 경로를 준다</h3>
-      <p>첫 질의는 <code>OMIM:222100</code> 제1형 당뇨병 노드에 직접 연결된 표현형을 가져온다. 이어 임상의가 환자에게서 성장 지연, 큰 무릎, 감각신경성 청각 장애, 소양증을 추가로 관찰했다고 가정한다. 두 번째 질의는 다섯 표현형과 연결된 질병을 모으고, 겹치는 특징 수를 내림차순으로 정렬한다.</p>
+      <p>첫 질의는 <code>OMIM:222100</code> 제1형 당뇨병 노드에 직접 연결된 표현형을 가져온다. 이어 임상의가 환자에게서 성장 지연(<code>HP:0001510</code>), 큰 무릎(<code>HP:0030866</code>), 감각신경성 청각 장애(<code>HP:0000407</code>), 소양증(<code>HP:0000989</code>)을 추가로 관찰했다고 가정한다. 두 번째 질의는 다섯 표현형과 연결된 질병을 모으고, 겹치는 특징 수를 내림차순으로 정렬한다.</p>
       <pre><code class="language-cypher">MATCH (phe:HpoPhenotype)
 WHERE phe.label IN [
   "Growth delay", "Large knee",
   "Sensorineural hearing impairment", "Pruritus",
   "Type I diabetes mellitus"
 ]
-MATCH (dis:HpoDisease)-[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe)
-RETURN dis.id, dis.label, collect(phe.label) AS features,
-       count(*) AS num_of_features
-ORDER BY num_of_features DESC, dis.label
+WITH phe
+MATCH path=(dis:HpoDisease)-[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe)
+UNWIND dis AS nodes
+RETURN dis.id AS disease_id,
+       dis.label AS disease_name,
+       collect(phe.label) AS features,
+       count(nodes) AS num_of_features
+ORDER BY num_of_features DESC, disease_name
 LIMIT 5</code></pre>
       <p>교재의 2025년 2월 스냅샷에서는 다섯 특징을 모두 공유하는 <em>Odontochondrodysplasia 2 with hearing loss and diabetes</em>(OMIM:619269)가 첫 후보로 나타난다. 그다음 후보는 세 개 또는 두 개의 특징을 공유한다. 그래프의 가치는 질병 이름만 반환하는 데 있지 않다. 어떤 표현형 경로가 점수를 만들었는지, 각 관계에 어떤 출처·증거·빈도가 있는지 다시 열어볼 수 있다.</p>
       <figure class="report-figure" id="fig-clinical-query" data-deck-use="required">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 6</span><span class="asset-caption__title">관찰한 다섯 표현형으로 질병 후보를 순위화하기</span></figcaption>
         <img src="assets/figs/clinical-query.svg" alt="제1형 당뇨병과 성장 지연, 큰 무릎, 감각신경성 청각 장애, 소양증이 연결된 질병 후보들을 공유 특징 수 5개, 3개, 2개 순으로 정렬하는 구조">
-        <small class="asset-note">교재 §3.4, Listing 3.25–3.26과 표 3.2를 경로와 겹침 수 중심으로 재구성. 질병명과 수치는 교재의 HPO 2025-02 결과 스냅샷.</small>
+        <small class="asset-note">교재 §3.4, Listing 3.25–3.26과 표 3.2를 경로와 겹침 수 중심으로 재구성. 선은 후보 랭킹에서 공유 주석의 존재만 나타내며 관계 방향은 그림 2의 질병→표현형을 따른다. 질병명과 수치는 HPO 2025-02 교재 스냅샷이며, 교재의 <em>Ondontochondrodysplasia</em> 오타는 OMIM:619269의 정식 표기 <em>Odontochondrodysplasia</em>로 교정했다.</small>
       </figure>
       <table class="cmp-table" id="table-candidate-results">
         <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 7</span><span class="asset-caption__title">교재 스냅샷의 상위 후보와 해석 경계</span></div></caption>
         <thead><tr><th>후보</th><th>공유 특징</th><th>이 결과가 말하는 것</th><th>말하지 않는 것</th></tr></thead>
         <tbody>
           <tr><td>Odontochondrodysplasia 2 with hearing loss and diabetes</td><td>5</td><td>입력 다섯 표현형 모두와 주석 경로가 있음</td><td>환자가 이 질병일 확률 또는 확정 진단</td></tr>
-          <tr><td>Holoprosencephaly 12 with/without pancreatic agenesis</td><td>3</td><td>세 표현형을 공유하는 비교 후보</td><td>세 특징의 특이도·중요도가 같다는 뜻</td></tr>
-          <tr><td>여러 2개 공유 후보</td><td>2</td><td>추가 검사·근거 검토가 필요한 넓은 후보군</td><td>빈도·부정 표현형·환자 맥락을 반영한 랭킹</td></tr>
+          <tr><td>Holoprosencephaly 12 with or without pancreatic agenesis (OMIM:618500)</td><td>3</td><td>세 표현형을 공유하는 비교 후보</td><td>세 특징의 특이도·중요도가 같다는 뜻</td></tr>
+          <tr><td>3-methylglutaconic aciduria VIII (OMIM:614700), Alobar holoprosencephaly (OMIM:616192), Alpha-thalassemia/mental retardation syndrome, X-linked (OMIM:602782)</td><td>각 2</td><td>교재 스냅샷의 동률 3건</td><td>빈도·부정 표현형·환자 맥락을 반영한 랭킹</td></tr>
         </tbody>
       </table>
-      <div class="callout--insight"><span class="callout__kicker">임상 경계</span><div class="callout__body"><p>단순 <code>count(*)</code>는 표현형의 희귀도, 부정 소견, 발현 시점, 증거 질, 환자 인구집단을 가중하지 않는다. 결과 화면은 후보·경로·근거를 함께 보여주고 임상의의 다음 검토를 지원해야 한다.</p></div></div>
+      <div class="callout--insight"><span class="callout__kicker">임상 경계</span><div class="callout__body"><p>단순 겹침 수 <code>count(nodes)</code>는 표현형의 희귀도, 부정 소견, 발현 시점, 증거 질, 환자 인구집단을 가중하지 않는다. 결과 화면은 후보·경로·근거를 함께 보여주고 임상의의 다음 검토를 지원해야 한다.</p></div></div>
     </section>
 
     <section class="report-section s5 page-break" id="reasoning">
@@ -267,12 +274,12 @@ LIMIT 5</code></pre>
       </ul></div></div>
 
       <h3 id="explicit-inferred">5.1 직접 사실과 암시적 포함을 분리한다</h3>
-      <p>“내분비계 이상과 관련된 질병은?”이라는 질문을 생각해 보자. 어떤 질병은 <em>Abnormality of the endocrine system</em>에 직접 주석되어 있지만, 더 많은 질병은 갑상선·췌장·포도당 대사처럼 하위 표현형에 연결되어 있다. 직접 관계만 조회하면 후자를 놓친다.</p>
-      <p>교재는 먼저 <code>[:SUBCLASSOF*1..3]</code> 경로로 상위 범주 아래의 하위 표현형을 찾고, 이어 <code>n10s.inference.nodesInCategory</code>로 이 계층을 따라 질병을 포함한다. 반환된 질병–표현형 주석은 원래 그래프에 명시적으로 존재하지만, 상위 범주와 질병의 포함 관계는 계층 규칙에서 도출된다.</p>
+      <p>“내분비계 이상(<em>Abnormality of the endocrine system</em>, <code>HP:0000818</code>)과 관련된 질병은?”이라는 질문을 생각해 보자. 어떤 질병은 이 상위 범주에 직접 주석되어 있지만, 더 많은 질병은 갑상선 생리 이상(<code>HP:0002926</code>), 갑상선기능저하증(<code>HP:0000821</code>), 갑상선종(<code>HP:0000853</code>)처럼 검증된 하위 표현형에 연결되어 있다. 직접 관계만 조회하면 후자를 놓친다.</p>
+      <p>교재는 먼저 자식에서 부모로 향하는 <code>[:SUBCLASSOF*1..3]</code> 경로를 역방향으로 탐색해 상위 범주 아래의 하위 표현형을 찾고, 이어 <code>n10s.inference.nodesInCategory</code>로 이 계층을 따라 질병을 포함한다. 반환된 질병–표현형 주석은 원래 그래프에 명시적으로 존재하지만, 상위 범주와 질병의 포함 관계는 계층 규칙에서 도출된다. 교재 표 3.3은 재현성을 위해 5개 질병 화이트리스트로 제한한 부분집합이고, 저장소 Listing 3.31은 화이트리스트 대신 <code>SKIP 100 LIMIT 5</code>를 사용하므로 표시 결과가 같지 않다.</p>
       <figure class="report-figure" id="fig-hierarchical-inference" data-deck-use="required">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 7</span><span class="asset-caption__title">하위 표현형 주석을 상위 범주 질의에 포함하기</span></figcaption>
-        <img src="assets/figs/hierarchical-inference.svg" alt="내분비계 이상 상위 범주 아래 갑상선, 췌장, 포도당 대사 이상이 있고 질병이 하위 표현형에 직접 연결되어 상위 범주 질의에 추론으로 포함되는 구조">
-        <small class="asset-note">교재 §3.5, Listing 3.27–3.28과 표 3.3의 의미를 직접 사실과 암시적 포함으로 구분해 재구성.</small>
+        <img src="assets/figs/hierarchical-inference.svg" alt="갑상선 생리 이상, 갑상선기능저하증, 갑상선종에서 내분비계 이상 상위 범주로 향하는 SUBCLASSOF 관계가 있고, 하위 표현형에 직접 주석된 질병이 상위 범주 질의에 추론으로 포함되는 구조">
+        <small class="asset-note">교재 §3.5, Listing 3.27–3.28과 표 3.3의 의미를 직접 사실과 암시적 포함으로 구분해 재구성. 화살표는 HPO 저장 방향과 같은 하위→상위 <code>SUBCLASSOF</code>이며, 세 예시는 HPO Ontology Service 2026-06-23 기준 <code>HP:0000818</code>의 2–3단계 하위임을 확인했다. 추론은 새 임상 사실을 만들지 않고 기존 주석의 질의 범위를 넓힌다.</small>
       </figure>
 
       <h3 id="reasoning-boundary">5.2 더 넓은 결과가 더 정확한 결과는 아니다</h3>
@@ -304,7 +311,7 @@ LIMIT 5</code></pre>
       <figure class="report-figure" id="fig-validation-gates" data-deck-use="required">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 8</span><span class="asset-caption__title">온톨로지 기반 임상 지원 KG의 네 검증 게이트</span></figcaption>
         <img src="assets/figs/validation-gates.svg" alt="원천, 의미, 적재, 사용의 네 검증 게이트를 차례로 통과하고 실패하면 이전 단계로 돌아가며 최종 결과는 사람 검토로 이어지는 구조">
-        <small class="asset-note">교재의 데이터 품질 강조와 Chapter 3 구현 감사를 운영 통제 관점으로 재구성.</small>
+        <small class="asset-note">교재의 데이터 품질 강조와 Chapter 3 구현 감사를 운영 통제 관점으로 재구성. 게이트 통과는 의료적 타당성의 자동 증명이 아니라 임상의가 검토할 후보와 근거를 만들었다는 뜻이다.</small>
       </figure>
       <table class="cmp-table" id="table-failure-modes">
         <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 9</span><span class="asset-caption__title">주장–조건–실패 신호 추적표</span></div></caption>

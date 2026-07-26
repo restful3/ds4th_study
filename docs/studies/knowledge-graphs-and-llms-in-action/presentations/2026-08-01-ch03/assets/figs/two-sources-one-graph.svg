@@ -1,8 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" role="img" aria-labelledby="title desc">
   <title id="title">HPO 온톨로지와 주석 데이터를 하나의 지식 그래프로 결합하는 구조</title>
   <desc id="desc">hp.owl은 표현형 정의와 계층을, phenotype.hpoa는 질병과 표현형의 연관 및 증거를 제공하고, 두 원천이 질병 노드, 표현형 노드, 속성 있는 관계로 결합된다.</desc>
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#66758c"/></marker>
+    <marker id="arrow-gray" markerUnits="userSpaceOnUse" viewBox="0 0 8 6" refX="7.5" refY="3" markerWidth="8" markerHeight="6" orient="auto"><path d="M.5.5 7.5 3 .5 5.5Z" fill="#66758c"/></marker>
+    <marker id="arrow-white" markerUnits="userSpaceOnUse" viewBox="0 0 8 6" refX="7.5" refY="3" markerWidth="8" markerHeight="6" orient="auto"><path d="M.5.5 7.5 3 .5 5.5Z" fill="#fff"/></marker>
     <style>
       text{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#172033}
       .eyebrow{font-size:14px;font-weight:800;letter-spacing:1.4px;fill:#56677f}
@@ -10,10 +11,10 @@
       .label{font-size:16px;font-weight:700}
       .small{font-size:14px;fill:#526077}
       .box{fill:#fff;stroke:#b6c1d0;stroke-width:2}
-      .line{fill:none;stroke:#66758c;stroke-width:3;marker-end:url(#arrow)}
+      .line{fill:none;stroke:#66758c;stroke-width:3;marker-end:url(#arrow-gray)}
     </style>
   </defs>
-  <rect width="960" height="440" rx="20" fill="#f7f8fa"/>
+  <rect width="960" height="400" rx="20" fill="#f7f8fa"/>
   <rect class="box" x="45" y="58" width="270" height="145" rx="16"/>
   <text x="70" y="91" class="eyebrow">SOURCE A · RDF/XML</text>
   <text x="70" y="125" class="head">hp.owl</text>
@@ -26,25 +27,23 @@
   <text x="70" y="337" class="label">질병–표현형 주석</text>
   <text x="70" y="363" class="small">reference · evidence · frequency · curator</text>
 
-  <path class="line" d="M315 130C374 130 382 174 435 174"/>
-  <path class="line" d="M315 310C374 310 382 266 435 266"/>
+  <path class="line" d="M315 130C374 130 388 174 441 174"/>
+  <path class="line" d="M315 310C374 310 388 266 441 266"/>
   <text x="379" y="220" class="small" text-anchor="middle">표준 ID로 결합</text>
 
   <rect x="441" y="70" width="474" height="300" rx="20" fill="#0f2c59"/>
   <text x="678" y="107" class="eyebrow" text-anchor="middle" style="fill:#c9d7e9">ONTOLOGY-GROUNDED LPG</text>
-  <circle cx="573" cy="216" r="62" fill="#fff"/>
-  <text x="573" y="210" class="label" text-anchor="middle">HpoDisease</text>
-  <text x="573" y="235" class="small" text-anchor="middle">OMIM:222100</text>
-  <circle cx="788" cy="216" r="62" fill="#dfe9f6"/>
-  <text x="788" y="210" class="label" text-anchor="middle">HpoPhenotype</text>
-  <text x="788" y="235" class="small" text-anchor="middle">HP:0410050</text>
-  <path d="M635 216H722" stroke="#fff" stroke-width="5" marker-end="url(#arrow)"/>
-  <rect x="623" y="126" width="115" height="61" rx="10" fill="#fff"/>
+  <circle cx="545" cy="216" r="54" fill="#fff"/>
+  <text x="545" y="210" class="label" text-anchor="middle">HpoDisease</text>
+  <text x="545" y="235" class="small" text-anchor="middle">OMIM:222100</text>
+  <circle cx="815" cy="216" r="54" fill="#dfe9f6"/>
+  <text x="815" y="210" class="label" text-anchor="middle">HpoPhenotype</text>
+  <text x="815" y="235" class="small" text-anchor="middle">HP:0410050</text>
+  <path d="M599 216H761" stroke="#fff" stroke-width="5" marker-end="url(#arrow-white)"/>
+  <rect x="602" y="126" width="156" height="61" rx="10" fill="#fff"/>
   <text x="680" y="151" class="small" text-anchor="middle">HAS_PHENOTYPIC</text>
   <text x="680" y="171" class="small" text-anchor="middle">_FEATURE</text>
-  <rect x="571" y="290" width="218" height="49" rx="10" fill="#dfe9f6"/>
+  <rect x="566" y="290" width="228" height="49" rx="10" fill="#dfe9f6"/>
   <text x="680" y="311" class="small" text-anchor="middle">관계 속성: source · evidence</text>
   <text x="680" y="331" class="small" text-anchor="middle">frequency · createdBy · date</text>
-  <path d="M680 278V289" stroke="#dfe9f6" stroke-width="2"/>
-  <text x="480" y="398" class="small" text-anchor="middle">정의·계층은 표현형 노드에, 한 건의 연관을 뒷받침하는 근거는 질병–표현형 관계에 둔다.</text>
 </svg>
