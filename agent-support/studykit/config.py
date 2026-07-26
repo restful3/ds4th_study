@@ -132,12 +132,22 @@ class Study:
     def src_dir_for_upstream(self, upstream_name: str) -> str:
         """업스트림 챕터 디렉터리명 -> 이 저장소의 소스 폴더명.
 
-        선언이 없으면 이름이 같다고 본다 (ch02~ch04 가 그렇다).
+        선언이 없으면 이름이 같다고 본다 (ch02~ch04 가 그렇다). 이 폴백은 선언이
+        빠졌을 때 조용히 빗나가고, 같은 업스트림을 두 소스가 가리키면 어느 쪽이
+        이기는지도 불분명하다. 둘 다 verify.check_upstream_mapping 이 잡는다.
+        여기서는 TOML 기재 순서 대신 이름 순으로 골라 결과를 결정적으로 만든다.
         """
-        for ours, theirs in self.upstream_dirs.items():
+        for ours, theirs in sorted(self.upstream_dirs.items()):
             if theirs == upstream_name:
                 return ours
         return upstream_name
+
+    def upstream_chapter_dirs(self) -> list[str]:
+        """업스트림 저장소의 챕터 디렉터리명 목록."""
+        chapters = self.upstream / "chapters"
+        if not chapters.is_dir():
+            return []
+        return sorted(p.name for p in chapters.iterdir() if p.is_dir())
 
     def src_dirs(self) -> dict[str, Path]:
         """소스 폴더명 -> 사본 경로. meap-only 도 포함한다."""

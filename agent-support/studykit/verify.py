@@ -21,7 +21,7 @@ import urllib.request
 from pathlib import Path
 
 from studykit import makefile
-from studykit.config import Study
+from studykit.config import REPO_ROOT, Study
 
 NOTEBOOK_GLOBS = ("chapter_*/src/*/*.ipynb",)
 
@@ -52,6 +52,64 @@ def check_environment(study: Study) -> list[str]:
         failures.append(
             "_studykit.pth 없음 — 어느 cwd 에서도 임포트되게 하려면 "
             "setup_env.py 를 다시 실행하라"
+        )
+    return failures
+
+
+# ---------------------------------------------------------------- 업스트림 대응표
+def check_upstream_mapping(study: Study) -> list[str]:
+    """`[mapping.upstream_dirs]` 가 업스트림 챕터와 1:1 인가.
+
+    소스 폴더는 책 장 번호를, 업스트림은 MEAP 번호를 쓴다. 대응이 빠지면
+    src_dir_for_upstream() 의 "이름이 같다" 폴백이 조용히 빗나가서, Makefile
+    짝짓기가 통째로 누락돼도 등가성 검사는 통과한다. 대응표 자체를 봐야 한다.
+    """
+    failures: list[str] = []
+    src_dirs = study.src_dirs()
+
+    # 1) 업스트림 값 유일성 — 겹치면 역방향 해석이 임의로 하나를 고른다
+    owners: dict[str, list[str]] = {}
+    for ours, theirs in study.upstream_dirs.items():
+        owners.setdefault(theirs, []).append(ours)
+    for theirs, claimants in sorted(owners.items()):
+        if len(claimants) > 1:
+            failures.append(
+                f"업스트림 {theirs} 를 {', '.join(sorted(claimants))} 가 함께 가리킨다 — "
+                f"역방향 해석이 하나를 임의로 고른다"
+            )
+
+    # 2) 선언한 소스 폴더의 실재
+    for ours in sorted(study.upstream_dirs):
+        if ours not in src_dirs:
+            failures.append(f"{ours}: [mapping.upstream_dirs] 에 있으나 소스 폴더가 없다")
+
+    # 3) meap-only 이름 충돌 — src_dirs() 는 폴더명으로 색인하므로 겹치면 덮어쓴다
+    for name in sorted(set(study.meap_only) & set(study.chapter_map.values())):
+        failures.append(
+            f"{name}: meap-only 와 책 챕터의 폴더명이 겹친다 — "
+            f"src_dirs() 에서 한쪽이 조용히 덮어쓴다"
+        )
+
+    upstream_chapters = study.upstream_chapter_dirs()
+    if not upstream_chapters:
+        return failures          # 업스트림 사본이 없는 환경(sparse checkout)
+
+    # 4) 업스트림 챕터마다 정확히 하나의 소스 폴더
+    for upstream_dir in upstream_chapters:
+        repo_dir = study.src_dir_for_upstream(upstream_dir)
+        if repo_dir not in src_dirs:
+            failures.append(
+                f"업스트림 {upstream_dir}: 대응하는 소스 폴더 {repo_dir} 가 없다 — "
+                f"[mapping.upstream_dirs] 에 선언하라"
+            )
+
+    # 5) 이름이 바뀐 소스 폴더는 명시 선언이 있어야 한다
+    for name in sorted(src_dirs):
+        if name in study.upstream_dirs or name in upstream_chapters:
+            continue
+        failures.append(
+            f"{name}: 같은 이름의 업스트림 챕터가 없는데 "
+            f"[mapping.upstream_dirs] 선언도 없다 — 폴백이 빗나간다"
         )
     return failures
 
@@ -200,7 +258,106 @@ def check_notebook(study: Study, path: Path, check_urls: bool = True) -> list[st
     if check_urls:
         failures.extend(_check_external_urls(study, markdown, label))
 
+    # 6~9) renumber 잔재와 저장 출력 위생
+    failures.extend(_check_renumber_residue(study, cells, path, label))
+    failures.extend(_check_output_paths(study, cells, label))
+
     return failures
+
+
+#: 소스 폴더를 책 장 번호로 옮기며 치환을 두 번 적용한 흔적 (`f"ch{up}"` 에 up="ch07")
+DOUBLED_PREFIX = re.compile(r"chch\d+")
+
+#: 챕터 폴더와 그 안의 소스 폴더를 함께 적은 경로
+CHAPTER_SRC_PATH = re.compile(r"(chapter_[0-9A-Za-z_]+)/src/(ch\d+)")
+
+#: 실행한 기계에서만 유효한 홈 디렉터리
+HOME_PATH = re.compile(r"/(?:home|Users)/[^/\s\"',:;)\]]+")
+
+
+def _cell_text(cells: list) -> str:
+    """모든 셀의 소스. attachment 는 제외한다 — base64 가 우연히 패턴에 걸린다."""
+    return "".join("".join(cell.get("source", [])) for cell in cells)
+
+
+def _output_text(cells: list) -> str:
+    """저장된 출력의 텍스트. 이미지 데이터는 제외한다."""
+    parts: list[str] = []
+    for cell in cells:
+        for output in cell.get("outputs", []):
+            parts.extend(output.get("text", []))
+            for mime, payload in (output.get("data", {}) or {}).items():
+                if mime.startswith("image/"):
+                    continue
+                parts.extend(payload if isinstance(payload, list) else [str(payload)])
+            for key in ("ename", "evalue"):
+                if output.get(key):
+                    parts.append(str(output[key]))
+            parts.extend(output.get("traceback", []))
+    return "".join(parts)
+
+
+def _check_renumber_residue(study: Study, cells: list, path: Path, label: str) -> list[str]:
+    """소스 폴더 renumber 가 남긴 문자열 결함.
+
+    셋 다 게이트가 통과하는 상태로 실재했다. 자동 치환은 두 번 적용되기 쉽고,
+    로컬 번호와 업스트림 번호가 다르면 어느 쪽을 써야 하는지 매번 헷갈린다.
+    """
+    failures: list[str] = []
+    text = _cell_text(cells) + _output_text(cells)
+
+    doubled = sorted(set(DOUBLED_PREFIX.findall(text)))
+    if doubled:
+        failures.append(
+            f"{label}: 치환이 두 번 적용된 챕터 이름 — {', '.join(doubled)}"
+        )
+
+    for chapter, src in sorted(set(CHAPTER_SRC_PATH.findall(text))):
+        expected = study.chapter_map.get(chapter)
+        if expected is not None and expected != src:
+            failures.append(
+                f"{label}: {chapter} 아래는 src/{expected} 인데 src/{src} 를 가리킨다"
+            )
+
+    repo_dir = path.parent.name
+    upstream = study.upstream_dirs.get(repo_dir, repo_dir)
+    base = (study.upstream_url or "").removesuffix(".git")
+    if base:
+        pattern = re.escape(base) + r"/tree/[^/\s]+/chapters/(ch\d+)"
+        wrong = sorted({m for m in re.findall(pattern, text) if m != upstream})
+        if wrong:
+            failures.append(
+                f"{label}: 업스트림 링크가 chapters/{', chapters/'.join(wrong)} 를 "
+                f"가리킨다 — {repo_dir} 는 업스트림 {upstream} 이다"
+            )
+    return failures
+
+
+def check_saved_output_paths(study: Study, path: Path) -> list[str]:
+    """노트북 하나의 저장 출력에 로컬 절대경로가 남았는가 (정규화 도구용)."""
+    document = json.loads(path.read_text(encoding="utf-8"))
+    return _check_output_paths(study, document.get("cells", []), path.name)
+
+
+def _check_output_paths(study: Study, cells: list, label: str) -> list[str]:
+    """저장 출력에 실행한 기계의 절대경로가 남았는가.
+
+    노트북을 읽는 사람마다 경로가 다르므로 그대로 두면 거짓 정보다. 그리고
+    ch13 처럼 치환이 잘못 적용되면 다른 챕터를 가리키는 경로가 출력에 박힌다.
+    """
+    text = _output_text(cells)
+    found: list[str] = []
+    for root, name in ((str(study.root), "교재 루트"), (str(REPO_ROOT), "저장소 루트")):
+        if root in text:
+            found.append(name)
+    if HOME_PATH.search(text):
+        found.append("홈 디렉터리")
+    if not found:
+        return []
+    return [
+        f"{label}: 저장 출력에 로컬 절대경로가 남았다 ({', '.join(found)}) — "
+        f"study-normalize-outputs.py 로 정규화하라"
+    ]
 
 
 def _check_external_urls(study: Study, markdown: str, label: str) -> list[str]:

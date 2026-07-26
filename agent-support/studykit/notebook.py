@@ -124,6 +124,64 @@ def embed_named_figures(notebook_path: Path, images_dir: Path,
     return embedded
 
 
+#: 실행한 기계에서만 유효한 홈 디렉터리. verify._check_output_paths 와 같은 모양이다.
+HOME_PATH = re.compile(r"/(?:home|Users)/[^/\s\"',:;)\]]+")
+
+
+def normalize_outputs(notebook_path: Path, study) -> bool:
+    """저장 출력의 로컬 절대경로를 자리표시자로 바꾼다. 바뀐 게 있으면 True.
+
+    site-packages 경고처럼 실행하면 반드시 절대경로가 붙는 출력이 있어서, 노트북
+    소스만 고쳐서는 해결되지 않는다. 재실행 뒤 포매터처럼 한 번 돌리는 도구다.
+    소스 셀은 건드리지 않는다 — 설명으로 경로를 적을 수 있어야 한다.
+    """
+    from studykit.config import REPO_ROOT
+
+    document = json.loads(notebook_path.read_text(encoding="utf-8"))
+    replacements = ((str(study.root), "<교재>"), (str(REPO_ROOT), "<저장소>"))
+
+    def rewrite(value: str) -> str:
+        for needle, placeholder in replacements:
+            value = value.replace(needle, placeholder)
+        return HOME_PATH.sub("~", value)
+
+    changed = False
+    for cell in document.get("cells", []):
+        for output in cell.get("outputs", []):
+            for key in ("text", "traceback"):
+                lines = output.get(key)
+                if not lines:
+                    continue
+                rewritten = [rewrite(line) for line in lines]
+                if rewritten != lines:
+                    output[key] = rewritten
+                    changed = True
+            for mime, payload in (output.get("data", {}) or {}).items():
+                if mime.startswith("image/"):
+                    continue
+                if isinstance(payload, list):
+                    rewritten = [rewrite(line) for line in payload]
+                elif isinstance(payload, str):
+                    rewritten = rewrite(payload)
+                else:
+                    continue
+                if rewritten != payload:
+                    output["data"][mime] = rewritten
+                    changed = True
+            for key in ("ename", "evalue"):
+                if isinstance(output.get(key), str):
+                    rewritten = rewrite(output[key])
+                    if rewritten != output[key]:
+                        output[key] = rewritten
+                        changed = True
+
+    if changed:
+        notebook_path.write_text(
+            json.dumps(document, ensure_ascii=False, indent=1) + "\n", encoding="utf-8"
+        )
+    return changed
+
+
 def figure_map_from_explainer(explainer: Path) -> dict[str, str]:
     """해설판에서 {그림 번호: 이미지 파일명} 을 뽑는다.
 

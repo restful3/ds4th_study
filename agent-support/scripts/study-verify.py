@@ -13,8 +13,10 @@
   환경        .venv, 공용 자원, dataset/.gitignore, _studykit.pth
   매핑        study.toml 의 챕터 대응이 키워드 빈도와 어긋나지 않는가
   오프셋      선언한 리스팅 오프셋이 제목 매칭 도출값과 같은가
+  대응표      [mapping.upstream_dirs] 가 업스트림 챕터와 1:1 인가
   Makefile    업스트림 타깃·액션 순서가 tasks.py 와 등가인가
-  노트북      실행 오류 0, 그림 attachment 내장, 상대경로 링크 대상 존재
+  노트북      실행 오류 0, 그림 attachment 내장, 상대경로 링크 대상 존재,
+              renumber 잔재(chchNN·경로 불일치)와 저장 출력의 로컬 절대경로 부재
   리스팅      0바이트·중복 파일 보고 (업스트림 문제라 경고로만)
 """
 import argparse
@@ -95,6 +97,10 @@ def main() -> int:
     declared_count = sum(len(v) for v in study.listing_overrides.values())
     failures += report(verify.check_declared_listings(study),
                        f"{declared_count}개 선언이 파일·심볼까지 해결됨")
+
+    section("업스트림 대응표")
+    failures += report(verify.check_upstream_mapping(study),
+                       f"{len(study.upstream_dirs)}개 선언이 업스트림 챕터와 1:1")
 
     section("Makefile 등가성")
     failures += report(verify.check_makefile_parity(study),

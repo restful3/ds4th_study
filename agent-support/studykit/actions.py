@@ -5,7 +5,9 @@
 외부 명령에 의존하지 않으므로 Windows에서도 그대로 돌아간다.
 
 각 챕터 src 폴더의 tasks.py 가 TASKS 딕셔너리를 선언하고 main()을 호출한다.
-tests/test_makefile_parity.py 가 업스트림 Makefile과 TASKS의 등가성을 검증한다.
+등가성은 verify.check_makefile_parity 가 보고, 테스트는
+agent-support/tests/test_study_materials.py 의 MakefileParityTests 다. 짝지을
+챕터를 고르는 대응표 자체는 test_upstream_mapping.py 가 검사한다.
 """
 import gzip
 import os
