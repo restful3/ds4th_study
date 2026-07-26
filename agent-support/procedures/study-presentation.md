@@ -103,6 +103,42 @@ report_source = "report.html"
 
 ## 6. 품질 확인
 
+### 자원 안전 브라우저 렌더링
+
+브라우저 screenshot은 owner-only 배포본
+`$HOME/.local/libexec/ds4th-safe-browser-shot/safe-browser-shot.sh`만
+사용한다. 저장소의 `agent-support/scripts/` 파일은 검토·배포
+source이며 직접 실행하지 않는다. raw
+`google-chrome --headless`, 직접 만든 반복 loop, 백그라운드 병렬
+browser 실행과 runner 밖에서의 반복적인 GUI browser inspection은
+금지한다. 이 runner는 실행 전 host headroom을
+검사하고, 동시에 한 개만 허용하며, 전체 Chrome 자식 트리를 제한된
+user cgroup 안에서 실행하고, unique profile과 atomic PNG 검증을
+강제한다.
+
+먼저 Chrome을 띄우지 않는 preflight를 통과시킨다.
+
+```bash
+runner="$HOME/.local/libexec/ds4th-safe-browser-shot/safe-browser-shot.sh"
+"$runner" --check
+```
+
+실제 screenshot은 절대 output path를 사용한다.
+
+```bash
+install -d -m 700 "$PWD/tmp/browser-shots"
+"$runner" \
+  --url "http://localhost:8000/studies/<study-slug>/presentations/<session-slug>/index.html" \
+  --output "$PWD/tmp/browser-shots/session-desktop.png" \
+  --width 1600 \
+  --height 900
+```
+
+runner가 headroom, lock, cgroup, timeout 또는 PNG 검증으로 실패하면
+직접 Chrome 명령으로 우회하지 않는다. 시각 QA를 중단하고 실패
+원인과 아직 확인하지 못한 viewport를 보고한다. 여러 viewport나
+slide를 검사할 때도 호출을 직렬로 실행하고 각 종료코드를 확인한다.
+
 - 리포트는 데스크톱과 모바일에서 연속 스크롤로 읽을 수 있고, 인쇄 시 A4로 자연스럽게 나뉘어야 한다.
 - 각 주요 섹션에 정의·작동 방식·한계 또는 판단 기준 중 최소 두 가지가 있는지 확인한다. 짧은 카드와 목록만으로 상세 리포트를 끝내지 않는다.
 - 모든 표와 도형에 번호·제목을 붙이고, 도형에는 구체적인 대체 텍스트와 재구성 범위·출처를 표시한다.
