@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="ko" class="theme-light" data-report-template="study-report-v1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Knowledge Graphs and LLMs in Action Chapter 3의 온톨로지 기반 HPO 지식 그래프 구축, 질의, 추론과 검증 기준을 재구성한 상세 리포트">
+  <title>온톨로지로 첫 지식 그래프 만들기 · 상세 리포트</title>
+  <link rel="icon" href="../../../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/report.css">
+  <link rel="stylesheet" href="assets/katex/katex.min.css">
+</head>
+<body>
+  <a class="skip-link" href="#summary">리포트 본문으로 건너뛰기</a>
+  <button id="tocToggle" class="report-nav-toggle" type="button" aria-label="목차 열기" aria-controls="tocDrawer" aria-expanded="false" title="목차"><span aria-hidden="true">☰</span></button>
+  <div class="report-settings" aria-label="설정">
+    <button id="settingsToggle" class="report-settings-toggle" type="button" aria-label="설정 열기" aria-controls="settingsPanel" aria-expanded="false" title="설정">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M9.67 4.14a2.34 2.34 0 0 1 4.66 0 2.34 2.34 0 0 0 3.32 1.91 2.34 2.34 0 0 1 2.33 4.04 2.34 2.34 0 0 0 0 3.82 2.34 2.34 0 0 1-2.33 4.04 2.34 2.34 0 0 0-3.32 1.91 2.34 2.34 0 0 1-4.66 0 2.34 2.34 0 0 0-3.32-1.91 2.34 2.34 0 0 1-2.33-4.04 2.34 2.34 0 0 0 0-3.82 2.34 2.34 0 0 1 2.33-4.04 2.34 2.34 0 0 0 3.32-1.91"/></svg>
+    </button>
+    <div id="settingsPanel" class="report-settings-panel" aria-hidden="true">
+      <div class="report-settings-panel__group"><span class="report-settings-panel__label">화면</span><button id="themeToggle" type="button" onclick="cycleTheme()" aria-label="나이트 모드 전환" title="나이트 모드 전환">☀</button></div>
+      <div class="report-settings-panel__group"><span class="report-settings-panel__label">출력</span><button class="report-settings-action" type="button" onclick="window.print()" aria-label="PDF 또는 인쇄" title="PDF 또는 인쇄">Print / PDF</button></div>
+      <div class="report-settings-panel__group">
+        <span class="report-settings-panel__label">이동</span>
+        <nav class="report-quick-links" aria-label="회차 링크"><a href="../../" title="회차 목록">Index</a><a href="report.html" title="상세 리포트">Report</a><a href="./" title="발표자료">Slides</a></nav>
+      </div>
+    </div>
+  </div>
+  <div id="tocBackdrop" class="report-toc-backdrop" hidden></div>
+  <nav id="tocDrawer" class="report-toc-drawer" aria-label="문서 목차" aria-hidden="true">
+    <div class="report-toc-drawer__head"><span>목차</span><button id="tocClose" type="button" aria-label="목차 닫기">×</button></div>
+    <ol id="tocDrawerList" class="report-toc-drawer__list"></ol>
+  </nav>
+
+  <article class="report continuous-mode">
+    <section class="report-cover">
+      <div class="report-cover__wordmark"><span class="report-cover__wordmark-name">ds4th study</span><span class="report-cover__wordmark-sub">Knowledge Graphs &amp; LLMs</span></div>
+      <span class="report-cover__kicker">Study Report · Chapter 03</span>
+      <h1 class="report-cover__title">온톨로지로 첫<br>지식 그래프 만들기</h1>
+      <p class="report-cover__subtitle">임상 질문에서 HPO 그래프·질의·추론까지</p>
+      <dl class="report-cover__meta">
+        <div><dt>발표자</dt><dd>태영</dd></div>
+        <div><dt>범위</dt><dd>Chapter 3 · pp. 37–64</dd></div>
+        <div><dt>발행</dt><dd>2026-08-01</dd></div>
+      </dl>
+    </section>
+
+    <section class="report-section s0 page-break" id="summary">
+      <div class="report-section__kicker">Section 00 · Executive Summary</div>
+      <h1>0. 핵심 요약</h1>
+      <div class="callout--hero">
+        <span class="callout__kicker">Chapter 03 · One Sentence</span>
+        <span class="callout__body"><strong>쓸모 있는 지식 그래프는 데이터부터 시작하지 않는다.</strong> 사용자의 질문을 먼저 고정하고, 온톨로지로 의미를 정렬하고, 관계에 근거를 보존한 뒤, 직접 연결과 계층 추론을 구분해 검증한다.</span>
+      </div>
+      <p>Chapter 3은 Human Phenotype Ontology(HPO)를 이용해 희귀질환 진단을 지원하는 첫 지식 그래프를 만드는 구현 장이다. 겉으로는 Neo4j와 Cypher 실습처럼 보이지만, 실제 핵심은 <strong>문제 정의 → 데이터 의미 이해 → 표현 모델 선택 → 적재와 품질 통제 → 질문과 추론</strong>의 설계 순서다. 임상의에게 필요한 것은 “그래프가 있다”는 사실이 아니라, 관찰한 표현형 조합에서 후보 질병을 찾고 그 연결의 출처·증거·작성일을 검토할 수 있는가이다.</p>
+      <p>이를 위해 장은 성격이 다른 두 HPO 원천을 결합한다. <code>hp.owl</code>은 표현형의 표준 정의와 <code>subClassOf</code> 계층을 제공하고, <code>phenotype.hpoa</code>는 질병–표현형 연관과 그 근거를 제공한다. 온톨로지의 표현력은 보존하되 관계별 메타데이터를 쉽게 탐색하려고 LPG와 Neo4j를 선택하고, Neosemantics로 RDF/OWL을 가져온다. 완성된 그래프는 직접 연결 질의뿐 아니라 상위 표현형 범주 아래의 하위 개념을 따라 암시적 후보까지 확장한다.</p>
+      <div class="section-summary">
+        <div class="section-summary__kicker">이 리포트가 답하는 네 질문</div>
+        <div class="section-summary__body"><ul>
+          <li><strong>문제</strong> — 왜 희귀질환 후보 탐색에는 문자열 통합보다 표준 의미와 계층이 필요한가?</li>
+          <li><strong>선택</strong> — RDF 원천을 쓰면서도 왜 LPG를 애플리케이션 모델로 선택했는가?</li>
+          <li><strong>구축</strong> — 두 원천을 어떤 식별자와 품질 게이트로 하나의 그래프로 만드는가?</li>
+          <li><strong>경계</strong> — 후보 랭킹과 계층 추론을 어디까지 믿고, 무엇을 임상의에게 남겨야 하는가?</li>
+        </ul></div>
+      </div>
+      <table class="cmp-table" id="table-overview">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 1</span><span class="asset-caption__title">Chapter 3의 전체 논리</span></div></caption>
+        <thead><tr><th>단계</th><th>핵심 질문</th><th>장의 답</th><th>검증 산출물</th></tr></thead>
+        <tbody>
+          <tr><td>01 · 문제</td><td>누가 어떤 판단을 하는가?</td><td>임상의가 관찰한 표현형으로 희귀질환 후보와 근거를 찾는다.</td><td>대표 질문·실패 비용·사용자 역할</td></tr>
+          <tr><td>02 · 의미</td><td>서로 다른 표현을 어떻게 맞추는가?</td><td>HPO를 참조 어휘와 계층 스키마로 사용한다.</td><td>ID 매핑·동의어·계층 방향</td></tr>
+          <tr><td>03 · 모델</td><td>관계별 근거를 어디에 두는가?</td><td>OWL 계층을 LPG로 가져오고 주석 메타데이터를 관계에 둔다.</td><td>RDF/LPG 선택 근거·그래프 계약</td></tr>
+          <tr><td>04 · 사용</td><td>무엇을 질의하고 추론하는가?</td><td>직접 연관을 세고, 계층을 따라 암시적 포함을 확장한다.</td><td>재현 질의·근거 경로·결과 스냅샷</td></tr>
+          <tr><td>05 · 통제</td><td>어디까지 믿을 수 있는가?</td><td>버전·적재·추론 범위와 임상 판단의 경계를 분리한다.</td><td>품질 게이트·사람의 최종 검토</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="report-section s1 page-break" id="problem-domain">
+      <div class="report-section__kicker">Section 01 · Problem &amp; Domain</div>
+      <h1>1. 그래프보다 먼저 임상 질문을 고정한다</h1>
+      <div class="section-summary"><div class="section-summary__kicker">섹션 요약</div><div class="section-summary__body"><ul>
+        <li><strong>의미 이질성</strong> — 같은 개념의 여러 이름, 같은 약어의 여러 뜻, 서로 다른 세분성이 통합을 어렵게 한다.</li>
+        <li><strong>사용자 요구</strong> — 임상의는 표현형 조합에서 희귀질환 후보와 그 연결 근거를 보고 싶다.</li>
+        <li><strong>온톨로지 역할</strong> — 원천을 대신하는 데이터베이스가 아니라 로컬 표현을 공통 개념에 매핑하는 참조 계층이다.</li>
+      </ul></div></div>
+
+      <h3 id="semantic-heterogeneity">1.1 형식보다 어려운 것은 ‘같은 뜻인가’이다</h3>
+      <p>XML, CSV, JSON 같은 형식 차이는 파서로 처리할 수 있다. 더 어려운 문제는 <em>의미</em>다. 제2형 당뇨병과 ketosis-resistant diabetes처럼 같은 개념이 다른 이름으로 나타나고, PE처럼 physical examination과 pulmonary embolism이라는 서로 다른 뜻을 가질 수 있다. necrosis와 lobular necrosis처럼 표현의 세분성도 다르다. 문자열을 정규화하는 것만으로는 이 차이를 안전하게 합칠 수 없다.</p>
+      <p>온톨로지는 표준 이름·식별자·동의어·속성·범주·관계를 정의한다. 각 원천의 로컬 필드를 온톨로지 개념에 <strong>매핑</strong>하면 서로 다른 원천이 같은 의미 좌표를 공유한다. 중요한 경계는 매핑도 하나의 주장이라는 점이다. 어떤 로컬 값이 어느 표준 개념과 같은지, 누가 언제 어떤 근거로 판단했는지를 추적해야 한다.</p>
+      <figure class="report-figure" id="fig-semantic-bridge" data-deck-use="required">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 1</span><span class="asset-caption__title">의미 이질성을 공통 질의 공간으로 바꾸는 온톨로지</span></figcaption>
+        <img src="assets/figs/semantic-bridge.svg" alt="동의어, 중의적 약어, 서로 다른 세분성이 매핑을 거쳐 HPO의 표준 식별자와 계층에 정렬되고 통합 지식 그래프 질의로 이어지는 구조">
+        <small class="asset-note">교재 §3.1의 의미 통합 설명을 발표자가 문제–매핑–통합 질의의 흐름으로 재구성.</small>
+      </figure>
+
+      <h3 id="clinician-question">1.2 목표는 자동 진단이 아니라 검토 가능한 후보 탐색이다</h3>
+      <p>이 장의 대상 사용자는 질병을 진단하고 치료하는 임상의다. 특히 희귀질환은 한두 증상으로 식별하기 어렵고, 여러 표현형 특징의 조합과 문헌 근거를 함께 살펴야 한다. 따라서 지식 기반에는 두 가지가 필요하다. 첫째, 같은 기관·계통에 속하는 표현형 이상을 연결하는 <strong>맥락적 계층</strong>. 둘째, 질병과 표현형의 연관뿐 아니라 출처·증거·빈도·작성자를 추적할 수 있는 <strong>주석</strong>이다.</p>
+      <p>도메인에는 경계 사례도 있다. 제1형 당뇨병은 하나의 질병으로 식별될 수 있고, 다른 희귀 증후군에서 관찰되는 표현형 특징으로도 식별될 수 있다. 한 문자열에 역할을 억지로 합치지 않고 <code>OMIM:222100</code>과 <code>HP:0100651</code>처럼 서로 다른 표준 ID를 사용하면, 질문의 문맥에 따라 질병 노드와 표현형 노드를 구분할 수 있다.</p>
+      <table class="cmp-table" id="table-domain-contract">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 2</span><span class="asset-caption__title">희귀질환 지원 KG의 도메인 계약</span></div></caption>
+        <thead><tr><th>항목</th><th>이 장의 정의</th><th>그래프 표현</th><th>오해하면 생기는 문제</th></tr></thead>
+        <tbody>
+          <tr><td>표현형 특징</td><td>개인에게 나타나는 관찰 가능한 물리·생화학적 특성</td><td><code>HpoPhenotype</code> 노드와 계층</td><td>질병명과 섞이면 역할별 질의가 흐려짐</td></tr>
+          <tr><td>질병</td><td>원인·시간 경과·표현형 묶음·치료 반응으로 특징지어지는 실체</td><td><code>HpoDisease</code> 노드</td><td>표현형 하나를 곧바로 질병으로 확정</td></tr>
+          <tr><td>주석</td><td>특정 질병과 표현형이 연결된다는 근거 있는 주장</td><td><code>HAS_PHENOTYPIC_FEATURE</code> 관계</td><td>출처가 노드 속성에 섞여 어느 연결의 근거인지 잃음</td></tr>
+          <tr><td>임상 결과</td><td>관찰 특징과 연결된 검토 대상 질병 목록</td><td>경로·겹침 수·근거 속성</td><td>후보 목록을 진단 확률이나 확정 진단으로 해석</td></tr>
+        </tbody>
+      </table>
+      <div class="callout--insight"><span class="callout__kicker">설계 질문</span><div class="callout__body"><p>그래프 모델을 그리기 전에 “임상의가 결과 화면에서 어떤 연결과 근거를 확인해야 하는가?”를 묻는다. 이 질문이 노드·관계·속성과 기술 선택을 결정한다.</p></div></div>
+    </section>
+
+    <section class="report-section s2 page-break" id="data-technology">
+      <div class="report-section__kicker">Section 02 · Data &amp; Technology</div>
+      <h1>2. 두 데이터 원천이 모델 선택을 결정한다</h1>
+      <div class="section-summary"><div class="section-summary__kicker">섹션 요약</div><div class="section-summary__body"><ul>
+        <li><code>hp.owl</code>은 표현형의 정의·동의어·외부 참조·계층을 제공한다.</li>
+        <li><code>phenotype.hpoa</code>는 질병–표현형 연관과 출처·증거·빈도·큐레이션 정보를 제공한다.</li>
+        <li>이 사례의 LPG 선택은 일반 우열이 아니라 <strong>관계별 메타데이터를 직접 탐색</strong>하려는 목표에서 나온다.</li>
+      </ul></div></div>
+
+      <h3 id="hpo-two-sources">2.1 HPO는 ‘어휘’와 ‘주석’을 따로 준다</h3>
+      <p><code>hp.owl</code>은 RDF/XML로 직렬화된 OWL 온톨로지다. 각 표현형을 <code>owl:Class</code>로 정의하고 URI, 자연어 정의, 작성자·작성일, 외부 데이터베이스 상호참조, 동의어, <code>rdfs:subClassOf</code>를 제공한다. 이 가운데 계층은 나중에 “내분비계 이상” 같은 넓은 질문을 더 구체적인 표현형까지 확장하는 추론의 재료가 된다.</p>
+      <p><code>phenotype.hpoa</code>는 TSV 형식의 주석 파일이다. 각 행은 질병 ID와 표현형 ID의 연관을 주장하며, PubMed나 OMIM 출처, IEA·PCS·TAS 증거 코드, 발현 시점, 빈도, 성별, 수정자, 큐레이터와 날짜를 함께 담는다. 이 정보는 질병이나 표현형 자체의 속성이 아니라 <em>둘 사이 특정 연결</em>의 속성이다.</p>
+      <figure class="report-figure" id="fig-two-sources" data-deck-use="required">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 2</span><span class="asset-caption__title">정의·계층과 연관·근거를 한 그래프에 결합하기</span></figcaption>
+        <img src="assets/figs/two-sources-one-graph.svg" alt="hp.owl의 표현형 정의와 계층, phenotype.hpoa의 질병 표현형 연관과 근거가 표준 ID로 결합되어 질병 노드, 표현형 노드, 속성 있는 관계를 만드는 구조">
+        <small class="asset-note">교재 §3.1.2, 그림 3.5–3.6과 Listing 3.1–3.4의 의미를 새로 배치. 원본 도형을 복제하지 않음.</small>
+      </figure>
+      <table class="cmp-table" id="table-source-contract">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 3</span><span class="asset-caption__title">HPO 두 원천의 입력 계약</span></div></caption>
+        <thead><tr><th>관점</th><th><code>hp.owl</code></th><th><code>phenotype.hpoa</code></th><th>결합 시 확인</th></tr></thead>
+        <tbody>
+          <tr><td>형식</td><td>RDF/XML · OWL</td><td>TSV · HPOA</td><td>파서와 헤더/메타데이터 행 수</td></tr>
+          <tr><td>정본 정보</td><td>표현형 ID·정의·동의어·계층</td><td>질병 ID와 표현형 ID의 주석</td><td><code>hpo_id</code>가 온톨로지 노드와 일치하는가</td></tr>
+          <tr><td>근거</td><td>개념 자체의 작성·상호참조</td><td>연관의 reference·evidence·frequency</td><td>근거가 해당 관계에 보존되는가</td></tr>
+          <tr><td>변경 영향</td><td>계층·용어의 추가·폐기</td><td>주석·증거·질병 목록의 갱신</td><td>같은 스냅샷 조합과 적재 로그를 재현하는가</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="rdf-lpg-choice">2.2 RDF와 LPG는 요구를 기준으로 비교한다</h3>
+      <p>RDF는 주어–술어–목적어 트리플을 기본 단위로 하며, W3C 표준과 웹 식별자, 상호운용, 풍부한 온톨로지 표현에 강하다. LPG는 노드와 개별 관계에 키–값 속성을 둘 수 있어 경로 순회와 관계 메타데이터 접근이 직관적이다. RDF가 “관계에 속성을 붙일 수 없다”는 단순 비교는 정확하지 않다. n항 관계, 명명 그래프, RDF-star처럼 문장에 대한 메타데이터를 표현하는 방법이 있으며, 대신 모델·질의·엔진 지원의 복잡성이 달라진다.</p>
+      <p>이 장의 사용자 질문은 특정 질병–표현형 연관의 출처·작성자·날짜를 비교하는 데 집중한다. 그래서 저자는 관계 속성을 직접 다루는 LPG와 Cypher를 선택하고, Neosemantics로 RDF/OWL 어휘와 일부 추론 기능을 Neo4j에 가져온다. 이는 “LPG가 RDF보다 낫다”가 아니라 <strong>표준 온톨로지를 입력으로 사용하면서 애플리케이션 질의는 관계 중심으로 최적화</strong>한 하이브리드 결정이다.</p>
+      <figure class="report-figure" id="fig-edge-metadata" data-deck-use="required">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 3</span><span class="asset-caption__title">같은 주석 메타데이터를 표현하는 네 가지 패턴</span></figcaption>
+        <img src="assets/figs/edge-metadata-options.svg" alt="RDF n항 관계, RDF 명명 그래프, RDF-star, LPG 관계 속성이 질병 표현형 연결의 출처 작성자 날짜를 각기 다른 구조로 표현하는 비교">
+        <small class="asset-note">교재 §3.2.2, Listing 3.5–3.12의 구조를 관계 메타데이터라는 동일 질문으로 재구성.</small>
+      </figure>
+      <table class="cmp-table" id="table-rdf-lpg">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 4</span><span class="asset-caption__title">RDF와 LPG의 선택 기준</span></div></caption>
+        <thead><tr><th>관점</th><th>RDF 계열</th><th>LPG</th><th>이 사례의 판단</th></tr></thead>
+        <tbody>
+          <tr><td>기본 표현</td><td>전역 식별 가능한 트리플</td><td>레이블 노드·고유 관계·속성</td><td>HPO 원천은 RDF/OWL, 앱 모델은 LPG</td></tr>
+          <tr><td>관계 메타데이터</td><td>n항 관계·명명 그래프·RDF-star 등</td><td>개별 관계의 키–값</td><td>출처·증거·날짜 접근을 단순화</td></tr>
+          <tr><td>주요 강점</td><td>표준 교환·연합·의미 표현·추론</td><td>경로 탐색·관계 속성·운영 질의</td><td>Neosemantics로 두 강점을 일부 결합</td></tr>
+          <tr><td>선택 위험</td><td>주석 모델과 엔진 지원이 복잡할 수 있음</td><td>OWL 의미를 전부 자동 보존하지 않음</td><td>필요한 계층·규칙만 명시적으로 검증</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="report-section s3 page-break" id="build-operate">
+      <div class="report-section__kicker">Section 03 · Build &amp; Operate</div>
+      <h1>3. 적재는 파일 복사가 아니라 의미 계약의 구현이다</h1>
+      <div class="section-summary"><div class="section-summary__kicker">섹션 요약</div><div class="section-summary__body"><ul>
+        <li>제약과 인덱스를 먼저 만들고, Neosemantics 설정 뒤 HPO 온톨로지를 적재한다.</li>
+        <li>표현형 ID를 정렬한 다음 질병 노드와 관계를 만들고, 주석 필드를 관계 속성으로 풍부화한다.</li>
+        <li>적재 성공 로그만으로 끝내지 않고 원천 행·노드·관계·근거 속성의 보존성을 확인한다.</li>
+      </ul></div></div>
+
+      <h3 id="crisp-pipeline">3.1 CRISP-DM을 일곱 개의 산출물로 바꾼다</h3>
+      <p>이 장은 Chapter 2의 CRISP-DM 변형을 구체적인 KG 구축 절차로 바꾼다. 비즈니스 이해에서는 대표 임상 질문을, 데이터 이해에서는 두 HPO 원천의 의미와 식별자를, 설계에서는 RDF/LPG 선택 근거를 남긴다. 구현은 온톨로지 적재와 주석 적재로 나뉘며, 정제 뒤 직접 질의와 계층 추론으로 사용 가치를 확인한다.</p>
+      <figure class="report-figure" id="fig-build-pipeline" data-deck-use="required">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 4</span><span class="asset-caption__title">임상 질문에서 검증된 그래프 질의까지</span></figcaption>
+        <img src="assets/figs/build-pipeline.svg" alt="임상 질문, HPO 두 원천 이해, RDF LPG 선택, 온톨로지 적재, 주석 적재, 정제와 점검, 직접 질의와 계층 추론이 검증 게이트를 거쳐 이어지는 파이프라인">
+        <small class="asset-note">교재 그림 3.1–3.2, 3.7, 3.9–3.10의 전체 흐름을 산출물과 검증 지점 중심으로 통합 재구성.</small>
+      </figure>
+      <table class="cmp-table" id="table-build-steps">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 5</span><span class="asset-caption__title">구축 단계별 입력·출력·확인 질문</span></div></caption>
+        <thead><tr><th>단계</th><th>주요 작업</th><th>출력</th><th>품질 확인</th></tr></thead>
+        <tbody>
+          <tr><td>DB 준비</td><td>DB 생성, URI/ID 유일성 제약, ID 인덱스</td><td>중복을 거부하는 저장 공간</td><td>제약 충돌과 기존 데이터 상태</td></tr>
+          <tr><td>n10s 설정</td><td>그래프 설정, URI 처리와 Neo4j 명명 규칙 지정</td><td>RDF→LPG 변환 규칙</td><td>namespace를 무시해도 충돌하지 않는가</td></tr>
+          <tr><td>온톨로지 적재</td><td><code>n10s.rdf.import.fetch</code>, phenotype label·ID 부여</td><td>표현형 정의와 계층</td><td>URI·ID·<code>SUBCLASSOF</code> 건수</td></tr>
+          <tr><td>주석 적재</td><td>질병 노드와 <code>HAS_PHENOTYPIC_FEATURE</code> 생성</td><td>두 원천의 연결</td><td>매칭 실패·중복·누락 건수</td></tr>
+          <tr><td>풍부화</td><td>evidence·frequency·biocuration 파싱과 URL 생성</td><td>검토 가능한 관계 속성</td><td>결측·복수값·정규식 실패</td></tr>
+          <tr><td>정제</td><td>사용하지 않는 Resource 노드 제거</td><td>질의 중심 그래프</td><td>추론·감사에 필요한 정보까지 지우지 않았는가</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="annotation-lifecycle">3.2 한 행을 한 건의 감사 가능한 주장으로 보존한다</h3>
+      <p>교재의 Cypher는 TSV를 읽어 질병과 표현형을 <code>MERGE</code>하고, 관계가 만들어진 뒤 원시 필드와 사람이 읽을 설명을 순차적으로 추가한다. <code>FOREACH(CASE …)</code> 패턴은 값이 있는 필드만 설정해 null로 기존 값을 덮지 않는다. APOC 정규식은 <code>biocuration</code>에서 큐레이터와 날짜를 뽑고, 증거 코드 IEA·PCS·TAS를 설명으로 바꾼다.</p>
+      <pre><code class="language-cypher">MATCH (dis:HpoDisease)-[rel:HAS_PHENOTYPIC_FEATURE]-&gt;(phe:HpoPhenotype)
+WHERE dis.id = row[0] AND phe.id = row[3]
+FOREACH (_ IN CASE WHEN row[4] IS NOT NULL THEN [1] ELSE [] END |
+  SET rel.source = row[4])
+FOREACH (_ IN CASE WHEN row[5] IS NOT NULL THEN [1] ELSE [] END |
+  SET rel.evidence = row[5])</code></pre>
+      <p>하지만 이 구현에는 중요한 보존성 경계가 있다. 관계를 <code>MERGE (dis)-[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe)</code>처럼 질병–표현형 쌍만으로 합치면, 같은 쌍에 서로 다른 출처·작성일의 주석이 여러 건 있어도 하나의 관계가 된다. 이후 모든 일치 관계에 속성을 설정하면 마지막 처리 행의 값이 앞선 근거를 덮을 수 있다. 장의 개념 목표인 “주석별 provenance”를 구현하려면 주석 ID를 별도 노드로 승격하거나, 관계의 고유 키를 모델에 포함하고 행 수 보존 테스트를 두어야 한다.</p>
+      <figure class="report-figure" id="fig-annotation-lifecycle" data-deck-use="required">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 5</span><span class="asset-caption__title">HPOA 한 행이 그래프 주장이 되는 생애주기</span></figcaption>
+        <img src="assets/figs/annotation-lifecycle.svg" alt="HPOA 행을 파싱하고 표준 ID로 노드를 매칭해 관계를 만든 뒤 증거 설명과 URL로 풍부화하고 건수와 근거 보존을 확인하는 단계">
+        <small class="asset-note">교재 Listing 3.19–3.24와 저장소 <code>import_hpo.py</code> 감사를 바탕으로 재구성. 아래 구현 위험은 발표자의 코드 감사 결과.</small>
+      </figure>
+
+      <h3 id="implementation-reality">3.3 책의 결과와 현재 실행 결과는 분리한다</h3>
+      <p>교재 결과는 Neo4j 5.20.0, APOC 5.20.0, Neosemantics 5.20.0과 2025년 2월 HPO를 기준으로 한다. 저장소의 학습 노트북은 2026-06-23 HPOA 메타데이터를 확인했으며, “latest” URL을 쓰면 데이터가 계속 바뀐다. 따라서 노드·관계 수와 상위 질병 목록이 책과 다른 것은 곧바로 오류가 아니라 <strong>데이터 드리프트</strong>일 수 있다. 재현하려면 온톨로지·주석의 릴리스 URL과 체크섬을 함께 고정해야 한다.</p>
+      <p>또한 교재 Listing 3.18의 중간 상태 질의는 최종 정제 후 실행하면 실패한다. 이는 동일 코드가 어떤 시점에 실행됐는지가 결과의 일부라는 뜻이다. 실습 저장소의 파일 번호는 최종 교재보다 +3 오프셋이 있고, 일부 업스트림 파일은 중복 또는 0바이트라 <code>study.toml</code>의 <code>[mapping.listings.ch03]</code>가 정본이다.</p>
+      <table class="cmp-table" id="table-implementation-audit">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 6</span><span class="asset-caption__title">원자료·코드 감사에서 확인한 재현 경계</span></div></caption>
+        <thead><tr><th>경계</th><th>관찰</th><th>영향</th><th>권장 통제</th></tr></thead>
+        <tbody>
+          <tr><td>데이터 버전</td><td>책은 2025-02, 노트북 확인본은 2026-06-23</td><td>건수·후보 순위·주석 내용 변경</td><td>릴리스 URL·체크섬·적재일 기록</td></tr>
+          <tr><td>주석 다중성</td><td>질병–표현형 쌍만으로 관계 <code>MERGE</code></td><td>여러 provenance가 한 관계에서 덮일 수 있음</td><td>주석 식별자 또는 Annotation 노드</td></tr>
+          <tr><td>파싱 가정</td><td>큐레이터·날짜 정규식이 첫 패턴을 기대</td><td>결측·복수값에서 오류 또는 정보 손실</td><td>파싱 실패율과 원문 보존</td></tr>
+          <tr><td>단계 의존</td><td>중간 조회는 최종 정제 뒤 실패</td><td>실행 순서에 따라 데모 결과가 달라짐</td><td>단계별 스냅샷 또는 독립 검증 질의</td></tr>
+          <tr><td>리스팅 번호</td><td>업스트림 ch03 파일은 교재 번호와 +3</td><td>잘못된 코드 참조 위험</td><td><code>study.toml</code> 전수 대응표 사용</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="report-section s4 page-break" id="query-case">
+      <div class="report-section__kicker">Section 04 · Query &amp; Case</div>
+      <h1>4. 그래프는 표현형 조합을 후보 경로로 바꾼다</h1>
+      <div class="section-summary"><div class="section-summary__kicker">섹션 요약</div><div class="section-summary__body"><ul>
+        <li>직접 질의는 특정 질병과 연결된 표현형을 먼저 펼쳐 기준 패턴을 확인한다.</li>
+        <li>새로 관찰한 표현형들을 공유하는 질병을 찾고 겹치는 특징 수로 후보를 정렬한다.</li>
+        <li>결과는 후보 생성과 근거 탐색을 지원할 뿐, 진단 확정이나 확률 추정이 아니다.</li>
+      </ul></div></div>
+
+      <h3 id="direct-query">4.1 직접 연결은 답보다 검토 경로를 준다</h3>
+      <p>첫 질의는 <code>OMIM:222100</code> 제1형 당뇨병 노드에 직접 연결된 표현형을 가져온다. 이어 임상의가 환자에게서 성장 지연, 큰 무릎, 감각신경성 청각 장애, 소양증을 추가로 관찰했다고 가정한다. 두 번째 질의는 다섯 표현형과 연결된 질병을 모으고, 겹치는 특징 수를 내림차순으로 정렬한다.</p>
+      <pre><code class="language-cypher">MATCH (phe:HpoPhenotype)
+WHERE phe.label IN [
+  "Growth delay", "Large knee",
+  "Sensorineural hearing impairment", "Pruritus",
+  "Type I diabetes mellitus"
+]
+MATCH (dis:HpoDisease)-[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe)
+RETURN dis.id, dis.label, collect(phe.label) AS features,
+       count(*) AS num_of_features
+ORDER BY num_of_features DESC, dis.label
+LIMIT 5</code></pre>
+      <p>교재의 2025년 2월 스냅샷에서는 다섯 특징을 모두 공유하는 <em>Odontochondrodysplasia 2 with hearing loss and diabetes</em>(OMIM:619269)가 첫 후보로 나타난다. 그다음 후보는 세 개 또는 두 개의 특징을 공유한다. 그래프의 가치는 질병 이름만 반환하는 데 있지 않다. 어떤 표현형 경로가 점수를 만들었는지, 각 관계에 어떤 출처·증거·빈도가 있는지 다시 열어볼 수 있다.</p>
+      <figure class="report-figure" id="fig-clinical-query" data-deck-use="required">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 6</span><span class="asset-caption__title">관찰한 다섯 표현형으로 질병 후보를 순위화하기</span></figcaption>
+        <img src="assets/figs/clinical-query.svg" alt="제1형 당뇨병과 성장 지연, 큰 무릎, 감각신경성 청각 장애, 소양증이 연결된 질병 후보들을 공유 특징 수 5개, 3개, 2개 순으로 정렬하는 구조">
+        <small class="asset-note">교재 §3.4, Listing 3.25–3.26과 표 3.2를 경로와 겹침 수 중심으로 재구성. 질병명과 수치는 교재의 HPO 2025-02 결과 스냅샷.</small>
+      </figure>
+      <table class="cmp-table" id="table-candidate-results">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 7</span><span class="asset-caption__title">교재 스냅샷의 상위 후보와 해석 경계</span></div></caption>
+        <thead><tr><th>후보</th><th>공유 특징</th><th>이 결과가 말하는 것</th><th>말하지 않는 것</th></tr></thead>
+        <tbody>
+          <tr><td>Odontochondrodysplasia 2 with hearing loss and diabetes</td><td>5</td><td>입력 다섯 표현형 모두와 주석 경로가 있음</td><td>환자가 이 질병일 확률 또는 확정 진단</td></tr>
+          <tr><td>Holoprosencephaly 12 with/without pancreatic agenesis</td><td>3</td><td>세 표현형을 공유하는 비교 후보</td><td>세 특징의 특이도·중요도가 같다는 뜻</td></tr>
+          <tr><td>여러 2개 공유 후보</td><td>2</td><td>추가 검사·근거 검토가 필요한 넓은 후보군</td><td>빈도·부정 표현형·환자 맥락을 반영한 랭킹</td></tr>
+        </tbody>
+      </table>
+      <div class="callout--insight"><span class="callout__kicker">임상 경계</span><div class="callout__body"><p>단순 <code>count(*)</code>는 표현형의 희귀도, 부정 소견, 발현 시점, 증거 질, 환자 인구집단을 가중하지 않는다. 결과 화면은 후보·경로·근거를 함께 보여주고 임상의의 다음 검토를 지원해야 한다.</p></div></div>
+    </section>
+
+    <section class="report-section s5 page-break" id="reasoning">
+      <div class="report-section__kicker">Section 05 · Ontology Reasoning</div>
+      <h1>5. 계층은 저장되지 않은 포함 관계를 질의한다</h1>
+      <div class="section-summary"><div class="section-summary__kicker">섹션 요약</div><div class="section-summary__body"><ul>
+        <li>직접 연결만 찾으면 상위 범주 아래의 더 구체적인 표현형 주석을 놓친다.</li>
+        <li><code>SUBCLASSOF</code> 경로 또는 Neosemantics 추론은 하위 표현형을 상위 범주 질의에 포함한다.</li>
+        <li>추론은 새 임상 사실을 발명하지 않으며, 계층·깊이·방향·주석 품질의 영향을 그대로 받는다.</li>
+      </ul></div></div>
+
+      <h3 id="explicit-inferred">5.1 직접 사실과 암시적 포함을 분리한다</h3>
+      <p>“내분비계 이상과 관련된 질병은?”이라는 질문을 생각해 보자. 어떤 질병은 <em>Abnormality of the endocrine system</em>에 직접 주석되어 있지만, 더 많은 질병은 갑상선·췌장·포도당 대사처럼 하위 표현형에 연결되어 있다. 직접 관계만 조회하면 후자를 놓친다.</p>
+      <p>교재는 먼저 <code>[:SUBCLASSOF*1..3]</code> 경로로 상위 범주 아래의 하위 표현형을 찾고, 이어 <code>n10s.inference.nodesInCategory</code>로 이 계층을 따라 질병을 포함한다. 반환된 질병–표현형 주석은 원래 그래프에 명시적으로 존재하지만, 상위 범주와 질병의 포함 관계는 계층 규칙에서 도출된다.</p>
+      <figure class="report-figure" id="fig-hierarchical-inference" data-deck-use="required">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 7</span><span class="asset-caption__title">하위 표현형 주석을 상위 범주 질의에 포함하기</span></figcaption>
+        <img src="assets/figs/hierarchical-inference.svg" alt="내분비계 이상 상위 범주 아래 갑상선, 췌장, 포도당 대사 이상이 있고 질병이 하위 표현형에 직접 연결되어 상위 범주 질의에 추론으로 포함되는 구조">
+        <small class="asset-note">교재 §3.5, Listing 3.27–3.28과 표 3.3의 의미를 직접 사실과 암시적 포함으로 구분해 재구성.</small>
+      </figure>
+
+      <h3 id="reasoning-boundary">5.2 더 넓은 결과가 더 정확한 결과는 아니다</h3>
+      <p>계층 추론은 검색 누락을 줄이지만 품질을 자동 보장하지 않는다. <code>1..3</code> 깊이는 구현자가 정한 범위이고, 더 깊은 하위 개념을 놓칠 수 있다. 반대로 범위를 무제한으로 넓히면 너무 일반적인 상위 개념을 통해 관련성이 약한 후보가 늘 수 있다. 또한 HPO와 주석은 불완전하게 갱신되므로 “연결 없음”을 “관련 없음”으로 해석해서는 안 된다.</p>
+      <p>따라서 결과에는 직접 연결인지 계층으로 포함됐는지, 어떤 <code>SUBCLASSOF</code> 경로를 따라왔는지, 어느 HPO 릴리스를 썼는지를 함께 표시해야 한다. 임상의가 추론 경로를 검토할 수 없다면 추론의 설명 가능성은 저장소 내부에만 머문다.</p>
+      <table class="cmp-table" id="table-query-reasoning">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 8</span><span class="asset-caption__title">직접 질의와 계층 추론의 역할·위험 비교</span></div></caption>
+        <thead><tr><th>관점</th><th>직접 연결 질의</th><th>계층 추론</th><th>화면에 남길 근거</th></tr></thead>
+        <tbody>
+          <tr><td>범위</td><td>명시된 질병–표현형 주석</td><td>하위 표현형을 상위 범주에 포함</td><td>direct / inferred 상태</td></tr>
+          <tr><td>가치</td><td>정확한 주석과 provenance 검토</td><td>계층 때문에 숨은 후보 회수</td><td>원 주석과 전체 계층 경로</td></tr>
+          <tr><td>주요 위험</td><td>계층적 의미를 놓쳐 누락</td><td>범위가 넓어져 관련성 약화</td><td>깊이·규칙·온톨로지 버전</td></tr>
+          <tr><td>부재 해석</td><td>주석이 없을 수 있음</td><td>하위 개념이 불완전할 수 있음</td><td>“근거 없음”과 “거짓”을 구분</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="report-section s6 page-break" id="evidence-limits">
+      <div class="report-section__kicker">Section 06 · Evidence &amp; Limits</div>
+      <h1>6. 신뢰도는 가장 짧은 미검증 구간에서 무너진다</h1>
+      <div class="section-summary"><div class="section-summary__kicker">섹션 요약</div><div class="section-summary__body"><ul>
+        <li>버전이 다른 두 HPO 원천을 섞으면 재현성과 의미 정합성이 흔들린다.</li>
+        <li>식별자 매핑, 주석 다중성, 파싱, 정제, 추론 범위를 단계별로 검증해야 한다.</li>
+        <li>기술적으로 재현된 후보도 임상적 타당성을 자동 증명하지 않는다.</li>
+      </ul></div></div>
+
+      <h3 id="validation-contract">6.1 네 게이트가 후보 결과의 감사 경로를 만든다</h3>
+      <p>첫째, <strong>원천 게이트</strong>에서 릴리스·컬럼·식별자·체크섬을 고정한다. 둘째, <strong>의미 게이트</strong>에서 질병과 표현형 역할, HPO ID, 동의어와 계층 방향을 표본 감사한다. 셋째, <strong>적재 게이트</strong>에서 원천 행 수가 노드·관계·주석으로 어떻게 변했는지, 중복과 결측이 어떻게 처리됐는지 비교한다. 넷째, <strong>사용 게이트</strong>에서 대표 질의를 재현하고 직접·추론 결과와 임상 판단의 경계를 확인한다.</p>
+      <figure class="report-figure" id="fig-validation-gates" data-deck-use="required">
+        <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 8</span><span class="asset-caption__title">온톨로지 기반 임상 지원 KG의 네 검증 게이트</span></figcaption>
+        <img src="assets/figs/validation-gates.svg" alt="원천, 의미, 적재, 사용의 네 검증 게이트를 차례로 통과하고 실패하면 이전 단계로 돌아가며 최종 결과는 사람 검토로 이어지는 구조">
+        <small class="asset-note">교재의 데이터 품질 강조와 Chapter 3 구현 감사를 운영 통제 관점으로 재구성.</small>
+      </figure>
+      <table class="cmp-table" id="table-failure-modes">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 9</span><span class="asset-caption__title">주장–조건–실패 신호 추적표</span></div></caption>
+        <thead><tr><th>핵심 주장</th><th>근거</th><th>적용 조건</th><th>실패 신호</th></tr></thead>
+        <tbody>
+          <tr><td>온톨로지가 의미 통합을 돕는다</td><td>표준 ID·동의어·계층으로 원천을 정렬</td><td>매핑 규칙과 온톨로지 범위가 맞음</td><td>동일 개념의 복수 ID·잘못된 계층</td></tr>
+          <tr><td>LPG가 이 사례의 주석 탐색을 단순화한다</td><td>관계 속성으로 출처·증거에 직접 접근</td><td>개별 주석 다중성을 모델이 보존</td><td>관계 <code>MERGE</code>로 근거가 덮임</td></tr>
+          <tr><td>표현형 조합이 후보를 좁힌다</td><td>공유 특징 수 기준의 재현 가능한 질의</td><td>입력 코딩·주석·버전이 적절</td><td>결과가 드리프트하거나 근거가 빈약</td></tr>
+          <tr><td>계층 추론이 숨은 연관을 찾는다</td><td><code>SUBCLASSOF</code> 경로의 암시적 포함</td><td>계층 방향·깊이·규칙이 타당</td><td>너무 넓은 후보·설명할 수 없는 경로</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="medical-boundary">6.2 이 장은 임상 의사결정 지원의 개념 증명이다</h3>
+      <p>교재 사례는 HPO 데이터 위에서 질의와 추론이 어떻게 작동하는지 보여주는 교육용 예시다. 환자 EHR의 실제 수집·동의·권한·비식별화, 부정 표현형, 발현 시점, 환자군별 빈도, 임상 검증, 규제와 책임 배분은 다루지 않는다. 따라서 결과를 “진단”이라고 표현하기보다 <strong>검토 가능한 후보 생성</strong>으로 제한해야 한다.</p>
+      <div class="callout--hero"><span class="callout__kicker">Safety Boundary</span><span class="callout__body">그래프가 반환한 질병명은 <strong>정답이 아니라 조사 순서</strong>다. 원 주석·추론 경로·데이터 버전을 함께 보여주고, 최종 판단은 임상의와 검증 절차에 남긴다.</span></div>
+    </section>
+
+    <section class="report-section s7 page-break" id="decision">
+      <div class="report-section__kicker">Section 07 · Decision &amp; Takeaways</div>
+      <h1>7. 온톨로지·LPG·추론은 질문에 필요한 만큼만 쓴다</h1>
+      <div class="section-summary"><div class="section-summary__kicker">섹션 요약</div><div class="section-summary__body"><ul>
+        <li>여러 원천의 의미 정렬과 계층 질의가 핵심이면 온톨로지 우선 접근의 가치가 크다.</li>
+        <li>관계별 provenance와 경로 탐색이 중심이면 LPG가 단순할 수 있지만 RDF 대안도 요구별로 비교한다.</li>
+        <li>작은 대표 질문으로 데이터·모델·추론·검토 비용을 함께 시험한다.</li>
+      </ul></div></div>
+
+      <h3 id="technology-decision">7.1 기술 이름이 아니라 지식 질문으로 선택한다</h3>
+      <table class="cmp-table" id="table-decision">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 10</span><span class="asset-caption__title">온톨로지 기반 KG 도입 판단표</span></div></caption>
+        <thead><tr><th>질문</th><th>도입 가치가 커지는 신호</th><th>다른 접근이 나은 신호</th><th>작은 실험</th></tr></thead>
+        <tbody>
+          <tr><td>의미 정렬이 핵심인가?</td><td>동의어·중의어·세분성 때문에 통합 오류가 큼</td><td>단일 시스템의 고정 코드만 사용</td><td>상위 100개 값의 표준 ID 매핑 감사</td></tr>
+          <tr><td>관계 경로가 답인가?</td><td>여러 개체의 연결과 provenance가 판단 근거</td><td>단일 테이블 필터·집계로 충분</td><td>대표 질문 3개를 RDB와 그래프로 비교</td></tr>
+          <tr><td>계층 추론이 필요한가?</td><td>상·하위 개념을 따라 누락을 줄여야 함</td><td>정확 일치만 요구하고 분류체계가 불안정</td><td>직접/추론 결과의 정밀 검토 표본</td></tr>
+          <tr><td>갱신을 책임질 수 있는가?</td><td>릴리스·매핑·품질 소유자와 롤백이 있음</td><td>latest 적재만 하고 결과 드리프트를 추적하지 않음</td><td>두 릴리스 diff와 회귀 질의 실행</td></tr>
+          <tr><td>결과를 검토할 수 있는가?</td><td>경로·출처·증거를 사용자에게 보여줄 수 있음</td><td>질병명만 반환하고 검증 책임자가 없음</td><td>임상의 리뷰용 설명 화면 프로토타입</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="minimum-pilot">7.2 최소 파일럿은 질문–스냅샷–그래프–근거 화면이다</h3>
+      <p>첫 파일럿은 거대한 의료 온톨로지 플랫폼이 아니다. 대표 임상 질문 3개와 기대 경로를 정의하고, 같은 날짜의 <code>hp.owl</code>과 <code>phenotype.hpoa</code>를 고정한다. 필요한 HPO 하위 범위만 적재하고, 주석 다중성을 보존하는 모델을 선택한다. 직접 질의와 계층 추론의 결과를 분리해 표시하고, 원 출처와 경로를 한 번에 열 수 있는 검토 화면을 만든다.</p>
+      <p>중단 기준도 함께 둔다. 표준 ID 매핑 오류가 허용 범위를 넘거나, 주석 건수 보존이 설명되지 않거나, 추론 후보가 임상의 검토 시간을 줄이지 못하거나, 릴리스 갱신 때 회귀 결과를 설명할 수 없다면 범위를 줄이거나 모델을 바꾼다.</p>
+      <div class="callout--hero"><span class="callout__kicker">Three Takeaways</span><span class="callout__body"><strong>질문이 모델을 고르고, 온톨로지가 의미를 고정하며, 근거 경로가 결과의 신뢰 범위를 정한다.</strong> 그래프의 완성은 적재 성공이 아니라 사용자가 후보와 이유를 함께 검토할 수 있을 때다.</span></div>
+
+      <h3 id="discussion">7.3 토론 질문</h3>
+      <table class="cmp-table" id="table-discussion">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 11</span><span class="asset-caption__title">책의 개념을 우리 설계로 옮기는 질문</span></div></caption>
+        <thead><tr><th>질문</th><th>드러나는 설계 결정</th><th>좋은 답의 증거</th></tr></thead>
+        <tbody>
+          <tr><td>우리 데이터의 “같은 개념”은 누가 승인하는가?</td><td>매핑 소유권·변경 이력·충돌 정책</td><td>표본 감사와 되돌릴 수 있는 매핑 버전</td></tr>
+          <tr><td>관계 하나에 여러 근거가 있을 때 어떻게 보존할까?</td><td>관계 속성 vs Annotation 노드</td><td>원천 주석 수와 그래프 assertion 수의 대응</td></tr>
+          <tr><td>추론으로 포함된 후보를 사용자에게 어떻게 설명할까?</td><td>경로 표시·깊이·규칙·불확실성 UI</td><td>원 주석과 전체 계층 경로를 한 번에 검토</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="report-appendix s-glossary page-break" id="glossary">
+      <div class="report-section__kicker">Appendix A · Glossary</div>
+      <h1>핵심 용어</h1>
+      <table class="cmp-table" id="table-glossary">
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 12</span><span class="asset-caption__title">Chapter 3 용어 사전</span></div></caption>
+        <thead><tr><th>용어</th><th>이 리포트에서의 의미</th></tr></thead>
+        <tbody>
+          <tr><td>온톨로지</td><td>도메인의 표준 개념·식별자·속성·범주·관계를 명시한 참조 어휘와 스키마.</td></tr>
+          <tr><td>HPO</td><td>인간 표현형 이상을 표준화하고 계층화하며 질병 연관 주석을 제공하는 Human Phenotype Ontology.</td></tr>
+          <tr><td>표현형</td><td>개인에게 관찰되는 물리적·생화학적 특징. 이 사례에서는 HPO 식별자로 코딩한다.</td></tr>
+          <tr><td>주석</td><td>특정 질병–표현형 연관과 그 출처·증거·빈도·큐레이션 정보를 묶은 주장.</td></tr>
+          <tr><td>RDF</td><td>주어–술어–목적어 트리플로 지식을 표현·교환하는 W3C 표준 데이터 모델.</td></tr>
+          <tr><td>LPG</td><td>레이블이 있는 노드와 개별 관계에 키–값 속성을 둘 수 있는 그래프 모델.</td></tr>
+          <tr><td>Neosemantics(n10s)</td><td>Neo4j에서 RDF/OWL 어휘를 가져오고 일부 의미 질의를 지원하는 플러그인.</td></tr>
+          <tr><td>추론</td><td>저장된 주석과 온톨로지 규칙·계층에서 명시되지 않은 포함 관계를 도출하는 과정.</td></tr>
+          <tr><td>provenance</td><td>어떤 주장이 어느 출처·작성자·시점·처리 과정에서 왔는지를 추적하는 정보.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="report-appendix s-refs page-break" id="references">
+      <div class="report-section__kicker">Appendix B · References</div>
+      <h1>참고 자료와 재구성 범위</h1>
+      <ol class="references" style="list-style:none;padding:0;">
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[1]</span><span>Alessandro Negro et al., <em>Knowledge Graphs and LLMs in Action</em>, Chapter 3 “Create Your First Knowledge Graph from Ontologies,” Manning, pp. 37–64. 본문의 개념·코드·예제·수치는 이 장을 자체 해설로 재구성했다.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[2]</span><span><a href="https://hpo.jax.org/" rel="noreferrer">Human Phenotype Ontology</a> 공식 포털과 <a href="https://purl.obolibrary.org/obo/hp.owl" rel="noreferrer">hp.owl 배포 경로</a>. 교재와 로컬 실습이 참조한 온톨로지 원천.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[3]</span><span><a href="https://github.com/obophenotype/human-phenotype-ontology/releases/latest/download/phenotype.hpoa" rel="noreferrer">HPOA release data</a>. 이 URL은 latest이므로 재현 가능한 운영에서는 고정 릴리스와 체크섬을 기록해야 한다.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[4]</span><span>저장소의 Chapter 3 원문·한국어 번역·해설판, <code>src/ch03/importer/import_hpo.py</code>, <code>03_chapter_guide.ipynb</code>, <code>study.toml</code> 리스팅 대응표를 원자료 감사에 사용했다.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[5]</span><span>그림 1–8은 교재 도형을 복제하지 않고 Chapter 3의 논리 관계를 발표자가 새로 구성한 SVG다. 임상 결과 그림의 질병명과 공유 특징 수만 교재의 HPO 2025-02 결과 스냅샷을 따른다.</span></li>
+      </ol>
+      <div class="report-jump-links"><a href="./">발표자료</a><a href="../../">회차 목록</a><a href="#summary">문서 처음</a></div>
+    </section>
+  </article>
+  <script src="assets/report.js"></script>
+  <script defer src="assets/katex/katex.min.js"></script>
+  <script defer src="assets/katex/auto-render.min.js"></script>
+  <script defer src="assets/katex/katex-init.js"></script>
+</body>
+</html>
