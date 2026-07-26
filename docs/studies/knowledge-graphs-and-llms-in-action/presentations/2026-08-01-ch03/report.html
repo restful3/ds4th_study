@@ -52,7 +52,7 @@
         <span class="callout__body"><strong>쓸모 있는 지식 그래프는 데이터부터 시작하지 않는다.</strong> 사용자의 질문을 먼저 고정하고, 온톨로지로 의미를 정렬하고, 관계에 근거를 보존한 뒤, 직접 연결과 계층 추론을 구분해 검증한다.</span>
       </div>
       <p>Chapter 3은 Human Phenotype Ontology(HPO)를 이용해 희귀질환 진단을 지원하는 첫 지식 그래프를 만드는 구현 장이다. 겉으로는 Neo4j와 Cypher 실습처럼 보이지만, 실제 핵심은 <strong>문제 정의 → 데이터 의미 이해 → 표현 모델 선택 → 적재와 품질 통제 → 질문과 추론</strong>의 설계 순서다. 임상의에게 필요한 것은 “그래프가 있다”는 사실이 아니라, 관찰한 표현형 조합에서 후보 질병을 찾고 그 연결의 출처·증거·작성일을 검토할 수 있는가이다.</p>
-      <p>이를 위해 장은 성격이 다른 두 HPO 원천을 결합한다. <code>hp.owl</code>은 표현형의 표준 정의와 <code>subClassOf</code> 계층을 제공하고, <code>phenotype.hpoa</code>는 질병–표현형 연관과 그 근거를 제공한다. 온톨로지의 표현력은 보존하되 관계별 메타데이터를 쉽게 탐색하려고 LPG와 Neo4j를 선택하고, Neosemantics로 RDF/OWL을 가져온다. 완성된 그래프는 직접 연결 질의뿐 아니라 상위 표현형 범주 아래의 하위 개념을 따라 암시적 후보까지 확장한다.</p>
+      <p>이를 위해 장은 성격이 다른 두 HPO 원천을 결합한다. <code>hp.owl</code>은 표현형의 표준 정의와 <code>subClassOf</code> 계층을 제공하고, <code>phenotype.hpoa</code>는 질병–표현형 연관과 그 근거를 제공한다. 온톨로지의 표현력은 보존하되 관계별 메타데이터를 쉽게 탐색하려고 LPG와 Neo4j를 선택하고, <a href="https://neo4j.com/labs/neosemantics/" rel="noreferrer" target="_blank">Neosemantics</a>로 RDF/OWL을 가져온다. 완성된 그래프는 직접 연결 질의뿐 아니라 상위 표현형 범주 아래의 하위 개념을 따라 암시적 후보까지 확장한다.</p>
       <div class="section-summary">
         <div class="section-summary__kicker">이 리포트가 답하는 네 질문</div>
         <div class="section-summary__body"><ul>
@@ -63,7 +63,7 @@
         </ul></div>
       </div>
       <p>이 장은 개념 장이 아니라 <strong>구현 장</strong>이다. 그래서 이 리포트는 교재 Listing 3.5–3.28의 코드를 본문에 함께 싣고 한 줄씩 쉬운 말로 풀었다. §2.2는 같은 사실 하나를 RDF 세 방식과 LPG로 각각 적어 비교하고, §3은 온톨로지 적재부터 정제까지의 파이프라인을, §5–6은 추론과 근거 추적 질의를 다룬다.</p>
-      <p>아울러 이 회차의 학습 노트북 <code>03_chapter_guide.ipynb</code>가 모든 리스팅을 <strong>실제 Neo4j에서 끝까지 실행한 기록</strong>을 남겼다. 그 실측치를 책 값과 나란히 놓으면 재현에 관한 사실이 드러난다 — 적재 트리플은 899,558에서 <strong>926,450</strong>으로 늘었고, 진단 질의의 <strong>1위 후보는 그대로지만 2위 이하는 바뀌었으며</strong>, 책 표 3.3이 강조한 <em>Hyperglycemia</em>는 <strong>더 이상 내분비계 이상의 하위가 아니다</strong>. 코드는 그대로인데 결과가 달라지는 이 세 가지가 §3.4·4.2·5.2의 주제다.</p>
+      <p>아울러 이 회차의 학습 노트북 <a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/03_chapter_guide.ipynb" rel="noreferrer" target="_blank"><code>03_chapter_guide.ipynb</code></a>가 모든 리스팅을 <strong>실제 Neo4j에서 끝까지 실행한 기록</strong>을 남겼다. 그 실측치를 책 값과 나란히 놓으면 재현에 관한 사실이 드러난다 — 적재 트리플은 899,558에서 <strong>926,450</strong>으로 늘었고, 진단 질의의 <strong>1위 후보는 그대로지만 2위 이하는 바뀌었으며</strong>, 책 표 3.3이 강조한 <em>Hyperglycemia</em>는 <strong>더 이상 내분비계 이상의 하위가 아니다</strong>. 코드는 그대로인데 결과가 달라지는 이 세 가지가 §3.4·4.2·5.2의 주제다.</p>
       <table class="cmp-table" id="table-overview">
         <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 1</span><span class="asset-caption__title">Chapter 3의 전체 논리</span></div></caption>
         <thead><tr><th>단계</th><th>핵심 질문</th><th>장의 답</th><th>검증 산출물</th></tr></thead>
@@ -97,7 +97,7 @@
 
       <h3 id="clinician-question">1.2 목표는 자동 진단이 아니라 검토 가능한 후보 탐색이다</h3>
       <p>이 장의 대상 사용자는 질병을 진단하고 치료하는 임상의다. 특히 희귀질환은 한두 증상으로 식별하기 어렵고, 여러 표현형 특징의 조합과 문헌 근거를 함께 살펴야 한다. 따라서 지식 기반에는 두 가지가 필요하다. 첫째, 같은 기관·계통에 속하는 표현형 이상을 연결하는 <strong>맥락적 계층</strong>. 둘째, 질병과 표현형의 연관뿐 아니라 출처·증거·빈도·작성자를 추적할 수 있는 <strong>주석</strong>이다.</p>
-      <p>도메인에는 경계 사례도 있다. 제1형 당뇨병은 하나의 질병으로 식별될 수 있고, 다른 희귀 증후군에서 관찰되는 표현형 특징으로도 식별될 수 있다. 한 문자열에 역할을 억지로 합치지 않고 <code>OMIM:222100</code>과 <code>HP:0100651</code>처럼 서로 다른 표준 ID를 사용하면, 질문의 문맥에 따라 질병 노드와 표현형 노드를 구분할 수 있다.</p>
+      <p>도메인에는 경계 사례도 있다. 제1형 당뇨병은 하나의 질병으로 식별될 수 있고, 다른 희귀 증후군에서 관찰되는 표현형 특징으로도 식별될 수 있다. 한 문자열에 역할을 억지로 합치지 않고 <a href="https://omim.org/entry/222100" rel="noreferrer" target="_blank"><code>OMIM:222100</code></a>과 <a href="https://www.ebi.ac.uk/ols4/ontologies/hp/classes?obo_id=HP:0100651" rel="noreferrer" target="_blank"><code>HP:0100651</code></a>처럼 서로 다른 표준 ID를 사용하면, 질문의 문맥에 따라 질병 노드와 표현형 노드를 구분할 수 있다.</p>
       <table class="cmp-table" id="table-domain-contract">
         <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 2</span><span class="asset-caption__title">희귀질환 지원 KG의 도메인 계약</span></div></caption>
         <thead><tr><th>항목</th><th>이 장의 정의</th><th>그래프 표현</th><th>오해하면 생기는 문제</th></tr></thead>
@@ -359,7 +359,7 @@ CALL apoc.periodic.iterate(
    DETACH DELETE n",
   {batchSize: 10000})
 YIELD batches, total RETURN batches, total</code></pre>
-        <p><strong>④는 “친절함”을 데이터에 새겨 넣는 단계다.</strong> <code>biocuration</code> 칸에 <code>HPO:NicoleVasilevsky[2018-02-23]</code>이라고만 적혀 있으면 사람이 읽기 불편하다. 정규식으로 이름과 날짜를 뽑아 별도 속성으로 만들고, <code>PCS</code> 같은 세 글자 약어를 <code>Published clinical study</code>라는 문장으로 풀고, <code>PMID:9357814</code>를 클릭 가능한 PubMed 주소로 바꾼다. §6이 요구하는 “임상의가 근거를 열어볼 수 있어야 한다”가 여기서 준비된다. <code>apoc.periodic.iterate</code>는 28만 건을 1,000건씩 나눠 처리해 메모리를 아끼는 장치다.</p>
+        <p><strong>④는 “친절함”을 데이터에 새겨 넣는 단계다.</strong> <code>biocuration</code> 칸에 <code>HPO:NicoleVasilevsky[2018-02-23]</code>이라고만 적혀 있으면 사람이 읽기 불편하다. 정규식으로 이름과 날짜를 뽑아 별도 속성으로 만들고, <code>PCS</code> 같은 세 글자 약어를 <code>Published clinical study</code>라는 문장으로 풀고, <code>PMID:9357814</code>를 클릭 가능한 PubMed 주소로 바꾼다. §6이 요구하는 “임상의가 근거를 열어볼 수 있어야 한다”가 여기서 준비된다. <a href="https://neo4j.com/docs/apoc/5/overview/apoc.periodic/apoc.periodic.iterate/" rel="noreferrer" target="_blank"><code>apoc.periodic.iterate</code></a>는 28만 건을 1,000건씩 나눠 처리해 메모리를 아끼는 장치다.</p>
         <p><strong>⑤는 되돌릴 수 없는 단계다.</strong> 표현형도 질병도 아닌 <code>Resource</code> 노드를 전부 지운다. 온톨로지의 동의어 타입·주석 출처 같은 메타데이터가 여기서 사라지고, 그래서 <strong>책 3.18의 중간 점검 질의는 이 단계 이후 빈 결과를 낸다</strong>(§3.3 참조).</p>
       </div>
 
@@ -372,7 +372,7 @@ YIELD batches, total RETURN batches, total</code></pre>
 
       <h3 id="implementation-reality">3.3 책의 결과와 현재 실행 결과는 분리한다</h3>
       <p>교재 결과는 Neo4j 5.20.0, APOC 5.20.0, Neosemantics 5.20.0과 2025년 2월 HPO를 기준으로 한다. 저장소의 학습 노트북은 2026-06-23 HPOA 메타데이터를 확인했으며, “latest” URL을 쓰면 데이터가 계속 바뀐다. 따라서 노드·관계 수와 상위 질병 목록이 책과 다른 것은 곧바로 오류가 아니라 <strong>데이터 드리프트</strong>일 수 있다. 재현하려면 온톨로지·주석의 릴리스 URL과 체크섬을 함께 고정해야 한다.</p>
-      <p>또한 교재 Listing 3.18의 중간 상태 질의는 최종 정제 후 실행하면 실패한다. 이는 동일 코드가 어떤 시점에 실행됐는지가 결과의 일부라는 뜻이다. 실습 저장소의 파일 번호는 최종 교재보다 +3 오프셋이 있고, 일부 업스트림 파일은 중복 또는 0바이트라 <code>study.toml</code>의 <code>[mapping.listings.ch03]</code>가 정본이다.</p>
+      <p>또한 교재 Listing 3.18의 중간 상태 질의는 최종 정제 후 실행하면 실패한다. 이는 동일 코드가 어떤 시점에 실행됐는지가 결과의 일부라는 뜻이다. 실습 저장소의 파일 번호는 최종 교재보다 +3 오프셋이 있고, 일부 업스트림 파일은 중복 또는 0바이트라 <a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/study.toml" rel="noreferrer" target="_blank"><code>study.toml</code></a>의 <code>[mapping.listings.ch03]</code>가 정본이다.</p>
       <table class="cmp-table" id="table-implementation-audit">
         <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 6</span><span class="asset-caption__title">원자료·코드 감사에서 확인한 재현 경계</span></div></caption>
         <thead><tr><th>경계</th><th>관찰</th><th>영향</th><th>권장 통제</th></tr></thead>
@@ -388,7 +388,7 @@ YIELD batches, total RETURN batches, total</code></pre>
       </table>
 
       <h3 id="notebook-rerun">3.4 직접 돌려 보면 숫자가 이만큼 달라진다</h3>
-      <p>이 회차의 학습 노트북 <code>src/ch03/03_chapter_guide.ipynb</code>는 책의 리스팅을 <strong>실제 Neo4j에 처음부터 끝까지 실행</strong>한 기록이다. 앞 절의 “드리프트가 있을 수 있다”는 말을 추상으로 두지 않고, 실측치를 책 값과 나란히 두면 무엇이 얼마나 움직이는지 눈으로 보인다.</p>
+      <p>이 회차의 학습 노트북 <a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/03_chapter_guide.ipynb" rel="noreferrer" target="_blank"><code>src/ch03/03_chapter_guide.ipynb</code></a>는 책의 리스팅을 <strong>실제 Neo4j에 처음부터 끝까지 실행</strong>한 기록이다. 앞 절의 “드리프트가 있을 수 있다”는 말을 추상으로 두지 않고, 실측치를 책 값과 나란히 두면 무엇이 얼마나 움직이는지 눈으로 보인다.</p>
       <div class="callout--insight"><span class="callout__kicker">따라 하기 전에 알아야 할 것</span><div class="callout__body">
         <p>노트북은 Docker로 띄운 <strong>Neo4j 5.26.28 Community</strong>에서 돌렸다(플러그인 <code>n10s</code>·<code>apoc</code>·<code>gds</code>). 그런데 <strong>책의 첫 명령 <code>CREATE DATABASE hpo</code>가 Community 에디션에서는 실패한다</strong> — 멀티 데이터베이스는 Enterprise 전용 기능이라 <code>UnsupportedAdministrationCommand</code> 오류가 난다. 노트북은 기본 <code>neo4j</code> 데이터베이스를 그대로 쓰는 것으로 우회했고, 학습 내용에는 영향이 없다. 교재가 Enterprise 5.20 기준이라는 점을 모르면 <strong>첫 줄에서 막힌다.</strong></p>
       </div></div>
@@ -406,7 +406,7 @@ YIELD batches, total RETURN batches, total</code></pre>
       </table>
       <p>소요 시간도 실습 준비에 직결된다. 대부분의 단계는 <strong>1초 안팎</strong>이고 온톨로지 적재(3.16)가 9.5초, 질병 노드·관계 생성(3.19·3.20)이 각 3초 남짓이다. 그런데 <strong>관계에 속성을 붙이는 3.22 한 단계만 약 8분(496초)</strong> 걸린다. 28만 5천 개 관계에 <code>FOREACH</code> 여덟 개를 배치 처리 없이 돌리기 때문이다. 전체를 처음부터 다시 만들면 9분 남짓 걸리므로, <strong>시연 중에 이 셀을 실행하면 안 된다.</strong></p>
       <div class="callout--insight"><span class="callout__kicker">노트북이 추가로 바로잡은 것</span><div class="callout__body"><ul>
-        <li><strong>업스트림 파일 2건이 망가져 있다</strong> — 책 3.21에 해당하는 저장소 파일은 다음 파일과 내용이 완전히 중복돼 엉뚱한 질의가 들어 있고, 책 3.25에 해당하는 파일은 <strong>0바이트 빈 파일</strong>이다. 두 건 모두 해설판 본문으로 대체했고, <code>study.toml</code>이 각각 <code>upstream-wrong</code>·<code>upstream-missing</code>으로 선언한다.</li>
+        <li><strong>업스트림 파일 2건이 망가져 있다</strong> — 책 3.21에 해당하는 저장소 파일은 다음 파일과 내용이 완전히 중복돼 엉뚱한 질의가 들어 있고, 책 3.25에 해당하는 파일은 <strong>0바이트 빈 파일</strong>이다. 두 건 모두 해설판 본문으로 대체했고, <a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/study.toml" rel="noreferrer" target="_blank"><code>study.toml</code></a>이 각각 <code>upstream-wrong</code>·<code>upstream-missing</code>으로 선언한다. 정정 내역은 <a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/errata.toml" rel="noreferrer" target="_blank"><code>errata.toml</code></a>에 기록돼 있다.</li>
         <li><strong>해설판 본문의 3.21도 그대로 쓰면 안 된다</strong> — <code>MERGE (dis:HpoDisease)-[…]-&gt;(phe:HpoPhenotype)</code>로 시작하는데, 바인딩되지 않은 변수에 <code>MERGE</code>를 쓰면 조회가 아니라 <strong>노드와 관계를 새로 만들어 그래프를 오염시킨다.</strong> 의도가 조회이므로 <code>MATCH</code>로 고쳐 실행했다.</li>
         <li><strong>교재의 HPO 용어 링크가 지금은 404다</strong> — <code>hpo.jax.org/app/browse/term/…</code> 체계가 바뀌었다. 노트북은 같은 용어를 EBI OLS4에서 여는 링크로 대체했다.</li>
       </ul></div></div>
@@ -429,7 +429,7 @@ MATCH path=(dis:HpoDisease)-[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe:HpoPhenotype)
 WHERE dis.id = "OMIM:222100"
 RETURN path</code></pre>
       <p>노트북 재실행 결과 <code>OMIM:222100</code>에는 표현형 <strong>8개</strong>가 달려 있다 — Autoimmunity, Decreased circulating 1,5 anhydroglucitol concentration, Diabetes mellitus, Hyperglycemia, Ketoacidosis, Polydipsia, Polyphagia, Polyuria. 다음(그림 6)에서 중심 노드를 둘러싼 별 모양이 이것이다.</p>
-      <p>이어 임상의가 환자에게서 성장 지연(<code>HP:0001510</code>), 큰 무릎(<code>HP:0030866</code>), 감각신경성 청각 장애(<code>HP:0000407</code>), 소양증(<code>HP:0000989</code>)을 추가로 관찰했다고 가정한다. 위 목록에 없는 증상들이다. 이제 <strong>질문이 뒤집힌다</strong> — “이 질병의 증상은?”이 아니라 <strong>“이 증상 조합을 가진 질병은?”</strong>이다. 그래프에서는 <em>화살표를 반대로 따라가기만 하면</em> 되는 같은 질의다. 두 번째 질의는 다섯 표현형과 연결된 질병을 모으고, 겹치는 특징 수를 내림차순으로 정렬한다.</p>
+      <p>이어 임상의가 환자에게서 성장 지연(<a href="https://www.ebi.ac.uk/ols4/ontologies/hp/classes?obo_id=HP:0001510" rel="noreferrer" target="_blank"><code>HP:0001510</code></a>), 큰 무릎(<a href="https://www.ebi.ac.uk/ols4/ontologies/hp/classes?obo_id=HP:0030866" rel="noreferrer" target="_blank"><code>HP:0030866</code></a>), 감각신경성 청각 장애(<a href="https://www.ebi.ac.uk/ols4/ontologies/hp/classes?obo_id=HP:0000407" rel="noreferrer" target="_blank"><code>HP:0000407</code></a>), 소양증(<a href="https://www.ebi.ac.uk/ols4/ontologies/hp/classes?obo_id=HP:0000989" rel="noreferrer" target="_blank"><code>HP:0000989</code></a>)을 추가로 관찰했다고 가정한다. 위 목록에 없는 증상들이다. 이제 <strong>질문이 뒤집힌다</strong> — “이 질병의 증상은?”이 아니라 <strong>“이 증상 조합을 가진 질병은?”</strong>이다. 그래프에서는 <em>화살표를 반대로 따라가기만 하면</em> 되는 같은 질의다. 두 번째 질의는 다섯 표현형과 연결된 질병을 모으고, 겹치는 특징 수를 내림차순으로 정렬한다.</p>
       <pre><code class="language-cypher">// 책 3.26 — 증상 조합에서 질병 후보로
 MATCH (phe:HpoPhenotype)
 WHERE phe.label IN [
@@ -456,9 +456,9 @@ LIMIT 5</code></pre>
         <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 8</span><span class="asset-caption__title">교재 스냅샷의 상위 후보와 해석 경계</span></div></caption>
         <thead><tr><th>후보</th><th>공유 특징</th><th>이 결과가 말하는 것</th><th>말하지 않는 것</th></tr></thead>
         <tbody>
-          <tr><td>Odontochondrodysplasia 2 with hearing loss and diabetes</td><td>5</td><td>입력 다섯 표현형 모두와 주석 경로가 있음</td><td>환자가 이 질병일 확률 또는 확정 진단</td></tr>
-          <tr><td>Holoprosencephaly 12 with or without pancreatic agenesis (OMIM:618500)</td><td>3</td><td>세 표현형을 공유하는 비교 후보</td><td>세 특징의 특이도·중요도가 같다는 뜻</td></tr>
-          <tr><td>3-methylglutaconic aciduria VIII (OMIM:614700), Alobar holoprosencephaly (OMIM:616192), Alpha-thalassemia/mental retardation syndrome, X-linked (OMIM:602782)</td><td>각 2</td><td>교재 스냅샷의 동률 3건</td><td>빈도·부정 표현형·환자 맥락을 반영한 랭킹</td></tr>
+          <tr><td><a href="https://omim.org/entry/619269" rel="noreferrer" target="_blank">Odontochondrodysplasia 2 with hearing loss and diabetes</a></td><td>5</td><td>입력 다섯 표현형 모두와 주석 경로가 있음</td><td>환자가 이 질병일 확률 또는 확정 진단</td></tr>
+          <tr><td><a href="https://omim.org/entry/618500" rel="noreferrer" target="_blank">Holoprosencephaly 12 with or without pancreatic agenesis (OMIM:618500)</a></td><td>3</td><td>세 표현형을 공유하는 비교 후보</td><td>세 특징의 특이도·중요도가 같다는 뜻</td></tr>
+          <tr><td><a href="https://omim.org/entry/614700" rel="noreferrer" target="_blank">3-methylglutaconic aciduria VIII (OMIM:614700)</a>, <a href="https://omim.org/entry/616192" rel="noreferrer" target="_blank">Alobar holoprosencephaly (OMIM:616192)</a>, <a href="https://omim.org/entry/602782" rel="noreferrer" target="_blank">Alpha-thalassemia/mental retardation syndrome, X-linked (OMIM:602782)</a></td><td>각 2</td><td>교재 스냅샷의 동률 3건</td><td>빈도·부정 표현형·환자 맥락을 반영한 랭킹</td></tr>
         </tbody>
       </table>
 
@@ -468,11 +468,11 @@ LIMIT 5</code></pre>
         <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 9</span><span class="asset-caption__title">같은 질의, 다른 스냅샷 — 후보 순위 대조</span></div></caption>
         <thead><tr><th>순위</th><th>교재 (HPO 2025-02)</th><th>노트북 재실행 (HPOA 2026-06-23)</th></tr></thead>
         <tbody>
-          <tr><td>1</td><td>OMIM:619269 Ondontochondrodysplasia 2 … <strong>(5)</strong></td><td>OMIM:619269 동일 <strong>(5)</strong> — 변화 없음</td></tr>
-          <tr><td>2</td><td>OMIM:618500 Holoprosencephaly 12 … (3)</td><td>OMIM:618500 동일 (3) — 변화 없음</td></tr>
-          <tr><td>3</td><td>OMIM:614700 3-methylglutaconic aciduria VIII (2)</td><td><strong>OMIM:621585 Mendez-Johnson immunoneurologic syndrome (3)</strong> — 신규</td></tr>
-          <tr><td>4</td><td>OMIM:616192 Alobar holoprosencephaly (2)</td><td><strong>OMIM:256500 Netherton syndrome (3)</strong> — 신규</td></tr>
-          <tr><td>5</td><td>OMIM:602782 Alpha-thalassemia/mental retardation, X-linked (2)</td><td>OMIM:<strong>617248</strong> 3-methylglutaconic aciduria, type VIII (2) — 같은 병, <strong>다른 OMIM 번호</strong></td></tr>
+          <tr><td>1</td><td><a href="https://omim.org/entry/619269" rel="noreferrer" target="_blank">OMIM:619269</a> Ondontochondrodysplasia 2 … <strong>(5)</strong></td><td>OMIM:619269 동일 <strong>(5)</strong> — 변화 없음</td></tr>
+          <tr><td>2</td><td><a href="https://omim.org/entry/618500" rel="noreferrer" target="_blank">OMIM:618500</a> Holoprosencephaly 12 … (3)</td><td>OMIM:618500 동일 (3) — 변화 없음</td></tr>
+          <tr><td>3</td><td><a href="https://omim.org/entry/614700" rel="noreferrer" target="_blank">OMIM:614700</a> 3-methylglutaconic aciduria VIII (2)</td><td><strong><a href="https://omim.org/entry/621585" rel="noreferrer" target="_blank">OMIM:621585</a> Mendez-Johnson immunoneurologic syndrome (3)</strong> — 신규</td></tr>
+          <tr><td>4</td><td><a href="https://omim.org/entry/616192" rel="noreferrer" target="_blank">OMIM:616192</a> Alobar holoprosencephaly (2)</td><td><strong><a href="https://omim.org/entry/256500" rel="noreferrer" target="_blank">OMIM:256500</a> Netherton syndrome (3)</strong> — 신규</td></tr>
+          <tr><td>5</td><td><a href="https://omim.org/entry/602782" rel="noreferrer" target="_blank">OMIM:602782</a> Alpha-thalassemia/mental retardation, X-linked (2)</td><td><a href="https://omim.org/entry/617248" rel="noreferrer" target="_blank">OMIM:<strong>617248</strong></a> 3-methylglutaconic aciduria, type VIII (2) — 같은 병, <strong>다른 OMIM 번호</strong></td></tr>
         </tbody>
       </table>
       <p><strong>세 가지를 읽어야 한다.</strong> 첫째, <strong>진단 결론은 견고하다</strong> — 다섯 특징을 모두 공유하는 1위는 16개월이 지나도 그대로다. 둘째, <strong>3개 공유 후보가 두 건 새로 생겼다</strong>. 교재에서는 3개 공유가 1건뿐이라 2위가 도드라져 보였지만, 지금은 3개 공유가 3건이라 <strong>“2위와 3위의 격차”라는 인상 자체가 사라진다.</strong> 셋째, 3-methylglutaconic aciduria VIII의 <strong>OMIM 번호가 614700에서 617248로 바뀌었다</strong> — 질병 식별자조차 고정된 상수가 아니다.</p>
@@ -491,8 +491,8 @@ LIMIT 5</code></pre>
       </ul></div></div>
 
       <h3 id="explicit-inferred">5.1 직접 사실과 암시적 포함을 분리한다</h3>
-      <p>“내분비계 이상(<em>Abnormality of the endocrine system</em>, <code>HP:0000818</code>)과 관련된 질병은?”이라는 질문을 생각해 보자. 어떤 질병은 이 상위 범주에 직접 주석되어 있지만, 더 많은 질병은 갑상선 생리 이상(<code>HP:0002926</code>), 갑상선기능저하증(<code>HP:0000821</code>), 갑상선종(<code>HP:0000853</code>)처럼 검증된 하위 표현형에 연결되어 있다. 직접 관계만 조회하면 후자를 놓친다.</p>
-      <p>교재는 먼저 자식에서 부모로 향하는 <code>[:SUBCLASSOF*1..3]</code> 경로를 역방향으로 탐색해 상위 범주 아래의 하위 표현형을 찾고, 이어 <code>n10s.inference.nodesInCategory</code>로 이 계층을 따라 질병을 포함한다. 반환된 질병–표현형 주석은 원래 그래프에 명시적으로 존재하지만, 상위 범주와 질병의 포함 관계는 계층 규칙에서 도출된다. 교재 표 3.3은 재현성을 위해 5개 질병 화이트리스트로 제한한 부분집합이고, 저장소 Listing 3.31은 화이트리스트 대신 <code>SKIP 100 LIMIT 5</code>를 사용하므로 표시 결과가 같지 않다.</p>
+      <p>“내분비계 이상(<em>Abnormality of the endocrine system</em>, <a href="https://www.ebi.ac.uk/ols4/ontologies/hp/classes?obo_id=HP:0000818" rel="noreferrer" target="_blank"><code>HP:0000818</code></a>)과 관련된 질병은?”이라는 질문을 생각해 보자. 어떤 질병은 이 상위 범주에 직접 주석되어 있지만, 더 많은 질병은 갑상선 생리 이상(<a href="https://www.ebi.ac.uk/ols4/ontologies/hp/classes?obo_id=HP:0002926" rel="noreferrer" target="_blank"><code>HP:0002926</code></a>), 갑상선기능저하증(<a href="https://www.ebi.ac.uk/ols4/ontologies/hp/classes?obo_id=HP:0000821" rel="noreferrer" target="_blank"><code>HP:0000821</code></a>), 갑상선종(<a href="https://www.ebi.ac.uk/ols4/ontologies/hp/classes?obo_id=HP:0000853" rel="noreferrer" target="_blank"><code>HP:0000853</code></a>)처럼 검증된 하위 표현형에 연결되어 있다. 직접 관계만 조회하면 후자를 놓친다.</p>
+      <p>교재는 먼저 자식에서 부모로 향하는 <code>[:SUBCLASSOF*1..3]</code> 경로를 역방향으로 탐색해 상위 범주 아래의 하위 표현형을 찾고, 이어 <a href="https://neo4j.com/labs/neosemantics/4.3/inference/" rel="noreferrer" target="_blank"><code>n10s.inference.nodesInCategory</code></a>로 이 계층을 따라 질병을 포함한다. 반환된 질병–표현형 주석은 원래 그래프에 명시적으로 존재하지만, 상위 범주와 질병의 포함 관계는 계층 규칙에서 도출된다. 교재 표 3.3은 재현성을 위해 5개 질병 화이트리스트로 제한한 부분집합이고, 저장소 Listing 3.31은 화이트리스트 대신 <code>SKIP 100 LIMIT 5</code>를 사용하므로 표시 결과가 같지 않다.</p>
 
       <div id="code-inference">
         <h4>코드로 보면 두 줄 차이다</h4>
@@ -605,7 +605,7 @@ OMIM:618500  Holoprosencephaly 12 with or without pancreatic agenesis — 특징
       증거   : Inferred from electronic annotation
       출처   : OMIM:618500   ->  https://omim.org/entry/618500
       큐레이션: skoehler (2019-09-07)</code></pre>
-      <p><strong>여기서 두 후보의 성격이 갈린다.</strong> 1위 후보는 다섯 특징이 <strong>전부 같은 논문 하나(PMID:32101163)</strong>에서 왔다. 즉 이 증후군을 기술한 단일 임상 연구가 근거다. 2위 후보는 근거가 섞여 있다 — 하나는 <em>Published clinical study</em>(사람이 논문을 읽고 기록), 둘은 <em>Inferred from electronic annotation</em>(OMIM 텍스트를 기계가 파싱). <strong>같은 “3개 일치”라도 근거의 무게가 다르다.</strong></p>
+      <p><strong>여기서 두 후보의 성격이 갈린다.</strong> 1위 후보는 다섯 특징이 <strong>전부 같은 논문 하나(<a href="https://pubmed.ncbi.nlm.nih.gov/32101163" rel="noreferrer" target="_blank">PMID:32101163</a>)</strong>에서 왔다. 즉 이 증후군을 기술한 단일 임상 연구가 근거다. 2위 후보는 근거가 섞여 있다 — 하나는 <em>Published clinical study</em>(<a href="https://pubmed.ncbi.nlm.nih.gov/31006513" rel="noreferrer" target="_blank">PMID:31006513</a> — 사람이 논문을 읽고 기록), 둘은 <em>Inferred from electronic annotation</em>(<a href="https://omim.org/entry/618500" rel="noreferrer" target="_blank">OMIM:618500</a> 텍스트를 기계가 파싱). <strong>같은 “3개 일치”라도 근거의 무게가 다르다.</strong></p>
       <p>겹침 수만 보면 이 차이가 보이지 않는다. §4.2의 “단순 겹침 수는 증거 질을 가중하지 않는다”는 경고가 추상이 아닌 이유가 이것이고, <strong>§2.2에서 LPG를 고른 결정이 최종적으로 값을 치르는 지점</strong>이기도 하다. RDF였다면 이 화면을 만들기 위해 n항 관계·명명 그래프·RDF-star 중 하나로 우회해야 했다.</p>
 
       <h3 id="medical-boundary">6.3 이 장은 임상 의사결정 지원의 개념 증명이다</h3>
@@ -677,12 +677,12 @@ OMIM:618500  Holoprosencephaly 12 with or without pancreatic agenesis — 특징
       <h1>참고 자료와 재구성 범위</h1>
       <ol class="references" style="list-style:none;padding:0;">
         <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[1]</span><span>Alessandro Negro et al., <em>Knowledge Graphs and LLMs in Action</em>, Chapter 3 “Create Your First Knowledge Graph from Ontologies,” Manning, pp. 37–64. 본문의 개념·코드·예제·수치는 이 장을 자체 해설로 재구성했다.</span></li>
-        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[2]</span><span><a href="https://hpo.jax.org/" rel="noreferrer">Human Phenotype Ontology</a> 공식 포털과 <a href="https://purl.obolibrary.org/obo/hp.owl" rel="noreferrer">hp.owl 배포 경로</a>. 교재와 로컬 실습이 참조한 온톨로지 원천.</span></li>
-        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[3]</span><span><a href="https://github.com/obophenotype/human-phenotype-ontology/releases/latest/download/phenotype.hpoa" rel="noreferrer">HPOA release data</a>. 이 URL은 latest이므로 재현 가능한 운영에서는 고정 릴리스와 체크섬을 기록해야 한다.</span></li>
-        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[4]</span><span>저장소의 Chapter 3 원문·한국어 번역·해설판, <code>src/ch03/importer/import_hpo.py</code>, <code>study.toml</code> 리스팅 대응표를 원자료 감사에 사용했다.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[2]</span><span><a href="https://hpo.jax.org/" rel="noreferrer" target="_blank">Human Phenotype Ontology</a> 공식 포털과 <a href="https://purl.obolibrary.org/obo/hp.owl" rel="noreferrer" target="_blank">hp.owl 배포 경로</a>. 교재와 로컬 실습이 참조한 온톨로지 원천.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[3]</span><span><a href="https://github.com/obophenotype/human-phenotype-ontology/releases/latest/download/phenotype.hpoa" rel="noreferrer" target="_blank">HPOA release data</a>. 이 URL은 latest이므로 재현 가능한 운영에서는 고정 릴리스와 체크섬을 기록해야 한다.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[4]</span><span>저장소의 Chapter 3 원문·한국어 번역·해설판(교재 본문이므로 링크는 걸지 않는다), <a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/importer/import_hpo.py" rel="noreferrer" target="_blank"><code>src/ch03/importer/import_hpo.py</code></a>, <a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/study.toml" rel="noreferrer" target="_blank"><code>study.toml</code></a> 리스팅 대응표를 원자료 감사에 사용했다. 업스트림 리스팅 원문은 저자 저장소 <a href="https://github.com/alenegro81/knowledge-graphs-and-llms-in-action/tree/main/chapters/ch03" rel="noreferrer" target="_blank">alenegro81/…/chapters/ch03</a>에 있다.</span></li>
         <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[5]</span><span>그림 1–8은 교재 도형을 복제하지 않고 Chapter 3의 논리 관계를 발표자가 새로 구성한 SVG다. 임상 결과 그림의 질병명과 공유 특징 수만 교재의 HPO 2025-02 결과 스냅샷을 따른다.</span></li>
-        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[6]</span><span>학습 노트북 <code>source/…/chapter_03_…/src/ch03/03_chapter_guide.ipynb</code>. 표 7·9·10과 §3.4·4.2·5.2·6.2의 모든 실측 수치·실행 결과·소요 시간은 이 노트북을 Neo4j 5.26.28 Community(플러그인 <code>n10s</code>·<code>apoc</code>·<code>gds</code>)에서 HPOA 2026-06-23 스냅샷으로 끝까지 실행한 기록에서 가져왔다. 교재 값과 다른 숫자는 모두 이 재실행 결과다.</span></li>
-        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[7]</span><span>본문의 Cypher·Turtle·TriG·SPARQL 코드는 교재 Listing 3.5–3.28을 옮긴 것이다. 실행 가능한 리스팅은 저장소 <code>src/ch03/listings/</code>의 원문을 따랐고(파일 번호는 교재 번호 +3), 원서 조판 과정에서 깨진 구두점만 바로잡았다. 주석 줄과 들여쓰기는 읽기 편하도록 발표자가 붙인 것이며 교재 원문에는 없다.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[6]</span><span>학습 노트북 <a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/03_chapter_guide.ipynb" rel="noreferrer" target="_blank"><code>03_chapter_guide.ipynb</code></a>. 표 7·9·10과 §3.4·4.2·5.2·6.2의 모든 실측 수치·실행 결과·소요 시간은 이 노트북을 Neo4j 5.26.28 Community(플러그인 <code>n10s</code>·<code>apoc</code>·<code>gds</code>)에서 HPOA 2026-06-23 스냅샷으로 끝까지 실행한 기록에서 가져왔다. 교재 값과 다른 숫자는 모두 이 재실행 결과다.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[7]</span><span>본문의 Cypher·Turtle·TriG·SPARQL 코드는 교재 Listing 3.5–3.28을 옮긴 것이다. 실행 가능한 리스팅은 저장소 <a href="https://github.com/restful3/ds4th_study/tree/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/listings" rel="noreferrer" target="_blank"><code>src/ch03/listings/</code></a>의 원문을 따랐고(파일 번호는 교재 번호 +3), 원서 조판 과정에서 깨진 구두점만 바로잡았다. 주석 줄과 들여쓰기는 읽기 편하도록 발표자가 붙인 것이며 교재 원문에는 없다.</span></li>
       </ol>
       <div class="report-jump-links"><a href="./">발표자료</a><a href="../../">회차 목록</a><a href="#summary">문서 처음</a></div>
     </section>
