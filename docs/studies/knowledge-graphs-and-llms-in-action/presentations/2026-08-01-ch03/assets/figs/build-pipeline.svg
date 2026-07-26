@@ -2,7 +2,7 @@
   <title id="title">임상 질문에서 HPO 기반 지식 그래프와 검증된 질의까지 이어지는 구축 파이프라인</title>
   <desc id="desc">비즈니스 질문, 두 데이터 원천 이해, 기술 선택, 제약과 온톨로지 적재, 주석 병합과 관계 풍부화, 정제, 직접 질의와 계층 추론의 일곱 단계가 이어지며 각 전환에 검증 게이트가 있다.</desc>
   <defs>
-    <marker id="arrow" markerUnits="userSpaceOnUse" viewBox="0 0 8 6" refX="7.5" refY="3" markerWidth="8" markerHeight="6" orient="auto"><path d="M.5.5 7.5 3 .5 5.5Z" fill="#63728a"/></marker>
+    <marker id="arrow" markerUnits="userSpaceOnUse" viewBox="0 0 12 10" refX="11.5" refY="5" markerWidth="12" markerHeight="10" orient="auto"><path d="M.5.5 11.5 5 .5 9.5Z" fill="#63728a"/></marker>
     <style>
       text{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#172033}
       .eyebrow{font-size:14px;font-weight:800;letter-spacing:1.3px;fill:#52647d}
@@ -33,7 +33,7 @@
     <path class="line" d="M578 122H716"/>
   </g>
 
-  <path class="line" d="M814 168V196H766V222"/>
+  <path class="line" d="M814 168V196H936V270H912"/>
 
   <g>
     <rect class="navy" x="620" y="222" width="292" height="96" rx="14"/>
@@ -52,7 +52,7 @@
     <path class="line" d="M334 270H286"/>
   </g>
 
-  <path class="line" d="M167 318V375"/>
+  <path class="line" d="M167 318V344H24V416.5H164"/>
   <rect class="navy" x="164" y="375" width="632" height="83" rx="16"/>
   <text x="480" y="407" class="eyebrow" text-anchor="middle" style="fill:#c8d6e8">07 · USE</text>
   <text x="480" y="435" class="head" text-anchor="middle" style="fill:#fff">직접 연결 질의 + 표현형 조합 랭킹 + subClassOf 계층 추론</text>
