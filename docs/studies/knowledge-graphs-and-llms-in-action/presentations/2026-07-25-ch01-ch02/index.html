@@ -40,20 +40,20 @@
 
     <section class="slide" aria-label="발표의 핵심 질문" data-report-refs="summary problem">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT §0 · CORE QUESTION</span></header>
-      <h1>신뢰 못 할 달변가와 다루기 힘든 사실 대장을 어떻게 하나로 묶을까</h1>
-      <p class="lead">LLM은 유창하지만 흔들리고, KG는 정확하지만 다루기 어렵습니다. 두 약점이 서로의 강점과 정확히 맞물립니다.</p>
+      <h1>유창하지만 흔들리는 LLM과 정확하지만 어려운 KG를 어떻게 결합할까</h1>
+      <p class="lead">두 기술은 서로 다른 한계와 보완 수단을 가집니다. 결합의 핵심은 대체가 아니라 검증 가능한 책임 분담입니다.</p>
       <div class="slide-body">
         <div class="thesis-pair">
-          <article><span>LLM · 달변가</span><h2>유창하지만 흔들린다</h2><p>자연어를 잘 다루지만 환각, 오래된 정보, 맥락과 관계 정보의 부재로 미션 크리티컬한 영역에서 흔들립니다.</p></article>
+          <article><span>LLM · 자연어 인터페이스</span><h2>유창하지만 근거가 흔들린다</h2><p>자연어를 잘 다루지만 환각, 오래된 정보, 맥락과 관계 정보의 부재로 미션 크리티컬한 영역에서 흔들립니다.</p></article>
           <div class="thesis-pair__bridge"><b>↔</b><span>검증 게이트</span></div>
-          <article class="thesis-pair__kg"><span>KG · 사실 대장</span><h2>정확하지만 다루기 어렵다</h2><p>검증된 사실과 관계를 담지만 구축·유지 비용, 다중 홉 질의, 결과의 분산이라는 벽에 막혀 왔습니다.</p></article>
+          <article class="thesis-pair__kg"><span>KG · 검증된 지식 계층</span><h2>정확하지만 구축·질의가 어렵다</h2><p>검증된 사실과 관계를 담지만 구축·유지 비용, 다중 홉 질의, 결과의 분산이라는 벽에 막혀 왔습니다.</p></article>
         </div>
-        <p class="takeaway"><strong>오늘의 결론 예고</strong> — 신뢰는 더 큰 모델이 아니라 비즈니스 목적에서 출발하는 목적 주도 하이브리드 자문 시스템에서 나옵니다.</p>
+        <p class="takeaway"><strong>오늘의 결론 예고</strong> — 신뢰는 더 큰 모델 하나가 아니라 비즈니스 목적, 검증 게이트, 명시적 책임 분담, 사람의 통제에서 나옵니다.</p>
       </div>
       <footer class="slide-footer"><a class="report-ref" href="report.html#summary">상세 리포트 §0 · 핵심 요약</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="오늘의 흐름" data-report-refs="summary">
+    <section class="slide" aria-label="오늘의 흐름" data-report-refs="summary table-overview">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT → DECK</span></header>
       <h1>두 장의 논리를 일곱 장면으로 따라간다</h1>
       <p class="lead">Chapter 1은 왜·무엇을, Chapter 2는 어떻게를 설계합니다. 그 논리를 순서대로 압축합니다.</p>
@@ -108,7 +108,7 @@
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 2</span></header>
       <h1>그래프가 아니라 ‘연결의 뜻이 명시된 것’이 지식이다</h1>
       <div class="slide-body report-visual-body">
-        <figure class="deck-report-figure"><img src="assets/figs/kg-anatomy.svg" alt="약물 A가 질병 B를 치료하고 질병 B가 해부구조 C를 침범하며 화합물 D가 약물을 구성하고 질병을 표적하는 의료 지식 그래프. 각 노드는 승인일·분류 코드·분자식 같은 속성을 가짐"><figcaption><b>세 요소</b><span>노드: 사람·질병·약물 같은 현실의 개체</span><span>관계: 노드 사이의 의미 있는 연결</span><span>속성: 승인일·좌표·출처·갱신 시각 같은 맥락</span></figcaption></figure>
+        <figure class="deck-report-figure"><img src="assets/figs/kg-anatomy.svg" alt="약물 A가 질병 B 치료에 사용되고 질병 B가 해부구조 C를 침범하며, 화합물 D가 약물 A의 유효성분이고 질병 B 치료에 사용되는 의료 지식 그래프. 각 노드는 승인일·분류 코드·분자식 같은 속성을 가짐"><figcaption><b>세 요소</b><span>노드: 사람·질병·약물 같은 현실의 개체</span><span>관계: 노드 사이의 의미 있는 연결</span><span>속성: 승인일·좌표·출처·갱신 시각 같은 맥락</span></figcaption></figure>
       </div>
       <footer class="slide-footer"><a class="report-ref" href="report.html#fig-kg-anatomy">상세 리포트 그림 2 · KG 해부</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
@@ -130,42 +130,46 @@
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 4</span></header>
       <h1>전이 학습이 ‘과제마다 새 모델’이라는 비용 구조를 뒤집었다</h1>
       <div class="slide-body report-visual-body">
-        <figure class="deck-report-figure"><img src="assets/figs/transfer-learning.svg" alt="이전에는 과제마다 라벨 데이터와 소형 전용 모델을 각각 만들었고, 전이 학습 이후에는 대규모 말뭉치로 마스킹 토큰 예측을 사전학습한 대형 모델 하나를 개체 추출·관계 추출·요약에 재사용하는 대비"><figcaption><b>전환의 초점</b><span>과제별 소형 모델 다수 → 범용 대형 모델 소수</span><span>Scaling Laws: 큰 모델일수록 더 적은 데이터로 같은 성능</span><span>데이터의 불합리한 효과성 — 자연어 기술만으로 답에 도달</span></figcaption></figure>
+        <figure class="deck-report-figure"><img src="assets/figs/transfer-learning.svg" alt="이전에는 과제마다 라벨 데이터와 소형 전용 모델을 각각 만들었고, 전이 학습 이후에는 대규모 말뭉치로 마스킹 토큰 예측을 사전학습한 대형 모델 하나를 개체 추출·관계 추출·요약에 재사용하는 대비"><figcaption><b>전환의 초점</b><span>과제별 소형 모델 다수 → 여러 과제에 재사용하는 대형 모델 소수</span><span>큰 모델은 샘플 효율이 높아질 수 있지만 사전학습 코퍼스의 규모·품질은 여전히 중요</span><span>자연어 지시는 과제별 모델 엔지니어링을 낮추지만 정확도를 보장하지 않음</span></figcaption></figure>
       </div>
       <footer class="slide-footer"><a class="report-ref" href="report.html#fig-transfer">상세 리포트 그림 4 · 전이 학습</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="LLM과 KG의 상호 보완" data-report-refs="synergy">
-      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT §3.2–3.3</span></header>
-      <h1>서로가 상대의 약점을 정확히 세 곳씩 메운다</h1>
-      <p class="lead">한쪽이 다른 쪽을 대체하지 않고 구축과 이용의 양방향 수명주기에서 책임을 주고받습니다.</p>
-      <div class="slide-body">
-        <div class="two-col">
-          <article class="panel panel--accent"><p class="eyebrow">LLM → KG</p><h2>접근 장벽을 낮춘다</h2><ul><li><strong>구축</strong> — 프롬프트만으로 개체·관계 범용 추출</li><li><strong>질의</strong> — 자연어를 text-to-cypher로 정밀 질의화</li><li><strong>요약</strong> — 표·차트가 아닌 글로 결과 전달</li></ul></article>
-          <article class="panel"><p class="eyebrow">KG → LLM</p><h2>신뢰의 토대가 된다</h2><ul><li><strong>환각</strong> — 검증된 지식으로 사실의 토대 제공</li><li><strong>오래된 정보</strong> — 계속 갱신·GraphRAG로 최신 공급</li><li><strong>설명 가능성</strong> — 추적·검증 가능한 근거 경로</li></ul></article>
-        </div>
-        <p class="takeaway"><strong>핵심</strong> — 두 기술의 강점이 상대의 약점과 맞물려 서로를 강화하는 “환상의 조합”이 됩니다.</p>
+    <section class="slide slide--visual" aria-label="LLM의 여섯 구성 요소" data-report-refs="synergy fig-llm-building-blocks">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 5</span></header>
+      <h1>LLM은 하나의 마법 상자가 아니라 여섯 구성 요소의 결합이다</h1>
+      <div class="slide-body report-visual-body">
+        <figure class="deck-report-figure"><img src="assets/figs/llm-building-blocks.svg" alt="중앙의 대규모 언어 모델을 토큰화, 고차원 임베딩, Transformer·Attention, 대규모 사전학습, 전이 학습, 생성 능력의 여섯 요소가 둘러싼 구조"><figcaption><b>작동의 층</b><span>입력을 토큰과 벡터로 바꾸고 Attention으로 관련 부분에 가중</span><span>대규모 사전학습 뒤 전이 학습으로 여러 과제에 재사용</span><span>생성은 다음 토큰 예측의 반복이며 사실 검증과는 별도 책임</span></figcaption></figure>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#synergy">상세 리포트 §3.2–3.3 · 양방향 보완</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-llm-building-blocks">상세 리포트 그림 5 · LLM 구성 요소</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
+    <section class="slide slide--visual" aria-label="KG 구축과 이용의 수명주기" data-report-refs="synergy fig-kg-llm-lifecycle">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 6</span></header>
+      <h1>구축과 이용에서 LLM과 KG는 서로 다른 책임을 맡는다</h1>
+      <div class="slide-body report-visual-body">
+        <figure class="deck-report-figure deck-report-figure--tall"><img src="assets/figs/kg-llm-lifecycle.svg" alt="구축 단계에서 데이터 소스를 스키마 매핑과 LLM 추출로 후보 지식으로 바꾸고 검증 게이트를 통과한 것만 KG에 반영하며, 이용 단계에서 자연어 질문을 LLM이 그래프 질의로 바꾸고 같은 KG의 구조적 결과를 요약해 근거와 함께 답하는 두 수명주기"><figcaption><b>책임 분담</b><span>LLM: 후보 추출·질의 변환·결과 정리</span><span>KG: 검증된 사실·명시적 관계·추적 가능한 근거</span><span>점선은 구축과 이용이 같은 검증된 저장소를 공유함을 뜻함</span></figcaption></figure>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-kg-llm-lifecycle">상세 리포트 그림 6 · 구축·이용 수명주기</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide slide--visual" aria-label="상호 보완 매트릭스" data-report-refs="synergy fig-mutual">
-      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 5</span></header>
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 7</span></header>
       <h1>약점과 처방을 한 화면의 매트릭스로 읽는다</h1>
       <div class="slide-body report-visual-body">
         <figure class="deck-report-figure deck-report-figure--tall"><img src="assets/figs/mutual-reinforcement.svg" alt="왼쪽은 LLM의 환각·오래된 정보·설명 불가를 KG의 사실 토대·동적 갱신·추적 경로가 처방하고, 오른쪽은 KG의 구축 비용·질의 난이도·결과 분산을 LLM의 개체 추출·자연어 질의·텍스트 요약이 처방하는 대응 매트릭스"><figcaption><b>대응 처방</b><span>LLM의 약점 → KG의 사실 토대·동적 갱신·추적 경로</span><span>KG의 약점 → LLM의 개체 추출·자연어 질의·텍스트 요약</span><span>화살표는 한 번의 검색이 아니라 구축·이용의 양방향 수명주기</span></figcaption></figure>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-mutual">상세 리포트 그림 5 · 상호 보완</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-mutual">상세 리포트 그림 7 · 상호 보완</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide slide--section" aria-label="표현 기술 섹션" data-report-refs="technology">
-      <p class="eyebrow">SECTION 04 · REPORT §4</p><h1>표현 기술 — RDF·LPG와 의미 계층</h1><p>단일 진실의 원천으로 가는 두 갈래 길과 온톨로지</p><span class="section-number">04</span>
+      <p class="eyebrow">SECTION 04 · REPORT §4</p><h1>표현 기술 — RDF·LPG와 의미 계층</h1><p>단일 신뢰 원천으로 가는 두 갈래 길과 온톨로지</p><span class="section-number">04</span>
     </section>
 
     <section class="slide" aria-label="RDF와 LPG 비교" data-report-refs="technology table-rdf-lpg">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT TABLE 2</span></header>
       <h1>RDF와 LPG는 배타적 정답이 아니라 최적화 방향이다</h1>
-      <p class="lead">KG는 지능적 행동의 근거를 단일 진실의 원천에 담습니다. 두 표현 패러다임을 같은 기준으로 비교합니다.</p>
+      <p class="lead">KG는 지능적 행동의 근거를 단일 신뢰 원천에 담습니다. 두 표현 패러다임을 같은 기준으로 비교합니다.</p>
       <div class="slide-body">
         <table class="compare-table compare-table--dense">
           <thead><tr><th>관점</th><th>RDF (+ SPARQL)</th><th>LPG (+ openCypher · Gremlin)</th></tr></thead>
@@ -182,7 +186,7 @@
     </section>
 
     <section class="slide slide--visual" aria-label="분류체계와 온톨로지 의미 계층" data-report-refs="technology table-taxonomy-ontology fig-technology">
-      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 6 · TABLE 3</span></header>
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 8 · TABLE 3</span></header>
       <h1>구조 위에 딱 필요한 만큼의 의미를 쌓는다</h1>
       <div class="slide-body report-visual-body">
         <figure class="deck-report-figure"><img src="assets/figs/technology-semantics.svg" alt="RDF 트리플 또는 LPG 속성 그래프의 구조 위에 분류체계(수직 계층)와 온톨로지(수평 규칙)가 차례로 더해져 기계가 추론하는 지식 그래프가 되는 계층 구조"><figcaption><b>의미의 두 축</b><span>분류체계: Vehicle ⊃ Car ⊃ Sedan의 수직 계층</span><span>온톨로지: Car=Automobile · Car ⊥ Bicycle의 수평 규칙</span><span>just enough semantics — 필요한 온톨로지 기능만 부분 확장</span></figcaption></figure>
@@ -196,7 +200,7 @@
 
     <section class="slide" aria-label="자율 시스템과 자문 시스템" data-report-refs="intelligent-systems table-autonomous-advisory">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT §5.1–5.2 · TABLE 4</span></header>
-      <h1>이 책은 사람을 대체가 아니라 지원하는 자문 시스템(IAS)에 집중한다</h1>
+      <h1>이 책은 사람을 대체하는 대신 지원하는 자문 시스템(IAS)에 집중한다</h1>
       <p class="lead">지능은 지식 표현과 추론으로 해부되며, 표현력과 처리 효율 사이에는 상충 관계가 있습니다.</p>
       <div class="slide-body">
         <table class="compare-table compare-table--dense">
@@ -208,83 +212,98 @@
             <tr><th>예시</th><td>자율주행차</td><td>예측 치안·사기 탐지·의료 진단 권고</td></tr>
           </tbody>
         </table>
-        <p class="takeaway"><strong>불변의 원칙</strong> — 어떤 조치를 취할지에 대한 최종 결정은 항상 사람이 내립니다.</p>
+        <p class="takeaway"><strong>자문 시스템의 원칙</strong> — IAS는 통찰·권고를 제공하고, 어떤 조치를 취할지에 대한 최종 결정은 사람이 내립니다.</p>
       </div>
       <footer class="slide-footer"><a class="report-ref" href="report.html#table-autonomous-advisory">상세 리포트 표 4 · 자율 vs 자문</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
+    <section class="slide" aria-label="지능형 시스템의 네 가지 특성" data-report-refs="intelligent-systems table-system-characteristics">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT §5.3 · TABLE 5</span></header>
+      <h1>네 가지 특성이 설계와 구현의 품질 기준이 된다</h1>
+      <p class="lead">좋은 시스템은 모델 정확도만이 아니라 목표·경험·지식 수명주기·오케스트레이션을 함께 설계합니다.</p>
+      <div class="slide-body">
+        <div class="evidence-grid evidence-grid--four">
+          <article class="evidence-grid__focus"><span>01 · GOAL</span><h2>의미 있는 목표</h2><p>최종 사용자가 달성할 구체적이고 실현 가능한 목적을 먼저 정합니다.</p></article>
+          <article><span>02 · EXPERIENCE</span><h2>지능적 경험</h2><p>정답의 가치는 키우고 오답의 비용은 낮추며 피드백을 받습니다.</p></article>
+          <article><span>03 · KNOWLEDGE</span><h2>지식 생성·갱신</h2><p>데이터·환경·사용자 반응에서 지식을 만들고 유지합니다.</p></article>
+          <article><span>04 · CONTROL</span><h2>오케스트레이션</h2><p>모델·도구·검증 게이트의 순서, 위험, 품질, 책임을 통제합니다.</p></article>
+        </div>
+        <p class="takeaway"><strong>책의 구현 범위</strong> — 사람을 돕는 IAS, 검증된 기존 KB, 경험에서 학습하는 피드백 루프에 초점을 둡니다.</p>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-system-characteristics">상세 리포트 표 5 · 네 가지 특성</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
     <section class="slide slide--visual" aria-label="지능형 시스템 아키텍처" data-report-refs="intelligent-systems fig-architecture">
-      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 7</span></header>
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 9</span></header>
       <h1>지능형 시스템은 선이 아니라 피드백이 도는 확장 모델이다</h1>
       <div class="slide-body report-visual-body">
         <figure class="deck-report-figure deck-report-figure--tall"><img src="assets/figs/intelligent-architecture.svg" alt="데이터 소스·환경·도메인 전문가가 지식 습득으로 들어가고, 여러 지식 베이스와 여러 추론 엔진이 최종 사용자에게 통찰·제안을 제공하며, 사용자·환경의 피드백이 다시 지식 습득으로 순환하는 지능형 시스템 확장 모델"><figcaption><b>구성 요소</b><span>데이터·환경·도메인 전문가 → 지식 습득</span><span>여러 지식 베이스와 여러 추론 엔진 → 통찰·제안</span><span>사용자·환경의 피드백이 다시 지식 습득으로 순환</span></figcaption></figure>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-architecture">상세 리포트 그림 7 · 확장 모델</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-architecture">상세 리포트 그림 9 · 확장 모델</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="지식 습득 명시적과 암묵적" data-report-refs="intelligent-systems table-acquisition">
-      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT §5.3 · TABLE 5</span></header>
+    <section class="slide slide--visual" aria-label="지식 습득 명시적과 암묵적" data-report-refs="intelligent-systems table-acquisition fig-knowledge-acquisition">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 10 · TABLE 6</span></header>
       <h1>지식 습득은 명시적(KG)과 암묵적(LLM)으로 갈린다</h1>
-      <p class="lead">같은 원시 데이터를 구조화된 지식으로 바꾸지만, 접근성·갱신·능력의 세 축에서 성질이 다릅니다.</p>
-      <div class="slide-body">
-        <table class="compare-table compare-table--dense">
-          <thead><tr><th>구분</th><th>지식 그래프(KG) · 명시적</th><th>대규모 언어 모델(LLM) · 암묵적</th></tr></thead>
-          <tbody>
-            <tr><th>표현 방식</th><td>노드·관계·속성</td><td>벡터 공간의 매개변수</td></tr>
-            <tr><th>접근성</th><td>사람·기계가 직접 해석</td><td>불투명, 해석 어려움</td></tr>
-            <tr><th>갱신</th><td>노드·관계 추가·삭제·수정</td><td>재학습 또는 미세 조정 필요</td></tr>
-            <tr><th>학습 방식</th><td>스키마·온톨로지가 안내</td><td>대부분 비지도</td></tr>
-          </tbody>
-        </table>
-        <p class="takeaway"><strong>트레이드오프</strong> — KG는 준비 비용을 치르고 유연성을 얻고, LLM은 미묘한 맥락을 포착하지만 들여다보거나 수정하기 어렵습니다.</p>
+      <div class="slide-body report-visual-body">
+        <figure class="deck-report-figure"><img src="assets/figs/knowledge-acquisition.svg" alt="왼쪽은 정형·반정형·문서·환경 데이터를 스키마 매핑과 전문가 설계·검증을 거쳐 사람이 조회·부분 수정할 수 있는 명시적 KG로 바꾸고, 오른쪽은 텍스트 중심 데이터를 자기지도 신경망 학습과 전문가 선별·평가를 거쳐 간접 접근과 추가 학습 갱신이 필요한 암묵적 LLM으로 바꾸는 비교"><figcaption><b>트레이드오프</b><span>KG: 스키마·전문가 검증을 거쳐 조회·부분 수정 가능한 지식</span><span>LLM: 대규모 자기지도 학습으로 언어 일반화·생성 능력</span><span>같은 ‘습득’이라도 접근·갱신·통제 가능성이 다름</span></figcaption></figure>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#table-acquisition">상세 리포트 표 5 · 지식 습득 KG vs LLM</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-knowledge-acquisition">상세 리포트 그림 10 · 지식 습득</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide slide--section" aria-label="추론과 하이브리드 섹션" data-report-refs="reasoning">
       <p class="eyebrow">SECTION 06 · REPORT §6 (CH.2)</p><h1>추론 전략과 하이브리드 엔진</h1><p>세 추론의 한계를 KG 규칙과 LLM 확률로 보완한다</p><span class="section-number">06</span>
     </section>
 
+    <section class="slide slide--visual" aria-label="연역과 귀납 추론 엔진" data-report-refs="reasoning fig-reasoning-engines">
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 11</span></header>
+      <h1>연역은 보장 조건이 강하고, 귀납은 불완전한 세계에서 일반화한다</h1>
+      <div class="slide-body report-visual-body">
+        <figure class="deck-report-figure"><img src="assets/figs/reasoning-engines.svg" alt="왼쪽은 완전하고 정확한 지식 베이스와 규칙을 읽어 보장된 결론을 내는 연역 엔진, 오른쪽은 지식 베이스와 관찰 데이터를 학습해 일반화된 예측을 만들고 학습 결과를 지식 베이스에 되먹임하는 귀납·머신러닝 엔진"><figcaption><b>정보 흐름의 차이</b><span>연역: 완전하고 정확한 KB·규칙이 주어질 때 결론을 보장</span><span>귀납·ML: 관찰에서 패턴을 학습해 일반화하고 KB를 확장</span><span>점선 되먹임은 학습 결과가 KB를 만들거나 확장함을 뜻함</span></figcaption></figure>
+      </div>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-reasoning-engines">상세 리포트 그림 11 · 추론 엔진</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+    </section>
+
     <section class="slide" aria-label="세 가지 추론과 LLM 착시" data-report-refs="reasoning table-reasoning">
-      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT §6.1–6.2 · TABLE 6</span></header>
-      <h1>세 추론은 확실성과 담당 기술이 다르다</h1>
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT §6.1–6.2 · TABLE 7</span></header>
+      <h1>세 추론은 결론의 확실성과 전개 방식이 다르다</h1>
       <p class="lead">연역·귀납·확률적 추론은 결론의 확실성과 전제 조건이 서로 다르며, 각기 다른 기술이 맡습니다.</p>
       <div class="slide-body">
         <table class="compare-table compare-table--dense">
-          <thead><tr><th>추론</th><th>방향</th><th>결론 확실성</th><th>담당</th></tr></thead>
+          <thead><tr><th>추론</th><th>전개 방식</th><th>결론 확실성</th><th>담당</th></tr></thead>
           <tbody>
             <tr><th>연역</th><td>일반 → 구체</td><td>전제 참이면 반드시 참</td><td>KG·규칙</td></tr>
             <tr><th>귀납</th><td>구체 → 일반</td><td>참이어도 거짓 가능</td><td>ML</td></tr>
             <tr><th>확률적</th><td>불확실성 하 가중</td><td>가능성으로 표현</td><td>LLM</td></tr>
           </tbody>
         </table>
-        <p class="takeaway"><strong>LLM 착시</strong> — 단순화한 농부-양 문제에서 익숙한 늑대·양배추 해법으로 방향을 틀었고, Wu 등은 11개 과제의 반사실적 변형에서 성능이 일관되게 저하됨을 보였습니다.</p>
+        <p class="takeaway"><strong>LLM 착시</strong> — 교재의 Claude.ai 3.5 실험은 특정 시점의 사례입니다. 더 넓게는 Wu 등이 11개 과제의 반사실적 변형에서 성능 저하를 관찰했습니다.</p>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#table-reasoning">상세 리포트 표 6 · 추론 전략 비교</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-reasoning">상세 리포트 표 7 · 추론 전략 비교</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide slide--visual" aria-label="하이브리드 추론 루프" data-report-refs="reasoning fig-hybrid-loop">
-      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 8</span></header>
-      <h1>하이브리드 엔진은 KB를 읽기만 하지 않고 다시 쓴다</h1>
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 12</span></header>
+      <h1>학습·하이브리드 엔진은 검증된 관찰로 KB를 확장할 수 있다</h1>
       <div class="slide-body report-visual-body">
-        <figure class="deck-report-figure"><img src="assets/figs/hybrid-loop.svg" alt="사용자 요청이 KG 규칙과 LLM 확률을 결합한 추론 엔진으로 들어가 조치·제안을 만들고, 환경 변화와 새 관찰이 지식 베이스를 읽고 쓰며 다음 판단을 개선하는 순환 루프"><figcaption><b>세 계층의 보완</b><span>순수 연역: 논리적이지만 완전한 KB를 요구해 비현실적</span><span>귀납·ML: 온톨로지·관계를 학습해 KB를 확장·일반화</span><span>LLM 계층: 빠진 정보를 저울질해 우선순위 권고 제공</span></figcaption></figure>
+        <figure class="deck-report-figure"><img src="assets/figs/hybrid-loop.svg" alt="사용자 요청이 KG 규칙과 LLM 확률을 결합한 추론 엔진으로 들어가 조치·제안을 만들고, 환경 변화와 새 관찰은 검증을 거쳐 학습·하이브리드 엔진이 지식 베이스를 확장하고 다음 판단을 개선하는 순환 루프"><figcaption><b>세 계층의 보완</b><span>순수 연역: KB·규칙을 읽어 조건부로 보장된 결론 생성</span><span>귀납·ML: 검증된 관찰로 온톨로지·관계를 학습해 KB 확장</span><span>LLM 계층: 빠진 정보를 확률적으로 저울질해 우선순위 권고</span></figcaption></figure>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-hybrid-loop">상세 리포트 그림 8 · 하이브리드 루프</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-hybrid-loop">상세 리포트 그림 12 · 하이브리드 루프</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide slide--visual" aria-label="목적 주도 설계" data-report-refs="decision fig-purpose">
-      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 9</span></header>
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 13</span></header>
       <h1>데이터가 아니라 비즈니스 목적에서 출발한다</h1>
       <div class="slide-body report-visual-body">
-        <figure class="deck-report-figure deck-report-figure--tall"><img src="assets/figs/purpose-driven.svg" alt="왼쪽은 모든 데이터 수집·통합 후 데이터가 말하길 기대하다 실패하는 상향식과 그 원인, 오른쪽은 비즈니스 이해에서 출발해 데이터 이해·KG 요구사항·모델링(LLM 참여)·평가·배포로 이어지고 2차 라운드로 순환하는 목적 주도 CRISP-DM의 대비"><figcaption><b>두 접근의 대비</b><span>상향식: 소스 과다·정규화 비용으로 흔히 실패</span><span>목적 주도: CRISP-DM 재해석, 비즈니스 이해에서 출발</span><span>2차 라운드는 스키마리스로 차이와 확장만 더함</span></figcaption></figure>
+        <figure class="deck-report-figure deck-report-figure--tall"><img src="assets/figs/purpose-driven.svg" alt="왼쪽은 모든 데이터 수집·통합 후 데이터가 말하길 기대하다 실패하는 상향식과 그 원인, 오른쪽은 비즈니스 이해에서 출발해 데이터 이해·KG 요구사항·모델링(LLM 참여)·평가·배포로 이어지고 저장 구조를 유연하게 확장하되 논리 스키마는 유지하는 2차 라운드로 순환하는 목적 주도 CRISP-DM의 대비"><figcaption><b>두 접근의 대비</b><span>상향식: 소스 과다·정규화 비용으로 흔히 실패</span><span>목적 주도: CRISP-DM 재해석, 비즈니스 이해에서 출발</span><span>스키마리스는 저장 구조의 점진 확장을 뜻하며, 논리 스키마가 불필요하다는 뜻은 아님</span></figcaption></figure>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-purpose">상세 리포트 그림 9 · 목적 주도 CRISP-DM</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#fig-purpose">상세 리포트 그림 13 · 목적 주도 CRISP-DM</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide" aria-label="도입 판단과 두 사례" data-report-refs="decision table-decision">
-      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT §7.2–7.3 · TABLE 7</span></header>
+      <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT §7.2–7.3 · TABLE 8</span></header>
       <h1>문제의 모양이 맞으면 두 사례처럼 결합 가치가 커진다</h1>
-      <p class="lead">흩어진 데이터·다중 홉·자연어 질문·근거 요구 중 하나라도 “예”라면 KG에 LLM을 결합합니다.</p>
+      <p class="lead">저자는 판단 질문 중 하나라도 “예”라면 KG 기반 솔루션을 강화할 LLM이 필요하다고 말합니다. 실무에서는 비용·위험·검증 체계도 함께 봅니다.</p>
       <div class="slide-body">
         <div class="case-compare">
           <article><p class="eyebrow">신약 발견과 개발</p><h2>가설과 확정 사실을 분리</h2><dl><div><dt>KG</dt><dd>유전자·질병·약물을 유형화된 관계로 연결해 이행적 추론</dd></div><div><dt>LLM</dt><dd>논문·임상 보고서에서 추출·잠재 관계 추정·텍스트 마이닝</dd></div><div><dt>주의</dt><dd>추출한 주장은 검증 상태·출처와 함께 저장</dd></div></dl></article>
@@ -292,7 +311,7 @@
         </div>
         <p class="takeaway"><strong>판단 기준</strong> — 기술 이름이 아니라 관계·통합·자연어·근거라는 문제의 모양에서 도입을 시작합니다.</p>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#table-decision">상세 리포트 표 7 · 도입 판단 체크리스트</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-decision">상세 리포트 표 8 · 도입 판단 체크리스트</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide" aria-label="이해 확인 질문" data-report-refs="summary decision">
@@ -301,7 +320,7 @@
       <p class="lead">정답을 외우기보다 판단 근거를 말할 수 있는지 확인합니다.</p>
       <div class="slide-body">
         <div class="question-list">
-          <article><span>Q1</span><p>KG와 LLM의 약점 세 가지가 어떻게 서로의 강점과 맞물리는지 설명할 수 있는가?</p></article>
+          <article><span>Q1</span><p>KG와 LLM의 대표 약점이 어떻게 상대의 강점으로 보완되는지 설명할 수 있는가?</p></article>
           <article><span>Q2</span><p>자율 시스템과 자문 시스템(IAS)의 차이, 그리고 최종 결정 주체는 누구인가?</p></article>
           <article><span>Q3</span><p>우리 문제에 도입한다면 상향식과 목적 주도 중 무엇에서 출발해야 하는가?</p></article>
         </div>
@@ -315,8 +334,8 @@
       <div class="closing-body">
         <p class="eyebrow">THREE SENTENCES</p><h1>세 문장으로 남기는 오늘의 결론</h1>
         <div class="card-grid">
-          <article class="card"><span>01</span><h2>강점이 상반된다</h2><p>KG와 LLM은 약점이 서로의 강점과 정확히 맞물리는 환상의 조합입니다.</p></article>
-          <article class="card"><span>02</span><h2>사람이 결정한다</h2><p>지능은 표현과 추론이며, 자문 시스템에서 최종 결정은 늘 사람이 내립니다.</p></article>
+          <article class="card"><span>01</span><h2>서로 보완한다</h2><p>KG와 LLM은 서로 다른 강점으로 상대의 주요 한계를 보완하는 강력한 조합입니다.</p></article>
+          <article class="card"><span>02</span><h2>사람이 결정한다</h2><p>지능은 표현과 추론이며, 자문 시스템에서는 최종 결정을 사람이 내립니다.</p></article>
           <article class="card"><span>03</span><h2>목적에서 출발한다</h2><p>더 큰 모델도 더 많은 데이터도 아닌 비즈니스 목적이 KG를 빚습니다.</p></article>
         </div>
         <p class="closing-question">Q&amp;A</p>

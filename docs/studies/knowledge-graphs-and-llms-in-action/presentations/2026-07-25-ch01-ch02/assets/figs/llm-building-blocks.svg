@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 500" role="img" aria-labelledby="title desc">
+  <title id="title">대규모 언어 모델의 여섯 구성 요소</title>
+  <desc id="desc">토큰화, 고차원 임베딩, 트랜스포머와 어텐션, 대규모 사전학습, 전이 학습, 생성 능력이 대규모 언어 모델을 구성한다.</desc>
+  <defs>
+    <style>.t{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}.h{font-size:19px;font-weight:800}.sh{font-size:14px;font-weight:800}.m{font-size:12px;fill:#6B6B72}.box{fill:#fff;stroke:#B7C2D1;stroke-width:1.5}.line{stroke:#8793A3;stroke-width:2.2;fill:none}.core{fill:#0F2C59;stroke:#0F2C59;stroke-width:2}</style>
+  </defs>
+  <rect width="920" height="500" rx="12" fill="#FAFAF9"/>
+  <text class="t h" x="34" y="44">LLM은 하나의 마법 상자가 아니라 여섯 구성 요소의 결합이다</text>
+  <text class="t m" x="34" y="68">입력을 토큰과 벡터로 바꾸고, 문맥 패턴을 학습해 다음 토큰을 생성하며, 지시나 미세조정으로 여러 과제에 재사용한다.</text>
+
+  <path class="line" d="M270 172L402 216"/><path class="line" d="M460 172V184"/><path class="line" d="M650 172L518 216"/>
+  <path class="line" d="M270 380L402 332"/><path class="line" d="M460 380V352"/><path class="line" d="M650 380L518 332"/>
+
+  <g class="t" text-anchor="middle">
+    <rect class="box" x="80" y="100" width="190" height="72" rx="9"/><text x="175" y="130" class="sh">토큰화</text><text x="175" y="152" class="m">텍스트를 처리 단위로 분해</text>
+    <rect class="box" x="365" y="100" width="190" height="72" rx="9"/><text x="460" y="130" class="sh">고차원 임베딩</text><text x="460" y="152" class="m">의미·관계를 연속 벡터로</text>
+    <rect class="box" x="650" y="100" width="190" height="72" rx="9"/><text x="745" y="130" class="sh">Transformer · Attention</text><text x="745" y="152" class="m">문맥의 관련 부분에 가중치</text>
+
+    <circle class="core" cx="460" cy="268" r="84"/><text x="460" y="250" fill="#fff" class="h">대규모</text><text x="460" y="278" fill="#fff" class="h">언어 모델</text><text x="460" y="306" style="fill:#fff" opacity=".75" class="m">Large Language Model</text>
+
+    <rect class="box" x="80" y="380" width="190" height="72" rx="9"/><text x="175" y="410" class="sh">대규모 사전학습</text><text x="175" y="432" class="m">방대한 코퍼스에서 패턴 습득</text>
+    <rect class="box" x="365" y="380" width="190" height="72" rx="9"/><text x="460" y="410" class="sh">전이 학습</text><text x="460" y="432" class="m">지시·미세조정으로 과제 재사용</text>
+    <rect class="box" x="650" y="380" width="190" height="72" rx="9"/><text x="745" y="410" class="sh">생성 능력</text><text x="745" y="432" class="m">다음 토큰 예측으로 문장 생성</text>
+  </g>
+</svg>

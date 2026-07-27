@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 480" role="img" aria-labelledby="title desc">
   <title id="title">지능형 시스템의 확장 모델</title>
-  <desc id="desc">데이터 소스·환경·전문가로부터 지식을 습득해 여러 지식 베이스와 추론 엔진이 사용자에게 통찰을 제공하고, 피드백이 다시 지식 습득으로 순환한다.</desc>
-  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B6B72"/></marker><style>.t{font-family:Inter,'Noto Sans KR',sans-serif}.h{font-size:19px;font-weight:800}.sh{font-size:14px;font-weight:800}.b{font-size:12.5px}.m{font-size:11.5px;fill:#6B6B72}.box{fill:#fff;stroke:#B7C2D1;stroke-width:1.5}.soft{fill:#F2F5F9;stroke:#B7C2D1;stroke-width:1.5}.navy{fill:#0F2C59}.line{stroke:#6B6B72;stroke-width:2;fill:none;marker-end:url(#a)}.dash{stroke:#6B6B72;stroke-width:2;fill:none;stroke-dasharray:6 6;marker-end:url(#a)}</style></defs>
+  <desc id="desc">데이터 소스·환경·전문가로부터 지식을 습득해 여러 지식 베이스와 추론 엔진이 사용자의 과제와 질문을 처리하고 통찰을 제공하며, 피드백이 다시 지식 습득으로 순환한다.</desc>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B6B72"/></marker><style>.t{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}.h{font-size:19px;font-weight:800}.sh{font-size:14px;font-weight:800}.b{font-size:12.5px}.m{font-size:11.5px;fill:#6B6B72}.box{fill:#fff;stroke:#B7C2D1;stroke-width:1.5}.soft{fill:#F2F5F9;stroke:#B7C2D1;stroke-width:1.5}.navy{fill:#0F2C59}.line{stroke:#6B6B72;stroke-width:2;fill:none;marker-end:url(#a)}.dash{stroke:#6B6B72;stroke-width:2;fill:none;stroke-dasharray:6 6;marker-end:url(#a)}</style></defs>
   <rect width="920" height="480" rx="12" fill="#FAFAF9"/>
   <text class="t h" x="34" y="44">지능은 지식 습득과 추론이라는 두 과정으로 해부된다</text>
   <text class="t m" x="34" y="68">지식 베이스와 추론 엔진은 각각 여러 인스턴스가 될 수 있고, 피드백 루프가 지식을 점점 정교하게 만든다.</text>
@@ -10,19 +10,21 @@
     <rect class="soft" x="30" y="222" width="140" height="52" rx="7"/><text x="100" y="253" class="b">환경 (관찰)</text>
     <rect class="soft" x="30" y="294" width="140" height="52" rx="7"/><text x="100" y="325" class="b">도메인 전문가</text>
   </g>
-  <rect x="196" y="118" width="556" height="266" rx="12" fill="#fff" stroke="#0F2C59" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <rect x="196" y="118" width="556" height="258" rx="12" fill="#fff" stroke="#0F2C59" stroke-width="1.5" stroke-dasharray="7 5"/>
   <text class="t sh" x="216" y="144" fill="#0F2C59">지능형 시스템 (IAS)</text>
   <g class="t" text-anchor="middle">
     <rect class="box" x="216" y="206" width="150" height="92" rx="8"/><text x="291" y="242" class="sh">지식 습득</text><text x="291" y="264" class="m">원시 → 구조화</text><text x="291" y="283" class="m">전문가 참여</text>
     <rect class="box" x="450" y="168" width="160" height="66" rx="8"/><rect class="box" x="440" y="160" width="160" height="66" rx="8"/><text x="520" y="190" class="sh">지식 베이스 ×N</text><text x="520" y="210" class="m">명시적/암묵적 표현</text>
-    <rect class="navy" x="450" y="288" width="160" height="66" rx="8"/><rect class="navy" x="440" y="280" width="160" height="66" rx="8"/><text x="520" y="310" fill="#fff" class="sh">추론 엔진 ×N</text><text x="520" y="330" fill="#fff" opacity=".76" class="m">연역·귀납·확률적</text>
+    <rect x="450" y="288" width="160" height="66" rx="8" fill="#36537C" stroke="#8EA3BF" stroke-width="1.5"/><rect class="navy" x="440" y="280" width="160" height="66" rx="8"/><text x="520" y="310" fill="#fff" class="sh">추론 엔진 ×N</text><text x="520" y="330" style="fill:#fff" opacity=".76" class="m">연역·귀납·확률적</text>
   </g>
-  <rect class="navy" x="778" y="228" width="112" height="72" rx="8"/><text x="834" y="260" text-anchor="middle" fill="#fff" class="t sh">최종 사용자</text><text x="834" y="280" text-anchor="middle" fill="#fff" opacity=".76" class="t m">통찰·제안</text>
+  <rect class="navy" x="778" y="228" width="112" height="72" rx="8"/><text x="834" y="258" text-anchor="middle" fill="#fff" class="t sh">최종 사용자</text><text x="834" y="278" text-anchor="middle" style="fill:#fff" opacity=".76" class="t m">과제·질문 / 통찰</text>
   <path class="line" d="M170 176C186 186 196 210 214 226"/><path class="line" d="M170 248H214"/><path class="line" d="M170 320C186 310 196 288 214 272"/>
   <path class="line" d="M366 244C400 232 410 214 438 202"/>
   <path class="line" d="M520 226V278"/><path class="line" d="M498 280V228" stroke="#6B6B72"/>
   <text class="t m" x="548" y="258" fill="#6B6B72">읽기·쓰기</text>
-  <path class="line" d="M600 314C680 314 700 280 776 268"/>
-  <path class="dash" d="M834 300C834 400 300 420 291 300"/>
-  <text class="t m" x="470" y="410" text-anchor="middle">피드백 루프: 제안 → 환경·사용자 관찰 → 새 지식 → 다음 제안 (지능이 시간에 따라 진화)</text>
+  <path class="line" d="M612 314C680 314 700 282 776 272"/>
+  <path class="line" d="M778 244C716 218 666 248 614 292"/>
+  <rect class="soft" x="642" y="220" width="90" height="24" rx="12"/><text class="t m" x="687" y="237" text-anchor="middle">과제 · 질문</text>
+  <path class="dash" d="M834 300C834 426 300 438 291 300"/>
+  <text class="t m" x="470" y="444" text-anchor="middle">피드백 루프: 제안 → 환경·사용자 관찰 → 새 지식 → 다음 제안 (지능이 시간에 따라 진화)</text>
 </svg>

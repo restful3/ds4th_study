@@ -1,18 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 480" role="img" aria-labelledby="title desc">
   <title id="title">그래프 구조 위에 의미가 쌓이는 계층</title>
   <desc id="desc">RDF 또는 LPG 그래프 구조 위에 분류체계와 온톨로지가 더해질수록 기계가 추론할 수 있는 지식 그래프가 된다.</desc>
-  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B6B72"/></marker><style>.t{font-family:Inter,'Noto Sans KR',sans-serif}.h{font-size:19px;font-weight:800}.sh{font-size:15px;font-weight:800}.b{font-size:13px}.m{font-size:12px;fill:#6B6B72}.box{fill:#fff;stroke:#B7C2D1;stroke-width:1.5}.soft{fill:#F2F5F9;stroke:#B7C2D1;stroke-width:1.5}.navy{fill:#0F2C59}.line{stroke:#6B6B72;stroke-width:2;fill:none;marker-end:url(#a)}</style></defs>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B6B72"/></marker><style>.t{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}.h{font-size:19px;font-weight:800}.sh{font-size:15px;font-weight:800}.b{font-size:13px}.m{font-size:12px;fill:#6B6B72}.box{fill:#fff;stroke:#B7C2D1;stroke-width:1.5}.soft{fill:#F2F5F9;stroke:#B7C2D1;stroke-width:1.5}.navy{fill:#0F2C59}.line{stroke:#6B6B72;stroke-width:2;fill:none;marker-end:url(#a)}</style></defs>
   <rect width="920" height="480" rx="12" fill="#FAFAF9"/>
-  <text class="t h" x="34" y="44">의미를 층층이 더할수록 그래프는 ‘추론 가능한’ 지식 그래프가 된다</text>
+  <text class="t h" x="34" y="44">필요한 의미 규칙을 더할수록 그래프는 추론 가능한 지식 계층이 된다</text>
   <text class="t m" x="34" y="68">RDF·LPG는 표현 방식의 선택, 분류체계·온톨로지는 그 위에 얹는 의미의 수준이다. 둘은 다른 설계 축이다.</text>
-  <rect class="navy" x="70" y="104" width="520" height="52" rx="8"/><text x="330" y="129" text-anchor="middle" fill="#fff" class="t sh">진정한 지식 그래프</text><text x="330" y="147" text-anchor="middle" fill="#fff" opacity=".76" class="t m">기계가 일관성 검사·추론·설명 수행</text>
+  <rect class="navy" x="70" y="104" width="520" height="52" rx="8"/><text x="330" y="129" text-anchor="middle" fill="#fff" class="t sh">추론 가능한 지식 계층</text><text x="330" y="147" text-anchor="middle" style="fill:#fff" opacity=".76" class="t m">기계가 일관성 검사·추론·설명 수행</text>
   <path class="line" d="M330 190V158"/>
   <rect class="box" x="70" y="192" width="520" height="52" rx="8"/><text x="90" y="216" class="t sh">+ 온톨로지</text><text x="90" y="236" class="t m">수평 규칙: Car = Automobile · Car ⊥ Bicycle · 개수 제약</text>
   <path class="line" d="M330 278V246"/>
   <rect class="box" x="70" y="280" width="520" height="52" rx="8"/><text x="90" y="304" class="t sh">+ 분류체계</text><text x="90" y="324" class="t m">수직 계층: Vehicle ⊃ Car ⊃ Sedan</text>
   <path class="line" d="M330 366V334"/>
   <rect class="soft" x="70" y="368" width="520" height="66" rx="8"/><text x="90" y="394" class="t sh">그래프 구조</text><text x="90" y="416" class="t m">노드 · 엣지 · 속성</text>
-  <text x="360" y="416" class="t m" text-anchor="middle">RDF 트리플 · SPARQL · 전역 술어</text>
+  <text x="360" y="416" class="t m" text-anchor="middle">RDF 트리플 또는 LPG 속성 그래프</text>
   <g class="t" font-size="12">
     <rect class="soft" x="632" y="192" width="256" height="52" rx="8"/><text x="648" y="216" class="m" font-weight="800" fill="#0F2C59">가로 규칙</text><text x="648" y="235" class="m">같다 / 다르다 / 공존 불가</text>
     <rect class="soft" x="632" y="280" width="256" height="52" rx="8"/><text x="648" y="304" class="m" font-weight="800" fill="#0F2C59">세로 질서</text><text x="648" y="323" class="m">무엇이 무엇의 하위인가</text>

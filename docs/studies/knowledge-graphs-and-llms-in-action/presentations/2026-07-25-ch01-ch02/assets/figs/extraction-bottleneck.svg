@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" role="img" aria-labelledby="title desc">
   <title id="title">정형 데이터와 비정형 데이터의 추출 병목</title>
   <desc id="desc">정형·반정형 데이터는 통제 가능한 매핑으로, 비정형 텍스트는 다섯 가지 난제를 넘어야 지식 그래프로 들어간다.</desc>
-  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B6B72"/></marker><style>.t{font-family:Inter,'Noto Sans KR',sans-serif}.h{font-size:19px;font-weight:800}.sh{font-size:15px;font-weight:800}.b{font-size:13px}.m{font-size:12px;fill:#6B6B72}.box{fill:#fff;stroke:#B7C2D1;stroke-width:1.5}.soft{fill:#F2F5F9;stroke:#B7C2D1;stroke-width:1.5}.navy{fill:#0F2C59}.line{stroke:#6B6B72;stroke-width:2;fill:none;marker-end:url(#a)}</style></defs>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B6B72"/></marker><style>.t{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}.h{font-size:19px;font-weight:800}.sh{font-size:15px;font-weight:800}.b{font-size:13px}.m{font-size:12px;fill:#6B6B72}.box{fill:#fff;stroke:#B7C2D1;stroke-width:1.5}.soft{fill:#F2F5F9;stroke:#B7C2D1;stroke-width:1.5}.navy{fill:#0F2C59}.line{stroke:#6B6B72;stroke-width:2;fill:none;marker-end:url(#a)}</style></defs>
   <rect width="920" height="520" rx="12" fill="#FAFAF9"/>
   <text class="t h" x="34" y="44">KG 구축의 진짜 병목은 비정형 데이터에서의 추출이다</text>
   <text class="t m" x="34" y="68">정형 데이터는 예측 가능한 매핑으로 흡수되지만, 비정형 텍스트는 다섯 가지 언어 난제를 통과해야 한다.</text>
@@ -22,6 +22,6 @@
   <text class="t m" x="544" y="374">대명사 = 상호참조 해소</text>
   <text class="t m" x="544" y="399">저자별 다양한 문체</text>
   <text class="t m" x="544" y="424">도메인 고유 전문 용어</text>
-  <path class="line" d="M246 446C246 476 360 480 372 482"/><path class="line" d="M674 446C674 476 560 480 548 482"/>
   <rect class="navy" x="310" y="466" width="300" height="44" rx="7"/><text x="460" y="494" text-anchor="middle" fill="#fff" class="t sh">지식 그래프(KG) · 개체 · 관계 · 속성</text>
+  <path class="line" d="M246 446C246 458 350 462 372 464"/><path class="line" d="M674 446C674 458 570 462 548 464"/>
 </svg>

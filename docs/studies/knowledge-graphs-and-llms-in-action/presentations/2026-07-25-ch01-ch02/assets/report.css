@@ -37,7 +37,7 @@ html.theme-light {
 html, body { min-height: 100%; }
 html { background: var(--bg); }
 body {
-  font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -49,7 +49,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--text);
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   letter-spacing: -0.024em;
   line-height: 1.2;
   text-wrap: balance;
@@ -120,7 +120,7 @@ h1, h2, h3, h4, h5, h6 {
 .report-toc { page: toc; }
 @page toc { @bottom-left { content: "목차"; } }
 
-/* 본문 섹션별 page-name — build_structured.py 가 부여하는 s0~s7 클래스와 매핑 */
+/* 본문 섹션별 page-name — 회차가 부여하는 s0~s8 클래스와 매핑 */
 .report-section.s0 { page: sec0; }
 .report-section.s1 { page: sec1; }
 .report-section.s2 { page: sec2; }
@@ -129,6 +129,7 @@ h1, h2, h3, h4, h5, h6 {
 .report-section.s5 { page: sec5; }
 .report-section.s6 { page: sec6; }
 .report-section.s7 { page: sec7; }
+.report-section.s8 { page: sec8; }
 .report-appendix.s-refs {
   page: sec-refs;
   /* References 는 항상 새 페이지에서 시작 — 부록 직후에 끌려오지 않도록.
@@ -137,15 +138,16 @@ h1, h2, h3, h4, h5, h6 {
   page-break-before: always !important;
 }
 
-@page sec0 { @bottom-left { content: "§0 · 핵심 요약"; } }
-@page sec1 { @bottom-left { content: "§1 · Computer Use"; } }
-@page sec2 { @bottom-left { content: "§2 · 빅3 벤더"; } }
-@page sec3 { @bottom-left { content: "§3 · 오픈소스 & 자율형 에이전트"; } }
-@page sec4 { @bottom-left { content: "§4 · 실사용 사례 서베이"; } }
-@page sec5 { @bottom-left { content: "§5 · 이슈와 시사점"; } }
-@page sec6 { @bottom-left { content: "§6 · 기술 딥다이브 & 결론"; } }
-@page sec7 { @bottom-left { content: "부록"; } }
-@page sec-refs { @bottom-left { content: "참고 문헌"; } }
+@page sec0 { @bottom-left { content: var(--page-label-sec0, ""); } }
+@page sec1 { @bottom-left { content: var(--page-label-sec1, ""); } }
+@page sec2 { @bottom-left { content: var(--page-label-sec2, ""); } }
+@page sec3 { @bottom-left { content: var(--page-label-sec3, ""); } }
+@page sec4 { @bottom-left { content: var(--page-label-sec4, ""); } }
+@page sec5 { @bottom-left { content: var(--page-label-sec5, ""); } }
+@page sec6 { @bottom-left { content: var(--page-label-sec6, ""); } }
+@page sec7 { @bottom-left { content: var(--page-label-sec7, ""); } }
+@page sec8 { @bottom-left { content: var(--page-label-sec8, ""); } }
+@page sec-refs { @bottom-left { content: var(--page-label-refs, ""); } }
 
 /* ===== CONTINUOUS MODE — `--continuous` 빌드 옵션 (build_local.py 의 hack 정식화)
  *  · 섹션 디바이더는 숨김 — wrap_section 의 kicker(SECTION NN · …) 가 이미 섹션 경계
@@ -302,7 +304,7 @@ h1, h2, h3, h4, h5, h6 {
 .report-cover__meta dd { color: var(--text); font-weight: 500; }
 .report-cover__signature {
   position: absolute; top: 22mm; right: 24mm;
-  font-family: 'Inter', serif; font-style: italic;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif; font-style: italic;
   font-size: 11pt; color: var(--text-secondary);
 }
 
@@ -413,7 +415,7 @@ h1, h2, h3, h4, h5, h6 {
 .report-section__lede::before {
   content: "Overview · 섹션 개요";
   display: block;
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   font-size: 8.5pt;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -632,7 +634,7 @@ ol.nums li::before {
   margin: 8mm 0;
   padding: 14px 24px;
   border-left: 4px solid var(--brand-primary);
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   font-size: 15pt; font-weight: 500; line-height: 1.4; letter-spacing: -0.016em;
   color: var(--text);
   break-inside: avoid;
@@ -641,7 +643,7 @@ ol.nums li::before {
 .pull-quote::before {
   content: "\201C";
   display: block;
-  font-family: 'Inter', serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   font-size: 40pt; font-weight: 900;
   line-height: 0.4;
   color: var(--brand-primary);
@@ -1594,7 +1596,7 @@ body.chrome-hidden .report-settings {
 }
 .callout--hero .callout__kicker {
   display: block;
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   font-size: 8.5pt; font-weight: 800;
   letter-spacing: 0.14em; text-transform: uppercase;
   opacity: 0.86; margin-bottom: 5px;
@@ -1648,7 +1650,7 @@ body.chrome-hidden .report-settings {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   font-size: 8.5pt;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -1836,7 +1838,7 @@ aside.reading-more p { margin: 2px 0; font-size: 9.5pt; }
   flex-wrap: wrap;
   gap: 6px 8px;
   margin: 12pt 0 6pt;
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   font-size: 9.5pt;
   font-weight: 800;
   color: var(--text);
@@ -1881,19 +1883,22 @@ aside.reading-more p { margin: 2px 0; font-size: 9.5pt; }
  * 으로 변환되어 부착된다.
  * ※ <caption> 자체에 display:flex 를 주면 Chrome 이 caption-side:top 을 무시하고
  *   thead 아래로 렌더링하는 버그가 있어, flex 는 내부 div 로 이동시켰다. */
-.report-section table.cmp-table > caption.cmp-table__caption {
+.report-section table.cmp-table > caption.cmp-table__caption,
+.report-appendix table.cmp-table > caption.cmp-table__caption {
   display: table-caption;
   caption-side: top;
   text-align: left;
   padding: 0 0 6pt 0;
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   break-after: avoid;
   page-break-after: avoid;
 }
-.report-section table.cmp-table > caption.asset-caption {
+.report-section table.cmp-table > caption.asset-caption,
+.report-appendix table.cmp-table > caption.asset-caption {
   margin: 0;
 }
-.report-section table.cmp-table > caption.cmp-table__caption > .cmp-table__caption-inner {
+.report-section table.cmp-table > caption.cmp-table__caption > .cmp-table__caption-inner,
+.report-appendix table.cmp-table > caption.cmp-table__caption > .cmp-table__caption-inner {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
@@ -2104,7 +2109,7 @@ aside.reading-more p { margin: 2px 0; font-size: 9.5pt; }
   padding: 8px 14px;
   background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-deep) 100%);
   color: #fff;
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   font-size: 8.5pt; font-weight: 800;
   letter-spacing: 0.14em; text-transform: uppercase;
 }
@@ -2207,7 +2212,7 @@ aside.reading-more p { margin: 2px 0; font-size: 9.5pt; }
 }
 .decay-bars__value {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   font-size: 20pt; font-weight: 900;
   color: var(--brand-primary);
   line-height: 1; letter-spacing: -0.02em;
@@ -2316,7 +2321,7 @@ aside.reading-more p { margin: 2px 0; font-size: 9.5pt; }
   break-inside: avoid;
 }
 .arch-diagram__title {
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   font-size: 9pt; font-weight: 800;
   letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--text-secondary);
@@ -2573,7 +2578,7 @@ aside.reading-more p { margin: 2px 0; font-size: 9.5pt; }
   position: relative;
   background: var(--bg);
   padding: 2px 10px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   font-size: 8.5pt; font-weight: 800;
   letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--brand-primary);
@@ -2615,7 +2620,7 @@ aside.reading-more,
   gap: 4px;
   padding: 1.5px 8px 1.5px 7px;
   border-radius: 10px;
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   font-size: 8.5pt;
   font-weight: 700;
   letter-spacing: 0;
@@ -2771,7 +2776,7 @@ aside.reading-more,
   page-break-inside: avoid;
 }
 .glossary-grid__term {
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   font-size: 9.5pt;
   font-weight: 800;
   color: var(--brand-deep);
@@ -2841,7 +2846,7 @@ aside.reading-more,
   color: var(--text);
   font-weight: 600;
   padding: 0;
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   font-size: 9pt;
 }
 
@@ -3109,7 +3114,7 @@ html.reader-size-large .continuous-mode {
   order: 2;
   align-self: flex-start;
   margin-top: 14px;
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   font-size: 13px;
   font-style: normal;
   color: var(--text-secondary);
@@ -3145,9 +3150,10 @@ html.reader-size-large .continuous-mode {
   font-size: 48px;
   line-height: 1.06;
   letter-spacing: 0;
-  white-space: nowrap;
+  white-space: normal;
   word-break: keep-all;
-  overflow-wrap: normal;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
 }
 .continuous-mode .report-cover__subtitle {
   order: 4;
@@ -3157,6 +3163,9 @@ html.reader-size-large .continuous-mode {
   font-weight: 500;
   line-height: 1.5;
   color: var(--text-secondary);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
 }
 .continuous-mode .report-cover__meta {
   order: 5;
@@ -3511,15 +3520,18 @@ html.reader-size-large .continuous-mode {
   .continuous-mode .report-cover__title {
     font-size: clamp(20px, 6vw, 28px);
     line-height: 1.14;
-    white-space: nowrap;
+    white-space: normal;
     word-break: keep-all;
-    overflow-wrap: normal;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
   }
   .continuous-mode .report-cover__subtitle {
     font-size: 14px;
     line-height: 1.5;
     white-space: normal;
+    word-break: keep-all;
     overflow-wrap: anywhere;
+    text-wrap: balance;
   }
   .continuous-mode .report-cover__meta {
     display: grid;
@@ -3612,8 +3624,17 @@ html.reader-size-large .continuous-mode {
   --brand-active: #2563EB;
   --running-header-left: "ds4th study · KG & LLM Ch.1–2";
   --running-header-right: "STUDY REPORT";
+  --page-label-sec0: "§0 · 핵심 요약";
+  --page-label-sec1: "§1 · 문제와 병목";
+  --page-label-sec2: "§2 · 지식 그래프";
+  --page-label-sec3: "§3 · 상호 보완";
+  --page-label-sec4: "§4 · 표현 기술";
+  --page-label-sec5: "§5 · 지능형 시스템";
+  --page-label-sec6: "§6 · 추론 전략";
+  --page-label-sec7: "§7 · 도입 판단";
+  --page-label-refs: "참고 문헌";
 }
-html, body, button, input { font-family: Inter, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif; }
+html, body, button, input { font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif; }
 .skip-link { position: fixed; left: 16px; top: -60px; z-index: 9999; background: var(--brand-primary); color: #fff; padding: 10px 14px; border-radius: 4px; text-decoration: none; }
 .skip-link:focus { top: 16px; }
 .report-jump-links { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
@@ -3621,7 +3642,7 @@ html, body, button, input { font-family: Inter, 'Noto Sans KR', 'Apple SD Gothic
 .report-appendix ol.references li::before,
 .s-refs ol.references li::before { content: none !important; }
 @media print { .skip-link, .report-jump-links { display:none !important; } }
-+
+
 /* ===== Fullscreen image viewer: click / keyboard / wheel / pinch ===== */
 [data-report-zoomable="true"] {
   cursor: zoom-in;
@@ -3762,4 +3783,60 @@ svg.report-lightbox__visual {
 @media print {
   [data-report-zoomable="true"] { cursor: default !important; outline: none !important; box-shadow: none !important; filter: none !important; }
   .report-lightbox { display: none !important; }
+
+  /* Continuous reading mode must still produce a true A4 cover and compact,
+     non-orphaned headings when printed. These rules intentionally come after
+     the browser-oriented continuous-mode overrides. */
+  .continuous-mode .report-cover {
+    break-after: page !important;
+    page-break-after: always !important;
+    width: 210mm;
+    max-width: none;
+    min-height: 297mm;
+    margin: 0;
+    padding: 54mm 28mm 30mm 30mm;
+    border-bottom: 0;
+  }
+  .continuous-mode .report-cover__signature { max-width: 100%; }
+  .continuous-mode .report-cover__kicker {
+    display: inline-flex;
+    width: max-content;
+    max-width: 100%;
+    white-space: nowrap;
+    font-size: 8.5pt;
+  }
+  .continuous-mode .report-cover__title {
+    max-width: 150mm;
+    font-size: 30pt;
+    line-height: 1.08;
+  }
+  .continuous-mode .report-cover__title-line {
+    display: block;
+    white-space: nowrap;
+  }
+  .continuous-mode .report-cover__subtitle {
+    max-width: 145mm;
+    font-size: 15pt;
+  }
+  .continuous-mode .report-cover__meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 145mm;
+  }
+  .continuous-mode .report-section h1,
+  .continuous-mode .report-appendix h1 {
+    font-size: 32px;
+    line-height: 1.14;
+  }
+  .continuous-mode .report-section h2 {
+    font-size: 24px;
+    line-height: 1.22;
+  }
+  .cmp-table__caption .asset-caption__title {
+    white-space: nowrap;
+  }
+  #table-glossary {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
 }

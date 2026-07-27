@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" role="img" aria-labelledby="title desc">
+  <title id="title">LLM을 활용한 지식 그래프 구축과 질의 수명주기</title>
+  <desc id="desc">구축 단계에서는 정형과 비정형 소스를 매핑하거나 LLM으로 후보 개체와 관계를 추출한 뒤 검증해 지식 그래프에 반영한다. 이용 단계에서는 자연어 질문을 그래프 질의로 바꾸고 결과를 요약해 답한다.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B6B72"/></marker>
+    <style>.t{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}.h{font-size:19px;font-weight:800}.sh{font-size:13px;font-weight:800}.b{font-size:11.5px}.m{font-size:11.5px;fill:#6B6B72}.box{fill:#fff;stroke:#B7C2D1;stroke-width:1.5}.soft{fill:#F2F5F9;stroke:#B7C2D1;stroke-width:1.5}.navy{fill:#0F2C59}.line{stroke:#6B6B72;stroke-width:2;fill:none;marker-end:url(#a)}.dash{stroke:#8793A3;stroke-width:1.7;fill:none;stroke-dasharray:5 5}</style>
+  </defs>
+  <rect width="920" height="520" rx="12" fill="#FAFAF9"/>
+  <text class="t h" x="34" y="44">LLM은 KG의 구축 비용과 이용 장벽을 모두 낮춘다</text>
+  <text class="t m" x="34" y="68">단, 추출 결과는 곧바로 사실이 아니다. 후보를 스키마에 맞추고 검증한 뒤에만 KG에 반영한다.</text>
+
+  <rect class="soft" x="26" y="100" width="868" height="174" rx="11"/>
+  <text class="t sh" x="46" y="126" fill="#0F2C59">구축 — 데이터에서 검증된 지식으로</text>
+  <g class="t" text-anchor="middle">
+    <rect class="box" x="38" y="150" width="126" height="82" rx="8"/><text x="101" y="179" class="sh">데이터 소스</text><text x="101" y="201" class="m">정형 · 반정형</text><text x="101" y="219" class="m">비정형 텍스트</text>
+    <rect class="box" x="200" y="150" width="158" height="82" rx="8"/><text x="279" y="177" class="sh">매핑 · LLM 추출</text><text x="279" y="199" class="m">스키마 매핑</text><text x="279" y="217" class="m">개체·관계 인식</text>
+    <rect class="box" x="394" y="150" width="142" height="82" rx="8"/><text x="465" y="179" class="sh">후보 지식</text><text x="465" y="201" class="m">개체 · 관계 · 속성</text><text x="465" y="219" class="m">아직 검증 전</text>
+    <rect class="box" x="572" y="150" width="142" height="82" rx="8"/><text x="643" y="179" class="sh">검증 게이트</text><text x="643" y="201" class="m">스키마 · 무결성</text><text x="643" y="219" class="m">전문가 · 출처</text>
+    <rect class="navy" x="750" y="150" width="132" height="82" rx="8"/><text x="816" y="181" fill="#fff" class="sh">지식 그래프</text><text x="816" y="204" style="fill:#fff" opacity=".75" class="m">검증된 사실</text><text x="816" y="221" style="fill:#fff" opacity=".75" class="m">명시적 관계</text>
+  </g>
+  <path class="line" d="M164 191H196"/><path class="line" d="M358 191H390"/><path class="line" d="M536 191H568"/><path class="line" d="M714 191H746"/>
+
+  <rect class="soft" x="26" y="296" width="868" height="174" rx="11"/>
+  <text class="t sh" x="46" y="322" fill="#0F2C59">이용 — 자연어 질문에서 근거 있는 답으로</text>
+  <g class="t" text-anchor="middle">
+    <rect class="box" x="38" y="350" width="112" height="76" rx="8"/><text x="94" y="380" class="sh">자연어 질문</text><text x="94" y="402" class="m">사용자의 의도</text>
+    <rect class="box" x="184" y="350" width="112" height="76" rx="8"/><text x="240" y="378" class="sh">LLM 질의 변환</text><text x="240" y="400" class="m">그래프 질의 · 검색</text>
+    <rect class="navy" x="330" y="350" width="112" height="76" rx="8"/><text x="386" y="380" fill="#fff" class="sh">같은 KG</text><text x="386" y="402" style="fill:#fff" opacity=".75" class="m">조회 · 검색</text>
+    <rect class="box" x="476" y="350" width="112" height="76" rx="8"/><text x="532" y="380" class="sh">구조적 결과</text><text x="532" y="402" class="m">경로 · 사실 · 출처</text>
+    <rect class="box" x="622" y="350" width="112" height="76" rx="8"/><text x="678" y="378" class="sh">LLM 정리</text><text x="678" y="400" class="m">요약 · 형식화</text>
+    <rect class="box" x="768" y="350" width="112" height="76" rx="8"/><text x="824" y="380" class="sh">최종 답변</text><text x="824" y="402" class="m">근거와 함께</text>
+  </g>
+  <path class="line" d="M150 388H180"/><path class="line" d="M296 388H326"/><path class="line" d="M442 388H472"/><path class="line" d="M588 388H618"/><path class="line" d="M734 388H764"/>
+  <path class="dash" d="M816 232V270H386V350"/><text class="t m" x="600" y="263" text-anchor="middle">구축과 이용이 공유하는 검증된 지식 저장소</text>
+  <text class="t m" x="460" y="497" text-anchor="middle">LLM은 후보 추출·질의 번역·결과 설명을 맡고, KG는 검증된 관계와 추적 가능한 근거를 맡는다.</text>
+</svg>

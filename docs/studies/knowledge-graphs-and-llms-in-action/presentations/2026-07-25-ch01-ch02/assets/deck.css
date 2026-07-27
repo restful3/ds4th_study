@@ -40,7 +40,7 @@ body {
 body {
   background: #dfe3e9;
   color: var(--text);
-  font-family: Inter, Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-family: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   word-break: keep-all;
   text-rendering: optimizeLegibility;
 }

@@ -1,24 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" role="img" aria-labelledby="title desc">
   <title id="title">상향식 접근과 목적 주도 접근의 대비</title>
   <desc id="desc">모든 데이터부터 통합하는 상향식은 흔히 실패하고, 비즈니스 이해에서 출발하는 목적 주도 CRISP-DM은 KG를 중심 지식 표현으로 삼는다.</desc>
-  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B6B72"/></marker><style>.t{font-family:Inter,'Noto Sans KR',sans-serif}.h{font-size:19px;font-weight:800}.sh{font-size:14px;font-weight:800}.b{font-size:12.5px}.m{font-size:11.5px;fill:#6B6B72}.box{fill:#fff;stroke:#B7C2D1;stroke-width:1.5}.soft{fill:#F2F5F9;stroke:#B7C2D1;stroke-width:1.5}.navy{fill:#0F2C59}.line{stroke:#6B6B72;stroke-width:2;fill:none;marker-end:url(#a)}.dash{stroke:#6B6B72;stroke-width:2;fill:none;stroke-dasharray:6 6;marker-end:url(#a)}</style></defs>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B6B72"/></marker><style>.t{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}.h{font-size:19px;font-weight:800}.sh{font-size:14px;font-weight:800}.b{font-size:12.5px}.m{font-size:11.5px;fill:#6B6B72}.box{fill:#fff;stroke:#B7C2D1;stroke-width:1.5}.soft{fill:#F2F5F9;stroke:#B7C2D1;stroke-width:1.5}.navy{fill:#0F2C59}.line{stroke:#6B6B72;stroke-width:2;fill:none;marker-end:url(#a)}.dash{stroke:#6B6B72;stroke-width:2;fill:none;stroke-dasharray:6 6;marker-end:url(#a)}</style></defs>
   <rect width="920" height="520" rx="12" fill="#FAFAF9"/>
   <text class="t h" x="34" y="44">데이터가 아니라 비즈니스 목적에서 출발해야 KG 도입이 성공한다</text>
-  <text class="t m" x="34" y="68">상향식은 데이터가 알아서 말하길 기대하다 실패하고, 목적 주도는 필요한 데이터만 골라 KG를 빚는다.</text>
-  <text class="t sh" x="66" y="102">상향식 · Bottom-up</text>
-  <rect x="40" y="112" width="380" height="384" rx="10" fill="#F2F5F9" stroke="#B7C2D1"/>
+  <text class="t m" x="34" y="68">상향식은 목적 없이 데이터를 모아 실패하고, 목적 주도는 필요한 데이터만 골라 KG를 설계한다.</text>
+  <text class="t sh" x="54" y="102">상향식 · Bottom-up</text>
+  <rect x="28" y="112" width="392" height="384" rx="10" fill="#F2F5F9" stroke="#B7C2D1"/>
   <g class="t" text-anchor="middle">
-    <rect class="box" x="90" y="132" width="280" height="46" rx="7"/><text x="230" y="160" class="b">모든 데이터부터 수집</text>
-    <path class="line" d="M230 178V204"/>
-    <rect class="box" x="90" y="206" width="280" height="46" rx="7"/><text x="230" y="234" class="b">하나의 원천으로 통합</text>
-    <path class="line" d="M230 252V278"/>
-    <rect class="box" x="90" y="280" width="280" height="46" rx="7"/><text x="230" y="308" class="b">“데이터가 알아서 말하길 기대”</text>
-    <path class="line" d="M230 326V352"/>
-    <rect class="navy" x="120" y="354" width="220" height="44" rx="7"/><text x="230" y="381" fill="#fff" class="sh">✗ 흔히 도입 실패</text>
+    <rect class="box" x="84" y="132" width="280" height="46" rx="7"/><text x="224" y="160" class="b">모든 데이터부터 수집</text>
+    <path class="line" d="M224 178V204"/>
+    <rect class="box" x="84" y="206" width="280" height="46" rx="7"/><text x="224" y="234" class="b">하나의 원천으로 통합</text>
+    <path class="line" d="M224 252V278"/>
+    <rect class="box" x="84" y="280" width="280" height="46" rx="7"/><text x="224" y="308" class="b">“데이터가 알아서 말하길 기대”</text>
+    <path class="line" d="M224 326V352"/>
+    <rect class="navy" x="114" y="354" width="220" height="44" rx="7"/><text x="224" y="381" fill="#fff" class="sh">흔히 도입 실패</text>
   </g>
-  <text class="t m" x="66" y="428">실패 원인</text>
-  <text class="t m" x="66" y="450">· 소스 과다 · 구조·식별자 상이</text>
-  <text class="t m" x="66" y="470">· 정규화 비용 · 과제와 무관한 내용</text>
+  <text class="t m" x="54" y="428">실패 원인</text>
+  <text class="t m" x="54" y="450">· 소스 과다 · 구조·식별자 상이</text>
+  <text class="t m" x="54" y="470">· 정규화 비용 · 과제와 무관한 내용</text>
   <text class="t sh" x="516" y="102">목적 주도 · CRISP-DM 재해석</text>
   <rect x="490" y="112" width="392" height="384" rx="10" fill="#fff" stroke="#0F2C59" stroke-width="1.5"/>
   <g class="t" text-anchor="middle">
@@ -29,11 +29,12 @@
     <rect class="box" x="540" y="250" width="292" height="42" rx="7"/><text x="686" y="276" class="b">3. KG 요구사항 정의</text>
     <path class="line" d="M686 292V310"/>
     <rect class="soft" x="540" y="312" width="292" height="42" rx="7" stroke="#0F2C59"/><text x="686" y="338" class="b" font-weight="700">4. 모델링 (LLM 참여) · KG 중심</text>
-    <path class="line" d="M686 354V372"/>
-    <rect class="box" x="540" y="374" width="140" height="42" rx="7"/><text x="610" y="400" class="b">5. 평가</text>
-    <rect class="box" x="692" y="374" width="140" height="42" rx="7"/><text x="762" y="400" class="b">6. 배포</text>
+    <path class="line" d="M686 354V364H604V372"/>
+    <rect class="box" x="540" y="374" width="128" height="42" rx="7"/><text x="604" y="400" class="b">5. 평가</text>
+    <rect class="box" x="704" y="374" width="128" height="42" rx="7"/><text x="768" y="400" class="b">6. 배포</text>
+    <path class="line" d="M668 395H703"/>
   </g>
-  <path class="dash" d="M832 395C880 395 880 209 834 209"/>
+  <path class="dash" d="M832 395C874 395 874 209 834 209"/>
   <text class="t m" x="612" y="454">2차 라운드 = 차이 · 확장 · 스키마리스</text>
   <text class="t m" x="612" y="474">(빈 KG에서 출발하지 않는다)</text>
 </svg>
