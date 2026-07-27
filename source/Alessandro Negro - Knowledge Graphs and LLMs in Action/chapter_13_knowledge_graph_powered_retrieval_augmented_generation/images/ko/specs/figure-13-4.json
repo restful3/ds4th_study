@@ -1,0 +1,562 @@
+{
+  "title": "Figure 13.1 Korean localization",
+  "source": "../../b6f02fd6c2b8808beeccbf260d8eda110be13b80235629be5aa9fa801cbc6e7e.jpg",
+  "output": "../figure-13-4-ko.png",
+  "coordinate_space": [
+    1129,
+    740
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        786,
+        0,
+        340,
+        59
+      ],
+      "fill": {
+        "sample": [
+          780,
+          60
+        ],
+        "radius": 4
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        792,
+        3,
+        329,
+        54
+      ],
+      "text": "문서의 지식을 추출해\nKG로 모델링합니다.",
+      "font": "bold",
+      "font_size": 24,
+      "min_font_size": 19,
+      "line_gap": 1,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "type": "rect",
+      "box": [
+        382,
+        53,
+        170,
+        34
+      ],
+      "fill": {
+        "sample": [
+          350,
+          70
+        ],
+        "radius": 4
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        386,
+        56,
+        162,
+        27
+      ],
+      "text": "벡터 데이터베이스",
+      "font": "regular",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+    {
+      "type": "rect",
+      "box": [
+        608,
+        53,
+        183,
+        34
+      ],
+      "fill": {
+        "sample": [
+          580,
+          70
+        ],
+        "radius": 4
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        612,
+        56,
+        175,
+        27
+      ],
+      "text": "지식 그래프",
+      "font": "regular",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+    {
+      "type": "rect",
+      "box": [
+        103,
+        179,
+        118,
+        31
+      ],
+      "fill": {
+        "sample": [
+          100,
+          180
+        ],
+        "radius": 4
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        107,
+        182,
+        110,
+        25
+      ],
+      "text": "비공개 데이터",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+    {
+      "type": "rect",
+      "box": [
+        0,
+        237,
+        238,
+        83
+      ],
+      "fill": {
+        "sample": [
+          230,
+          230
+        ],
+        "radius": 4
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        2,
+        239,
+        224,
+        79
+      ],
+      "text": "문서를 임베딩해 벡터\n데이터베이스에 색인합니다.",
+      "font": "bold",
+      "font_size": 22,
+      "min_font_size": 18,
+      "line_gap": 2,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center"
+    },
+    {
+      "type": "rect",
+      "box": [
+        844,
+        273,
+        282,
+        61
+      ],
+      "fill": {
+        "sample": [
+          835,
+          270
+        ],
+        "radius": 4
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        850,
+        277,
+        271,
+        54
+      ],
+      "text": "에이전트가 충분한 맥락을 확보하면\n답변을 생성합니다.",
+      "font": "bold",
+      "font_size": 22,
+      "min_font_size": 17,
+      "line_gap": 2,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center"
+    },
+    {
+      "type": "rect",
+      "box": [
+        415,
+        356,
+        99,
+        55
+      ],
+      "fill": {
+        "sample": [
+          400,
+          400
+        ],
+        "radius": 4
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        420,
+        359,
+        89,
+        49
+      ],
+      "text": "의미 기반\n검색기",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "line_gap": 1,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+    {
+      "type": "rect",
+      "box": [
+        548,
+        356,
+        96,
+        55
+      ],
+      "fill": {
+        "sample": [
+          540,
+          400
+        ],
+        "radius": 4
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        552,
+        359,
+        88,
+        49
+      ],
+      "text": "KG\n검색기",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "line_gap": 1,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+    {
+      "type": "rect",
+      "box": [
+        662,
+        356,
+        145,
+        55
+      ],
+      "fill": {
+        "sample": [
+          650,
+          400
+        ],
+        "radius": 4
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        667,
+        359,
+        135,
+        49
+      ],
+      "text": "KG 문서\n검색기",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "line_gap": 1,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+    {
+      "type": "rect",
+      "box": [
+        254,
+        411,
+        173,
+        59
+      ],
+      "fill": {
+        "sample": [
+          250,
+          400
+        ],
+        "radius": 4
+      }
+    },
+    {
+      "type": "line",
+      "points": [
+        [
+          375,
+          449
+        ],
+        [
+          739,
+          449
+        ]
+      ],
+      "fill": "#111111",
+      "width": 2
+    },
+    {
+      "type": "text",
+      "box": [
+        259,
+        414,
+        134,
+        53
+      ],
+      "text": "\"어떤 도구를\n사용할까?\"",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "line_gap": 1,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+    {
+      "type": "rect",
+      "box": [
+        475,
+        476,
+        272,
+        61
+      ],
+      "fill": {
+        "sample": [
+          600,
+          540
+        ],
+        "radius": 4
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        480,
+        480,
+        261,
+        54
+      ],
+      "text": "\"답변을 만들 맥락이\n충분한가?\"",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "line_gap": 1,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center"
+    },
+    {
+      "type": "rect",
+      "box": [
+        11,
+        510,
+        70,
+        31
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        15,
+        513,
+        62,
+        25
+      ],
+      "text": "사용자",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+    {
+      "type": "rect",
+      "box": [
+        982,
+        506,
+        83,
+        33
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        987,
+        510,
+        73,
+        26
+      ],
+      "text": "답변",
+      "font": "regular",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+    {
+      "type": "rect",
+      "box": [
+        89,
+        590,
+        145,
+        66
+      ],
+      "fill": {
+        "sample": [
+          80,
+          580
+        ],
+        "radius": 4
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        94,
+        594,
+        136,
+        58
+      ],
+      "text": "사용자가 질문을\n합니다.",
+      "font": "bold",
+      "font_size": 22,
+      "min_font_size": 18,
+      "line_gap": 2,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center"
+    },
+    {
+      "type": "rect",
+      "box": [
+        303,
+        620,
+        158,
+        31
+      ],
+      "fill": {
+        "sample": [
+          280,
+          610
+        ],
+        "radius": 4
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        309,
+        623,
+        146,
+        25
+      ],
+      "text": "AI 에이전트의 두뇌",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+    {
+      "type": "rect",
+      "box": [
+        695,
+        628,
+        111,
+        35
+      ],
+      "fill": {
+        "sample": [
+          680,
+          620
+        ],
+        "radius": 4
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        700,
+        632,
+        101,
+        28
+      ],
+      "text": "AI 에이전트",
+      "font": "bold",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+    {
+      "type": "rect",
+      "box": [
+        507,
+        679,
+        365,
+        61
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        513,
+        683,
+        354,
+        54
+      ],
+      "text": "AI 에이전트는 관련 맥락을 얻기 위해\n실행할 도구를 결정합니다.",
+      "font": "bold",
+      "font_size": 22,
+      "min_font_size": 17,
+      "line_gap": 2,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center"
+    }
+  ]
+}

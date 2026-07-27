@@ -1,0 +1,443 @@
+{
+  "title": "figure-2-13 Korean localization",
+  "source": "../../07c85d873e1612aaa410fd4c81021e2af9cbbfc2dfa5d8e4aa7dbada3ba49b96.jpg",
+  "output": "../figure-2-13-ko.png",
+  "coordinate_space": [
+    923,
+    853
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        153,
+        3,
+        614,
+        82
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        153,
+        3,
+        614,
+        82
+      ],
+      "text": "이 접근에서는 여러 과제를 위한 반복이 이 단계에서만 일어납니다.\n데이터가 이미 모두 적재되어 스키마를 바꾸기 어렵습니다.",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        579,
+        236,
+        344,
+        111
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        579,
+        236,
+        344,
+        111
+      ],
+      "text": "상향식 접근에서는 달성하려는 과제보다 확보된 데이터가\n지식 그래프 생성을 주도합니다.",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        50,
+        818,
+        375,
+        34
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        50,
+        818,
+        375,
+        34
+      ],
+      "text": "이 지점이 프로세스의 시작입니다.",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        117,
+        128,
+        243,
+        58
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        117,
+        128,
+        243,
+        58
+      ],
+      "text": "지식 그래프\n탐색",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        394,
+        128,
+        177,
+        58
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        394,
+        128,
+        177,
+        58
+      ],
+      "text": "시맨틱\n애플리케이션",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        606,
+        128,
+        82,
+        58
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        606,
+        128,
+        82,
+        58
+      ],
+      "text": "…",
+      "font": "regular",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        723,
+        128,
+        147,
+        58
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        723,
+        128,
+        147,
+        58
+      ],
+      "text": "데이터\n스토리텔링",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        106,
+        226,
+        188,
+        84
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        106,
+        226,
+        188,
+        84
+      ],
+      "text": "지식 그래프 활용:\n기능적 과제",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        307,
+        304,
+        122,
+        61
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        307,
+        304,
+        122,
+        61
+      ],
+      "text": "지식\n그래프",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        374,
+        460,
+        240,
+        58
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        374,
+        460,
+        240,
+        58
+      ],
+      "text": "데이터를 가져와\n그래프로 변환",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        374,
+        586,
+        240,
+        58
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        374,
+        586,
+        240,
+        58
+      ],
+      "text": "지식 그래프\n스키마 정의",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        374,
+        711,
+        240,
+        61
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        374,
+        711,
+        240,
+        61
+      ],
+      "text": "사용 가능한\n데이터 소스 식별",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        25,
+        496,
+        113,
+        48
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        25,
+        496,
+        113,
+        48
+      ],
+      "text": "비정형\n데이터",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        178,
+        496,
+        113,
+        48
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        178,
+        496,
+        113,
+        48
+      ],
+      "text": "관계형\n소스",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        16,
+        696,
+        127,
+        48
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        16,
+        696,
+        127,
+        48
+      ],
+      "text": "벡터 기반\n데이터",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        162,
+        696,
+        128,
+        30
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        162,
+        696,
+        128,
+        30
+      ],
+      "text": "이메일/채팅",
+      "font": "regular",
+      "font_size": 14,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Figure 4.4 Korean localization",
+  "source": "../../49b0fee39c09b1192d3e7350d344d80c9c1131b8b2b994f3530579fd4b4a4fe4.jpg",
+  "output": "../figure-4-4-ko.png",
+  "coordinate_space": [848, 762],
+  "operations": [
+    {"type": "rect", "box": [5, 3, 365, 81], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 7, 330, 55], "text": "단백질-질병 연관 관계는 질병과\n관련된 알려진 단백질을 연결합니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 5, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "restore_bezier", "points": [[187, 68], [196, 108], [246, 124], [276, 184]], "width": 3},
+    {"type": "restore_bezier", "points": [[187, 68], [151, 129], [109, 179], [138, 272]], "width": 3},
+
+    {"type": "rect", "box": [5, 676, 512, 86], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 682, 503, 74], "text": "단백질-단백질 상호작용은 두 단백질의\n물리적 접촉을 나타내며, 이는 복잡한\n생물학적 기능으로 이어집니다.", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [551, 676, 297, 86], "fill": "#ffffff"},
+    {"type": "text", "box": [557, 682, 283, 70], "text": "질병 경로는 같은 질병과 관련된\n서로 연결된 단백질의 집합입니다.", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 5, "fill": "#111111", "align": "left", "valign": "top"},
+
+    {"type": "rect", "box": [704, 116, 88, 27], "fill": "#ffffff"},
+    {"type": "text", "box": [707, 117, 82, 24], "text": "질병", "font": "regular", "font_size": 20, "min_font_size": 17, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [704, 154, 88, 27], "fill": "#ffffff"},
+    {"type": "text", "box": [707, 155, 82, 24], "text": "단백질", "font": "regular", "font_size": 20, "min_font_size": 17, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [704, 190, 94, 36], "fill": "#ffffff"},
+    {"type": "text", "box": [707, 193, 82, 23], "text": "경로", "font": "regular", "font_size": 20, "min_font_size": 17, "fill": "#111111", "align": "left", "valign": "center"}
+  ]
+}

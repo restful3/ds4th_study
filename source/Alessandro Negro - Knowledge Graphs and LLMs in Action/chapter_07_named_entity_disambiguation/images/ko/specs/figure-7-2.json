@@ -1,0 +1,36 @@
+{
+  "title": "Figure 7.2 Korean localization",
+  "source": "../../ae47be4e71f40bdd6065cb27f31eecc6dfe5889e8335827954deba9cfe99dbea.jpg",
+  "output": "../figure-7-2-ko.png",
+  "coordinate_space": [1129, 731],
+  "operations": [
+    {"type": "rect", "box": [84, 3, 418, 91], "fill": "#ffffff"},
+    {"type": "text", "box": [91, 10, 404, 76], "text": "후보 선택은 텍스트 언급과 연결될 수 있는\n그럴듯한 엔티티 집합을 식별합니다.", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 5, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [605, 3, 421, 113], "fill": "#ffffff"},
+    {"type": "text", "box": [612, 10, 407, 97], "text": "후보 순위화는 각 언급과 연결된 후보에\n점수를 매겨 중의성 해소 대상을\n선택합니다.", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 5, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "restore_bezier", "points": [[798, 101], [800, 146], [738, 173], [719, 221]], "width": 3},
+
+    {"type": "rect", "box": [10, 145, 150, 82], "fill": "#ffffff"},
+    {"type": "text", "box": [17, 153, 136, 66], "text": "문서에 주석된\n언급", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [454, 114, 180, 78], "fill": "#ffffff"},
+    {"type": "text", "box": [461, 121, 166, 64], "text": "각 언급의\n여러 후보", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [954, 114, 175, 78], "fill": "#ffffff"},
+    {"type": "text", "box": [961, 121, 161, 64], "text": "각 언급에서\n중의성이 해소된\n엔티티", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 3, "fill": "#222222", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [274, 244, 178, 74], "fill": "#ffffff"},
+    {"type": "text", "box": [281, 251, 164, 60], "text": "후보\n선택", "font": "regular", "font_size": 20, "min_font_size": 17, "line_gap": 3, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [631, 244, 178, 74], "fill": "#ffffff"},
+    {"type": "text", "box": [638, 251, 164, 60], "text": "후보\n순위화", "font": "regular", "font_size": 20, "min_font_size": 17, "line_gap": 3, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [136, 420, 163, 67], "fill": "#ffffff"},
+    {"type": "text", "box": [143, 427, 149, 53], "text": "참조\n지식 베이스", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [126, 593, 180, 42], "fill": "#ffffff"},
+    {"type": "text", "box": [133, 600, 166, 28], "text": "도메인 온톨로지", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [455, 440, 178, 80], "fill": "#ffffff"},
+    {"type": "text", "box": [462, 447, 164, 66], "text": "온톨로지\n통합", "font": "regular", "font_size": 20, "min_font_size": 17, "line_gap": 3, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [746, 568, 193, 43], "fill": "#ffffff"},
+    {"type": "text", "box": [753, 575, 179, 29], "text": "지식 그래프", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#222222", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [306, 638, 459, 93], "fill": "#ffffff"},
+    {"type": "text", "box": [316, 648, 439, 75], "text": "온톨로지 통합은 여러 온톨로지의 정보를 모아\n대상 엔티티 표현을 풍부하게 합니다.", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 5, "fill": "#111111", "align": "left", "valign": "top"}
+  ]
+}

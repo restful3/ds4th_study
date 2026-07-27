@@ -1,0 +1,524 @@
+{
+  "title": "figure-1-4 Korean localization",
+  "source": "../../7209372bfac79d98178b07a98a73abd41d52c6a2f1eacae69c5d92f0da46753c.jpg",
+  "output": "../figure-1-4-ko.png",
+  "coordinate_space": [
+    1126,
+    865
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        168,
+        88,
+        385,
+        105
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        168,
+        88,
+        385,
+        105
+      ],
+      "text": "질문은 KG에서 실행할 쿼리로 변환되거나,\n벡터 유사도로 KG 정보를 검색하는 데 사용됩니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        455,
+        7,
+        315,
+        55
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        455,
+        7,
+        315,
+        55
+      ],
+      "text": "사용자는 자연어로\n질문할 수 있습니다.",
+      "font": "bold",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        170,
+        247,
+        392,
+        105
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        170,
+        247,
+        392,
+        105
+      ],
+      "text": "LLM은 텍스트에서 관련 개체와 관계를 인식하고,\n매핑을 통해 대상 스키마로 변환합니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        873,
+        238,
+        250,
+        160
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        873,
+        238,
+        250,
+        160
+      ],
+      "text": "KG 결과를 LLM으로 다시 처리해\n구조와 내용이 사용자에게 적합한\n답변을 생성합니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        167,
+        803,
+        520,
+        58
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        167,
+        803,
+        520,
+        58
+      ],
+      "text": "정형 데이터에는 개체와 관계가 들어 있습니다.\n대상 스키마에 매핑해야 합니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        13,
+        196,
+        136,
+        25
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        13,
+        196,
+        136,
+        25
+      ],
+      "text": "데이터 소스",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        16,
+        226,
+        128,
+        49
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        16,
+        226,
+        128,
+        49
+      ],
+      "text": "비정형\n소스",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        30,
+        297,
+        100,
+        23
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        30,
+        297,
+        100,
+        23
+      ],
+      "text": "문서",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        25,
+        410,
+        110,
+        23
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        25,
+        410,
+        110,
+        23
+      ],
+      "text": "이메일/채팅",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        39,
+        491,
+        90,
+        42
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        39,
+        491,
+        90,
+        42
+      ],
+      "text": "도메인\n전문가",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        16,
+        610,
+        128,
+        45
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        16,
+        610,
+        128,
+        45
+      ],
+      "text": "정형\n소스",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        415,
+        379,
+        120,
+        27
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        415,
+        379,
+        120,
+        27
+      ],
+      "text": "개체",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        413,
+        568,
+        123,
+        27
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        413,
+        568,
+        123,
+        27
+      ],
+      "text": "관계",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        650,
+        627,
+        192,
+        27
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        650,
+        627,
+        192,
+        27
+      ],
+      "text": "지식 그래프",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        688,
+        105,
+        70,
+        25
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        688,
+        105,
+        70,
+        25
+      ],
+      "text": "사용자",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        579,
+        213,
+        95,
+        25
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        579,
+        213,
+        95,
+        25
+      ],
+      "text": "질문",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        578,
+        350,
+        108,
+        52
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        578,
+        350,
+        108,
+        52
+      ],
+      "text": "쿼리/\n검색",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        772,
+        190,
+        100,
+        68
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        772,
+        190,
+        100,
+        68
+      ],
+      "text": "결과/\n요약/\n보고서",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        774,
+        371,
+        80,
+        27
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        774,
+        371,
+        80,
+        27
+      ],
+      "text": "결과",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    }
+  ]
+}

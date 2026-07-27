@@ -1,0 +1,146 @@
+{
+  "title": "figure-15-12a Korean localization",
+  "source": "../../72a2fe2cb11ad55653719857365bf11545f979180657f01d232b0fd9c6a260c1.jpg",
+  "output": "../figure-15-12a-ko.png",
+  "coordinate_space": [
+    831,
+    573
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        14,
+        22,
+        105,
+        23
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        14,
+        22,
+        105,
+        23
+      ],
+      "text": "선택",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        15,
+        49,
+        104,
+        23
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        15,
+        49,
+        104,
+        23
+      ],
+      "text": "선택 해제",
+      "font": "regular",
+      "font_size": 14,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        178,
+        84,
+        57,
+        24
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        178,
+        84,
+        57,
+        24
+      ],
+      "text": "제거",
+      "font": "regular",
+      "font_size": 14,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        273,
+        3,
+        82,
+        24
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        273,
+        3,
+        82,
+        24
+      ],
+      "text": "캔버스",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        294,
+        269,
+        198,
+        86
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        294,
+        269,
+        198,
+        86
+      ],
+      "text": "피해자는 사건 직후 현장을 떠난\n번호판이 'EB'로 시작하는 검은색\n차량을 목격했다고 신고했습니다.",
+      "font": "regular",
+      "font_size": 14,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 1
+    }
+  ]
+}

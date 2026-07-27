@@ -1,0 +1,362 @@
+{
+  "title": "figure-2-7 Korean localization",
+  "source": "../../a53edc5e218db99971e486971de573198768dac33bf47d2fefb40d2aa29cd935.jpg",
+  "output": "../figure-2-7-ko.png",
+  "coordinate_space": [
+    1120,
+    654
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        61,
+        61,
+        421,
+        85
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        61,
+        61,
+        421,
+        85
+      ],
+      "text": "LLM 학습은 대부분 비지도 방식입니다.\n도메인 전문가는 지도 학습을 도울 수 있습니다.",
+      "font": "bold",
+      "font_size": 16,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        733,
+        60,
+        387,
+        108
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        733,
+        60,
+        387,
+        108
+      ],
+      "text": "도메인 전문가는 이 단계에서만 검증할 수 있고 모델을\n보거나 바꿀 수 없습니다. 맞춤 미세 조정만 지원할 수 있습니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        7,
+        364,
+        230,
+        85
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        7,
+        364,
+        230,
+        85
+      ],
+      "text": "도메인 전문가는 관련 데이터 소스를\n식별하도록 돕습니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        738,
+        458,
+        382,
+        83
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        738,
+        458,
+        382,
+        83
+      ],
+      "text": "데이터 소스는 대부분 비정형이거나\n텍스트로 변환·해석됩니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        546,
+        3,
+        136,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        546,
+        3,
+        136,
+        28
+      ],
+      "text": "도메인 전문가",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        44,
+        202,
+        132,
+        29
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        44,
+        202,
+        132,
+        29
+      ],
+      "text": "도메인 전문가",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        267,
+        244,
+        125,
+        78
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        267,
+        244,
+        125,
+        78
+      ],
+      "text": "학습\n(신경망)",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        501,
+        226,
+        221,
+        117
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        501,
+        226,
+        221,
+        117
+      ],
+      "text": "지식 모델\n(LLM)",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        44,
+        471,
+        132,
+        29
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        44,
+        471,
+        132,
+        29
+      ],
+      "text": "도메인 전문가",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        277,
+        472,
+        118,
+        44
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        277,
+        472,
+        118,
+        44
+      ],
+      "text": "비정형\n데이터",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        412,
+        472,
+        112,
+        31
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        412,
+        472,
+        112,
+        31
+      ],
+      "text": "이메일/채팅",
+      "font": "regular",
+      "font_size": 14,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        540,
+        472,
+        112,
+        31
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        540,
+        472,
+        112,
+        31
+      ],
+      "text": "환경",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        398,
+        622,
+        120,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        398,
+        622,
+        120,
+        28
+      ],
+      "text": "데이터 소스",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    }
+  ]
+}

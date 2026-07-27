@@ -1,0 +1,12 @@
+{
+  "title": "Figure 4.11 Korean localization",
+  "source": "../../a31363dc53f60a147b97626bd2a124aed7b905f82fc1bf43ba81e85376d8f606.jpg",
+  "output": "../figure-4-11-ko.png",
+  "coordinate_space": [1020, 651],
+  "operations": [
+    {"type": "ellipse", "box": [8, 347, 76, 77], "fill": {"sample": [20, 365], "radius": 3}},
+    {"type": "text", "box": [13, 354, 66, 63], "text": "셀리악병", "font": "regular", "font_size": 16, "min_font_size": 13, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "ellipse", "box": [937, 314, 76, 77], "fill": {"sample": [950, 330], "radius": 3}},
+    {"type": "text", "box": [942, 320, 66, 65], "text": "당단백질\n생합성\n촉진…", "font": "regular", "font_size": 15, "min_font_size": 12, "line_gap": 1, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

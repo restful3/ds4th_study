@@ -1,0 +1,119 @@
+{
+  "title": "figure-15-11 Korean localization",
+  "source": "../../590312efad82be3ab2bcd9dbda993d542a9a37c1574e2dbe8c5ecd72eb763cc7.jpg",
+  "output": "../figure-15-11-ko.png",
+  "coordinate_space": [
+    1129,
+    429
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        5,
+        55,
+        155,
+        105
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        5,
+        55,
+        155,
+        105
+      ],
+      "text": "속성:\nmodel, color,\nplate_number 등",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        990,
+        44,
+        137,
+        130
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        990,
+        44,
+        137,
+        130
+      ],
+      "text": "속성:\nlocation,\ndescription,\ndate-time 등",
+      "font": "bold",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        5,
+        320,
+        150,
+        85
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        5,
+        320,
+        150,
+        85
+      ],
+      "text": "속성:\nlocation,\nuniqueID",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        724,
+        320,
+        165,
+        105
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        724,
+        320,
+        165,
+        105
+      ],
+      "text": "속성:\nlocation,\ntimestamp 등",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    }
+  ]
+}

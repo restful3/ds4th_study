@@ -1,0 +1,12 @@
+{
+  "title": "Figure 6.6 Korean localization",
+  "source": "../../a62711da55dccbc4463622f9bb5b5cd7d9499cdff04e524aaee520ba81332fda.jpg",
+  "output": "../figure-6-6-ko.png",
+  "coordinate_space": [1129, 576],
+  "operations": [
+    {"type": "rect", "box": [0, 479, 454, 43], "fill": "#ffffff"},
+    {"type": "text", "box": [5, 485, 444, 31], "text": "고용기관: Johns Hopkins University", "font": "regular", "font_size": 25, "min_font_size": 21, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [772, 479, 357, 43], "fill": "#ffffff"},
+    {"type": "text", "box": [777, 485, 347, 31], "text": "고용기관: Harvard University", "font": "regular", "font_size": 25, "min_font_size": 21, "fill": "#111111", "align": "left", "valign": "center"}
+  ]
+}

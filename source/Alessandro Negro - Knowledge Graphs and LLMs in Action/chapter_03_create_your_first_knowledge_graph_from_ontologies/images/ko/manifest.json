@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "chapter": "3",
+  "source_document": "../../03_create_your_first_knowledge_graph_from_ontologies.md",
+  "review_status": "reviewed",
+  "review_method": [
+    "original and Korean Markdown image order and captions",
+    "source image inspection at original pixel dimensions",
+    "localized image inspection at original pixel dimensions",
+    "1800px final contact sheet inspection"
+  ],
+  "mapping_notes": [
+    "All eleven localized outputs map directly to Figures 3.1 through 3.11 in both Korean documents.",
+    "Figures 3.1, 3.3, 3.5, 3.7, 3.9, and 3.10 share a staged workflow but were rendered as individually reviewed standalone specs.",
+    "Technical graph identifiers and relationship types remain in their original machine-readable form."
+  ],
+  "translation_policy": {
+    "translate": "reader-facing workflow callouts, stage names, disease and phenotype display labels, table headings, and graph entity display names",
+    "preserve": "HPO, OMIM, KG, CRISP-DM, IDs, relationship types, property keys, dates, publication identifiers, and person names"
+  },
+  "items": [
+    {"key": "figure-3-1", "source": "../4059f0d9a9ad651fde89b6f3cb0fe563f3575fb0e1425f2ec44a3d8deec0d03f.jpg", "output": "figure-3-1-ko.png", "action": "localized", "reason": "임상의 활동을 지원하는 전체 KG 구축 멘탈 모델을 번역"},
+    {"key": "figure-3-2", "source": "../bacd29bfa050debe20ad1e1a84b4e4c5d5cab28724112aaf41a3e3738e13fc76.jpg", "output": "figure-3-2-ko.png", "action": "localized", "reason": "KG에 맞춘 CRISP-DM 단계와 설명문을 번역"},
+    {"key": "figure-3-3", "source": "../66f9aea0decdb71b9b32e6f3fa5229458afc3f66fc3fc8301df963cb1c76b370.jpg", "output": "figure-3-3-ko.png", "action": "localized", "reason": "비즈니스 이해 단계의 활성·비활성 흐름과 설명문을 번역"},
+    {"key": "figure-3-4", "source": "../33ae8039550d3f5a594db1a4b6c1e38bc924a3f89843abc47ee78728e3e9f521.jpg", "output": "figure-3-4-ko.png", "action": "localized", "reason": "제1형 당뇨병의 질병·표현형 특징 구분 라벨을 번역"},
+    {"key": "figure-3-5", "source": "../df51a084f481f21bb5ee1947d6c6dd046979f344bca4660083648e7def240b87.jpg", "output": "figure-3-5-ko.png", "action": "localized", "reason": "데이터 이해 단계의 활성·비활성 흐름과 설명문을 번역"},
+    {"key": "figure-3-6", "source": "../0a8768ea67bd7cd8ce084f51410c21f4e0f6d5f017a74a15e2432cf78197c284.jpg", "output": "figure-3-6-ko.png", "action": "localized", "reason": "HPO 주석 행의 열 제목과 그래프 변환 설명을 번역"},
+    {"key": "figure-3-7", "source": "../a522478921eea8892f0345b5359b3df899369b7d634f78931d9daf1bdf037d14.jpg", "output": "figure-3-7-ko.png", "action": "localized", "reason": "온톨로지 수집·처리 단계의 활성·비활성 흐름과 설명문을 번역"},
+    {"key": "figure-3-8", "source": "../e62afc30c4a44268378b02b1f3daf3fdf1b53b17267f22c8a4af1468c73a17d7.jpg", "output": "figure-3-8-ko.png", "action": "localized", "reason": "HPO 그래프의 질병·표현형 표시 이름을 번역하고 식별자는 보존"},
+    {"key": "figure-3-9", "source": "../747a0d2a35fa40a70a18f4868d0c975b5771eeac7f731d1d636bbb159dcd0c59.jpg", "output": "figure-3-9-ko.png", "action": "localized", "reason": "주석 데이터셋 수집·처리 단계의 흐름과 설명문을 번역"},
+    {"key": "figure-3-10", "source": "../2ab1dbd408a0b1c0cc5fd7c9c0c01fd251a6613b79d9df13d969cf2e1b72bb7c.jpg", "output": "figure-3-10-ko.png", "action": "localized", "reason": "완성된 KG 질의 단계의 활성·비활성 흐름과 설명문을 번역"},
+    {"key": "figure-3-11", "source": "../51d02656dec871b6d826c3b53faaa19fc28025e37e5e8524336ec7a7e89cc5bb.jpg", "output": "figure-3-11-ko.png", "action": "localized", "reason": "제1형 당뇨병 질의 결과의 질병·표현형 표시 이름을 번역"}
+  ]
+}

@@ -1,0 +1,443 @@
+{
+  "title": "figure-1-2 Korean localization",
+  "source": "../../7d0090ad1c0bb754f736192e80945527f00f626bd121f26d24e488d41545f453.jpg",
+  "output": "../figure-1-2-ko.png",
+  "coordinate_space": [
+    1034,
+    679
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        6,
+        4,
+        225,
+        56
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        6,
+        4,
+        225,
+        56
+      ],
+      "text": "과제 1 모델을 학습할\n데이터셋",
+      "font": "bold",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        276,
+        4,
+        411,
+        105
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        276,
+        4,
+        411,
+        105
+      ],
+      "text": "학습 중 신경망의 앞쪽 층은 더 일반적인 특징을\n찾습니다. 이 특징은 과제와 데이터셋에\n종속되지 않습니다.",
+      "font": "bold",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        716,
+        4,
+        316,
+        88
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        716,
+        4,
+        316,
+        88
+      ],
+      "text": "학습된 네트워크의 마지막 층이 계산한 특징은\n데이터셋과 과제에 종속되어야 합니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        48,
+        201,
+        116,
+        39
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        48,
+        201,
+        116,
+        39
+      ],
+      "text": "데이터셋 1",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        284,
+        201,
+        116,
+        39
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        284,
+        201,
+        116,
+        39
+      ],
+      "text": "모델 1",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        521,
+        201,
+        116,
+        39
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        521,
+        201,
+        116,
+        39
+      ],
+      "text": "헤드",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        755,
+        201,
+        168,
+        39
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        755,
+        201,
+        168,
+        39
+      ],
+      "text": "예측 1",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        424,
+        159,
+        80,
+        29
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        424,
+        159,
+        80,
+        29
+      ],
+      "text": "과제 1",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        48,
+        433,
+        116,
+        39
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        48,
+        433,
+        116,
+        39
+      ],
+      "text": "데이터셋 2",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        284,
+        433,
+        116,
+        39
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        284,
+        433,
+        116,
+        39
+      ],
+      "text": "모델 1",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        521,
+        433,
+        116,
+        39
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        521,
+        433,
+        116,
+        39
+      ],
+      "text": "새 헤드",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        755,
+        433,
+        168,
+        39
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        755,
+        433,
+        168,
+        39
+      ],
+      "text": "예측 2",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        424,
+        391,
+        80,
+        29
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        424,
+        391,
+        80,
+        29
+      ],
+      "text": "과제 2",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        40,
+        283,
+        200,
+        112
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        40,
+        283,
+        200,
+        112
+      ],
+      "text": "지식 전이\n한 과제의 모델을\n다른 과제로 복사합니다.",
+      "font": "bold",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        6,
+        570,
+        230,
+        55
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        6,
+        570,
+        230,
+        55
+      ],
+      "text": "과제 2 모델을 학습할\n데이터셋",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        536,
+        570,
+        495,
+        104
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        536,
+        570,
+        495,
+        104
+      ],
+      "text": "이전 과제의 모델을 미세 조정하거나, 이전 모델을\n특징 추출기로 사용하고 그 출력을 새 모델의 입력으로\n삼아 새 과제에 맞게 적응시킵니다.",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    }
+  ]
+}

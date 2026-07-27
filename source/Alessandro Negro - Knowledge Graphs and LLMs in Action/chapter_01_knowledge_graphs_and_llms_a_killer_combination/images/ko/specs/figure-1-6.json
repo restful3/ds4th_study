@@ -1,0 +1,686 @@
+{
+  "title": "figure-1-6 Korean localization",
+  "source": "../../66eb2c93ba99dd19a54186c4bdae7b25bfffdd53eca89d11877ce7da881a3cae.jpg",
+  "output": "../figure-1-6-ko.png",
+  "coordinate_space": [
+    1132,
+    984
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        24,
+        38,
+        302,
+        93
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        24,
+        38,
+        302,
+        93
+      ],
+      "text": "진화\n• 지속적으로 갱신되는 정보\n• 노드·엣지·속성\n• 동적 그래프 알고리즘",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        805,
+        38,
+        302,
+        93
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        805,
+        38,
+        302,
+        93
+      ],
+      "text": "의미\n• 의미 있는 데이터\n• 개체와 관계\n• 지식 인프라",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        24,
+        857,
+        302,
+        93
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        24,
+        857,
+        302,
+        93
+      ],
+      "text": "통합\n• 유연성\n• 정형·비정형 소스\n• 맥락 지식",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        805,
+        857,
+        322,
+        93
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        805,
+        857,
+        322,
+        93
+      ],
+      "text": "학습\n• 질의·시각화·추론\n• 사람과 기계\n• 표현 학습",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        185,
+        323,
+        107,
+        25
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        185,
+        323,
+        107,
+        25
+      ],
+      "text": "아동",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        316,
+        297,
+        82,
+        25
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        316,
+        297,
+        82,
+        25
+      ],
+      "text": "영향",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        240,
+        382,
+        99,
+        39
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        240,
+        382,
+        99,
+        39
+      ],
+      "text": "제1형\n당뇨병",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        349,
+        466,
+        91,
+        42
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        349,
+        466,
+        91,
+        42
+      ],
+      "text": "치료에\n사용",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        278,
+        555,
+        95,
+        42
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        278,
+        555,
+        95,
+        42
+      ],
+      "text": "주사\n부위",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        295,
+        690,
+        80,
+        20
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        295,
+        690,
+        80,
+        20
+      ],
+      "text": "팔",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        382,
+        654,
+        76,
+        20
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        382,
+        654,
+        76,
+        20
+      ],
+      "text": "일종",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        404,
+        728,
+        221,
+        20
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        404,
+        728,
+        221,
+        20
+      ],
+      "text": "해부 구조",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        444,
+        317,
+        80,
+        38
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        444,
+        317,
+        80,
+        38
+      ],
+      "text": "발 궤양",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        536,
+        385,
+        76,
+        20
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        536,
+        385,
+        76,
+        20
+      ],
+      "text": "유발",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        440,
+        415,
+        94,
+        46
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        440,
+        415,
+        94,
+        46
+      ],
+      "text": "하위\n유형",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        572,
+        546,
+        101,
+        25
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        572,
+        546,
+        101,
+        25
+      ],
+      "text": "당뇨병",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        449,
+        576,
+        82,
+        20
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        449,
+        576,
+        82,
+        20
+      ],
+      "text": "인슐린",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        613,
+        251,
+        93,
+        20
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        613,
+        251,
+        93,
+        20
+      ],
+      "text": "위치",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        794,
+        286,
+        101,
+        24
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        794,
+        286,
+        101,
+        24
+      ],
+      "text": "발",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        796,
+        354,
+        101,
+        38
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        796,
+        354,
+        101,
+        38
+      ],
+      "text": "제2형\n당뇨병",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        673,
+        429,
+        98,
+        45
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        673,
+        429,
+        98,
+        45
+      ],
+      "text": "하위\n유형",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        784,
+        438,
+        99,
+        42
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        784,
+        438,
+        99,
+        42
+      ],
+      "text": "치료에\n사용",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        690,
+        516,
+        78,
+        20
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        690,
+        516,
+        78,
+        20
+      ],
+      "text": "유발",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        766,
+        582,
+        185,
+        23
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        766,
+        582,
+        185,
+        23
+      ],
+      "text": "티아졸리딘디온",
+      "font": "regular",
+      "font_size": 14,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        674,
+        677,
+        130,
+        20
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        674,
+        677,
+        130,
+        20
+      ],
+      "text": "망막병증",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    }
+  ]
+}

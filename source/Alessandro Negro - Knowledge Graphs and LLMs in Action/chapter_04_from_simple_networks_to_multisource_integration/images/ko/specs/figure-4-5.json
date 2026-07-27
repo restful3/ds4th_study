@@ -1,0 +1,10 @@
+{
+  "title": "Figure 4.5 Korean localization",
+  "source": "../../340023673f4cfc4ddcb11f7a4c5c59e83afcd972ba1dadb2fba8580720f0486d.jpg",
+  "output": "../figure-4-5-ko.png",
+  "coordinate_space": [1140, 1023],
+  "operations": [
+    {"type": "ellipse", "box": [479, 489, 70, 70], "fill": {"sample": [488, 507], "radius": 3}},
+    {"type": "text", "box": [482, 494, 64, 60], "text": "셀리악병", "font": "regular", "font_size": 15, "min_font_size": 12, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

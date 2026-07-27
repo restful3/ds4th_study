@@ -1,0 +1,659 @@
+{
+  "title": "figure-1-1 Korean localization",
+  "source": "../../96a7bce5f5b308d29d0f342b4b454200207666d10cbcafd83248e3131fd469ec.jpg",
+  "output": "../figure-1-1-ko.png",
+  "coordinate_space": [
+    1132,
+    762
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        226,
+        104,
+        113,
+        25
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        226,
+        104,
+        113,
+        25
+      ],
+      "text": "아동",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        376,
+        74,
+        87,
+        27
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        376,
+        74,
+        87,
+        27
+      ],
+      "text": "영향",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        284,
+        170,
+        116,
+        41
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        284,
+        170,
+        116,
+        41
+      ],
+      "text": "제1형\n당뇨병",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        415,
+        268,
+        100,
+        44
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        415,
+        268,
+        100,
+        44
+      ],
+      "text": "치료에\n사용",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        333,
+        376,
+        102,
+        44
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        333,
+        376,
+        102,
+        44
+      ],
+      "text": "주사\n부위",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        353,
+        529,
+        85,
+        21
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        353,
+        529,
+        85,
+        21
+      ],
+      "text": "팔",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        454,
+        487,
+        80,
+        20
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        454,
+        487,
+        80,
+        20
+      ],
+      "text": "일종",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        479,
+        574,
+        259,
+        20
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        479,
+        574,
+        259,
+        20
+      ],
+      "text": "해부 구조",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        525,
+        91,
+        86,
+        42
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        525,
+        91,
+        86,
+        42
+      ],
+      "text": "발 궤양",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        633,
+        171,
+        82,
+        20
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        633,
+        171,
+        82,
+        20
+      ],
+      "text": "유발",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        519,
+        207,
+        103,
+        50
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        519,
+        207,
+        103,
+        50
+      ],
+      "text": "하위\n유형",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        676,
+        357,
+        107,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        676,
+        357,
+        107,
+        28
+      ],
+      "text": "당뇨병",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        533,
+        392,
+        91,
+        20
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        533,
+        392,
+        91,
+        20
+      ],
+      "text": "인슐린",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        723,
+        17,
+        101,
+        21
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        723,
+        17,
+        101,
+        21
+      ],
+      "text": "위치",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        933,
+        55,
+        116,
+        27
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        933,
+        55,
+        116,
+        27
+      ],
+      "text": "발",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        931,
+        141,
+        116,
+        40
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        931,
+        141,
+        116,
+        40
+      ],
+      "text": "제2형\n당뇨병",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        790,
+        235,
+        108,
+        47
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        790,
+        235,
+        108,
+        47
+      ],
+      "text": "하위\n유형",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        919,
+        237,
+        112,
+        44
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        919,
+        237,
+        112,
+        44
+      ],
+      "text": "치료에\n사용",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        813,
+        327,
+        85,
+        20
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        813,
+        327,
+        85,
+        20
+      ],
+      "text": "유발",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        902,
+        403,
+        207,
+        25
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        902,
+        403,
+        207,
+        25
+      ],
+      "text": "티아졸리딘디온",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        791,
+        513,
+        146,
+        21
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        791,
+        513,
+        146,
+        21
+      ],
+      "text": "망막병증",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        7,
+        256,
+        340,
+        108
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        7,
+        256,
+        340,
+        108
+      ],
+      "text": "개체: 각 노드는 질병·약물·해부 구조·\n환자군처럼 서로 구별되는 생의학 개체를\n나타냅니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        187,
+        653,
+        397,
+        107
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        187,
+        653,
+        397,
+        107
+      ],
+      "text": "관계: 방향과 이름이 있는 엣지는 개체 사이의\n의미 관계를 정의합니다(예: 일종, 유발,\n치료에 사용).",
+      "font": "bold",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        709,
+        654,
+        410,
+        79
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        709,
+        654,
+        410,
+        79
+      ],
+      "text": "속성: 개체와 관계에 맥락 정보를\n덧붙입니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    }
+  ]
+}

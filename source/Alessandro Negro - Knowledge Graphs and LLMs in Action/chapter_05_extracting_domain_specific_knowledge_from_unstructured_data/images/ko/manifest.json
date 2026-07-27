@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "chapter": "05",
+  "source_document": "../../05_extracting_domain_specific_knowledge_from_unstructured_data.md",
+  "review_status": "reviewed",
+  "review_method": [
+    "original Markdown image order and captions",
+    "source image inspection at original pixel dimensions",
+    "localized image inspection at original pixel dimensions",
+    "900px target-display contact sheet"
+  ],
+  "translation_policy": {
+    "translate": "reader-facing prose, semantic type labels, process steps, legends, and annotations",
+    "preserve": "historical source scans, dates, proper names, acronyms, and model names"
+  },
+  "items": [
+    {
+      "key": "figure-5-1",
+      "source": "../ab483b5c357b8caca4c99ce7d3428f04d083522bace2c53e57513e0d4a892508.jpg",
+      "output": "figure-5-1-ko.png",
+      "action": "localized",
+      "reason": "비정형 데이터에서 지식 추출까지의 단계와 설명을 번역"
+    },
+    {
+      "key": "figure-5-2a",
+      "source": "../358be7d7fe363c94f40ccd56d2534b0fad4f94df8e130e95198673ceeaeb05a2.jpg",
+      "output": "figure-5-2a-ko.png",
+      "action": "localized",
+      "reason": "Person·Organization 의미 범주를 번역하고 인명·기관명·역사 문서 원문은 보존"
+    },
+    {
+      "key": "figure-5-2b",
+      "source": "../d44eb0c671144e2c8d1c1f14f28026ed80085747c8c5b31b692ab78950fc135f.jpg",
+      "output": "figure-5-2b-ko.png",
+      "action": "localized",
+      "reason": "Topic 범주와 세 주제명을 번역"
+    },
+    {
+      "key": "figure-5-3",
+      "source": "../14d4e8ea9d2f18fa351bd6e822644379e211937953db90eaa5eb891fcb0185ad.jpg",
+      "output": "figure-5-3-ko.png",
+      "action": "localized",
+      "reason": "LLM 중심 지식 추출 파이프라인을 번역하고 비활성·활성 강조 색상을 유지"
+    },
+    {
+      "key": "figure-5-4",
+      "source": "../e8faa6446ddc2caf797b8d0c26d2872e4b1a470826955a28b0b9312ee376d1b8.jpg",
+      "output": "figure-5-4-ko.png",
+      "action": "localized",
+      "reason": "프롬프트 기반·미세 조정 기반 지식 그래프 생성 절차와 설명을 번역"
+    }
+  ]
+}

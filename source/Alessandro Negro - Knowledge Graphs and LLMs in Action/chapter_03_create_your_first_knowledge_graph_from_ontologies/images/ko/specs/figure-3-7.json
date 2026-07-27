@@ -1,0 +1,201 @@
+{
+  "title": "Figure 3.7 Korean localization",
+  "source": "../../a522478921eea8892f0345b5359b3df899369b7d634f78931d9daf1bdf037d14.jpg",
+  "output": "../figure-3-7-ko.png",
+  "coordinate_space": [1085, 640],
+  "operations": [
+    {"type": "rect", "box": [0, 0, 320, 196], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [9, 7, 300, 182],
+      "text": "HPO 소스에는 임상 활동을 지원하는\n데이터가 포함되어 있습니다.\nHPO는 표현형 특징의 이름을 정하는\n표준 어휘(온톨로지)와, 이 특징으로\n희귀 질환을 주석한 데이터셋을\n제공합니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 17,
+      "line_gap": 4,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top"
+    },
+
+    {"type": "rect", "box": [400, 0, 425, 132], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [409, 8, 405, 112],
+      "text": "데이터 수집과 처리는 여러 소스의 정보를\nKG의 통합 표현으로 결합하는 핵심\n과정입니다.",
+      "font": "bold",
+      "font_size": 20,
+      "min_font_size": 17,
+      "line_gap": 7,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top"
+    },
+
+    {"type": "rect", "box": [827, 0, 258, 126], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [836, 8, 239, 108],
+      "text": "완성된 KG를 임상의나\n애플리케이션이 직접 질의해\n희귀 질환 진단을 지원할 수\n있습니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 16,
+      "line_gap": 4,
+      "fill": "#9a9a9a",
+      "align": "left",
+      "valign": "top"
+    },
+
+    {"type": "rect", "box": [0, 258, 142, 142], "fill": "#ffffff"},
+    {"type": "rect", "box": [142, 258, 178, 114], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [9, 265, 296, 121],
+      "text": "비즈니스 목표는 확인된 표현형\n특징을 바탕으로 임상의의\n질환 진단과 치료를 돕는\n것입니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 17,
+      "line_gap": 5,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top"
+    },
+
+    {"type": "rect", "box": [289, 414, 101, 34], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [293, 416, 93, 30],
+      "text": "임상의",
+      "font": "regular",
+      "font_size": 20,
+      "min_font_size": 17,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [466, 334, 145, 34], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [471, 336, 135, 30],
+      "text": "HPO 온톨로지",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [455, 476, 178, 38], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [461, 479, 166, 31],
+      "text": "HPO 주석",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [682, 236, 124, 103], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [688, 242, 112, 91],
+      "text": "온톨로지\n수집·처리",
+      "font": "regular",
+      "font_size": 20,
+      "min_font_size": 16,
+      "line_gap": 7,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [682, 379, 124, 101], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [688, 385, 112, 89],
+      "text": "주석\n수집·처리",
+      "font": "regular",
+      "font_size": 20,
+      "min_font_size": 16,
+      "line_gap": 7,
+      "fill": "#9a9a9a",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [0, 542, 250, 98], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [9, 553, 231, 75],
+      "text": "CRISP-DM 모델에서\n사용하는 주요 단계",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 17,
+      "line_gap": 7,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top"
+    },
+
+    {"type": "rect", "box": [261, 552, 147, 77], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [266, 558, 137, 65],
+      "text": "비즈니스\n이해",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 16,
+      "line_gap": 5,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [466, 552, 147, 77], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [471, 558, 137, 65],
+      "text": "데이터\n이해",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 16,
+      "line_gap": 5,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [668, 552, 147, 77], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [673, 558, 137, 65],
+      "text": "데이터\n준비",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 16,
+      "line_gap": 5,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [871, 552, 147, 77], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [875, 556, 139, 69],
+      "text": "지식 그래프 모델\n생성·갱신",
+      "font": "regular",
+      "font_size": 17.5,
+      "min_font_size": 15,
+      "line_gap": 5,
+      "fill": "#9a9a9a",
+      "align": "center",
+      "valign": "center"
+    }
+  ]
+}

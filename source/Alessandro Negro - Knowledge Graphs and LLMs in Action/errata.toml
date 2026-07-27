@@ -29,6 +29,62 @@ verified_on = "2026-07-25"
 # ────────────────────────────────────────────── 3장
 [[erratum]]
 chapter = 3
+location = "3장 해설판 코드 블록 (Listings 3.1~3.28)"
+kind = "extraction"
+status = "editorial"
+observation = """
+PDF→Markdown 변환에서 도해용 callout 이 코드 안으로 들어가거나 페이지 경계에서 한 리스팅이
+둘로 갈라졌다. 3.1 은 Turtle 본문이 callout 과 뒤섞였고, 3.2 는 for 문의 본문이 분리됐으며,
+3.6·3.7 은 닫는 구두점이 유실됐다. 3.19 는 callout 문장이 Cypher 안에 들어갔고,
+3.23 은 따옴표 세 개와 마지막 괄호가 빠졌다. 일부 캡션도 실행 코드 안에 섞였고
+Cypher 블록이 sql·javascript 로 잘못 분류돼 있었다.
+"""
+correction = """
+최종 PDF를 시각적으로 확인해 3.1·3.2·3.6·3.7 을 복원하고, 저장소 리스팅과 대조해
+3.19·3.20·3.22·3.23 을 바로잡았다. 캡션은 코드 펜스 밖으로 옮기고 언어 태그를
+turtle·trig·sparql·cypher·text 로 정정했다.
+"""
+notebook = "chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/03_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 3
+location = "Listing 3.9 (RDF-star)"
+kind = "code"
+status = "confirmed"
+observation = """
+PDF가 RDF QName 을 `PMID: 9357814` 로 인쇄한다. 접두사와 로컬 이름 사이의 공백 때문에
+유효한 prefixed name 이 아니므로 Turtle/RDF-star 구문으로 파싱할 수 없다.
+"""
+correction = "`PMID:9357814` 로 붙여 쓴다."
+notebook = "chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/03_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 3
+location = "Listing 3.10 (SPARQL-star)"
+kind = "code"
+status = "confirmed"
+observation = "PDF가 마지막 변수를 `? date` 로 인쇄한다. 물음표와 변수 이름 사이에는 공백을 둘 수 없다."
+correction = "`?date` 로 바로잡는다. SELECT 뒤 WHERE 키워드의 생략은 SPARQL 문법상 허용된다."
+notebook = "chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/03_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 3
+location = "Listing 3.11 (LPG representation)"
+kind = "code"
+status = "confirmed"
+observation = """
+PDF의 관계 속성 맵은 source 뒤의 쉼표가 없고 createdBy 뒤에 세미콜론이 있으며,
+creationDate 문자열의 닫는 따옴표가 빠져 있어 Cypher 패턴으로 읽을 수 없다.
+또한 이 조각은 CREATE·MERGE·MATCH 가 없는 패턴 표현이지 완전한 실행문은 아니다.
+"""
+correction = """
+속성 사이를 쉼표로 구분하고 creationDate 의 따옴표를 닫는다. 해설판에는 패턴 표현임을
+명시하고, 실제 생성에 사용할 때는 앞에 CREATE 또는 MERGE 가 필요하다고 설명한다.
+"""
+notebook = "chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/03_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 3
 location = "Listing 3.21 (저장소 파일 '3.24 - explores_disease_phenotype_associations')"
 kind = "code"
 status = "upstream"
@@ -60,6 +116,23 @@ observation = "저장소 파일이 0바이트다. 책 3.25 의 Cypher 가 저장
 correction = """
 해설판 본문을 그대로 쓴다 (정정하지 않았다). study.toml 은
 { source = "explainer", reason = "upstream-missing" } 로 선언한다.
+"""
+notebook = "chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/03_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 3
+location = "Listing 3.28 (저장소 파일 '3.31 - features_related_to_abnormality_subclasses')"
+kind = "code"
+status = "upstream"
+observation = """
+최종 교재는 표 3.3 의 다섯 질병을 WHERE dis.label IN [...] 으로 명시해 재현 가능한
+결과를 만든다. 업스트림 3.31 은 이전 버전이라 전체 결과를 정렬한 뒤 SKIP 100 LIMIT 5 로
+위치에 의존해 고른다. 현재 HPO 스냅샷에서는 우연히 같은 다섯 행이 나오지만 두 질의는
+데이터가 바뀌면 같은 결과를 보장하지 않는다.
+"""
+correction = """
+study.toml 은 { source = "explainer", reason = "upstream-wrong" } 으로 선언하고,
+노트북은 최종 교재의 명시적 질병 목록을 실행한다. 업스트림 원본 파일은 수정하지 않는다.
 """
 notebook = "chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/03_chapter_guide.ipynb"
 
@@ -294,6 +367,15 @@ kind = "code"
 status = "upstream"
 observation = "scikit-learn 과 pandas 가 빠져 있어 깨끗한 환경에서 tasks.py init 만 하면 ModuleNotFoundError 다."
 correction = "원본은 고치지 않고 노트북 실행 환경 셀에 표로 경고했다."
+notebook = "chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/src/ch09/09_chapter_guide.ipynb"
+
+[[erratum]]
+chapter = 9
+location = "Figure 9.11 upper-right callout"
+kind = "semantics"
+status = "confirmed"
+observation = "그래프 분류의 예측 흐름을 설명하는 그림인데 원문 콜아웃이 출력 주체를 'node classifier'라고 잘못 적었다."
+correction = "그림 캡션과 나머지 단계에 맞게 'graph classifier'가 옳다. 한국어 현지화 이미지에는 '그래프 분류기'로 반영했다."
 notebook = "chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/src/ch09/09_chapter_guide.ipynb"
 
 # ────────────────────────────────────────────── 10장
@@ -708,4 +790,3 @@ status = "upstream"
 observation = "except 절이 neo4j.exceptions.ClientError 하나만 잡는다. 그런데 LLM 이 빈 문자열을 query 로 돌려주는 일이 실제로 있고(선택 없이 'the selected crime' 을 물으면 재현된다), 그때 driver 가 ValueError('Cannot run an empty query') 를 던져 재시도 루프에 들어가지 못하고 파이프라인 전체가 죽는다. 실측 3회 재현."
 correction = "빈 쿼리야말로 재시도가 필요한 경우인데 설계상 그 경로로 가지 못한다. 노트북은 업스트림을 고치지 않고 run_guarded() 로 감싸 노트북이 죽지 않게만 했다. 실제 시스템이라면 except 를 (ClientError, ValueError) 로 넓히거나 query 가 비었는지 먼저 확인해야 한다."
 notebook = "chapter_15_building_a_qa_agent_with_langgraph/src/ch15/15_chapter_guide.ipynb"
-

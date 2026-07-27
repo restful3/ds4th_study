@@ -1,0 +1,125 @@
+{
+  "title": "figure-15-13b Korean localization",
+  "source": "../../3df8aaef467184bb877c313d40a9d883d8346a65256d0462c4f7ab38d16fb2de.jpg",
+  "output": "../figure-15-13b-ko.png",
+  "coordinate_space": [
+    498,
+    751
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        64,
+        24,
+        420,
+        51
+      ],
+      "fill": {
+        "sample": [
+          200,
+          50
+        ],
+        "radius": 3
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        64,
+        24,
+        420,
+        51
+      ],
+      "text": "선택한 범죄에서 1km 이내에 있는\nANPR 카메라 노드를 반환하세요.",
+      "font": "regular",
+      "font_size": 14,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        66,
+        108,
+        130,
+        24
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        66,
+        108,
+        130,
+        24
+      ],
+      "text": "추론",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        66,
+        142,
+        170,
+        22
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        66,
+        142,
+        170,
+        22
+      ],
+      "text": "출력 형식:  map",
+      "font": "bold",
+      "font_size": 13,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        66,
+        175,
+        417,
+        103
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        66,
+        175,
+        417,
+        103
+      ],
+      "text": "선택한 범죄에서 1km 이내의 ANPR 카메라를 찾기 위해\nCrime 노드와 ANPRCamera 노드의 position 속성을 사용합니다.\npoint.distance 함수로 1km 이내의 카메라를 필터링하고,\n일치하는 ANPRCamera 노드와 관계를 반환합니다.",
+      "font": "regular",
+      "font_size": 13,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    }
+  ]
+}

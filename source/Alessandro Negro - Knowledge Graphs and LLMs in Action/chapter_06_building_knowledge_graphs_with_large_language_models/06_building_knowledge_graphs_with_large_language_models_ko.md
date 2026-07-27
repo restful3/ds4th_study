@@ -26,7 +26,7 @@ format:
 
 그림 6.1의 정신 모델이 강조하듯이, 우리는 이전에 멈춘 지점에서 이어서 진행합니다. 즉, 텍스트 문서에서 지식을 추출했으며, 이제 이를 지식 그래프 (KG)로 변환하는 방법과 KG를 조직의 이익을 위해 활용하는 방법을 탐구합니다.
 
-![](images/da3d716caaf25dbab46ba71c526d9f3d4319f0242e1f1c3d7b3b842c388c79c9.jpg)  
+![](images/ko/figure-6-1-ko.png)  
 그림 6.1 도메인 특화 비정형 텍스트 데이터에서 KG 인사이트로 이어지는 경로. 이 단계들은 문서 디지털화를 위한 광학 문자 인식 (optical character recognition), 명명 엔터티 인식 (named entity recognition) 및 관계 추출 시스템, 엔터티 해소, GraphML과 같은 최신 ML 모델에 의존합니다.
 
 ### 6.1 아카이브를 KG로 변환하기
@@ -63,7 +63,7 @@ RAC 프로젝트의 KG 스키마는 그림 6.2에 제시되어 있습니다(이 
 
 KG 계층—최종적으로 정규화되고 정제되며 해소된 엔터티(Person, Title, Organization, Occupation)와 그들 사이의 관계(WORKS\_ON, WORKS\_FOR 등)입니다.
 
-![](images/fac0fcd43d0a1a5c20880bde0652e8579993da2f9538f0b63bdcbf64c3234ee7.jpg)  
+![](images/ko/figure-6-2-ko.png)  
 그림 6.2 록펠러 아카이브 센터 프로젝트의 단순화된 KG 스키마
 
 앞서 논의했듯이, LLM은 원하는 출력을 생성하기 위해 최선을 다하지만, KG를 직접 생성하는 데 사용할 수는 없습니다. 먼저 정규화와 엔터티 해소 (entity resolution) 단계를 수행해야 하며, 이 스키마가 그것을 가능하게 합니다.
@@ -125,7 +125,7 @@ TIP 때때로 이름에는 일반적인 단어가 포함됩니다. 예를 들어
 
 가설은 이제 충분합니다. 그림 6.3에 제시된 구체적 사례를 살펴보겠습니다. 26, 99, 126페이지에서 핵물리학자 어니스트 로렌스(사이클로트론 발명으로 노벨상을 수상했습니다)에 대한 세 가지 언급, 즉 Ernest Orlando Lawrence, Ernest O. Lawrence, Lawrence를 볼 수 있습니다.
 
-![](images/fa0fd7ea54d904ddc7342587c66c1664f9c096288ed62cae36b12f4590803810.jpg)
+![](images/ko/figure-6-3-ko.png)
 
 이 세 이름이 동일한 사람을 가리킨다는 것을 어떻게 알 수 있을까요? 방금 논의한 규칙과 패턴에 기반한 강한 문자열 유사성이 있습니다. 또한 Ernest Orlando Lawrence와 Ernest O. Lawrence가 세 홉 떨어져 있음을 볼 수 있는데, 두 경우 모두 University of California의 직원으로 식별되기 때문입니다. 마찬가지로 WORKS\_ON 관계와 Occupations인 cyclotron과 100,000,000 to 200,000,000 volt cyclotron 사이의 유사성을 통해 마지막 언급인 Lawrence와의 관계를 찾을 수 있습니다. 그러나 Ernest Orlando Lawrence와 Lawrence는 여섯 홉 떨어져 있다는 점에 주목하십시오. 이러한 종류의 순회는 관계형 데이터베이스에서는 훨씬 더 어려울 것입니다.
 
@@ -188,7 +188,7 @@ RETURN path
 
 이것이 더 큰 네트워크였다면, 이 하위 그래프에서 매개 중심성 알고리즘을 실행하여 중요한 연결자를 식별하는 데 도움을 받을 수 있었겠지만, 이 경우에는 단순한 작업입니다. 두 대학 사이에서 유용한 연결자로 보이는 사람은 처음 보아도 몇 명에 불과합니다. 좋은 출발점은 Irving Langmuir일 수 있습니다. 그는 1932년 노벨 화학상을 수상한 화학자, 물리학자, 공학자로, X선을 사용해 인슐린과 단백질 구조를 연구한 Dorothy M. Wrinch에 대해 긍정적으로 이야기했으며, 두 대학 모두와 직접적인 1홉 연결을 가지고 있습니다. 이 과학자를 나타내는 노드가 Irving Langmuir와 Langmuir 두 개라는 점에 주목하십시오. 이는 한 페이지에서 그의 성만 언급되었고, 개체 해소에 사용할 수 있는 추가 관계가 없었기 때문입니다. 또한 감정을 나타내는 TALKED\_ABOUT 관계의 속성을 조사해 보면, Bernal은 Dorothy Wrinch에 대해 부정적인 태도를 가지고 있고 Irving Langmuir는 Bernal에 대해 부정적인 태도를 가지고 있음을 발견할 수 있습니다. 균형 잡힌 통찰을 얻기 위해서는 두 사람 모두를 인터뷰하고자 할 수 있습니다.
 
-![](images/a62711da55dccbc4463622f9bb5b5cd7d9499cdff04e524aaee520ba81332fda.jpg)  
+![](images/ko/figure-6-6-ko.png)  
 그림 6.6 사람들 사이의 거리가 세 홉을 넘지 않는, Johns Hopkins University와 Harvard University를 연결하는 물리학 연구 영향 네트워크
 
 ### 6.3 Rockefeller Archive Center 프로젝트의 다음 단계

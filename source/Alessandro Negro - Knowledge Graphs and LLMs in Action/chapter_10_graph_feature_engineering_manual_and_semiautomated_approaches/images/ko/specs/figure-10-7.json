@@ -1,0 +1,16 @@
+{
+  "title": "Figure 10.7 Korean localization",
+  "source": "../../37ef50cd89c02e5f7ec99660bbd42442f17c277f5a63f507dd95f671bf0fd62c.jpg",
+  "output": "../figure-10-7-ko.png",
+  "coordinate_space": [1029, 306],
+  "operations": [
+    {"type": "rect", "box": [0, 79, 275, 38], "fill": "#ffffff"},
+    {"type": "text", "box": [6, 83, 263, 30], "text": "메트포르민 - 제2형 당뇨병", "font": "regular", "font_size": 19, "min_font_size": 15, "fill": "#222222", "align": "right", "valign": "center"},
+    {"type": "rect", "box": [87, 139, 187, 38], "fill": "#ffffff"},
+    {"type": "text", "box": [93, 143, 175, 30], "text": "아스피린 - 독감", "font": "regular", "font_size": 19, "min_font_size": 15, "fill": "#222222", "align": "right", "valign": "center"},
+    {"type": "rect", "box": [0, 253, 276, 44], "fill": "#ffffff"},
+    {"type": "text", "box": [6, 258, 264, 34], "text": "인슐린 - 제2형 당뇨병", "font": "regular", "font_size": 19, "min_font_size": 15, "fill": "#222222", "align": "right", "valign": "center"},
+    {"type": "rect", "box": [808, 132, 221, 174], "fill": "#ffffff"},
+    {"type": "text", "box": [817, 141, 203, 156], "text": "그림 10.7\n약물과 질병 사이의\n관계를 위한\n메타경로 기반\n특징 정의", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 5, "fill": "#555555", "align": "left", "valign": "center"}
+  ]
+}

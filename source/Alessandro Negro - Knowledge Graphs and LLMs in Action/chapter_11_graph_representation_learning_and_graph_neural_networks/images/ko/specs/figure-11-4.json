@@ -1,0 +1,22 @@
+{
+  "title": "Figure 11.4 Korean localization",
+  "source": "../../0a8af6159ce62e7f2cddac103001b8752ede40cfb18b329c94bedb14d0f67666.jpg",
+  "output": "../figure-11-4-ko.png",
+  "coordinate_space": [1034, 465],
+  "operations": [
+    {"type": "rect", "box": [76, 3, 202, 34], "fill": "#ffffff"},
+    {"type": "text", "box": [82, 7, 190, 27], "text": "원본 그래프", "font": "bold", "font_size": 18, "min_font_size": 15, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [796, 3, 238, 34], "fill": "#ffffff"},
+    {"type": "text", "box": [802, 7, 226, 27], "text": "복원된 노드", "font": "bold", "font_size": 18, "min_font_size": 15, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [247, 173, 151, 34], "fill": "#ffffff"},
+    {"type": "text", "box": [253, 177, 139, 27], "text": "노드 c 인코딩", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [528, 173, 217, 34], "fill": "#ffffff"},
+    {"type": "text", "box": [534, 177, 205, 27], "text": "이웃 복원", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [442, 416, 133, 32], "fill": "#ffffff"},
+    {"type": "text", "box": [448, 420, 121, 25], "text": "(임베딩)", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [0, 399, 345, 66], "fill": "#ffffff"},
+    {"type": "text", "box": [20, 405, 315, 54], "text": "인코더는 노드 c를 저차원\n임베딩 z_c로 사상합니다.", "font": "bold", "font_size": 19, "min_font_size": 15, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [638, 399, 396, 66], "fill": "#ffffff"},
+    {"type": "text", "box": [646, 405, 380, 54], "text": "디코더는 z_c를 사용해 노드 c의\n지역 이웃 정보를 복원합니다.", "font": "bold", "font_size": 19, "min_font_size": 15, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "center"}
+  ]
+}

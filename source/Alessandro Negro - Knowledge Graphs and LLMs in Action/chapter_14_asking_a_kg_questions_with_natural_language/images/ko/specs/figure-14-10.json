@@ -1,0 +1,24 @@
+{
+  "title": "Figure 14.10 Korean localization",
+  "source": "../../ac386c4d0c1381959c6b23016a2a4364288470e98a64610a44e9067a62a8cf7d.jpg",
+  "output": "../figure-14-10-ko.png",
+  "coordinate_space": [1112, 859],
+  "operations": [
+    {"type": "rect", "box": [371, 18, 371, 59], "fill": "#ffffff"},
+    {"type": "text", "box": [379, 23, 355, 49], "text": "City A와 City B 사이의\n최단 경로를 찾으세요.", "font": "regular", "font_size": 22, "min_font_size": 17, "line_gap": 2, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [17, 144, 67, 22], "fill": "#ffffff"},
+    {"type": "text", "box": [19, 145, 63, 20], "text": "프롬프트", "font": "regular", "font_size": 16, "min_font_size": 13, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [1034, 144, 72, 22], "fill": "#ffffff"},
+    {"type": "text", "box": [1036, 145, 68, 20], "text": "프롬프트", "font": "regular", "font_size": 16, "min_font_size": 13, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [423, 157, 263, 112], "fill": "#ffffff"},
+    {"type": "text", "box": [431, 163, 247, 100], "text": "모델은 답변을 생성할 때\n필드 순서를 따릅니다.", "font": "bold", "font_size": 24, "min_font_size": 18, "line_gap": 3, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [17, 341, 67, 22], "fill": "#ffffff"},
+    {"type": "text", "box": [19, 342, 63, 20], "text": "결과", "font": "regular", "font_size": 16, "min_font_size": 13, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [1034, 341, 72, 22], "fill": "#ffffff"},
+    {"type": "text", "box": [1036, 342, 68, 20], "text": "결과", "font": "regular", "font_size": 16, "min_font_size": 13, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [16, 600, 500, 231], "fill": "#ffffff"},
+    {"type": "text", "box": [24, 606, 484, 219], "text": "고속도로를 너무 일찍 선택합니다:\n- 잠재적 문제(공사)를 언급하면서도 선택을 옹호합니다\n- 대안을 충분히 평가하지 않고 배제합니다\n- 최초 답을 뒷받침하려고 신뢰성에 대한 합리화를 덧붙입니다\n- 거리를 계산할 기회를 놓칩니다", "font": "bold", "font_size": 21, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [553, 718, 559, 141], "fill": "#ffffff"},
+    {"type": "text", "box": [561, 724, 543, 129], "text": "분석 중 선택지를 열어 둡니다:\n- 여러 요인을 체계적으로 고려합니다\n- 근거에 따라 결론을 냅니다\n- 적절한 불확실성을 유지합니다\n- 빠른 답과 다른 결론에 도달합니다", "font": "bold", "font_size": 21, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "top"}
+  ]
+}

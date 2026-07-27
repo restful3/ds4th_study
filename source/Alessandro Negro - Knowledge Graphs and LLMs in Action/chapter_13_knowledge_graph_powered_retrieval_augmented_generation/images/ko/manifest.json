@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "chapter": "13",
+  "source_document": "../../13_knowledge_graph_powered_retrieval_augmented_generation.md",
+  "review_status": "reviewed",
+  "review_method": [
+    "original Markdown image order and captions",
+    "source image inspection at original pixel dimensions",
+    "localized image inspection at original pixel dimensions",
+    "900px target-display contact sheet"
+  ],
+  "mapping_notes": [
+    "All five images referenced by the source and Korean Markdown files map directly to Figures 13.1 through 13.5.",
+    "Two additional JPEG files in the images directory are not referenced by any chapter Markdown and were left unchanged.",
+    "Figures 13.1, 13.2, and 13.4 share a visual template but have different active/inactive elements and slight coordinate shifts; each final render was inspected separately."
+  ],
+  "translation_policy": {
+    "translate": "reader-facing headings, explanatory prose, semantic labels, questions, agent thoughts, action-state labels, and answer prose",
+    "preserve": "KG, tool identifiers, property keys, serialized observations, personal names, and graph geometry"
+  },
+  "items": [
+    {"key": "figure-13-1", "source": "../a0ec23012b69ee2915e3105c480e68c75d951f578bdb783ae58724842b6865d7.jpg", "output": "figure-13-1-ko.png", "action": "localized", "reason": "KG 기반 질의응답 에이전트의 단계와 설명을 번역"},
+    {"key": "figure-13-2", "source": "../2abdf4a1445b2a54dbced1c521faa5c3e3e2940a9db925c1916f17c8f5b33073.jpg", "output": "figure-13-2-ko.png", "action": "localized", "reason": "벡터 검색 중심 RAG 흐름의 단계와 설명을 번역"},
+    {"key": "figure-13-3", "source": "../2a63f406f37df0791cfdd026c5f7830b7eb7264f3b9bd84e03dcb58e2ac446a0.jpg", "output": "figure-13-3-ko.png", "action": "localized", "reason": "텍스트 연계·속성 그래프의 제목과 서브그래프 라벨을 번역"},
+    {"key": "figure-13-4", "source": "../b6f02fd6c2b8808beeccbf260d8eda110be13b80235629be5aa9fa801cbc6e7e.jpg", "output": "figure-13-4-ko.png", "action": "localized", "reason": "KG 기반 RAG 에이전트의 단계와 설명을 번역"},
+    {"key": "figure-13-5", "source": "../3efd9b5d9906cfb5a8eec571f0eb93e23b27cbec45d0a2d3b57531e3ff6163c0.jpg", "output": "figure-13-5-ko.png", "action": "localized", "reason": "에이전트의 생각·행동·관찰·답변 예시를 번역"}
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "title": "Figure 12.3 Korean localization",
+  "source": "../../eb955985cf90e600d56354146b87fe8a981e8b6b21fa902e08555b0a010ed54d.jpg",
+  "output": "../figure-12-3-ko.png",
+  "coordinate_space": [1126, 826],
+  "operations": [
+    {"type": "rect", "box": [0, 202, 306, 196], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 210, 290, 180], "text": "Elliptic 데이터셋은 20만 건이 넘는\n분류된 비트코인 거래(노드),\n23만 4천 건의 결제 흐름(간선),\n166개의 익명화된 노드 특징으로\n이루어진 시계열 그래프입니다.", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [326, 202, 365, 143], "fill": "#ffffff"},
+    {"type": "text", "box": [334, 210, 349, 127], "text": "데이터 준비에서는 원본 노드 ID를 제거하고,\n증분 ID를 부여해 간선에 매핑하며,\n클래스를 숫자로 인코딩해\n텐서를 만듭니다.", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [503, 6, 157, 58], "fill": "#050505", "radius": 7},
+    {"type": "text", "box": [509, 11, 145, 48], "text": "원본 ID\n제거", "font": "bold", "font_size": 18, "min_font_size": 14, "line_gap": 1, "fill": "#ffffff", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [503, 77, 157, 57], "fill": "#050505", "radius": 7},
+    {"type": "text", "box": [509, 82, 145, 47], "text": "증분 ID\n매핑", "font": "bold", "font_size": 18, "min_font_size": 14, "line_gap": 1, "fill": "#ffffff", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [503, 142, 157, 57], "fill": "#050505", "radius": 7},
+    {"type": "text", "box": [509, 147, 145, 47], "text": "클래스/레이블\n인코딩", "font": "bold", "font_size": 17, "min_font_size": 14, "line_gap": 1, "fill": "#ffffff", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [856, 237, 155, 60], "fill": "#ffffff"},
+    {"type": "text", "box": [862, 242, 143, 50], "text": "동종\n그래프 데이터", "font": "regular", "font_size": 19, "min_font_size": 15, "line_gap": 2, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [517, 387, 154, 56], "fill": "#050505", "radius": 7},
+    {"type": "text", "box": [523, 392, 142, 46], "text": "노드 마스킹", "font": "bold", "font_size": 18, "min_font_size": 14, "fill": "#ffffff", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [528, 496, 135, 44], "fill": "#ffffff"},
+    {"type": "text", "box": [534, 501, 123, 34], "text": "학습 세트", "font": "regular", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [351, 603, 139, 43], "fill": "#ffffff"},
+    {"type": "text", "box": [357, 608, 127, 33], "text": "검증 세트", "font": "regular", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [692, 603, 140, 43], "fill": "#ffffff"},
+    {"type": "text", "box": [698, 608, 128, 33], "text": "테스트 세트", "font": "regular", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [752, 681, 374, 145], "fill": "#ffffff"},
+    {"type": "text", "box": [761, 690, 356, 127], "text": "앞 단계의 텐서를 PyTorch Geometric\nData 객체에 추가합니다. 노드 마스킹으로\n노드를 학습(80%), 검증(10%),\n테스트(10%) 세트에 배정합니다.", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"}
+  ]
+}

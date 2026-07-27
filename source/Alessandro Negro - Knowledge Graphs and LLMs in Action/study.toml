@@ -114,9 +114,10 @@ meap_only = ["meap-ch05", "meap-ch06"]
 
 # ch03 은 오프셋 3 이 전 구간에 들어맞는다(책 3.13 = 파일 3.16). 그래도 28건을 모두
 # 적는 이유는 **사람이 전수 대응을 눈으로 감사할 수 있게** 하기 위해서다 — 이 챕터는
-# 업스트림 파일 둘이 망가져 있어(3.24 중복 · 3.28 0바이트) 번호가 한 칸씩 밀리는지
-# 파일이 깨진 것인지를 표 없이는 구분하기 어렵다. 3.1~3.12 는 OWL·SPARQL·RDF-star
-# 예시라 저장소에 파일이 없다.
+# 업스트림 파일 둘이 망가져 있고(3.24 중복 · 3.28 0바이트), 3.31 은 최종 교재가
+# 재현 가능한 명시적 질병 목록으로 고친 내용을 반영하지 않아 번호가 한 칸씩 밀리는지
+# 파일이 깨졌거나 오래된 것인지를 표 없이는 구분하기 어렵다. 3.1~3.12 는
+# OWL·SPARQL·RDF-star 예시라 저장소에 파일이 없다.
 # 전수 선언을 택했으므로 [mapping.listing_offsets] 에서 ch03 을 뺐다 — 같은 규칙을
 # 오프셋과 대응표 두 형태로 두면 어느 쪽이 정본인지 흐려진다. 대신 오프셋 +3 패턴이
 # 지켜지는지는 test_listing_source.Ch03OffsetAuditTests 가 도출값으로 검사한다
@@ -149,7 +150,7 @@ meap_only = ["meap-ch05", "meap-ch06"]
 "3.25" = { source = "explainer", reason = "upstream-missing" }  # 저장소 3.28 이 0바이트
 "3.26" = { repo = "3.29" }          # Finding diseases associated with phenotypic features
 "3.27" = { repo = "3.30" }          # Finding subclasses of endocrine system abnormalities
-"3.28" = { repo = "3.31" }          # Finding phenotypic features of the subclasses
+"3.28" = { source = "explainer", reason = "upstream-wrong" }    # 저장소 3.31 은 최종 교재 이전 질의
 
 # ch02 는 책에 리스팅이 2.1 하나뿐인데 저장소에는 파일이 둘이다.
 # 책 2.1 "Prompt for checking reasoning capabilities"(농부·양·강 건너기)의 본문이

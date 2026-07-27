@@ -1,0 +1,17 @@
+{
+  "title": "Figure 13.3 Korean localization",
+  "source": "../../2a63f406f37df0791cfdd026c5f7830b7eb7264f3b9bd84e03dcb58e2ac446a0.jpg",
+  "output": "../figure-13-3-ko.png",
+  "coordinate_space": [745, 512],
+  "operations": [
+    {"type": "rect", "box": [4, 0, 275, 132], "fill": {"sample": [300, 20], "radius": 4}},
+    {"type": "text", "box": [10, 4, 263, 124], "text": "텍스트 연계 그래프:\n노드와 관계를 원본\n문서까지 추적할 수\n있습니다.", "font": "bold", "font_size": 25, "min_font_size": 19, "line_gap": 1, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [486, 0, 259, 88], "fill": {"sample": [470, 20], "radius": 4}},
+    {"type": "rect", "box": [486, 84, 128, 34], "fill": {"sample": [470, 20], "radius": 4}},
+    {"type": "text", "box": [492, 4, 247, 95], "text": "텍스트 속성 그래프:\n노드와 관계에 텍스트\n(및 기타) 속성이\n있습니다.", "font": "bold", "font_size": 24, "min_font_size": 18, "line_gap": 1, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [14, 478, 277, 34], "fill": "#ffffff"},
+    {"type": "text", "box": [20, 482, 265, 27], "text": "문서 메타데이터 서브그래프", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [454, 478, 291, 34], "fill": "#ffffff"},
+    {"type": "text", "box": [460, 482, 279, 27], "text": "개체·관계 서브그래프", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

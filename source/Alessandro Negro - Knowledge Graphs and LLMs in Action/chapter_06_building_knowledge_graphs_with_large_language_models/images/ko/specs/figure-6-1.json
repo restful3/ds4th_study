@@ -1,0 +1,39 @@
+{
+  "title": "Figure 6.1 Korean localization",
+  "source": "../../da3d716caaf25dbab46ba71c526d9f3d4319f0242e1f1c3d7b3b842c388c79c9.jpg",
+  "output": "../figure-6-1-ko.png",
+  "coordinate_space": [995, 868],
+  "operations": [
+    {"type": "rect", "box": [154, 3, 350, 115], "fill": "#ffffff"},
+    {"type": "text", "box": [160, 9, 338, 102], "text": "• 광학 문자 인식\n• 표 추출\n• 이미지 추출·분류·\n  객체 탐지…", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#b5b5b5", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [552, 33, 443, 92], "fill": "#ffffff"},
+    {"type": "text", "box": [558, 39, 431, 80], "text": "• 전통적 NER·RE 모델 학습\n• LLM(OpenAI GPT): 프롬프트 기반\n  또는 미세 조정", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#b5b5b5", "align": "left", "valign": "top"},
+
+    {"type": "rect", "box": [22, 128, 155, 58], "fill": "#ffffff"},
+    {"type": "text", "box": [28, 134, 143, 46], "text": "비정형\n데이터 소스", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#aaaaaa", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [315, 300, 150, 35], "fill": "#ffffff"},
+    {"type": "text", "box": [321, 306, 138, 23], "text": "디지털화", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#aaaaaa", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [520, 297, 150, 58], "fill": "#ffffff"},
+    {"type": "text", "box": [526, 303, 138, 46], "text": "개체명\n인식", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 2, "fill": "#aaaaaa", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [812, 294, 150, 61], "fill": "#ffffff"},
+    {"type": "text", "box": [818, 301, 138, 47], "text": "관계\n추출", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 2, "fill": "#aaaaaa", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [491, 374, 300, 42], "fill": "#ffffff"},
+    {"type": "text", "box": [498, 382, 286, 27], "text": "맞춤형 지식 추출", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#aaaaaa", "align": "left", "valign": "center"},
+
+    {"type": "rect", "box": [803, 424, 192, 142], "fill": "#ffffff"},
+    {"type": "text", "box": [809, 431, 180, 123], "text": "• 그래프 모델링\n• 정규화 및 정제\n• 엔티티 해소\n• …", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 6, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "restore_bezier", "points": [[908, 550], [908, 590], [866, 618], [824, 635]], "width": 3},
+    {"type": "rect", "box": [641, 681, 188, 59], "fill": "#ffffff"},
+    {"type": "text", "box": [647, 687, 176, 47], "text": "지식 그래프\n생성", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 2, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [278, 706, 205, 43], "fill": "#ffffff"},
+    {"type": "text", "box": [284, 713, 193, 29], "text": "그래프 데이터 과학", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [0, 489, 191, 38], "fill": "#ffffff"},
+    {"type": "text", "box": [5, 496, 181, 24], "text": "질의응답", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#222222", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [3, 594, 190, 63], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 601, 180, 49], "text": "패턴 및 인사이트\n발견", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [25, 749, 180, 43], "fill": "#ffffff"},
+    {"type": "text", "box": [49, 756, 143, 29], "text": "시각화", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [393, 754, 502, 114], "fill": "#ffffff"},
+    {"type": "text", "box": [400, 761, 488, 101], "text": "• 노드 점수화(중심성)\n• 커뮤니티 탐지\n• 그래프 패턴 분석\n• 그래프 ML…", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 5, "fill": "#111111", "align": "left", "valign": "top"}
+  ]
+}

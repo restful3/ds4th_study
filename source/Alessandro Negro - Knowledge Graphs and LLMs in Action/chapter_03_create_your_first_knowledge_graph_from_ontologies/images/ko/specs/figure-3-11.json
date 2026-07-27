@@ -1,0 +1,162 @@
+{
+  "title": "Figure 3.11 Korean localization",
+  "source": "../../51d02656dec871b6d826c3b53faaa19fc28025e37e5e8524336ec7a7e89cc5bb.jpg",
+  "output": "../figure-3-11-ko.png",
+  "coordinate_space": [670, 667],
+  "operations": [
+    {
+      "type": "ellipse",
+      "box": [168, 19, 124, 120],
+      "fill": {"sample": [230, 30], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [174, 25, 112, 108],
+      "text": "당뇨병",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 14,
+      "fill": "#ffffff",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [383, 19, 124, 120],
+      "fill": {"sample": [444, 30], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [389, 25, 112, 108],
+      "text": "다뇨증",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 14,
+      "fill": "#ffffff",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [19, 168, 120, 121],
+      "fill": {"sample": [79, 178], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [25, 174, 108, 109],
+      "text": "다갈증",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 14,
+      "fill": "#ffffff",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [534, 170, 120, 120],
+      "fill": {"sample": [594, 180], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [540, 176, 108, 108],
+      "text": "자가면역",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 14,
+      "fill": "#ffffff",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [277, 282, 119, 119],
+      "fill": {"sample": [336, 290], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [284, 289, 105, 105],
+      "text": "인슐린 의존성\n당뇨병",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 14,
+      "line_gap": 3,
+      "fill": "#ffffff",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [19, 381, 120, 120],
+      "fill": {"sample": [79, 390], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [25, 387, 108, 108],
+      "text": "고혈당",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 14,
+      "fill": "#ffffff",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [534, 382, 120, 120],
+      "fill": {"sample": [594, 392], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [540, 388, 108, 108],
+      "text": "다식증",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 14,
+      "fill": "#ffffff",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [168, 532, 124, 120],
+      "fill": {"sample": [230, 542], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [174, 538, 112, 108],
+      "text": "케톤산증",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 14,
+      "fill": "#ffffff",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [382, 533, 124, 119],
+      "fill": {"sample": [444, 543], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [388, 539, 112, 107],
+      "text": "혈청 1,5-\n안하이드로글루시톨\n감소",
+      "font": "regular",
+      "font_size": 14,
+      "min_font_size": 12,
+      "line_gap": 2,
+      "fill": "#ffffff",
+      "align": "center",
+      "valign": "center"
+    }
+  ]
+}

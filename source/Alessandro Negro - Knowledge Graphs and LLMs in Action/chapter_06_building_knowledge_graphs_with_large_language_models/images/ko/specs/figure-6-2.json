@@ -1,0 +1,31 @@
+{
+  "title": "Figure 6.2 Korean localization",
+  "source": "../../fac0fcd43d0a1a5c20880bde0652e8579993da2f9538f0b63bdcbf64c3234ee7.jpg",
+  "output": "../figure-6-2-ko.png",
+  "coordinate_space": [1123, 693],
+  "operations": [
+    {"type": "rect", "box": [111, 225, 280, 96], "fill": "#ffffff"},
+    {"type": "text", "box": [117, 233, 193, 80], "text": "특정 페이지에 언급된\n개체명을 나타내는\n노드 클래스", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 5, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "restore_bezier", "points": [[303, 293], [347, 304], [362, 428], [408, 471]], "width": 3},
+    {"type": "rect", "box": [9, 397, 300, 68], "fill": "#ffffff"},
+    {"type": "text", "box": [15, 405, 197, 52], "text": "원본 데이터를 나타내는\n노드 클래스", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 5, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "restore_bezier", "points": [[112, 458], [100, 492], [105, 540], [76, 575]], "width": 3},
+    {"type": "rect", "box": [497, 576, 312, 116], "fill": "#ffffff"},
+    {"type": "text", "box": [503, 584, 300, 100], "text": "최종 KG 계층의 노드 클래스:\n정규화·해소된 개체명과\n그 사이의 의미 관계", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 5, "fill": "#111111", "align": "left", "valign": "top"},
+
+    {"type": "rect", "box": [497, 132, 116, 32], "fill": "#ffffff"},
+    {"type": "text", "box": [503, 137, 104, 22], "text": "기관", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#333333", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [947, 208, 91, 32], "fill": "#ffffff"},
+    {"type": "text", "box": [952, 213, 81, 22], "text": "인물", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#333333", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [516, 462, 88, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [521, 467, 78, 21], "text": "엔티티", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#555555", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [891, 446, 77, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [896, 451, 67, 21], "text": "직함", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#333333", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [1028, 658, 95, 34], "fill": "#ffffff"},
+    {"type": "text", "box": [1033, 663, 85, 24], "text": "직업", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#333333", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [10, 631, 62, 34], "fill": "#ffffff"},
+    {"type": "text", "box": [15, 636, 52, 24], "text": "파일", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#555555", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [289, 631, 80, 34], "fill": "#ffffff"},
+    {"type": "text", "box": [294, 636, 70, 24], "text": "페이지", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#555555", "align": "center", "valign": "center"}
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "title": "Listing 15.7 Korean localization",
+  "source": "../../baa1236f18888c3740890b4a6a899c1555344e1e3f101de990ea41f3f9a5a521.jpg",
+  "output": "../listing-15-7-ko.png",
+  "coordinate_space": [
+    1040,
+    351
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        5,
+        4,
+        780,
+        37
+      ],
+      "fill": {
+        "sample": [
+          10,
+          10
+        ],
+        "radius": 2
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        5,
+        4,
+        780,
+        37
+      ],
+      "text": "리스팅 15.7   스키마 추출 에이전트",
+      "font": "bold",
+      "font_size": 21,
+      "min_font_size": 17,
+      "fill": "#ffffff",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        677,
+        67,
+        350,
+        60
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        677,
+        67,
+        350,
+        60
+      ],
+      "text": "전체 기술 스키마를\n가져옵니다.",
+      "font": "bold",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#5a5a5a",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        690,
+        143,
+        349,
+        90
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        690,
+        143,
+        349,
+        90
+      ],
+      "text": "불필요한 스키마 구성요소를\n걸러내고 설정에 따라\n설명을 추가합니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#5a5a5a",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        520,
+        271,
+        510,
+        78
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        520,
+        271,
+        510,
+        78
+      ],
+      "text": "상태 속성을 LLM 친화적인 스키마로 갱신하고\n재시도 횟수를 초기화합니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#5a5a5a",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    }
+  ]
+}

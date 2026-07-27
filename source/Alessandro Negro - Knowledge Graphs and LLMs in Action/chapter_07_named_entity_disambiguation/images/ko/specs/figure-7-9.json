@@ -1,0 +1,14 @@
+{
+  "title": "Figure 7.9 Korean localization",
+  "source": "../../e7f0e495e88f58eda5c570bfe0f96cbd6432c24f790034aca28427a0ae9dfb53.jpg",
+  "output": "../figure-7-9-ko.png",
+  "coordinate_space": [1129, 670],
+  "operations": [
+    {"type": "rect", "box": [9, 55, 230, 81], "fill": "#ffffff"},
+    {"type": "text", "box": [15, 61, 218, 69], "text": "SoHO 파일과\n관련 페이지를\n나타내는 노드", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [910, 252, 219, 136], "fill": "#ffffff"},
+    {"type": "text", "box": [917, 259, 205, 122], "text": "가져온 온톨로지와\n관련된 노드로,\n중의성이 해소된\n의료 엔티티와\n연결됩니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [366, 559, 372, 111], "fill": "#ffffff"},
+    {"type": "text", "box": [374, 566, 356, 98], "text": "NED 과정에서 생성된 노드로,\n텍스트에서 추출한 멘션과\n중의성이 해소된 엔티티를\n정의합니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "top"}
+  ]
+}

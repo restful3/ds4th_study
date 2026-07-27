@@ -1,0 +1,24 @@
+{
+  "title": "Figure 7.16 Korean localization",
+  "source": "../../a00728511337fdc3e5db205a4966d0d11acbd62cab0ac346b01f99a63ddba0cb.jpg",
+  "output": "../figure-7-16-ko.png",
+  "coordinate_space": [1123, 768],
+  "operations": [
+    {"type": "rect", "box": [0, 0, 444, 139], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 6, 428, 126], "text": "예문:\n“2013년 10월 이후 폴리네시아에서 뎅기열과\n지카 바이러스 같은 다른 플라비바이러스도 함께\n유행해 치쿤구니야 진단이 더 어려워질 수 있다.”", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [714, 32, 409, 73], "fill": "#ffffff"},
+    {"type": "text", "box": [721, 40, 395, 57], "text": "온톨로지는 함께 등장한 엔티티를 연결하는\n여러 경로를 제공합니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [0, 488, 333, 145], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 498, 317, 127], "text": "KG는 같은 문장에 등장하는\n“Dengue”와 “Zika virus” 같은\n엔티티 사이의 동시 출현 관계를\n저장합니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [414, 644, 709, 124], "fill": "#ffffff"},
+    {"type": "text", "box": [421, 651, 695, 110], "text": "SNOMED에서 “Dengue”와 “Zika virus”를 연결하는 직접적인 경로는 다음과 같습니다.\n\"Dengue -[:IS_A]-> Disease due to Flavivirus <-[:IS_A]-\nZika virus disease -[:CAUSATIVE_AGENT]-> Zika virus\"", "font": "bold", "font_size": 17, "min_font_size": 14, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [0, 262, 142, 79], "fill": "#ffffff"},
+    {"type": "text", "box": [7, 270, 128, 63], "text": "중의성이 해소된\n엔티티 멘션", "font": "regular", "font_size": 17, "min_font_size": 14, "line_gap": 3, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [392, 268, 151, 54], "fill": "#ffffff"},
+    {"type": "text", "box": [399, 275, 137, 40], "text": "동시 출현\n관계", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [1007, 281, 116, 38], "fill": "#ffffff"},
+    {"type": "text", "box": [1013, 288, 104, 24], "text": "온톨로지", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [402, 576, 139, 64], "fill": "#ffffff"},
+    {"type": "text", "box": [409, 583, 125, 50], "text": "지식\n그래프", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

@@ -53,11 +53,11 @@ format:
 
 그림 3.1은 이 장의 **멘탈 모델(mental model)**, 즉 머릿속 지도를 제공합니다. 가운데는 우리 예제 맥락에서 지식 그래프를 만드는 단계들을 보여주고, 아래쪽은 다양한 시나리오에서 재사용할 수 있는 지식 그래프 구축의 추상적 파이프라인을 나타냅니다. 이 파이프라인의 구성 요소들은 2장에서 소개하고 그림 3.2에서 다시 보여주는 **CRISP-DM 모델** 의 한 변형에서 가져온 것입니다.
 
-![지식 그래프 구축 과정을 CRISP-DM 모델의 구체화로 나타낸 멘탈 모델. 비즈니스 목표 이해부터 임상의 활동을 지원하는 KG 질의 정의까지 이어진다.](images/4059f0d9a9ad651fde89b6f3cb0fe563f3575fb0e1425f2ec44a3d8deec0d03f.jpg)  
+![지식 그래프 구축 과정을 CRISP-DM 모델의 구체화로 나타낸 한국어 멘탈 모델. 비즈니스 목표 이해부터 임상의 활동을 지원하는 KG 질의 정의까지 이어진다.](images/ko/figure-3-1-ko.png)
 
 그림 3.1 지식 그래프 구축 과정을 CRISP-DM 모델의 구체화(specification)로 나타낸 멘탈 모델. 비즈니스 목표를 이해하는 것에서 시작해, 임상의의 활동을 지원하는 KG 질의를 정의하는 데까지 이른다.
 
-![KG에 맞게 조정한 CRISP-DM 모델. 비즈니스 이해, 데이터 이해, 데이터 준비, KG 모델 생성/갱신이 이 장에서 다루는 핵심 단계다.](images/bacd29bfa050debe20ad1e1a84b4e4c5d5cab28724112aaf41a3e3738e13fc76.jpg)  
+![KG에 맞게 조정한 CRISP-DM 모델. 비즈니스 이해, 데이터 이해, 데이터 준비, KG 모델 생성/갱신이 이 장에서 다루는 핵심 단계다.](images/ko/figure-3-2-ko.png)
 
 그림 3.2 지식 그래프에 맞게 조정한 CRISP-DM 모델. 비즈니스 이해(business understanding), 데이터 이해(data understanding), 데이터 준비(data preparation), KG 모델 생성/갱신(KG model creation/update)을 포함한 일부 구성 요소가 이 장에서 다루는 핵심 단계다.
 
@@ -71,7 +71,7 @@ format:
 
 우리 지식 그래프의 **타깃 페르소나(target persona)**, 즉 주 사용자는 **임상의(clinician)** 입니다. 질병을 진단하고 치료하는 의료 전문가죠. 임상의의 가장 복잡한 업무 중 하나는 증상(표현형 특징, phenotypic traits)을 바탕으로 질병을 정확히 식별하는 것이며, 특히 희귀 증후군의 경우 이 일이 몹시 까다롭습니다(그림 3.3 참조).
 
-![임상의 활동을 지원하는 KG를 만들기 위한 비즈니스 도메인 이해 단계. 기술적 측면과 직접 관련되진 않지만 다음 단계의 토대가 된다.](images/66f9aea0decdb71b9b32e6f3fa5229458afc3f66fc3fc8301df963cb1c76b370.jpg)  
+![임상의 활동을 지원하는 KG를 만들기 위한 비즈니스 도메인 이해 단계. 기술적 측면과 직접 관련되진 않지만 다음 단계의 토대가 된다.](images/ko/figure-3-3-ko.png)
 
 그림 3.3 임상의 활동을 지원하는 KG를 만들기 위해 비즈니스 도메인을 이해하는 단계. 이 단계는 기술적 측면과 엄밀히 연관되지는 않지만, 다음 단계들을 위한 근본적인 토대가 된다.
 
@@ -90,7 +90,7 @@ format:
 
 그런데 임상의의 일에는 **회색 지대(gray areas)** 도 있습니다. 예를 들어 **당뇨병(diabetes mellitus)** 은 하나의 질병으로 분류될 수도 있고, 다른 희귀 증후군의 표현형적 특징으로 분류될 수도 있습니다(그림 3.4 참조). 우리는 임상의가 이런 종류의 불확실성을 다루도록 어떻게 도울 수 있는지를 보여주는 예시로 이 사용 사례를 다루겠습니다.
 
-![제1형 당뇨병은 질병으로도, 표현형적 특징으로도 볼 수 있으며 두 경우를 구분하기 위해 서로 다른 두 ID를 쓴다.](images/33ae8039550d3f5a594db1a4b6c1e38bc924a3f89843abc47ee78728e3e9f521.jpg)  
+![제1형 당뇨병은 질병으로도, 표현형적 특징으로도 볼 수 있으며 두 경우를 구분하기 위해 서로 다른 두 ID를 쓴다.](images/ko/figure-3-4-ko.png)
 
 그림 3.4 제1형 당뇨병(Type 1 diabetes mellitus)은 질병으로 볼 수도, 표현형적 특징으로 볼 수도 있다. 맥락에 따라 서로 다른 두 개의 ID를 채택할 수 있다.
 
@@ -98,36 +98,31 @@ format:
 
 우리의 데이터 소스는 **인간 표현형 온톨로지(HPO)** 저장소입니다. 이 저장소는 우리 예제를 위해 두 종류의 정보를 제공합니다(그림 3.5). 첫 번째는 `hpo.owl`이라는 **RDF/XML** 파일(http://purl.obolibrary.org/obo/hp.owl)로, 표현형 이상에 관한 표준화된 정보를 담은 온톨로지입니다. 이런 표준화 덕분에 상호운용성(interoperability)이 가능해지고, 여러 소스의 데이터를 통합할 수 있게 됩니다. 리스팅 3.1은 `hpo.owl` 파일 중 제1형 당뇨병에 해당하는 부분을 보여주는데, 가독성을 위해 **Turtle(Terse RDF Triple Language)** 형식으로 직렬화(serialize)했습니다.
 
-![임상의 활동을 지원하기 위한 데이터 이해 단계. 이 탐색적 단계에서 KG 구축에 필요한 핵심 정보를 얻는다.](images/df51a084f481f21bb5ee1947d6c6dd046979f344bca4660083648e7def240b87.jpg)  
+![임상의 활동을 지원하기 위한 데이터 이해 단계. 이 탐색적 단계에서 KG 구축에 필요한 핵심 정보를 얻는다.](images/ko/figure-3-5-ko.png)
 
 그림 3.5 임상의 활동을 지원하기 위해 데이터를 이해하는 단계. 이 탐색적(explorative) 단계에서 지식 그래프를 구성하는 데 필요한 핵심 정보를 얻는다.
 
-아래 리스팅 3.1은 원본 그대로 보존한 것입니다. 코드 사이사이에 끼어 있는 짧은 영어 문구들은 원서에서 도해용 주석(callout)으로 달아둔 설명입니다. 핵심만 보자면, 이 조각은 제1형 당뇨병을 URI `obo:HP_0100651`로 식별되는 **온톨로지 클래스(owl:Class)** 로 정의하고, 자연어 설명(`obo:IAO_0000115`), 작성자·작성일 같은 메타데이터, 외부 데이터베이스 상호참조(`hasDbXref`), 동의어(`hasExactSynonym`, `hasRelatedSynonym`), 그리고 이것이 상위 표현형 특징 `obo:HP_0000819`(당뇨병)의 하위 클래스임(`rdfs:subClassOf`)을 선언합니다.
+아래 리스팅 3.1은 PDF에서 코드 바깥에 배치된 도해용 주석(callout)을 제외하고 Turtle 본문만 복원한 것입니다. 이 조각은 제1형 당뇨병을 URI `obo:HP_0100651`로 식별되는 **온톨로지 클래스(owl:Class)** 로 정의하고, 자연어 설명(`obo:IAO_0000115`), 작성자·작성일 같은 메타데이터, 외부 데이터베이스 상호참조(`hasDbXref`), 동의어(`hasExactSynonym`, `hasRelatedSynonym`), 그리고 이것이 상위 표현형 특징 `obo:HP_0000819`(당뇨병)의 하위 클래스임(`rdfs:subClassOf`)을 선언합니다.
 
-```csv
-Listing 3.1 Type I diabetes mellitus details in hpo.owl
-Defines Type I diabetes mellitus,
-identified by URI obo:HP_0100651, Describes the
-obo:HP_0100651 a owl:Class ;  as an ontology class ^^xsd:string ; disease innatural language
-obo:IAO_0000115 "A chronic condition in which the pancreas produces
-little or no insulin…" ^^xsd:string ; <
-oboInOwl:created_by "doelkens"^^xsd:string ; oboInOwl:creation_date "2010-12-29T06:37:55Z"^^xsd:string Shows metadatarelated to the
-> oboInOwl:hasDbXref "MSH:D003922"^^xsd:string, author (“doelkens”)
-"SNOMEDCT_US:46635009" ^^xsd:string, of this entry
-"UMLS:C0011854" ^^xsd:string ;
-oboInOwl:hasExactSynonym "Diabetes mellitus Type I"^^xsd:string,
-"Juvenile diabetes mellitus" ^^xsd:string,
-"Type 1 diabetes",
-"Type I diabetes";
-oboInOwl:hasRelatedSynonym "Insulin-dependent diabetes
-mellitus"^^xsd:string ;
-oboInOwl:id "HP:0100651"^^xsd:string ;
-rdfs:comment "The onset of type 1 diabetes is typically during
-adolescence…" ^^xsd:string ;
-rdfs:subClassOf obo:HP_0000819 < Defines Type I diabetes mellitus as a
-subclass of the phenotypic feature
-IDs of external data sources that identified by the obo:HP_0000819 URI,
-refer to this form of diabetes which corresponds to diabetes mellitus
+#### Listing 3.1 hpo.owl에 들어 있는 제1형 당뇨병 상세 정보
+
+```turtle
+obo:HP_0100651 a owl:Class ;
+    rdfs:label "Type I diabetes mellitus"^^xsd:string ;
+    obo:IAO_0000115 "A chronic condition in which the pancreas produces little or no insulin…"^^xsd:string ;
+    oboInOwl:created_by "doelkens"^^xsd:string ;
+    oboInOwl:creation_date "2010-12-29T06:37:55Z"^^xsd:string ;
+    oboInOwl:hasDbXref "MSH:D003922"^^xsd:string,
+        "SNOMEDCT_US:46635009"^^xsd:string,
+        "UMLS:C0011854"^^xsd:string ;
+    oboInOwl:hasExactSynonym "Diabetes mellitus Type I"^^xsd:string,
+        "Juvenile diabetes mellitus"^^xsd:string,
+        "Type 1 diabetes",
+        "Type I diabetes" ;
+    oboInOwl:hasRelatedSynonym "Insulin-dependent diabetes mellitus"^^xsd:string ;
+    oboInOwl:id "HP:0100651"^^xsd:string ;
+    rdfs:comment "The onset of type 1 diabetes is typically during adolescence…"^^xsd:string ;
+    rdfs:subClassOf obo:HP_0000819 .
 ```
 
 **OWL 파일을 읽는 것은 만만치 않은 일**입니다. 그래서 `rdflib`라는 파이썬 라이브러리를 써서 이 파일을 **트리플(triple)** 의 모음으로 탐색할 수 있습니다. 트리플이란 주어(subject), 술어(predicate), 목적어(object) 이 세 요소로 이루어진 문장 단위이며, 리스팅 3.2에 그 처리 방법이 나와 있습니다.
@@ -147,25 +142,20 @@ g.bind("xsd", "http://www.w3.org/2001/XMLSchema#")
 subject_uri = URIRef("http://purl.obolibrary.org/obo/HP_0100651")
 filtered_statements = g.triples((subject_uri, None, None))
 for subject, predicate, obj in filtered_statements:
+    print(
+        f"({g.qname(subject)}, {g.qname(predicate)}, "
+        f"{g.qname(obj) if isinstance(obj, URIRef) else obj})"
+    )
+    print()
 ```
 
-이어지는 출력용 코드는 다음과 같습니다. 각 트리플을 `(주어, 술어, 목적어)` 형태로 예쁘게 찍어 주는데, 목적어가 URI일 때는 짧은 이름(`qname`)으로 바꾸고 아니면 값 그대로 출력합니다.
-
-```python
-print(
-    f"({g.qname(subject)}, {g.qname(predicate)}, "
-    f"{g.qname(obj) if isinstance(obj, URIRef) else obj})"
-)
-print()
-```
-
-이 스크립트의 출력은 다음과 같습니다(가독성을 위해 긴 문자열은 잘라냈습니다).
+`for`문 안에서는 각 트리플을 `(주어, 술어, 목적어)` 형태로 출력합니다. 목적어가 URI일 때는 짧은 이름(`qname`)으로 바꾸고, 아니면 값 그대로 보여 줍니다. 이 스크립트의 출력은 다음과 같습니다(가독성을 위해 긴 문자열은 잘라냈습니다).
 
 #### Listing 3.3 OWL 파일을 트리플 집합으로 나타낸 예시
 
 아래 각 줄은 하나의 트리플입니다. 예를 들어 첫 줄은 "`obo:HP_0410050`이라는 개체의 타입(`rdf:type`)은 `owl:Class`이다"라는 뜻이고, 세 번째 줄은 그것이 `obo:HP_0011013`의 하위 클래스라는 뜻입니다. `rdfs:label`은 사람이 읽을 이름표를, `hasExactSynonym`은 정확한 동의어를 담습니다.
 
-```turtle
+```text
 (obo:HP_0410050, rdf:type, owl:Class)
 (obo:HP_0410050, owl:equivalentClass, N25507ac984704bd78a0effd951947a7f)
 (obo:HP_0410050, rdfs:subClassOf, obo:HP_0011013)
@@ -230,7 +220,7 @@ LPG는 RDF의 고급 의미론(advanced semantics)을 표현하지 못합니다.
 
 그림 3.6은 표(table) 구조로 된 주석 데이터를 어떻게 지식 그래프의 간선으로 변환하는지 보여줍니다. 질병과 표현형 특징은 노드로 표현되고, 주석 작성자·생성일·출처에 관한 정보는 간선(그림에서는 `HAS_PHENOTYPIC_FEATURE`)의 속성으로 지정됩니다.
 
-![HPO 주석 파일의 한 행 예시. 질병(OMIM:222100)과 연관 표현형 특징(HP:0410050) 사이의 연관을 서술한다.](images/0a8768ea67bd7cd8ce084f51410c21f4e0f6d5f017a74a15e2432cf78197c284.jpg)  
+![HPO 주석 파일의 한 행을 질병(OMIM:222100)과 연관 표현형 특징(HP:0410050) 사이의 간선으로 변환하는 한국어 도식.](images/ko/figure-3-6-ko.png)
 
 그림 3.6 표의 한 행에서 KG 간선으로의 데이터 변환. 표 안의 정보가 KG 노드와 간선의 속성을 정의하는 데 맞게 조정된다.
 
@@ -254,14 +244,15 @@ LPG는 RDF의 고급 의미론(advanced semantics)을 표현하지 못합니다.
 
 아래 리스팅 3.5는 Turtle 구문으로 표현한 표현형 주석입니다. `_:Annotation`은 **공백 노드(blank node)** 로, 전역 식별자를 부여하지 않은 채 관련 정보를 묶기 위해 쓰는 이름 없는 자원입니다.
 
+#### Listing 3.5 N항 관계의 예시
+
 ```turtle
-Listing 3.5 Example of n-ary relations
 _:Annotation rdf:type :PhenotypicAnnotation ;
-:forDisease OMIM:222100 ;
-:phenotypicFeature HP:0410050 ;
-:source PMID:9357814 ;
-:createdBy "Nicole Vasilevsky" ;
-:creationDate "2018-02-23"^^xsd:date .
+    :forDisease OMIM:222100 ;
+    :phenotypicFeature HP:0410050 ;
+    :source PMID:9357814 ;
+    :createdBy "Nicole Vasilevsky" ;
+    :creationDate "2018-02-23"^^xsd:date .
 ```
 
 이 RDF 조각은 Turtle 구문을 써서 표현형 주석 하나를 나타냅니다. 이 주석은 공백 노드(`_:Annotation`)로 표현되는데, 공백 노드란 존재하지만 특정 이름이 필요하지 않은 무언가를 위한 자리표시자(placeholder)로, 프로그래밍의 익명 객체와 비슷하다고 보면 됩니다.
@@ -270,16 +261,18 @@ _:Annotation rdf:type :PhenotypicAnnotation ;
 
 아래 리스팅 3.6은 이 구조를 조회하는 SPARQL 질의입니다.
 
+#### Listing 3.6 N항 관계 맥락의 SPARQL 질의
+
 ```sparql
-Listing 3.6 SPARQL query in the context of n-ary relations
 SELECT ?source ?author ?date
 WHERE {
-?annotation a :PhenotypicAnnotation ;
-:forDisease OMIM:222100 ;
-:phenotypicFeature HP:0410050 ;
-:source ?source ;
-:createdBy ?author ;
-:creationDate ?date .
+    ?annotation a :PhenotypicAnnotation ;
+        :forDisease OMIM:222100 ;
+        :phenotypicFeature HP:0410050 ;
+        :source ?source ;
+        :createdBy ?author ;
+        :creationDate ?date .
+}
 ```
 
 이 SPARQL 질의는 특정 표현형 주석에 관한 메타데이터를 조회합니다. 주어진 질병(OMIM:222100)과 표현형 특징(HP:0410050)으로 주석을 걸러낸 뒤, 정보의 출처, 주석을 만든 작성자, 만든 날짜를 반환합니다.
@@ -292,14 +285,14 @@ WHERE {
 
 #### Listing 3.7 명명된 그래프의 예시
 
-```batch
+```trig
 :Graph1 {
-OMIM:222100 :hasPhenotypicFeature HP:0410050
+    OMIM:222100 :hasPhenotypicFeature HP:0410050 .
 }
 :Graph1
-:source PMID:9357814 ;
-:createdBy "Nicole Vasilevsky" ;
-:creationDate "2018-02-23"^^xsd:date .
+    :source PMID:9357814 ;
+    :createdBy "Nicole Vasilevsky" ;
+    :creationDate "2018-02-23"^^xsd:date .
 ```
 
 이 RDF 예시는 **TriG 구문** 을 써서 명명된 그래프 `:Graph1`을 정의합니다. 쉽게 말해 TriG는 RDF 문장들을 하나의 이름표(명명된 그래프) 아래에 묶고 메타데이터를 붙일 수 있게 해 줍니다. 이 그래프 안에서 트리플은 질병 OMIM:222100이 표현형 특징 HP:0410050을 가진다고 단언합니다. 이 단언에 대한 메타데이터는 `:Graph1`에 붙는데, 출처(PMID:9357814), 작성자("Nicole Vasilevsky"), 생성일이 포함됩니다.
@@ -309,12 +302,12 @@ OMIM:222100 :hasPhenotypicFeature HP:0410050
 ```sparql
 SELECT ?source ?author ?date
 WHERE {
-GRAPH :Graph1 {
-OMIM:222100 :hasPhenotypicFeature HP:0410050 .
-}
-:Graph1 :source ?source ;
-:createdBy ?author ;
-:creationDate ?date .
+    GRAPH :Graph1 {
+        OMIM:222100 :hasPhenotypicFeature HP:0410050 .
+    }
+    :Graph1 :source ?source ;
+        :createdBy ?author ;
+        :creationDate ?date .
 }
 ```
 
@@ -328,23 +321,25 @@ OMIM:222100 :hasPhenotypicFeature HP:0410050 .
 
 #### Listing 3.9 RDF-star의 예시
 
-여기서 이중 꺾쇠(`<< >>`)는 트리플 하나를 통째로 감싸 그것을 다시 주어로 삼는 문법입니다. 즉 "OMIM:222100이 HP:0410050을 표현형 특징으로 가진다"는 트리플 자체에 출처·작성자·생성일 속성을 붙입니다.
+여기서 이중 꺾쇠(`<< >>`)는 트리플 하나를 통째로 감싸 그것을 다시 주어로 삼는 문법입니다. 즉 "OMIM:222100이 HP:0410050을 표현형 특징으로 가진다"는 트리플 자체에 출처·작성자·생성일 속성을 붙입니다. PDF에는 `PMID:`와 숫자 사이에 공백이 있지만, QName으로 해석될 수 있도록 실행 가능한 `PMID:9357814`로 바로잡았습니다.
 
 ```turtle
 <<OMIM:222100 :hasPhenotypicFeature HP:0410050>>
-:source PMID: 9357814 ;
-:createdBy "Nicole Vasilevsky" ;
-:creationDate "2018-02-23"^^xsd:date .
+    :source PMID:9357814 ;
+    :createdBy "Nicole Vasilevsky" ;
+    :creationDate "2018-02-23"^^xsd:date .
 ```
 
 #### Listing 3.10 RDF-star 맥락에서의 SPARQL-star 질의
 
+PDF의 마지막 변수는 `? date`로 인쇄되어 있지만, SPARQL 변수 이름에는 공백을 둘 수 없으므로 `?date`로 바로잡았습니다. `WHERE` 키워드는 SPARQL에서 생략할 수 있습니다.
+
 ```sparql
 SELECT ?source ?author ?date {
-<<OMIM:222100 :hasPhenotypicFeature HP:0410050>>
-:source ?source ;
-:createdBy ?author ;
-:creationDate ? date .
+    <<OMIM:222100 :hasPhenotypicFeature HP:0410050>>
+        :source ?source ;
+        :createdBy ?author ;
+        :creationDate ?date .
 }
 ```
 
@@ -358,14 +353,15 @@ RDF 문장에 주석을 다는 다른 방법들도 있습니다. **재구체화(
 
 #### Listing 3.11 LPG 표현의 예시
 
-아래는 원본 그대로의 조각입니다(원서 조판상 일부 구두점이 어긋나 있지만 보존합니다). 노드 `d`는 질병, 노드 `p`는 표현형이고, 그 사이의 `:HAS_PHENOTYPIC_FEATURE` 관계 안에 출처·작성자·생성일이 키–값으로 들어갑니다.
+PDF의 조각에는 속성 사이의 쉼표와 `creationDate`의 닫는 따옴표가 빠져 있습니다. 아래에서는 Cypher 패턴으로 읽을 수 있도록 문장부호를 바로잡았습니다. 노드 `d`는 질병, 노드 `p`는 표현형이고, 그 사이의 `:HAS_PHENOTYPIC_FEATURE` 관계 안에 출처·작성자·생성일이 키–값으로 들어갑니다. 이 리스팅은 완전한 실행문이 아니라 **패턴 표현** 이므로 실제로 생성하려면 앞에 `CREATE` 또는 `MERGE`를 붙여야 합니다.
 
 ```cypher
 (d { id: "OMIM:222100" })
 -[:HAS_PHENOTYPIC_FEATURE {
-source: "PMID:9357814"
-createdBy: "Nicole Vasilevsky";
-creationDate: "2018-02-23}]->
+    source: "PMID:9357814",
+    createdBy: "Nicole Vasilevsky",
+    creationDate: "2018-02-23"
+}]->
 (p { id: "HP:0410050" })
 ```
 
@@ -395,21 +391,22 @@ RETURN r.source, r.createdBy, r.creationDate
 
 그림 3.7은 온톨로지 수집·처리 단계를 보여줍니다. 첫 단계는 다음 명령으로 HPO 데이터베이스를 만들고 초기화하는 것입니다.
 
+#### Listing 3.13 Neo4j에 HPO 데이터베이스 만들기
+
 ```cypher
-Listing 3.13 Creating the HPO database in Neo4j
 CREATE DATABASE hpo IF NOT EXISTS
 ```
 
-![온톨로지 수집 및 처리 단계.](images/a522478921eea8892f0345b5359b3df899369b7d634f78931d9daf1bdf037d14.jpg)  
+![온톨로지 수집 및 처리 단계.](images/ko/figure-3-7-ko.png)
 
 그림 3.7 온톨로지 수집 및 처리(Ontology ingestion and processing)
 
 다음 리스팅에서는 `Resource` 레이블이 붙은 노드의 `uri`와 `id` 속성이 유일함을 보장하는 **제약조건(constraint)** 을 세웁니다. 또 `HpoPhenotype`과 `HpoDisease` 노드의 `id` 속성에 대한 **인덱스(index)** 를 만들어, 지식 그래프 구축 단계와 정보 검색 단계에서 이 정보에 더 빠르게 접근하도록 합니다. `HpoPhenotype`과 `HpoDisease` 레이블은 각각 우리의 표현형 이상 노드와 질병 노드를 정의합니다.
 
-```sql
-Listing 3.14 Creating constraints and indexes
-CREATE CONSTRAINT n10s_unique_uri IF NOT EXISTS FOR (r:Resource) REQUIRE
-r.uri IS UNIQUE;
+#### Listing 3.14 제약조건과 인덱스 만들기
+
+```cypher
+CREATE CONSTRAINT n10s_unique_uri IF NOT EXISTS FOR (r:Resource) REQUIRE r.uri IS UNIQUE;
 CREATE CONSTRAINT IF NOT EXISTS FOR (n:Resource) REQUIRE (n.id) IS UNIQUE;
 CREATE INDEX disease_id IF NOT EXISTS FOR (n:HpoDisease) ON (n.id);
 CREATE INDEX phenotype_id IF NOT EXISTS FOR (n:HpoPhenotype) ON (n.id);
@@ -419,7 +416,7 @@ CREATE INDEX phenotype_id IF NOT EXISTS FOR (n:HpoPhenotype) ON (n.id);
 
 #### Listing 3.15 Neosemantics 플러그인 설정하기
 
-```javascript
+```cypher
 CALL n10s.graphconfig.init();
 CALL n10s.graphconfig.set({ handleVocabUris: "IGNORE" });
 CALL n10s.graphconfig.set({ applyNeo4jNaming: True });
@@ -429,8 +426,9 @@ CALL n10s.graphconfig.set({ applyNeo4jNaming: True });
 
 다음 단계는 HPO 어휘를 적재하는 것입니다.
 
-```javascript
-Listing 3.16 Loading the HPO vocabulary into Neo4j
+#### Listing 3.16 HPO 어휘를 Neo4j에 적재하기
+
+```cypher
 CALL n10s.rdf.import.fetch("http://purl.obolibrary.org/obo/hp.owl","RDF/XML");
 ```
 
@@ -438,18 +436,19 @@ CALL n10s.rdf.import.fetch("http://purl.obolibrary.org/obo/hp.owl","RDF/XML");
 
 아래 리스팅 3.17은 `uri`가 `http://purl.obolibrary.org/obo/HP`로 시작하는 모든 `Resource` 노드를 찾아, `HpoPhenotype` 레이블을 붙이고, URI를 가공해 `HP:0000001` 같은 `id`를 설정합니다. `coalesce`는 기존 `id`가 있으면 그대로 두고 없을 때만 새 값을 넣게 해 줍니다.
 
+#### Listing 3.17 노드 보강하기
+
 ```cypher
-Listing 3.17 Enriching nodes
 MATCH (n:Resource)
 WHERE n.uri STARTS WITH "http://purl.obolibrary.org/obo/HP"
 SET n:HpoPhenotype,
-n.id = coalesce(n.id,
-replace(apoc.text.replace(n.uri,'(.*)obo/',''),'_', ':'))
+       n.id = coalesce(n.id,
+   replace(apoc.text.replace(n.uri,'(.*)obo/',''),'_', ':'))
 ```
 
 이제 지식 그래프의 현재 상태를 점검해 봅시다. 리스팅 3.18은 이 그래프의 작은 일부를 조회하는 코드로, 그림 3.8에 그 결과가 나와 있습니다. Neo4j 브라우저에서 이 코드를 실행해 직접 탐색해 볼 수 있습니다.
 
-![LPG를 저장 모델로 삼아 그래프 데이터베이스에 적재된 HPO 온톨로지의 일부. 왼쪽은 온톨로지 정보, 오른쪽은 표현형 특징 관련 도메인 정보다.](images/e62afc30c4a44268378b02b1f3daf3fdf1b53b17267f22c8a4af1468c73a17d7.jpg)
+![LPG를 저장 모델로 삼아 그래프 데이터베이스에 적재된 HPO 온톨로지의 일부. 왼쪽은 온톨로지 정보, 오른쪽은 표현형 특징 관련 도메인 정보다.](images/ko/figure-3-8-ko.png)
 
 그림 3.8 LPG를 저장 모델로 삼아 그래프 데이터베이스에 적재된 HPO 온톨로지의 일부. 두 종류의 정보를 구별할 수 있다. 온톨로지 정보(왼쪽)와, 표현형 특징과 관련된 도메인 특화 정보(오른쪽)다.
 
@@ -476,7 +475,7 @@ HPO 온톨로지는 여러 종류의 정보를 제공합니다. 그림 3.8의 �
 
 지식 그래프 구축을 마무리하려면, 주석 파일을 수집하고 처리해야 합니다. 이 파일의 표현형 이상들은 연관된 질병들과 이어지는데, 그 질병 용어들은 다른 온톨로지에서 옵니다. 그림 3.9는 데이터 처리·모델링의 두 번째 단계를 보여줍니다.
 
-![KG 구축을 마무리하기 위해 주석 데이터셋을 수집·처리하는 두 번째 단계.](images/747a0d2a35fa40a70a18f4868d0c975b5771eeac7f731d1d636bbb159dcd0c59.jpg)  
+![KG 구축을 마무리하기 위해 주석 데이터셋을 수집·처리하는 두 번째 단계.](images/ko/figure-3-9-ko.png)
 
 그림 3.9 지식 그래프 구축을 마무리하기 위해 주석 데이터셋을 수집·처리하는 단계
 
@@ -494,13 +493,13 @@ RDF 데이터 모델로 생성된 `hpo.owl` 파일과 달리, 다음 파일은 *
 
 아래 질의는 원격 CSV를 탭 구분자로 읽고, 파일 메타데이터인 앞 다섯 줄은 건너뛴 뒤(`SKIP 5`), 각 행의 첫 열(`row[0]`)을 `id`로 하는 질병 노드를 만들고(`MERGE`), 처음 만들 때만 두 번째 열(`row[1]`)을 이름표로 설정합니다.
 
-```sql
-LOAD CSV FROM 'https://mng.bz/qRyr' AS row
+```cypher
+LOAD CSV FROM 'https://github.com/obophenotype/human-phenotype-ontology/releases/latest/download/phenotype.hpoa' AS row
 FIELDTERMINATOR '\t'
-WITH row Skips the first five rows of the file
-SKIP 5 < because they are file metadata
+WITH row
+SKIP 5  // #A
 MERGE (dis:Resource:HpoDisease {id: row[0]})
-ON CREATE SET dis.label = row[1];
+ON CREATE SET dis.label = row[1]
 ```
 
 다음으로 질병 노드와 표현형 특징 노드 사이의 관계를 만듭니다.
@@ -509,8 +508,8 @@ ON CREATE SET dis.label = row[1];
 
 이 질의는 같은 파일을 다시 읽어, 각 행의 질병 `id`(`row[0]`)와 표현형 `id`(`row[3]`)에 해당하는 노드를 찾아 그 둘 사이에 `:HAS_PHENOTYPIC_FEATURE` 관계를 만듭니다.
 
-```sql
-LOAD CSV FROM 'https://mng.bz/qRyr' AS row
+```cypher
+LOAD CSV FROM 'https://github.com/obophenotype/human-phenotype-ontology/releases/latest/download/phenotype.hpoa' AS row
 FIELDTERMINATOR '\t'
 WITH row
 SKIP 5
@@ -525,9 +524,11 @@ MERGE (dis)-[:HAS_PHENOTYPIC_FEATURE]->(phe)
 
 #### Listing 3.21 연관 찾기
 
+PDF에는 첫 키워드가 `MERGE`로 인쇄되어 있지만, 이 리스팅의 목적은 통합 결과를 **조회** 하는 것입니다. 바인딩되지 않은 노드로 `MERGE`를 실행하면 일치하는 패턴이 없을 때 새 노드와 관계를 만들 수 있으므로, 아래에서는 노트북의 검증된 교정본처럼 `MATCH`를 사용합니다.
+
 ```cypher
-MERGE (dis:HpoDisease)-[:HAS_PHENOTYPIC_FEATURE]->(phe:HpoPhenotype)
-RETURN dis.label, collect(phe.label)
+MATCH (dis:HpoDisease)-[:HAS_PHENOTYPIC_FEATURE]->(phe:HpoPhenotype)
+RETURN dis.label AS disease, collect(phe.label) AS features
 LIMIT 3
 ```
 
@@ -543,28 +544,28 @@ LIMIT 3
 아래 질의는 각 행에서 해당 질병–표현형 관계를 찾아, 4번\~11번 열의 값이 비어 있지 않을 때만 각각 `source`, `evidence`, `onset`, `frequency`, `sex`, `modifier`, `aspect`, `biocuration` 속성을 관계에 설정합니다. `FOREACH(... CASE WHEN ... [1] ELSE [] END | ...)` 관용구는 "값이 있을 때만 실행"을 표현하는 Cypher의 조건부 갱신 기법입니다.
 
 ```cypher
-LOAD CSV FROM 'https://mng.bz/qRyr' AS row
+LOAD CSV FROM 'https://github.com/obophenotype/human-phenotype-ontology/releases/latest/download/phenotype.hpoa' AS row
 FIELDTERMINATOR '\t'
 WITH row
 SKIP 5
 MATCH (dis:HpoDisease)-[rel:HAS_PHENOTYPIC_FEATURE]->(phe:HpoPhenotype)
 WHERE phe.id = row[3] and dis.id = row[0]
-FOREACH(_ IN CASE WHEN row[4] is not null THEN [1] ELSE [] END|
-SET rel.source = row[4])
-FOREACH(_ IN CASE WHEN row[5] is not null THEN [1] ELSE [] END|
-SET rel.evidence = row[5])
-FOREACH(_ IN CASE WHEN row[6] is not null THEN [1] ELSE [] END|
-SET rel.onset = row[6])
-FOREACH(_ IN CASE WHEN row[7] is not null THEN [1] ELSE [] END|
-SET rel.frequency = row[7])
-FOREACH(_ IN CASE WHEN row[8] is not null THEN [1] ELSE [] END|
-SET rel.sex = row[8])
-FOREACH(_ IN CASE WHEN row[9] is not null THEN [1] ELSE [] END|
-SET rel.modifier = row[9])
-FOREACH(_ IN CASE WHEN row[10] is not null THEN [1] ELSE [] END|
-SET rel.aspect = row[10])
-FOREACH(_ IN CASE WHEN row[11] is not null THEN [1] ELSE [] END|
-SET rel.biocuration = row[11])
+FOREACH(ignoreMe IN CASE WHEN row[4] is not null THEN [1] ELSE [] END|
+  SET rel.source = row[4])
+FOREACH(ignoreMe IN CASE WHEN row[5] is not null THEN [1] ELSE [] END|
+  SET rel.evidence = row[5])
+FOREACH(ignoreMe IN CASE WHEN row[6] is not null THEN [1] ELSE [] END|
+  SET rel.onset = row[6])
+FOREACH(ignoreMe IN CASE WHEN row[7] is not null THEN [1] ELSE [] END|
+  SET rel.frequency = row[7])
+FOREACH(ignoreMe IN CASE WHEN row[8] is not null THEN [1] ELSE [] END|
+  SET rel.sex = row[8])
+FOREACH(ignoreMe IN CASE WHEN row[9] is not null THEN [1] ELSE [] END|
+  SET rel.modifier = row[9])
+FOREACH(ignoreMe IN CASE WHEN row[10] is not null THEN [1] ELSE [] END|
+  SET rel.aspect = row[10])
+FOREACH(ignoreMe IN CASE WHEN row[11] is not null THEN [1] ELSE [] END|
+  SET rel.biocuration = row[11])
 ```
 
 이것은 관계 정보를 풍부하게 하는 유연한 접근법입니다. 이 스크립트는 Neo4j 그래프에서 기존 노드와 관계를 매칭하고, 입력 파일 각 행의 값 존재 여부에 따라 추가 관계 속성을 설정합니다. 각 `FOREACH` 블록은 TSV의 해당 열이 널(null)이 아닐 때만 관계에 새 속성을 추가합니다. 이 덕분에 스크립트는 누락 데이터에 견고하고, 값을 널로 덮어쓰는 일을 피합니다.
@@ -577,58 +578,37 @@ SET rel.biocuration = row[11])
 
 ```cypher
 CALL apoc.periodic.iterate(
-"MATCH (dis:HpoDisease)-[rel:HAS_PHENOTYPIC_FEATURE]->(phe:HpoPhenotype)
-RETURN rel",
-"SET rel.createdBy = apoc.text.regexGroups(
-rel.biocuration, 'HPO:(\\w+)\\['
-)[0][1],
-rel.creationDate = apoc.text.regexGroups(
-rel.biocuration, '\\[(\\d{4}-\\d{2}-\\d{2})\\]
-)[0][1],
-rel.aspectName = CASE
-WHEN rel.aspect = 'P' THEN 'Phenotypic abnormality'
-WHEN rel.aspect = 'I' THEN 'Inheritance'
-END,
-rel.aspectDescription = CASE
-WHEN rel.aspect = 'P' THEN
-'Terms with the P aspect are located in the Phenotypic abnormality ' +
-'subontology'
-WHEN rel.aspect = 'I' THEN
-'Terms with the I aspect are from the Inheritance subontology
-END,
-rel.evidenceName = CASE
-WHEN rel.evidence = 'IEA' THEN
-'Inferred from electronic annotation'
-WHEN rel.evidence = 'PCS' THEN
-'Published clinical study
-WHEN rel.evidence = 'TAS' THEN
-'Traceable author statement'
-END,
-rel.evidenceDescription = CASE
-WHEN rel.evidence = 'IEA' THEN
-'Annotations extracted by parsing the Clinical Features sections ' +
-'of the Online Mendelian Inheritance in Man resource are assigned ' +
-'the evidence code IEA.'
-WHEN rel.evidence = 'PCS' THEN
-'PCS is used for information extracted from articles in the medical ' +
-'literature. Generally, annotations of this type will include the ' +
-'pubmed id of the published study in the DB_Reference field.'
-WHEN rel.evidence = 'TAS' THEN
-'TAS is used for information gleaned from knowledge bases such as ' +
-'OMIM or Orphanet that have derived the information from a ' +
-'published source.'
-END,
-rel.url = CASE
-WHEN rel.source STARTS WITH 'PMID:' THEN
-'https://pubmed.ncbi.nlm.nih.gov/' + apoc.text.replace(
-rel.source, '(.*)PMID:', ''
-)
-WHEN rel.source STARTS WITH 'OMIM:' THEN
-'https://omim.org/entry/' + apoc.text.replace(
-rel.source, '(.*)OMIM:', ''
-)
-END",
-{batchSize: 1000}
+    "MATCH (dis:HpoDisease)-[rel:HAS_PHENOTYPIC_FEATURE]->(phe:HpoPhenotype) RETURN rel",
+    "SET rel.createdBy = apoc.text.regexGroups(rel.biocuration, 'HPO:(\\w+)\\[')[0][1],
+     rel.creationDate = apoc.text.regexGroups(rel.biocuration, '\\[(\\d{4}-\\d{2}-\\d{2})\\]')[0][1],
+     rel.aspectName =
+     CASE
+         WHEN rel.aspect = 'P' THEN 'Phenotypic abnormality'
+         WHEN rel.aspect = 'I' THEN 'Inheritance'
+     END,
+     rel.aspectDescription =
+     CASE
+         WHEN rel.aspect = 'P' THEN 'Terms with the P aspect are located in the Phenotypic abnormality subontology'
+         WHEN rel.aspect = 'I' THEN 'Terms with the I aspect are from the Inheritance subontology'
+     END,
+     rel.evidenceName =
+     CASE
+         WHEN rel.evidence = 'IEA' THEN 'Inferred from electronic annotation'
+         WHEN rel.evidence = 'PCS' THEN 'Published clinical study'
+         WHEN rel.evidence = 'TAS' THEN 'Traceable author statement'
+     END,
+     rel.evidenceDescription =
+     CASE
+         WHEN rel.evidence = 'IEA' THEN 'Annotations extracted by parsing the Clinical Features sections of the Online Mendelian Inheritance in Man resource are assigned the evidence code IEA.'
+         WHEN rel.evidence = 'PCS' THEN 'PCS is used for information extracted from articles in the medical literature. Generally, annotations of this type will include the pubmed id of the published study in the DB_Reference field.'
+         WHEN rel.evidence = 'TAS' THEN 'TAS is used for information gleaned from knowledge bases such as OMIM or Orphanet that have derived the information from a published source.'
+     END,
+     rel.url =
+     CASE
+         WHEN rel.source STARTS WITH 'PMID:' THEN 'https://pubmed.ncbi.nlm.nih.gov/' + apoc.text.replace(rel.source, '(.*)PMID:', '')
+         WHEN rel.source STARTS WITH 'OMIM:' THEN 'https://omim.org/entry/' + apoc.text.replace(rel.source, '(.*)OMIM:', '')
+     END",
+{batchSize: 1000})
 ```
 
 이 질의는 `apoc.periodic.iterate`를 사용해 `HAS_PHENOTYPIC_FEATURE` 관계들을 배치(batch)로 처리·갱신합니다. 예를 들어 정규 표현식으로 큐레이터와 생성일을 추출해 `biocuration` 속성으로부터 메타데이터를 만듭니다. 또한 그래프 탐색 중 가독성을 높이는 속성들을 추가합니다. 주석 파일은 `aspect`(P 또는 I 값)와 `evidence`(IEA, PCS, TAS 값)에 관련된 정보를 축약해 담고 있습니다. 이 데이터를 명확히 하기 위해, 값이 `'Phenotypic abnormality'` 또는 `'Inheritance'`가 될 수 있는 `aspectName` 같은 속성을 추가합니다. 목표는 사람이 정보에 더 쉽게 접근하게 하는 것입니다.
@@ -641,13 +621,13 @@ END",
 
 ```cypher
 CALL apoc.periodic.iterate(
-"MATCH (n:Resource) RETURN id(n) as id",
-"MATCH (n)
-WHERE id(n) = id AND
-NOT 'HpoPhenotype' in labels(n) AND
-NOT 'HpoDisease' in labels(n)
-DETACH DELETE n",
-{batchSize:10000})
+    "MATCH (n:Resource) RETURN id(n) as id",
+    "MATCH (n)
+     WHERE id(n) = id AND
+           NOT 'HpoPhenotype' in labels(n) AND
+           NOT 'HpoDisease' in labels(n)
+     DETACH DELETE n",
+     {batchSize:10000})
 YIELD batches, total return batches, total
 ```
 
@@ -662,13 +642,13 @@ YIELD batches, total return batches, total
 - **HP:0100651 (표현형 특징)**: https://hpo.jax.org/app/browse/term/HP:0100651
 - **OMIM:222100 (질병)**: https://www.omim.org/entry/222100
 
-![임상의 활동을 지원하기 위해 생성된 KG에 질의하는 단계.](images/2ab1dbd408a0b1c0cc5fd7c9c0c01fd251a6613b79d9df13d969cf2e1b72bb7c.jpg)  
+![임상의 활동을 지원하기 위해 생성된 KG에 질의하는 단계.](images/ko/figure-3-10-ko.png)
 
 그림 3.10 임상의 활동을 지원하기 위해 생성된 KG에 질의하기(Querying the generated KG)
 
 임상의는 환자에게서 제1형 당뇨병의 전형적인 표현형 특징들을 알아봅니다. 이것들은 다음 리스팅의 질의로 지식 그래프에서도 탐색할 수 있습니다. 그림 3.11이 그 결과를 보여줍니다.
 
-![제1형 당뇨병과 관련된 모든 표현형 특징을 가져오는 질의의 결과.](images/51d02656dec871b6d826c3b53faaa19fc28025e37e5e8524336ec7a7e89cc5bb.jpg)  
+![제1형 당뇨병과 관련된 모든 표현형 특징을 가져오는 질의의 결과.](images/ko/figure-3-11-ko.png)
 
 그림 3.11 제1형 당뇨병과 관련된 모든 표현형 특징을 가져오는 질의의 결과
 
@@ -695,20 +675,13 @@ RETURN path
 
 아래 질의는 다섯 개의 표현형 이름에 해당하는 노드를 먼저 찾은 뒤, 그것들을 특징으로 가지는 질병을 모으고, 각 질병이 이 목록 중 몇 개의 특징과 맞아떨어지는지(`num_of_features`)를 세어 많은 순으로 정렬해 상위 5개를 반환합니다.
 
-```sql
+```cypher
 MATCH (phe:HpoPhenotype)
-WHERE phe.label IN [
-"Growth delay",
-"Large knee",
-"Sensorineural hearing impairment",
-"Pruritus",
-"Type I diabetes mellitus"
-]
+WHERE phe.label in ["Growth delay", "Large knee", "Sensorineural hearing impairment", "Pruritus", "Type I diabetes mellitus"]
 WITH phe
 MATCH path=(dis:HpoDisease)-[:HAS_PHENOTYPIC_FEATURE]->(phe)
 UNWIND dis as nodes
-RETURN
-dis.id as disease_id,
+RETURN dis.id as disease_id,
 dis.label as disease_name,
 collect(phe.label) as features,
 count(nodes) as num_of_features
@@ -738,7 +711,7 @@ LIMIT 5
 아래 질의에서 `[:SUBCLASSOF*1..3]`은 "하위 클래스 관계를 1\~3단계까지 따라간다"는 뜻입니다. 즉 `HP:0000818`(내분비계 이상)보다 한 단계에서 세 단계까지 더 구체적인 모든 표현형 노드(`n`)를 찾습니다.
 
 ```cypher
-MATCH (p:HpoPhenotype)<-[:SUBCLASSOF*1..3]-(n:HpoPhenotype)
+MATCH (p:HpoPhenotype)<-[:SUBCLASSOF*1..3]-(n:HpoPhenotype)// #A
 WHERE p.id = "HP:0000818"
 RETURN p,n
 ```

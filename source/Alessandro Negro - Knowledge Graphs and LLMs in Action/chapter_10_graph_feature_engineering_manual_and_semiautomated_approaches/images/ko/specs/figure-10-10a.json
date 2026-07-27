@@ -1,0 +1,26 @@
+{
+  "title": "Figure 10.10a Korean localization",
+  "source": "../../acaf2efc0c26103c81ea111e1c977a483fc7d7a835d498f8be5234489cd20f7c.jpg",
+  "output": "../figure-10-10a-ko.png",
+  "coordinate_space": [1129, 551],
+  "operations": [
+    {"type": "rect", "box": [116, 22, 239, 48], "fill": "#ffffff"},
+    {"type": "text", "box": [122, 27, 227, 38], "text": "노드 A의 이웃", "font": "regular", "font_size": 21, "min_font_size": 17, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [675, 4, 327, 36], "fill": "#ffffff"},
+    {"type": "text", "box": [681, 8, 315, 28], "text": "첫 번째 반복: 노드 A", "font": "regular", "font_size": 21, "min_font_size": 17, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [0, 296, 101, 28], "fill": "#ffffff"},
+    {"type": "text", "box": [5, 298, 91, 24], "text": "차수: 3", "font": "regular", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [84, 219, 104, 28], "fill": "#ffffff"},
+    {"type": "text", "box": [89, 221, 94, 24], "text": "차수: 2", "font": "regular", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [289, 254, 107, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [294, 257, 97, 25], "text": "차수: 4", "font": "regular", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [189, 356, 110, 28], "fill": "#ffffff"},
+    {"type": "text", "box": [194, 358, 100, 24], "text": "차수: 6", "font": "regular", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [335, 392, 105, 35], "fill": "#ffffff"},
+    {"type": "text", "box": [340, 396, 95, 27], "text": "차수: 4", "font": "regular", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [0, 467, 101, 35], "fill": "#ffffff"},
+    {"type": "text", "box": [5, 471, 91, 27], "text": "차수: 1", "font": "regular", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [177, 511, 107, 35], "fill": "#ffffff"},
+    {"type": "text", "box": [182, 515, 97, 27], "text": "차수: 3", "font": "regular", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "left", "valign": "center"}
+  ]
+}

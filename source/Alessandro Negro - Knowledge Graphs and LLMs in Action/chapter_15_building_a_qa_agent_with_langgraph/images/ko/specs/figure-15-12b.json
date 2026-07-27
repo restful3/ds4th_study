@@ -1,0 +1,281 @@
+{
+  "title": "figure-15-12b Korean localization",
+  "source": "../../db3aa9e2ef3a3242d1e151c3f7dd4537df28847f9f8524ad78af3213d4e5572b.jpg",
+  "output": "../figure-15-12b-ko.png",
+  "coordinate_space": [
+    382,
+    740
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        9,
+        0,
+        70,
+        23
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        9,
+        0,
+        70,
+        23
+      ],
+      "text": "채팅",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        64,
+        31,
+        300,
+        33
+      ],
+      "fill": "#f7f7f7"
+    },
+    {
+      "type": "text",
+      "box": [
+        64,
+        31,
+        300,
+        33
+      ],
+      "text": "현재 수사 중인 범죄 노드 하나를 반환하세요.",
+      "font": "regular",
+      "font_size": 13,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        66,
+        94,
+        145,
+        24
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        66,
+        94,
+        145,
+        24
+      ],
+      "text": "추론",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        67,
+        126,
+        170,
+        22
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        67,
+        126,
+        170,
+        22
+      ],
+      "text": "출력 형식:  graph",
+      "font": "bold",
+      "font_size": 13,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        66,
+        158,
+        305,
+        82
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        66,
+        158,
+        305,
+        82
+      ],
+      "text": "현재 수사 중인 범죄 노드를 찾기 위해 Crime 노드를\nstatus 속성의 'investigation' 값으로 필터링합니다.\n하나만 필요하므로 LIMIT 1을 사용합니다.",
+      "font": "regular",
+      "font_size": 13,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        79,
+        254,
+        95,
+        24
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        79,
+        254,
+        95,
+        24
+      ],
+      "text": "쿼리...",
+      "font": "regular",
+      "font_size": 13,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        66,
+        407,
+        105,
+        24
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        66,
+        407,
+        105,
+        24
+      ],
+      "text": "요약",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        66,
+        439,
+        292,
+        45
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        66,
+        439,
+        292,
+        45
+      ],
+      "text": "현재 수사 중인 범죄 노드 하나를\n반환했습니다.",
+      "font": "regular",
+      "font_size": 13,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        66,
+        486,
+        305,
+        180
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        66,
+        486,
+        305,
+        180
+      ],
+      "text": "• 주요 유형: CRIMINAL TRESPASS\n• 날짜: 2023-06-15T16:48:00Z\n• 설명: 피해자는 번호판이 'EB'로 시작하는\n  검은 차량이 사건 직후 현장을 떠나는 것을\n  목격했다고 신고했습니다.\n• 상태: investigation\n• 위치: POINT(-87.6195518 41.695476192)",
+      "font": "regular",
+      "font_size": 12,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 3
+    },
+    {
+      "type": "rect",
+      "box": [
+        79,
+        680,
+        75,
+        21
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        79,
+        680,
+        75,
+        21
+      ],
+      "text": "추가...",
+      "font": "regular",
+      "font_size": 12,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    }
+  ]
+}

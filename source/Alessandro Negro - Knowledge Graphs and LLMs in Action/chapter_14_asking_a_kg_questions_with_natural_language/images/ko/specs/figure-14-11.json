@@ -1,0 +1,44 @@
+{
+  "title": "Figure 14.11 Korean localization",
+  "source": "../../f8d05a7bfd8dff779e036db53e5bc5382cadfd90ac33716036a0e39f67f531a5.jpg",
+  "output": "../figure-14-11-ko.png",
+  "coordinate_space": [1131, 635],
+  "operations": [
+    {"type": "rect", "box": [28, 14, 325, 32], "fill": "#ffffff"},
+    {"type": "text", "box": [32, 16, 317, 28], "text": "자연어 질문", "font": "regular", "font_size": 21, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [405, 14, 325, 32], "fill": "#ffffff"},
+    {"type": "text", "box": [409, 16, 317, 28], "text": "주석이 포함된 스키마 정의", "font": "regular", "font_size": 21, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [780, 14, 325, 32], "fill": "#ffffff"},
+    {"type": "text", "box": [784, 16, 317, 28], "text": "사용자 선택(선택 사항)", "font": "regular", "font_size": 21, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [478, 102, 177, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [484, 106, 165, 23], "text": "입력 처리", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [28, 143, 325, 32], "fill": "#ffffff"},
+    {"type": "text", "box": [29, 144, 323, 30], "text": "1. 간단한 작업 설명과 질문", "font": "regular", "font_size": 20, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [399, 143, 331, 32], "fill": "#ffffff"},
+    {"type": "text", "box": [406, 144, 323, 30], "text": "2. 주석이 포함된 스키마 정의", "font": "regular", "font_size": 20, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [780, 143, 325, 32], "fill": "#ffffff"},
+    {"type": "text", "box": [781, 144, 323, 30], "text": "3. 의도별 요구사항", "font": "regular", "font_size": 20, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [475, 246, 183, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [481, 250, 171, 23], "text": "맥락 구성", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [28, 286, 325, 32], "fill": "#ffffff"},
+    {"type": "text", "box": [29, 287, 323, 30], "text": "4. 예시", "font": "regular", "font_size": 20, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [399, 286, 331, 32], "fill": "#ffffff"},
+    {"type": "text", "box": [406, 287, 323, 30], "text": "5. 사용자 선택(선택 사항)", "font": "regular", "font_size": 20, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [780, 286, 325, 32], "fill": "#ffffff"},
+    {"type": "text", "box": [781, 287, 323, 30], "text": "6. KG 전용 주석", "font": "regular", "font_size": 20, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [476, 390, 181, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [482, 394, 169, 23], "text": "최종 지침", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [28, 433, 325, 32], "fill": "#ffffff"},
+    {"type": "text", "box": [29, 434, 323, 30], "text": "7. 질문 재확인", "font": "regular", "font_size": 20, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [399, 433, 331, 32], "fill": "#ffffff"},
+    {"type": "text", "box": [406, 434, 323, 30], "text": "8. 요구사항 재확인", "font": "regular", "font_size": 20, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [780, 433, 325, 32], "fill": "#ffffff"},
+    {"type": "text", "box": [781, 434, 323, 30], "text": "9. 출력 형식 지정", "font": "regular", "font_size": 20, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [472, 532, 189, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [478, 536, 177, 23], "text": "생성된 출력", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

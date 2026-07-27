@@ -1,0 +1,497 @@
+{
+  "title": "figure-2-3 Korean localization",
+  "source": "../../8d5ee9d21e7c1a8d5b3f1f9a505025454e1b742feb115f6f271ab5331c7c3813.jpg",
+  "output": "../figure-2-3-ko.png",
+  "coordinate_space": [
+    1132,
+    590
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        10,
+        30,
+        145,
+        32
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        10,
+        30,
+        145,
+        32
+      ],
+      "text": "데이터 소스",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        10,
+        205,
+        145,
+        32
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        10,
+        205,
+        145,
+        32
+      ],
+      "text": "환경",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        241,
+        123,
+        114,
+        122
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        241,
+        123,
+        114,
+        122
+      ],
+      "text": "지능형\n자율 시스템",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        348,
+        82,
+        142,
+        48
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        348,
+        82,
+        142,
+        48
+      ],
+      "text": "과제 T를\n대신 수행",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        364,
+        225,
+        118,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        364,
+        225,
+        118,
+        28
+      ],
+      "text": "완료",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        486,
+        198,
+        79,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        486,
+        198,
+        79,
+        28
+      ],
+      "text": "사용자",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        153,
+        148,
+        72,
+        26
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        153,
+        148,
+        72,
+        26
+      ],
+      "text": "감지",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        190,
+        344,
+        48,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        190,
+        344,
+        48,
+        28
+      ],
+      "text": "행동",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        583,
+        30,
+        145,
+        32
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        583,
+        30,
+        145,
+        32
+      ],
+      "text": "데이터 소스",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        583,
+        205,
+        145,
+        32
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        583,
+        205,
+        145,
+        32
+      ],
+      "text": "환경",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        811,
+        123,
+        101,
+        122
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        811,
+        123,
+        101,
+        122
+      ],
+      "text": "지능형\n자문 시스템",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        914,
+        81,
+        139,
+        56
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        914,
+        81,
+        139,
+        56
+      ],
+      "text": "과제 T를\n도와주세요",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        929,
+        225,
+        117,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        929,
+        225,
+        117,
+        28
+      ],
+      "text": "제안",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        1050,
+        198,
+        79,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        1050,
+        198,
+        79,
+        28
+      ],
+      "text": "사용자",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        726,
+        148,
+        72,
+        26
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        726,
+        148,
+        72,
+        26
+      ],
+      "text": "감지",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        820,
+        344,
+        48,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        820,
+        344,
+        48,
+        28
+      ],
+      "text": "행동",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        306,
+        407,
+        258,
+        140
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        306,
+        407,
+        258,
+        140
+      ],
+      "text": "지능형 시스템이 자율적으로 작동하고,\n과제가 끝나면 사용자에게 알립니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        646,
+        461,
+        478,
+        88
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        646,
+        461,
+        478,
+        88
+      ],
+      "text": "지능형 시스템은 행동을 제안하고,\n사용자는 환경에서 행동하며 최종 결정합니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    }
+  ]
+}

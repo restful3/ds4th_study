@@ -1,0 +1,416 @@
+{
+  "title": "figure-2-2 Korean localization",
+  "source": "../../5b42963a97f07374ca7fc5ed3f00d687603cd761dc60ab843e5c51c5cd9174b6.jpg",
+  "output": "../figure-2-2-ko.png",
+  "coordinate_space": [
+    901,
+    929
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        34,
+        16,
+        132,
+        48
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        34,
+        16,
+        132,
+        48
+      ],
+      "text": "비정형\n데이터",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        33,
+        158,
+        132,
+        48
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        33,
+        158,
+        132,
+        48
+      ],
+      "text": "벡터 기반\n데이터",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        34,
+        275,
+        128,
+        48
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        34,
+        275,
+        128,
+        48
+      ],
+      "text": "관계형\n소스",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        33,
+        390,
+        132,
+        30
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        33,
+        390,
+        132,
+        30
+      ],
+      "text": "이메일/채팅",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        35,
+        480,
+        128,
+        48
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        35,
+        480,
+        128,
+        48
+      ],
+      "text": "도메인\n전문가",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        34,
+        610,
+        128,
+        30
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        34,
+        610,
+        128,
+        30
+      ],
+      "text": "환경",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        32,
+        710,
+        132,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        32,
+        710,
+        132,
+        28
+      ],
+      "text": "데이터 소스",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        325,
+        313,
+        120,
+        60
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        325,
+        313,
+        120,
+        60
+      ],
+      "text": "지능형\n시스템",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        207,
+        331,
+        74,
+        30
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        207,
+        331,
+        74,
+        30
+      ],
+      "text": "감지",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        468,
+        329,
+        139,
+        30
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        468,
+        329,
+        139,
+        30
+      ],
+      "text": "소통",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        658,
+        480,
+        232,
+        58
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        658,
+        480,
+        232,
+        58
+      ],
+      "text": "사용자/\n다른 지능형 시스템",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        786,
+        607,
+        58,
+        30
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        786,
+        607,
+        58,
+        30
+      ],
+      "text": "행동",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        242,
+        650,
+        58,
+        30
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        242,
+        650,
+        58,
+        30
+      ],
+      "text": "행동",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        195,
+        136,
+        425,
+        92
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        195,
+        136,
+        425,
+        92
+      ],
+      "text": "지능형 시스템은 형식이 서로 다른 여러 데이터 소스에\n접근해 세계를 ‘인지’합니다.",
+      "font": "bold",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        195,
+        812,
+        690,
+        112
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        195,
+        812,
+        690,
+        112
+      ],
+      "text": "내부 처리 결과로 지능형 시스템은\n• 최종 사용자에게 결과를 제공하고\n• 다른 에이전트와 소통하며\n• 환경에서 행동하고 자율적으로 결정할 수 있습니다.",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    }
+  ]
+}

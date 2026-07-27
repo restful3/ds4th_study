@@ -1,0 +1,12 @@
+{
+  "title": "Figure 10.3 Korean localization",
+  "source": "../../28a245a464648a6959d1a9d081f0aba6c739e69f82d6f5714b654ed3d22d2315.jpg",
+  "output": "../figure-10-3-ko.png",
+  "coordinate_space": [615, 379],
+  "operations": [
+    {"type": "rect", "box": [0, 10, 302, 49], "fill": "#ffffff"},
+    {"type": "text", "box": [6, 14, 290, 41], "text": "A, B, C는 삼각형을 이루지 않음", "font": "regular", "font_size": 19, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [316, 10, 299, 49], "fill": "#ffffff"},
+    {"type": "text", "box": [322, 14, 287, 41], "text": "A, B, C는 삼각형을 이룸", "font": "regular", "font_size": 19, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

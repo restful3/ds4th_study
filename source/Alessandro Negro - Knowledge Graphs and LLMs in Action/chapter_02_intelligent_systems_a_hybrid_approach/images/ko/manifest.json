@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "chapter": "2",
+  "source_document": "../../02_intelligent_systems_a_hybrid_approach.md",
+  "review_status": "reviewed",
+  "review_method": [
+    "original and Korean Markdown image order and captions",
+    "source image inspection at original pixel dimensions",
+    "localized image inspection at original pixel dimensions",
+    "2400px final contact sheet and individual full-size inspection"
+  ],
+  "mapping_notes": [
+    "All fourteen images referenced by the chapter map directly to Figures 2.1 through 2.14.",
+    "Figures 2.5, 2.8, and 2.10 retain the original gray emphasis hierarchy while translating both active and inactive labels.",
+    "Figure 2.14 preserves the circular CRISP-DM geometry and the reading angle of the process-stage labels."
+  ],
+  "translation_policy": {
+    "translate": "reader-facing callouts, diagram headings, semantic labels, process stages, source types, and screenshot response text",
+    "preserve": "LLM, KG, RLHF, CRISP-DM, EHR, ML, NLP, Claude.ai, architecture geometry, icons, and panel markers"
+  },
+  "items": [
+    {"key": "figure-2-1", "source": "../4546d462861e4f0bc099b0c9057d7a8b4e3a95d2cf6817c089182ede72e78694.jpg", "output": "figure-2-1-ko.png", "action": "localized", "reason": "지능형 시스템의 구성 요소·피드백 루프·설명문을 번역"},
+    {"key": "figure-2-2", "source": "../5b42963a97f07374ca7fc5ed3f00d687603cd761dc60ab843e5c51c5cd9174b6.jpg", "output": "figure-2-2-ko.png", "action": "localized", "reason": "데이터 소스·감지·소통·행동 흐름과 설명문을 번역"},
+    {"key": "figure-2-3", "source": "../8d5ee9d21e7c1a8d5b3f1f9a505025454e1b742feb115f6f271ab5331c7c3813.jpg", "output": "figure-2-3-ko.png", "action": "localized", "reason": "자율 시스템과 자문 시스템의 라벨·설명을 번역"},
+    {"key": "figure-2-4", "source": "../9c09ef790d768464e628dfb89ec31b481f1cd1783868945a1411fcfd72103f4b.jpg", "output": "figure-2-4-ko.png", "action": "localized", "reason": "확장 지능형 시스템 모델의 구성 요소와 설명문을 번역"},
+    {"key": "figure-2-5", "source": "../f51116dcb3b73adb42e4006b3f39e5ad1284c6ae46ea73dc87f4ad191c4ec9f3.jpg", "output": "figure-2-5-ko.png", "action": "localized", "reason": "지식 습득 강조 도식의 활성·비활성 라벨과 설명문을 번역"},
+    {"key": "figure-2-6", "source": "../cf212fc4c33f72068acd7bf54bf63133c3a919f2a44de1b338aa05718d06f30f.jpg", "output": "figure-2-6-ko.png", "action": "localized", "reason": "KG 지식 습득 과정의 역할·데이터 소스·설명문을 번역"},
+    {"key": "figure-2-7", "source": "../a53edc5e218db99971e486971de573198768dac33bf47d2fefb40d2aa29cd935.jpg", "output": "figure-2-7-ko.png", "action": "localized", "reason": "LLM 지식 습득 과정의 학습·지식 모델·설명문을 번역"},
+    {"key": "figure-2-8", "source": "../5dae7816c206aea6f41a6757fc528fdffbba5589f3070430755bab603caf26bc.jpg", "output": "figure-2-8-ko.png", "action": "localized", "reason": "추론 강조 도식의 활성·비활성 라벨과 설명문을 번역"},
+    {"key": "figure-2-9", "source": "../0095f85a30082738c8787060c16af0a4070a24ed06ab9f58f47aeb7fc6fa433a.jpg", "output": "figure-2-9-ko.png", "action": "localized", "reason": "Claude.ai 응답 스크린샷 본문을 자연스러운 한국어로 번역"},
+    {"key": "figure-2-10", "source": "../228546d6ce1b2ee6280d8fa5b022e5e7a5701fdf7f6c5ae357351e3cdb6bb359.jpg", "output": "figure-2-10-ko.png", "action": "localized", "reason": "여러 추론 엔진 도식의 라벨과 설명문을 번역"},
+    {"key": "figure-2-11", "source": "../6627f46738351c8b1955ce50f3338cdd4a83cf733757aeeebf396336fc2ed848.jpg", "output": "figure-2-11-ko.png", "action": "localized", "reason": "연역 추론기의 데이터 변환·지식 베이스·의료 예시를 번역"},
+    {"key": "figure-2-12", "source": "../449d8457bb6d508ec1cb98c8a4e1052df86f66feab6d0a36dea99891eb9516f5.jpg", "output": "figure-2-12-ko.png", "action": "localized", "reason": "귀납 추론기의 지식 구성·추상화·의료 예시를 번역"},
+    {"key": "figure-2-13", "source": "../07c85d873e1612aaa410fd4c81021e2af9cbbfc2dfa5d8e4aa7dbada3ba49b96.jpg", "output": "figure-2-13-ko.png", "action": "localized", "reason": "상향식 KG 구축 흐름과 기능·데이터 주도 설명을 번역"},
+    {"key": "figure-2-14", "source": "../01973170f772ab941ad41923b68a8a2d5f677b99512ffca1bfe6a5e8535b95ad.jpg", "output": "figure-2-14-ko.png", "action": "localized", "reason": "목적 주도 CRISP-DM 단계와 설명문을 원래 방향에 맞춰 번역"}
+  ]
+}

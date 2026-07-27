@@ -1,0 +1,20 @@
+{
+  "title": "Figure 10.8 Korean localization",
+  "source": "../../e22f7a0802bed8d604e72b61736c91799b6057e6c69cef9ee606efcc925642b3.jpg",
+  "output": "../figure-10-8-ko.png",
+  "coordinate_space": [1134, 457],
+  "operations": [
+    {"type": "rect", "box": [886, 0, 113, 22], "fill": "#ffffff"},
+    {"type": "text", "box": [891, 1, 103, 19], "text": "광역", "font": "regular", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [783, 31, 160, 29], "fill": "#ffffff"},
+    {"type": "text", "box": [788, 34, 150, 23], "text": "이웃 영역", "font": "regular", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [765, 65, 99, 29], "fill": "#ffffff"},
+    {"type": "text", "box": [770, 68, 89, 23], "text": "지역", "font": "regular", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [873, 65, 99, 29], "fill": "#ffffff"},
+    {"type": "text", "box": [878, 68, 89, 23], "text": "에고넷", "font": "regular", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [990, 65, 139, 29], "fill": "#ffffff"},
+    {"type": "text", "box": [995, 68, 129, 23], "text": "재귀 특징", "font": "regular", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [684, 226, 29, 91], "fill": "#ffffff"},
+    {"type": "text", "box": [688, 241, 21, 57], "text": "노\n드", "font": "regular", "font_size": 17, "min_font_size": 14, "line_gap": 0, "fill": "#222222", "align": "center", "valign": "center"}
+  ]
+}

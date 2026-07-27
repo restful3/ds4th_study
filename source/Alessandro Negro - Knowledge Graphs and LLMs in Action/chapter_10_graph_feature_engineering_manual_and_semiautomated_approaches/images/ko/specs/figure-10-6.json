@@ -1,0 +1,22 @@
+{
+  "title": "Figure 10.6 Korean localization",
+  "source": "../../d4ea42f61c5f4309eb5953747fc60cc436fe5b56fb583ccd856413c503f6c695.jpg",
+  "output": "../figure-10-6-ko.png",
+  "coordinate_space": [1134, 367],
+  "operations": [
+    {"type": "rect", "box": [79, 8, 412, 42], "fill": "#ffffff"},
+    {"type": "text", "box": [85, 12, 400, 34], "text": "메타그래프(더 큰 스키마의 일부)", "font": "regular", "font_size": 22, "min_font_size": 17, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [605, 7, 322, 44], "fill": "#ffffff"},
+    {"type": "text", "box": [611, 11, 310, 36], "text": "G ··· a ··· D의 메타경로:", "font": "regular", "font_size": 22, "min_font_size": 17, "fill": "#222222", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [50, 148, 93, 49], "fill": "#ffffff"},
+    {"type": "text", "box": [54, 151, 85, 43], "text": "MSigDB\n컬렉션", "font": "bold", "font_size": 18, "min_font_size": 14, "line_gap": 1, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [246, 146, 78, 23], "fill": "#ffffff"},
+    {"type": "text", "box": [250, 148, 70, 19], "text": "조직", "font": "bold", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [431, 150, 122, 47], "fill": "#ffffff"},
+    {"type": "text", "box": [435, 153, 114, 41], "text": "병태생리", "font": "bold", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [90, 325, 92, 23], "fill": "#ffffff"},
+    {"type": "text", "box": [94, 327, 84, 19], "text": "유전자", "font": "bold", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [391, 325, 89, 23], "fill": "#ffffff"},
+    {"type": "text", "box": [395, 327, 81, 19], "text": "질병", "font": "bold", "font_size": 18, "min_font_size": 14, "fill": "#222222", "align": "center", "valign": "center"}
+  ]
+}

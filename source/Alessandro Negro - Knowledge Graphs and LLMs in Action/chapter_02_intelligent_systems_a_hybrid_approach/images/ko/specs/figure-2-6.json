@@ -1,0 +1,470 @@
+{
+  "title": "figure-2-6 Korean localization",
+  "source": "../../cf212fc4c33f72068acd7bf54bf63133c3a919f2a44de1b338aa05718d06f30f.jpg",
+  "output": "../figure-2-6-ko.png",
+  "coordinate_space": [
+    1137,
+    712
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        7,
+        10,
+        370,
+        165
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        7,
+        10,
+        370,
+        165
+      ],
+      "text": "일부 ML 기반 추론 엔진은 데이터를 예측에 적합한\n지식 모델로 바꿔야 합니다. NLP와 유사도 계산이\n그 예입니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        726,
+        7,
+        411,
+        78
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        726,
+        7,
+        411,
+        78
+      ],
+      "text": "지식 베이스는 도메인 전문가가 직접 만들고\n기계가 읽을 수 있는 형식으로 정형화할 수 있습니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        726,
+        118,
+        411,
+        80
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        726,
+        118,
+        411,
+        80
+      ],
+      "text": "KG는 사람이 이해할 수 있어 도메인 전문가가\n지식 베이스를 검증할 수도 있습니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        852,
+        238,
+        285,
+        109
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        852,
+        238,
+        285,
+        109
+      ],
+      "text": "지식 베이스는 임베딩·연역 추론 등의\n소스로 사용할 수 있습니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        852,
+        386,
+        285,
+        111
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        852,
+        386,
+        285,
+        111
+      ],
+      "text": "원본 소스의 데이터를 접근·병합·추론하기 쉬운\n형식으로 변환합니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        7,
+        399,
+        240,
+        90
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        7,
+        399,
+        240,
+        90
+      ],
+      "text": "도메인 전문가는 관련 데이터 소스를\n식별하도록 돕습니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        530,
+        3,
+        133,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        530,
+        3,
+        133,
+        28
+      ],
+      "text": "도메인 전문가",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        272,
+        292,
+        100,
+        55
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        272,
+        292,
+        100,
+        55
+      ],
+      "text": "추론\n엔진",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        481,
+        271,
+        232,
+        72
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        481,
+        271,
+        232,
+        72
+      ],
+      "text": "지식 베이스\n(지식 그래프)",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        30,
+        541,
+        132,
+        30
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        30,
+        541,
+        132,
+        30
+      ],
+      "text": "도메인 전문가",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        280,
+        532,
+        116,
+        44
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        280,
+        532,
+        116,
+        44
+      ],
+      "text": "비정형\n데이터",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        410,
+        532,
+        115,
+        44
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        410,
+        532,
+        115,
+        44
+      ],
+      "text": "벡터 기반\n데이터",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        536,
+        532,
+        115,
+        44
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        536,
+        532,
+        115,
+        44
+      ],
+      "text": "관계형\n소스",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        665,
+        532,
+        110,
+        44
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        665,
+        532,
+        110,
+        44
+      ],
+      "text": "도메인\n전문가",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        780,
+        532,
+        125,
+        31
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        780,
+        532,
+        125,
+        31
+      ],
+      "text": "이메일/채팅",
+      "font": "regular",
+      "font_size": 14,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        914,
+        532,
+        112,
+        31
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        914,
+        532,
+        112,
+        31
+      ],
+      "text": "환경",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        584,
+        682,
+        125,
+        27
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        584,
+        682,
+        125,
+        27
+      ],
+      "text": "데이터 소스",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    }
+  ]
+}

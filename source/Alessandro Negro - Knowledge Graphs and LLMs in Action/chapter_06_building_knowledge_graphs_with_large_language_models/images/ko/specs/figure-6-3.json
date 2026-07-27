@@ -1,0 +1,10 @@
+{
+  "title": "Figure 6.3 Korean localization",
+  "source": "../../fa0fd7ea54d904ddc7342587c66c1664f9c096288ed62cae36b12f4590803810.jpg",
+  "output": "../figure-6-3-ko.png",
+  "coordinate_space": [1026, 612],
+  "operations": [
+    {"type": "rect", "box": [826, 520, 200, 92], "fill": "#ffffff"},
+    {"type": "text", "box": [833, 527, 186, 78], "text": "그림 6.3\n그래프 기반 엔티티\n해소 예시", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 5, "fill": "#666666", "align": "left", "valign": "top"}
+  ]
+}

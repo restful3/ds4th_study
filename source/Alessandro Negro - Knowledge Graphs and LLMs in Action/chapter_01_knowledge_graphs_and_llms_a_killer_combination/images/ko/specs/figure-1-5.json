@@ -1,0 +1,234 @@
+{
+  "title": "figure-1-5 Korean localization",
+  "source": "../../2ead5fecbe04e62330d113d399480814d6f031b7be6f77f045b838354b3dc8af.jpg",
+  "output": "../figure-1-5-ko.png",
+  "coordinate_space": [
+    651,
+    404
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        108,
+        59,
+        90,
+        35
+      ],
+      "fill": {
+        "sample": [
+          100,
+          100
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        108,
+        59,
+        90,
+        35
+      ],
+      "text": "LLM",
+      "font": "bold",
+      "font_size": 22,
+      "min_font_size": 18,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        257,
+        34,
+        235,
+        91
+      ],
+      "fill": {
+        "sample": [
+          100,
+          100
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        257,
+        34,
+        235,
+        91
+      ],
+      "text": "장점:\n• 일반 지식\n• 언어 처리\n• 일반화",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        38,
+        126,
+        230,
+        112
+      ],
+      "fill": {
+        "sample": [
+          100,
+          100
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        38,
+        126,
+        230,
+        112
+      ],
+      "text": "단점:\n• 환각\n• 블랙박스\n• 도메인 지식과\n  최신 지식 부족",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        200,
+        243,
+        300,
+        140
+      ],
+      "fill": {
+        "sample": [
+          500,
+          280
+        ]
+      }
+    },
+    {
+      "type": "rect",
+      "box": [
+        205,
+        247,
+        235,
+        126
+      ],
+      "fill": {
+        "sample": [
+          500,
+          280
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        205,
+        247,
+        235,
+        126
+      ],
+      "text": "장점:\n• 정확성\n• 해석 가능성\n• 도메인 지식\n• 진화하는 지식",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        506,
+        298,
+        85,
+        34
+      ],
+      "fill": {
+        "sample": [
+          500,
+          280
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        506,
+        298,
+        85,
+        34
+      ],
+      "text": "KG",
+      "font": "bold",
+      "font_size": 22,
+      "min_font_size": 18,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "polygon",
+      "points": [
+        [
+          360,
+          161
+        ],
+        [
+          646,
+          161
+        ],
+        [
+          646,
+          215
+        ],
+        [
+          625,
+          266
+        ],
+        [
+          360,
+          266
+        ]
+      ],
+      "fill": {
+        "sample": [
+          500,
+          280
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        471,
+        161,
+        165,
+        100
+      ],
+      "text": "단점:\n• 불완전성\n• 언어 이해 부족\n• 복잡한 질의",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    }
+  ]
+}

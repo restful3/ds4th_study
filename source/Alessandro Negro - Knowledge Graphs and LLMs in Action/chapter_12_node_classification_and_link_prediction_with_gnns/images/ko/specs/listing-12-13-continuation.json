@@ -1,0 +1,24 @@
+{
+  "title": "Listing 12.13 continuation Korean localization",
+  "source": "../../1b2f7aa0f8b010e6ca37dcc4f73bc0e4eccc7a0002af848c5c902c8850627194.jpg",
+  "output": "../listing-12-13-continuation-ko.png",
+  "coordinate_space": [935, 621],
+  "operations": [
+    {"type": "rect", "box": [663, 10, 272, 88], "fill": "#ffffff"},
+    {"type": "text", "box": [670, 16, 258, 76], "text": "여러 어텐션 헤드를 이어 붙이도록\n은닉 차원을 조정합니다", "font": "bold", "font_size": 19, "min_font_size": 15, "line_gap": 3, "fill": "#555555", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [553, 105, 382, 108], "fill": "#ffffff"},
+    {"type": "text", "box": [560, 112, 368, 94], "text": "다중 헤드 어텐션과 매개변수를 갖는\n첫 번째 GATConv 계층을 정의합니다", "font": "bold", "font_size": 19, "min_font_size": 15, "line_gap": 3, "fill": "#555555", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [381, 214, 365, 74], "fill": "#ffffff"},
+    {"type": "text", "box": [388, 220, 351, 62], "text": "최종 출력을 위한 두 번째\nGATConv 계층을 정의합니다", "font": "bold", "font_size": 19, "min_font_size": 15, "line_gap": 3, "fill": "#555555", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [532, 286, 403, 67], "fill": "#ffffff"},
+    {"type": "text", "box": [539, 292, 389, 55], "text": "heads=1로 설정해 최종 계층이\n어텐션 헤드 하나를 사용하게 합니다", "font": "bold", "font_size": 18, "min_font_size": 14, "line_gap": 3, "fill": "#555555", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [508, 353, 427, 70], "fill": "#ffffff"},
+    {"type": "text", "box": [515, 359, 413, 58], "text": "concat=False로 설정해 최종 출력의\n이어 붙이기를 비활성화합니다", "font": "bold", "font_size": 18, "min_font_size": 14, "line_gap": 3, "fill": "#555555", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [619, 438, 316, 69], "fill": "#ffffff"},
+    {"type": "text", "box": [626, 444, 302, 57], "text": "자동 계층 설정 없이\n부모 클래스를 초기화합니다", "font": "bold", "font_size": 18, "min_font_size": 14, "line_gap": 3, "fill": "#555555", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [593, 509, 342, 67], "fill": "#ffffff"},
+    {"type": "text", "box": [600, 515, 328, 55], "text": "첫 번째 GATConv 계층을\nself.conv1에 할당합니다", "font": "bold", "font_size": 18, "min_font_size": 14, "line_gap": 3, "fill": "#555555", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [360, 539, 229, 82], "fill": "#ffffff"},
+    {"type": "text", "box": [367, 545, 215, 70], "text": "두 번째 GATConv 계층을\nself.conv2에\n할당합니다", "font": "bold", "font_size": 18, "min_font_size": 14, "line_gap": 3, "fill": "#555555", "align": "left", "valign": "center"}
+  ]
+}

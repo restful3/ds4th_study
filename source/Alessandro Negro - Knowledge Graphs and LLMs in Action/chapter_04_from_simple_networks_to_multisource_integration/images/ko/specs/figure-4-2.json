@@ -1,0 +1,26 @@
+{
+  "title": "Figure 4.2 Korean localization",
+  "source": "../../a953e75d773bb9793b92ce1f5240436a8833443e234202e32c628ad64d65c780.jpg",
+  "output": "../figure-4-2-ko.png",
+  "coordinate_space": [992, 509],
+  "operations": [
+    {"type": "rect", "box": [6, 88, 294, 149], "fill": "#ffffff"},
+    {"type": "text", "box": [10, 98, 282, 126], "text": "전사체는 전사 과정을 통해\n만들어집니다. 이 과정에서\n개별 유전자가 RNA 분자로\n복사됩니다.", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 5, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [5, 313, 309, 90], "fill": "#ffffff"},
+    {"type": "text", "box": [10, 321, 297, 74], "text": "단백질체는 이 RNA 분자를\n단백질로 번역해 만들어집니다.", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 7, "fill": "#111111", "align": "left", "valign": "top"},
+
+    {"type": "rect", "box": [653, 5, 339, 113], "fill": "#ffffff"},
+    {"type": "text", "box": [660, 14, 324, 94], "text": "유전체는 생물체가 지닌 전체 유전\n정보입니다. 인간 유전체는 DNA\n(디옥시리보핵산)로 이루어져 있습니다.", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 5, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [653, 190, 339, 145], "fill": "#ffffff"},
+    {"type": "text", "box": [660, 198, 324, 128], "text": "전사체는 특정 시점에 세포가 필요로 하는\n생물학적 정보를 담은 단백질 코딩\n유전자에서 유래한 RNA 분자의\n집합입니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 5, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [653, 411, 339, 91], "fill": "#ffffff"},
+    {"type": "text", "box": [660, 419, 324, 74], "text": "단백질체는 살아 있는 세포가 합성한\n기능성 단백질 전체를 말합니다.", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 7, "fill": "#111111", "align": "left", "valign": "top"},
+
+    {"type": "rect", "box": [365, 37, 167, 49], "fill": "#ffffff"},
+    {"type": "text", "box": [372, 43, 153, 37], "text": "유전체", "font": "bold", "font_size": 21, "min_font_size": 18, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [350, 235, 195, 49], "fill": "#ffffff"},
+    {"type": "text", "box": [372, 241, 153, 37], "text": "전사체", "font": "bold", "font_size": 21, "min_font_size": 18, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [365, 431, 167, 49], "fill": "#ffffff"},
+    {"type": "text", "box": [372, 437, 153, 37], "text": "단백질체", "font": "bold", "font_size": 21, "min_font_size": 18, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

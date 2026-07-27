@@ -1,0 +1,238 @@
+{
+  "title": "Figure 3.8 Korean localization",
+  "source": "../../e62afc30c4a44268378b02b1f3daf3fdf1b53b17267f22c8a4af1468c73a17d7.jpg",
+  "output": "../figure-3-8-ko.png",
+  "coordinate_space": [1137, 665],
+  "operations": [
+    {
+      "type": "ellipse",
+      "box": [191, 30, 76, 75],
+      "fill": {"sample": [229, 34], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [197, 36, 64, 63],
+      "text": "췌장에서\n인슐린을 거의\n만들지 못하는\n만성 질환",
+      "font": "regular",
+      "font_size": 10.5,
+      "min_font_size": 9,
+      "line_gap": 1,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [456, 5, 76, 77],
+      "fill": {"sample": [494, 12], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [462, 11, 64, 65],
+      "text": "정의",
+      "font": "regular",
+      "font_size": 13,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [486, 202, 72, 75],
+      "fill": {"sample": [521, 208], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [491, 207, 62, 65],
+      "text": "고혈당을\n특징으로 하는\n이상 집단",
+      "font": "regular",
+      "font_size": 10.5,
+      "min_font_size": 9,
+      "line_gap": 1,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [226, 222, 84, 84],
+      "fill": {"sample": [268, 232], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [233, 229, 70, 70],
+      "text": "인슐린\n의존성…",
+      "font": "regular",
+      "font_size": 11.5,
+      "min_font_size": 10,
+      "line_gap": 1,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [10, 317, 78, 78],
+      "fill": {"sample": [49, 324], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [16, 323, 66, 66],
+      "text": "제1형\n당뇨병",
+      "font": "regular",
+      "font_size": 12,
+      "min_font_size": 10,
+      "line_gap": 1,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [258, 367, 78, 77],
+      "fill": {"sample": [297, 374], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [264, 373, 66, 65],
+      "text": "일반인 용어",
+      "font": "regular",
+      "font_size": 11.5,
+      "min_font_size": 9.5,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [271, 581, 78, 77],
+      "fill": {"sample": [310, 588], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [277, 587, 66, 65],
+      "text": "제1형\n당뇨병",
+      "font": "regular",
+      "font_size": 12,
+      "min_font_size": 10,
+      "line_gap": 1,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [716, 42, 78, 77],
+      "fill": {"sample": [755, 49], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [722, 48, 66, 65],
+      "text": "인슐린 저항성\n당뇨병…",
+      "font": "regular",
+      "font_size": 10.5,
+      "min_font_size": 9,
+      "line_gap": 1,
+      "fill": "#ffffff",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [1053, 136, 78, 75],
+      "fill": {"sample": [1091, 143], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [1059, 142, 66, 63],
+      "text": "제2형\n당뇨병",
+      "font": "regular",
+      "font_size": 12,
+      "min_font_size": 10,
+      "line_gap": 1,
+      "fill": "#ffffff",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [1034, 353, 76, 76],
+      "fill": {"sample": [1072, 360], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [1040, 359, 64, 64],
+      "text": "당뇨병성\n케톤산증",
+      "font": "regular",
+      "font_size": 11.5,
+      "min_font_size": 9.5,
+      "line_gap": 1,
+      "fill": "#ffffff",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [899, 573, 78, 76],
+      "fill": {"sample": [938, 580], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [905, 579, 66, 64],
+      "text": "청년기 발병\n성인형 당뇨병",
+      "font": "regular",
+      "font_size": 10.5,
+      "min_font_size": 9,
+      "line_gap": 1,
+      "fill": "#ffffff",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [708, 322, 86, 83],
+      "fill": {"sample": [751, 332], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [715, 328, 72, 71],
+      "text": "당뇨병",
+      "font": "regular",
+      "font_size": 12,
+      "min_font_size": 10,
+      "fill": "#ffffff",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "ellipse",
+      "box": [605, 581, 78, 77],
+      "fill": {"sample": [644, 588], "radius": 2}
+    },
+    {
+      "type": "text",
+      "box": [611, 587, 66, 65],
+      "text": "제1형\n당뇨병",
+      "font": "regular",
+      "font_size": 12,
+      "min_font_size": 10,
+      "line_gap": 1,
+      "fill": "#ffffff",
+      "align": "center",
+      "valign": "center"
+    }
+  ]
+}

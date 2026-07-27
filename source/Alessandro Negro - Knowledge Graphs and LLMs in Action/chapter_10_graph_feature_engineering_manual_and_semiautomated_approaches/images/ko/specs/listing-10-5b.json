@@ -1,0 +1,20 @@
+{
+  "title": "Listing 10.5b Korean localization",
+  "source": "../../db4104162aca5068f22fa07721b45c3c2e0b3d8e6a1bbc8370a131d6e34a44c6.jpg",
+  "output": "../listing-10-5b-ko.png",
+  "coordinate_space": [1159, 446],
+  "operations": [
+    {"type": "rect", "box": [842, 9, 305, 70], "fill": "#ffffff"},
+    {"type": "text", "box": [850, 15, 289, 58], "text": "에고넷의 실제 간선 수(M)를 셉니다", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 3, "fill": "#555555", "align": "right", "valign": "center"},
+    {"type": "rect", "box": [827, 126, 321, 74], "fill": "#ffffff"},
+    {"type": "text", "box": [835, 132, 305, 62], "text": "에고넷에서 가능한 최대 간선 수\nN(N - 1)/2를 계산합니다", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 3, "fill": "#555555", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [897, 201, 255, 91], "fill": "#ffffff"},
+    {"type": "text", "box": [905, 207, 239, 79], "text": "실제 간선 수를 가능한 최대\n간선 수로 나누어 밀도를\n계산합니다", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 3, "fill": "#555555", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [613, 307, 356, 67], "fill": "#ffffff"},
+    {"type": "text", "box": [621, 313, 340, 55], "text": "모든 노드의 밀도 값이 든\n딕셔너리를 반환합니다", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 3, "fill": "#555555", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [738, 376, 413, 66], "fill": "#ffffff"},
+    {"type": "text", "box": [746, 382, 397, 54], "text": "지정한 노드의 밀도 값을 가져옵니다", "font": "bold", "font_size": 20, "min_font_size": 16, "fill": "#555555", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [0, 159, 134, 116], "fill": "#ffffff"},
+    {"type": "text", "box": [7, 166, 120, 102], "text": "밀도를\n소수 둘째\n자리까지\n반올림합니다", "font": "bold", "font_size": 19, "min_font_size": 15, "line_gap": 3, "fill": "#555555", "align": "center", "valign": "center"}
+  ]
+}

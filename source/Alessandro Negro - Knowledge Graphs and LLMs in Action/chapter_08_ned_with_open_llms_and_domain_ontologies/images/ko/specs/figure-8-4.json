@@ -1,0 +1,28 @@
+{
+  "title": "Figure 8.4 Korean localization",
+  "source": "../../0e1651bfb34cf2ce2086110dee44e33d3c9ee78cb1208a84970a7beacee6a5b5.jpg",
+  "output": "../figure-8-4-ko.png",
+  "coordinate_space": [1132, 609],
+  "operations": [
+    {"type": "rect", "box": [25, 26, 105, 64], "fill": "#ffffff"},
+    {"type": "text", "box": [32, 33, 91, 50], "text": "입력\n문서", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#b7b7b7", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [329, 6, 137, 89], "fill": "#ffffff"},
+    {"type": "text", "box": [336, 13, 123, 75], "text": "문서에 주석\n처리된 멘션", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 3, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [643, 3, 153, 89], "fill": "#ffffff"},
+    {"type": "text", "box": [650, 10, 139, 75], "text": "각 멘션의\n여러 후보", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 3, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [966, 1, 156, 91], "fill": "#ffffff"},
+    {"type": "text", "box": [973, 8, 142, 77], "text": "각 멘션의\n중의성 해소\n엔티티", "font": "regular", "font_size": 17, "min_font_size": 14, "line_gap": 2, "fill": "#b7b7b7", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [169, 137, 140, 72], "fill": "#ffffff"},
+    {"type": "text", "box": [176, 144, 126, 58], "text": "개체명\n인식", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 3, "fill": "#b7b7b7", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [493, 136, 139, 73], "fill": "#ffffff"},
+    {"type": "text", "box": [500, 143, 125, 59], "text": "NED\n후보 선택", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 3, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [814, 136, 140, 73], "fill": "#ffffff"},
+    {"type": "text", "box": [821, 143, 126, 59], "text": "NED 후보\n중의성 해소", "font": "regular", "font_size": 17, "min_font_size": 14, "line_gap": 3, "fill": "#b7b7b7", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [349, 373, 101, 69], "fill": "#ffffff"},
+    {"type": "text", "box": [356, 379, 87, 56], "text": "도메인\n온톨로지", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 3, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [0, 438, 359, 171], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 447, 343, 154], "text": "이 LLM 기반 접근에서는 SNOMED 같은\n도메인 온톨로지를 중의성 해소 과정의\n모든 단계에 완전히 통합하여, 모델이\n도메인 지식을 활용할 수 있습니다.", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [568, 438, 564, 171], "fill": "#ffffff"},
+    {"type": "text", "box": [577, 447, 546, 154], "text": "시스템은 전체 텍스트 검색으로 도메인 온톨로지에서\n여러 후보 엔티티를 찾습니다. 예를 들어 “Zika”는\nSNOMED에서 “Zika Virus”, “Zika Virus Infection”,\n“Congenital Zika Virus Infection” 등에 대응할 수 있습니다.", "font": "bold", "font_size": 17, "min_font_size": 14, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"}
+  ]
+}

@@ -1,0 +1,335 @@
+{
+  "title": "figure-15-10 Korean localization",
+  "source": "../../f845992050fbb4ba3e3a3d95fb315a8f61f19c1f126366817d4b8389defce6e4.jpg",
+  "output": "../figure-15-10-ko.png",
+  "coordinate_space": [
+    1031,
+    720
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        38,
+        4,
+        320,
+        80
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        38,
+        4,
+        320,
+        80
+      ],
+      "text": "선택 열: 현재 질문 맥락에서\n선택한 모든 노드를 표시합니다.",
+      "font": "bold",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        653,
+        4,
+        362,
+        80
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        653,
+        4,
+        362,
+        80
+      ],
+      "text": "그래프 캔버스: 여러 요청의 결과인\n노드와 관계를 표시합니다.",
+      "font": "bold",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        39,
+        132,
+        120,
+        27
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        39,
+        132,
+        120,
+        27
+      ],
+      "text": "선택",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        798,
+        134,
+        122,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        798,
+        134,
+        122,
+        28
+      ],
+      "text": "질문",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        798,
+        177,
+        150,
+        30
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        798,
+        177,
+        150,
+        30
+      ],
+      "text": "추론",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        801,
+        247,
+        152,
+        27
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        801,
+        247,
+        152,
+        27
+      ],
+      "text": "열 1     열 2",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        798,
+        335,
+        132,
+        30
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        798,
+        335,
+        132,
+        30
+      ],
+      "text": "요약",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        798,
+        474,
+        125,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        798,
+        474,
+        125,
+        28
+      ],
+      "text": "질문",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        798,
+        528,
+        150,
+        30
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        798,
+        528,
+        150,
+        30
+      ],
+      "text": "추론",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        198,
+        547,
+        123,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        198,
+        547,
+        123,
+        28
+      ],
+      "text": "질문:",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        37,
+        633,
+        330,
+        76
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        37,
+        633,
+        330,
+        76
+      ],
+      "text": "질문 입력 영역:\n사용자가 질문을 입력합니다.",
+      "font": "bold",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        427,
+        633,
+        590,
+        84
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        427,
+        633,
+        590,
+        84
+      ],
+      "text": "기록 영역: 이전 질문과 답변을 표시합니다.\n표·지도 형식의 응답과 각 요청의 추론·요약도 포함합니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    }
+  ]
+}

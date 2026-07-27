@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "chapter": "12",
+  "source_document": "../../12_node_classification_and_link_prediction_with_gnns.md",
+  "review_status": "reviewed",
+  "review_method": [
+    "original Markdown image order and captions",
+    "source image inspection at original pixel dimensions",
+    "localized image inspection at original pixel dimensions",
+    "900px target-display contact sheet"
+  ],
+  "mapping_notes": [
+    "The scan after Listing 12.13 is a continuation panel for that listing, not Figure 12.5; caption-only grouping attached it to the next figure.",
+    "The prose introduces Figures 12.8, 12.10, and 12.11 before their image groups, so their automatic caption associations were checked against the rendered images and surrounding text.",
+    "The three performance charts and three confusion matrices in each experiment retain model names, legend series, and numeric values while localizing reader-facing axes and class labels."
+  ],
+  "translation_policy": {
+    "translate": "reader-facing headings, explanatory prose, workflow labels, chart axes, and semantic class labels",
+    "preserve": "code, filenames, APIs, model names, tensor names, relationship types, numeric values, and legend series"
+  },
+  "items": [
+    {"key": "figure-12-1", "source": "../2d3db30a38cfce322c7b65e58e3dcc80304569c27c9c06869a1bef123a2ac79f.jpg", "output": "figure-12-1-ko.png", "action": "localized", "reason": "범용 GNN 파이프라인의 단계와 설명을 번역"},
+    {"key": "figure-12-2", "source": "../632ccb16cf5d985e79c579503df6063f42a36c640856c3fbd2ae3824231f102d.jpg", "output": "figure-12-2-ko.png", "action": "localized", "reason": "노드 분류 파이프라인의 단계와 설명을 번역"},
+    {"key": "figure-12-3", "source": "../eb955985cf90e600d56354146b87fe8a981e8b6b21fa902e08555b0a010ed54d.jpg", "output": "figure-12-3-ko.png", "action": "localized", "reason": "Elliptic 데이터 준비·분할 과정의 설명을 번역"},
+    {"key": "figure-12-4", "source": "../2303d11cb12f0f7936001f06044ed676b14df12fb33e038807ebfdd76030d4f9.jpg", "output": "figure-12-4-ko.png", "action": "localized", "reason": "노드 분류 인코더–디코더 설명을 번역"},
+    {"key": "listing-12-13-continuation", "source": "../1b2f7aa0f8b010e6ca37dcc4f73bc0e4eccc7a0002af848c5c902c8850627194.jpg", "output": "listing-12-13-continuation-ko.png", "action": "localized", "reason": "코드는 보존하고 GAT 구현 콜아웃 설명만 번역"},
+    {"key": "figure-12-5a", "source": "../48360b921cc9dc6727d340f1041e1aa9fd6fe373237ef1d18321ad800897205c.jpg", "output": "figure-12-5a-ko.png", "action": "localized", "reason": "정밀도 차트 축을 번역"},
+    {"key": "figure-12-5b", "source": "../ab825762e85036de827228be71ae4f2a5d08b7dae2214b08112db25a29644887.jpg", "output": "figure-12-5b-ko.png", "action": "localized", "reason": "재현율 차트 축을 번역"},
+    {"key": "figure-12-5c", "source": "../86f913b4fe1b7231155a1b01eb299ad2347d17402f27382fdeb888c41509a564.jpg", "output": "figure-12-5c-ko.png", "action": "localized", "reason": "F1 점수 차트 축을 번역"},
+    {"key": "figure-12-6a", "source": "../ba6bb9874db02cf558062084f4e4d151e726a7a266550de646445c7b3f9a86ad.jpg", "output": "figure-12-6a-ko.png", "action": "localized", "reason": "GCN 혼동 행렬의 축·클래스 라벨을 번역"},
+    {"key": "figure-12-6b", "source": "../2b1daebaba9eb4cf745c52f10a0e5cb889d04b897aa8512344d1832327aa9976.jpg", "output": "figure-12-6b-ko.png", "action": "localized", "reason": "GAT 혼동 행렬의 축·클래스 라벨을 번역"},
+    {"key": "figure-12-6c", "source": "../b4fed262f54215608dd5e1dcea3232f542b818780f5a8cf4067e0080db994866.jpg", "output": "figure-12-6c-ko.png", "action": "localized", "reason": "SAGE 혼동 행렬의 축·클래스 라벨을 번역"},
+    {"key": "figure-12-7", "source": "../38a7bc458c7b44903ee1c9a38499e80957a456dd6213a4797c2449793fdf5522.jpg", "output": "figure-12-7-ko.png", "action": "localized", "reason": "링크 예측 파이프라인의 단계와 설명을 번역"},
+    {"key": "figure-12-8", "source": "../aa5395148f4777acbf3bc132c759da7808637a99e06b350e3afd3d0ee69b2edc.jpg", "output": "figure-12-8-ko.png", "action": "localized", "reason": "MovieLens 데이터 처리 파이프라인 설명을 번역"},
+    {"key": "figure-12-9", "source": "../b044b6a1c76f2e7afff70df7d4f5d9ebc0525df51979152d2ff60d87201ad9c6.jpg", "output": "figure-12-9-ko.png", "action": "localized", "reason": "이종 GNN 링크 예측 단계와 설명을 번역"},
+    {"key": "figure-12-10a", "source": "../7379637e41f053b1dc6417050eeb9ee150c215d3c3a66d2c9d56836e9b411ce5.jpg", "output": "figure-12-10a-ko.png", "action": "localized", "reason": "정밀도 차트 축을 번역"},
+    {"key": "figure-12-10b", "source": "../df2f373fc3169c93b0812b9e524099ef7848c453953cffd1e516b3e9fdd6ed45.jpg", "output": "figure-12-10b-ko.png", "action": "localized", "reason": "재현율 차트 축을 번역"},
+    {"key": "figure-12-10c", "source": "../273523f40d226806623a4a75d9ac22acc3d55d48667b511f2e4523b10770428a.jpg", "output": "figure-12-10c-ko.png", "action": "localized", "reason": "F1 점수 차트 축을 번역"},
+    {"key": "figure-12-11a", "source": "../71a52f8856505fd94e3e98cf2b94268c881749284f7b6b022796c5d950ab29cb.jpg", "output": "figure-12-11a-ko.png", "action": "localized", "reason": "SAGE 링크 예측 혼동 행렬의 축·클래스 라벨을 번역"},
+    {"key": "figure-12-11b", "source": "../8f374015de656aff29212cc893231f1119c8bbe0808e3353a88b573aa1495c6d.jpg", "output": "figure-12-11b-ko.png", "action": "localized", "reason": "GCN 링크 예측 혼동 행렬의 축·클래스 라벨을 번역"},
+    {"key": "figure-12-11c", "source": "../3d2ed9013d36da6d375c52d6ff0f0534c160f38ec1ce320be29eea59273176c6.jpg", "output": "figure-12-11c-ko.png", "action": "localized", "reason": "GAT 링크 예측 혼동 행렬의 축·클래스 라벨을 번역"}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Figure 11.5 Korean localization",
+  "source": "../../4ca84898c47d7877b6006ad2b73c6df10074b80b10b7fe1d995955a54bbcc23f.jpg",
+  "output": "../figure-11-5-ko.png",
+  "coordinate_space": [1026, 465],
+  "operations": [
+    {"type": "rect", "box": [0, 0, 128, 38], "fill": "#ffffff"},
+    {"type": "text", "box": [7, 5, 114, 28], "text": "대상 노드", "font": "bold", "font_size": 19, "min_font_size": 15, "fill": "#222222", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [134, 256, 128, 39], "fill": "#ffffff"},
+    {"type": "text", "box": [140, 261, 116, 29], "text": "입력 그래프", "font": "regular", "font_size": 19, "min_font_size": 15, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [529, 119, 171, 51], "fill": {"sample": [600, 100], "radius": 4}},
+    {"type": "text", "box": [535, 124, 159, 41], "text": "집계", "font": "regular", "font_size": 22, "min_font_size": 18, "fill": "#333333", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [251, 346, 775, 119], "fill": "#ffffff"},
+    {"type": "text", "box": [260, 354, 757, 102], "text": "모델은 A의 지역 그래프 이웃(여기서는 D, B, C)에서 메시지를 집계합니다.\n이 세 노드에서 오는 메시지 또한 각 노드의 이웃에서 집계한 정보를\n바탕으로 합니다.", "font": "bold", "font_size": 19, "min_font_size": 15, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"}
+  ]
+}

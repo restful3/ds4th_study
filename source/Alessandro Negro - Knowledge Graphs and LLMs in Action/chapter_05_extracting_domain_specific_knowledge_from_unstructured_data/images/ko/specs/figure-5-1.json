@@ -1,0 +1,23 @@
+{
+  "title": "Figure 5.1 Korean localization",
+  "source": "../../ab483b5c357b8caca4c99ce7d3428f04d083522bace2c53e57513e0d4a892508.jpg",
+  "output": "../figure-5-1-ko.png",
+  "coordinate_space": [990, 418],
+  "operations": [
+    {"type": "rect", "box": [169, 3, 342, 108], "fill": "#ffffff"},
+    {"type": "text", "box": [174, 8, 306, 96], "text": "• 광학 문자 인식\n• 표 추출\n• 이미지 추출·분류·객체 탐지…", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 5, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [574, 3, 416, 89], "fill": "#ffffff"},
+    {"type": "text", "box": [580, 8, 404, 76], "text": "• 전통적 NER·RE 모델 학습\n• LLM(OpenAI GPT): 프롬프트 기반\n  또는 미세 조정", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+
+    {"type": "rect", "box": [17, 132, 143, 51], "fill": "#ffffff"},
+    {"type": "text", "box": [21, 136, 135, 43], "text": "비정형\n데이터 소스", "font": "regular", "font_size": 20, "min_font_size": 17, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [308, 301, 125, 27], "fill": "#ffffff"},
+    {"type": "text", "box": [313, 304, 115, 21], "text": "디지털화", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [529, 289, 143, 51], "fill": "#ffffff"},
+    {"type": "text", "box": [534, 294, 133, 41], "text": "개체명\n인식", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [785, 289, 180, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [790, 294, 170, 21], "text": "관계 추출", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [503, 378, 277, 36], "fill": "#ffffff"},
+    {"type": "text", "box": [508, 384, 267, 24], "text": "맞춤형 지식 추출", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "left", "valign": "center"}
+  ]
+}

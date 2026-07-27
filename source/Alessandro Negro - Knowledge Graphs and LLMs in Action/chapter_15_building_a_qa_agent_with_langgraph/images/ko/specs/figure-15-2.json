@@ -1,0 +1,281 @@
+{
+  "title": "figure-15-2 Korean localization",
+  "source": "../../a216d7c267c12209ef216ef93d7ce8c7280cdc73023fc60ebdd0c40bec6077ed.jpg",
+  "output": "../figure-15-2-ko.png",
+  "coordinate_space": [
+    1031,
+    542
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        63,
+        25,
+        72,
+        24
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        63,
+        25,
+        72,
+        24
+      ],
+      "text": "시작",
+      "font": "regular",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        284,
+        15,
+        230,
+        44
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        284,
+        15,
+        230,
+        44
+      ],
+      "text": "관련 문서 검색",
+      "font": "regular",
+      "font_size": 22,
+      "min_font_size": 18,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        636,
+        15,
+        240,
+        44
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        636,
+        15,
+        240,
+        44
+      ],
+      "text": "답변 생성",
+      "font": "regular",
+      "font_size": 22,
+      "min_font_size": 18,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        952,
+        25,
+        68,
+        24
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        952,
+        25,
+        68,
+        24
+      ],
+      "text": "종료",
+      "font": "regular",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        68,
+        166,
+        86,
+        29
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        68,
+        166,
+        86,
+        29
+      ],
+      "text": "질문",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        3,
+        276,
+        82,
+        32
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        3,
+        276,
+        82,
+        32
+      ],
+      "text": "상태",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        280,
+        276,
+        82,
+        32
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        280,
+        276,
+        82,
+        32
+      ],
+      "text": "상태",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        624,
+        276,
+        82,
+        32
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        624,
+        276,
+        82,
+        32
+      ],
+      "text": "상태",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        292,
+        458,
+        270,
+        82
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        292,
+        458,
+        270,
+        82
+      ],
+      "text": "반환 객체가 상태를 보강해\n다음 에이전트 함수에\n전달합니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        601,
+        458,
+        425,
+        82
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        601,
+        458,
+        425,
+        82
+      ],
+      "text": "결과를 상태에 추가합니다.\n최종 상태가 그래프 실행의\n출력이 됩니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Figure 4.7b Korean localization",
+  "source": "../../9e19fdeadd8d8b8dcf8ed7018732dad1e6dfe6acc8dc3f657a6cdb2ea600fb8e.jpg",
+  "output": "../figure-4-7b-ko.png",
+  "coordinate_space": [323, 264],
+  "operations": [
+    {"type": "rect", "box": [105, 0, 165, 14], "fill": "#ffffff"},
+    {"type": "text", "box": [111, 0, 153, 14], "text": "(b) 밀도", "font": "regular", "font_size": 16, "min_font_size": 13, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

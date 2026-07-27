@@ -1,0 +1,12 @@
+{
+  "title": "Figure 9.12 Korean localization",
+  "source": "../../6794f2f99ca675d0ab277e55487cba0251688a742580c4f9fb7bb2346873184a.jpg",
+  "output": "../figure-9-12-ko.png",
+  "coordinate_space": [914, 318],
+  "operations": [
+    {"type": "rect", "box": [324, 111, 135, 57], "fill": "#ffffff"},
+    {"type": "text", "box": [330, 117, 123, 45], "text": "커뮤니티\n탐지", "font": "regular", "font_size": 17, "min_font_size": 14, "line_gap": 2, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [364, 258, 150, 60], "fill": "#ffffff"},
+    {"type": "text", "box": [370, 265, 138, 46], "text": "그래프의\n커뮤니티", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

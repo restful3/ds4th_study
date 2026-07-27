@@ -651,3 +651,9 @@ class Ch03OffsetAuditTests(unittest.TestCase):
                     f"{spec.repo_number} 로 선언됐다. 예외라면 explainer 로 두거나 "
                     f"왜 벗어나는지 주석으로 적어라",
                 )
+
+    def test_final_book_3_28_does_not_use_stale_upstream_query(self) -> None:
+        """최종 교재의 명시적 질병 목록을 SKIP 100 버전으로 되돌리지 않는다."""
+        spec = listing_source.parse(self.study.listing_overrides["ch03"]["3.28"])
+        self.assertEqual("explainer", spec.kind)
+        self.assertEqual("upstream-wrong", spec.reason)

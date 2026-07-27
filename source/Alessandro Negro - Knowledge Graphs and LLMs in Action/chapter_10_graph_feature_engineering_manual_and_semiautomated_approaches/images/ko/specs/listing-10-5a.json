@@ -1,0 +1,16 @@
+{
+  "title": "Listing 10.5a Korean localization",
+  "source": "../../d95463828199b2a6ca575f2cf8d234c650adb11196222df9d4eb05e9a50a1fb8.jpg",
+  "output": "../listing-10-5a-ko.png",
+  "coordinate_space": [1039, 460],
+  "operations": [
+    {"type": "rect", "box": [8, 4, 1031, 38], "fill": {"sample": [520, 22], "radius": 4}},
+    {"type": "text", "box": [25, 6, 994, 34], "text": "리스팅 10.5   사기 탐지 네트워크의 에고넷 밀도 계산", "font": "bold", "font_size": 23, "min_font_size": 18, "fill": "#ffffff", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [500, 79, 235, 80], "fill": "#ffffff"},
+    {"type": "text", "box": [507, 84, 221, 70], "text": "각 노드의 밀도 값을 저장할\n딕셔너리를 초기화합니다", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 4, "fill": "#555555", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [715, 183, 324, 85], "fill": "#ffffff"},
+    {"type": "text", "box": [722, 188, 310, 75], "text": "노드의 이웃과 노드 자신을 모아\n에고넷을 만듭니다", "font": "bold", "font_size": 21, "min_font_size": 17, "line_gap": 4, "fill": "#555555", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [519, 284, 260, 64], "fill": "#ffffff"},
+    {"type": "text", "box": [526, 289, 246, 54], "text": "에고넷의 노드 수를 구합니다", "font": "bold", "font_size": 21, "min_font_size": 17, "fill": "#555555", "align": "left", "valign": "center"}
+  ]
+}

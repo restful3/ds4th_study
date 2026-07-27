@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "chapter": "09",
+  "source_document": "../../09_machine_learning_on_knowledge_graphs_a_primer_approach.md",
+  "review_status": "reviewed",
+  "review_method": [
+    "original Markdown image order and captions",
+    "source image inspection at original pixel dimensions",
+    "localized image inspection at original pixel dimensions",
+    "900px target-display contact sheet"
+  ],
+  "mapping_notes": [
+    "Figures 9.9 and 9.13 contain only numbered network nodes and language-neutral graph structure, so the original assets are preserved.",
+    "Figure 9.11 says 'node classifier' in its upper-right source callout although the figure and caption describe graph classification; the Korean image corrects this to 'graph classifier'.",
+    "Small target rings and rotated arrow labels were reviewed separately at original size; any overlapped outlines were explicitly restored."
+  ],
+  "translation_policy": {
+    "translate": "reader-facing prose, task and phase labels, semantic process labels, graph/class labels, and probability descriptions",
+    "preserve": "example feature vectors, literal class values such as Legit/Fraudster and Exists/Does not exist, node IDs, and graph topology"
+  },
+  "items": [
+    {
+      "key": "figure-9-1",
+      "source": "../dc54fc90e825ffab8e3b9254cf4213d9752b6b237102dea1691092480ad94878.jpg",
+      "output": "figure-9-1-ko.png",
+      "action": "localized",
+      "reason": "노드·그래프 중심 작업의 입력·출력·단계·대상 레이블을 번역"
+    },
+    {
+      "key": "figure-9-2",
+      "source": "../de9422ff2b34e8227a122222efd213f38af1dcc1d3d2e57f8b2ebb88f82438b5.jpg",
+      "output": "figure-9-2-ko.png",
+      "action": "localized",
+      "reason": "노드 분류의 학습·예측 흐름과 설명을 번역"
+    },
+    {
+      "key": "figure-9-3",
+      "source": "../227a9b2fb23ae7db20a287dfede2413a070cbfaaf5a80afa59842f961334fe07.jpg",
+      "output": "figure-9-3-ko.png",
+      "action": "localized",
+      "reason": "링크 예측의 음성 표본·학습·예측·확률 설명을 번역"
+    },
+    {
+      "key": "figure-9-4",
+      "source": "../145960de816dbc761a1f3ec5089b4403e5b988384dbdaf23a3c21344d20ce951.jpg",
+      "output": "figure-9-4-ko.png",
+      "action": "localized",
+      "reason": "커뮤니티 탐지 과정과 출력 레이블을 번역"
+    },
+    {
+      "key": "figure-9-5",
+      "source": "../a8b7bcbe5aadbbb31fad30c5fc3a387401b88f8387029491ebbf56cd01ccc615.jpg",
+      "output": "figure-9-5-ko.png",
+      "action": "localized",
+      "reason": "그래프 분류의 학습·예측 흐름과 클래스 레이블을 번역"
+    },
+    {
+      "key": "figure-9-6",
+      "source": "../e3736fdb03726912ae449ab36cfd99acc777db5af2b692cf1cd3ce4d173030d0.jpg",
+      "output": "figure-9-6-ko.png",
+      "action": "localized",
+      "reason": "집단 분류와 전통적 분류의 비교 설명·단계 레이블을 번역"
+    },
+    {
+      "key": "figure-9-7",
+      "source": "../fa05a4c181a10bff889fc2ac212c43ece733ff52c471da708e72b36d425b906a.jpg",
+      "output": "figure-9-7-ko.png",
+      "action": "localized",
+      "reason": "노드 분류·링크 예측 학습 흐름의 설명과 회전 라벨을 번역"
+    },
+    {
+      "key": "figure-9-8",
+      "source": "../19a5f22e99cc6052f34e1e73895c41985c48a6297e61b9cb4a3d178d3e15cf45.jpg",
+      "output": "figure-9-8-ko.png",
+      "action": "localized",
+      "reason": "노드 분류·링크 예측의 예측 흐름과 확률 설명을 번역"
+    },
+    {
+      "key": "figure-9-9",
+      "source": "../a7b377bcd748727ce49ac2e7d7f3df8898a067385550a2612684b5ff04641ec8.jpg",
+      "output": null,
+      "action": "preserved",
+      "reason": "숫자 노드와 네트워크 구조만 있는 언어 중립 결과"
+    },
+    {
+      "key": "figure-9-10",
+      "source": "../88acb5f3bcf89dcf5f2fbc5ea65bed53514630e59be66a31772b620e259d2b72.jpg",
+      "output": "figure-9-10-ko.png",
+      "action": "localized",
+      "reason": "그래프 분류 학습의 특징화·클래스 지정·분류기 학습을 번역"
+    },
+    {
+      "key": "figure-9-11",
+      "source": "../f159ff12941e606540a5837baa50a001ed8c0349af6cf2e1b42f1bf14e6dcac3.jpg",
+      "output": "figure-9-11-ko.png",
+      "action": "localized",
+      "reason": "그래프 분류 예측 흐름을 번역하고 원문의 node classifier 오기를 graph classifier 의미로 바로잡음"
+    },
+    {
+      "key": "figure-9-12",
+      "source": "../6794f2f99ca675d0ab277e55487cba0251688a742580c4f9fb7bb2346873184a.jpg",
+      "output": "figure-9-12-ko.png",
+      "action": "localized",
+      "reason": "그래프 클러스터링의 커뮤니티 탐지 과정과 출력 레이블을 번역"
+    },
+    {
+      "key": "figure-9-13",
+      "source": "../60e6e9d71a99d2fa2abd190d06293c4bc0a47d2e57c8a509c0813d823f471a0b.jpg",
+      "output": null,
+      "action": "preserved",
+      "reason": "숫자 노드와 네트워크 구조만 있는 언어 중립 결과"
+    }
+  ]
+}

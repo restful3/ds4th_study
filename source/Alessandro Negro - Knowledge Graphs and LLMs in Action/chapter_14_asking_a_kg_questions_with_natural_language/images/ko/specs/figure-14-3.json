@@ -1,0 +1,49 @@
+{
+  "title": "Figure 14.3 Korean localization",
+  "source": "../../070640191bdb502f25308c6e2ca94d7021328a562767f8d8a31510c7f0a01388.jpg",
+  "output": "../figure-14-3-ko.png",
+  "coordinate_space": [1132, 465],
+  "operations": [
+    {"type": "rect", "box": [14, 38, 81, 24], "fill": "#ffffff"},
+    {"type": "text", "group": "input", "box": [14, 38, 81, 24], "text": "입력", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [78, 113, 131, 29], "fill": "#ffffff"},
+    {"type": "text", "group": "input", "box": [83, 116, 121, 23], "text": "사용자 요청", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [33, 146, 157, 29], "fill": "#ffffff"},
+    {"type": "text", "group": "input", "box": [38, 149, 147, 23], "text": "사용자 선택", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [14, 256, 81, 23], "fill": "#ffffff"},
+    {"type": "text", "group": "schema", "box": [14, 256, 81, 23], "text": "스키마", "font": "regular", "font_size": 19, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [307, 57, 177, 36], "fill": "#ffffff"},
+    {"type": "text", "group": "intent", "box": [313, 62, 165, 27], "text": "의도 감지", "font": "regular", "font_size": 21, "min_font_size": 17, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [326, 99, 157, 96], "fill": "#ffffff"},
+    {"type": "text", "group": "intent", "box": [332, 103, 145, 88], "text": "사용자 질문을 분류해\n처리 방식을\n결정합니다.", "font": "regular", "font_size": 20, "min_font_size": 16, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [588, 57, 169, 36], "fill": "#ffffff"},
+    {"type": "text", "group": "query", "box": [594, 62, 157, 27], "text": "쿼리 생성", "font": "regular", "font_size": 21, "min_font_size": 17, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [615, 99, 145, 96], "fill": "#ffffff"},
+    {"type": "text", "group": "query", "box": [621, 103, 133, 88], "text": "사용자 입력과\n스키마를 정형\n쿼리로 변환합니다.", "font": "regular", "font_size": 20, "min_font_size": 16, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [748, 199, 91, 57], "fill": "#ffffff"},
+    {"type": "text", "group": "query", "box": [754, 203, 79, 49], "text": "실행\n오류", "font": "regular", "font_size": 20, "min_font_size": 16, "line_gap": 1, "fill": "#111111", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [306, 283, 181, 37], "fill": "#ffffff"},
+    {"type": "text", "group": "schema", "box": [312, 288, 169, 27], "text": "스키마 추출", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [294, 330, 202, 79], "fill": "#ffffff"},
+    {"type": "text", "group": "schema", "box": [300, 334, 190, 71], "text": "스키마를 LLM이\n처리할 형식으로\n변환합니다.", "font": "regular", "font_size": 20, "min_font_size": 16, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [587, 283, 171, 37], "fill": "#ffffff"},
+    {"type": "text", "group": "execution", "box": [593, 288, 159, 27], "text": "쿼리 실행", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [587, 330, 200, 79], "fill": "#ffffff"},
+    {"type": "text", "group": "execution", "box": [593, 334, 188, 71], "text": "쿼리를 실행해\n일치하는 결과를\n가져옵니다.", "font": "regular", "font_size": 20, "min_font_size": 16, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [931, 57, 97, 36], "fill": "#ffffff"},
+    {"type": "text", "group": "output", "box": [937, 62, 85, 27], "text": "출력", "font": "regular", "font_size": 21, "min_font_size": 17, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [1001, 151, 131, 36], "fill": "#ffffff"},
+    {"type": "text", "group": "visualization", "box": [1006, 156, 121, 27], "text": "시각화", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [973, 194, 159, 75], "fill": "#ffffff"},
+    {"type": "text", "group": "visualization", "box": [979, 198, 147, 67], "text": "데이터를 그래프·표\n등의 형식으로\n표시합니다.", "font": "regular", "font_size": 19, "min_font_size": 15, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [910, 283, 128, 37], "fill": "#ffffff"},
+    {"type": "text", "group": "summary", "box": [916, 288, 116, 27], "text": "요약", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [862, 330, 194, 79], "fill": "#ffffff"},
+    {"type": "text", "group": "summary", "box": [868, 334, 182, 71], "text": "쿼리 결과를\n요약하고\n분석합니다.", "font": "regular", "font_size": 20, "min_font_size": 16, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "chapter": "15",
+  "source_document": "../../15_building_a_qa_agent_with_langgraph.md",
+  "review_status": "reviewed",
+  "review_method": [
+    "original and Korean Markdown image order and captions",
+    "source image inspection at original pixel dimensions",
+    "localized image inspection at original pixel dimensions",
+    "900px target-display contact sheets for diagrams and screenshots"
+  ],
+  "mapping_notes": [
+    "The chapter uses 21 source images: Figures 15.1 through 15.16, with paired panels for Figures 15.12 through 15.15 and one image-form code listing.",
+    "The image-form code listing between Figures 15.7 and 15.8 is Listing 15.7; its code remains unchanged while the listing header and explanatory callouts are localized.",
+    "Figures 15.3, 15.7, and 15.8 share a pipeline layout but use different active and inactive states; each render was inspected separately.",
+    "Figures 15.4, 15.5, 15.6, and 15.9 share an architecture family with different crops and highlighted components; masks and labels were reviewed at each source size.",
+    "Screenshots preserve Cypher, UUIDs, node and relationship identifiers, property values, and map place names while localizing reader-facing UI, questions, reasoning, summaries, and analysis."
+  ],
+  "translation_policy": {
+    "translate": "reader-facing diagram labels, explanatory prose, UI headings, natural-language questions, reasoning, summaries, analysis, and property-label prose",
+    "preserve": "code, Cypher, LangGraph and schema identifiers, UUIDs, graph node and relationship identifiers, property values, timestamps, geographic coordinates, and map place names"
+  },
+  "items": [
+    {"key": "figure-15-1", "source": "../3a045993cda899ed266143b6768d5c12f72be4b5ef96838f00043b2029d7f087.jpg", "output": "figure-15-1-ko.png", "action": "localized", "reason": "시스템 아키텍처의 구성요소와 설명을 번역"},
+    {"key": "figure-15-2", "source": "../a216d7c267c12209ef216ef93d7ce8c7280cdc73023fc60ebdd0c40bec6077ed.jpg", "output": "figure-15-2-ko.png", "action": "localized", "reason": "LangGraph 상태 흐름의 단계와 설명을 번역"},
+    {"key": "figure-15-3", "source": "../02c786079e87dfd8dbbf890031f61c0e622fe56aa5073661d93927054f03a6ce.jpg", "output": "figure-15-3-ko.png", "action": "localized", "reason": "QA 파이프라인 노드와 조건부 흐름 라벨을 번역"},
+    {"key": "figure-15-4", "source": "../d1f2dc472a86c7b6dea5b8711b8ffd486f956ff55753ac1cbc46bf4986af1b91.jpg", "output": "figure-15-4-ko.png", "action": "localized", "reason": "백엔드 아키텍처의 구성요소·인터페이스·설명을 번역"},
+    {"key": "figure-15-5", "source": "../c957e41862c0ef3305cad8565f61790bc429edb62b73a026cd0a8ddd9688c829.jpg", "output": "figure-15-5-ko.png", "action": "localized", "reason": "설정 제공자 강조 아키텍처의 라벨을 번역"},
+    {"key": "figure-15-6", "source": "../8da21c09ba9e5b97c54479b5b82544cd0dbaae0bb95a86ab6e488c808a633bbf.jpg", "output": "figure-15-6-ko.png", "action": "localized", "reason": "스키마 제공자 강조 아키텍처의 라벨을 번역"},
+    {"key": "figure-15-7", "source": "../420c7c750e6f9baadf005a19b6f9b52c8430af405bc70ef05057f1c0ae6e5245.jpg", "output": "figure-15-7-ko.png", "action": "localized", "reason": "지식 전문가 모방 파이프라인의 노드 라벨을 번역"},
+    {"key": "listing-15-7", "source": "../baa1236f18888c3740890b4a6a899c1555344e1e3f101de990ea41f3f9a5a521.jpg", "output": "listing-15-7-ko.png", "action": "localized", "reason": "코드는 보존하고 리스팅 제목과 해설 콜아웃을 번역"},
+    {"key": "figure-15-8", "source": "../946f207b78fc900ce892e73a8075f30348354cd2302087f1e11bbf31035afa80.jpg", "output": "figure-15-8-ko.png", "action": "localized", "reason": "질의 실행 후 라우팅 단계와 상태 라벨을 번역"},
+    {"key": "figure-15-9", "source": "../eee59e6c04a3c98cd83581a80954cfc2889f2bf22a50987c0e8e33a3f378c8c3.jpg", "output": "figure-15-9-ko.png", "action": "localized", "reason": "파이프라인 통합 아키텍처의 인터페이스 라벨을 번역"},
+    {"key": "figure-15-10", "source": "../f845992050fbb4ba3e3a3d95fb315a8f61f19c1f126366817d4b8389defce6e4.jpg", "output": "figure-15-10-ko.png", "action": "localized", "reason": "애플리케이션 인터페이스의 영역·필드·설명을 번역"},
+    {"key": "figure-15-11", "source": "../590312efad82be3ab2bcd9dbda993d542a9a37c1574e2dbe8c5ecd72eb763cc7.jpg", "output": "figure-15-11-ko.png", "action": "localized", "reason": "스키마 식별자는 보존하고 속성 해설을 번역"},
+    {"key": "figure-15-12a", "source": "../72a2fe2cb11ad55653719857365bf11545f979180657f01d232b0fd9c6a260c1.jpg", "output": "figure-15-12a-ko.png", "action": "localized", "reason": "선택·캔버스 UI와 사건 설명을 번역"},
+    {"key": "figure-15-12b", "source": "../db3aa9e2ef3a3242d1e151c3f7dd4537df28847f9f8524ad78af3213d4e5572b.jpg", "output": "figure-15-12b-ko.png", "action": "localized", "reason": "질문·추론·요약을 번역하고 Cypher를 보존"},
+    {"key": "figure-15-13a", "source": "../56d15ddb9540e2edc9b663d34fc9cb0a2c1ac8b49fba0cfd635c17e84a9854ca.jpg", "output": "figure-15-13a-ko.png", "action": "localized", "reason": "그래프 캔버스 UI 라벨을 번역"},
+    {"key": "figure-15-13b", "source": "../3df8aaef467184bb877c313d40a9d883d8346a65256d0462c4f7ab38d16fb2de.jpg", "output": "figure-15-13b-ko.png", "action": "localized", "reason": "공간 질의 질문과 추론을 번역하고 지도 고유명사를 보존"},
+    {"key": "figure-15-14a", "source": "../3280ffb5f66ab44fa2903b8752ba18e9a4b283c796bb341975e667457cd6e95d.jpg", "output": "figure-15-14a-ko.png", "action": "localized", "reason": "차량 그래프 캔버스 UI 라벨을 번역"},
+    {"key": "figure-15-14b", "source": "../140e40872932f815c8d47abaab14553a1f9d5394a3643fdc796c221137f1f048.jpg", "output": "figure-15-14b-ko.png", "action": "localized", "reason": "차량 질의·추론·요약과 결과 필드 라벨을 번역"},
+    {"key": "figure-15-15a", "source": "../3dc939eebb93b6a13b6b63cfd9ea3cdf2d434a363193849b7b74815d64085426.jpg", "output": "figure-15-15a-ko.png", "action": "localized", "reason": "수사 맥락 그래프 캔버스 UI 라벨을 번역"},
+    {"key": "figure-15-15b", "source": "../88b0aa6657de386c7e2d2deb0c84677a4cde5f0e03f57d4fff9afa66572e039c.jpg", "output": "figure-15-15b-ko.png", "action": "localized", "reason": "차량 결과 필드와 수사 분석을 번역"},
+    {"key": "figure-15-16", "source": "../85723115acffe5cddc47cce12b996cc06abf74a2eff304b1915562f8c29df6b9.jpg", "output": "figure-15-16-ko.png", "action": "localized", "reason": "최종 수사 통찰의 UI·결과 필드·분석을 번역"}
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "title": "Figure 9.7 Korean localization",
+  "source": "../../fa05a4c181a10bff889fc2ac212c43ece733ff52c471da708e72b36d425b906a.jpg",
+  "output": "../figure-9-7-ko.png",
+  "coordinate_space": [1126, 787],
+  "operations": [
+    {"type": "rect", "box": [0, 0, 456, 113], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 7, 440, 99], "text": "특징화 과정은 각 노드를 벡터 표현으로 바꿉니다.\n노드 속성, 모든 깊이의 이웃, 전체 그래프 등\n필요한 정보를 사용할 수 있습니다.", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [477, 0, 289, 95], "fill": "#ffffff"},
+    {"type": "text", "box": [485, 7, 273, 81], "text": "노드 분류에서는 각 노드에\n클래스를 연결해야 합니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [777, 0, 349, 95], "fill": "#ffffff"},
+    {"type": "text", "box": [785, 7, 333, 81], "text": "두 시나리오 모두 분류기가 필요합니다.\n정확도나 계산 시간 면에서 더 나은\n알고리즘이 있을 수 있습니다.", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [94, 665, 665, 122], "fill": "#ffffff"},
+    {"type": "text", "box": [102, 673, 649, 106], "text": "관계도 벡터로 변환해야 합니다. 가장 일반적인 방법 중 하나는\n노드 특징 벡터를 조합하는 것입니다. Hadamard, 평균, L1, L2,\n연결(concatenation) 같은 연산자를 사용할 수 있습니다.", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [754, 660, 372, 127], "fill": "#ffffff"},
+    {"type": "text", "box": [762, 668, 356, 111], "text": "링크 예측에서는 기존 링크를 “존재”로,\n존재하지 않는 링크의 일부 표본을\n“존재하지 않음”으로 분류합니다.", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+
+    {"type": "polygon", "points": [[293, 303], [359, 263], [381, 300], [313, 347]], "fill": "#ffffff"},
+    {"type": "text", "box": [291, 270, 96, 82], "text": "노드 특징화", "font": "regular", "font_size": 17, "min_font_size": 14, "rotation": 34, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [895, 158, 224, 37], "fill": "#ffffff"},
+    {"type": "text", "box": [901, 164, 212, 25], "text": "노드 분류", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [906, 336, 179, 94], "fill": "#ffffff"},
+    {"type": "text", "box": [913, 341, 165, 84], "text": "분류기 학습\n(로지스틱 회귀,\n랜덤 포레스트,\n베이즈 등)", "font": "regular", "font_size": 16, "min_font_size": 13, "line_gap": 2, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [929, 526, 132, 57], "fill": "#ffffff"},
+    {"type": "text", "box": [936, 533, 118, 43], "text": "분류기\n모델", "font": "regular", "font_size": 17, "min_font_size": 14, "line_gap": 2, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [390, 503, 225, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [396, 508, 213, 21], "text": "관계 특징화", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [273, 582, 147, 39], "fill": "#ffffff"},
+    {"type": "text", "box": [280, 589, 133, 25], "text": "링크 예측", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#222222", "align": "left", "valign": "center"}
+  ]
+}

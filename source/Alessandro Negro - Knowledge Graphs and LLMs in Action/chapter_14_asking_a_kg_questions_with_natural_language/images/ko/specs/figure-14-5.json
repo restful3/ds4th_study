@@ -1,0 +1,28 @@
+{
+  "title": "Figure 14.5 Korean localization",
+  "source": "../../7f0da623c5641fd3e69479a1037d47bcfdcfb30ce095f454f97abbc681bb3035.jpg",
+  "output": "../figure-14-5-ko.png",
+  "coordinate_space": [634, 370],
+  "operations": [
+    {"type": "rect", "box": [18, 222, 121, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [22, 225, 113, 25], "text": "사용자 요청", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [219, 23, 137, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [223, 27, 129, 23], "text": "- 데이터 관련", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [516, 22, 84, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [520, 26, 76, 23], "text": "그래프", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [516, 84, 84, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [520, 88, 76, 23], "text": "차트", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [516, 144, 84, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [520, 148, 76, 23], "text": "표", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [516, 204, 84, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [520, 208, 76, 23], "text": "지도", "font": "regular", "font_size": 20, "min_font_size": 16, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [219, 275, 178, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [223, 279, 170, 23], "text": "- 시스템 관련", "font": "regular", "font_size": 19, "min_font_size": 15, "fill": "#b8b8b8", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [219, 318, 190, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [223, 322, 182, 23], "text": "- 피드백/문제", "font": "regular", "font_size": 19, "min_font_size": 15, "fill": "#b8b8b8", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [466, 275, 156, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [470, 279, 148, 23], "text": "- 문서", "font": "regular", "font_size": 19, "min_font_size": 15, "fill": "#b8b8b8", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [466, 318, 156, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [470, 322, 148, 23], "text": "- 스키마", "font": "regular", "font_size": 19, "min_font_size": 15, "fill": "#b8b8b8", "align": "left", "valign": "center"}
+  ]
+}

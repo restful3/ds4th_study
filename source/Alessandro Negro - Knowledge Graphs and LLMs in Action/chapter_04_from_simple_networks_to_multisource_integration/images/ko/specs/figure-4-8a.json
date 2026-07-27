@@ -1,0 +1,12 @@
+{
+  "title": "Figure 4.8a Korean localization",
+  "source": "../../761e532b9ce5f22f30419fd461ee72acdbdbcbf233e00551ec5a107bf1f96f83.jpg",
+  "output": "../figure-4-8a-ko.png",
+  "coordinate_space": [373, 262],
+  "operations": [
+    {"type": "rect", "box": [126, 0, 174, 14], "fill": "#ffffff"},
+    {"type": "text", "box": [132, 0, 162, 14], "text": "(a) 최대 연결 성분", "font": "regular", "font_size": 15, "min_font_size": 12, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [0, 48, 31, 151], "fill": "#ffffff"},
+    {"type": "text", "box": [3, 63, 25, 119], "text": "빈도", "font": "regular", "font_size": 18, "min_font_size": 15, "rotation": 90, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

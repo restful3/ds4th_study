@@ -1,0 +1,49 @@
+{
+  "title": "Figure 3.4 Korean localization",
+  "source": "../../33ae8039550d3f5a594db1a4b6c1e38bc924a3f89843abc47ee78728e3e9f521.jpg",
+  "output": "../figure-3-4-ko.png",
+  "coordinate_space": [376, 479],
+  "operations": [
+    {"type": "rect", "box": [0, 190, 20, 31], "fill": "#ffffff"},
+
+    {"type": "rect", "box": [143, 115, 140, 39], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [147, 117, 132, 35],
+      "text": "제1형 당뇨병",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [80, 432, 121, 38], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [83, 434, 115, 34],
+      "text": "질병",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [218, 429, 127, 43], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [222, 430, 119, 40],
+      "text": "표현형\n특징",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 14,
+      "line_gap": 1,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    }
+  ]
+}

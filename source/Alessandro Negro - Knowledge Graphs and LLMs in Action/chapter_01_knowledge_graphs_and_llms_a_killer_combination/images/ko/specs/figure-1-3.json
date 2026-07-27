@@ -1,0 +1,395 @@
+{
+  "title": "figure-1-3 Korean localization",
+  "source": "../../348a1188a0b3596d898e20b8285e5f74d5309c793d54ac52a865acacbbad2809.jpg",
+  "output": "../figure-1-3-ko.png",
+  "coordinate_space": [
+    1134,
+    840
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        230,
+        0,
+        90,
+        15
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "rect",
+      "box": [
+        430,
+        0,
+        80,
+        15
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "rect",
+      "box": [
+        620,
+        0,
+        70,
+        15
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "rect",
+      "box": [
+        8,
+        80,
+        380,
+        158
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        8,
+        80,
+        380,
+        158
+      ],
+      "text": "텍스트 생성 능력은 LLM을 생성형 AI로\n분류하게 하는 핵심 특징입니다. 방대하고\n다양한 데이터셋으로 학습해 사람과 비슷한\n언어를 생성할 수 있습니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        805,
+        80,
+        329,
+        158
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        805,
+        80,
+        329,
+        158
+      ],
+      "text": "고차원 임베딩은 토큰의 의미를 담고\n토큰 사이의 관계와 패턴을 인코딩하는\n연속 벡터 표현을 제공합니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        8,
+        432,
+        350,
+        130
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        8,
+        432,
+        350,
+        130
+      ],
+      "text": "LLM은 지시문(프롬프트)을 바꾸거나\n미세 조정하는 것만으로 여러 과제에\n사용할 수 있습니다. 하나의 모델이\n다양한 목적을 수행합니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        8,
+        675,
+        445,
+        153
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        8,
+        675,
+        445,
+        153
+      ],
+      "text": "LLM은 거대한 크기와 대규모 데이터셋 사전학습이\n특징입니다. 사전학습으로 일반 언어 패턴, 세계 지식,\n맥락 이해를 익혀 언어 전문 지식의 저장소가 됩니다.",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        805,
+        568,
+        329,
+        265
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        805,
+        568,
+        329,
+        265
+      ],
+      "text": "LLM은 병렬 처리가 가능한 트랜스포머 구조를 사용해\n대규모 데이터셋을 효율적으로 학습하고 높은 성능을\n냅니다. 트랜스포머는 문장 속 단어에 가중치를 부여해\n입력에서 관련 부분에 집중하게 합니다.",
+      "font": "bold",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        515,
+        151,
+        124,
+        61
+      ],
+      "fill": {
+        "sample": [
+          530,
+          230
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        515,
+        151,
+        124,
+        61
+      ],
+      "text": "토큰화",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        389,
+        244,
+        116,
+        62
+      ],
+      "fill": {
+        "sample": [
+          400,
+          380
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        389,
+        244,
+        116,
+        62
+      ],
+      "text": "생성\n역량",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        650,
+        244,
+        122,
+        62
+      ],
+      "fill": {
+        "sample": [
+          750,
+          380
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        650,
+        244,
+        122,
+        62
+      ],
+      "text": "고차원\n임베딩",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        389,
+        514,
+        116,
+        61
+      ],
+      "fill": {
+        "sample": [
+          400,
+          440
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        389,
+        514,
+        116,
+        61
+      ],
+      "text": "전이\n학습",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        650,
+        514,
+        122,
+        61
+      ],
+      "fill": {
+        "sample": [
+          755,
+          440
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        650,
+        514,
+        122,
+        61
+      ],
+      "text": "트랜스포머\n& 어텐션",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        515,
+        566,
+        124,
+        91
+      ],
+      "fill": {
+        "sample": [
+          620,
+          650
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "box": [
+        515,
+        566,
+        124,
+        91
+      ],
+      "text": "대규모 데이터\n사전학습",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        512,
+        349,
+        132,
+        130
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        512,
+        349,
+        132,
+        130
+      ],
+      "text": "LLM\n구성 요소",
+      "font": "bold",
+      "font_size": 21,
+      "min_font_size": 17,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    }
+  ]
+}

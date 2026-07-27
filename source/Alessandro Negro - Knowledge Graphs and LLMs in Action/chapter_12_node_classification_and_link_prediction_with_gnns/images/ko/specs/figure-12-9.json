@@ -1,0 +1,28 @@
+{
+  "title": "Figure 12.9 Korean localization",
+  "source": "../../b044b6a1c76f2e7afff70df7d4f5d9ebc0525df51979152d2ff60d87201ad9c6.jpg",
+  "output": "../figure-12-9-ko.png",
+  "coordinate_space": [1129, 676],
+  "operations": [
+    {"type": "rect", "box": [0, 0, 430, 198], "fill": "#ffffff"},
+    {"type": "text", "box": [9, 8, 412, 182], "text": "사용자와 영화의 표현을 강화하도록 둘 모두에\n임베딩을 생성합니다. 사용자는 고유 특징이 없어\n모델이 임베딩을 학습합니다. 영화는 장르를 인코딩한\n특징 벡터를 임베딩 과정의 입력으로 사용합니다.", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [481, 0, 310, 175], "fill": "#ffffff"},
+    {"type": "text", "box": [490, 8, 292, 159], "text": "각 이종 GNN 인코더는\n집계·갱신 함수에 따라\n사용자와 영화 노드의\n고유한 표현을 생성합니다.", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [832, 0, 297, 147], "fill": "#ffffff"},
+    {"type": "text", "box": [841, 8, 279, 131], "text": "내적 점수를 확률로 변환해\n사용자와 영화 사이에 링크가\n존재할 가능성을 나타냅니다.", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [0, 220, 180, 67], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 227, 164, 53], "text": "이종\n그래프 데이터", "font": "regular", "font_size": 18, "min_font_size": 14, "line_gap": 2, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [206, 313, 123, 76], "fill": "#050505", "radius": 10},
+    {"type": "text", "box": [212, 320, 111, 62], "text": "임베딩", "font": "bold", "font_size": 20, "min_font_size": 16, "fill": "#ffffff", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [576, 216, 156, 74], "fill": "#ffffff"},
+    {"type": "text", "box": [584, 223, 140, 60], "text": "집계된\n이웃 특징", "font": "regular", "font_size": 18, "min_font_size": 14, "line_gap": 2, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [737, 313, 146, 76], "fill": "#050505", "radius": 10},
+    {"type": "text", "box": [743, 320, 134, 62], "text": "내적", "font": "bold", "font_size": 20, "min_font_size": 16, "fill": "#ffffff", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [0, 509, 328, 167], "fill": "#ffffff"},
+    {"type": "text", "box": [9, 518, 310, 149], "text": "이종 그래프 데이터는\n두 노드 유형(사용자와 영화)과\n하나의 간선 유형(user-rates-movie)으로\n구성됩니다.", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [336, 509, 373, 167], "fill": "#ffffff"},
+    {"type": "text", "box": [345, 518, 355, 149], "text": "이종 그래프 데이터를 서로 다른 세 GNN 인코더,\nH-GraphConv, H-GAT, H-SAGE로\n처리합니다.", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [715, 509, 414, 167], "fill": "#ffffff"},
+    {"type": "text", "box": [724, 518, 396, 149], "text": "내적은 사용자와 영화 임베딩의 호환성을 측정합니다.\n값이 클수록 사용자가 특정 영화와 상호작용하거나\n평점을 남길 가능성이 큽니다.", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"}
+  ]
+}

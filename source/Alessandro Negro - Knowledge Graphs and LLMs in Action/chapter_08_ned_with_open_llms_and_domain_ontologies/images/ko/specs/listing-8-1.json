@@ -1,0 +1,16 @@
+{
+  "title": "Listing 8.1 Korean localization",
+  "source": "../../b8bc9f6588d7a9c102e924f2ea970951ada5988f330bed8f7f0a75f3eaef45af.jpg",
+  "output": "../listing-8-1-ko.png",
+  "coordinate_space": [1039, 468],
+  "operations": [
+    {"type": "rect", "box": [8, 4, 1031, 39], "fill": "#73a7c8"},
+    {"type": "text", "box": [38, 9, 950, 29], "text": "리스팅 8.1   scispaCy를 이용한 후보 선택과 순위화", "font": "bold", "font_size": 20, "min_font_size": 17, "fill": "#ffffff", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [520, 57, 260, 84], "fill": "#ffffff"},
+    {"type": "text", "box": [528, 63, 244, 72], "text": "75번과 85번 문자 사이에서\n대상 엔티티 “Zika Virus” 탐지", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 4, "fill": "#555555", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [732, 216, 307, 97], "fill": "#ffffff"},
+    {"type": "text", "box": [740, 223, 291, 83], "text": "135번과 159번 문자 사이에서\n대상 엔티티 “Congenital Zika\nSyndrome” 탐지", "font": "bold", "font_size": 17, "min_font_size": 14, "line_gap": 3, "fill": "#555555", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [668, 322, 371, 88], "fill": "#ffffff"},
+    {"type": "text", "box": [676, 329, 355, 74], "text": "268번과 288번 문자 사이에서\n대상 엔티티 “Zika Virus Infection” 탐지", "font": "bold", "font_size": 17, "min_font_size": 14, "line_gap": 4, "fill": "#555555", "align": "left", "valign": "center"}
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "chapter": "14",
+  "source_document": "../../14_asking_a_kg_questions_with_natural_language.md",
+  "review_status": "reviewed",
+  "review_method": [
+    "original Markdown image order and captions",
+    "source image inspection at original pixel dimensions",
+    "localized image inspection at original pixel dimensions",
+    "900px target-display contact sheets for unique and repeated-layout figures"
+  ],
+  "mapping_notes": [
+    "Caption-only inventory incorrectly grouped 21 inline model/avatar/lightbulb icons with later numbered figures; those language-neutral icons remain unchanged.",
+    "The image at source line 717 is Listing 14.6, not a panel of Figure 14.9; the code is preserved and only the heading and callouts are localized.",
+    "Figures 14.3, 14.4, 14.7, 14.9, and 14.12 share a system-layout template but use different active/inactive components and two slightly different canvas heights; each sibling was rendered and reviewed separately.",
+    "Figure 14.10 preserves JSON field names and code-like prompt/result examples while localizing the comparison question, section tabs, ordering explanation, and analytical findings."
+  ],
+  "translation_policy": {
+    "translate": "reader-facing headings, explanatory prose, workflow labels, semantic categories, questions, and analytical findings",
+    "preserve": "model/avatar icons, schema identifiers, relationship types, property names, Cypher code, JSON keys, and code-like prompt/result payloads"
+  },
+  "items": [
+    {"key": "inline-model-icon-1", "source": "../b49f2e8a8860ceef51225c63a80a2ef9e343aa45722d60d69a8846e6e63200a2.jpg", "output": null, "action": "preserved", "reason": "언어 중립 모델 로고"},
+    {"key": "inline-model-icon-2", "source": "../7463448a71585638b531a8a2a02a643f4d74d10cb86a982d0bad893c3b8d359e.jpg", "output": null, "action": "preserved", "reason": "언어 중립 모델 로고"},
+    {"key": "inline-model-icon-3", "source": "../7b38a3a1665829eeb6c4d47d6b934a7036354be19874e38ded123cfcdcba0446.jpg", "output": null, "action": "preserved", "reason": "언어 중립 모델 로고"},
+    {"key": "figure-14-1", "source": "../e98eabdb2a2e2d93758d88bc6086c883761453fe4a0735dfacefa018404999bc.jpg", "output": "figure-14-1-ko.png", "action": "localized", "reason": "불완전한 검색 맥락으로 잘못된 답이 생성되는 흐름을 번역"},
+    {"key": "figure-14-2", "source": "../209850d547aaa3e8de9e42c6b9e16a8233869f103a30b6f4be13f6ca60871ab3.jpg", "output": "figure-14-2-ko.png", "action": "localized", "reason": "자연어 요청·스키마 매핑·탐색·제약 설명을 번역"},
+    {"key": "figure-14-3", "source": "../070640191bdb502f25308c6e2ca94d7021328a562767f8d8a31510c7f0a01388.jpg", "output": "figure-14-3-ko.png", "action": "localized", "reason": "전체 시스템 아키텍처의 구성 요소와 설명을 번역"},
+    {"key": "figure-14-4", "source": "../c6e7d97b74ba42039c204a26bfde182be3dd21c7115642a9a042c18c691db3b7.jpg", "output": "figure-14-4-ko.png", "action": "localized", "reason": "의도 감지 강조 아키텍처의 구성 요소와 설명을 번역"},
+    {"key": "inline-lightbulb-1", "source": "../680b5b2fc9f2382a6100c4807c7349059a19c974041f30977bcafc8c1ee306be.jpg", "output": null, "action": "preserved", "reason": "언어 중립 전구 아이콘"},
+    {"key": "figure-14-5", "source": "../7f0da623c5641fd3e69479a1037d47bcfdcfb30ce095f454f97abbc681bb3035.jpg", "output": "figure-14-5-ko.png", "action": "localized", "reason": "데이터 관련 요청 분류 라벨을 번역"},
+    {"key": "inline-avatar-1", "source": "../002b18162da6ebf0b5a27d1627999935043b0c5901b02dd4e86317351fcd7b78.jpg", "output": null, "action": "preserved", "reason": "언어 중립 아바타"},
+    {"key": "inline-model-icon-4", "source": "../481d593da574e54bd6b0f139067c8b82ec8dd712e87b19645d332cd382c4656a.jpg", "output": null, "action": "preserved", "reason": "언어 중립 모델 로고"},
+    {"key": "inline-avatar-2", "source": "../23bbdac5e64e90527d4fa8798a0c81c93727db955552e8f563d191f25af7a22a.jpg", "output": null, "action": "preserved", "reason": "언어 중립 아바타"},
+    {"key": "inline-model-icon-5", "source": "../163a07484e6640a87367111667cd3c84d2ae0fd49950eb26dc7a9b718c4bdbeb.jpg", "output": null, "action": "preserved", "reason": "언어 중립 모델 로고"},
+    {"key": "inline-avatar-3", "source": "../a1a655d3292d4ab23d90a1afceffa2fb2f3b9daed1920cd66355d09af0f36461.jpg", "output": null, "action": "preserved", "reason": "언어 중립 아바타"},
+    {"key": "inline-model-icon-6", "source": "../65d84136043a112ec2ab2f22ecf365ce416d4f8917eaefe872119c8fbf9dc226.jpg", "output": null, "action": "preserved", "reason": "언어 중립 모델 로고"},
+    {"key": "inline-avatar-4", "source": "../d7b1d8d6f33313b197569b87ef003be098b3c82a6be2f9dbe09367802dbc8096.jpg", "output": null, "action": "preserved", "reason": "언어 중립 아바타"},
+    {"key": "inline-model-icon-7", "source": "../d1fab7503eb1e25510bf8d303ddf45e3015dc09f9820adad7e00f78a71272181.jpg", "output": null, "action": "preserved", "reason": "언어 중립 모델 로고"},
+    {"key": "inline-lightbulb-2", "source": "../c0af1fd3ee0d0bccbe15d247bf211300097bec5ac6c6fd280e9cc1e8011fdb54.jpg", "output": null, "action": "preserved", "reason": "언어 중립 전구 아이콘"},
+    {"key": "figure-14-6", "source": "../a3445bfea08bf33658d831cf13c64d0ea2cf9a6ff4a71c27f3c8ca3607759cd5.jpg", "output": "figure-14-6-ko.png", "action": "localized", "reason": "시스템 관련·피드백 요청 분류 라벨을 번역"},
+    {"key": "inline-avatar-5", "source": "../9173339d8f042951d620f03ff9710aafe0cff92dd5be716bf608ad4adb51c5f6.jpg", "output": null, "action": "preserved", "reason": "언어 중립 아바타"},
+    {"key": "inline-model-icon-8", "source": "../8c58f9f39200e3c52430a7fec30ce18af3bbdb1fedcfc25bfaf65d456a1bf852.jpg", "output": null, "action": "preserved", "reason": "언어 중립 모델 로고"},
+    {"key": "inline-model-icon-9", "source": "../062947befbed597d1d84bb6e98b1f51d2b27641b15ef28b2919bc6eed0c49c0b.jpg", "output": null, "action": "preserved", "reason": "언어 중립 모델 로고"},
+    {"key": "figure-14-7", "source": "../ba142ce6c1068da1533dffe57fc5b4019554d4429486b22f387cf4a218f913aa.jpg", "output": "figure-14-7-ko.png", "action": "localized", "reason": "스키마 추출 강조 아키텍처의 구성 요소와 설명을 번역"},
+    {"key": "figure-14-8", "source": "../2cbecc6dc5a34023d5959578a9cf0eb077648238bcc3c8debc09763367238742.jpg", "output": "figure-14-8-ko.png", "action": "localized", "reason": "스키마 필터링·매핑 파이프라인 라벨을 번역"},
+    {"key": "listing-14-6", "source": "../40c8cbf923bffdb934efdafc021eec0f7cdffa0bdfdc4b1a0cefb63f65046c7f.jpg", "output": "listing-14-6-ko.png", "action": "localized", "reason": "코드는 보존하고 리스팅 제목과 callout을 번역"},
+    {"key": "figure-14-9", "source": "../f58239ddeebbcf5127bc5b11d9ca1a2029145110f9aacb38b3838d4ae324b960.jpg", "output": "figure-14-9-ko.png", "action": "localized", "reason": "쿼리 생성 강조 아키텍처의 구성 요소와 설명을 번역"},
+    {"key": "figure-14-10", "source": "../ac386c4d0c1381959c6b23016a2a4364288470e98a64610a44e9067a62a8cf7d.jpg", "output": "figure-14-10-ko.png", "action": "localized", "reason": "두 프롬프트 구조의 질문·구성 라벨·분석 결과를 번역"},
+    {"key": "figure-14-11", "source": "../f8d05a7bfd8dff779e036db53e5bc5382cadfd90ac33716036a0e39f67f531a5.jpg", "output": "figure-14-11-ko.png", "action": "localized", "reason": "자연어 질문을 Cypher로 바꾸는 프롬프트 구성 단계를 번역"},
+    {"key": "inline-avatar-6", "source": "../9db285b8ec8d41b0ff57e24e0d3b001e3b7d2948cbf959a06d311be35651cd49.jpg", "output": null, "action": "preserved", "reason": "언어 중립 아바타"},
+    {"key": "inline-avatar-7", "source": "../7863cc3bf421d6bee5f8bb423930b51d293dc6b716f3f3b98256f10a60b7cd4b.jpg", "output": null, "action": "preserved", "reason": "언어 중립 아바타"},
+    {"key": "inline-avatar-8", "source": "../e9c195f7ec6fcdaf8fe26cc32d437940ec6120b5f7a651d5ea09b8fc3f20438e.jpg", "output": null, "action": "preserved", "reason": "언어 중립 아바타"},
+    {"key": "inline-avatar-9", "source": "../97e9743cb3990ab8526f72b1d5d3dc9f48997bc07568c06d8d9951ab599b402c.jpg", "output": null, "action": "preserved", "reason": "언어 중립 아바타"},
+    {"key": "inline-avatar-ellipsis", "source": "../3724bf12ee1f01c99ceb773aa4ef6b46a31d89709516de1b63421ecff9ce5912.jpg", "output": null, "action": "preserved", "reason": "언어 중립 아바타와 생략 기호"},
+    {"key": "figure-14-12", "source": "../da902f49c12e715533e251308df09c33e2442ea502bf1a386512ae35a7b3cc40.jpg", "output": "figure-14-12-ko.png", "action": "localized", "reason": "출력·요약 강조 아키텍처의 구성 요소와 설명을 번역"}
+  ]
+}

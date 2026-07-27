@@ -1,0 +1,308 @@
+{
+  "title": "figure-2-11 Korean localization",
+  "source": "../../6627f46738351c8b1955ce50f3338cdd4a83cf733757aeeebf396336fc2ed848.jpg",
+  "output": "../figure-2-11-ko.png",
+  "coordinate_space": [
+    1112,
+    551
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        6,
+        136,
+        344,
+        108
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        6,
+        136,
+        344,
+        108
+      ],
+      "text": "데이터 소스의 정보를 연역 엔진이 바로 쓸 수 있는\n형식으로 변환합니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        6,
+        363,
+        344,
+        183
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        6,
+        363,
+        344,
+        183
+      ],
+      "text": "자동화된 의사 예시의 데이터 소스:\n• 전자 건강 기록(EHR)\n• 연구 문헌\n• 의료 모범 사례\n• 단백질·유전자·질병 데이터셋",
+      "font": "bold",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        826,
+        10,
+        286,
+        160
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        826,
+        10,
+        286,
+        160
+      ],
+      "text": "대부분의 경우 소통은 한 방향입니다.\n연역 추론기는 결과를 지식 베이스에 저장하지 않습니다.",
+      "font": "bold",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        826,
+        391,
+        286,
+        156
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        826,
+        391,
+        286,
+        156
+      ],
+      "text": "자동화된 의사는 질병을 진단하고 치료하기 위한\n검사·치료 같은 행동과 제안의 순서를 제공해야 합니다.",
+      "font": "bold",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        452,
+        441,
+        320,
+        106
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        452,
+        441,
+        320,
+        106
+      ],
+      "text": "연역 추론기는 지식 베이스의 진술을 받아\n제안으로 변환합니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        359,
+        71,
+        132,
+        60
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        359,
+        71,
+        132,
+        60
+      ],
+      "text": "데이터/모델\n변환",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        562,
+        17,
+        180,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        562,
+        17,
+        180,
+        28
+      ],
+      "text": "지능형 시스템",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        548,
+        72,
+        139,
+        58
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        548,
+        72,
+        139,
+        58
+      ],
+      "text": "지식\n베이스",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        548,
+        278,
+        137,
+        70
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        548,
+        278,
+        137,
+        70
+      ],
+      "text": "연역\n엔진",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        374,
+        208,
+        108,
+        46
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        374,
+        208,
+        108,
+        46
+      ],
+      "text": "데이터\n소스",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        786,
+        287,
+        131,
+        55
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        786,
+        287,
+        131,
+        55
+      ],
+      "text": "행동/\n제안",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    }
+  ]
+}

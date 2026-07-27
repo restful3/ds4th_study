@@ -1,0 +1,14 @@
+{
+  "title": "Figure 5.2b Korean localization",
+  "source": "../../d44eb0c671144e2c8d1c1f14f28026ed80085747c8c5b31b692ab78950fc135f.jpg",
+  "output": "../figure-5-2b-ko.png",
+  "coordinate_space": [793, 204],
+  "operations": [
+    {"type": "rect", "box": [7, 96, 164, 48], "fill": "#ffffff"},
+    {"type": "text", "box": [12, 100, 154, 40], "text": "주제\n극지 기단", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#333333", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [245, 151, 239, 51], "fill": "#ffffff"},
+    {"type": "text", "box": [250, 155, 229, 43], "text": "주제\n기상 연구", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#333333", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [584, 112, 209, 49], "fill": "#ffffff"},
+    {"type": "text", "box": [589, 116, 199, 41], "text": "주제\n온대 기단", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#333333", "align": "center", "valign": "center"}
+  ]
+}

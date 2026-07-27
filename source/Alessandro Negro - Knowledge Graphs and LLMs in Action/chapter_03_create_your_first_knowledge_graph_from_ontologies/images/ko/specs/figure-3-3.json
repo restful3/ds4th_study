@@ -1,0 +1,19 @@
+{
+  "extends": "pipeline-template.json",
+  "title": "Figure 3.3 Korean localization",
+  "source": "../../66f9aea0decdb71b9b32e6f3fa5229458afc3f66fc3fc8301df963cb1c76b370.jpg",
+  "output": "../figure-3-3-ko.png",
+  "variables": {
+    "source_color": "#9a9a9a",
+    "integration_color": "#9a9a9a",
+    "result_color": "#9a9a9a",
+    "clinician_color": "#111111",
+    "ontology_color": "#9a9a9a",
+    "annotations_color": "#9a9a9a",
+    "ontology_box_color": "#9a9a9a",
+    "annotations_box_color": "#9a9a9a",
+    "data_understanding_box_color": "#9a9a9a",
+    "data_preparation_box_color": "#9a9a9a",
+    "kg_box_color": "#9a9a9a"
+  }
+}

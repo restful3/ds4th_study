@@ -1,0 +1,146 @@
+{
+  "title": "figure-15-15b Korean localization",
+  "source": "../../88b0aa6657de386c7e2d2deb0c84677a4cde5f0e03f57d4fff9afa66572e039c.jpg",
+  "output": "../figure-15-15b-ko.png",
+  "coordinate_space": [
+    465,
+    717
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        14,
+        17,
+        65,
+        23
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        14,
+        17,
+        65,
+        23
+      ],
+      "text": "채팅",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        66,
+        43,
+        380,
+        429
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        66,
+        43,
+        380,
+        429
+      ],
+      "text": "   ◦ 제조사: VOLK\n   ◦ 형식: 4D\n   ◦ 주: IL\n5. 차량 5\n   ◦ 번호판: EB56203\n   ◦ 제조사: HOND\n   ◦ 형식: 4D\n   ◦ 주: IL\n6. 차량 6\n   ◦ 번호판: EB71613\n   ◦ 제조사: CHRY\n   ◦ 형식: 4D\n   ◦ 주: IL\n7. 차량 7\n   ◦ 번호판: EB15594\n   ◦ 제조사: NISS\n   ◦ 형식: 4D\n   ◦ 주: IL",
+      "font": "regular",
+      "font_size": 12,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 4
+    },
+    {
+      "type": "rect",
+      "box": [
+        66,
+        476,
+        105,
+        24
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        66,
+        476,
+        105,
+        24
+      ],
+      "text": "분석:",
+      "font": "bold",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        66,
+        506,
+        380,
+        146
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        66,
+        506,
+        380,
+        146
+      ],
+      "text": "• 번호판 EB16946 차량이 결과에 두 번 나타납니다. 여러 번\n  감지된 것으로, 관심 있게 볼 지점일 수 있습니다.\n• 모든 차량이 검은색이고 번호판이 'EB'로 시작해 피해자의\n  설명과 일치합니다.\n• 반복 감지된 EB16946 차량은 사건 관련 가능성이 더 높을 수\n  있으므로 추가 수사를 집중해야 합니다.",
+      "font": "regular",
+      "font_size": 11,
+      "min_font_size": 9,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 3
+    },
+    {
+      "type": "rect",
+      "box": [
+        80,
+        667,
+        70,
+        21
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        80,
+        667,
+        70,
+        21
+      ],
+      "text": "추가...",
+      "font": "regular",
+      "font_size": 12,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    }
+  ]
+}

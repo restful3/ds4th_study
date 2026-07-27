@@ -1,0 +1,42 @@
+{
+  "title": "Figure 7.6 Korean localization",
+  "source": "../../85a0349db303fd23045ea233d4c5903d6bb2ad25c820645134b70c2d807bb306.jpg",
+  "output": "../figure-7-6-ko.png",
+  "coordinate_space": [1123, 584],
+  "operations": [
+    {"type": "rect", "box": [0, 8, 244, 78], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 13, 230, 67], "text": "- 일반 기준\n- 기증자 특성\n- 제외 기준", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [0, 197, 194, 78], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 202, 180, 67], "text": "- 채취\n- 보존\n- 운송 조건", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [0, 348, 201, 78], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 353, 187, 67], "text": "- 품질 관리 검사\n- 환자 준비\n- 보관 매체", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [0, 496, 225, 82], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 501, 211, 72], "text": "- 세포 생존율\n- 세포 기능\n- 미생물 검사", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+
+    {"type": "rect", "box": [883, 2, 240, 77], "fill": "#ffffff"},
+    {"type": "text", "box": [891, 7, 226, 67], "text": "- 운송 규정\n- 운송 온도\n- 액체 매체", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [873, 177, 250, 83], "fill": "#ffffff"},
+    {"type": "text", "box": [881, 182, 236, 72], "text": "- 기증자 상세 정보\n- 장기 운송\n- 허혈 시간", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [948, 348, 175, 82], "fill": "#ffffff"},
+    {"type": "text", "box": [956, 353, 161, 72], "text": "- 예기치 못한 사건\n- 이상 반응\n- 잔류 영향", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [921, 508, 202, 76], "fill": "#ffffff"},
+    {"type": "text", "box": [929, 513, 188, 66], "text": "- 체세포\n- 피막 세포\n- 유전자 치료", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+
+    {"type": "rect", "box": [377, 120, 144, 72], "fill": "#ffffff"},
+    {"type": "text", "box": [384, 127, 130, 58], "text": "기증자\n평가", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [576, 120, 145, 72], "fill": "#ffffff"},
+    {"type": "text", "box": [583, 127, 131, 58], "text": "포장 및\n유통", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [377, 230, 144, 68], "fill": "#ffffff"},
+    {"type": "text", "box": [384, 237, 130, 54], "text": "조달", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [576, 230, 145, 68], "fill": "#ffffff"},
+    {"type": "text", "box": [583, 237, 131, 54], "text": "추적성", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [377, 339, 144, 72], "fill": "#ffffff"},
+    {"type": "text", "box": [384, 346, 130, 58], "text": "처리 및\n보관", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [576, 339, 145, 72], "fill": "#ffffff"},
+    {"type": "text", "box": [583, 346, 131, 58], "text": "생물감시", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [377, 456, 144, 65], "fill": "#ffffff"},
+    {"type": "text", "box": [384, 461, 130, 55], "text": "품질 관리/\n출하 기준", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [576, 456, 145, 65], "fill": "#ffffff"},
+    {"type": "text", "box": [583, 461, 131, 55], "text": "환자 적용", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Figure 12.5a Korean localization",
+  "source": "../../48360b921cc9dc6727d340f1041e1aa9fd6fe373237ef1d18321ad800897205c.jpg",
+  "output": "../figure-12-5a-ko.png",
+  "coordinate_space": [579, 392],
+  "operations": [
+    {"type": "rect", "box": [0, 135, 32, 115], "fill": "#ffffff"},
+    {"type": "text", "box": [6, 149, 20, 87], "text": "정\n밀\n도", "font": "regular", "font_size": 16, "min_font_size": 13, "line_gap": 0, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [270, 362, 92, 30], "fill": "#ffffff"},
+    {"type": "text", "box": [276, 366, 80, 23], "text": "에포크", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#222222", "align": "center", "valign": "center"}
+  ]
+}

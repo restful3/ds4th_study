@@ -1,0 +1,24 @@
+{
+  "title": "Figure 5.3 Korean localization",
+  "source": "../../14d4e8ea9d2f18fa351bd6e822644379e211937953db90eaa5eb891fcb0185ad.jpg",
+  "output": "../figure-5-3-ko.png",
+  "coordinate_space": [990, 420],
+  "operations": [
+    {"type": "rect", "box": [169, 4, 342, 108], "fill": "#ffffff"},
+    {"type": "text", "box": [174, 9, 306, 96], "text": "• 광학 문자 인식\n• 표 추출\n• 이미지 추출·분류·객체 탐지…", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 5, "fill": "#b5b5b5", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [207, 108, 34, 16], "fill": "#ffffff"},
+    {"type": "rect", "box": [574, 4, 416, 89], "fill": "#ffffff"},
+    {"type": "text", "box": [580, 9, 404, 76], "text": "• 전통적 NER·RE 모델 학습\n• LLM(OpenAI GPT): 프롬프트 기반\n  또는 미세 조정", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+
+    {"type": "rect", "box": [20, 139, 144, 50], "fill": "#ffffff"},
+    {"type": "text", "box": [25, 143, 134, 42], "text": "비정형\n데이터 소스", "font": "regular", "font_size": 20, "min_font_size": 17, "line_gap": 3, "fill": "#b5b5b5", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [313, 305, 125, 29], "fill": "#ffffff"},
+    {"type": "text", "box": [318, 310, 115, 19], "text": "디지털화", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#b5b5b5", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [534, 296, 143, 50], "fill": "#ffffff"},
+    {"type": "text", "box": [539, 301, 133, 40], "text": "개체명\n인식", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [790, 291, 180, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [795, 296, 170, 21], "text": "관계 추출", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [503, 380, 277, 37], "fill": "#ffffff"},
+    {"type": "text", "box": [508, 387, 267, 23], "text": "맞춤형 지식 추출", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "left", "valign": "center"}
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "title": "Figure 4.6 Korean localization",
+  "source": "../../b5f5a9e2e98ed759adce0ff214d86aa19ffe619569ad42230bcc04578e3a816a.jpg",
+  "output": "../figure-4-6-ko.png",
+  "coordinate_space": [1131, 604],
+  "operations": [
+    {"type": "rect", "box": [40, 156, 88, 27], "fill": "#ffffff"},
+    {"type": "text", "box": [48, 157, 76, 24], "text": "질병", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [40, 184, 88, 27], "fill": "#ffffff"},
+    {"type": "text", "box": [48, 185, 76, 24], "text": "단백질", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [40, 212, 88, 27], "fill": "#ffffff"},
+    {"type": "text", "box": [48, 213, 76, 24], "text": "경로", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "left", "valign": "center"},
+
+    {"type": "rect", "box": [144, 93, 308, 80], "fill": "#ffffff"},
+    {"type": "text", "box": [147, 98, 300, 66], "text": "알려진 질병-단백질 연결을\n발견 작업의 입력으로 사용합니다.", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 6, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "restore_bezier", "points": [[315, 149], [313, 205], [284, 264], [274, 316]], "width": 3},
+    {"type": "restore_bezier", "points": [[315, 149], [320, 212], [304, 267], [305, 316]], "width": 3},
+    {"type": "restore_bezier", "points": [[315, 149], [330, 211], [333, 264], [327, 306]], "width": 3},
+
+    {"type": "rect", "box": [634, 4, 393, 82], "fill": "#ffffff"},
+    {"type": "text", "box": [636, 8, 356, 70], "text": "예측된 단백질 노드는 표적 질병과 연결되어\n새로운 경로를 만들거나 기존 경로를\n확장할 수 있습니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "restore_bezier", "points": [[632, 67], [581, 148], [641, 298], [704, 386]], "width": 3},
+    {"type": "restore_bezier", "points": [[999, 65], [1050, 127], [1014, 219], [1003, 261]], "width": 3},
+
+    {"type": "rect", "box": [754, 132, 274, 60], "fill": "#ffffff"},
+    {"type": "text", "box": [760, 138, 262, 48], "text": "표적 질병에 대해\n예측된 관계", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 4, "fill": "#111111", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [481, 383, 159, 47], "fill": "#ffffff"},
+    {"type": "text", "box": [486, 387, 132, 39], "text": "질병 단백질\n발견", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [382, 543, 458, 58], "fill": "#ffffff"},
+    {"type": "text", "box": [387, 548, 448, 48], "text": "이 작업의 목표는 질병과 단백질 사이의\n알려지지 않은 관계를 예측하는 것입니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

@@ -1,0 +1,514 @@
+{
+  "title": "figure-15-4 Korean localization",
+  "source": "../../d1f2dc472a86c7b6dea5b8711b8ffd486f956ff55753ac1cbc46bf4986af1b91.jpg",
+  "output": "../figure-15-4-ko.png",
+  "coordinate_space": [
+    1023,
+    834
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        18,
+        4,
+        315,
+        92
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        18,
+        4,
+        315,
+        92
+      ],
+      "text": "LangGraph 에이전트에 필요한\n시스템 설정과 프롬프트\n템플릿을 관리합니다.",
+      "font": "bold",
+      "font_size": 21,
+      "min_font_size": 17,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        495,
+        4,
+        330,
+        112
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        495,
+        4,
+        330,
+        112
+      ],
+      "text": "그래프 데이터베이스에 연결해\n스키마 정보를 추출하고 LLM이\n처리할 형식으로 변환합니다.",
+      "font": "bold",
+      "font_size": 21,
+      "min_font_size": 17,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "restore_bezier",
+      "points": [
+        [
+          817,
+          54
+        ],
+        [
+          884,
+          59
+        ],
+        [
+          882,
+          133
+        ],
+        [
+          921,
+          166
+        ]
+      ],
+      "width": 4
+    },
+    {
+      "type": "rect",
+      "box": [
+        154,
+        180,
+        143,
+        52
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        154,
+        180,
+        143,
+        52
+      ],
+      "text": "설정\n제공자",
+      "font": "regular",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        888,
+        181,
+        98,
+        54
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        888,
+        181,
+        98,
+        54
+      ],
+      "text": "스키마\n제공자",
+      "font": "regular",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        13,
+        420,
+        102,
+        30
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        13,
+        420,
+        102,
+        30
+      ],
+      "text": "프롬프트",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        915,
+        338,
+        104,
+        58
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        915,
+        338,
+        104,
+        58
+      ],
+      "text": "그래프\n데이터베이스",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        198,
+        463,
+        91,
+        35
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        198,
+        463,
+        91,
+        35
+      ],
+      "text": "질문",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        344,
+        489,
+        100,
+        46
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        344,
+        489,
+        100,
+        46
+      ],
+      "text": "상태",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        493,
+        489,
+        100,
+        46
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        493,
+        489,
+        100,
+        46
+      ],
+      "text": "상태",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        800,
+        489,
+        77,
+        65
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        800,
+        489,
+        77,
+        65
+      ],
+      "text": "최종\n상태",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        18,
+        517,
+        100,
+        33
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        18,
+        517,
+        100,
+        33
+      ],
+      "text": "백엔드",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        292,
+        601,
+        497,
+        50
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        292,
+        601,
+        497,
+        50
+      ],
+      "text": "질문 처리 인터페이스",
+      "font": "regular",
+      "font_size": 20,
+      "min_font_size": 16,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        0,
+        742,
+        146,
+        32
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        0,
+        742,
+        146,
+        32
+      ],
+      "text": "사용자/프런트엔드",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        213,
+        698,
+        104,
+        32
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        213,
+        698,
+        104,
+        32
+      ],
+      "text": "질문",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        356,
+        748,
+        105,
+        30
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        356,
+        748,
+        105,
+        30
+      ],
+      "text": "갱신",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        267,
+        806,
+        112,
+        26
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        267,
+        806,
+        112,
+        26
+      ],
+      "text": "응답",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        646,
+        719,
+        373,
+        112
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        646,
+        719,
+        373,
+        112
+      ],
+      "text": "질문을 LangGraph 워크플로로 전달하고\n상태 갱신을 프런트엔드가 소비하기 쉬운\n이벤트 스트림으로 변환합니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "restore_bezier",
+      "points": [
+        [
+          799,
+          645
+        ],
+        [
+          829,
+          641
+        ],
+        [
+          839,
+          679
+        ],
+        [
+          850,
+          720
+        ]
+      ],
+      "width": 4
+    }
+  ]
+}

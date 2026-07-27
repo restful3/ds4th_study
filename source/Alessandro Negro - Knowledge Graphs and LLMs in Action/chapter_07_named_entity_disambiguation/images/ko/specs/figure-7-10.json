@@ -1,0 +1,33 @@
+{
+  "title": "Figure 7.10 Korean localization",
+  "source": "../../a086a6aaec94e823e7b0b12f7502b3eebefeeb8f0e48e178a392871bbe13c5ed.jpg",
+  "output": "../figure-7-10-ko.png",
+  "coordinate_space": [1042, 723],
+  "operations": [
+    {"type": "rect", "box": [640, 22, 394, 61], "fill": "#ffffff"},
+    {"type": "text", "box": [647, 28, 380, 49], "text": "Amazon Textract는 여러 SoHO 문서에서\n원시 텍스트를 추출합니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [620, 180, 414, 87], "fill": "#ffffff"},
+    {"type": "text", "box": [627, 187, 400, 73], "text": "텍스트 처리 결과는 문서와 관련 페이지를\n그래프 형식으로 게시하는 데 사용됩니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [0, 352, 405, 116], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 362, 389, 98], "text": "SoHO 도메인의 다양한 문서 유형과\n파일 형식에서 원시 텍스트를 추출하려면\n전처리가 필요합니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [0, 578, 423, 145], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 588, 407, 127], "text": "OCR은 문서마다 JSON 파일 하나를 만듭니다.\n이 파일에는 추출한 각 텍스트 줄의\n바운딩 박스를 비롯해 많은 정보가\n포함됩니다.", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [450, 632, 592, 91], "fill": "#ffffff"},
+    {"type": "text", "box": [458, 640, 576, 75], "text": "이 처리 단계는 JSON 파일에서 원시 텍스트를 추출하고,\n원본 파일의 구조를 활용해 페이지 단위로 텍스트 줄을\n모읍니다.", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "center"},
+
+    {"type": "rect", "box": [68, 149, 220, 77], "fill": "#ffffff"},
+    {"type": "text", "box": [75, 155, 206, 65], "text": "SoHO 규정·보고서·지침\n(.pdf 및 .docx 형식)", "font": "regular", "font_size": 17, "min_font_size": 14, "line_gap": 3, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [340, 158, 141, 59], "fill": "#ffffff"},
+    {"type": "text", "box": [347, 164, 127, 47], "text": "OCR: Amazon\nTextract", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [86, 232, 67, 32], "fill": "#ffffff"},
+    {"type": "text", "box": [92, 238, 55, 20], "text": "클라우드", "font": "regular", "font_size": 16, "min_font_size": 13, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [690, 400, 127, 66], "fill": "#ffffff"},
+    {"type": "text", "box": [697, 407, 113, 52], "text": "텍스트\n처리", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [520, 480, 130, 40], "fill": "#ffffff"},
+    {"type": "text", "box": [526, 487, 118, 26], "text": "OCR 처리 텍스트", "font": "regular", "font_size": 16, "min_font_size": 13, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [469, 541, 145, 39], "fill": "#ffffff"},
+    {"type": "text", "box": [476, 548, 131, 25], "text": "로컬 머신", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [862, 490, 171, 38], "fill": "#ffffff"},
+    {"type": "text", "box": [869, 497, 157, 24], "text": "지식 그래프", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

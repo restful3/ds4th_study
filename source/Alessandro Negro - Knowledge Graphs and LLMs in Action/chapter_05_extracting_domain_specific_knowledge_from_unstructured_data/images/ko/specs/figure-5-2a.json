@@ -1,0 +1,18 @@
+{
+  "title": "Figure 5.2a Korean localization",
+  "source": "../../358be7d7fe363c94f40ccd56d2534b0fad4f94df8e130e95198673ceeaeb05a2.jpg",
+  "output": "../figure-5-2a-ko.png",
+  "coordinate_space": [937, 348],
+  "operations": [
+    {"type": "rect", "box": [61, 109, 79, 27], "fill": "#ffffff"},
+    {"type": "text", "box": [65, 112, 71, 21], "text": "인물", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#555555", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [205, 139, 79, 27], "fill": "#ffffff"},
+    {"type": "text", "box": [209, 142, 71, 21], "text": "인물", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#555555", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [355, 77, 82, 28], "fill": "#ffffff"},
+    {"type": "text", "box": [359, 80, 74, 22], "text": "인물", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#555555", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [523, 140, 82, 27], "fill": "#ffffff"},
+    {"type": "text", "box": [527, 143, 74, 21], "text": "인물", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#555555", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [691, 159, 168, 29], "fill": "#ffffff"},
+    {"type": "text", "box": [696, 162, 158, 23], "text": "기관", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#555555", "align": "center", "valign": "center"}
+  ]
+}

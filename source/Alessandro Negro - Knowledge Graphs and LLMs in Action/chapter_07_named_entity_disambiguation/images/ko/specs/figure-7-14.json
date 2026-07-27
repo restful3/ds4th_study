@@ -1,0 +1,29 @@
+{
+  "title": "Figure 7.14 Korean localization",
+  "source": "../../d04326a9594a84d3d6ef681b10435795b74a1782627a912592ad87b6079a8ca0.jpg",
+  "output": "../figure-7-14-ko.png",
+  "coordinate_space": [1034, 748],
+  "operations": [
+    {"type": "rect", "box": [145, 2, 410, 61], "fill": "#ffffff"},
+    {"type": "text", "box": [153, 8, 394, 49], "text": "검색 쿼리를 실행하기 전에\n검색 문자열을 전처리할 수 있습니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [592, 2, 442, 109], "fill": "#ffffff"},
+    {"type": "text", "box": [600, 8, 426, 95], "text": "구조화된 지식 베이스 검색은 온톨로지\n연결을 바탕으로 검색 엔티티와 관련된\n엔티티를 찾아냅니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [48, 607, 366, 141], "fill": "#ffffff"},
+    {"type": "text", "box": [56, 616, 350, 124], "text": "구조화된 지식 베이스 검색은\n엔티티 멘션이 포함된 텍스트를\n반환합니다. 점수 기준은 사용자가\n정의할 수 있습니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [587, 604, 447, 144], "fill": "#ffffff"},
+    {"type": "text", "box": [595, 612, 431, 128], "text": "검색 과정은 “islets of Langerhans”와 연결된\n“diabetes type 1”, “hyperglycaemia” 같은\n엔티티를 포함합니다. 두 질환은 모두 췌장에\n흩어진 랑게르한스섬에 영향을 줍니다.", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+
+    {"type": "rect", "box": [307, 105, 186, 44], "fill": "#ffffff"},
+    {"type": "text", "box": [311, 107, 178, 40], "text": "검색 문자열:\n“islets of Langerhans”", "font": "regular", "font_size": 17, "min_font_size": 14, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [165, 208, 143, 69], "fill": "#ffffff"},
+    {"type": "text", "box": [172, 215, 129, 55], "text": "개념\n검색 쿼리", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 3, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [487, 201, 148, 80], "fill": "#ffffff"},
+    {"type": "text", "box": [494, 208, 134, 66], "text": "구조화된\n지식 베이스\n쿼리", "font": "bold", "font_size": 17, "min_font_size": 14, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [153, 334, 169, 52], "fill": "#ffffff"},
+    {"type": "text", "box": [160, 341, 155, 38], "text": "엔티티 별칭:\n“pancreatic islets”", "font": "regular", "font_size": 16, "min_font_size": 13, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [554, 391, 177, 53], "fill": "#ffffff"},
+    {"type": "text", "box": [561, 398, 163, 39], "text": "관련 엔티티:\n“diabetes type 1”", "font": "regular", "font_size": 16, "min_font_size": 13, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [506, 527, 216, 54], "fill": "#ffffff"},
+    {"type": "text", "box": [513, 534, 202, 40], "text": "관련 엔티티:\n“hyperglycaemia”", "font": "regular", "font_size": 16, "min_font_size": 13, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

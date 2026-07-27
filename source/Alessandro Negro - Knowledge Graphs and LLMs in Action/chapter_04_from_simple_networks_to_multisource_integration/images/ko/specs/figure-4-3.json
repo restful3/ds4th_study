@@ -1,0 +1,24 @@
+{
+  "title": "Figure 4.3 Korean localization",
+  "source": "../../fd07dd428a9ea854a0dc9ebececedd8e4a3a765cf27916a7da9f324b4cd8f47c.jpg",
+  "output": "../figure-4-3-ko.png",
+  "coordinate_space": [848, 709],
+  "operations": [
+    {"type": "rect", "box": [259, 1, 87, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [263, 4, 79, 25], "text": "질병", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [348, 1, 101, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [352, 4, 93, 25], "text": "증상", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [467, 1, 193, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [472, 4, 183, 25], "text": "PPI 네트워크", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [684, 1, 80, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [688, 4, 72, 25], "text": "질병", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [779, 1, 69, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [783, 4, 61, 25], "text": "유전자", "font": "regular", "font_size": 16, "min_font_size": 13, "fill": "#111111", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [307, 289, 510, 29], "fill": "#ffffff"},
+    {"type": "text", "box": [313, 291, 498, 25], "text": "병합 + 엔티티 해소 + 정규화", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [0, 349, 302, 173], "fill": "#ffffff"},
+    {"type": "text", "box": [3, 360, 291, 150], "text": "이 과정은 여러 소스의 노드를\n병합하고, 같은 개념을 나타내는\n노드를 연결하며, 관련 없는\n노드와 관계를 제거합니다.", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 6, "fill": "#111111", "align": "left", "valign": "top"}
+  ]
+}

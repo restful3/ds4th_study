@@ -1,0 +1,362 @@
+{
+  "title": "figure-2-5 Korean localization",
+  "source": "../../f51116dcb3b73adb42e4006b3f39e5ad1284c6ae46ea73dc87f4ad191c4ec9f3.jpg",
+  "output": "../figure-2-5-ko.png",
+  "coordinate_space": [
+    823,
+    612
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        379,
+        15,
+        180,
+        27
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        379,
+        15,
+        180,
+        27
+      ],
+      "text": "지능형 시스템",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#a9a9a9",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        59,
+        56,
+        90,
+        48
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        59,
+        56,
+        90,
+        48
+      ],
+      "text": "과제/\n질문",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#a9a9a9",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        495,
+        56,
+        125,
+        58
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        495,
+        56,
+        125,
+        58
+      ],
+      "text": "추론\n엔진",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#a9a9a9",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        714,
+        44,
+        105,
+        66
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        714,
+        44,
+        105,
+        66
+      ],
+      "text": "행동/\n제안/\n답변",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#a9a9a9",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        48,
+        229,
+        128,
+        55
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        48,
+        229,
+        128,
+        55
+      ],
+      "text": "환경/\n맥락",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#a9a9a9",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        557,
+        207,
+        103,
+        31
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        557,
+        207,
+        103,
+        31
+      ],
+      "text": "추론",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#a9a9a9",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        443,
+        336,
+        132,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        443,
+        336,
+        132,
+        28
+      ],
+      "text": "피드백 루프",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#a9a9a9",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        298,
+        254,
+        137,
+        67
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        298,
+        254,
+        137,
+        67
+      ],
+      "text": "지식\n베이스",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        42,
+        286,
+        194,
+        25
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        42,
+        286,
+        194,
+        25
+      ],
+      "text": "지식 습득",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        88,
+        316,
+        67,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        88,
+        316,
+        67,
+        28
+      ],
+      "text": "데이터",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        47,
+        432,
+        125,
+        29
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        47,
+        432,
+        125,
+        29
+      ],
+      "text": "데이터 소스",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        4,
+        497,
+        390,
+        111
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        4,
+        497,
+        390,
+        111
+      ],
+      "text": "지식 습득은 관련 데이터와 맥락을 지능형 에이전트가\n추론에 사용할 수 있는 지식으로 변환합니다.",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        405,
+        494,
+        413,
+        114
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        405,
+        494,
+        413,
+        114
+      ],
+      "text": "지식 베이스는 변환된 지식을 여러 추론 엔진에\n알맞은 방식으로 저장합니다.",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    }
+  ]
+}

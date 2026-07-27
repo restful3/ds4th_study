@@ -1,0 +1,86 @@
+{
+  "title": "Figure 3.6 Korean localization",
+  "source": "../../0a8768ea67bd7cd8ce084f51410c21f4e0f6d5f017a74a15e2432cf78197c284.jpg",
+  "output": "../figure-3-6-ko.png",
+  "coordinate_space": [1129, 632],
+  "operations": [
+    {"type": "rect", "box": [72, 31, 198, 45], "fill": "#eeeeee"},
+    {
+      "type": "text",
+      "box": [76, 35, 190, 37],
+      "text": "질병",
+      "font": "bold",
+      "font_size": 22,
+      "min_font_size": 19,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [285, 31, 196, 45], "fill": "#eeeeee"},
+    {
+      "type": "text",
+      "box": [289, 35, 188, 37],
+      "text": "표현형 특징",
+      "font": "bold",
+      "font_size": 22,
+      "min_font_size": 18,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [497, 31, 198, 45], "fill": "#eeeeee"},
+    {
+      "type": "text",
+      "box": [501, 35, 190, 37],
+      "text": "작성자",
+      "font": "bold",
+      "font_size": 22,
+      "min_font_size": 19,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [710, 31, 198, 45], "fill": "#eeeeee"},
+    {
+      "type": "text",
+      "box": [714, 35, 190, 37],
+      "text": "생성일",
+      "font": "bold",
+      "font_size": 22,
+      "min_font_size": 19,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [923, 31, 198, 45], "fill": "#eeeeee"},
+    {
+      "type": "text",
+      "box": [927, 35, 190, 37],
+      "text": "출처",
+      "font": "bold",
+      "font_size": 22,
+      "min_font_size": 19,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [214, 500, 915, 132], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [220, 513, 895, 112],
+      "text": "각 행의 값은 지식 그래프에서 노드나 관계의 속성을\n정의하는 데 사용됩니다. 이 예에서는 주석 메타데이터\n(작성자·생성일·출처)가 질병(OMIM:222100)과 관련 표현형\n특징(HP:0410050)을 잇는 간선의 속성을 지정합니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 17,
+      "line_gap": 6,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top"
+    }
+  ]
+}

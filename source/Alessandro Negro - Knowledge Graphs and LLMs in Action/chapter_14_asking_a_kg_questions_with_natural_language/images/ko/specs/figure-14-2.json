@@ -1,0 +1,24 @@
+{
+  "title": "Figure 14.2 Korean localization",
+  "source": "../../209850d547aaa3e8de9e42c6b9e16a8233869f103a30b6f4be13f6ca60871ab3.jpg",
+  "output": "../figure-14-2-ko.png",
+  "coordinate_space": [1134, 1165],
+  "operations": [
+    {"type": "rect", "box": [477, 15, 215, 80], "fill": "#ffffff"},
+    {"type": "text", "box": [483, 20, 203, 70], "text": "이 시간, 이 지역에서\n발견된 빨간색 Camaro", "font": "regular", "font_size": 21, "min_font_size": 16, "line_gap": 2, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [950, 78, 178, 60], "fill": "#ffffff"},
+    {"type": "text", "box": [960, 83, 162, 50], "text": "자연어 요청", "font": "regular", "font_size": 21, "min_font_size": 16, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [20, 246, 304, 138], "fill": "#ffffff"},
+    {"type": "text", "box": [27, 253, 290, 124], "text": "빨간색 Camaro는 차량입니다.\n\nANPRCamera는 차량을 포착합니다.\n\nCameraEvent에는 타임스탬프가 있습니다.", "font": "regular", "font_size": 20, "min_font_size": 15, "line_gap": 3, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [890, 434, 238, 104], "fill": "#ffffff"},
+    {"type": "text", "box": [900, 439, 222, 94], "text": "요청의 의미 요소를\n스키마 클래스와\n관계 유형에 매핑합니다.", "font": "regular", "font_size": 21, "min_font_size": 16, "line_gap": 2, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [20, 552, 117, 40], "fill": "#ffffff"},
+    {"type": "text", "box": [26, 557, 105, 30], "text": "탐색", "font": "bold", "font_size": 22, "min_font_size": 17, "fill": "#222222", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [7, 862, 139, 40], "fill": "#ffffff"},
+    {"type": "text", "box": [13, 867, 127, 30], "text": "제약 조건", "font": "bold", "font_size": 22, "min_font_size": 17, "fill": "#222222", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [919, 798, 209, 102], "fill": "#ffffff"},
+    {"type": "text", "box": [925, 803, 197, 92], "text": "스키마 요소로\n요청에 맞는 제약 탐색을\n구성합니다.", "font": "regular", "font_size": 21, "min_font_size": 16, "line_gap": 2, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [1000, 1093, 128, 62], "fill": "#ffffff"},
+    {"type": "text", "box": [1006, 1098, 116, 52], "text": "정형 Cypher\n쿼리", "font": "regular", "font_size": 20, "min_font_size": 16, "line_gap": 1, "fill": "#222222", "align": "center", "valign": "center"}
+  ]
+}

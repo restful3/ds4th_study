@@ -1,0 +1,20 @@
+{
+  "title": "Figure 12.6a Korean localization",
+  "source": "../../ba6bb9874db02cf558062084f4e4d151e726a7a266550de646445c7b3f9a86ad.jpg",
+  "output": "../figure-12-6a-ko.png",
+  "coordinate_space": [515, 434],
+  "operations": [
+    {"type": "rect", "box": [0, 150, 31, 132], "fill": "#ffffff"},
+    {"type": "text", "box": [5, 164, 21, 104], "text": "실제 클래스", "font": "regular", "font_size": 15, "min_font_size": 12, "rotation": 90, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [31, 83, 29, 95], "fill": "#ffffff"},
+    {"type": "text", "box": [36, 100, 19, 61], "text": "불법", "font": "regular", "font_size": 15, "min_font_size": 12, "rotation": 90, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [31, 267, 29, 95], "fill": "#ffffff"},
+    {"type": "text", "box": [36, 284, 19, 61], "text": "합법", "font": "regular", "font_size": 15, "min_font_size": 12, "rotation": 90, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [104, 379, 88, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [110, 383, 76, 23], "text": "불법", "font": "regular", "font_size": 16, "min_font_size": 13, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [272, 379, 89, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [278, 383, 77, 23], "text": "합법", "font": "regular", "font_size": 16, "min_font_size": 13, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [156, 407, 170, 27], "fill": "#ffffff"},
+    {"type": "text", "box": [162, 410, 158, 21], "text": "예측 클래스", "font": "regular", "font_size": 16, "min_font_size": 13, "fill": "#222222", "align": "center", "valign": "center"}
+  ]
+}

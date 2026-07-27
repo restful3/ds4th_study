@@ -1,0 +1,409 @@
+{
+  "title": "figure-2-12 Korean localization",
+  "source": "../../449d8457bb6d508ec1cb98c8a4e1052df86f66feab6d0a36dea99891eb9516f5.jpg",
+  "output": "../figure-2-12-ko.png",
+  "coordinate_space": [
+    1129,
+    695
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        0,
+        0,
+        1129,
+        8
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "rect",
+      "box": [
+        0,
+        688,
+        1129,
+        7
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "rect",
+      "box": [
+        0,
+        0,
+        300,
+        141
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        0,
+        0,
+        300,
+        141
+      ],
+      "text": "귀납적 추론은 원본 데이터에서 예측 모델을 만들고,\n일반화하거나 모델을 더 복잡한 추론 엔진의 요구에 맞게\n조정하는 과정을 포함합니다.",
+      "font": "bold",
+      "font_size": 15,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        925,
+        65,
+        204,
+        214
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        925,
+        65,
+        204,
+        214
+      ],
+      "text": "이 예시에서 추론 엔진은\n원래 지식 베이스에 없는\n질병의 치료도 추천할 수\n있습니다.",
+      "font": "bold",
+      "font_size": 15,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        3,
+        537,
+        365,
+        156
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        3,
+        537,
+        365,
+        156
+      ],
+      "text": "자동화된 의사의 데이터 소스에는 EHR, 연구 문헌,\n의료 모범 사례, 단백질·유전자·질병 데이터베이스 등이\n포함될 수 있습니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        500,
+        64,
+        190,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        500,
+        64,
+        190,
+        28
+      ],
+      "text": "지능형 시스템",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        590,
+        122,
+        145,
+        66
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        590,
+        122,
+        145,
+        66
+      ],
+      "text": "지식\n베이스",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        389,
+        303,
+        132,
+        80
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        389,
+        303,
+        132,
+        80
+      ],
+      "text": "지식 베이스\n구성",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        588,
+        304,
+        145,
+        76
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        588,
+        304,
+        145,
+        76
+      ],
+      "text": "추상화",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        602,
+        405,
+        175,
+        30
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        602,
+        405,
+        175,
+        30
+      ],
+      "text": "추론 엔진",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        886,
+        320,
+        115,
+        55
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        886,
+        320,
+        115,
+        55
+      ],
+      "text": "행동/\n제안",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        612,
+        532,
+        128,
+        32
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        612,
+        532,
+        128,
+        32
+      ],
+      "text": "환경",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        37,
+        225,
+        112,
+        48
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        37,
+        225,
+        112,
+        48
+      ],
+      "text": "비정형\n데이터",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        178,
+        225,
+        110,
+        48
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        178,
+        225,
+        110,
+        48
+      ],
+      "text": "관계형\n소스",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        28,
+        427,
+        125,
+        48
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        28,
+        427,
+        125,
+        48
+      ],
+      "text": "벡터 기반\n데이터",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        169,
+        427,
+        128,
+        30
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        169,
+        427,
+        128,
+        30
+      ],
+      "text": "이메일/채팅",
+      "font": "regular",
+      "font_size": 14,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    }
+  ]
+}

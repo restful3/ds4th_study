@@ -1,0 +1,389 @@
+{
+  "title": "figure-15-9 Korean localization",
+  "source": "../../eee59e6c04a3c98cd83581a80954cfc2889f2bf22a50987c0e8e33a3f378c8c3.jpg",
+  "output": "../figure-15-9-ko.png",
+  "coordinate_space": [
+    1006,
+    667
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        163,
+        20,
+        129,
+        51
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        163,
+        20,
+        129,
+        51
+      ],
+      "text": "설정\n제공자",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#b8b8b8",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        900,
+        20,
+        83,
+        51
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        900,
+        20,
+        83,
+        51
+      ],
+      "text": "스키마\n제공자",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#b8b8b8",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        17,
+        262,
+        96,
+        31
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        17,
+        262,
+        96,
+        31
+      ],
+      "text": "프롬프트",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#b8b8b8",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        924,
+        172,
+        80,
+        58
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        924,
+        172,
+        80,
+        58
+      ],
+      "text": "그래프\n데이터베이스",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#b8b8b8",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        481,
+        164,
+        110,
+        34
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        481,
+        164,
+        110,
+        34
+      ],
+      "text": "LangGraph",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#b8b8b8",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        202,
+        294,
+        101,
+        34
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        202,
+        294,
+        101,
+        34
+      ],
+      "text": "질문",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        353,
+        331,
+        87,
+        33
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        353,
+        331,
+        87,
+        33
+      ],
+      "text": "상태",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        503,
+        331,
+        86,
+        33
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        503,
+        331,
+        86,
+        33
+      ],
+      "text": "상태",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        811,
+        328,
+        57,
+        38
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        811,
+        328,
+        57,
+        38
+      ],
+      "text": "최종\n상태",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        300,
+        443,
+        488,
+        33
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        300,
+        443,
+        488,
+        33
+      ],
+      "text": "질문 처리 인터페이스",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        0,
+        579,
+        150,
+        39
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        0,
+        579,
+        150,
+        39
+      ],
+      "text": "사용자/프런트엔드",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        216,
+        537,
+        99,
+        31
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        216,
+        537,
+        99,
+        31
+      ],
+      "text": "질문",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        358,
+        585,
+        99,
+        29
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        358,
+        585,
+        99,
+        29
+      ],
+      "text": "갱신",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        268,
+        642,
+        112,
+        25
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        268,
+        642,
+        112,
+        25
+      ],
+      "text": "응답",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    }
+  ]
+}

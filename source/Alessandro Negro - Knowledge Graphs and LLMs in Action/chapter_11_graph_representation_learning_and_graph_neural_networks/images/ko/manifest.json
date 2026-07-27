@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "chapter": "11",
+  "source_document": "../../11_graph_representation_learning_and_graph_neural_networks.md",
+  "review_status": "reviewed",
+  "review_method": [
+    "original Markdown image order and captions",
+    "source image inspection at original pixel dimensions",
+    "localized image inspection at original pixel dimensions",
+    "900px target-display contact sheet"
+  ],
+  "mapping_notes": [
+    "The point marked 0 plus the grid and irregular graph together illustrate Figure 11.2; the first point image is not a separate numbered figure.",
+    "The three numbered geometry panels together form Figure 11.3.",
+    "The line before Figure 11.5 names the figure before its image, so caption-only backward grouping produces a warning; the visual and surrounding prose confirm the mapping."
+  ],
+  "translation_policy": {
+    "translate": "reader-facing headings, process labels, and explanatory prose",
+    "preserve": "node IDs, encode function notation, embedding variable symbols, numeric dimension labels, and graph geometry"
+  },
+  "items": [
+    {"key": "figure-11-1", "source": "../f3c8524c810ee76cfd272b70a47443f0b49e0f6d893e64fab51150e8c6d32eb9.jpg", "output": "figure-11-1-ko.png", "action": "localized", "reason": "원본 그래프와 임베딩 공간 제목을 번역"},
+    {"key": "figure-11-2-0d", "source": "../516a12b8700753096c7255d25e1e80ae1459d7fbf79b2b579fe6401d00a90e1c.jpg", "output": null, "action": "preserved", "reason": "점과 숫자 0만 있는 언어 중립 패널"},
+    {"key": "figure-11-2a", "source": "../c55ea35a982ddb091b043220a2a9ec7928fa0506a2522a9b80fd62f226d82206.jpg", "output": null, "action": "preserved", "reason": "격자 구조만 있는 언어 중립 패널"},
+    {"key": "figure-11-2b", "source": "../ca7d82e74831dd2909df319407fcd15ecf55b6dab126f718a99125548444d52e.jpg", "output": null, "action": "preserved", "reason": "불규칙 그래프 구조만 있는 언어 중립 패널"},
+    {"key": "figure-11-3a", "source": "../c32f599cd22a56eac60d8d853fe1c9ad280935f3e553aaefa4d26cb0ef7dbe6b.jpg", "output": null, "action": "preserved", "reason": "선분과 숫자 1만 있는 언어 중립 패널"},
+    {"key": "figure-11-3b", "source": "../43c7af63809b542251a15b5b46591a2d4230d18b9809a06450e37921de5d96e7.jpg", "output": null, "action": "preserved", "reason": "정사각형과 숫자 2만 있는 언어 중립 패널"},
+    {"key": "figure-11-3c", "source": "../eae4d2fd8274d81fc6e74b4eaaf23b0015d52d228049b72013c5705585d2efe4.jpg", "output": null, "action": "preserved", "reason": "입체 도형과 숫자 3만 있는 언어 중립 패널"},
+    {"key": "figure-11-4", "source": "../0a8af6159ce62e7f2cddac103001b8752ede40cfb18b329c94bedb14d0f67666.jpg", "output": "figure-11-4-ko.png", "action": "localized", "reason": "인코더–디코더 단계와 설명을 번역"},
+    {"key": "figure-11-5", "source": "../4ca84898c47d7877b6006ad2b73c6df10074b80b10b7fe1d995955a54bbcc23f.jpg", "output": "figure-11-5-ko.png", "action": "localized", "reason": "메시지 집계 단계와 설명을 번역"}
+  ]
+}

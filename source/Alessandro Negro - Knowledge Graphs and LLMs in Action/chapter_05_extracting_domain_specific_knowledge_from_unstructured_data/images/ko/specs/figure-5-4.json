@@ -1,0 +1,36 @@
+{
+  "title": "Figure 5.4 Korean localization",
+  "source": "../../e8faa6446ddc2caf797b8d0c26d2872e4b1a470826955a28b0b9312ee376d1b8.jpg",
+  "output": "../figure-5-4-ko.png",
+  "coordinate_space": [1126, 562],
+  "operations": [
+    {"type": "rect", "box": [130, 4, 290, 84], "fill": "#ffffff"},
+    {"type": "text", "box": [135, 8, 198, 73], "text": "앞으로 마주할 복잡성과\n난점을 파악하기 위한\n초기 노력", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "restore_bezier", "points": [[326, 66], [335, 108], [315, 145], [309, 178]], "width": 3},
+    {"type": "rect", "box": [533, 4, 357, 111], "fill": "#ffffff"},
+    {"type": "text", "box": [539, 10, 345, 96], "text": "반복적 프롬프트 엔지니어링:\n• 실패 사례 검토\n• 프롬프트 개선\n• 새 문서로 테스트", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [873, 4, 253, 88], "fill": "#ffffff"},
+    {"type": "text", "box": [879, 10, 241, 70], "text": "프롬프트 또는 미세 조정 모델로\n지식 그래프를 생성합니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 5, "fill": "#111111", "align": "left", "valign": "top"},
+
+    {"type": "rect", "box": [4, 111, 136, 54], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 116, 96, 44], "text": "비정형\n데이터", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [190, 199, 139, 62], "fill": "#ffffff"},
+    {"type": "text", "box": [195, 205, 129, 50], "text": "데이터\n탐색", "font": "regular", "font_size": 19, "min_font_size": 16, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [404, 199, 139, 62], "fill": "#ffffff"},
+    {"type": "text", "box": [409, 205, 129, 50], "text": "프롬프트\n엔지니어링", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [982, 199, 139, 62], "fill": "#ffffff"},
+    {"type": "text", "box": [987, 205, 129, 50], "text": "지식 그래프\n생성", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [404, 375, 139, 60], "fill": "#ffffff"},
+    {"type": "text", "box": [409, 381, 129, 48], "text": "사전 주석", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [618, 375, 137, 60], "fill": "#ffffff"},
+    {"type": "text", "box": [623, 381, 127, 48], "text": "사람\n주석", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [825, 375, 137, 60], "fill": "#ffffff"},
+    {"type": "text", "box": [830, 381, 127, 48], "text": "LLM\n미세 조정", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [78, 347, 246, 85], "fill": "#ffffff"},
+    {"type": "text", "box": [84, 353, 234, 68], "text": "설계한 프롬프트로 미세 조정\n데이터셋을 사전 주석합니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 5, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "restore_bezier", "points": [[323, 388], [352, 377], [367, 414], [398, 419]], "width": 3},
+    {"type": "rect", "box": [720, 475, 406, 87], "fill": "#ffffff"},
+    {"type": "text", "box": [727, 482, 393, 75], "text": "사람의 감독:\n• 생성 결과 수정\n• 누락된 엔티티·관계 추가", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"}
+  ]
+}

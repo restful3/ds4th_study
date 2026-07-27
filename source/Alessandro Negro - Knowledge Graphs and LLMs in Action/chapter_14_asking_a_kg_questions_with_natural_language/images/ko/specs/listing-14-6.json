@@ -1,0 +1,16 @@
+{
+  "title": "Listing 14.6 Korean localization",
+  "source": "../../40c8cbf923bffdb934efdafc021eec0f7cdffa0bdfdc4b1a0cefb63f65046c7f.jpg",
+  "output": "../listing-14-6-ko.png",
+  "coordinate_space": [837, 198],
+  "operations": [
+    {"type": "rect", "box": [25, 0, 520, 37], "fill": "#70a6cc"},
+    {"type": "text", "box": [31, 4, 508, 29], "text": "리스팅 14.6  스키마 설정: skip 섹션", "font": "bold", "font_size": 22, "min_font_size": 17, "fill": "#ffffff", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [397, 75, 112, 68], "fill": "#ffffff"},
+    {"type": "text", "box": [405, 81, 98, 56], "text": "건너뛸\n클래스", "font": "bold", "font_size": 21, "min_font_size": 16, "line_gap": 2, "fill": "#444444", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [529, 101, 166, 68], "fill": "#ffffff"},
+    {"type": "text", "box": [537, 107, 152, 56], "text": "건너뛸 관계", "font": "bold", "font_size": 21, "min_font_size": 16, "fill": "#444444", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [726, 127, 109, 68], "fill": "#ffffff"},
+    {"type": "text", "box": [734, 133, 95, 56], "text": "건너뛸\n속성", "font": "bold", "font_size": 21, "min_font_size": 16, "line_gap": 2, "fill": "#444444", "align": "left", "valign": "center"}
+  ]
+}

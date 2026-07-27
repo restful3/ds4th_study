@@ -1,0 +1,23 @@
+{
+  "title": "Figure 4.10a Korean localization",
+  "source": "../../e5f3626de2a3b92b4014b255ce0faa22a2f25b289283435f7dfa38a1fbb5087c.jpg",
+  "output": "../figure-4-10a-ko.png",
+  "coordinate_space": [976, 321],
+  "operations": [
+    {"type": "rect", "box": [85, 14, 396, 31], "fill": {"sample": [12, 12], "radius": 3}},
+    {"type": "text", "box": [91, 18, 384, 24], "text": "(a) 메타그래프(더 큰 스키마의 일부)", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [500, 14, 158, 31], "fill": {"sample": [12, 12], "radius": 3}},
+    {"type": "text", "box": [505, 18, 148, 24], "text": "(b) 메타경로:", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#111111", "align": "left", "valign": "center"},
+
+    {"type": "rect", "box": [58, 134, 94, 42], "fill": "#ffffff"},
+    {"type": "text", "box": [61, 136, 88, 38], "text": "MSigDB\n컬렉션", "font": "bold", "font_size": 17, "min_font_size": 14, "line_gap": 1, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [226, 130, 64, 21], "fill": "#ffffff"},
+    {"type": "text", "box": [229, 131, 58, 19], "text": "조직", "font": "bold", "font_size": 17, "min_font_size": 14, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [393, 134, 91, 42], "fill": "#ffffff"},
+    {"type": "text", "box": [396, 136, 85, 38], "text": "병태\n생리", "font": "bold", "font_size": 17, "min_font_size": 14, "line_gap": 1, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [93, 284, 74, 20], "fill": "#ffffff"},
+    {"type": "text", "box": [96, 285, 68, 18], "text": "유전자", "font": "bold", "font_size": 16, "min_font_size": 13, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [351, 284, 65, 20], "fill": "#ffffff"},
+    {"type": "text", "box": [354, 285, 59, 18], "text": "질병", "font": "bold", "font_size": 16, "min_font_size": 13, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

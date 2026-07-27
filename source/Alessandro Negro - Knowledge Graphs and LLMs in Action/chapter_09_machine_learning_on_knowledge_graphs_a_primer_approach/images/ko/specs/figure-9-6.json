@@ -1,0 +1,26 @@
+{
+  "title": "Figure 9.6 Korean localization",
+  "source": "../../e3736fdb03726912ae449ab36cfd99acc777db5af2b692cf1cd3ce4d173030d0.jpg",
+  "output": "../figure-9-6-ko.png",
+  "coordinate_space": [1029, 473],
+  "operations": [
+    {"type": "rect", "box": [0, 269, 287, 141], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 278, 271, 123], "text": "이 접근법은 그래프를 입력으로 받아\n특정 알고리즘으로 분류합니다.\n중간 변환 단계가 없습니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [642, 169, 387, 151], "fill": "#ffffff"},
+    {"type": "text", "box": [650, 178, 371, 133], "text": "이 접근법은 전통적인 분류 알고리즘을 사용합니다.\n그래프 관련 정보를 해당 알고리즘에 적합한 형식,\n일반적으로 특징 행렬로 변환해야 합니다.", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [294, 18, 128, 56], "fill": "#ffffff"},
+    {"type": "text", "box": [301, 25, 114, 42], "text": "출력", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [486, 18, 128, 56], "fill": "#ffffff"},
+    {"type": "text", "box": [493, 25, 114, 42], "text": "출력", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [294, 208, 128, 56], "fill": "#ffffff"},
+    {"type": "text", "box": [301, 215, 114, 42], "text": "집단 분류", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [486, 142, 128, 65], "fill": "#ffffff"},
+    {"type": "text", "box": [493, 149, 114, 51], "text": "전통적\n분류", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [486, 273, 128, 65], "fill": "#ffffff"},
+    {"type": "text", "box": [493, 280, 114, 51], "text": "노드\n특징", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [294, 397, 128, 56], "fill": "#ffffff"},
+    {"type": "text", "box": [301, 404, 114, 42], "text": "그래프", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [486, 397, 128, 56], "fill": "#ffffff"},
+    {"type": "text", "box": [493, 404, 114, 42], "text": "그래프", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#222222", "align": "center", "valign": "center"}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Figure 8.1 Korean localization",
+  "source": "../../2af8bbeaf10df59220ffcc72117479e746d40538db96d847b51f70a8c5b86afc.jpg",
+  "output": "../figure-8-1-ko.png",
+  "coordinate_space": [1129, 734],
+  "operations": [
+    {"type": "rect", "box": [61, 4, 330, 61], "fill": "#ffffff"},
+    {"type": "text", "box": [67, 10, 318, 49], "text": "원형이 되는 엔티티를 나타내는\n첫 번째 계층의 노드", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [628, 4, 463, 61], "fill": "#ffffff"},
+    {"type": "text", "box": [634, 10, 451, 49], "text": "루트 노드에서 계층 관계로 연결된\nSNOMED 엔티티", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [378, 482, 140, 63], "fill": "#ffffff"},
+    {"type": "text", "box": [385, 489, 126, 49], "text": "중간 계층\n노드", "font": "bold", "font_size": 20, "min_font_size": 17, "line_gap": 3, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [453, 650, 279, 84], "fill": "#ffffff"},
+    {"type": "text", "box": [460, 657, 265, 70], "text": "첫 번째 계층 노드에서\n유형을 물려받는\n하위 계층 노드", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [198, 651, 58, 29], "fill": "#ffffff"},
+    {"type": "text", "box": [202, 656, 50, 20], "text": "유형:", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [875, 651, 58, 29], "fill": "#ffffff"},
+    {"type": "text", "box": [879, 656, 50, 20], "text": "유형:", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#111111", "align": "left", "valign": "center"}
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "title": "KG construction pipeline Korean localization template",
+  "coordinate_space": [1126, 643],
+  "variables": {
+    "source_color": "#111111",
+    "integration_color": "#111111",
+    "result_color": "#111111",
+    "goal_color": "#111111",
+    "subset_color": "#111111",
+    "clinician_color": "#111111",
+    "ontology_color": "#111111",
+    "annotations_color": "#111111",
+    "ontology_box_color": "#111111",
+    "annotations_box_color": "#111111",
+    "business_box_color": "#111111",
+    "data_understanding_box_color": "#111111",
+    "data_preparation_box_color": "#111111",
+    "kg_box_color": "#111111"
+  },
+  "operations": [
+    {"type": "rect", "box": [0, 0, 318, 194], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [10, 8, 298, 178],
+      "text": "HPO 소스에는 임상 활동을 지원하는\n데이터가 포함되어 있습니다.\nHPO는 표현형 특징의 이름을 정하는\n표준 어휘(온톨로지)와, 이 특징으로\n희귀 질환을 주석한 데이터셋을\n제공합니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 17,
+      "line_gap": 4,
+      "fill": "${source_color}",
+      "align": "left",
+      "valign": "top"
+    },
+
+    {"type": "rect", "box": [394, 0, 430, 132], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [410, 10, 400, 110],
+      "text": "데이터 수집과 처리는 여러 소스의 정보를\nKG의 통합 표현으로 결합하는 핵심\n과정입니다.",
+      "font": "bold",
+      "font_size": 20,
+      "min_font_size": 17,
+      "line_gap": 7,
+      "fill": "${integration_color}",
+      "align": "left",
+      "valign": "top"
+    },
+
+    {"type": "rect", "box": [833, 0, 293, 126], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [839, 8, 278, 108],
+      "text": "완성된 KG를 임상의나\n애플리케이션이 직접 질의해\n희귀 질환 진단을 지원할 수\n있습니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 16,
+      "line_gap": 4,
+      "fill": "${result_color}",
+      "align": "left",
+      "valign": "top"
+    },
+
+    {"type": "rect", "box": [0, 252, 286, 150], "fill": "#ffffff"},
+    {"type": "rect", "box": [280, 252, 19, 48], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [10, 262, 266, 126],
+      "text": "비즈니스 목표는 확인된 표현형\n특징을 바탕으로 임상의의\n질환 진단과 치료를 돕는\n것입니다.",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 17,
+      "line_gap": 5,
+      "fill": "${goal_color}",
+      "align": "left",
+      "valign": "top"
+    },
+    {"type": "rect", "box": [146, 370, 145, 45], "fill": "#ffffff"},
+    {
+      "type": "bezier",
+      "points": [[176, 369], [204, 415], [251, 404], [287, 388]],
+      "fill": "${goal_color}",
+      "width": 1.5,
+      "arrow_end": true,
+      "arrow_size": 10
+    },
+
+    {"type": "rect", "box": [284, 410, 122, 36], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [291, 412, 108, 32],
+      "text": "임상의",
+      "font": "regular",
+      "font_size": 20,
+      "min_font_size": 17,
+      "fill": "${clinician_color}",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [448, 328, 165, 39], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [457, 331, 146, 34],
+      "text": "HPO 온톨로지",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 16,
+      "fill": "${ontology_color}",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [444, 462, 196, 45], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [453, 464, 178, 34],
+      "text": "HPO 주석",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 16,
+      "fill": "${annotations_color}",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [683, 244, 125, 94], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [689, 250, 113, 82],
+      "text": "온톨로지\n수집·처리",
+      "font": "regular",
+      "font_size": 20,
+      "min_font_size": 16,
+      "line_gap": 7,
+      "fill": "${ontology_box_color}",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [683, 388, 125, 88], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [689, 394, 113, 76],
+      "text": "주석\n수집·처리",
+      "font": "regular",
+      "font_size": 20,
+      "min_font_size": 16,
+      "line_gap": 7,
+      "fill": "${annotations_box_color}",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [0, 538, 254, 105], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [10, 552, 232, 74],
+      "text": "CRISP-DM 모델에서\n사용하는 주요 단계",
+      "font": "bold",
+      "font_size": 19,
+      "min_font_size": 17,
+      "line_gap": 7,
+      "fill": "${subset_color}",
+      "align": "left",
+      "valign": "top"
+    },
+
+    {"type": "rect", "box": [263, 556, 146, 73], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [268, 562, 136, 61],
+      "text": "비즈니스\n이해",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 16,
+      "line_gap": 5,
+      "fill": "${business_box_color}",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [466, 556, 150, 73], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [471, 562, 140, 61],
+      "text": "데이터\n이해",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 16,
+      "line_gap": 5,
+      "fill": "${data_understanding_box_color}",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [669, 556, 149, 73], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [674, 562, 139, 61],
+      "text": "데이터\n준비",
+      "font": "regular",
+      "font_size": 19,
+      "min_font_size": 16,
+      "line_gap": 5,
+      "fill": "${data_preparation_box_color}",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [871, 552, 154, 82], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [875, 555, 146, 76],
+      "text": "지식 그래프 모델\n생성·갱신",
+      "font": "regular",
+      "font_size": 17.5,
+      "min_font_size": 15,
+      "line_gap": 5,
+      "fill": "${kg_box_color}",
+      "align": "center",
+      "valign": "center"
+    }
+  ]
+}

@@ -1,0 +1,310 @@
+{
+  "title": "Figure 3.2 Korean localization",
+  "source": "../../bacd29bfa050debe20ad1e1a84b4e4c5d5cab28724112aaf41a3e3738e13fc76.jpg",
+  "output": "../figure-3-2-ko.png",
+  "coordinate_space": [990, 810],
+  "operations": [
+    {"type": "rect", "box": [184, 5, 388, 104], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [194, 13, 360, 82],
+      "text": "데이터 준비는 현재 범위에서 필요한\n부분을 취하며, 다음 단계의 방향도\n결정합니다.",
+      "font": "bold",
+      "font_size": 20,
+      "min_font_size": 17,
+      "line_gap": 5,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top"
+    },
+
+    {"type": "rect", "box": [626, 0, 364, 116], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [638, 10, 340, 94],
+      "text": "현재 과업의 범위는 관련 데이터 중\n지식 그래프의 새 영역을 정의하는\n부분입니다.",
+      "font": "bold",
+      "font_size": 20,
+      "min_font_size": 17,
+      "line_gap": 5,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top"
+    },
+
+    {"type": "rect", "box": [18, 173, 99, 46], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [18, 176, 103, 40],
+      "text": "비정형\n데이터",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 14,
+      "line_gap": 1,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [168, 173, 91, 46], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [163, 176, 102, 40],
+      "text": "관계형\n소스",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 14,
+      "line_gap": 1,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [15, 369, 108, 42], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [12, 372, 119, 36],
+      "text": "벡터 기반 데이터",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [160, 370, 106, 41], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [155, 373, 116, 35],
+      "text": "이메일/채팅",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [480, 216, 156, 51], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [499, 221, 126, 41],
+      "text": "데이터\n준비",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 15,
+      "line_gap": 1,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "polygon",
+      "points": [
+        [680, 208],
+        [750, 212],
+        [832, 233],
+        [927, 281],
+        [925, 307],
+        [906, 337],
+        [819, 307],
+        [739, 278],
+        [672, 255]
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "restore_line",
+      "points": [
+        [660, 205],
+        [700, 206],
+        [720, 208],
+        [740, 210],
+        [760, 214],
+        [780, 219],
+        [800, 224],
+        [820, 231],
+        [840, 240],
+        [860, 250],
+        [880, 261],
+        [900, 275],
+        [920, 292],
+        [940, 312],
+        [950, 325]
+      ],
+      "width": 6
+    },
+    {
+      "type": "restore_line",
+      "points": [
+        [660, 267],
+        [680, 267],
+        [700, 269],
+        [720, 271],
+        [740, 274],
+        [750, 276],
+        [760, 279],
+        [770, 282]
+      ],
+      "width": 5
+    },
+    {
+      "type": "restore_line",
+      "points": [
+        [812, 298],
+        [820, 302],
+        [830, 307],
+        [840, 313],
+        [850, 320],
+        [860, 328],
+        [870, 338]
+      ],
+      "width": 5
+    },
+    {
+      "type": "text",
+      "box": [685, 207, 230, 123],
+      "text": "지식 그래프 모델\n생성·갱신",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 14,
+      "line_gap": 2,
+      "rotation": -18,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [382, 406, 51, 21], "fill": "#ffffff"},
+    {
+      "type": "line",
+      "points": [[380, 422], [433, 422]],
+      "fill": "#111111",
+      "width": 1
+    },
+
+    {
+      "type": "polygon",
+      "points": [[433, 278], [493, 321], [432, 418], [362, 417], [365, 387]],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [372, 282, 108, 137],
+      "text": "데이터 이해",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 14,
+      "rotation": 55,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "polygon",
+      "points": [[360, 426], [428, 421], [493, 537], [443, 573], [389, 526]],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [370, 422, 112, 143],
+      "text": "비즈니스 이해",
+      "font": "bold",
+      "font_size": 16,
+      "min_font_size": 13,
+      "rotation": 55,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [916, 374, 50, 100], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [919, 377, 44, 94],
+      "text": "모델링",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 15,
+      "rotation": -90,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {
+      "type": "polygon",
+      "points": [[735, 581], [848, 557], [862, 586], [746, 616]],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [733, 561, 132, 58],
+      "text": "평가",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 15,
+      "rotation": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [382, 587, 135, 44], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [388, 591, 123, 36],
+      "text": "배포",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [207, 506, 136, 51], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [213, 511, 124, 41],
+      "text": "시작/재시작",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 15,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center"
+    },
+
+    {"type": "rect", "box": [0, 699, 345, 111], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [8, 707, 327, 95],
+      "text": "데이터 이해는 기존 데이터에서\n시작해 정한 목표와 관련된\n데이터를 선택합니다.",
+      "font": "bold",
+      "font_size": 20,
+      "min_font_size": 17,
+      "line_gap": 5,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top"
+    },
+
+    {"type": "rect", "box": [608, 699, 382, 111], "fill": "#ffffff"},
+    {
+      "type": "text",
+      "box": [620, 707, 354, 95],
+      "text": "모델링은 머신러닝 과업에 사용할\n알고리즘을 정의하는 단계입니다.",
+      "font": "bold",
+      "font_size": 20,
+      "min_font_size": 17,
+      "line_gap": 7,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "title": "Figure 7.1 Korean localization",
+  "source": "../../9532162b74719e4f76ff3f5e575753c88711e2a367a00233d654a43c9d88fe20.jpg",
+  "output": "../figure-7-1-ko.png",
+  "coordinate_space": [1131, 651],
+  "operations": [
+    {"type": "rect", "box": [153, 3, 380, 91], "fill": "#ffffff"},
+    {"type": "text", "box": [159, 9, 368, 77], "text": "‘지카 바이러스’의 대표 이름,\n엔티티 ID(UMLS CUI), 의미 유형 등\n상세 정보", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [617, 3, 395, 91], "fill": "#ffffff"},
+    {"type": "text", "box": [623, 9, 383, 77], "text": "계층 구조에서 ‘지카 바이러스’를\n정의하는 데 사용할 수 있는\n상위 개념", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "bezier", "points": [[889, 66], [946, 69], [972, 88], [979, 99]], "width": 1, "fill": "#111111"},
+
+    {"type": "rect", "box": [12, 136, 235, 49], "fill": "#ffffff"},
+    {"type": "text", "box": [17, 143, 225, 36], "text": "지카 바이러스", "font": "regular", "font_size": 31, "min_font_size": 27, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [13, 251, 227, 28], "fill": "#ffffff"},
+    {"type": "text", "box": [17, 255, 219, 21], "text": "의미 유형: 바이러스", "font": "bold", "font_size": 18, "min_font_size": 15, "fill": "#222222", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [13, 294, 151, 30], "fill": "#ffffff"},
+    {"type": "text", "box": [17, 299, 143, 21], "text": "정의(6)", "font": "bold", "font_size": 18, "min_font_size": 15, "fill": "#222222", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [700, 204, 99, 44], "fill": "#ffffff"},
+    {"type": "text", "box": [704, 209, 91, 34], "text": "목록에 추가", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#333333", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [870, 132, 255, 35], "fill": "#ffffff"},
+    {"type": "text", "box": [875, 138, 245, 23], "text": "상위 개념(4)", "font": "bold", "font_size": 18, "min_font_size": 15, "fill": "#222222", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [870, 292, 255, 35], "fill": "#ffffff"},
+    {"type": "text", "box": [875, 298, 245, 23], "text": "하위 개념(7)", "font": "bold", "font_size": 18, "min_font_size": 15, "fill": "#222222", "align": "left", "valign": "center"},
+
+    {"type": "rect", "box": [43, 340, 768, 58], "fill": "#ffffff"},
+    {"type": "text", "box": [48, 345, 758, 48], "text": "플라비바이러스과(FLAVIVIRIDAE)의 플라비바이러스 속에 속하는 아르보바이러스.\n원래 우간다 지카 숲에서 분리되었으며 아시아와 아메리카로 유입되었다. (MSH)", "font": "regular", "font_size": 15, "min_font_size": 12, "line_gap": 4, "fill": "#222222", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [805, 351, 17, 18], "fill": "#ffffff"},
+    {"type": "line", "points": [[806, 363], [811, 358], [816, 363]], "width": 2, "fill": "#777777"},
+    {"type": "rect", "box": [43, 405, 768, 99], "fill": "#ffffff"},
+    {"type": "text", "box": [48, 410, 758, 89], "text": "플라비바이러스과의 양성 감각 ssRNA 바이러스로, 숲모기에 의해 운반·전파된다.\n임신부가 감염되면 태아에게 전달될 수 있으며 소두증 등 선천적 결함과 관련된다.\n지카 바이러스 감염은 길랭-바레 마비를 유발할 수도 있다. (NCI)", "font": "regular", "font_size": 15, "min_font_size": 12, "line_gap": 4, "fill": "#222222", "align": "left", "valign": "center"},
+
+    {"type": "rect", "box": [0, 532, 350, 119], "fill": "#ffffff"},
+    {"type": "rect", "box": [350, 532, 45, 43], "fill": "#ffffff"},
+    {"type": "text", "box": [6, 540, 342, 103], "text": "MeSH(MSH), 미국 국립암연구소(NCI)\n시소러스 등 여러 의학 데이터셋이\n제공하는 ‘지카 바이러스’ 설명", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 5, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [614, 532, 316, 119], "fill": "#ffffff"},
+    {"type": "rect", "box": [925, 579, 28, 64], "fill": "#ffffff"},
+    {"type": "text", "box": [621, 540, 304, 103], "text": "‘지카 바이러스’와 관련된 면역 인자,\n유전자, 단백질, 뉴클레오타이드를\n포함하는 하위 개념", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 5, "fill": "#111111", "align": "left", "valign": "top"}
+  ]
+}

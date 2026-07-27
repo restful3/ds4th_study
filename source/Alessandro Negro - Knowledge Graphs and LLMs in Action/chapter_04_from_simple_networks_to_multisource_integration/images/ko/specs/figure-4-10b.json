@@ -1,0 +1,36 @@
+{
+  "title": "Figure 4.10b Korean localization",
+  "source": "../../1f9dce8c0f16d382396e27d2688fb755f5a31a614df4013eeed4d7f9a8d79b0c.jpg",
+  "output": "../figure-4-10b-ko.png",
+  "coordinate_space": [1134, 637],
+  "operations": [
+    {"type": "rect", "box": [53, 183, 88, 39], "fill": "#ffffff"},
+    {"type": "text", "box": [57, 186, 80, 33], "text": "크론병", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [307, 88, 83, 20], "fill": "#ffffff"},
+    {"type": "text", "box": [311, 89, 75, 18], "text": "폐", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [385, 114, 82, 21], "fill": "#ffffff"},
+    {"type": "text", "box": [389, 115, 74, 19], "text": "백혈구", "font": "regular", "font_size": 16, "min_font_size": 13, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [379, 249, 83, 38], "fill": "#ffffff"},
+    {"type": "text", "box": [383, 252, 75, 32], "text": "다발성\n경화증", "font": "regular", "font_size": 16, "min_font_size": 13, "line_gap": 1, "fill": "#111111", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [540, 12, 87, 25], "fill": "#ffffff"},
+    {"type": "text", "box": [545, 15, 77, 19], "text": "메타경로", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [785, 12, 66, 25], "fill": "#ffffff"},
+    {"type": "text", "box": [790, 15, 56, 19], "text": "경로", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [990, 12, 66, 25], "fill": "#ffffff"},
+    {"type": "text", "box": [995, 15, 56, 19], "text": "경로", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [741, 193, 151, 27], "fill": "#ffffff"},
+    {"type": "text", "box": [746, 197, 141, 20], "text": "메타간선 차수", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#111111", "align": "center", "valign": "center"},
+
+    {"type": "rect", "box": [777, 138, 82, 22], "fill": "#ffffff"},
+    {"type": "text", "box": [781, 139, 74, 20], "text": "백혈구", "font": "regular", "font_size": 16, "min_font_size": 13, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [898, 137, 78, 36], "fill": "#ffffff"},
+    {"type": "text", "box": [902, 140, 70, 30], "text": "다발성\n경화증", "font": "regular", "font_size": 15, "min_font_size": 12, "line_gap": 0, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [898, 285, 78, 36], "fill": "#ffffff"},
+    {"type": "text", "box": [902, 288, 70, 30], "text": "다발성\n경화증", "font": "regular", "font_size": 15, "min_font_size": 12, "line_gap": 0, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [898, 372, 78, 36], "fill": "#ffffff"},
+    {"type": "text", "box": [902, 375, 70, 30], "text": "다발성\n경화증", "font": "regular", "font_size": 15, "min_font_size": 12, "line_gap": 0, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [898, 458, 78, 36], "fill": "#ffffff"},
+    {"type": "text", "box": [902, 461, 70, 30], "text": "다발성\n경화증", "font": "regular", "font_size": 15, "min_font_size": 12, "line_gap": 0, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

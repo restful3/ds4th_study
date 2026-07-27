@@ -1,0 +1,22 @@
+{
+  "title": "Figure 12.4 Korean localization",
+  "source": "../../2303d11cb12f0f7936001f06044ed676b14df12fb33e038807ebfdd76030d4f9.jpg",
+  "output": "../figure-12-4-ko.png",
+  "coordinate_space": [1134, 565],
+  "operations": [
+    {"type": "rect", "box": [236, 0, 300, 115], "fill": "#ffffff"},
+    {"type": "text", "box": [246, 8, 280, 99], "text": "동종 그래프 데이터를\n세 GNN 인코더로\n처리합니다.", "font": "bold", "font_size": 22, "min_font_size": 17, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [614, 0, 420, 119], "fill": "#ffffff"},
+    {"type": "text", "box": [624, 8, 400, 103], "text": "log_softmax 함수는 GNN 인코더가\n계산한 노드 표현을\n확률값으로 변환합니다.", "font": "bold", "font_size": 21, "min_font_size": 17, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [66, 142, 185, 65], "fill": "#ffffff"},
+    {"type": "text", "box": [74, 149, 169, 51], "text": "동종\n그래프 데이터", "font": "regular", "font_size": 19, "min_font_size": 15, "line_gap": 2, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [498, 127, 158, 84], "fill": "#ffffff"},
+    {"type": "text", "box": [506, 135, 142, 68], "text": "집계된\n이웃 특징", "font": "regular", "font_size": 19, "min_font_size": 15, "line_gap": 2, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [36, 428, 340, 137], "fill": "#ffffff"},
+    {"type": "text", "box": [45, 437, 322, 119], "text": "동종 그래프 데이터는 하나의 노드 유형(거래)과\n하나의 간선 유형(비트코인 흐름)으로\n구성됩니다.", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [401, 428, 352, 137], "fill": "#ffffff"},
+    {"type": "text", "box": [410, 437, 334, 119], "text": "각 GNN 인코더는 고유한 집계·갱신 함수로\n서로 다른 노드 표현을\n생성합니다.", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [770, 428, 364, 137], "fill": "#ffffff"},
+    {"type": "text", "box": [779, 437, 346, 119], "text": "Log Softmax가 계산한 확률값으로\n노드가 합법 거래인지 불법 거래인지\n판정합니다.", "font": "bold", "font_size": 20, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"}
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "title": "figure-15-15a Korean localization",
+  "source": "../../3dc939eebb93b6a13b6b63cfd9ea3cdf2d434a363193849b7b74815d64085426.jpg",
+  "output": "../figure-15-15a-ko.png",
+  "coordinate_space": [
+    759,
+    631
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        6,
+        0,
+        90,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        6,
+        0,
+        90,
+        28
+      ],
+      "text": "캔버스",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        11,
+        238,
+        20,
+        130
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        11,
+        238,
+        20,
+        130
+      ],
+      "text": "선택한 요소 없음",
+      "font": "regular",
+      "font_size": 13,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "rotation": 90
+    }
+  ]
+}

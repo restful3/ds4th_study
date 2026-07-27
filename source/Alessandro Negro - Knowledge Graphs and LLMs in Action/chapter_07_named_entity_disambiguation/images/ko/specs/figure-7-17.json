@@ -1,0 +1,24 @@
+{
+  "title": "Figure 7.17 Korean localization",
+  "source": "../../c0f578b31eae0271f9213fb5107f6e73b8670273743a4cf5b05d08b9de27faed.jpg",
+  "output": "../figure-7-17-ko.png",
+  "coordinate_space": [1034, 618],
+  "operations": [
+    {"type": "rect", "box": [0, 0, 412, 91], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 6, 396, 78], "text": "예문:\n“지카 바이러스는 소두증과 길랭-바레 증후군의\n원인이다.”", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [716, 0, 318, 91], "fill": "#ffffff"},
+    {"type": "text", "box": [723, 7, 304, 77], "text": "함께 등장한 엔티티를 연결하는\n관련 온톨로지 경로가 없습니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [0, 451, 310, 167], "fill": "#ffffff"},
+    {"type": "text", "box": [8, 460, 294, 150], "text": "KG는 같은 문장에 등장하는\n“Guillain-Barre syndrome”과\n“Zika virus” 같은 엔티티 사이의\n동시 출현 관계를 저장합니다.", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [638, 443, 396, 175], "fill": "#ffffff"},
+    {"type": "text", "box": [646, 452, 380, 158], "text": "“Causative agent”는 원문 문장과 KG에서\n추출한 정보를 바탕으로 온톨로지에\n새로 통합할 수 있는 관계입니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+    {"type": "rect", "box": [0, 229, 138, 77], "fill": "#ffffff"},
+    {"type": "text", "box": [7, 237, 124, 61], "text": "중의성이 해소된\n엔티티 멘션", "font": "regular", "font_size": 17, "min_font_size": 14, "line_gap": 3, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [389, 232, 151, 54], "fill": "#ffffff"},
+    {"type": "text", "box": [396, 239, 137, 40], "text": "동시 출현\n관계", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [946, 233, 88, 38], "fill": "#ffffff"},
+    {"type": "text", "box": [951, 240, 78, 24], "text": "온톨로지", "font": "regular", "font_size": 17, "min_font_size": 14, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [404, 533, 121, 68], "fill": "#ffffff"},
+    {"type": "text", "box": [411, 540, 107, 54], "text": "지식\n그래프", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

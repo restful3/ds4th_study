@@ -50,7 +50,7 @@ format:
 
 원문은 응용 유형마다 사례 연구를 하나씩 제시하고, 소스 데이터베이스를 가져와 병합한 뒤 결과 그래프를 질의·분석하는 코드까지 함께 보여 줍니다. 이 연습을 통해 여러분은 지식 그래프에 넣을 데이터 소스를 어떻게 고르는지, 그리고 그 정보가 원하는 작업을 해내기에 충분한지를 어떻게 판단하는지 배우게 됩니다. 그림 4.1은 다양한 응용과, 노드·관계로 저장되는 가장 중요한 정보들을 요약합니다.
 
-![](images/cabf8a579861da244c686c74fa184c41ae00cf97eb3715e2c135bde8c339f25b.jpg)
+![](images/ko/figure-4-1-ko.png)
 
 그림 4.1 비즈니스 목표별로 묶은 지식 그래프의 주요 생명의학 응용 유형. 이들은 공통으로 쓰는 데이터 소스가 많습니다.
 
@@ -60,7 +60,7 @@ format:
 
 **다중 오믹스(multi-omic)** 란 유전체(genome), 단백질체(proteome), 전사체(transcriptome)처럼 여러 "오믹스(omics)" 데이터셋을 함께 사용하는 생물학적 분석 접근을 말합니다(그림 4.2 참고). 분자생물학에서 접미사 **-ome** 은 "전체 총합"을 뜻합니다. 예를 들어 genome(유전체)은 한 생물의 유전 정보 전체를 가리킵니다.
 
-![](images/a953e75d773bb9793b92ce1f5240436a8833443e234202e32c628ad64d65c780.jpg)
+![](images/ko/figure-4-2-ko.png)
 
 그림 4.2 생명의학 지식 그래프에서 쓰이는 세 가지 주요 '오믹스' 데이터 유형. 유전체(DNA), 전사체(RNA), 단백질체(단백질) 데이터는 전사(transcription)와 번역(translation)을 통해 생물학적으로 연결됩니다.
 
@@ -76,7 +76,7 @@ format:
 
 예를 들어 Yang 등 [9]은 주어진 증상과 연관된 후보 유전자를 찾아내는 지식 그래프 모델을 제안했습니다. 연구진은 여러 이질적인 데이터 소스를 병합했습니다. 질병 용어를 통일하고 통합하기 위해, 서로 다른 데이터베이스의 질병 식별자를 **UMLS(Unified Medical Language System)** — 미국 국립의학도서관이 관리하는 통합 의학 용어 체계(https://www.nlm.nih.gov/research/umls/index.html) — 코드로 매핑했습니다. 그림 4.3이 그 과정을 보여 줍니다.
 
-![](images/fd07dd428a9ea854a0dc9ebececedd8e4a3a765cf27916a7da9f324b4cd8f47c.jpg)
+![](images/ko/figure-4-3-ko.png)
 
 그림 4.3 Yang 등 [9]의 그림에서 발췌한 것으로, 연구진이 여러 데이터 소스를 결합해 하나의 통합적(holistic) 지식 그래프를 만든 방식을 보여 줍니다.
 
@@ -88,11 +88,11 @@ format:
 
 여기서의 목표는 이미 알려진 경로에서 출발해 새로운 **질병 경로(disease pathway)** 를 발견하는 것입니다. Agrawal 등 [12]이 제안한 접근은 그림 4.4처럼 지식 그래프에서 시작합니다. 질병은 그것과 연관된, 이미 알려진 단백질들과 연결되고, 그 단백질들은 다시 PPI 네트워크 안에서 서로 연결됩니다. 예를 들어 그림 4.5는 셀리악병과 관련 유전자들 사이의 연결을 보여 줍니다.
 
-![](images/49b0fee39c09b1192d3e7350d344d80c9c1131b8b2b994f3530579fd4b4a4fe4.jpg)
+![](images/ko/figure-4-4-ko.png)
 
 그림 4.4 질병 경로는 그 질병과 연관된 단백질 집합으로 정의되는, PPI 네트워크의 부분 그래프(subgraph)입니다.
 
-![](images/340023673f4cfc4ddcb11f7a4c5c59e83afcd972ba1dadb2fba8580720f0486d.jpg)
+![](images/ko/figure-4-5-ko.png)
 
 그림 4.5 Agrawal [12]이 구축한 지식 그래프의 작은 일부. 셀리악병에서 출발해 연관된 유전자들을 찾은 모습입니다.
 
@@ -100,7 +100,7 @@ format:
 
 이 경우 우리에게 필요한 데이터 소스가 이미 있습니다. 스탠퍼드 네트워크 분석 프로젝트(Stanford Network Analytics Project, SNAP; http://snap.stanford.edu/pathways/)가 제공하는 "인간 인터랙톰의 질병 경로(Disease Pathways in the Human Interactome)" 데이터를 쓸 수 있습니다. Agrawal [12]이 더 복잡한 데이터 소스에서 출발해 이 비교적 단순한 네트워크를 만들어 두었고, 우리는 이를 가져와 탐색할 수 있습니다. 그런 다음 또 다른 데이터셋과 결합해, 만들어진 지식 그래프를 사람이 더 읽기 쉽게 만들 것입니다.
 
-![](images/b5f5a9e2e98ed759adce0ff214d86aa19ffe619569ad42230bcc04578e3a816a.jpg)
+![](images/ko/figure-4-6-ko.png)
 
 그림 4.6 질병과 관련된 단백질을 찾아내는 발견 과정
 
@@ -462,15 +462,15 @@ conductance = float(bd) / (bd + 2 * edges_count)  ← conductance
 
 (a) 가장 큰 연결 컴포넌트 (Largest CC)
 
-![](images/daf51d69d4c17967b8c14ab6d05cee881e28262bf96f7db99f89f1d02804acbc.jpg)
+![](images/ko/figure-4-7a-ko.png)
 
 (b) 밀도 (Density)
 
-![](images/9e19fdeadd8d8b8dcf8ed7018732dad1e6dfe6acc8dc3f657a6cdb2ea600fb8e.jpg)
+![](images/ko/figure-4-7b-ko.png)
 
 (c) 전도도 (Conductance)
 
-![](images/f99fd96053544219879e19b1313dbed88d4ed13213df58085e7c07ec40365799.jpg)
+![](images/ko/figure-4-7c-ko.png)
 
 그림 4.7 질병 경로에 대한 세 가지 핵심 측정값의 분포
 
@@ -480,15 +480,15 @@ conductance = float(bd) / (bd + 2 * edges_count)  ← conductance
 
 (a) 가장 큰 연결 컴포넌트 (Largest CC)
 
-![](images/761e532b9ce5f22f30419fd461ee72acdbdbcbf233e00551ec5a107bf1f96f83.jpg)
+![](images/ko/figure-4-8a-ko.png)
 
 (b) 밀도 (Density)
 
-![](images/64c5097ba23feb196cd2867b6e091672e88d815b8ba4719898a6fd9220c206cc.jpg)
+![](images/ko/figure-4-8b-ko.png)
 
 (c) 전도도 (Conductance)
 
-![](images/cbf4d34bd3ad50091f4bcc4d24121afc27fc33ea632d5104cbc35ff51199640e.jpg)
+![](images/ko/figure-4-8c-ko.png)
 
 그림 4.8 Louvain 알고리즘으로 얻은 클러스터에 대한 세 가지 핵심 측정값의 분포
 
@@ -527,7 +527,7 @@ CREATE DATABASE hetionet OPTIONS { existingData: "use",
 
 가져온 그래프를 탐색하고, 노드들이 서로 다른 노드 유형에 어떻게 분포하는지 살펴보세요. 관계에 대해서도 같은 작업을 해 보세요. 다만 관계는 더 복잡할 수 있으니 조심해야 합니다. 정확한 질의를 짜려면 스키마를 참고하세요.
 
-![](images/dde05904c1d9a594bb035bb26e287f327f6a0a4ecad32a0c54ecd9bde3be5264.jpg)
+![](images/ko/figure-4-9-ko.png)
 
 그림 4.9 Het.io 지식 그래프 스키마. 노드와 관계의 세부 사항은 https://mng.bz/EwgD 에서 확인할 수 있습니다.
 
@@ -537,7 +537,7 @@ CREATE DATABASE hetionet OPTIONS { existingData: "use",
 
 다음 그림의 (a) 패널이 보여 주듯, 스키마는 실제 노드와 실제 관계로 표현됩니다. 반면 **메타경로(metapath)** 는 첫 번째 유형의 노드와 마지막 유형의 노드 사이에 있을 법한 실제 경로를 묘사하는, 노드와 관계의 클래스(유형) 시퀀스를 나타냅니다. 우리는 스키마를 "질의"하듯 뒤져, 출발 유형과 도착 유형 사이의 연결 패턴을 찾을 수 있습니다. 예를 들어 (b) 패널처럼 (Gene)—a—(Disease)라는 일반 패턴에 대해 최대 길이 4까지의 가능한 메타경로 목록을 만들 수 있습니다.
 
-![](images/e5f3626de2a3b92b4014b255ce0faa22a2f25b289283435f7dfa38a1fbb5087c.jpg)
+![](images/ko/figure-4-10a-ko.png)
 
 Hetionet의 메타그래프(a)와 메타경로(b) 발췌. **메타그래프(metagraph)** 는 데이터베이스의 구조를 묘사하며, 노드의 유형과 관계의 유형을 나타냅니다. 메타경로는 경로를 묘사하며, 노드와 관계의 유형을 나타냅니다.
 
@@ -548,7 +548,7 @@ Hetionet의 메타그래프(a)와 메타경로(b) 발췌. **메타그래프(meta
 (a) 가상 그래프 (Hypothetical graph)
 (b) 경로 수 계산과 가중 (Calculating and weighting path counts)
 
-![](images/1f9dce8c0f16d382396e27d2688fb755f5a31a614df4013eeed4d7f9a8d79b0c.jpg)
+![](images/ko/figure-4-10b-ko.png)
 
 그림 4.10 (a) 정의된 메타경로에 기반해 경로를 추출하는 모습, 그리고 (b) 경로-차수 곱(PDP)과 DWPC를 계산하는 모습
 
@@ -680,7 +680,7 @@ RETURN path
 
 지금까지 봤듯이, 지식 그래프는 탐색하고 활용하기 쉬운 형태로 지식을 담아낼 수 있습니다. 우리의 분석은 저장된 정보에 대한 정량적 평가를 제공했습니다.
 
-![](images/a31363dc53f60a147b97626bd2a124aed7b905f82fc1bf43ba81e85376d8f606.jpg)
+![](images/ko/figure-4-11-ko.png)
 
 그림 4.11 Listing 4.19 질의의 결과로, 셀리악병과 "당단백질 생합성 과정의 양성 조절" 사이의 경로들을 보여 줍니다.
 

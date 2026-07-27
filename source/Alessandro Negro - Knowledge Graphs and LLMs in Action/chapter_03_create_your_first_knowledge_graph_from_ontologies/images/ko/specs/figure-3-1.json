@@ -1,0 +1,6 @@
+{
+  "extends": "pipeline-template.json",
+  "title": "Figure 3.1 Korean localization",
+  "source": "../../4059f0d9a9ad651fde89b6f3cb0fe563f3575fb0e1425f2ec44a3d8deec0d03f.jpg",
+  "output": "../figure-3-1-ko.png"
+}

@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "chapter": "04",
+  "source_document": "../../04_from_simple_networks_to_multisource_integration.md",
+  "review_status": "reviewed",
+  "review_method": [
+    "original Markdown image order and captions",
+    "source image inspection at original pixel dimensions",
+    "localized image inspection at original pixel dimensions",
+    "900px target-display contact sheet"
+  ],
+  "translation_policy": {
+    "translate": "reader-facing prose, captions embedded in figures, legends, category labels, and chart titles",
+    "preserve": "code, formulas, proper names, gene/protein identifiers, relationship-type identifiers, and schema identifiers"
+  },
+  "items": [
+    {
+      "key": "figure-4-1",
+      "source": "../cabf8a579861da244c686c74fa184c41ae00cf97eb3715e2c135bde8c339f25b.jpg",
+      "output": "figure-4-1-ko.png",
+      "action": "localized",
+      "reason": "응용 분야·노드 범주·하단 설명을 번역하고 관계 타입 식별자는 보존"
+    },
+    {
+      "key": "figure-4-2",
+      "source": "../a953e75d773bb9793b92ce1f5240436a8833443e234202e32c628ad64d65c780.jpg",
+      "output": "figure-4-2-ko.png",
+      "action": "localized",
+      "reason": "유전체·전사체·단백질체 설명과 상자 제목을 번역"
+    },
+    {
+      "key": "figure-4-3",
+      "source": "../fd07dd428a9ea854a0dc9ebececedd8e4a3a765cf27916a7da9f324b4cd8f47c.jpg",
+      "output": "figure-4-3-ko.png",
+      "action": "localized",
+      "reason": "데이터 범주·병합 단계·설명 문장을 번역하고 PPI는 표준 약어로 보존"
+    },
+    {
+      "key": "figure-4-4",
+      "source": "../49b0fee39c09b1192d3e7350d344d80c9c1131b8b2b994f3530579fd4b4a4fe4.jpg",
+      "output": "figure-4-4-ko.png",
+      "action": "localized",
+      "reason": "세 설명 문장과 범례를 번역"
+    },
+    {
+      "key": "figure-4-5",
+      "source": "../340023673f4cfc4ddcb11f7a4c5c59e83afcd972ba1dadb2fba8580720f0486d.jpg",
+      "output": "figure-4-5-ko.png",
+      "action": "localized",
+      "reason": "독자용 질병명만 번역하고 유전자·관계 타입 식별자는 보존"
+    },
+    {
+      "key": "figure-4-6",
+      "source": "../b5f5a9e2e98ed759adce0ff214d86aa19ffe619569ad42230bcc04578e3a816a.jpg",
+      "output": "figure-4-6-ko.png",
+      "action": "localized",
+      "reason": "발견 절차 설명·중앙 단계·범례를 번역"
+    },
+    {
+      "key": "figure-4-7a",
+      "source": "../daf51d69d4c17967b8c14ab6d05cee881e28262bf96f7db99f89f1d02804acbc.jpg",
+      "output": "figure-4-7a-ko.png",
+      "action": "localized",
+      "reason": "차트 제목과 빈도 축을 번역"
+    },
+    {
+      "key": "figure-4-7b",
+      "source": "../9e19fdeadd8d8b8dcf8ed7018732dad1e6dfe6acc8dc3f657a6cdb2ea600fb8e.jpg",
+      "output": "figure-4-7b-ko.png",
+      "action": "localized",
+      "reason": "차트 제목을 번역"
+    },
+    {
+      "key": "figure-4-7c",
+      "source": "../f99fd96053544219879e19b1313dbed88d4ed13213df58085e7c07ec40365799.jpg",
+      "output": "figure-4-7c-ko.png",
+      "action": "localized",
+      "reason": "차트 제목을 번역"
+    },
+    {
+      "key": "figure-4-8a",
+      "source": "../761e532b9ce5f22f30419fd461ee72acdbdbcbf233e00551ec5a107bf1f96f83.jpg",
+      "output": "figure-4-8a-ko.png",
+      "action": "localized",
+      "reason": "차트 제목과 빈도 축을 번역"
+    },
+    {
+      "key": "figure-4-8b",
+      "source": "../64c5097ba23feb196cd2867b6e091672e88d815b8ba4719898a6fd9220c206cc.jpg",
+      "output": "figure-4-8b-ko.png",
+      "action": "localized",
+      "reason": "차트 제목을 번역"
+    },
+    {
+      "key": "figure-4-8c",
+      "source": "../cbf4d34bd3ad50091f4bcc4d24121afc27fc33ea632d5104cbc35ff51199640e.jpg",
+      "output": "figure-4-8c-ko.png",
+      "action": "localized",
+      "reason": "차트 제목을 번역"
+    },
+    {
+      "key": "figure-4-9",
+      "source": "../dde05904c1d9a594bb035bb26e287f327f6a0a4ecad32a0c54ecd9bde3be5264.jpg",
+      "output": "figure-4-9-ko.png",
+      "action": "localized",
+      "reason": "노드 범주를 번역하고 관계 타입 식별자는 보존"
+    },
+    {
+      "key": "figure-4-10a",
+      "source": "../e5f3626de2a3b92b4014b255ce0faa22a2f25b289283435f7dfa38a1fbb5087c.jpg",
+      "output": "figure-4-10a-ko.png",
+      "action": "localized",
+      "reason": "패널 제목과 노드 범주를 번역하고 메타경로 기호·관계 타입은 보존"
+    },
+    {
+      "key": "figure-4-10b",
+      "source": "../1f9dce8c0f16d382396e27d2688fb755f5a31a614df4013eeed4d7f9a8d79b0c.jpg",
+      "output": "figure-4-10b-ko.png",
+      "action": "localized",
+      "reason": "패널 제목과 질병·조직명을 번역하고 유전자·수식·관계 타입은 보존"
+    },
+    {
+      "key": "figure-4-11",
+      "source": "../a31363dc53f60a147b97626bd2a124aed7b905f82fc1bf43ba81e85376d8f606.jpg",
+      "output": "figure-4-11-ko.png",
+      "action": "localized",
+      "reason": "독자용 질병·생물학적 과정명을 번역하고 유전자·관계 타입은 보존"
+    },
+    {
+      "key": "figure-4-12",
+      "source": "../6001d287b74726925a8a75d40d03a6a3bc4958b3c1b72aacb7c1b6c19842064b.jpg",
+      "output": null,
+      "action": "preserved",
+      "reason": "번역할 문자가 없는 언어 중립적 환자 여정 그래프"
+    },
+    {
+      "key": "figure-4-13",
+      "source": "../86fd617f2f1947e03ee60befd24870f0f2b5c33c7610c578a4707402b1ce07cf.jpg",
+      "output": null,
+      "action": "preserved",
+      "reason": "노드 클래스와 관계 타입이 실행 모델의 기술 식별자인 스키마 그림"
+    }
+  ]
+}

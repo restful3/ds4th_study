@@ -1,0 +1,437 @@
+{
+  "title": "figure-2-1 Korean localization",
+  "source": "../../4546d462861e4f0bc099b0c9057d7a8b4e3a95d2cf6817c089182ede72e78694.jpg",
+  "output": "../figure-2-1-ko.png",
+  "coordinate_space": [
+    1037,
+    734
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        0,
+        0,
+        1037,
+        8
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "rect",
+      "box": [
+        320,
+        42,
+        200,
+        30
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        320,
+        42,
+        200,
+        30
+      ],
+      "text": "지능형 시스템",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        8,
+        84,
+        94,
+        60
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        8,
+        84,
+        94,
+        60
+      ],
+      "text": "과제/\n질문",
+      "font": "regular",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        444,
+        80,
+        122,
+        62
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        444,
+        80,
+        122,
+        62
+      ],
+      "text": "추론\n엔진",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        242,
+        286,
+        145,
+        65
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        242,
+        286,
+        145,
+        65
+      ],
+      "text": "지식\n베이스",
+      "font": "regular",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        10,
+        256,
+        130,
+        58
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        10,
+        256,
+        130,
+        58
+      ],
+      "text": "환경/\n맥락",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        8,
+        319,
+        205,
+        22
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        8,
+        319,
+        205,
+        22
+      ],
+      "text": "지식 습득",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        53,
+        350,
+        66,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        53,
+        350,
+        66,
+        28
+      ],
+      "text": "데이터",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        10,
+        465,
+        130,
+        28
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        10,
+        465,
+        130,
+        28
+      ],
+      "text": "데이터 소스",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        663,
+        73,
+        120,
+        74
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        663,
+        73,
+        120,
+        74
+      ],
+      "text": "행동/\n제안/\n답변",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        505,
+        239,
+        108,
+        34
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        505,
+        239,
+        108,
+        34
+      ],
+      "text": "추론",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        390,
+        368,
+        153,
+        29
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        390,
+        368,
+        153,
+        29
+      ],
+      "text": "피드백 루프",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "line",
+      "points": [
+        [
+          8,
+          315
+        ],
+        [
+          188,
+          315
+        ],
+        [
+          214,
+          330
+        ]
+      ],
+      "fill": "#111111",
+      "width": 1
+    },
+    {
+      "type": "line",
+      "points": [
+        [
+          214,
+          330
+        ],
+        [
+          188,
+          344
+        ],
+        [
+          8,
+          344
+        ]
+      ],
+      "fill": "#111111",
+      "width": 1
+    },
+    {
+      "type": "rect",
+      "box": [
+        703,
+        157,
+        334,
+        242
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        703,
+        157,
+        334,
+        242
+      ],
+      "text": "피드백 루프는 지식 표현을 미세 조정합니다.\n사람의 피드백을 쓰는 경우에는 RLHF 같은 기법으로\n보상 메커니즘을 통해 지능형 에이전트를\n사용자 선호에 맞춥니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        335,
+        450,
+        405,
+        145
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        335,
+        450,
+        405,
+        145
+      ],
+      "text": "추론은 수행할 과제(또는 답할 질문)와 맥락 정보를\n입력으로 받아 내부 지식 표현을 이용해\n행동·제안·답변을 만듭니다.",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        5,
+        620,
+        665,
+        110
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        5,
+        620,
+        665,
+        110
+      ],
+      "text": "입력 데이터의 복잡성을 담고 여러 추론 엔진을 지원하려면\n여러 지식 표현이 필요합니다. 예측 모델, 지식 그래프,\n학습된 신경망 등이 그 예입니다.",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    }
+  ]
+}

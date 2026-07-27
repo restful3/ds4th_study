@@ -1,0 +1,35 @@
+{
+  "title": "Figure 7.13 Korean localization",
+  "source": "../../3828b039a65b5c24a4c1e243477003163caee043023dd7116559d969222c8525.jpg",
+  "output": "../figure-7-13-ko.png",
+  "coordinate_space": [1131, 746],
+  "operations": [
+    {"type": "rect", "box": [255, 2, 417, 61], "fill": "#ffffff"},
+    {"type": "text", "box": [262, 8, 403, 49], "text": "검색 쿼리를 실행하기 전에\n검색 문자열을 전처리할 수 있습니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [0, 90, 302, 91], "fill": "#ffffff"},
+    {"type": "text", "box": [4, 99, 290, 75], "text": "전체 텍스트 검색 쿼리는\n색인된 문서에 직접\n실행됩니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [780, 65, 351, 113], "fill": "#ffffff"},
+    {"type": "text", "box": [787, 72, 337, 99], "text": "개념 검색 쿼리는 온톨로지\n엔티티를 대상으로 실행됩니다.\n이 정보로 검색 범위를\n확장할 수 있습니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [851, 330, 280, 113], "fill": "#ffffff"},
+    {"type": "text", "box": [859, 338, 264, 97], "text": "온톨로지 엔티티에는\n검색 범위를 넓히는 데\n유용한 여러 이름과\n별칭이 있습니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [24, 528, 267, 91], "fill": "#ffffff"},
+    {"type": "text", "box": [31, 536, 253, 75], "text": "전체 텍스트 검색은\n엔진 점수 순으로\n페이지를 반환합니다.", "font": "bold", "font_size": 19, "min_font_size": 16, "line_gap": 3, "fill": "#111111", "align": "left", "valign": "top"},
+    {"type": "rect", "box": [715, 655, 416, 91], "fill": "#ffffff"},
+    {"type": "text", "box": [723, 663, 400, 75], "text": "개념 검색은 엔티티 멘션이 있는 텍스트를 반환합니다.\n점수 기준은 사용자가 정의할 수 있습니다.", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 4, "fill": "#111111", "align": "left", "valign": "center"},
+
+    {"type": "rect", "box": [380, 145, 190, 49], "fill": "#ffffff"},
+    {"type": "text", "box": [387, 151, 176, 37], "text": "검색 문자열:\n“breakbone fever”", "font": "regular", "font_size": 17, "min_font_size": 14, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [237, 242, 148, 70], "fill": "#ffffff"},
+    {"type": "text", "box": [244, 249, 134, 56], "text": "전체 텍스트\n검색 쿼리", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 3, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [574, 245, 154, 63], "fill": "#ffffff"},
+    {"type": "text", "box": [581, 249, 140, 55], "text": "개념\n검색 쿼리", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 3, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [569, 370, 171, 52], "fill": "#ffffff"},
+    {"type": "text", "box": [576, 377, 157, 38], "text": "엔티티 별칭:\n“dengue fever”", "font": "regular", "font_size": 17, "min_font_size": 14, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [671, 534, 170, 55], "fill": "#ffffff"},
+    {"type": "text", "box": [678, 541, 156, 41], "text": "엔티티 별칭:\n“dandy fever”", "font": "regular", "font_size": 17, "min_font_size": 14, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [388, 618, 190, 37], "fill": "#ffffff"},
+    {"type": "text", "box": [395, 625, 176, 23], "text": "지식 그래프", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [850, 490, 103, 37], "fill": "#ffffff"},
+    {"type": "text", "box": [857, 497, 89, 23], "text": "온톨로지", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

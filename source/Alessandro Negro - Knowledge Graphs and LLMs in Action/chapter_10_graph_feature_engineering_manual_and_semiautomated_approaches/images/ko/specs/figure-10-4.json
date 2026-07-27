@@ -1,0 +1,7 @@
+{
+  "title": "Figure 10.4 Korean localization",
+  "extends": "../../../../chapter_09_machine_learning_on_knowledge_graphs_a_primer_approach/images/ko/specs/figure-9-8.json",
+  "source": "../../0d56c43a7fe97044f9f7aa9dcac863bf0cc454d443256e3689e310233b42253c.jpg",
+  "output": "../figure-10-4-ko.png",
+  "coordinate_space": [1132, 834]
+}

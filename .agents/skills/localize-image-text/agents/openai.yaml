@@ -1,0 +1,4 @@
+interface:
+  display_name: "이미지 텍스트 현지화"
+  short_description: "도형을 보존하며 이미지 속 영문을 자연스러운 한국어로 교체"
+  default_prompt: "Use $localize-image-text to replace English text in these instructional images with natural Korean while preserving the original visual structure."

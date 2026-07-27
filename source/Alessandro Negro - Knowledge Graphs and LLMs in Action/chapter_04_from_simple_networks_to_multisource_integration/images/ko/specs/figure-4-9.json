@@ -1,0 +1,30 @@
+{
+  "title": "Figure 4.9 Korean localization",
+  "source": "../../dde05904c1d9a594bb035bb26e287f327f6a0a4ecad32a0c54ecd9bde3be5264.jpg",
+  "output": "../figure-4-9-ko.png",
+  "coordinate_space": [1042, 618],
+  "operations": [
+    {"type": "rect", "box": [385, 70, 110, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [389, 72, 102, 27], "text": "해부 구조", "font": "bold", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [636, 70, 130, 53], "fill": "#ffffff"},
+    {"type": "text", "box": [640, 73, 122, 47], "text": "생물학적\n분류", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [805, 123, 128, 55], "fill": "#ffffff"},
+    {"type": "text", "box": [809, 126, 120, 49], "text": "세포 구성\n요소", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [905, 244, 128, 53], "fill": "#ffffff"},
+    {"type": "text", "box": [909, 247, 120, 47], "text": "분자 기능", "font": "bold", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [797, 344, 111, 27], "fill": "#ffffff"},
+    {"type": "text", "box": [801, 346, 103, 23], "text": "경로", "font": "bold", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [608, 452, 111, 27], "fill": "#ffffff"},
+    {"type": "text", "box": [612, 454, 103, 23], "text": "질병", "font": "bold", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [759, 586, 110, 27], "fill": "#ffffff"},
+    {"type": "text", "box": [763, 588, 102, 23], "text": "증상", "font": "bold", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [186, 563, 111, 27], "fill": "#ffffff"},
+    {"type": "text", "box": [190, 565, 103, 23], "text": "화합물", "font": "bold", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [11, 468, 116, 26], "fill": "#ffffff"},
+    {"type": "text", "box": [15, 470, 108, 22], "text": "부작용", "font": "bold", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [63, 313, 178, 55], "fill": "#ffffff"},
+    {"type": "text", "box": [67, 316, 170, 49], "text": "약리학적\n분류", "font": "bold", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#111111", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [395, 286, 128, 27], "fill": "#ffffff"},
+    {"type": "text", "box": [399, 288, 120, 23], "text": "유전자", "font": "bold", "font_size": 19, "min_font_size": 16, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}

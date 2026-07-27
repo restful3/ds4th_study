@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "chapter": "06",
+  "source_document": "../../06_building_knowledge_graphs_with_large_language_models.md",
+  "review_status": "reviewed",
+  "review_method": [
+    "original Markdown image order and captions",
+    "source image inspection at original pixel dimensions",
+    "localized image inspection at original pixel dimensions",
+    "900px target-display contact sheet"
+  ],
+  "mapping_notes": [
+    "Figure 6.3 has no external Markdown caption; its number and caption are embedded in fa0fd7ea54d904ddc7342587c66c1664f9c096288ed62cae36b12f4590803810.jpg.",
+    "Caption-only automatic inventory therefore inferred that image as Figure 6.4; visual review corrected it to Figure 6.3."
+  ],
+  "translation_policy": {
+    "translate": "reader-facing prose, process labels, semantic node classes, embedded figure captions, and explanatory property labels",
+    "preserve": "proper names, entity values, code-like relationship types, and network data labels"
+  },
+  "items": [
+    {
+      "key": "figure-6-1",
+      "source": "../da3d716caaf25dbab46ba71c526d9f3d4319f0242e1f1c3d7b3b842c388c79c9.jpg",
+      "output": "figure-6-1-ko.png",
+      "action": "localized",
+      "reason": "비정형 데이터 처리부터 그래프 데이터 과학·활용까지의 단계와 설명을 번역"
+    },
+    {
+      "key": "figure-6-2",
+      "source": "../fac0fcd43d0a1a5c20880bde0652e8579993da2f9538f0b63bdcbf64c3234ee7.jpg",
+      "output": "figure-6-2-ko.png",
+      "action": "localized",
+      "reason": "설명 문장과 의미 노드 클래스명을 번역하고 관계 타입 식별자는 보존"
+    },
+    {
+      "key": "figure-6-3",
+      "source": "../fa0fd7ea54d904ddc7342587c66c1664f9c096288ed62cae36b12f4590803810.jpg",
+      "output": "figure-6-3-ko.png",
+      "action": "localized",
+      "reason": "이미지 안에 포함된 그림 번호와 설명을 번역하고 인명·기관명·관계 타입은 보존"
+    },
+    {
+      "key": "figure-6-4",
+      "source": "../36555af18b15c25fb5059039be5f5b981476678ef742be38fe20ee19d9c816d8.jpg",
+      "output": null,
+      "action": "preserved",
+      "reason": "인명과 네트워크 데이터 레이블로만 구성된 결과 시각화"
+    },
+    {
+      "key": "figure-6-5",
+      "source": "../473fc6e7ae40020c582bb69ade05f2a9a9ac885460be566c69767868d0eeefc1.jpg",
+      "output": null,
+      "action": "preserved",
+      "reason": "고유명사·KG 엔티티 값·관계 타입으로 구성된 결과 시각화"
+    },
+    {
+      "key": "figure-6-6",
+      "source": "../a62711da55dccbc4463622f9bb5b5cd7d9499cdff04e524aaee520ba81332fda.jpg",
+      "output": "figure-6-6-ko.png",
+      "action": "localized",
+      "reason": "두 군집의 설명용 employer 속성명을 번역하고 대학명·인명·관계 타입은 보존"
+    }
+  ]
+}

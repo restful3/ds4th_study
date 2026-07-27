@@ -1,0 +1,638 @@
+{
+  "title": "figure-2-14 Korean localization",
+  "source": "../../01973170f772ab941ad41923b68a8a2d5f677b99512ffca1bfe6a5e8535b95ad.jpg",
+  "output": "../figure-2-14-ko.png",
+  "coordinate_space": [
+    990,
+    759
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        193,
+        0,
+        374,
+        89
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        193,
+        0,
+        374,
+        89
+      ],
+      "text": "데이터 준비는 현재 범위에서 관련 부분을 가져오며,\n다음 단계를 이끕니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        636,
+        3,
+        350,
+        112
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        636,
+        3,
+        350,
+        112
+      ],
+      "text": "현재 과제의 범위는 관련 데이터 중 일부이며,\n새 지식 그래프 부분의 정의를 이끕니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        5,
+        648,
+        354,
+        110
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        5,
+        648,
+        354,
+        110
+      ],
+      "text": "데이터 이해는 기존 데이터에서 시작해\n정의한 목표와 관련된 데이터를 선택합니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        616,
+        647,
+        364,
+        108
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        616,
+        647,
+        364,
+        108
+      ],
+      "text": "모델링은 머신러닝 과제를 위한 알고리즘을\n정의하는 단계입니다.",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        17,
+        170,
+        112,
+        48
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        17,
+        170,
+        112,
+        48
+      ],
+      "text": "비정형\n데이터",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        167,
+        170,
+        112,
+        48
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        167,
+        170,
+        112,
+        48
+      ],
+      "text": "관계형\n소스",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        10,
+        369,
+        125,
+        48
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        10,
+        369,
+        125,
+        48
+      ],
+      "text": "벡터 기반\n데이터",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        160,
+        369,
+        128,
+        30
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        160,
+        369,
+        128,
+        30
+      ],
+      "text": "이메일/채팅",
+      "font": "regular",
+      "font_size": 14,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        484,
+        214,
+        171,
+        50
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        484,
+        214,
+        171,
+        50
+      ],
+      "text": "데이터\n준비",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        207,
+        510,
+        145,
+        36
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        207,
+        510,
+        145,
+        36
+      ],
+      "text": "시작/재시작",
+      "font": "regular",
+      "font_size": 15,
+      "min_font_size": 11,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        390,
+        588,
+        145,
+        40
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        390,
+        588,
+        145,
+        40
+      ],
+      "text": "배포",
+      "font": "regular",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "polygon",
+      "points": [
+        [
+          680,
+          194
+        ],
+        [
+          908,
+          258
+        ],
+        [
+          892,
+          324
+        ],
+        [
+          663,
+          253
+        ]
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "rect",
+      "box": [
+        720,
+        204,
+        32,
+        17
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "rect",
+      "box": [
+        862,
+        278,
+        48,
+        31
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        684,
+        199,
+        205,
+        105
+      ],
+      "text": "지식 그래프\n모델 생성·갱신",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "line_gap": 2,
+      "rotation": -17
+    },
+    {
+      "type": "polygon",
+      "points": [
+        [
+          400,
+          274
+        ],
+        [
+          500,
+          312
+        ],
+        [
+          417,
+          441
+        ],
+        [
+          348,
+          400
+        ]
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        364,
+        286,
+        120,
+        140
+      ],
+      "text": "데이터 이해",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "rotation": 55
+    },
+    {
+      "type": "polygon",
+      "points": [
+        [
+          367,
+          420
+        ],
+        [
+          421,
+          398
+        ],
+        [
+          500,
+          527
+        ],
+        [
+          433,
+          562
+        ]
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        365,
+        411,
+        125,
+        145
+      ],
+      "text": "비즈니스 이해",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "rotation": -55
+    },
+    {
+      "type": "polygon",
+      "points": [
+        [
+          918,
+          365
+        ],
+        [
+          957,
+          365
+        ],
+        [
+          958,
+          478
+        ],
+        [
+          920,
+          478
+        ]
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        913,
+        360,
+        52,
+        125
+      ],
+      "text": "모델링",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "rotation": -90
+    },
+    {
+      "type": "polygon",
+      "points": [
+        [
+          730,
+          573
+        ],
+        [
+          847,
+          542
+        ],
+        [
+          862,
+          579
+        ],
+        [
+          744,
+          612
+        ]
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        724,
+        542,
+        145,
+        75
+      ],
+      "text": "평가",
+      "font": "bold",
+      "font_size": 17,
+      "min_font_size": 13,
+      "fill": "#111111",
+      "align": "center",
+      "valign": "center",
+      "rotation": 15
+    },
+    {
+      "type": "line",
+      "points": [
+        [
+          355,
+          203
+        ],
+        [
+          657,
+          203
+        ]
+      ],
+      "fill": "#111111",
+      "width": 2
+    },
+    {
+      "type": "bezier",
+      "points": [
+        [
+          657,
+          203
+        ],
+        [
+          760,
+          198
+        ],
+        [
+          850,
+          232
+        ],
+        [
+          908,
+          283
+        ]
+      ],
+      "fill": "#111111",
+      "width": 2
+    },
+    {
+      "type": "bezier",
+      "points": [
+        [
+          657,
+          266
+        ],
+        [
+          760,
+          261
+        ],
+        [
+          842,
+          289
+        ],
+        [
+          893,
+          344
+        ]
+      ],
+      "fill": "#111111",
+      "width": 2
+    },
+    {
+      "type": "line",
+      "points": [
+        [
+          657,
+          203
+        ],
+        [
+          657,
+          266
+        ]
+      ],
+      "fill": "#111111",
+      "width": 2
+    },
+    {
+      "type": "line",
+      "points": [
+        [
+          355,
+          266
+        ],
+        [
+          449,
+          266
+        ],
+        [
+          505,
+          320
+        ]
+      ],
+      "fill": "#111111",
+      "width": 2
+    },
+    {
+      "type": "line",
+      "points": [
+        [
+          355,
+          421
+        ],
+        [
+          430,
+          421
+        ],
+        [
+          505,
+          526
+        ]
+      ],
+      "fill": "#111111",
+      "width": 2
+    }
+  ]
+}

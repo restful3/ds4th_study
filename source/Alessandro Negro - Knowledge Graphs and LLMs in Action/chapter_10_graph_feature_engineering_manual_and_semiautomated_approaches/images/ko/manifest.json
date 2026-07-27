@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "chapter": "10",
+  "source_document": "../../10_graph_feature_engineering_manual_and_semiautomated_approaches.md",
+  "review_status": "reviewed",
+  "review_method": [
+    "original Markdown image order and captions",
+    "source image inspection at original pixel dimensions",
+    "localized image inspection at original pixel dimensions",
+    "900px target-display contact sheet"
+  ],
+  "mapping_notes": [
+    "The two images immediately after the density formula are the left and right panels of Listing 10.5, not panels of Figure 10.4.",
+    "The metapath feature table is Figure 10.7 even though the source Markdown omits a separate caption line below it.",
+    "The small AN badge in the LLM prompt is an author/avatar marker and is preserved.",
+    "Figure 10.10b contains only node IDs and literal feature keys, so it is preserved."
+  ],
+  "translation_policy": {
+    "translate": "reader-facing prose, headings, semantic process labels, common node categories, and explanatory callouts",
+    "preserve": "code, formulas, feature-key identifiers, metapath abbreviations, relationship-type identifiers, node IDs, proper names, and graph topology"
+  },
+  "items": [
+    {"key": "figure-10-1", "source": "../11ac0e57b4f8cc1d823e70b008dad19f041425bfbced127b80ec2541fa21d035.jpg", "output": null, "action": "preserved", "reason": "노드 ID와 그래프 구조만 있는 언어 중립 그림"},
+    {"key": "figure-10-2", "source": "../4bbbe8941168f2152f6700022c402cc1c231d7d0896de6ea4d5be48c08cfab49.jpg", "output": "figure-10-2-ko.png", "action": "localized", "reason": "원본 그래프·특징 벡터·구조 지표 레이블을 번역"},
+    {"key": "figure-10-3", "source": "../28a245a464648a6959d1a9d081f0aba6c739e69f82d6f5714b654ed3d22d2315.jpg", "output": "figure-10-3-ko.png", "action": "localized", "reason": "삼각형 성립 여부 설명을 번역"},
+    {"key": "listing-10-5a", "source": "../d95463828199b2a6ca575f2cf8d234c650adb11196222df9d4eb05e9a50a1fb8.jpg", "output": "listing-10-5a-ko.png", "action": "localized", "reason": "코드는 보존하고 리스팅 제목과 설명 콜아웃만 번역"},
+    {"key": "listing-10-5b", "source": "../db4104162aca5068f22fa07721b45c3c2e0b3d8e6a1bbc8370a131d6e34a44c6.jpg", "output": "listing-10-5b-ko.png", "action": "localized", "reason": "코드는 보존하고 설명 콜아웃만 번역"},
+    {"key": "figure-10-4", "source": "../0d56c43a7fe97044f9f7aa9dcac863bf0cc454d443256e3689e310233b42253c.jpg", "output": "figure-10-4-ko.png", "action": "localized", "reason": "노드 분류와 링크 예측의 단계·설명을 번역"},
+    {"key": "figure-10-5", "source": "../9f72e601d64381937258fdc261660d54f490fce0430c607a3cd549a5bcd18fde.jpg", "output": "figure-10-5-ko.png", "action": "localized", "reason": "공통 노드 범주를 번역하고 관계 타입 식별자는 보존"},
+    {"key": "figure-10-6", "source": "../d4ea42f61c5f4309eb5953747fc60cc436fe5b56fb583ccd856413c503f6c695.jpg", "output": "figure-10-6-ko.png", "action": "localized", "reason": "메타그래프·메타경로 제목과 노드 범주를 번역"},
+    {"key": "figure-10-7", "source": "../37ef50cd89c02e5f7ec99660bbd42442f17c277f5a63f507dd95f671bf0fd62c.jpg", "output": "figure-10-7-ko.png", "action": "localized", "reason": "약물·질병 이름과 내장된 설명 캡션을 번역"},
+    {"key": "llm-author-badge", "source": "../c36e9b2b77bf4278b3875e2b6cebe4f5de03ac01eeee03c1b78872b07dfeae4b.jpg", "output": null, "action": "preserved", "reason": "번역 대상이 아닌 AN 저자 배지"},
+    {"key": "figure-10-8", "source": "../e22f7a0802bed8d604e72b61736c91799b6057e6c69cef9ee606efcc925642b3.jpg", "output": "figure-10-8-ko.png", "action": "localized", "reason": "ReFeX 특징 범위와 행 레이블을 번역"},
+    {"key": "figure-10-9", "source": "../54c9e5cc8136995e504a3b5558e5ace9f5ba9f2837024dfe6a7dcf30406aaa5c.jpg", "output": null, "action": "preserved", "reason": "노드 ID와 그래프 구조만 있는 언어 중립 그림"},
+    {"key": "figure-10-10a", "source": "../acaf2efc0c26103c81ea111e1c977a483fc7d7a835d498f8be5234489cd20f7c.jpg", "output": "figure-10-10a-ko.png", "action": "localized", "reason": "패널 제목과 차수 레이블을 번역하고 특징 키는 보존"},
+    {"key": "figure-10-10b", "source": "../526d498ce6be24541cbeeb5bf9b67b6402c75307f79547bc8cfb4090ffc4a0e8.jpg", "output": null, "action": "preserved", "reason": "노드 ID와 literal feature-key 식별자만 포함"}
+  ]
+}

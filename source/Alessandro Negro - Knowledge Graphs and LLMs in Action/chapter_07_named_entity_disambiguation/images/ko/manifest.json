@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "chapter": "07",
+  "source_document": "../../07_named_entity_disambiguation.md",
+  "review_status": "reviewed",
+  "review_method": [
+    "original Markdown image order and captions",
+    "source image inspection at original pixel dimensions",
+    "localized image inspection at original pixel dimensions",
+    "900px target-display contact sheet"
+  ],
+  "mapping_notes": [
+    "The automatic caption inventory incorrectly grouped four 54px inline author/ChatGPT icons as panels of Figure 7.5.",
+    "Manual inspection of Markdown lines 138-196 established that the actual Figure 7.5 is 415843503a35f758d0805719e1b222da3673dc9e0fe122df763b42656a52d4f0.jpg and that the four small images are inline icons.",
+    "Figures 7.4, 7.5, 7.7, 7.8, and 7.12 share a visual template but were rendered and reviewed as independent complete specifications because their active-stage emphasis differs."
+  ],
+  "translation_policy": {
+    "translate": "reader-facing prose, callouts, process labels, semantic descriptions, and UI labels",
+    "preserve": "proper names, entity values, ontology node labels, code-like relationship types, literal query strings, and inline product/author icons"
+  },
+  "items": [
+    {
+      "key": "figure-7-1",
+      "source": "../9532162b74719e4f76ff3f5e575753c88711e2a367a00233d654a43c9d88fe20.jpg",
+      "output": "figure-7-1-ko.png",
+      "action": "localized",
+      "reason": "UMLS 화면의 설명, UI 레이블, 정의문을 번역하고 CUI·의학 개념명은 보존"
+    },
+    {
+      "key": "figure-7-2",
+      "source": "../ae47be4e71f40bdd6065cb27f31eecc6dfe5889e8335827954deba9cfe99dbea.jpg",
+      "output": "figure-7-2-ko.png",
+      "action": "localized",
+      "reason": "NED 시스템의 단계와 설명을 번역하고 기술 식별자는 보존"
+    },
+    {
+      "key": "figure-7-3",
+      "source": "../92cd14d62d73aeafa2aeba7e389a88e583fd323c3036924dbaf8ec47139c71ca.jpg",
+      "output": null,
+      "action": "preserved",
+      "reason": "노드·관계 타입·엔티티 값으로 구성된 기술 스키마 결과"
+    },
+    {
+      "key": "inline-icon-author-1",
+      "source": "../3afd57e630e5dff6eef1b436f866953054c53ac31589381a9c3e54d16c9bfba2.jpg",
+      "output": null,
+      "action": "preserved",
+      "reason": "54px 저자 아이콘으로 번역 대상 텍스트가 없음"
+    },
+    {
+      "key": "inline-icon-author-2",
+      "source": "../10604b9632333ad93502d55dac43f23b5742d2885663f1a663099bb05e7ec035.jpg",
+      "output": null,
+      "action": "preserved",
+      "reason": "54px 저자 아이콘으로 번역 대상 텍스트가 없음"
+    },
+    {
+      "key": "inline-icon-chatgpt-1",
+      "source": "../90f8a3dba541c1211e91b2caed450f036e72da808b2cc48e2cff3601ff302ce9.jpg",
+      "output": null,
+      "action": "preserved",
+      "reason": "54px ChatGPT 아이콘으로 번역 대상 텍스트가 없음"
+    },
+    {
+      "key": "inline-icon-chatgpt-2",
+      "source": "../0ca1bc3201e147fe63aa91c67d374304a05ebb812af696c25e6f641151673654.jpg",
+      "output": null,
+      "action": "preserved",
+      "reason": "54px ChatGPT 아이콘으로 번역 대상 텍스트가 없음"
+    },
+    {
+      "key": "figure-7-4",
+      "source": "../f137cb61ea1574131e5a32740bd36148e27fd0b317aa003bd2e3349d7b098294.jpg",
+      "output": "figure-7-4-ko.png",
+      "action": "localized",
+      "reason": "CRISP-DM 기반 KG 구축 단계와 설명을 번역"
+    },
+    {
+      "key": "figure-7-5",
+      "source": "../415843503a35f758d0805719e1b222da3673dc9e0fe122df763b42656a52d4f0.jpg",
+      "output": "figure-7-5-ko.png",
+      "action": "localized",
+      "reason": "비즈니스 이해 단계가 강조된 반복 도식의 모든 설명을 번역"
+    },
+    {
+      "key": "figure-7-6",
+      "source": "../85a0349db303fd23045ea233d4c5903d6bb2ad25c820645134b70c2d807bb306.jpg",
+      "output": "figure-7-6-ko.png",
+      "action": "localized",
+      "reason": "SoHO 공급망 단계와 양쪽 특성 목록을 번역"
+    },
+    {
+      "key": "figure-7-7",
+      "source": "../8ab38c025ef3aaee85a26ac9280f45c919a44ebf5e0122a967519d7c9b1b00e9.jpg",
+      "output": "figure-7-7-ko.png",
+      "action": "localized",
+      "reason": "데이터 이해 단계가 강조된 반복 도식의 모든 설명을 번역"
+    },
+    {
+      "key": "figure-7-8",
+      "source": "../0aa9c3681db2b330db5245d9b7447763ce6432a4837876bcc9ba57c44317096a.jpg",
+      "output": "figure-7-8-ko.png",
+      "action": "localized",
+      "reason": "데이터 준비와 KG 생성·업데이트 단계가 강조된 반복 도식의 설명을 번역"
+    },
+    {
+      "key": "figure-7-9",
+      "source": "../e7f0e495e88f58eda5c570bfe0f96cbd6432c24f790034aca28427a0ae9dfb53.jpg",
+      "output": "figure-7-9-ko.png",
+      "action": "localized",
+      "reason": "스키마의 설명용 콜아웃만 번역하고 노드·관계 타입 식별자는 보존"
+    },
+    {
+      "key": "figure-7-10",
+      "source": "../a086a6aaec94e823e7b0b12f7502b3eebefeeb8f0e48e178a392871bbe13c5ed.jpg",
+      "output": "figure-7-10-ko.png",
+      "action": "localized",
+      "reason": "Amazon Textract 기반 처리 단계와 설명을 번역하고 제품명·JSON 표기는 보존"
+    },
+    {
+      "key": "figure-7-11",
+      "source": "../bc2e7f076b272d640f02ed81ffc44689c18ac3ecf0815cd45ea9b9058a5327cd.jpg",
+      "output": "figure-7-11-ko.png",
+      "action": "localized",
+      "reason": "SNOMED 계층의 설명용 콜아웃과 유형 레이블만 번역하고 엔티티명은 보존"
+    },
+    {
+      "key": "figure-7-12",
+      "source": "../4b11dbe7b123dda1b6e23d406904005cf32e0fbd8ce61d749bd0a5f307b9f980.jpg",
+      "output": "figure-7-12-ko.png",
+      "action": "localized",
+      "reason": "전체 단계가 활성화된 반복 도식의 모든 설명을 번역"
+    },
+    {
+      "key": "figure-7-13",
+      "source": "../3828b039a65b5c24a4c1e243477003163caee043023dd7116559d969222c8525.jpg",
+      "output": "figure-7-13-ko.png",
+      "action": "localized",
+      "reason": "전체 텍스트 검색과 개념 검색의 과정·설명을 번역하고 검색 문자열은 보존"
+    },
+    {
+      "key": "figure-7-14",
+      "source": "../d04326a9594a84d3d6ef681b10435795b74a1782627a912592ad87b6079a8ca0.jpg",
+      "output": "figure-7-14-ko.png",
+      "action": "localized",
+      "reason": "개념 검색과 구조화된 지식 베이스 검색의 과정·설명을 번역하고 엔티티 값은 보존"
+    },
+    {
+      "key": "figure-7-15",
+      "source": "../87626c8e4b4bd122df825e6661375d49a6ce097333a3f93e57da3cb766fded75.jpg",
+      "output": null,
+      "action": "preserved",
+      "reason": "SNOMED 엔티티 값과 CAUSATIVE_AGENT 관계 타입으로 구성된 기술 결과"
+    },
+    {
+      "key": "figure-7-16",
+      "source": "../a00728511337fdc3e5db205a4966d0d11acbd62cab0ac346b01f99a63ddba0cb.jpg",
+      "output": "figure-7-16-ko.png",
+      "action": "localized",
+      "reason": "KG 기반 해석 과정의 예문·콜아웃·설명용 레이블을 번역하고 온톨로지 관계와 경로는 보존"
+    },
+    {
+      "key": "figure-7-17",
+      "source": "../c0f578b31eae0271f9213fb5107f6e73b8670273743a4cf5b05d08b9de27faed.jpg",
+      "output": "figure-7-17-ko.png",
+      "action": "localized",
+      "reason": "새 관계 발견 과정의 예문·콜아웃·설명용 레이블을 번역하고 엔티티·관계명은 보존"
+    }
+  ]
+}

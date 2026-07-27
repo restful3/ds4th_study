@@ -1,0 +1,254 @@
+{
+  "title": "figure-15-14b Korean localization",
+  "source": "../../140e40872932f815c8d47abaab14553a1f9d5394a3643fdc796c221137f1f048.jpg",
+  "output": "../figure-15-14b-ko.png",
+  "coordinate_space": [
+    446,
+    718
+  ],
+  "operations": [
+    {
+      "type": "rect",
+      "box": [
+        10,
+        34,
+        65,
+        23
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        10,
+        34,
+        65,
+        23
+      ],
+      "text": "채팅",
+      "font": "bold",
+      "font_size": 18,
+      "min_font_size": 14,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        59,
+        69,
+        360,
+        44
+      ],
+      "fill": "#f7f7f7"
+    },
+    {
+      "type": "text",
+      "box": [
+        59,
+        69,
+        360,
+        44
+      ],
+      "text": "선택한 카메라가 2023년 6월 15일에 감지한 차량을 반환하세요.\n차량은 검은색이며 번호판은 EB로 시작해야 합니다.",
+      "font": "regular",
+      "font_size": 12,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        59,
+        146,
+        130,
+        22
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        59,
+        146,
+        130,
+        22
+      ],
+      "text": "추론",
+      "font": "bold",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        59,
+        177,
+        165,
+        20
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        59,
+        177,
+        165,
+        20
+      ],
+      "text": "출력 형식:  graph",
+      "font": "bold",
+      "font_size": 12,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        59,
+        205,
+        375,
+        91
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        59,
+        205,
+        375,
+        91
+      ],
+      "text": "2023년 6월 15일에 선택한 카메라가 감지한 차량을 찾기 위해\nANPRCamera에서 ANPRCameraEvent를 거쳐 Vehicle로 이동합니다.\n이벤트는 timestamp 접두사 '2023-06-15'로, 차량은 color 'BLK'와\n'EB'로 시작하는 plate로 필터링해 전체 경로를 반환합니다.",
+      "font": "regular",
+      "font_size": 11,
+      "min_font_size": 9,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        72,
+        312,
+        85,
+        21
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        72,
+        312,
+        85,
+        21
+      ],
+      "text": "쿼리...",
+      "font": "regular",
+      "font_size": 12,
+      "min_font_size": 10,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        59,
+        357,
+        105,
+        22
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        59,
+        357,
+        105,
+        22
+      ],
+      "text": "요약",
+      "font": "bold",
+      "font_size": 16,
+      "min_font_size": 12,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "center",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        59,
+        388,
+        360,
+        57
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        59,
+        388,
+        360,
+        57
+      ],
+      "text": "선택한 카메라(UUID: e4f3428b-d11e-45a2-babb-f2ef7008d3af)가\n2023년 6월 15일에 감지한, 번호판이 'EB'로 시작하는\n검은색 차량은 다음과 같습니다.",
+      "font": "regular",
+      "font_size": 11,
+      "min_font_size": 9,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 2
+    },
+    {
+      "type": "rect",
+      "box": [
+        59,
+        449,
+        360,
+        268
+      ],
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "box": [
+        59,
+        449,
+        360,
+        268
+      ],
+      "text": "• 차량 1\n   ◦ 번호판: EB16946\n   ◦ 제조사: CHEV\n   ◦ 형식: 4D\n   ◦ 주: IL\n   ◦ UUID: 3bb2b657-3ea5-484f-99e2-1122eed6cba7\n• 차량 2\n   ◦ 번호판: EB42995\n   ◦ 제조사: CHEV\n   ◦ 형식: LL\n   ◦ 주: IL\n• 차량 3",
+      "font": "regular",
+      "font_size": 11,
+      "min_font_size": 9,
+      "fill": "#111111",
+      "align": "left",
+      "valign": "top",
+      "line_gap": 3
+    }
+  ]
+}

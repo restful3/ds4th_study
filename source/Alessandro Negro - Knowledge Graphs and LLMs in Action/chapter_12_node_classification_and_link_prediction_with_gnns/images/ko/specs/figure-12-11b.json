@@ -1,0 +1,17 @@
+{
+  "title": "Figure 12.11b Korean localization",
+  "source": "../../8f374015de656aff29212cc893231f1119c8bbe0808e3353a88b573aa1495c6d.jpg",
+  "output": "../figure-12-11b-ko.png",
+  "coordinate_space": [476, 390],
+  "operations": [
+    {"type": "rect", "box": [0, 34, 57, 305], "fill": "#ffffff"},
+    {"type": "text", "box": [3, 136, 22, 100], "text": "실제 클래스", "font": "regular", "font_size": 15, "min_font_size": 12, "rotation": 90, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "text", "box": [29, 42, 23, 130], "text": "비존재 링크", "font": "regular", "font_size": 15, "min_font_size": 12, "rotation": 90, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "text", "box": [29, 204, 23, 116], "text": "존재 링크", "font": "regular", "font_size": 15, "min_font_size": 12, "rotation": 90, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [58, 340, 306, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [68, 344, 128, 23], "text": "비존재 링크", "font": "regular", "font_size": 15, "min_font_size": 12, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "text", "box": [226, 344, 128, 23], "text": "존재 링크", "font": "regular", "font_size": 15, "min_font_size": 12, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [132, 369, 171, 21], "fill": "#ffffff"},
+    {"type": "text", "box": [138, 371, 159, 17], "text": "예측 클래스", "font": "regular", "font_size": 15, "min_font_size": 12, "fill": "#222222", "align": "center", "valign": "center"}
+  ]
+}

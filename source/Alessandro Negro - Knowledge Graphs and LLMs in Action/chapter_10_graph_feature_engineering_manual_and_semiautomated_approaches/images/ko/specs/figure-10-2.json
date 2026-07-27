@@ -1,0 +1,20 @@
+{
+  "title": "Figure 10.2 Korean localization",
+  "source": "../../4bbbe8941168f2152f6700022c402cc1c231d7d0896de6ea4d5be48c08cfab49.jpg",
+  "output": "../figure-10-2-ko.png",
+  "coordinate_space": [712, 515],
+  "operations": [
+    {"type": "rect", "box": [142, 7, 150, 35], "fill": "#ffffff"},
+    {"type": "text", "box": [146, 10, 142, 29], "text": "원본 그래프", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [579, 5, 133, 61], "fill": "#ffffff"},
+    {"type": "text", "box": [583, 9, 125, 53], "text": "노드 A의\n특징 벡터", "font": "regular", "font_size": 18, "min_font_size": 15, "line_gap": 2, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [411, 122, 91, 30], "fill": "#ffffff"},
+    {"type": "text", "box": [415, 125, 83, 24], "text": "차수", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [403, 184, 104, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [407, 187, 96, 25], "text": "삼각형", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [401, 246, 104, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [405, 249, 96, 25], "text": "밀도", "font": "regular", "font_size": 19, "min_font_size": 16, "fill": "#222222", "align": "center", "valign": "center"},
+    {"type": "rect", "box": [394, 321, 121, 31], "fill": "#ffffff"},
+    {"type": "text", "box": [398, 324, 113, 25], "text": "근접 중심성", "font": "regular", "font_size": 18, "min_font_size": 15, "fill": "#222222", "align": "center", "valign": "center"}
+  ]
+}

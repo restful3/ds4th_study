@@ -1,0 +1,10 @@
+{
+  "title": "Figure 4.8c Korean localization",
+  "source": "../../cbf4d34bd3ad50091f4bcc4d24121afc27fc33ea632d5104cbc35ff51199640e.jpg",
+  "output": "../figure-4-8c-ko.png",
+  "coordinate_space": [303, 262],
+  "operations": [
+    {"type": "rect", "box": [76, 0, 184, 12], "fill": "#ffffff"},
+    {"type": "text", "box": [98, 0, 147, 12], "text": "(c) 전도도", "font": "regular", "font_size": 15, "min_font_size": 12, "fill": "#111111", "align": "center", "valign": "center"}
+  ]
+}
