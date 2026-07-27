@@ -40,7 +40,7 @@
 * Chapter 2 자료: 추후 공유
 
 
-#### **2026년 8월 1일**: [Webex](#)
+#### **2026년 8월 1일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m04f313dbbe685507858e50181ce261a7)
 
 * 발표자 - 태영
 * **Chapter 3. 온톨로지로 첫 지식 그래프 만들기 (Create Your First Knowledge Graph from Ontologies)** — pp. 37–64
@@ -50,7 +50,7 @@
 * Chapter 3 자료: [상세 리포트](https://restful3.github.io/ds4th_study/studies/knowledge-graphs-and-llms-in-action/presentations/2026-08-01-ch03/report.html) · [발표자료](https://restful3.github.io/ds4th_study/studies/knowledge-graphs-and-llms-in-action/presentations/2026-08-01-ch03/)
 
 
-#### **2026년 8월 8일**: [Webex](#)
+#### **2026년 8월 8일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=mc566f92559137856a5817a3391b681e6)
 
 * 발표자 - 종훈(S)
 * **Chapter 4. 단순 네트워크에서 멀티소스 통합으로 (From Simple Networks to Multisource Integration)** — pp. 65–94
@@ -60,7 +60,7 @@
 * 자료: 추후 공유
 
 
-#### **2026년 8월 15일**: [Webex](#)
+#### **2026년 8월 15일**: [Webex](https://lgehq.webex.com/lgehq/j.php?MTID=m48de660ac23783eb903ddd4c68227e79)
 
 * 발표자 - 두균
 * **Chapter 5. 비정형 데이터에서 도메인 특화 지식 추출 (Extracting Domain-Specific Knowledge from Unstructured Data)** — pp. 95–114
@@ -70,7 +70,7 @@
 * 자료: 추후 공유
 
 
-#### **2026년 8월 22일**: [Webex](#)
+#### **2026년 8월 22일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m7eb4e3e4262dd69a5da327418202ebdf)
 
 * 발표자 - 종훈(L)
 * **Chapter 6. LLM으로 지식 그래프 구축하기 (Building Knowledge Graphs with Large Language Models)** — pp. 115–128
@@ -80,7 +80,7 @@
 * 자료: 추후 공유
 
 
-#### **2026년 8월 29일**: [Webex](#)
+#### **2026년 8월 29일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m4216b4978be315dc5515a5e416d79bdf)
 
 * 발표자 - 재익
 * **Chapter 7. 개체명 중의성 해소 (Named Entity Disambiguation)** — pp. 129–179
