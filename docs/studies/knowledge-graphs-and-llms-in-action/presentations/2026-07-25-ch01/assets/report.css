@@ -120,7 +120,7 @@ h1, h2, h3, h4, h5, h6 {
 .report-toc { page: toc; }
 @page toc { @bottom-left { content: "목차"; } }
 
-/* 본문 섹션별 page-name — build_structured.py 가 부여하는 s0~s7 클래스와 매핑 */
+/* 본문 섹션별 page-name — 회차가 부여하는 s0~s8 클래스와 매핑 */
 .report-section.s0 { page: sec0; }
 .report-section.s1 { page: sec1; }
 .report-section.s2 { page: sec2; }
@@ -129,6 +129,7 @@ h1, h2, h3, h4, h5, h6 {
 .report-section.s5 { page: sec5; }
 .report-section.s6 { page: sec6; }
 .report-section.s7 { page: sec7; }
+.report-section.s8 { page: sec8; }
 .report-appendix.s-refs {
   page: sec-refs;
   /* References 는 항상 새 페이지에서 시작 — 부록 직후에 끌려오지 않도록.
@@ -137,15 +138,16 @@ h1, h2, h3, h4, h5, h6 {
   page-break-before: always !important;
 }
 
-@page sec0 { @bottom-left { content: "§0 · 핵심 요약"; } }
-@page sec1 { @bottom-left { content: "§1 · Computer Use"; } }
-@page sec2 { @bottom-left { content: "§2 · 빅3 벤더"; } }
-@page sec3 { @bottom-left { content: "§3 · 오픈소스 & 자율형 에이전트"; } }
-@page sec4 { @bottom-left { content: "§4 · 실사용 사례 서베이"; } }
-@page sec5 { @bottom-left { content: "§5 · 이슈와 시사점"; } }
-@page sec6 { @bottom-left { content: "§6 · 기술 딥다이브 & 결론"; } }
-@page sec7 { @bottom-left { content: "부록"; } }
-@page sec-refs { @bottom-left { content: "참고 문헌"; } }
+@page sec0 { @bottom-left { content: var(--page-label-sec0, ""); } }
+@page sec1 { @bottom-left { content: var(--page-label-sec1, ""); } }
+@page sec2 { @bottom-left { content: var(--page-label-sec2, ""); } }
+@page sec3 { @bottom-left { content: var(--page-label-sec3, ""); } }
+@page sec4 { @bottom-left { content: var(--page-label-sec4, ""); } }
+@page sec5 { @bottom-left { content: var(--page-label-sec5, ""); } }
+@page sec6 { @bottom-left { content: var(--page-label-sec6, ""); } }
+@page sec7 { @bottom-left { content: var(--page-label-sec7, ""); } }
+@page sec8 { @bottom-left { content: var(--page-label-sec8, ""); } }
+@page sec-refs { @bottom-left { content: var(--page-label-refs, ""); } }
 
 /* ===== CONTINUOUS MODE — `--continuous` 빌드 옵션 (build_local.py 의 hack 정식화)
  *  · 섹션 디바이더는 숨김 — wrap_section 의 kicker(SECTION NN · …) 가 이미 섹션 경계
@@ -3612,6 +3614,16 @@ html.reader-size-large .continuous-mode {
   --brand-active: #2563EB;
   --running-header-left: "ds4th study · Knowledge Graphs & LLMs";
   --running-header-right: "STUDY REPORT";
+  --page-label-sec0: "§0 · 핵심 요약";
+  --page-label-sec1: "§1 · 지식 그래프";
+  --page-label-sec2: "§2 · LLM";
+  --page-label-sec3: "§3 · 양방향 보완";
+  --page-label-sec4: "§4 · 패러다임 전환";
+  --page-label-sec5: "§5 · 적용 사례";
+  --page-label-sec6: "§6 · 기술 선택";
+  --page-label-sec7: "§7 · 도입 판단";
+  --page-label-sec8: "§8 · 정리와 토론";
+  --page-label-refs: "참고 문헌";
 }
 html, body, button, input { font-family: Inter, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif; }
 .skip-link { position: fixed; left: 16px; top: -60px; z-index: 9999; background: var(--brand-primary); color: #fff; padding: 10px 14px; border-radius: 4px; text-decoration: none; }
@@ -3621,7 +3633,6 @@ html, body, button, input { font-family: Inter, 'Noto Sans KR', 'Apple SD Gothic
 .report-appendix ol.references li::before,
 .s-refs ol.references li::before { content: none !important; }
 @media print { .skip-link, .report-jump-links { display:none !important; } }
-+
 /* ===== Fullscreen image viewer: click / keyboard / wheel / pinch ===== */
 [data-report-zoomable="true"] {
   cursor: zoom-in;
