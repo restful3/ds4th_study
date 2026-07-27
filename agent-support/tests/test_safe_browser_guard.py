@@ -22,6 +22,7 @@ import io
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from types import SimpleNamespace
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 GUARD_PATH = REPO_ROOT / "agent-support" / "scripts" / "safe_browser_guard.py"
@@ -94,6 +95,25 @@ class EscapeDetectionTests(unittest.TestCase):
         self.assertEqual(self.guard.escaped_pids(live=set(), contained={101}), set())
 
 
+class ProcStatTests(unittest.TestCase):
+    """종료 뒤 reap 전인 zombie 를 cgroup 이탈자로 오인하지 않는다."""
+
+    def setUp(self) -> None:
+        self.guard = load_guard()
+
+    @staticmethod
+    def stat_line(state: str) -> str:
+        # comm 뒤 필드는 state(0), ppid(1), ... starttime(19) 순서다.
+        fields = [state, "42"] + ["0"] * 17 + ["123456"] + ["0"] * 5
+        return "101 (Google Chrome) " + " ".join(fields)
+
+    def test_live_task_returns_parent_and_start_time(self) -> None:
+        self.assertEqual(self.guard.parse_proc_stat(self.stat_line("S")), (42, 123456))
+
+    def test_zombie_is_not_treated_as_live(self) -> None:
+        self.assertIsNone(self.guard.parse_proc_stat(self.stat_line("Z")))
+
+
 class MarkerScanCadenceTests(unittest.TestCase):
     """전 프로세스 environ 스캔은 백스톱이므로 매 폴링마다 돌지 않는다."""
 
@@ -121,6 +141,37 @@ class MarkerScanCadenceTests(unittest.TestCase):
 
         self.assertLessEqual(seconds, 5.0)
         self.assertGreater(seconds, self.guard.POLL_SECONDS)
+
+
+class BrowserCommandTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.guard = load_guard()
+        self.base = {
+            "browser": "/usr/bin/google-chrome",
+            "profile": "/tmp/profile",
+            "output": "/tmp/output",
+            "viewport": "1600,900",
+            "virtual_time_budget": "6000",
+            "url": "http://localhost:8000/report.html",
+        }
+
+    def test_png_command_uses_screenshot_output(self) -> None:
+        args = SimpleNamespace(**self.base, format="png")
+
+        command = self.guard.build_browser_command(args)
+
+        self.assertIn("--screenshot=/tmp/output", command)
+        self.assertFalse(any(value.startswith("--print-to-pdf=") for value in command))
+
+    def test_pdf_command_uses_print_output_without_browser_headers(self) -> None:
+        args = SimpleNamespace(**self.base, format="pdf")
+
+        command = self.guard.build_browser_command(args)
+
+        self.assertIn("--print-to-pdf=/tmp/output", command)
+        self.assertIn("--no-pdf-header-footer", command)
+        self.assertIn("--run-all-compositor-stages-before-draw", command)
+        self.assertFalse(any(value.startswith("--screenshot=") for value in command))
 
 
 if __name__ == "__main__":

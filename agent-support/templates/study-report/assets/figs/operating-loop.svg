@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" role="img" aria-labelledby="title desc">
+  <title id="title">수집에서 피드백까지 이어지는 운영 루프</title>
+  <desc id="desc">네 개의 같은 크기 노드가 직사각형 모서리에 정렬되고 화살표가 각 노드의 면 중앙에 닿아 시계 방향 루프를 만든다.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#0F2C59"/>
+    </marker>
+    <style>
+      .text{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}
+      .box{fill:#fff;stroke:#0F2C59;stroke-width:2}
+      .line{fill:none;stroke:#0F2C59;stroke-width:3;marker-end:url(#arrow)}
+      .label{font-size:18px;font-weight:800;text-anchor:middle}
+      .meta{font-size:12px;fill:#6B6B72;text-anchor:middle}
+    </style>
+  </defs>
+  <rect width="900" height="320" rx="12" fill="#FAFAF9"/>
+  <path class="line" d="M260 90H640"/>
+  <path class="line" d="M730 125V220"/>
+  <path class="line" d="M640 255H260"/>
+  <path class="line" d="M170 220V125"/>
+  <g class="text">
+    <rect class="box" x="80" y="55" width="180" height="70" rx="35"/>
+    <rect class="box" x="640" y="55" width="180" height="70" rx="35"/>
+    <rect x="640" y="220" width="180" height="70" rx="35" fill="#0F2C59"/>
+    <rect class="box" x="80" y="220" width="180" height="70" rx="35"/>
+    <text class="label" x="170" y="87">1. 수집·입력</text>
+    <text class="meta" x="170" y="108">자료 · 상태 · 출처</text>
+    <text class="label" x="730" y="87">2. 후보 생성</text>
+    <text class="meta" x="730" y="108">해석 · 추출 · 제안</text>
+    <text class="label" x="730" y="252" fill="#fff">3. 검증·통합</text>
+    <text class="meta" x="730" y="273" fill="#D9E2EF">규칙 · 승인 · 이력</text>
+    <text class="label" x="170" y="252">4. 사용·피드백</text>
+    <text class="meta" x="170" y="273">질의 · 오류 · 개선</text>
+    <circle cx="450" cy="172" r="64" fill="#E8EEF7"/>
+    <text x="450" y="166" fill="#0F2C59" font-size="15" font-weight="800" text-anchor="middle">품질 기준</text>
+    <text x="450" y="190" fill="#0F2C59" font-size="13" text-anchor="middle">출처 · 이력 · 책임</text>
+  </g>
+</svg>

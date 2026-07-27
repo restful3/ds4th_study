@@ -5,6 +5,7 @@ import sys
 import tempfile
 import tomllib
 import unittest
+import re
 from pathlib import Path
 
 
@@ -235,6 +236,170 @@ class SiteToolTests(unittest.TestCase):
         self.assertNotEqual(validation.returncode, 0)
         self.assertIn("slide references unknown report id", validation.stderr)
 
+    def test_validator_rejects_duplicate_slide_aria_labels(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        duplicate = DECK_HTML.replace(
+            "</main>",
+            '<section class="slide" aria-label="표지" '
+            'data-report-refs="summary"><h1>중복</h1></section></main>',
+        )
+        (self.deck / "index.html").write_text(duplicate, encoding="utf-8")
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn("aria-label values must be unique", validation.stderr)
+
+    def test_validator_rejects_empty_slide_aria_label(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        empty_label = DECK_HTML.replace('aria-label="표지"', 'aria-label=" "')
+        (self.deck / "index.html").write_text(empty_label, encoding="utf-8")
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn("lacks a non-empty aria-label", validation.stderr)
+
+    def test_validator_rejects_nonconsecutive_report_caption_numbers(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        broken_report = REPORT_HTML.replace(
+            "</section>",
+            '<table class="cmp-table" id="table-one"><caption>'
+            '<span class="asset-caption__chip">표 1</span></caption></table>'
+            '<table class="cmp-table" id="table-two"><caption>'
+            '<span class="asset-caption__chip">표 3</span></caption></table></section>',
+        )
+        (self.deck / "report.html").write_text(broken_report, encoding="utf-8")
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn("caption numbers must be consecutive", validation.stderr)
+
+    def test_validator_rejects_required_figure_without_visual_reuse(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        figure = (
+            '<figure class="report-figure" id="fig-required" '
+            'data-deck-use="required"><figcaption>필수 그림</figcaption>'
+            '<img src="assets/required.svg" alt="필수 관계">'
+            '<small class="asset-note">테스트 재구성.</small></figure>'
+        )
+        report = REPORT_HTML.replace("</section>", f"{figure}</section>")
+        deck = DECK_HTML.replace(
+            'data-report-refs="summary"',
+            'data-report-refs="summary fig-required"',
+        )
+        (self.deck / "report.html").write_text(report, encoding="utf-8")
+        (self.deck / "index.html").write_text(deck, encoding="utf-8")
+        (self.deck / "assets" / "required.svg").write_text(
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"></svg>',
+            encoding="utf-8",
+        )
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn("does not visually reuse required report figure", validation.stderr)
+
+    def test_validator_rejects_figure_without_caption_note_or_accessible_visual(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        broken_figure = (
+            '<figure class="report-figure" id="fig-broken">'
+            '<figcaption> </figcaption>'
+            '<img src="assets/broken.svg" alt="">'
+            "</figure>"
+        )
+        report = REPORT_HTML.replace(
+            "</section>", f"{broken_figure}</section>"
+        )
+        (self.deck / "report.html").write_text(report, encoding="utf-8")
+        (self.deck / "assets" / "broken.svg").write_text(
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"></svg>',
+            encoding="utf-8",
+        )
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn("lacks a non-empty figcaption", validation.stderr)
+        self.assertIn("lacks a non-empty asset note", validation.stderr)
+        self.assertIn("lacks non-empty image alt text", validation.stderr)
+
+    def test_validator_rejects_untraced_report_anchor(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        report = REPORT_HTML.replace(
+            "</section>",
+            '<div id="detail">상세 근거</div></section>',
+        )
+        deck = DECK_HTML.replace(
+            "<h1>첫 번째 발표</h1>",
+            '<h1>첫 번째 발표</h1><a class="report-ref" '
+            'href="report.html#detail">근거</a>',
+        )
+        (self.deck / "report.html").write_text(report, encoding="utf-8")
+        (self.deck / "index.html").write_text(deck, encoding="utf-8")
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn("anchor is absent from data-report-refs", validation.stderr)
+
+    def test_validator_rejects_svg_report_font_stack_drift(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        (self.deck / "assets" / "report.css").write_text(
+            "body { font-family: Inter, sans-serif; }\n",
+            encoding="utf-8",
+        )
+        figures = self.deck / "assets" / "figs"
+        figures.mkdir()
+        (figures / "drift.svg").write_text(
+            '<svg xmlns="http://www.w3.org/2000/svg">'
+            "<style>text{font-family:system-ui,sans-serif}</style>"
+            "<text>불일치</text></svg>",
+            encoding="utf-8",
+        )
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn("font stack mismatch", validation.stderr)
+
+    def test_validator_ignores_leading_monospace_svg_font_declaration(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        (self.deck / "assets" / "report.css").write_text(
+            "body { font-family: Inter, sans-serif; }\n",
+            encoding="utf-8",
+        )
+        figures = self.deck / "assets" / "figs"
+        figures.mkdir()
+        (figures / "mixed-fonts.svg").write_text(
+            '<svg xmlns="http://www.w3.org/2000/svg">'
+            "<style>"
+            ".code{font-family:'JetBrains Mono',monospace}"
+            ".label{font-family:Inter,sans-serif}"
+            "</style>"
+            '<text class="label">기본 라벨</text>'
+            '<text class="code">MATCH</text>'
+            "</svg>",
+            encoding="utf-8",
+        )
+
+        validation = self.validate()
+        self.assertEqual(validation.returncode, 0, validation.stderr)
+
+    def test_validator_rejects_standalone_css_diff_artifact(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        (self.deck / "assets" / "report.css").write_text(
+            "body { color: black; }\n+\n.figure { display: block; }\n",
+            encoding="utf-8",
+        )
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn("standalone '+' diff artifact", validation.stderr)
+
     def test_new_presentation_uses_canonical_template_without_overwrite(self) -> None:
         session = "2026-01-15-ch02-ch03"
         result = self.run_tool(
@@ -310,10 +475,30 @@ class SiteToolTests(unittest.TestCase):
             "setupImageLightbox",
             (target / "assets" / "report.js").read_text(encoding="utf-8"),
         )
-        self.assertIn(
-            "Extended study presentation components",
-            (target / "assets" / "deck.css").read_text(encoding="utf-8"),
+        generated_deck_css = (target / "assets" / "deck.css").read_text(
+            encoding="utf-8"
         )
+        generated_report_css = (target / "assets" / "report.css").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn(".deck-report-figure", generated_deck_css)
+        self.assertIn(".report-ref", generated_deck_css)
+        self.assertNotRegex(generated_report_css, r"(?m)^\s*\+\s*$")
+        chips = re.findall(
+            r'asset-caption__chip">(?:\s*)(그림|표)\s+([1-9][0-9]*)',
+            generated_report,
+        )
+        for kind in ("그림", "표"):
+            numbers = [int(number) for found_kind, number in chips if found_kind == kind]
+            self.assertEqual(numbers, list(range(1, len(numbers) + 1)))
+        for source in (
+            "assets/figs/concept-flow.svg",
+            "assets/figs/mechanism-path.svg",
+            "assets/figs/operating-loop.svg",
+        ):
+            self.assertIn(source, generated_report)
+            self.assertIn(source, generated_html)
+            self.assertTrue((target / source).is_file())
 
         build_result = self.build()
         self.assertEqual(build_result.returncode, 0, build_result.stderr)

@@ -90,6 +90,14 @@ class InstallTests(InstallerTestCase):
             with self.subTest(name=name):
                 self.assertEqual(sha256(self.runner_dir / name), sha256(self.source / name))
 
+    def test_installed_runner_and_guard_include_pdf_mode(self) -> None:
+        self.install()
+
+        wrapper = (self.runner_dir / WRAPPER_NAME).read_text()
+        guard = (self.runner_dir / GUARD_NAME).read_text()
+        self.assertIn("--format png|pdf", wrapper)
+        self.assertIn("--print-to-pdf=", guard)
+
     def test_the_manifest_records_both_files(self) -> None:
         self.install()
 

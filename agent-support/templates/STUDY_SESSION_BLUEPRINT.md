@@ -58,7 +58,7 @@ docs/studies/<study-slug>/presentations/<session-slug>/
 1. `README.md`에서 날짜, 담당자, 챕터를 확인한다.
 2. `agent-support/studies.toml`에서 `materials_path`, `slug`, 상태를 확인한다.
 3. 활성 자료가 `source/`에 있을 것이라 가정하지 않는다. 종료된 책은 `archive/` 경로를 사용한다.
-4. 교재의 실제 목차, 핵심 주장, 예제, 표·그림, 용어를 먼저 목록화한다.
+4. 교재의 실제 목차, 핵심 주장, 예제, 조건·단서, 시점 범위, 표·그림, 용어를 먼저 목록화한다.
 5. 인용 가능한 원문과 발표자의 해설, 외부 검증 사실을 구분한다.
 
 ### 2. 상세 리포트를 먼저 설계하고 완성한다
@@ -104,7 +104,7 @@ docs/studies/<study-slug>/presentations/<session-slug>/
 - `presentation.toml`: `workflow = "raw-report-deck-v1"`, `report_source = "report.html"`
 - 덱 `<main>`: `data-report-source="report.html"`
 - 모든 `.slide`: 실제 리포트 ID를 공백으로 나열한 `data-report-refs`
-- 리포트의 모든 `.report-section`과 `data-deck-use="required"` 그림: 한 번 이상 슬라이드에서 참조
+- 리포트의 모든 `.report-section`과 `data-deck-use="required"` 그림: 한 번 이상 슬라이드에서 참조하고, 필수 그림의 같은 `src`가 덱에 실제로 존재
 - 발표 화면의 Report 링크: 가능하면 `report.html#<id>`로 정확한 근거 위치에 연결
 
 슬라이드는 다음 밀도를 지킨다.
@@ -143,6 +143,8 @@ python3 agent-support/scripts/validate-site.py --check-materials
 - [ ] 리포트 목차와 슬라이드 목차가 자동으로 생성되고 실제 내용 순서와 맞는다.
 - [ ] 모든 슬라이드가 유효한 `data-report-refs`를 가지며 모든 본문 절과 필수 그림이 발표자료에서 다뤄진다.
 - [ ] 리포트의 핵심 SVG·표·CSS 관계가 발표 화면에 직접 재사용되거나 의미를 보존해 재배치됐다.
+- [ ] 외부 SVG와 리포트 CSS가 같은 기본 한글 font stack을 사용한다.
+- [ ] 한 그림의 정렬·화살표 결함을 고친 뒤 모든 형제 그림에서 같은 유형을 다시 확인했다.
 - [ ] 이미지 전체화면·줌·팬·Esc 닫기와 포커스 복귀가 동작한다.
 - [ ] 슬라이드가 16:9에서 잘리지 않고 키보드·전체화면·테마가 동작한다.
 - [ ] A4 PDF에 과도한 빈 페이지, 잘린 표·도형, 중복 번호가 없다.

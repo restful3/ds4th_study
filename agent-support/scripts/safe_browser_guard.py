@@ -100,8 +100,22 @@ def should_scan_marker(poll_index: int) -> bool:
     return poll_index % MARKER_SCAN_EVERY == 0
 
 
+def parse_proc_stat(text: str) -> tuple[int, int] | None:
+    """Return ``(ppid, starttime)`` for a live task; zombies are already dead.
+
+    A zombie retains a ``/proc/<pid>`` entry until its parent reaps it, but the
+    kernel has already removed it from ``cgroup.procs``. Treating that short
+    window as a cgroup escape makes successful one-shot Chrome runs fail after
+    they have written their artifact.
+    """
+    fields = text[text.rfind(")") + 2 :].split()
+    if len(fields) < 20 or fields[0] == "Z":
+        return None
+    return int(fields[1]), int(fields[19])
+
+
 def proc_snapshot() -> dict[int, tuple[int, int]]:
-    """Return pid -> (ppid, starttime) from one /proc pass."""
+    """Return live pid -> (ppid, starttime) from one /proc pass."""
     result: dict[int, tuple[int, int]] = {}
     for entry in os.scandir("/proc"):
         if not entry.name.isdigit():
@@ -109,8 +123,9 @@ def proc_snapshot() -> dict[int, tuple[int, int]]:
         pid = int(entry.name)
         try:
             text = Path(entry.path, "stat").read_text()
-            fields = text[text.rfind(")") + 2 :].split()
-            result[pid] = (int(fields[1]), int(fields[19]))
+            task = parse_proc_stat(text)
+            if task is not None:
+                result[pid] = task
         except (FileNotFoundError, IndexError, PermissionError, ProcessLookupError, ValueError):
             continue
     return result
@@ -269,10 +284,44 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--browser", required=True)
     parser.add_argument("--profile", required=True)
     parser.add_argument("--output", required=True)
+    parser.add_argument("--format", choices=("png", "pdf"), default="png")
     parser.add_argument("--viewport", required=True)
     parser.add_argument("--virtual-time-budget", required=True)
     parser.add_argument("--url", required=True)
     return parser.parse_args()
+
+
+def build_browser_command(args: argparse.Namespace) -> list[str]:
+    command = [
+        args.browser,
+        "--headless=new",
+        "--disable-gpu",
+        "--disable-crash-reporter",
+        "--disable-breakpad",
+        "--no-first-run",
+        "--no-default-browser-check",
+        "--disable-background-networking",
+        "--disable-extensions",
+        "--disable-sync",
+        "--metrics-recording-only",
+        "--mute-audio",
+        "--run-all-compositor-stages-before-draw",
+        f"--user-data-dir={args.profile}",
+        f"--virtual-time-budget={args.virtual_time_budget}",
+        f"--window-size={args.viewport}",
+    ]
+    if args.format == "pdf":
+        command.extend(
+            [
+                "--no-pdf-header-footer",
+                "--print-to-pdf-no-header",
+                f"--print-to-pdf={args.output}",
+            ]
+        )
+    else:
+        command.append(f"--screenshot={args.output}")
+    command.append(args.url)
+    return command
 
 
 def main() -> int:
@@ -288,25 +337,7 @@ def main() -> int:
     env.pop("DBUS_STARTER_ADDRESS", None)
     env.pop("DBUS_STARTER_BUS_TYPE", None)
 
-    command = [
-        args.browser,
-        "--headless=new",
-        "--disable-gpu",
-        "--disable-crash-reporter",
-        "--disable-breakpad",
-        "--no-first-run",
-        "--no-default-browser-check",
-        "--disable-background-networking",
-        "--disable-extensions",
-        "--disable-sync",
-        "--metrics-recording-only",
-        "--mute-audio",
-        f"--user-data-dir={args.profile}",
-        f"--virtual-time-budget={args.virtual_time_budget}",
-        f"--window-size={args.viewport}",
-        f"--screenshot={args.output}",
-        args.url,
-    ]
+    command = build_browser_command(args)
 
     proc = subprocess.Popen(command, env=env, start_new_session=True)
     root_key = (proc.pid, -1)

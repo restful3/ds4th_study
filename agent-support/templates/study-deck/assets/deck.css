@@ -4,6 +4,8 @@
 
 :root {
   --deck-scale: 1;
+  --font-sans-ko: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic',
+    'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
   --bg: #fafaf9;
   --surface: #ffffff;
   --surface-soft: #f2f4f7;
@@ -40,7 +42,7 @@ body {
 body {
   background: #dfe3e9;
   color: var(--text);
-  font-family: Inter, Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-family: var(--font-sans-ko);
   word-break: keep-all;
   text-rendering: optimizeLegibility;
 }
@@ -1300,6 +1302,79 @@ body.chrome-hidden .deck-settings {
   font-size: 19px;
   font-weight: 700;
 }
+
+/* Report-derived visuals shared by every study deck. */
+.report-ref {
+  color: var(--primary);
+  font-weight: 850;
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.report-ref:hover,
+.report-ref:focus-visible {
+  text-decoration: underline;
+  outline: none;
+}
+
+.slide--visual { padding: 28px 54px 24px; }
+.slide--visual .slide-header { min-height: 32px; margin-bottom: 8px; }
+.slide--visual > h1 { font-size: 36px; line-height: 1.12; }
+.slide--visual > h1::after { width: 46px; height: 3px; margin-top: 9px; }
+.slide--visual .slide-footer { padding-top: 8px; }
+.report-visual-body { justify-content: center; padding: 8px 0 6px; }
+
+.deck-report-figure {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.deck-report-figure img {
+  display: block;
+  width: auto;
+  max-width: 1080px;
+  height: auto;
+  max-height: 420px;
+  background: #fafaf9;
+  border: 1px solid #dfe2e7;
+  border-radius: 10px;
+  box-shadow: 0 14px 38px rgba(15, 44, 89, 0.11);
+}
+
+.deck-report-figure--tall img { max-height: 400px; }
+
+.deck-report-figure figcaption {
+  display: grid;
+  grid-template-columns: 120px repeat(3, 1fr);
+  width: min(1080px, 100%);
+  margin-top: 9px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.deck-report-figure figcaption > * {
+  padding: 9px 12px;
+  border-right: 1px solid var(--border);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.deck-report-figure figcaption > *:last-child { border-right: 0; }
+.deck-report-figure figcaption b { color: #fff; background: var(--primary-deep); text-align: center; }
+.deck-report-figure figcaption span { color: var(--muted); }
+
+.compare-table--dense th,
+.compare-table--dense td { padding: 13px 16px; font-size: 15px; line-height: 1.35; }
+
+html.theme-dark .deck-report-figure img { background: #fafaf9; border-color: #6f7886; }
+html.theme-dark .deck-report-figure figcaption b { color: #fff; background: #0f2c59; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

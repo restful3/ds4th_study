@@ -63,13 +63,16 @@
 - `.question-list`: 발표 확인 질문
 - `.code-block`, `.code-layout`: 핵심 코드·데모
 - `.takeaway`, `.source-note`: 핵심 문장과 근접 출처
+- `.slide--visual`, `.report-visual-body`, `.deck-report-figure`, `.deck-report-figure--tall`: 리포트 필수 그림을 발표 크기로 직접 재사용
+- `.report-ref`: 같은 슬라이드의 `data-report-refs`에 포함된 정확한 리포트 anchor 링크
+- `.compare-table--dense`: 반복 필드가 많은 비교표의 발표용 밀도
 - `.deck-settings`, `.deck-settings-panel`, `.deck-quick-links`: 우측 상단 설정과 Index / Slides / Report 이동
 
 ## 리포트·슬라이드·목차 연결
 
 - 리포트 게이트를 통과하기 전에는 생성된 구조 청사진을 회차별 슬라이드 본문으로 채우지 않는다.
 - 리포트의 각 핵심 섹션은 1개의 섹션 구분 슬라이드와 2–4개의 메시지 슬라이드로 압축한다.
-- 리포트 표·도형이 발표 화면에서 읽히면 같은 SVG·이미지를 직접 재사용한다. 복잡한 표·도형은 의미·번호·관계를 유지하며 발표에서 읽을 부분을 CSS/SVG로 재배치한다.
+- 리포트 표·도형이 발표 화면에서 읽히면 같은 `src`의 SVG·이미지를 직접 재사용한다. 복잡한 표·도형은 의미·번호·관계를 유지하며 발표에서 읽을 부분을 CSS/SVG로 재배치하고 정확한 리포트 그림 anchor를 표시한다.
 - 슬라이드의 `aria-label`은 화면 제목보다 짧고 구체적인 목차 항목이다. `deck.js`가 이 값을 사용해 목차를 자동 생성한다.
 - 섹션 구분 슬라이드는 목차의 시각적 경계를 만든다. `aria-label="핵심 개념 섹션"`처럼 역할을 포함한다.
 - 리포트와 슬라이드는 같은 용어·그림 번호·논리 순서를 쓰되 문장 밀도는 다르게 유지한다.

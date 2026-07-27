@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240" role="img" aria-labelledby="title desc">
+  <title id="title">입력에서 검증된 결과까지의 책임 경로</title>
+  <desc id="desc">같은 크기의 네 단계 상자가 한 행에 정렬되고 각 화살표가 다음 상자의 왼쪽 면 중앙에 닿으며, 결과에서 변환 단계로 피드백 화살표가 돌아간다.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#6B6B72"/>
+    </marker>
+    <style>
+      .text{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}
+      .box{fill:#fff;stroke:#0F2C59;stroke-width:2}
+      .line{fill:none;stroke:#6B6B72;stroke-width:2.5;marker-end:url(#arrow)}
+      .feedback{fill:none;stroke:#8793A3;stroke-width:2;stroke-dasharray:7 6;marker-end:url(#arrow)}
+      .label{font-size:17px;font-weight:800;text-anchor:middle}
+      .meta{font-size:12px;fill:#6B6B72;text-anchor:middle}
+    </style>
+  </defs>
+  <rect width="900" height="240" rx="12" fill="#FAFAF9"/>
+  <path class="line" d="M190 112H250"/>
+  <path class="line" d="M410 112H470"/>
+  <path class="line" d="M630 112H690"/>
+  <path class="feedback" d="M770 156C770 218 330 218 330 156"/>
+  <g class="text">
+    <rect class="box" x="30" y="68" width="160" height="88" rx="8"/>
+    <rect class="box" x="250" y="68" width="160" height="88" rx="8"/>
+    <rect class="box" x="470" y="68" width="160" height="88" rx="8"/>
+    <rect x="690" y="68" width="160" height="88" rx="8" fill="#0F2C59"/>
+    <text class="label" x="110" y="108">입력</text>
+    <text class="meta" x="110" y="132">자료 · 질문 · 상태</text>
+    <text class="label" x="330" y="108">해석·변환</text>
+    <text class="meta" x="330" y="132">추출 · 계산 · 후보</text>
+    <text class="label" x="550" y="108">검증·승인</text>
+    <text class="meta" x="550" y="132">규칙 · 근거 · 책임</text>
+    <text class="label" x="770" y="108" fill="#fff">결과·근거</text>
+    <text class="meta" x="770" y="132" fill="#D9E2EF">설명 · 사용 · 기록</text>
+    <text class="meta" x="550" y="226">오류와 사용 결과를 다음 처리에 반영</text>
+  </g>
+</svg>

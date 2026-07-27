@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" role="img" aria-labelledby="title desc">
+  <title id="title">입력에서 검증된 결과까지 이어지는 핵심 구조</title>
+  <desc id="desc">같은 크기의 입력, 변환, 결과 상자가 왼쪽에서 오른쪽으로 정렬되고 화살표가 각 상자의 옆면 중앙에 닿는다.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#6B6B72"/>
+    </marker>
+    <style>
+      .text{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}
+      .box{fill:#fff;stroke:#0F2C59;stroke-width:2}
+      .line{fill:none;stroke:#6B6B72;stroke-width:2.5;marker-end:url(#arrow)}
+      .label{font-size:17px;font-weight:800;text-anchor:middle}
+      .meta{font-size:12px;fill:#6B6B72;text-anchor:middle}
+    </style>
+  </defs>
+  <rect width="720" height="180" rx="12" fill="#FAFAF9"/>
+  <path class="line" d="M180 90H290"/>
+  <path class="line" d="M430 90H540"/>
+  <g class="text">
+    <rect class="box" x="40" y="54" width="140" height="72" rx="8"/>
+    <rect class="box" x="290" y="54" width="140" height="72" rx="8"/>
+    <rect x="540" y="54" width="140" height="72" rx="8" fill="#0F2C59"/>
+    <text class="label" x="110" y="86">입력·문제</text>
+    <text class="meta" x="110" y="108">자료 · 질문 · 상태</text>
+    <text class="label" x="360" y="86">변환·메커니즘</text>
+    <text class="meta" x="360" y="108">해석 · 추출 · 계산</text>
+    <text class="label" x="610" y="86" fill="#fff">검증된 결과</text>
+    <text class="meta" x="610" y="108" fill="#D9E2EF">근거 · 승인 · 피드백</text>
+  </g>
+</svg>

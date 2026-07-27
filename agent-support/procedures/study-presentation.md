@@ -13,7 +13,7 @@
 
 - 기본 발표는 50분 발표와 10분 Q&A를 기준으로 한다.
 - 한 회차의 기본 산출물은 사후 학습용 상세 리포트와 발표용 슬라이드다. 사용자가 한쪽만 명시하지 않았다면 둘 다 만든다.
-- `materials_path` 아래의 원문·번역·노트·코드·기존 도형을 읽고 `핵심 주장 / 근거·예제 / 한계 / 용어 / 시각화할 관계 / 출처 위치`를 먼저 목록화한다. 이 원자료 감사가 리포트의 입력이다.
+- `materials_path` 아래의 원문·번역·노트·코드·기존 도형을 읽고 `핵심 주장 / 근거·예제 / 조건·단서 / 한계 / 시점 범위 / 용어 / 시각화할 관계 / 출처 위치`를 먼저 목록화한다. 이 원자료 감사가 리포트의 입력이다.
 - `agent-support/templates/STUDY_SESSION_BLUEPRINT.md`와 그 문서가 가리키는 Chapter 1 완성본을 기준으로 학습 목표, 핵심 흐름, 데모 필요 여부와 리포트 목차를 설계한다. 이 단계에서 슬라이드는 제목 목록 이상의 회차별 본문을 작성하지 않는다.
 - 기본 논리는 `문제 → 개념 → 메커니즘 → 운영 구조 → 근거와 한계 → 사례 → 판단 → 요약`이다. 교재에 맞게 합칠 수는 있지만 빠진 축이 없는지 확인한다.
 - 50분 발표는 보통 18–30장으로 구성하고, 처음 3장은 표지·핵심 질문·전체 흐름, 마지막 2장은 확인 질문·세 문장 요약으로 둔다. 리포트 시각자료가 많으면 한 장에 욱여넣지 말고 슬라이드를 나눈다.
@@ -98,7 +98,7 @@ report_source = "report.html"
 - 모든 `.slide`에 근거가 된 리포트 절·표·그림 ID를 공백으로 구분해 `data-report-refs`로 기록한다.
 - 리포트의 모든 본문 절과 `data-deck-use="required"` 그림이 적어도 한 슬라이드에서 참조되게 한다.
 - 리포트의 주장·용어·논리 순서를 그대로 유지하며 발표 밀도로 압축한다. 새 주장을 슬라이드에서만 만들지 않는다.
-- 리포트 SVG가 화면에서 읽히면 같은 파일을 직접 사용한다. 복잡하면 의미·번호·관계를 유지한 CSS/SVG 발표용 버전을 만들고 리포트 링크를 표시한다.
+- 리포트 SVG가 화면에서 읽히면 같은 `src` 파일을 직접 사용한다. 복잡하면 의미·번호·관계를 유지한 CSS/SVG 발표용 버전을 만들고 정확한 `report.html#<figure-id>` 링크를 표시한다. 실제 adapted 사례가 생기기 전에는 참조 ID만 적고 그림을 생략하는 예외를 만들지 않는다.
 - 목차는 별도 파일로 만들지 않고 각 슬라이드의 고유한 `aria-label`에서 자동 생성한다.
 
 ## 6. 품질 확인
@@ -151,10 +151,38 @@ runner가 headroom, lock, cgroup, timeout 또는 PNG 검증으로 실패하면
 원인과 아직 확인하지 못한 viewport를 보고한다. 여러 viewport나
 slide를 검사할 때도 호출을 직렬로 실행하고 각 종료코드를 확인한다.
 
+여러 화면은 repo driver가 설치본 runner를 직렬 호출하게 한다. manifest와
+모든 output은 `tmp/browser-shots/` 아래에 두며 driver가 첫 실패에서 중단하게
+한다. 이 driver는 브라우저를 직접 띄우지 않으므로 각 capture의 기존
+headroom·lock·cgroup·atomic 검증이 그대로 유지된다.
+
+```bash
+python3 agent-support/scripts/render-shot-manifest.py \
+  --manifest "$PWD/tmp/browser-shots/session-manifest.json"
+```
+
+리포트 PDF도 같은 설치본 runner의 단일 cgroup 경로로 생성한다. PDF는
+deferred KaTeX를 기다리도록 PNG보다 긴 virtual-time budget을 기본 사용하며,
+`docs/`가 아니라 `tmp/browser-shots/` 아래에만 둔다.
+
+```bash
+"$runner" \
+  --format pdf \
+  --url "http://localhost:8000/studies/<study-slug>/presentations/<session-slug>/report.html" \
+  --output "$PWD/tmp/browser-shots/session-report.pdf"
+
+python3 agent-support/scripts/inspect-study-pdf.py \
+  --pdf "$PWD/tmp/browser-shots/session-report.pdf" \
+  --source-html "$PWD/docs/studies/<study-slug>/presentations/<session-slug>/report.html" \
+  --output-dir "$PWD/tmp/browser-shots/session-report-pages"
+```
+
 - 리포트는 데스크톱과 모바일에서 연속 스크롤로 읽을 수 있고, 인쇄 시 A4로 자연스럽게 나뉘어야 한다.
 - 각 주요 섹션에 정의·작동 방식·한계 또는 판단 기준 중 최소 두 가지가 있는지 확인한다. 짧은 카드와 목록만으로 상세 리포트를 끝내지 않는다.
 - 모든 표와 도형에 번호·제목을 붙이고, 도형에는 구체적인 대체 텍스트와 재구성 범위·출처를 표시한다.
 - 진청 역상 SVG의 흰색 글자, 화살표 path의 불필요한 fill, 모바일 가로 넘침과 표·도형 잘림을 실제 렌더링으로 확인한다.
+- 같은 의미 수준의 박스는 공통 그리드에 맞추고 화살표 끝은 의도한 면의 경계에 닿게 한다. 한 도형에서 시각 결함을 찾으면 그 회차의 모든 형제 도형에서 같은 유형을 조사하고 함께 고친다.
+- 리포트 본문 CSS와 외부 SVG의 기본 한글 `font-family` 순서를 같게 유지한다. 외부 SVG는 페이지 CSS 변수를 상속하지 않으므로 SVG 안에 동일한 리터럴 스택을 둔다.
 - 리포트의 목차 드로어, 테마 전환, Print/PDF와 Report/Slides/Index 링크가 동작해야 한다.
 - 리포트의 모든 본문 그림을 클릭과 Enter로 열 수 있고, 버튼·휠·핀치로 확대하며 드래그·방향키로 이동하고 Esc로 닫은 뒤 원래 이미지로 포커스가 돌아오는지 확인한다.
 - A4 PDF를 실제로 생성해 페이지 수, 러닝 헤더, 참고문헌 번호 중복과 과도한 빈 페이지를 확인한다.
@@ -168,6 +196,15 @@ slide를 검사할 때도 호출을 직렬로 실행하고 각 종료코드를 �
 - 외부 스크립트, iframe과 폼은 꼭 필요한지 검토한다. API 키나 분석용 추적 코드를 넣지 않는다.
 - 발표자 노트가 공개되어도 문제가 없는 내용인지 확인한다.
 - 네트워크 장애에 대비해 같은 폴더를 로컬 서버로 열어 발표할 수 있어야 한다.
+
+| 검사 | 잡는 결함 | 잡지 못하는 결함 |
+|---|---|---|
+| 좌표·DOM 산술 | 앵커 미착지, 박스 관통, 그리드 어긋남 | z-order에 가린 화살촉, 배경에 묻힌 선 |
+| 최종 크기 렌더 | 위 문제와 텍스트 넘침·겹침·가독성 | 다른 플랫폼의 폰트 폴백, 주장 의미 오류 |
+| 폰트·자산 조회 | 글리프·스택·직접 재사용 불일치 | alt·캡션·도형 사이의 의미 불일치 |
+
+alt·캡션·도형의 의미 일치는 자동 정규식으로 판정하지 않는다. 원자료 감사와
+리포트 게이트, 최종 동료 리뷰에서 방향·조건·시점·귀속을 서로 대조한다.
 
 ## 7. 인덱스와 검증
 

@@ -21,6 +21,9 @@ DEFAULT_TEMPLATE = REPO_ROOT / "agent-support" / "templates" / "study-deck"
 DEFAULT_REPORT_TEMPLATE = REPO_ROOT / "agent-support" / "templates" / "study-report"
 SLUG_RE = re.compile(r"^[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$")
 TOKEN_RE = re.compile(r"{{[A-Z0-9_]+}}")
+CAPTION_NUMBER_RE = re.compile(r'asset-caption__chip">(?:\s*)(그림|표)\s+([1-9][0-9]*)')
+MERGE_MARKER_RE = re.compile(r"(?m)^(?:<<<<<<<(?: .*)?|=======|>>>>>>>(?: .*)?)$")
+STANDALONE_CSS_PLUS_RE = re.compile(r"(?m)^\s*\+\s*$")
 
 
 def parse_args() -> argparse.Namespace:
@@ -90,6 +93,36 @@ def validate_args(args: argparse.Namespace) -> None:
         raise ValueError("chapter must not be empty")
 
 
+def validate_template_sources(template: Path, report_template: Path) -> None:
+    for root in (template, report_template):
+        for path in sorted(root.rglob("*")):
+            if not path.is_file() or path.suffix.lower() not in {
+                ".css",
+                ".html",
+                ".js",
+                ".svg",
+                ".tmpl",
+            }:
+                continue
+            text = path.read_text(encoding="utf-8", errors="replace")
+            if MERGE_MARKER_RE.search(text):
+                raise ValueError(f"unresolved merge marker in template: {path}")
+            if path.suffix.lower() == ".css" and STANDALONE_CSS_PLUS_RE.search(text):
+                raise ValueError(f"standalone '+' diff artifact in template CSS: {path}")
+
+    report_html = (report_template / "index.html").read_text(encoding="utf-8")
+    numbers: dict[str, list[int]] = {"그림": [], "표": []}
+    for kind, number in CAPTION_NUMBER_RE.findall(report_html):
+        numbers[kind].append(int(number))
+    for kind, found in numbers.items():
+        expected = list(range(1, len(found) + 1))
+        if found != expected:
+            raise ValueError(
+                f"template {kind} caption numbers must be consecutive 1..N: "
+                f"found {found}, expected {expected}"
+            )
+
+
 def main() -> int:
     args = parse_args()
     try:
@@ -122,6 +155,7 @@ def main() -> int:
         ):
             if not required.exists():
                 raise ValueError(f"template component not found: {required}")
+        validate_template_sources(template, report_template)
 
         presenters = [value.strip() for value in args.presenter]
         chapters = [value.strip() for value in args.chapter]

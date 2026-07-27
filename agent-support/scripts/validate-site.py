@@ -7,6 +7,7 @@ import argparse
 import re
 import sys
 import tomllib
+from dataclasses import dataclass, field
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlparse
@@ -19,6 +20,44 @@ SLUG_RE = re.compile(r"^[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$")
 MAX_FILE_BYTES = 10 * 1024 * 1024
 MAX_SESSION_BYTES = 30 * 1024 * 1024
 SUPPORTED_ARTIFACTS = {"report", "slides"}
+CAPTION_NUMBER_RE = re.compile(r"^(그림|표)\s+([1-9][0-9]*)$")
+MERGE_MARKER_RE = re.compile(r"(?m)^(?:<<<<<<<(?: .*)?|=======|>>>>>>>(?: .*)?)$")
+STANDALONE_CSS_PLUS_RE = re.compile(r"(?m)^\s*\+\s*$")
+FONT_FAMILY_RE = re.compile(r"font-family\s*:\s*([^;}]+)", re.IGNORECASE)
+FONT_ATTRIBUTE_RE = re.compile(r"""font-family\s*=\s*["']([^"']+)["']""", re.IGNORECASE)
+
+# Registered 2026-07-27. Remove one entry only after that published session's
+# SVGs have been updated, rendered at final size, and visually rechecked.
+FONT_STACK_DRIFT_ALLOWLIST = {
+    "kg-llm-in-action-2026/2026-07-25-ch01",
+    "kg-llm-in-action-2026/2026-08-01-ch03",
+}
+
+
+@dataclass
+class FigureTrace:
+    element_id: str
+    required: bool
+    image_sources: set[str] = field(default_factory=set)
+    has_accessible_visual: bool = False
+    caption_parts: list[str] = field(default_factory=list)
+    note_parts: list[str] = field(default_factory=list)
+
+    @property
+    def caption(self) -> str:
+        return " ".join(" ".join(self.caption_parts).split())
+
+    @property
+    def note(self) -> str:
+        return " ".join(" ".join(self.note_parts).split())
+
+
+@dataclass
+class SlideTrace:
+    label: str
+    refs: list[str]
+    image_sources: set[str] = field(default_factory=set)
+    report_links: set[str] = field(default_factory=set)
 
 
 class PageParser(HTMLParser):
@@ -50,7 +89,7 @@ class PageParser(HTMLParser):
 
 
 class ReportDeckTraceParser(HTMLParser):
-    """Collect stable report anchors and per-slide derivation references."""
+    """Collect report assets and the deck evidence that derives from them."""
 
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
@@ -59,8 +98,18 @@ class ReportDeckTraceParser(HTMLParser):
         self.report_sections: set[str] = set()
         self.required_figures: set[str] = set()
         self.required_figures_without_id = 0
-        self.slides: list[tuple[str, list[str]]] = []
+        self.figures: dict[str, FigureTrace] = {}
+        self.caption_numbers: dict[str, list[int]] = {"그림": [], "표": []}
+        self.invalid_caption_chips: list[str] = []
+        self.slides: list[SlideTrace] = []
         self.deck_report_source = ""
+        self._current_figure: FigureTrace | None = None
+        self._current_slide: SlideTrace | None = None
+        self._section_depth = 0
+        self._slide_section_depth = 0
+        self._in_figure_caption = False
+        self._in_asset_note = False
+        self._caption_chip_parts: list[str] | None = None
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = {name.lower(): value or "" for name, value in attrs}
@@ -73,21 +122,90 @@ class ReportDeckTraceParser(HTMLParser):
 
         if tag == "main" and values.get("data-report-source"):
             self.deck_report_source = values["data-report-source"].strip()
-        if tag == "section" and "slide" in classes:
-            label = values.get("aria-label", "").strip() or "unnamed slide"
-            refs = values.get("data-report-refs", "").split()
-            self.slides.append((label, refs))
-        if tag == "section" and "report-section" in classes and element_id:
-            self.report_sections.add(element_id)
-        if (
-            tag == "figure"
-            and "report-figure" in classes
-            and values.get("data-deck-use") == "required"
-        ):
-            if element_id:
-                self.required_figures.add(element_id)
-            else:
+        if tag == "section":
+            self._section_depth += 1
+            if "slide" in classes:
+                self._current_slide = SlideTrace(
+                    label=values.get("aria-label", "").strip(),
+                    refs=values.get("data-report-refs", "").split(),
+                )
+                self._slide_section_depth = self._section_depth
+                self.slides.append(self._current_slide)
+            if "report-section" in classes and element_id:
+                self.report_sections.add(element_id)
+
+        if tag == "figure" and "report-figure" in classes:
+            required = values.get("data-deck-use") == "required"
+            if required and not element_id:
                 self.required_figures_without_id += 1
+            self._current_figure = FigureTrace(element_id, required)
+            if element_id:
+                self.figures[element_id] = self._current_figure
+                if required:
+                    self.required_figures.add(element_id)
+        elif tag == "figcaption" and self._current_figure is not None:
+            self._in_figure_caption = True
+        elif tag == "small" and "asset-note" in classes and self._current_figure is not None:
+            self._in_asset_note = True
+
+        if tag == "span" and "asset-caption__chip" in classes:
+            self._caption_chip_parts = []
+
+        if tag == "img":
+            source = values.get("src", "").strip()
+            if self._current_figure is not None:
+                if source:
+                    self._current_figure.image_sources.add(source)
+                if values.get("alt", "").strip():
+                    self._current_figure.has_accessible_visual = True
+            if self._current_slide is not None and source:
+                self._current_slide.image_sources.add(source)
+        elif (
+            tag == "svg"
+            and self._current_figure is not None
+            and values.get("role") == "img"
+            and values.get("aria-label", "").strip()
+        ):
+            self._current_figure.has_accessible_visual = True
+
+        if tag == "a" and self._current_slide is not None:
+            parsed = urlparse(values.get("href", "").strip())
+            if parsed.path == "report.html" and parsed.fragment:
+                self._current_slide.report_links.add(unquote(parsed.fragment))
+
+    def handle_data(self, data: str) -> None:
+        if self._caption_chip_parts is not None:
+            self._caption_chip_parts.append(data)
+        if self._in_figure_caption and self._current_figure is not None:
+            self._current_figure.caption_parts.append(data)
+        if self._in_asset_note and self._current_figure is not None:
+            self._current_figure.note_parts.append(data)
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "span" and self._caption_chip_parts is not None:
+            chip = " ".join(" ".join(self._caption_chip_parts).split())
+            match = CAPTION_NUMBER_RE.fullmatch(chip)
+            if match:
+                self.caption_numbers[match.group(1)].append(int(match.group(2)))
+            elif chip:
+                self.invalid_caption_chips.append(chip)
+            self._caption_chip_parts = None
+        elif tag == "figcaption":
+            self._in_figure_caption = False
+        elif tag == "small":
+            self._in_asset_note = False
+        elif tag == "figure":
+            self._current_figure = None
+            self._in_figure_caption = False
+            self._in_asset_note = False
+        elif tag == "section":
+            if (
+                self._current_slide is not None
+                and self._section_depth == self._slide_section_depth
+            ):
+                self._current_slide = None
+                self._slide_section_depth = 0
+            self._section_depth = max(0, self._section_depth - 1)
 
 
 def parse_args() -> argparse.Namespace:
@@ -119,6 +237,92 @@ def within(path: Path, parent: Path) -> bool:
         return True
     except ValueError:
         return False
+
+
+def normalize_font_stack(value: str) -> tuple[str, ...]:
+    return tuple(
+        part.strip().strip("\"'").lower()
+        for part in value.replace("\n", " ").split(",")
+        if part.strip()
+    )
+
+
+def report_font_stack(css_text: str) -> tuple[str, ...]:
+    variable = re.search(r"--font-sans-ko\s*:\s*([^;]+);", css_text, re.IGNORECASE)
+    if variable:
+        return normalize_font_stack(variable.group(1))
+    body = re.search(
+        r"\bbody\s*\{[^}]*font-family\s*:\s*([^;]+);",
+        css_text,
+        re.IGNORECASE | re.DOTALL,
+    )
+    return normalize_font_stack(body.group(1)) if body else ()
+
+
+def svg_primary_font_stack(svg_text: str) -> tuple[str, ...]:
+    for pattern in (
+        r"\.t\s*\{[^}]*font-family\s*:\s*([^;}]+)",
+        r"\.text\s*\{[^}]*font-family\s*:\s*([^;}]+)",
+        r"\btext\s*\{[^}]*font-family\s*:\s*([^;}]+)",
+    ):
+        match = re.search(pattern, svg_text, re.IGNORECASE | re.DOTALL)
+        if match:
+            return normalize_font_stack(match.group(1))
+    for declaration in FONT_FAMILY_RE.finditer(svg_text):
+        stack = normalize_font_stack(declaration.group(1))
+        # A code-label class can legitimately use a mono face before the
+        # diagram's default text class is declared. It is not the SVG's
+        # primary Korean font contract, so continue to the next declaration.
+        if "monospace" not in stack:
+            return stack
+    attribute = FONT_ATTRIBUTE_RE.search(svg_text)
+    return normalize_font_stack(attribute.group(1)) if attribute else ()
+
+
+def validate_caption_sequence(
+    trace: ReportDeckTraceParser, report_html: Path, errors: list[str]
+) -> None:
+    for chip in trace.invalid_caption_chips:
+        errors.append(f"invalid report caption number in {report_html}: {chip!r}")
+    for kind, numbers in trace.caption_numbers.items():
+        expected = list(range(1, len(numbers) + 1))
+        if numbers != expected:
+            errors.append(
+                f"report {kind} caption numbers must be consecutive 1..N in "
+                f"{report_html}: found {numbers}, expected {expected}"
+            )
+
+
+def validate_font_stack_contract(
+    session_dir: Path,
+    session_key: str,
+    errors: list[str],
+) -> None:
+    css_path = session_dir / "assets" / "report.css"
+    figures_dir = session_dir / "assets" / "figs"
+    if not css_path.is_file() or not figures_dir.is_dir():
+        return
+    expected = report_font_stack(css_path.read_text(encoding="utf-8", errors="replace"))
+    if not expected:
+        errors.append(f"report CSS has no readable body font stack: {css_path}")
+        return
+
+    drift: list[str] = []
+    for svg_path in sorted(figures_dir.glob("*.svg")):
+        svg_text = svg_path.read_text(encoding="utf-8", errors="replace")
+        if "<text" not in svg_text:
+            continue
+        actual = svg_primary_font_stack(svg_text)
+        if not actual:
+            drift.append(f"{svg_path.name}=<missing>")
+        elif actual != expected:
+            drift.append(f"{svg_path.name}={','.join(actual)}")
+
+    if drift and session_key not in FONT_STACK_DRIFT_ALLOWLIST:
+        errors.append(
+            f"SVG/report.css font stack mismatch in {session_dir}; expected "
+            f"{','.join(expected)}; drift: {drift}"
+        )
 
 
 def validate_registry(
@@ -280,11 +484,28 @@ def validate_metadata(site: Path, studies: dict[str, dict], errors: list[str]) -
                 errors.append(f"duplicate report id in {report_html}: {duplicate}")
             for duplicate in sorted(deck_trace.duplicate_ids):
                 errors.append(f"duplicate deck id in {deck_html}: {duplicate}")
+            validate_caption_sequence(report_trace, report_html, errors)
             if report_trace.required_figures_without_id:
                 errors.append(
                     f"{report_trace.required_figures_without_id} required report figure(s) "
                     f"lack a stable id in {report_html}"
                 )
+            for figure_id, figure in sorted(report_trace.figures.items()):
+                if not figure.caption:
+                    errors.append(
+                        f"report figure lacks a non-empty figcaption in "
+                        f"{report_html}: {figure_id}"
+                    )
+                if not figure.note:
+                    errors.append(
+                        f"report figure lacks a non-empty asset note in "
+                        f"{report_html}: {figure_id}"
+                    )
+                if not figure.has_accessible_visual:
+                    errors.append(
+                        f"report figure lacks non-empty image alt text or an accessible "
+                        f"inline SVG in {report_html}: {figure_id}"
+                    )
             if deck_trace.deck_report_source != "report.html":
                 errors.append(
                     f"deck must declare data-report-source='report.html' on its main "
@@ -293,19 +514,43 @@ def validate_metadata(site: Path, studies: dict[str, dict], errors: list[str]) -
             if not deck_trace.slides:
                 errors.append(f"deck has no traceable slides: {deck_html}")
 
+            labels = [slide.label for slide in deck_trace.slides]
+            for index, label in enumerate(labels, start=1):
+                if not label:
+                    errors.append(
+                        f"slide {index} lacks a non-empty aria-label in {deck_html}"
+                    )
+            duplicates = sorted(
+                label for label in set(labels) if label and labels.count(label) > 1
+            )
+            if duplicates:
+                errors.append(
+                    f"deck slide aria-label values must be unique in {deck_html}: "
+                    f"{duplicates}"
+                )
+
             referenced: set[str] = set()
-            for label, refs in deck_trace.slides:
-                if not refs:
+            deck_image_sources: set[str] = set()
+            for slide in deck_trace.slides:
+                label = slide.label or "unnamed slide"
+                if not slide.refs:
                     errors.append(
                         f"slide lacks data-report-refs in {deck_html}: {label}"
                     )
                     continue
-                referenced.update(refs)
-                unknown = sorted(set(refs) - report_trace.ids)
+                referenced.update(slide.refs)
+                deck_image_sources.update(slide.image_sources)
+                unknown = sorted(set(slide.refs) - report_trace.ids)
                 if unknown:
                     errors.append(
                         f"slide references unknown report id(s) in {deck_html} "
                         f"({label}): {unknown}"
+                    )
+                untraced_links = sorted(slide.report_links - set(slide.refs))
+                if untraced_links:
+                    errors.append(
+                        f"slide report.html anchor is absent from data-report-refs in "
+                        f"{deck_html} ({label}): {untraced_links}"
                     )
 
             missing_sections = sorted(report_trace.report_sections - referenced)
@@ -320,6 +565,25 @@ def validate_metadata(site: Path, studies: dict[str, dict], errors: list[str]) -
                     f"deck does not reuse required report figure id(s) in {deck_html}: "
                     f"{missing_figures}"
                 )
+            for figure_id in sorted(report_trace.required_figures):
+                figure = report_trace.figures[figure_id]
+                if not figure.image_sources:
+                    errors.append(
+                        f"required report figure must use a reusable img src in "
+                        f"{report_html}: {figure_id}"
+                    )
+                    continue
+                if not (figure.image_sources & deck_image_sources):
+                    errors.append(
+                        f"deck does not visually reuse required report figure src in "
+                        f"{deck_html}: {figure_id} -> {sorted(figure.image_sources)}"
+                    )
+
+            validate_font_stack_contract(
+                metadata_path.parent,
+                f"{study_id}/{session_id}",
+                errors,
+            )
 
         key = (study_id, session_id)
         if key in seen:
@@ -429,6 +693,13 @@ def validate_files(site: Path, errors: list[str]) -> None:
             errors.append(
                 f"file exceeds {MAX_FILE_BYTES // 1024 // 1024} MiB: {path}"
             )
+        if not path.is_file() or path.suffix.lower() not in {".css", ".html", ".js", ".svg"}:
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        if MERGE_MARKER_RE.search(text):
+            errors.append(f"unresolved merge marker in public asset: {path}")
+        if path.suffix.lower() == ".css" and STANDALONE_CSS_PLUS_RE.search(text):
+            errors.append(f"standalone '+' diff artifact in public CSS: {path}")
 
 
 def main() -> int:

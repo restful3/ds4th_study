@@ -16,9 +16,11 @@ readonly UNIT_NAME="ds4th-safe-browser-shot"
 
 url=""
 output=""
+output_format="png"
 width="1600"
 height="900"
 virtual_time_budget_ms="6000"
+virtual_time_budget_set=0
 runtime_max_sec="120"
 check_only=0
 
@@ -26,14 +28,17 @@ usage() {
   cat <<'EOF'
 Usage:
   safe-browser-shot.sh --url URL --output /absolute/path.png [options]
+  safe-browser-shot.sh --format pdf --url URL --output /absolute/path.pdf [options]
   safe-browser-shot.sh --check
 
 Options:
   --url URL                       http:// or https:// page to capture
-  --output ABSOLUTE.png           final PNG path; published atomically
+  --output ABSOLUTE.png|.pdf      final artifact path; published atomically
+  --format png|pdf                output format (default png)
+  --pdf                           shorthand for --format pdf
   --width PIXELS                  viewport width (320..4096; default 1600)
   --height PIXELS                 viewport height (180..32000; default 900)
-  --virtual-time-budget MS        Chrome virtual-time budget (1..60000; default 6000)
+  --virtual-time-budget MS        Chrome virtual-time budget (default PNG 6000, PDF 15000)
   --timeout SECONDS               hard cgroup runtime (5..120; default 120)
   --check                         check dependencies, host headroom, and policy only
   -h, --help                      show this help
@@ -41,7 +46,7 @@ Options:
 Safety policy (not configurable from the command line):
   one concurrent render; app.slice transient service; MemoryHigh=3G;
   MemoryMax=4G; MemorySwapMax=0; TasksMax=1024; CPUQuota=300%;
-  KillMode=control-group; unique temporary profile; validated atomic PNG.
+  KillMode=control-group; unique temporary profile; validated atomic PNG/PDF.
 
 The command fails closed. It never falls back to an unguarded browser launch.
 EOF
@@ -80,6 +85,15 @@ while (($#)); do
       output="$2"
       shift 2
       ;;
+    --format)
+      (($# >= 2)) || die "--format requires a value"
+      output_format="$2"
+      shift 2
+      ;;
+    --pdf)
+      output_format="pdf"
+      shift
+      ;;
     --width)
       (($# >= 2)) || die "--width requires a value"
       width="$2"
@@ -93,6 +107,7 @@ while (($#)); do
     --virtual-time-budget)
       (($# >= 2)) || die "--virtual-time-budget requires a value"
       virtual_time_budget_ms="$2"
+      virtual_time_budget_set=1
       shift 2
       ;;
     --timeout)
@@ -113,6 +128,12 @@ while (($#)); do
       ;;
   esac
 done
+
+[[ "$output_format" == "png" || "$output_format" == "pdf" ]] ||
+  die "--format must be png or pdf"
+if [[ "$output_format" == "pdf" && "$virtual_time_budget_set" == "0" ]]; then
+  virtual_time_budget_ms="15000"
+fi
 
 require_integer_range "--width" "$width" 320 4096
 require_integer_range "--height" "$height" 180 32000
@@ -147,6 +168,9 @@ for candidate in google-chrome-stable google-chrome chromium chromium-browser; d
   fi
 done
 [[ -n "$browser" ]] || die "no supported Chrome/Chromium executable found"
+pdfinfo_path="$(command -v pdfinfo 2>/dev/null || true)"
+pdftoppm_path="$(command -v pdftoppm 2>/dev/null || true)"
+pdftotext_path="$(command -v pdftotext 2>/dev/null || true)"
 
 current_uid="$(id -u)"
 account_home="$(
@@ -255,6 +279,10 @@ if ((check_only)); then
   cat <<EOF
 status=ready
 browser=$browser
+formats=png,pdf
+pdfinfo=${pdfinfo_path:-missing}
+pdftoppm=${pdftoppm_path:-missing}
+pdftotext=${pdftotext_path:-missing}
 runtime_root=$runtime_root
 mem_available_kib=$mem_available_kib
 memory_full_psi_avg10=$memory_full_avg10
@@ -275,13 +303,20 @@ fi
   die "--url must use http:// or https://"
 [[ -n "$output" ]] || die "--output is required"
 [[ "$output" == /* ]] || die "--output must be an absolute path"
-[[ "${output,,}" == *.png ]] || die "--output must end in .png"
+if [[ "$output_format" == "png" ]]; then
+  [[ "${output,,}" == *.png ]] || die "PNG --output must end in .png"
+else
+  [[ "${output,,}" == *.pdf ]] || die "PDF --output must end in .pdf"
+fi
 
 output_leaf="$(basename -- "$output")"
 output_parent="$(realpath -e -- "$(dirname -- "$output")")"
 [[ -n "$output_leaf" && "$output_leaf" != "." && "$output_leaf" != ".." ]] ||
   die "invalid output filename"
-[[ "${output_leaf,,}" == *.png ]] || die "--output must end in .png"
+if [[ "$output_format" == "pdf" ]]; then
+  [[ "$output_parent/" == */tmp/browser-shots/ || "$output_parent/" == */tmp/browser-shots/*/ ]] ||
+    die "PDF output must stay under a tmp/browser-shots directory"
+fi
 [[ -d "$output_parent" && -w "$output_parent" ]] ||
   die "output directory must already exist and be writable: $output_parent"
 output="$output_parent/$output_leaf"
@@ -326,14 +361,14 @@ trap 'exit 143' TERM HUP
 
 profile_dir="$(mktemp -d "$runtime_root/ds4th-browser-profile.XXXXXX")"
 publish_dir="$(mktemp -d "$output_parent/.ds4th-browser-shot.XXXXXX")"
-temporary_png="$publish_dir/render.png"
+temporary_artifact="$publish_dir/render.$output_format"
 
 unit_may_exist=1
 run_status=0
 systemd-run \
   --user \
   --unit="$unit_name" \
-  --description="Guarded ds4th browser screenshot" \
+  --description="Guarded ds4th browser artifact" \
   --slice=app.slice \
   --service-type=exec \
   --wait \
@@ -357,7 +392,8 @@ systemd-run \
   "$guard_path" \
   --browser "$browser" \
   --profile "$profile_dir" \
-  --output "$temporary_png" \
+  --output "$temporary_artifact" \
+  --format "$output_format" \
   --viewport "$width,$height" \
   --virtual-time-budget "$virtual_time_budget_ms" \
   --url "$url" ||
@@ -366,15 +402,23 @@ unit_may_exist=0
 
 ((run_status == 0)) ||
   die "guarded browser service failed with exit status $run_status"
-[[ -s "$temporary_png" ]] ||
-  die "browser exited without a non-empty PNG"
+[[ -s "$temporary_artifact" ]] ||
+  die "browser exited without a non-empty $output_format artifact"
 
-png_signature="$(
-  od -An -N8 -tx1 "$temporary_png" | tr -d '[:space:]'
-)"
-[[ "$png_signature" == "89504e470d0a1a0a" ]] ||
-  die "browser output does not have a valid PNG signature"
+if [[ "$output_format" == "png" ]]; then
+  artifact_signature="$(
+    od -An -N8 -tx1 "$temporary_artifact" | tr -d '[:space:]'
+  )"
+  [[ "$artifact_signature" == "89504e470d0a1a0a" ]] ||
+    die "browser output does not have a valid PNG signature"
+else
+  artifact_signature="$(
+    od -An -N5 -tx1 "$temporary_artifact" | tr -d '[:space:]'
+  )"
+  [[ "$artifact_signature" == "255044462d" ]] ||
+    die "browser output does not have a valid PDF signature"
+fi
 
-chmod 0600 "$temporary_png"
-mv -fT -- "$temporary_png" "$output"
+chmod 0600 "$temporary_artifact"
+mv -fT -- "$temporary_artifact" "$output"
 printf '%s\n' "$output"

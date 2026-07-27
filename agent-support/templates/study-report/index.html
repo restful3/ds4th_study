@@ -67,7 +67,7 @@
       <p>구성요소를 나열하는 데서 끝내지 말고 입력, 변환, 검증, 결과가 어떻게 이어지는지 설명한다. 아래 도형을 회차의 실제 SVG로 교체하고 캡션에 재구성 범위와 출처를 남긴다.</p>
       <figure class="report-figure" id="fig-concept" data-deck-use="required">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 1</span><span class="asset-caption__title">핵심 구조 도형</span></figcaption>
-        <svg viewBox="0 0 720 180" role="img" aria-label="입력에서 변환과 검증을 거쳐 결과로 이어지는 예시 흐름"><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B6B72"/></marker></defs><rect width="720" height="180" rx="10" fill="#FAFAF9"/><g font-family="system-ui,sans-serif" font-size="14" text-anchor="middle"><rect x="40" y="58" width="140" height="64" rx="6" fill="#fff" stroke="#0F2C59"/><text x="110" y="96">입력·문제</text><path d="M180 90H250" stroke="#6B6B72" stroke-width="2" marker-end="url(#a)"/><rect x="254" y="58" width="140" height="64" rx="6" fill="#fff" stroke="#0F2C59"/><text x="324" y="96">변환·메커니즘</text><path d="M394 90H464" stroke="#6B6B72" stroke-width="2" marker-end="url(#a)"/><rect x="468" y="58" width="140" height="64" rx="6" fill="#0F2C59"/><text x="538" y="96" fill="#fff">검증된 결과</text></g></svg>
+        <img src="assets/figs/concept-flow.svg" alt="입력, 변환, 검증된 결과가 왼쪽에서 오른쪽으로 이어지는 핵심 구조">
         <small class="asset-note">템플릿 예시. 실제 회차에서는 assets/figs/ 아래의 별도 SVG와 구체적인 alt·출처로 교체한다.</small>
       </figure>
       <div class="callout--insight"><span class="callout__kicker">읽기 포인트</span><div class="callout__body"><p>핵심 아이디어가 해결하는 문제와 새로 만드는 비용을 같은 섹션에서 다룬다.</p></div></div>
@@ -92,7 +92,7 @@
       <p>구성요소의 내부 구현을 모두 설명하기보다, 각 단계가 받는 입력과 내보내는 출력, 그리고 다음 단계가 무엇을 검증하는지를 이어서 쓴다. 이 구조는 슬라이드의 메커니즘 도형과 같은 순서를 사용하되 리포트에서는 예외와 한계까지 보존한다.</p>
       <figure class="report-figure" id="fig-mechanism" data-deck-use="required">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 2</span><span class="asset-caption__title">입력에서 검증된 결과까지의 책임 경로</span></figcaption>
-        <svg viewBox="0 0 900 240" role="img" aria-label="입력, 해석, 검증, 결과 네 단계와 검증 피드백이 이어지는 흐름"><defs><marker id="mechanismArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B6B72"/></marker></defs><rect width="900" height="240" rx="12" fill="#FAFAF9"/><g font-family="system-ui,sans-serif" text-anchor="middle"><g fill="#fff" stroke="#0F2C59" stroke-width="2"><rect x="35" y="70" width="160" height="86" rx="8"/><rect x="250" y="70" width="160" height="86" rx="8"/><rect x="465" y="70" width="160" height="86" rx="8"/><rect x="680" y="70" width="160" height="86" rx="8" fill="#0F2C59"/></g><g font-size="17" font-weight="700" fill="#0F0F10"><text x="115" y="121">입력</text><text x="330" y="121">해석·변환</text><text x="545" y="121">검증·승인</text><text x="760" y="121" fill="#fff">결과·근거</text></g><g stroke="#6B6B72" stroke-width="2" marker-end="url(#mechanismArrow)"><path d="M195 113H244"/><path d="M410 113H459"/><path d="M625 113H674"/><path d="M760 168C760 214 330 214 330 165" fill="none" stroke-dasharray="6 6"/></g><text x="545" y="224" fill="#6B6B72" font-size="13">오류와 사용 결과를 다음 처리에 반영</text></g></svg>
+        <img src="assets/figs/mechanism-path.svg" alt="입력, 해석과 변환, 검증과 승인, 결과와 근거가 이어지고 피드백이 돌아오는 책임 경로">
         <small class="asset-note">템플릿 예시. 실제 회차에서는 교재의 논리를 새로 배치한 SVG로 교체하고 자동화·승인 경계를 구체적으로 표시한다.</small>
       </figure>
       <div class="callout--insight"><span class="callout__kicker">작성 원칙</span><div class="callout__body"><p>“가능하다”는 설명 뒤에는 반드시 입력 조건, 실패 모드, 확인 방법 중 둘 이상을 붙인다.</p></div></div>
@@ -113,7 +113,7 @@
       <p>데모는 보통 입력에서 답이 나오는 지점에서 끝나지만 운영은 그 뒤부터 시작된다. 사용 중 발견된 오류가 어떤 데이터와 규칙을 수정하고, 변경된 상태가 다음 요청에 어떻게 반영되는지 설명한다. 품질 지표와 책임자는 이 루프의 각 단계에 붙여야 한다.</p>
       <figure class="report-figure" id="fig-operating-loop" data-deck-use="required">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 3</span><span class="asset-caption__title">수집–후보–검증–사용–피드백 운영 루프</span></figcaption>
-        <svg viewBox="0 0 900 320" role="img" aria-label="수집, 후보 생성, 검증 통합, 사용, 피드백이 원형으로 이어지는 운영 루프"><defs><marker id="loopArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0F2C59"/></marker></defs><rect width="900" height="320" rx="12" fill="#FAFAF9"/><g font-family="system-ui,sans-serif" text-anchor="middle"><g fill="none" stroke="#0F2C59" stroke-width="3" marker-end="url(#loopArrow)"><path d="M240 94C320 28 575 28 655 94"/><path d="M700 130C760 175 710 250 625 257"/><path d="M565 267C480 300 340 300 255 260"/><path d="M195 246C116 218 112 145 185 111"/></g><g><rect x="150" y="72" width="180" height="72" rx="36" fill="#fff" stroke="#0F2C59"/><text x="240" y="114" font-size="18" font-weight="700">1. 수집·입력</text><rect x="570" y="72" width="180" height="72" rx="36" fill="#fff" stroke="#0F2C59"/><text x="660" y="114" font-size="18" font-weight="700">2. 후보 생성</text><rect x="555" y="218" width="210" height="72" rx="36" fill="#0F2C59"/><text x="660" y="260" fill="#fff" font-size="18" font-weight="700">3. 검증·통합</text><rect x="135" y="218" width="210" height="72" rx="36" fill="#fff" stroke="#0F2C59"/><text x="240" y="260" font-size="18" font-weight="700">4. 사용·피드백</text><circle cx="450" cy="160" r="62" fill="#E8EEF7"/><text x="450" y="153" fill="#0F2C59" font-size="14" font-weight="800">품질 기준</text><text x="450" y="177" fill="#0F2C59" font-size="14">출처 · 이력 · 책임</text></g></g></svg>
+        <img src="assets/figs/operating-loop.svg" alt="수집, 후보 생성, 검증과 통합, 사용과 피드백이 시계 방향으로 이어지는 운영 루프">
         <small class="asset-note">템플릿 예시. 실제 운영 주체와 검증 상태, 실패 시 되돌아가는 경로를 회차 내용에 맞게 표시한다.</small>
       </figure>
     </section>
@@ -166,7 +166,7 @@
     <section class="report-appendix s-glossary page-break" id="glossary">
       <div class="report-section__kicker">Appendix A · Glossary</div>
       <h1>핵심 용어</h1>
-      <table class="cmp-table" id="table-glossary"><caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 3</span><span class="asset-caption__title">핵심 용어 사전</span></div></caption><thead><tr><th>용어</th><th>이 장에서의 의미</th></tr></thead><tbody><tr><td>핵심 용어 A</td><td>비슷한 개념과 구분되는 간결한 정의.</td></tr><tr><td>핵심 용어 B</td><td>이 장의 맥락에서 사용하는 범위.</td></tr></tbody></table>
+      <table class="cmp-table" id="table-glossary"><caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 7</span><span class="asset-caption__title">핵심 용어 사전</span></div></caption><thead><tr><th>용어</th><th>이 장에서의 의미</th></tr></thead><tbody><tr><td>핵심 용어 A</td><td>비슷한 개념과 구분되는 간결한 정의.</td></tr><tr><td>핵심 용어 B</td><td>이 장의 맥락에서 사용하는 범위.</td></tr></tbody></table>
     </section>
 
     <section class="report-appendix s-refs page-break" id="references">
