@@ -287,7 +287,7 @@ MERGE (dis)-[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe)</pre>
           <article><span>ANNOTATION LOSS</span><h2>쌍 단위 MERGE</h2><p>같은 질병–표현형 쌍의 여러 근거가 덮일 수 있다.</p></article>
           <article><span>STAGE DEPENDENCY</span><h2>정제 뒤 실패</h2><p>Listing 3.18은 최종 정제 뒤 같은 형태로 실행하면 실패한다.</p></article>
           <article><span>QUERY SIDE EFFECT</span><h2>읽기 질의의 MERGE</h2><p>Listing 3.21은 미바인딩 관계를 만들 수 있어 <code>MATCH</code>로 고친다.</p></article>
-          <article><span>RESULT SUBSET</span><h2>화이트리스트 ≠ SKIP</h2><p>교재 3.28과 소스 3.31은 결과 제한 방식이 달라 출력이 다르다.</p></article>
+          <article><span>RESULT SUBSET</span><h2>화이트리스트 ≠ SKIP</h2><p>교재 Listing 3.28은 질병 5개를 직접 지정하고, 소스 3.31은 <code>SKIP 100 LIMIT 5</code>로 자른다.</p></article>
           <article><span>LISTING MAP</span><h2>교재 ↔ 소스 +3</h2><p><a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/study.toml" rel="noreferrer" target="_blank"><code>study.toml</code></a> 전수 대응표가 리스팅 정본이다.</p></article>
         </div>
         <p class="takeaway"><strong>재현성</strong> — 릴리스 URL·체크섬·적재 단계·질의 버전을 결과와 함께 저장합니다.</p>
