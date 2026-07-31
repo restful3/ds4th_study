@@ -41,8 +41,8 @@
       <div class="slide-body">
         <div class="thesis-pair">
           <article><span>LLM</span><h2>읽고 · 묻고 · 설명한다</h2><p>비정형 문서를 해석하고 자연어 질문을 구조화하며 결과를 사람이 읽을 문장으로 바꿉니다.</p></article>
-          <div class="thesis-pair__bridge"><b>↔</b><span>검증 게이트</span></div>
-          <article class="thesis-pair__kg"><span>KNOWLEDGE GRAPH</span><h2>식별하고 · 연결하고 · 증명한다</h2><p>검증된 사실, 관계, 최신 상태와 답에 사용된 근거 경로를 유지합니다.</p></article>
+          <div class="thesis-pair__bridge"><b>↔</b><span>후보 → 검증 → 사실</span></div>
+          <article class="thesis-pair__kg"><span>KNOWLEDGE GRAPH</span><h2>식별하고 · 연결하고 · 근거를 남긴다</h2><p>검증된 사실, 관계, 최신 상태와 답에 사용된 근거 경로를 유지합니다.</p></article>
         </div>
         <p class="takeaway"><strong>핵심 원리</strong> — LLM의 출력이 자동으로 사실이 되지 않도록 지식 승격과 응답 생성을 분리합니다.</p>
       </div>
@@ -65,7 +65,7 @@
       <footer class="slide-footer"><a class="report-ref" href="report.html#table-chapter-logic">상세 리포트 표 1 · 질문–주장–판단 구조</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="발표의 전체 흐름" data-report-refs="summary table-chapter-logic kg llm hybrid paradigm use-cases technology decision takeaways">
+    <section class="slide" aria-label="발표의 전체 흐름" data-report-refs="summary table-chapter-logic kg fig-kg-anatomy fig-extraction-bottleneck table-kg-components llm fig-transfer-learning table-llm-boundary hybrid fig-mutual-reinforcement fig-hybrid-loop table-hybrid-controls paradigm fig-four-pillars use-cases fig-use-case-map technology fig-technology-semantics table-rdf-lpg decision table-decision takeaways table-discussion">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT → DECK</span></header>
       <h1>상세 리포트의 논리를 여섯 장면으로 압축한다</h1>
       <p class="lead">각 장면은 리포트의 정의·표·도형을 발표용 메시지로 재배치한 것입니다.</p>
@@ -169,14 +169,14 @@
     </section>
 
     <section class="slide slide--section" aria-label="양방향 보완과 운영 루프 섹션" data-report-refs="hybrid fig-mutual-reinforcement fig-hybrid-loop table-hybrid-controls">
-      <p class="eyebrow">REPORT §3 · MUTUAL REINFORCEMENT</p><h1>함께일 때 더 강하다</h1><p>구축·질의·요약과 정확성·최신성·설명 가능성의 교환</p><span class="section-number">03</span>
+      <p class="eyebrow">REPORT §3 · MUTUAL REINFORCEMENT</p><h1>함께일 때 더 강하다</h1><p>구축·질의·요약 지원과, 통제 아래 강화되는 정확성·최신성·설명 가능성</p><span class="section-number">03</span>
     </section>
 
     <section class="slide slide--visual" aria-label="LLM과 KG의 상호 보완 매트릭스" data-report-refs="hybrid fig-mutual-reinforcement">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">REPORT FIGURE 4</span></header>
       <h1>한쪽이 다른 쪽을 대체하지 않고 책임을 교환한다</h1>
       <div class="slide-body report-visual-body">
-        <figure class="deck-report-figure deck-report-figure--tall"><img src="assets/figs/mutual-reinforcement.svg" alt="LLM이 KG 구축 질의 요약을 돕고 KG가 LLM에 정확성 최신성 설명 가능성을 제공하는 양방향 구조"><figcaption><b>양방향 가치</b><span>LLM → KG: 구축 · 질의 · 요약</span><span>KG → LLM: 정확성 · 최신성 · 설명 가능성</span><span>상호 보완은 구축과 이용의 전체 수명주기</span></figcaption></figure>
+        <figure class="deck-report-figure deck-report-figure--tall"><img src="assets/figs/mutual-reinforcement.svg" alt="LLM이 KG 구축 질의 요약을 돕고 검증·갱신된 KG가 통제 아래 LLM 답변 품질을 강화하는 양방향 구조"><figcaption><b>양방향 가치</b><span>LLM → KG: 구축 · 질의 · 요약 지원</span><span>KG → LLM: 정확성 · 최신성 · 설명 가능성 강화</span><span>전제: 검증 · 갱신 · 근거 고정 · 권한 통제</span></figcaption></figure>
       </div>
       <footer class="slide-footer"><a class="report-ref" href="report.html#fig-mutual-reinforcement">상세 리포트 그림 4 · 상호 보완</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
@@ -280,12 +280,12 @@
           <thead><tr><th>관점</th><th>RDF</th><th>LPG</th><th>선택 질문</th></tr></thead>
           <tbody>
             <tr><th>기본 단위</th><td>주어–술어–목적어</td><td>레이블 노드·고유 엣지·속성</td><td>사실 교환인가, 경로 운영인가?</td></tr>
-            <tr><th>관계</th><td>재사용하는 전역 술어</td><td>정체성과 속성이 있는 엣지</td><td>관계마다 시간·출처가 필요한가?</td></tr>
+            <tr><th>관계</th><td>재사용하는 전역 술어<br><small>진술 메타데이터는 추가 설계</small></td><td>정체성과 속성이 있는 엣지<br><small>관계 속성을 기본 제공</small></td><td>메타데이터를 기본 제공할지 추가 설계할지?</td></tr>
             <tr><th>강점</th><td>표준·연합·상호운용·추론</td><td>순회·경로·속성 기반 분석</td><td>외부 연결과 내부 질의 중 무엇이 중심인가?</td></tr>
             <tr><th>질의</th><td>SPARQL</td><td>openCypher · Gremlin</td><td>팀의 운영 역량은 어디에 있는가?</td></tr>
           </tbody>
         </table>
-        <p class="takeaway"><strong>선택 순서</strong> — 제품보다 대표 질문·통합 범위·추론 요구를 먼저 정의합니다.</p>
+        <p class="takeaway"><strong>선택 순서</strong> — “가능/불가능”보다 대표 질문·통합 범위·메타데이터 표현·추론 요구를 먼저 정의합니다.</p>
       </div>
       <footer class="slide-footer"><a class="report-ref" href="report.html#table-rdf-lpg">상세 리포트 표 7 · RDF/LPG 비교</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 500" role="img" aria-labelledby="title desc">
+  <title id="title">연역 추론과 귀납 추론의 정보 흐름 비교</title>
+  <desc id="desc">연역 추론은 전제와 규칙이 참일 때 결론을 보장하고, 귀납 추론은 관찰에서 패턴을 일반화하지만 틀릴 가능성을 남긴다.</desc>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B6B72"/></marker><style>.t{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}.h{font-size:19px;font-weight:800}.sh{font-size:13px;font-weight:800}.m{font-size:11.5px;fill:#6B6B72}.card{fill:#fff;stroke:#B7C2D1;stroke-width:1.5}.box{fill:#F2F5F9;stroke:#B7C2D1;stroke-width:1.5}.navy{fill:#0F2C59}.line{stroke:#6B6B72;stroke-width:2;fill:none;marker-end:url(#a)}.dash{stroke:#8793A3;stroke-width:1.7;fill:none;stroke-dasharray:5 5;marker-end:url(#a)}.warn{fill:#FFF5E6;stroke:#D9A441;stroke-width:1.4}</style></defs>
+  <rect width="920" height="500" rx="12" fill="#FAFAF9"/>
+  <text class="t h" x="34" y="44">연역은 전제에 기대어 보장하고, 귀납은 관찰을 넘어 일반화한다</text>
+  <text class="t m" x="34" y="68">방향과 결론의 성격이 다르므로 “누가 더 지능적인가”가 아니라 과제에 맞게 역할을 나눈다.</text>
+  <rect class="card" x="30" y="98" width="420" height="354" rx="11"/><rect class="card" x="470" y="98" width="420" height="354" rx="11"/>
+  <text class="t sh" x="50" y="126" fill="#0F2C59">연역 — 규칙과 전제가 참이면 결론도 참</text><text class="t sh" x="490" y="126" fill="#0F2C59">귀납·ML — 관찰에서 패턴을 배워 예측</text>
+  <g class="t" text-anchor="middle">
+    <rect class="box" x="50" y="154" width="104" height="70" rx="8"/><text x="102" y="181" class="sh">데이터 소스</text><text x="102" y="202" class="m">기록 · 문헌</text>
+    <rect class="box" x="188" y="154" width="104" height="70" rx="8"/><text x="240" y="181" class="sh">논리 변환</text><text x="240" y="202" class="m">전제 · 규칙</text>
+    <rect class="box" x="326" y="154" width="104" height="70" rx="8"/><text x="378" y="181" class="sh">지식 베이스</text><text x="378" y="202" class="m">완전·정확 요구</text>
+    <rect class="navy" x="188" y="270" width="104" height="70" rx="8"/><text x="240" y="297" fill="#fff" class="sh">연역 엔진</text><text x="240" y="318" style="fill:#fff" opacity=".75" class="m">명시적 규칙</text>
+    <rect class="box" x="326" y="270" width="104" height="70" rx="8"/><text x="378" y="297" class="sh">결론</text><text x="378" y="318" class="m">조건부 보장</text>
+    <rect class="box" x="490" y="154" width="104" height="70" rx="8"/><text x="542" y="181" class="sh">관찰 표본</text><text x="542" y="202" class="m">텍스트 · 수치</text>
+    <rect class="navy" x="628" y="154" width="104" height="70" rx="8"/><text x="680" y="181" fill="#fff" class="sh">학습</text><text x="680" y="202" style="fill:#fff" opacity=".75" class="m">패턴 추상화</text>
+    <rect class="box" x="766" y="154" width="104" height="70" rx="8"/><text x="818" y="181" class="sh">예측 모델</text><text x="818" y="202" class="m">일반화된 표현</text>
+    <rect class="navy" x="628" y="270" width="104" height="70" rx="8"/><text x="680" y="297" fill="#fff" class="sh">귀납 엔진</text><text x="680" y="318" style="fill:#fff" opacity=".75" class="m">불확실성 처리</text>
+    <rect class="box" x="766" y="270" width="104" height="70" rx="8"/><text x="818" y="297" class="sh">예측</text><text x="818" y="318" class="m">오답 가능</text>
+  </g>
+  <path class="line" d="M154 189H184"/><path class="line" d="M292 189H322"/><path class="line" d="M378 224V250H240V266"/><path class="line" d="M292 305H322"/>
+  <path class="line" d="M594 189H624"/><path class="line" d="M732 189H762"/><path class="line" d="M818 224V246H680V266"/><path class="line" d="M732 305H762"/>
+  <path class="dash" d="M680 340V356H878V134H842V153"/>
+  <rect class="warn" x="50" y="372" width="380" height="54" rx="8"/><text class="t sh" x="240" y="395" text-anchor="middle">전제가 빠지거나 틀리면 보장은 무너진다</text><text class="t m" x="240" y="414" text-anchor="middle">“논리적으로 맞다”와 “현실에서도 맞다”를 구분</text>
+  <rect class="warn" x="490" y="372" width="380" height="54" rx="8"/><text class="t sh" x="680" y="395" text-anchor="middle">표본을 넘어갈 수 있지만 성급한 일반화가 생긴다</text><text class="t m" x="680" y="414" text-anchor="middle">검증된 학습 결과만 KB 후보·확장으로 반영</text>
+  <text class="t m" x="460" y="480" text-anchor="middle">LLM 출력은 패턴 기반의 확률적 제안이다. 유창함은 논리적 보장이나 사실 검증을 대신하지 않는다.</text>
+</svg>

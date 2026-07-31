@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 500" role="img" aria-labelledby="title desc">
+  <title id="title">검증 게이트를 포함한 하이브리드 지능형 자문 루프</title>
+  <desc id="desc">사용자 요청이 하이브리드 추론 엔진을 거쳐 권고 후보가 되고, 사용자가 판단한 뒤 환경 결과에서 생긴 관찰은 검증 게이트를 통과해야 지식 베이스에 반영되는 순환이다.</desc>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B6B72"/></marker><style>.t{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}.h{font-size:19px;font-weight:800}.sh{font-size:14px;font-weight:800}.b{font-size:12px}.m{font-size:11.5px;fill:#6B6B72}.box{fill:#fff;stroke:#B7C2D1;stroke-width:1.5}.soft{fill:#F2F5F9;stroke:#B7C2D1;stroke-width:1.5}.navy{fill:#0F2C59}.gate{fill:#FFF5E6;stroke:#D9A441;stroke-width:1.6}.line{stroke:#6B6B72;stroke-width:2;fill:none;marker-end:url(#a)}</style></defs>
+  <rect width="920" height="500" rx="12" fill="#FAFAF9"/>
+  <text class="t h" x="34" y="44">피드백은 자동 학습 재료가 아니라 검증을 기다리는 관찰이다</text>
+  <text class="t m" x="34" y="68">LLM의 제안, 사용자의 선택, 환경의 결과를 상태별로 나눠야 오류가 지식 베이스에 굳지 않는다.</text>
+  <g class="t" text-anchor="middle">
+    <rect class="box" x="30" y="122" width="130" height="76" rx="8"/><text x="95" y="151" class="sh">사용자 요청</text><text x="95" y="174" class="m">목표 · 맥락</text>
+    <rect class="navy" x="208" y="106" width="188" height="108" rx="9"/><text x="302" y="139" fill="#fff" class="sh">하이브리드 추론 엔진</text><text x="302" y="164" fill="#fff" opacity=".8" class="b">KG·규칙: 연역</text><text x="302" y="184" fill="#fff" opacity=".8" class="b">ML: 귀납 · LLM: 확률적 제안</text>
+    <rect class="box" x="444" y="122" width="130" height="76" rx="8"/><text x="509" y="151" class="sh">권고 후보</text><text x="509" y="174" class="m">근거 · 불확실성</text>
+    <rect class="gate" x="622" y="122" width="130" height="76" rx="8"/><text x="687" y="151" class="sh">사용자 판단</text><text x="687" y="174" class="m">승인 · 보류 · 거절</text>
+    <rect class="box" x="790" y="122" width="100" height="76" rx="8"/><text x="840" y="151" class="sh">환경</text><text x="840" y="174" class="m">실행 결과</text>
+    <rect class="box" x="730" y="310" width="160" height="76" rx="8"/><text x="810" y="339" class="sh">새 관찰</text><text x="810" y="362" class="m">결과 · 반응 · 오류</text>
+    <rect class="gate" x="488" y="310" width="194" height="76" rx="8"/><text x="585" y="338" class="sh">검증 게이트</text><text x="585" y="360" class="m">ds4th 실무 보강</text><text x="585" y="377" class="m">출처 · 품질 · 전문가 승인</text>
+    <rect class="soft" x="246" y="310" width="194" height="76" rx="8"/><text x="343" y="338" class="sh">지식 베이스</text><text x="343" y="360" class="m">승격된 사실 · 규칙 · 이력</text>
+    <rect class="box" x="30" y="310" width="168" height="76" rx="8"/><text x="114" y="338" class="sh">다음 요청의 근거</text><text x="114" y="360" class="m">조회 · 규칙 · 설명</text>
+  </g>
+  <path class="line" d="M160 160H204"/><path class="line" d="M396 160H440"/><path class="line" d="M574 160H618"/><path class="line" d="M752 160H786"/>
+  <path class="line" d="M840 198V306"/><path class="line" d="M730 348H686"/><path class="line" d="M488 348H444"/><path class="line" d="M246 348H202"/>
+  <path class="line" d="M114 310V260H302V218"/>
+  <text class="t m" x="585" y="410" text-anchor="middle">검증 실패·보류 관찰은 후보 영역에 남고, 사실·규칙으로 자동 승격되지 않는다.</text>
+  <text class="t m" x="460" y="472" text-anchor="middle">IAS의 자동화 경계: 시스템은 권고를 만들고, 사람은 조치를 결정하며, 검증 절차가 지식의 상태를 결정한다.</text>
+</svg>

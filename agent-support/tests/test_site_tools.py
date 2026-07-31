@@ -276,6 +276,164 @@ class SiteToolTests(unittest.TestCase):
         self.assertNotEqual(validation.returncode, 0)
         self.assertIn("caption numbers must be consecutive", validation.stderr)
 
+    def test_validator_accepts_current_visible_report_caption_reference(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        report = REPORT_HTML.replace(
+            "</section>",
+            '<table class="cmp-table" id="table-one"><caption>'
+            '<span class="asset-caption__chip">표 1</span></caption></table></section>',
+        )
+        deck = DECK_HTML.replace(
+            'data-report-refs="summary"',
+            'data-report-refs="summary table-one"',
+        ).replace(
+            "<h1>첫 번째 발표</h1>",
+            '<h1>첫 번째 발표</h1><a class="report-ref" '
+            'href="report.html#table-one">상세 리포트 표 1 · 근거</a>',
+        )
+        (self.deck / "report.html").write_text(report, encoding="utf-8")
+        (self.deck / "index.html").write_text(deck, encoding="utf-8")
+
+        validation = self.validate()
+        self.assertEqual(validation.returncode, 0, validation.stderr)
+
+    def test_validator_rejects_stale_visible_report_caption_reference(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        report = REPORT_HTML.replace(
+            "</section>",
+            '<table class="cmp-table" id="table-one"><caption>'
+            '<span class="asset-caption__chip">표 1</span></caption></table></section>',
+        )
+        deck = DECK_HTML.replace(
+            'data-report-refs="summary"',
+            'data-report-refs="summary table-one"',
+        ).replace(
+            "<h1>첫 번째 발표</h1>",
+            '<h1>첫 번째 발표</h1><a class="report-ref" '
+            'href="report.html#table-one">상세 리포트 표 2 · 낡은 번호</a>',
+        )
+        (self.deck / "report.html").write_text(report, encoding="utf-8")
+        (self.deck / "index.html").write_text(deck, encoding="utf-8")
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn("report reference caption label is stale", validation.stderr)
+        self.assertIn("expects 표 1, found 표 2", validation.stderr)
+
+    def test_validator_expands_slide_ranges_and_ignores_book_decimal_labels(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        report = REPORT_HTML.replace(
+            "</section>",
+            '<table class="cmp-table" id="table-one"><caption>'
+            '<span class="asset-caption__chip">표 1</span></caption></table>'
+            '<table class="cmp-table" id="table-two"><caption>'
+            '<span class="asset-caption__chip">표 2</span></caption></table></section>',
+        )
+        deck = DECK_HTML.replace(
+            'data-report-refs="summary"',
+            'data-report-refs="summary table-one table-two"',
+        ).replace(
+            "<h1>첫 번째 발표</h1>",
+            "<h1>첫 번째 발표</h1><p>리포트 표 1–2 · 책 표 3.3</p>",
+        )
+        (self.deck / "report.html").write_text(report, encoding="utf-8")
+        (self.deck / "index.html").write_text(deck, encoding="utf-8")
+
+        validation = self.validate()
+        self.assertEqual(validation.returncode, 0, validation.stderr)
+
+    def test_validator_rejects_stale_caption_range_outside_report_link(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        report = REPORT_HTML.replace(
+            "</section>",
+            '<table class="cmp-table" id="table-one"><caption>'
+            '<span class="asset-caption__chip">표 1</span></caption></table>'
+            '<table class="cmp-table" id="table-two"><caption>'
+            '<span class="asset-caption__chip">표 2</span></caption></table></section>',
+        )
+        deck = DECK_HTML.replace(
+            'data-report-refs="summary"',
+            'data-report-refs="summary table-one table-two"',
+        ).replace(
+            "<h1>첫 번째 발표</h1>",
+            "<h1>첫 번째 발표</h1><p>리포트 표 1–3</p>",
+        )
+        (self.deck / "report.html").write_text(report, encoding="utf-8")
+        (self.deck / "index.html").write_text(deck, encoding="utf-8")
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn("not backed by data-report-refs", validation.stderr)
+        self.assertIn("표 3", validation.stderr)
+
+    def test_validator_rejects_stale_internal_report_caption_reference(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        report = REPORT_HTML.replace(
+            "</section>",
+            '<table class="cmp-table" id="table-one"><caption>'
+            '<span class="asset-caption__chip">표 1</span></caption></table>'
+            '<p><a class="asset-ref" href="#table-one">표 2</a>를 보세요.</p>'
+            "</section>",
+        )
+        deck = DECK_HTML.replace(
+            'data-report-refs="summary"',
+            'data-report-refs="summary table-one"',
+        )
+        (self.deck / "report.html").write_text(report, encoding="utf-8")
+        (self.deck / "index.html").write_text(deck, encoding="utf-8")
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn("internal report caption reference is stale", validation.stderr)
+
+    def test_validator_rejects_unlinked_internal_report_caption_reference(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        report = REPORT_HTML.replace(
+            "</section>",
+            '<table class="cmp-table" id="table-one"><caption>'
+            '<span class="asset-caption__chip">표 1</span></caption></table>'
+            '<p>자세한 비교는 표 1을 보세요.</p></section>',
+        )
+        deck = DECK_HTML.replace(
+            'data-report-refs="summary"',
+            'data-report-refs="summary table-one"',
+        )
+        (self.deck / "report.html").write_text(report, encoding="utf-8")
+        (self.deck / "index.html").write_text(deck, encoding="utf-8")
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn(
+            "internal report caption reference must use an asset-ref anchor",
+            validation.stderr,
+        )
+
+    def test_validator_ignores_external_integer_caption_reference(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        report = REPORT_HTML.replace(
+            "</section>",
+            '<table class="cmp-table" id="table-one"><caption>'
+            '<span class="asset-caption__chip">표 1</span></caption></table>'
+            '<p>교재 표 1과 책 그림 2를 재구성했습니다.</p>'
+            '</section>',
+        )
+        deck = DECK_HTML.replace(
+            'data-report-refs="summary"',
+            'data-report-refs="summary table-one"',
+        )
+        (self.deck / "report.html").write_text(report, encoding="utf-8")
+        (self.deck / "index.html").write_text(deck, encoding="utf-8")
+
+        validation = self.validate()
+        self.assertEqual(validation.returncode, 0, validation.stderr)
+
     def test_validator_rejects_required_figure_without_visual_reuse(self) -> None:
         build_result = self.build()
         self.assertEqual(build_result.returncode, 0, build_result.stderr)

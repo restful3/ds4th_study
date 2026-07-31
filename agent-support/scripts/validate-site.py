@@ -21,6 +21,16 @@ MAX_FILE_BYTES = 10 * 1024 * 1024
 MAX_SESSION_BYTES = 30 * 1024 * 1024
 SUPPORTED_ARTIFACTS = {"report", "slides"}
 CAPTION_NUMBER_RE = re.compile(r"^(그림|표)\s+([1-9][0-9]*)$")
+CAPTION_REFERENCE_GROUP_RE = re.compile(
+    r"(그림|표)\s*"
+    r"([1-9][0-9]*(?!\.[0-9])"
+    r"(?:\s*(?:[-–·,]\s*[1-9][0-9]*)*)?)"
+)
+EXTERNAL_CAPTION_REFERENCE_RE = re.compile(
+    r"(?:교재|책|원문)\s+(?:그림|표)\s*"
+    r"[1-9][0-9]*(?:\.[0-9]+)?"
+    r"(?:\s*(?:[-–·,]\s*[1-9][0-9]*(?:\.[0-9]+)?)*)?"
+)
 MERGE_MARKER_RE = re.compile(r"(?m)^(?:<<<<<<<(?: .*)?|=======|>>>>>>>(?: .*)?)$")
 STANDALONE_CSS_PLUS_RE = re.compile(r"(?m)^\s*\+\s*$")
 FONT_FAMILY_RE = re.compile(r"font-family\s*:\s*([^;}]+)", re.IGNORECASE)
@@ -53,11 +63,27 @@ class FigureTrace:
 
 
 @dataclass
+class ReportReferenceTrace:
+    target: str
+    text_parts: list[str] = field(default_factory=list)
+
+    @property
+    def text(self) -> str:
+        return " ".join(" ".join(self.text_parts).split())
+
+
+@dataclass
 class SlideTrace:
     label: str
     refs: list[str]
     image_sources: set[str] = field(default_factory=set)
     report_links: set[str] = field(default_factory=set)
+    report_references: list[ReportReferenceTrace] = field(default_factory=list)
+    text_parts: list[str] = field(default_factory=list)
+
+    @property
+    def text(self) -> str:
+        return " ".join(" ".join(self.text_parts).split())
 
 
 class PageParser(HTMLParser):
@@ -100,7 +126,10 @@ class ReportDeckTraceParser(HTMLParser):
         self.required_figures_without_id = 0
         self.figures: dict[str, FigureTrace] = {}
         self.caption_numbers: dict[str, list[int]] = {"그림": [], "표": []}
+        self.caption_labels_by_id: dict[str, tuple[str, int]] = {}
         self.invalid_caption_chips: list[str] = []
+        self.internal_report_references: list[ReportReferenceTrace] = []
+        self.unlinked_report_text_parts: list[str] = []
         self.slides: list[SlideTrace] = []
         self.deck_report_source = ""
         self._current_figure: FigureTrace | None = None
@@ -110,6 +139,11 @@ class ReportDeckTraceParser(HTMLParser):
         self._in_figure_caption = False
         self._in_asset_note = False
         self._caption_chip_parts: list[str] | None = None
+        self._caption_owner_id = ""
+        self._current_table_id = ""
+        self._current_report_reference: ReportReferenceTrace | None = None
+        self._report_text_section_depth = 0
+        self._in_table_caption = False
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = {name.lower(): value or "" for name, value in attrs}
@@ -133,6 +167,7 @@ class ReportDeckTraceParser(HTMLParser):
                 self.slides.append(self._current_slide)
             if "report-section" in classes and element_id:
                 self.report_sections.add(element_id)
+                self._report_text_section_depth = self._section_depth
 
         if tag == "figure" and "report-figure" in classes:
             required = values.get("data-deck-use") == "required"
@@ -147,9 +182,18 @@ class ReportDeckTraceParser(HTMLParser):
             self._in_figure_caption = True
         elif tag == "small" and "asset-note" in classes and self._current_figure is not None:
             self._in_asset_note = True
+        elif tag == "table":
+            self._current_table_id = element_id
+        elif tag == "caption":
+            self._in_table_caption = True
 
         if tag == "span" and "asset-caption__chip" in classes:
             self._caption_chip_parts = []
+            self._caption_owner_id = (
+                self._current_figure.element_id
+                if self._current_figure is not None
+                else self._current_table_id
+            )
 
         if tag == "img":
             source = values.get("src", "").strip()
@@ -171,7 +215,22 @@ class ReportDeckTraceParser(HTMLParser):
         if tag == "a" and self._current_slide is not None:
             parsed = urlparse(values.get("href", "").strip())
             if parsed.path == "report.html" and parsed.fragment:
-                self._current_slide.report_links.add(unquote(parsed.fragment))
+                target = unquote(parsed.fragment)
+                self._current_slide.report_links.add(target)
+                if "report-ref" in classes:
+                    self._current_report_reference = ReportReferenceTrace(target=target)
+                    self._current_slide.report_references.append(
+                        self._current_report_reference
+                    )
+        elif tag == "a" and "asset-ref" in classes:
+            parsed = urlparse(values.get("href", "").strip())
+            if not parsed.path and parsed.fragment:
+                self._current_report_reference = ReportReferenceTrace(
+                    target=unquote(parsed.fragment)
+                )
+                self.internal_report_references.append(
+                    self._current_report_reference
+                )
 
     def handle_data(self, data: str) -> None:
         if self._caption_chip_parts is not None:
@@ -180,25 +239,50 @@ class ReportDeckTraceParser(HTMLParser):
             self._current_figure.caption_parts.append(data)
         if self._in_asset_note and self._current_figure is not None:
             self._current_figure.note_parts.append(data)
+        if self._current_report_reference is not None:
+            self._current_report_reference.text_parts.append(data)
+        if self._current_slide is not None:
+            self._current_slide.text_parts.append(data)
+        if (
+            self._report_text_section_depth
+            and not self._in_figure_caption
+            and not self._in_table_caption
+            and not self._in_asset_note
+            and self._caption_chip_parts is None
+            and self._current_report_reference is None
+        ):
+            self.unlinked_report_text_parts.append(data)
 
     def handle_endtag(self, tag: str) -> None:
         if tag == "span" and self._caption_chip_parts is not None:
             chip = " ".join(" ".join(self._caption_chip_parts).split())
             match = CAPTION_NUMBER_RE.fullmatch(chip)
             if match:
-                self.caption_numbers[match.group(1)].append(int(match.group(2)))
+                label = (match.group(1), int(match.group(2)))
+                self.caption_numbers[label[0]].append(label[1])
+                if self._caption_owner_id:
+                    self.caption_labels_by_id[self._caption_owner_id] = label
             elif chip:
                 self.invalid_caption_chips.append(chip)
             self._caption_chip_parts = None
+            self._caption_owner_id = ""
         elif tag == "figcaption":
             self._in_figure_caption = False
         elif tag == "small":
             self._in_asset_note = False
+        elif tag == "caption":
+            self._in_table_caption = False
         elif tag == "figure":
             self._current_figure = None
             self._in_figure_caption = False
             self._in_asset_note = False
+        elif tag == "table":
+            self._current_table_id = ""
+        elif tag == "a":
+            self._current_report_reference = None
         elif tag == "section":
+            if self._section_depth == self._report_text_section_depth:
+                self._report_text_section_depth = 0
             if (
                 self._current_slide is not None
                 and self._section_depth == self._slide_section_depth
@@ -291,6 +375,65 @@ def validate_caption_sequence(
                 f"report {kind} caption numbers must be consecutive 1..N in "
                 f"{report_html}: found {numbers}, expected {expected}"
             )
+
+
+def extract_caption_references(text: str) -> set[tuple[str, int]]:
+    """Expand visible report labels such as '그림 1–3' and '표 2·4'.
+
+    Decimal source labels such as '교재 표 3.3' are deliberately ignored because
+    they identify the book's assets, not this report's caption sequence.
+    """
+    references: set[tuple[str, int]] = set()
+    report_text = EXTERNAL_CAPTION_REFERENCE_RE.sub("", text)
+    for match in CAPTION_REFERENCE_GROUP_RE.finditer(report_text):
+        kind, specification = match.groups()
+        for part in re.split(r"\s*[·,]\s*", specification):
+            bounds = re.split(r"\s*[-–]\s*", part)
+            if len(bounds) == 1:
+                references.add((kind, int(bounds[0])))
+                continue
+            if len(bounds) == 2:
+                start, end = (int(value) for value in bounds)
+                step = 1 if end >= start else -1
+                references.update(
+                    (kind, number) for number in range(start, end + step, step)
+                )
+    return references
+
+
+def validate_internal_report_references(
+    trace: ReportDeckTraceParser, report_html: Path, errors: list[str]
+) -> None:
+    for report_reference in trace.internal_report_references:
+        expected = trace.caption_labels_by_id.get(report_reference.target)
+        if expected is None:
+            errors.append(
+                f"internal report asset reference targets an id without a caption "
+                f"label in {report_html}: #{report_reference.target}"
+            )
+            continue
+        visible = extract_caption_references(report_reference.text)
+        if visible != {expected}:
+            expected_text = f"{expected[0]} {expected[1]}"
+            found_text = (
+                ", ".join(f"{kind} {number}" for kind, number in sorted(visible))
+                if visible
+                else "<missing>"
+            )
+            errors.append(
+                f"internal report caption reference is stale in {report_html}: "
+                f"#{report_reference.target} expects {expected_text}, found "
+                f"{found_text} in {report_reference.text!r}"
+            )
+    unlinked = extract_caption_references(" ".join(trace.unlinked_report_text_parts))
+    if unlinked:
+        found_text = ", ".join(
+            f"{kind} {number}" for kind, number in sorted(unlinked)
+        )
+        errors.append(
+            f"internal report caption reference must use an asset-ref anchor in "
+            f"{report_html}: {found_text}"
+        )
 
 
 def validate_font_stack_contract(
@@ -485,6 +628,7 @@ def validate_metadata(site: Path, studies: dict[str, dict], errors: list[str]) -
             for duplicate in sorted(deck_trace.duplicate_ids):
                 errors.append(f"duplicate deck id in {deck_html}: {duplicate}")
             validate_caption_sequence(report_trace, report_html, errors)
+            validate_internal_report_references(report_trace, report_html, errors)
             if report_trace.required_figures_without_id:
                 errors.append(
                     f"{report_trace.required_figures_without_id} required report figure(s) "
@@ -551,6 +695,49 @@ def validate_metadata(site: Path, studies: dict[str, dict], errors: list[str]) -
                     errors.append(
                         f"slide report.html anchor is absent from data-report-refs in "
                         f"{deck_html} ({label}): {untraced_links}"
+                    )
+                for report_reference in slide.report_references:
+                    expected = report_trace.caption_labels_by_id.get(
+                        report_reference.target
+                    )
+                    if expected is None:
+                        continue
+                    visible = extract_caption_references(report_reference.text)
+                    if visible and visible != {expected}:
+                        expected_text = f"{expected[0]} {expected[1]}"
+                        found_text = ", ".join(
+                            f"{kind} {number}" for kind, number in sorted(visible)
+                        )
+                        errors.append(
+                            f"deck report reference caption label is stale in "
+                            f"{deck_html} ({label}): report.html#"
+                            f"{report_reference.target} expects {expected_text}, "
+                            f"found {found_text} in {report_reference.text!r}"
+                        )
+                visible_slide_labels = extract_caption_references(slide.text)
+                expected_slide_labels = {
+                    report_trace.caption_labels_by_id[report_id]
+                    for report_id in slide.refs
+                    if report_id in report_trace.caption_labels_by_id
+                }
+                stale_slide_labels = visible_slide_labels - expected_slide_labels
+                if stale_slide_labels:
+                    found_text = ", ".join(
+                        f"{kind} {number}"
+                        for kind, number in sorted(stale_slide_labels)
+                    )
+                    expected_text = (
+                        ", ".join(
+                            f"{kind} {number}"
+                            for kind, number in sorted(expected_slide_labels)
+                        )
+                        if expected_slide_labels
+                        else "<none>"
+                    )
+                    errors.append(
+                        f"deck slide contains caption label(s) not backed by "
+                        f"data-report-refs in {deck_html} ({label}): "
+                        f"{found_text}; expected one of {expected_text}"
                     )
 
             missing_sections = sorted(report_trace.report_sections - referenced)

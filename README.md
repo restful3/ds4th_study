@@ -37,7 +37,7 @@
 * **Chapter 2. 지능형 시스템: 하이브리드 접근 (Intelligent Systems: A Hybrid Approach)** — pp. 17–36
     * 지능형 자문 시스템(IAS)을 위한 설계 개념과 아키텍처
     * 하이브리드 시스템이 KG와 LLM의 상호 보완적 강점을 활용하는 방식
-* Chapter 2 자료: 추후 공유
+* Chapter 2 자료: [상세 리포트](https://restful3.github.io/ds4th_study/studies/knowledge-graphs-and-llms-in-action/presentations/2026-07-25-ch02/report.html) · [발표자료](https://restful3.github.io/ds4th_study/studies/knowledge-graphs-and-llms-in-action/presentations/2026-07-25-ch02/)
 
 
 #### **2026년 8월 1일**: [Webex](https://lgehq.webex.com/lgehq-en/j.php?MTID=m04f313dbbe685507858e50181ce261a7)

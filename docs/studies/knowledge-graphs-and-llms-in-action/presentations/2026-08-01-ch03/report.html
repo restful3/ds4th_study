@@ -360,7 +360,7 @@ RETURN r.source, r.createdBy, r.creationDate</code></pre>
 
       <div id="code-ontology-load">
         <h4>전반부 코드 — 온톨로지가 들어오기까지 네 줄</h4>
-        <p>표 9의 앞 세 단계는 코드로 보면 놀랄 만큼 짧다. 무거운 일은 전부 Neosemantics가 대신하고, 우리가 하는 일은 <strong>규칙을 미리 정해 두는 것</strong>뿐이다.</p>
+        <p><a class="asset-ref" href="#table-build-steps">표 9</a>의 앞 세 단계는 코드로 보면 놀랄 만큼 짧다. 무거운 일은 전부 Neosemantics가 대신하고, 우리가 하는 일은 <strong>규칙을 미리 정해 두는 것</strong>뿐이다.</p>
         <div class="callout--insight"><span class="callout__kicker">Cypher 그림 문법을 먼저 읽어 볼게요</span><div class="callout__body"><ul>
           <li><code>(n)</code> — 소괄호는 노드이고, <code>n</code>은 그 노드를 뒤에서 다시 부르기 위한 변수입니다.</li>
           <li><code>(n:HpoPhenotype)</code> — 콜론 뒤의 <code>HpoPhenotype</code>은 노드의 역할을 나타내는 레이블입니다.</li>
@@ -398,7 +398,7 @@ WHERE n.uri STARTS WITH "http://purl.obolibrary.org/obo/HP"
 SET n:HpoPhenotype,
     n.id = coalesce(n.id,
       replace(apoc.text.replace(n.uri, '(.*)obo/', ''), '_', ':'))</code></pre>
-        <p><strong>쉽게 말하면</strong> — 온톨로지에서 온 노드의 주소는 <code>http://purl.obolibrary.org/obo/HP_0410050</code>이고, TSV 주석 파일이 쓰는 표기는 <code>HP:0410050</code>이다. 생김새가 달라서 그냥 두면 두 파일은 영영 만나지 못한다. 이 질의는 URI 앞부분을 잘라내고 <code>_</code>를 <code>:</code>로 바꿔 <strong>두 파일이 같은 언어를 쓰게 만든다</strong>. <code>coalesce</code>는 “이미 <code>id</code>가 있으면 건드리지 말라”는 뜻이라 여러 번 실행해도 안전하다. 그림 2가 말한 “표준 ID로 결합”이 실제로 일어나는 곳이 바로 이 다섯 줄이다.</p>
+        <p><strong>쉽게 말하면</strong> — 온톨로지에서 온 노드의 주소는 <code>http://purl.obolibrary.org/obo/HP_0410050</code>이고, TSV 주석 파일이 쓰는 표기는 <code>HP:0410050</code>이다. 생김새가 달라서 그냥 두면 두 파일은 영영 만나지 못한다. 이 질의는 URI 앞부분을 잘라내고 <code>_</code>를 <code>:</code>로 바꿔 <strong>두 파일이 같은 언어를 쓰게 만든다</strong>. <code>coalesce</code>는 “이미 <code>id</code>가 있으면 건드리지 말라”는 뜻이라 여러 번 실행해도 안전하다. <a class="asset-ref" href="#fig-two-sources">그림 2</a>가 말한 “표준 ID로 결합”이 실제로 일어나는 곳이 바로 이 다섯 줄이다.</p>
       </div>
 
       <h3 id="annotation-lifecycle">3.2 한 행을 한 건의 감사 가능한 주장으로 보존한다</h3>
@@ -552,7 +552,7 @@ RETURN path</code></pre>
         <li><code>WHERE dis.id = …</code>는 찾은 모든 질병 중 제1형 당뇨병 ID 하나만 남깁니다.</li>
         <li><code>RETURN path</code>는 이름 목록이 아니라 경로 자체를 반환하므로 Neo4j Browser가 중심 질병과 주변 표현형을 그래프로 그릴 수 있습니다.</li>
       </ol></div></div>
-      <p>노트북 재실행 결과 <code>OMIM:222100</code>에는 표현형 <strong>8개</strong>가 달려 있다 — Autoimmunity, Decreased circulating 1,5 anhydroglucitol concentration, Diabetes mellitus, Hyperglycemia, Ketoacidosis, Polydipsia, Polyphagia, Polyuria. 다음(그림 6)에서 중심 노드를 둘러싼 별 모양이 이것이다.</p>
+      <p>노트북 재실행 결과 <code>OMIM:222100</code>에는 표현형 <strong>8개</strong>가 달려 있다 — Autoimmunity, Decreased circulating 1,5 anhydroglucitol concentration, Diabetes mellitus, Hyperglycemia, Ketoacidosis, Polydipsia, Polyphagia, Polyuria. 다음(<a class="asset-ref" href="#fig-clinical-query">그림 6</a>)에서 중심 노드를 둘러싼 별 모양이 이것이다.</p>
       <p>이어 임상의가 환자에게서 성장 지연(<a href="https://www.ebi.ac.uk/ols4/ontologies/hp/classes?obo_id=HP:0001510" rel="noreferrer" target="_blank"><code>HP:0001510</code></a>), 큰 무릎(<a href="https://www.ebi.ac.uk/ols4/ontologies/hp/classes?obo_id=HP:0030866" rel="noreferrer" target="_blank"><code>HP:0030866</code></a>), 감각신경성 청각 장애(<a href="https://www.ebi.ac.uk/ols4/ontologies/hp/classes?obo_id=HP:0000407" rel="noreferrer" target="_blank"><code>HP:0000407</code></a>), 소양증(<a href="https://www.ebi.ac.uk/ols4/ontologies/hp/classes?obo_id=HP:0000989" rel="noreferrer" target="_blank"><code>HP:0000989</code></a>)을 추가로 관찰했다고 가정한다. 위 목록에 없는 증상들이다. 이제 <strong>질문이 뒤집힌다</strong> — “이 질병의 증상은?”이 아니라 <strong>“이 증상 조합을 가진 질병은?”</strong>이다. 그래프에서는 <em>화살표를 반대로 따라가기만 하면</em> 되는 같은 질의다. 두 번째 질의는 다섯 표현형과 연결된 질병을 모으고, 겹치는 특징 수를 내림차순으로 정렬한다.</p>
       <pre><code class="language-cypher">// 책 3.26 — 증상 조합에서 질병 후보로
 MATCH (phe:HpoPhenotype)
@@ -608,7 +608,7 @@ LIMIT 5</code></pre>
         </tbody>
       </table>
       <p><strong>세 가지를 읽어야 한다.</strong> 첫째, <strong>진단 결론은 견고하다</strong> — 다섯 특징을 모두 공유하는 1위는 16개월이 지나도 그대로다. 둘째, <strong>3개 공유 후보가 두 건 새로 생겼다</strong>. 교재에서는 3개 공유가 1건뿐이라 2위가 도드라져 보였지만, 지금은 3개 공유가 3건이라 <strong>“2위와 3위의 격차”라는 인상 자체가 사라진다.</strong> 셋째, 3-methylglutaconic aciduria VIII의 <strong>OMIM 번호가 614700에서 617248로 바뀌었다</strong> — 질병 식별자조차 고정된 상수가 아니다.</p>
-      <p>이것이 §3.3이 말한 드리프트의 실물이다. 슬라이드에 표 12만 띄우고 <em>“이 목록이 나옵니다”</em>라고 말하면, 청중이 노트북을 돌렸을 때 다른 화면을 보고 코드가 틀렸다고 생각하게 된다. <strong>결과를 보여줄 때는 반드시 어느 릴리스에서 나온 값인지 함께 적어야 한다.</strong></p>
+      <p>이것이 §3.3이 말한 드리프트의 실물이다. 슬라이드에 <a class="asset-ref" href="#table-candidate-results">표 12</a>만 띄우고 <em>“이 목록이 나옵니다”</em>라고 말하면, 청중이 노트북을 돌렸을 때 다른 화면을 보고 코드가 틀렸다고 생각하게 된다. <strong>결과를 보여줄 때는 반드시 어느 릴리스에서 나온 값인지 함께 적어야 한다.</strong></p>
       <div class="callout--insight"><span class="callout__kicker">임상 경계</span><div class="callout__body"><p>단순 겹침 수 <code>count(nodes)</code>는 표현형의 희귀도, 부정 소견, 발현 시점, 증거 질, 환자 인구집단을 가중하지 않는다. 결과 화면은 후보·경로·근거를 함께 보여주고 임상의의 다음 검토를 지원해야 한다. 위의 순위 변동이 보여주듯 <strong>“2위”라는 자리 자체가 데이터 갱신에 흔들린다.</strong></p></div></div>
     </section>
 

@@ -7,7 +7,11 @@
  * ========================================================================= */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root { interpolate-size: allow-keywords; }
+:root {
+  interpolate-size: allow-keywords;
+  --font-sans-ko: 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic',
+    'Noto Sans KR', NanumGothic, Inter, system-ui, sans-serif;
+}
 
 /* ===== THEMES (class-based, 슬라이드와 완전 동일) ===== */
 html.theme-dark {
@@ -37,7 +41,7 @@ html.theme-light {
 html, body { min-height: 100%; }
 html { background: var(--bg); }
 body {
-  font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-sans-ko);
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -51,7 +55,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--text);
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-family: var(--font-sans-ko);
   letter-spacing: -0.024em;
   line-height: 1.2;
   text-wrap: balance;
@@ -1885,19 +1889,22 @@ aside.reading-more p { margin: 2px 0; font-size: 9.5pt; }
  * 으로 변환되어 부착된다.
  * ※ <caption> 자체에 display:flex 를 주면 Chrome 이 caption-side:top 을 무시하고
  *   thead 아래로 렌더링하는 버그가 있어, flex 는 내부 div 로 이동시켰다. */
-.report-section table.cmp-table > caption.cmp-table__caption {
+.report-section table.cmp-table > caption.cmp-table__caption,
+.report-appendix table.cmp-table > caption.cmp-table__caption {
   display: table-caption;
   caption-side: top;
   text-align: left;
   padding: 0 0 6pt 0;
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-family: var(--font-sans-ko);
   break-after: avoid;
   page-break-after: avoid;
 }
-.report-section table.cmp-table > caption.asset-caption {
+.report-section table.cmp-table > caption.asset-caption,
+.report-appendix table.cmp-table > caption.asset-caption {
   margin: 0;
 }
-.report-section table.cmp-table > caption.cmp-table__caption > .cmp-table__caption-inner {
+.report-section table.cmp-table > caption.cmp-table__caption > .cmp-table__caption-inner,
+.report-appendix table.cmp-table > caption.cmp-table__caption > .cmp-table__caption-inner {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
@@ -3149,9 +3156,10 @@ html.reader-size-large .continuous-mode {
   font-size: 48px;
   line-height: 1.06;
   letter-spacing: 0;
-  white-space: nowrap;
+  white-space: normal;
   word-break: keep-all;
-  overflow-wrap: normal;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
 }
 .continuous-mode .report-cover__subtitle {
   order: 4;
@@ -3161,6 +3169,9 @@ html.reader-size-large .continuous-mode {
   font-weight: 500;
   line-height: 1.5;
   color: var(--text-secondary);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
 }
 .continuous-mode .report-cover__meta {
   order: 5;
@@ -3515,15 +3526,18 @@ html.reader-size-large .continuous-mode {
   .continuous-mode .report-cover__title {
     font-size: clamp(20px, 6vw, 28px);
     line-height: 1.14;
-    white-space: nowrap;
+    white-space: normal;
     word-break: keep-all;
-    overflow-wrap: normal;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
   }
   .continuous-mode .report-cover__subtitle {
     font-size: 14px;
     line-height: 1.5;
     white-space: normal;
+    word-break: keep-all;
     overflow-wrap: anywhere;
+    text-wrap: balance;
   }
   .continuous-mode .report-cover__meta {
     display: grid;
@@ -3614,20 +3628,20 @@ html.reader-size-large .continuous-mode {
   --brand-primary: #0F2C59;
   --brand-deep: #091F40;
   --brand-active: #2563EB;
-  --running-header-left: "ds4th study · Knowledge Graphs & LLMs";
+  --running-header-left: "ds4th study · Study Report";
   --running-header-right: "STUDY REPORT";
   --page-label-sec0: "§0 · 핵심 요약";
-  --page-label-sec1: "§1 · 지식 그래프";
-  --page-label-sec2: "§2 · LLM";
-  --page-label-sec3: "§3 · 양방향 보완";
-  --page-label-sec4: "§4 · 패러다임 전환";
+  --page-label-sec1: "§1 · 배경과 핵심 개념";
+  --page-label-sec2: "§2 · 작동 원리";
+  --page-label-sec3: "§3 · 역할 분담과 운영";
+  --page-label-sec4: "§4 · 근거와 한계";
   --page-label-sec5: "§5 · 적용 사례";
-  --page-label-sec6: "§6 · 기술 선택";
-  --page-label-sec7: "§7 · 도입 판단";
-  --page-label-sec8: "§8 · 정리와 토론";
+  --page-label-sec6: "§6 · 선택과 다음 행동";
+  --page-label-sec7: "§7 · 부록";
+  --page-label-sec8: "§8 · 정리";
   --page-label-refs: "참고 문헌";
 }
-html, body, button, input { font-family: Inter, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif; }
+html, body, button, input { font-family: var(--font-sans-ko); }
 .skip-link { position: fixed; left: 16px; top: -60px; z-index: 9999; background: var(--brand-primary); color: #fff; padding: 10px 14px; border-radius: 4px; text-decoration: none; }
 .skip-link:focus { top: 16px; }
 .report-jump-links { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
@@ -3775,4 +3789,51 @@ svg.report-lightbox__visual {
 @media print {
   [data-report-zoomable="true"] { cursor: default !important; outline: none !important; box-shadow: none !important; filter: none !important; }
   .report-lightbox { display: none !important; }
+
+  /* Browser-oriented continuous mode still prints as true A4 pages. */
+  .continuous-mode .report-cover {
+    break-after: page !important;
+    page-break-after: always !important;
+    width: 210mm;
+    max-width: none;
+    min-height: 297mm;
+    margin: 0;
+    padding: 54mm 28mm 30mm 30mm;
+    border-bottom: 0;
+  }
+  .continuous-mode .report-cover__signature { max-width: 100%; }
+  .continuous-mode .report-cover__kicker {
+    display: inline-flex;
+    width: max-content;
+    max-width: 100%;
+    white-space: nowrap;
+    font-size: 8.5pt;
+  }
+  .continuous-mode .report-cover__title {
+    max-width: 150mm;
+    font-size: 30pt;
+    line-height: 1.08;
+  }
+  .continuous-mode .report-cover__subtitle {
+    max-width: 145mm;
+    font-size: 15pt;
+  }
+  .continuous-mode .report-cover__meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 145mm;
+  }
+  .continuous-mode .report-section h1,
+  .continuous-mode .report-appendix h1 {
+    font-size: 32px;
+    line-height: 1.14;
+  }
+  .continuous-mode .report-section h2 {
+    font-size: 24px;
+    line-height: 1.22;
+  }
+  #table-glossary {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
 }

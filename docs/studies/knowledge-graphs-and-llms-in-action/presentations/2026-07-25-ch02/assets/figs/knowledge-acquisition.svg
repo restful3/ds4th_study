@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 500" role="img" aria-labelledby="title desc">
+  <title id="title">지식 그래프와 대규모 언어 모델의 지식 습득 비교</title>
+  <desc id="desc">지식 그래프는 이질적 데이터를 스키마와 전문가 검증을 거쳐 명시적 지식으로 바꾸고, 대규모 언어 모델은 주로 텍스트를 학습해 통계 파라미터에 암묵적으로 지식을 저장한다.</desc>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B6B72"/></marker><style>.t{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}.h{font-size:19px;font-weight:800}.sh{font-size:14px;font-weight:800}.b{font-size:11.5px}.m{font-size:11.5px;fill:#6B6B72}.card{fill:#fff;stroke:#B7C2D1;stroke-width:1.5}.box{fill:#F2F5F9;stroke:#B7C2D1;stroke-width:1.5}.navy{fill:#0F2C59}.line{stroke:#6B6B72;stroke-width:2;fill:none;marker-end:url(#a)}.dash{stroke:#8793A3;stroke-width:1.7;fill:none;stroke-dasharray:5 5;marker-end:url(#a)}.chip{fill:#E8EEF6}</style></defs>
+  <rect width="920" height="500" rx="12" fill="#FAFAF9"/>
+  <text class="t h" x="34" y="44">같은 ‘지식 습득’이라도 표현과 사람이 통제하는 방식은 다르다</text>
+  <text class="t m" x="34" y="68">KG는 명시적 구조를 만들고 검증하며, LLM은 텍스트의 통계 패턴을 모델 파라미터에 암묵적으로 저장한다.</text>
+  <rect class="card" x="30" y="98" width="420" height="346" rx="11"/><rect class="card" x="470" y="98" width="420" height="346" rx="11"/>
+  <text class="t sh" x="50" y="126" fill="#0F2C59">지식 그래프 — 장부처럼 찾아보고 부분 수정</text><text class="t sh" x="490" y="126" fill="#0F2C59">LLM — 독해 습관처럼 분산된 통계 패턴</text>
+  <g class="t" text-anchor="middle">
+    <rect class="box" x="50" y="154" width="112" height="76" rx="8"/><text x="106" y="180" class="sh">데이터</text><text x="106" y="201" class="m">정형 · 반정형</text><text x="106" y="217" class="m">문서 · 환경</text>
+    <rect class="box" x="184" y="154" width="112" height="76" rx="8"/><text x="240" y="180" class="sh">변환 · 검증</text><text x="240" y="201" class="m">스키마 매핑</text><text x="240" y="217" class="m">NLP · 전문가</text>
+    <rect class="navy" x="318" y="154" width="112" height="76" rx="8"/><text x="374" y="180" fill="#fff" class="sh">KG</text><text x="374" y="201" style="fill:#fff" opacity=".75" class="m">개체 · 관계</text><text x="374" y="217" style="fill:#fff" opacity=".75" class="m">속성 · 규칙</text>
+    <rect class="box" x="490" y="154" width="112" height="76" rx="8"/><text x="546" y="180" class="sh">텍스트 중심</text><text x="546" y="201" class="m">문서 · 대화</text><text x="546" y="217" class="m">언어화된 자료</text>
+    <rect class="box" x="624" y="154" width="112" height="76" rx="8"/><text x="680" y="180" class="sh">신경망 학습</text><text x="680" y="201" class="m">주로 자기지도</text><text x="680" y="217" class="m">선별 · 정제</text>
+    <rect class="navy" x="758" y="154" width="112" height="76" rx="8"/><text x="814" y="180" fill="#fff" class="sh">LLM</text><text x="814" y="201" style="fill:#fff" opacity=".75" class="m">통계 파라미터</text><text x="814" y="217" style="fill:#fff" opacity=".75" class="m">고차원 패턴</text>
+  </g>
+  <path class="line" d="M162 192H180"/><path class="line" d="M296 192H314"/><path class="line" d="M602 192H620"/><path class="line" d="M736 192H754"/>
+  <g class="t" text-anchor="middle">
+    <rect class="box" x="119" y="266" width="242" height="58" rx="8"/><text x="240" y="289" class="sh">도메인 전문가</text><text x="240" y="309" class="m">소스 선별 · 스키마 설계 · 직접 검증·수정</text>
+    <rect class="box" x="559" y="266" width="242" height="58" rx="8"/><text x="680" y="289" class="sh">도메인 전문가</text><text x="680" y="309" class="m">소스 선별 · 결과 평가 · 필요 시 추가 학습</text>
+  </g>
+  <path class="dash" d="M180 266L118 234"/><path class="dash" d="M300 266L368 234"/><path class="dash" d="M620 266L558 234"/><path class="dash" d="M740 266L808 234"/>
+  <g class="t" text-anchor="middle">
+    <rect class="chip" x="50" y="350" width="112" height="48" rx="8"/><text x="106" y="371" class="sh">접근</text><text x="106" y="389" class="m">조회·경로 추적</text>
+    <rect class="chip" x="184" y="350" width="112" height="48" rx="8"/><text x="240" y="371" class="sh">갱신</text><text x="240" y="389" class="m">부분 수정 가능</text>
+    <rect class="chip" x="318" y="350" width="112" height="48" rx="8"/><text x="374" y="371" class="sh">강점</text><text x="374" y="389" class="m">통합·규칙 추론</text>
+    <rect class="chip" x="490" y="350" width="112" height="48" rx="8"/><text x="546" y="371" class="sh">접근</text><text x="546" y="389" class="m">출력으로 간접 확인</text>
+    <rect class="chip" x="624" y="350" width="112" height="48" rx="8"/><text x="680" y="371" class="sh">내부 갱신</text><text x="680" y="389" class="m">추가 학습 필요</text>
+    <rect class="chip" x="758" y="350" width="112" height="48" rx="8"/><text x="814" y="371" class="sh">강점</text><text x="814" y="389" class="m">언어 일반화·생성</text>
+  </g>
+  <text class="t m" x="460" y="476" text-anchor="middle">외부 검색으로 최신 근거를 줄 수 있어도 LLM 내부 지식이 부분 수정되는 것은 아니다. 두 상태를 구분한다.</text>
+</svg>

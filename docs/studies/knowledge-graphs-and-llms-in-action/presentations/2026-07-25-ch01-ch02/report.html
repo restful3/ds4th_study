@@ -117,7 +117,7 @@
 
       <h2>2.1 노드·관계·속성</h2>
       <p>KG는 사람의 지식을 구조화된 형태로 기계에 담아 더 지능적으로 행동하게 만든다. 이를 위해 세 요소를 쓴다. <strong>노드(Node)</strong>는 사람·장소·조직·질병·단백질·유전자 같은 현실의 개체를 나타낸다. <strong>관계(Relationship)</strong>는 노드 사이의 의미 있는 연결을 정의한다(어떤 약물이 어떤 질병을 치료한다, 어떤 유전자가 어떤 단백질을 암호화한다). <strong>속성(Property)</strong>은 맥락을 제공한다(승인일, 지리 좌표, 여러 언어로 된 질병 설명, 출처, 갱신 시각).</p>
-      <p>핵심은 데이터가 선으로 이어졌다는 데 있지 않다. <strong>연결의 뜻과 개체의 유형이 명시되어 있다는 것</strong>이 중요하다. 그래야 기계가 구조화된 지식 위에서 추론과 추정을 수행하고, 관계 경로를 탐색하며, 결과가 어떤 사실에서 나왔는지 설명할 수 있다. 그림 2는 의료 도메인에서 질병·약물·화합물·해부구조 같은 개체가 의미 있는 관계로 연결된 KG를 재구성한 것이다.</p>
+      <p>핵심은 데이터가 선으로 이어졌다는 데 있지 않다. <strong>연결의 뜻과 개체의 유형이 명시되어 있다는 것</strong>이 중요하다. 그래야 기계가 구조화된 지식 위에서 추론과 추정을 수행하고, 관계 경로를 탐색하며, 결과가 어떤 사실에서 나왔는지 설명할 수 있다. <a class="asset-ref" href="#fig-kg-anatomy">그림 2</a>는 의료 도메인에서 질병·약물·화합물·해부구조 같은 개체가 의미 있는 관계로 연결된 KG를 재구성한 것이다.</p>
       <figure class="report-figure" id="fig-kg-anatomy">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 2</span><span class="asset-caption__title">의료 지식 그래프의 해부 — 노드·관계·속성</span></figcaption>
         <img src="assets/figs/kg-anatomy.svg" alt="약물 A가 질병 B의 치료에 사용되고 질병 B가 해부구조 C를 침범하며, 화합물 D가 약물 A의 유효성분이고 질병 B의 치료에 사용되는 의료 지식 그래프. 각 노드는 승인일·분류 코드·분자식 같은 속성을 가짐">
@@ -164,7 +164,7 @@
       </figure>
 
       <h2>3.3 LLM이 KG의 구축과 이용을 돕는 방식</h2>
-      <p>저자들이 강조하는 대표적 역할은 <strong>구축·질의·요약</strong>이다. 구축에서는 비정형 텍스트의 개체와 관계를 뽑아 <strong>후보</strong>를 제시한다. 전통적으로 도메인마다 맞춤 NLP 모델이 필요했던 과정을 단순화하지만, 후보는 스키마·출처·무결성·전문가 검토를 통과해야 비로소 KG의 사실이 된다. 질의에서는 여러 홉과 스키마를 이해해야 하는 자연어 질문을 <strong>text-to-cypher</strong> 같은 그래프 질의나 검색 요청으로 바꾼다. 마지막으로 KG가 돌려준 여러 노드·관계·출처를 사용자가 읽기 쉬운 글로 요약한다. 이 과정은 그림 6처럼 <strong>구축 수명주기</strong>와 <strong>이용 수명주기</strong>로 나눠야 책임 경계가 선명해진다.</p>
+      <p>저자들이 강조하는 대표적 역할은 <strong>구축·질의·요약</strong>이다. 구축에서는 비정형 텍스트의 개체와 관계를 뽑아 <strong>후보</strong>를 제시한다. 전통적으로 도메인마다 맞춤 NLP 모델이 필요했던 과정을 단순화하지만, 후보는 스키마·출처·무결성·전문가 검토를 통과해야 비로소 KG의 사실이 된다. 질의에서는 여러 홉과 스키마를 이해해야 하는 자연어 질문을 <strong>text-to-cypher</strong> 같은 그래프 질의나 검색 요청으로 바꾼다. 마지막으로 KG가 돌려준 여러 노드·관계·출처를 사용자가 읽기 쉬운 글로 요약한다. 이 과정은 <a class="asset-ref" href="#fig-kg-llm-lifecycle">그림 6</a>처럼 <strong>구축 수명주기</strong>와 <strong>이용 수명주기</strong>로 나눠야 책임 경계가 선명해진다.</p>
       <figure class="report-figure" id="fig-kg-llm-lifecycle" data-deck-use="required">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 6</span><span class="asset-caption__title">LLM을 활용한 KG 구축과 자연어 질의 수명주기</span></figcaption>
         <img src="assets/figs/kg-llm-lifecycle.svg" alt="구축 단계에서 데이터 소스를 스키마 매핑과 LLM 추출로 후보 지식으로 바꾸고 검증 게이트를 통과한 것만 KG에 반영하며, 이용 단계에서 자연어 질문을 LLM이 그래프 질의로 바꾸고 같은 KG의 구조적 결과를 요약해 답하는 두 개의 수명주기">
@@ -172,7 +172,7 @@
       </figure>
 
       <h2>3.4 KG가 LLM을 떠받치는 방식</h2>
-      <p>거꾸로 KG는 LLM의 도메인 정확성·투명성·시의성 한계를 극복하도록 돕는다[Ch1 10]. <strong>환각</strong>에 대해서는 구조적이고 검증된 지식으로 <strong>사실의 토대</strong>가 되어 지어내기를 줄인다. <strong>오래된 정보</strong>에 대해서는, LLM을 끊임없이 재학습할 수는 없지만 KG는 계속 갱신할 수 있어 <strong>KG 기반 프롬프팅</strong>이나 <strong>GraphRAG</strong>(지식을 군집·커뮤니티 요약으로 조직)로 최신 정보를 공급한다. <strong>설명 가능성</strong>에 대해서는, 추적·검증 가능한 정보 경로와 구조적 추론을 제공해 신뢰를 쌓는다. 그림 7은 이 양방향 보완을 매트릭스로 정리한다.</p>
+      <p>거꾸로 KG는 LLM의 도메인 정확성·투명성·시의성 한계를 극복하도록 돕는다[Ch1 10]. <strong>환각</strong>에 대해서는 구조적이고 검증된 지식으로 <strong>사실의 토대</strong>가 되어 지어내기를 줄인다. <strong>오래된 정보</strong>에 대해서는, LLM을 끊임없이 재학습할 수는 없지만 KG는 계속 갱신할 수 있어 <strong>KG 기반 프롬프팅</strong>이나 <strong>GraphRAG</strong>(지식을 군집·커뮤니티 요약으로 조직)로 최신 정보를 공급한다. <strong>설명 가능성</strong>에 대해서는, 추적·검증 가능한 정보 경로와 구조적 추론을 제공해 신뢰를 쌓는다. <a class="asset-ref" href="#fig-mutual">그림 7</a>은 이 양방향 보완을 매트릭스로 정리한다.</p>
       <figure class="report-figure" id="fig-mutual" data-deck-use="required">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 7</span><span class="asset-caption__title">LLM의 약점 → KG 처방 / KG의 약점 → LLM 처방</span></figcaption>
         <img src="assets/figs/mutual-reinforcement.svg" alt="왼쪽은 LLM의 환각·오래된 정보·설명 불가를 KG의 사실 토대·동적 갱신·추적 경로가 처방하고, 오른쪽은 KG의 구축 비용·질의 난이도·결과 분산을 LLM의 개체 추출·자연어 질의·텍스트 요약이 처방하는 대응 매트릭스">
@@ -364,7 +364,7 @@
       </figure>
 
       <h2>7.2 KG·LLM 도입 판단</h2>
-      <p>표 8은 Chapter 1의 판단 질문을 두 블록으로 정리한다. 저자는 이 질문 가운데 <strong>하나라도 “예”라면 KG 기반 솔루션을 강화하기 위해 LLM이 필요하다</strong>고 결론 내린다. 왼쪽 질문은 관계와 출처를 명시적으로 다룰 KG의 가치를, 오른쪽 질문은 LLM을 추출·질의·설명 인터페이스로 결합할 이유를 드러낸다. 다만 실제 도입에서는 저자의 규칙을 출발점으로 삼되, 데이터 품질·검증 비용·위험·운영 책임까지 별도로 평가해야 한다.</p>
+      <p><a class="asset-ref" href="#table-decision">표 8</a>은 Chapter 1의 판단 질문을 두 블록으로 정리한다. 저자는 이 질문 가운데 <strong>하나라도 “예”라면 KG 기반 솔루션을 강화하기 위해 LLM이 필요하다</strong>고 결론 내린다. 왼쪽 질문은 관계와 출처를 명시적으로 다룰 KG의 가치를, 오른쪽 질문은 LLM을 추출·질의·설명 인터페이스로 결합할 이유를 드러낸다. 다만 실제 도입에서는 저자의 규칙을 출발점으로 삼되, 데이터 품질·검증 비용·위험·운영 책임까지 별도로 평가해야 한다.</p>
       <table class="cmp-table" id="table-decision">
         <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 8</span><span class="asset-caption__title">KG·LLM 도입 판단 체크리스트</span></div></caption>
         <thead><tr><th>KG를 고려하라</th><th>LLM을 고려하라</th></tr></thead>

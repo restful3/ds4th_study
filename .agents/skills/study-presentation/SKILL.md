@@ -13,9 +13,15 @@ For a new session, read `agent-support/templates/STUDY_SESSION_BLUEPRINT.md` and
 
 Follow the pipeline in order: (A) audit the raw chapter material and record its claims, examples, evidence, terms, and visualizable relationships; (B) finish and render `report.html`; (C) only after the report gate passes, replace the scaffold deck content by deriving it from the report. Do not author session-specific slide content in parallel with an unfinished report. If a slide needs a claim absent from the report, update and revalidate the report first.
 
+Preserve the source's claim strength and ownership while rewriting: do not turn “may,” “can,” a conditional mechanism, or “the authors observed” into “does,” “proves,” “guarantees,” or an unattributed general fact. Carry attribution and comparison conditions through section summaries, deck text, captions, and SVG labels. If the report deliberately proposes a more conservative decision rule or an operational extension, label it visibly as the report author's synthesis rather than the book's claim. Treat dated model demonstrations as historical snapshots, not current product benchmarks. Define recurring specialist terms at first use as well as in the glossary; a glossary alone does not make the preceding explanation beginner-friendly.
+
+Keep comparison rows at the same semantic level. Do not present a model's implementation behavior as a peer of formal categories without a visible group boundary and an explanation of the distinction. Likewise, distinguish a system category's stated decision authority from evidence that the interface and operating process actually preserve that authority: human-in-the-loop requires usable review, rejection, audit, and rollback paths, not a nominal approval click.
+
 Treat the report as a long-form publication, not a slide transcript. Preserve the canonical ConnectBrick-derived report component hierarchy and the blueprint's problem-to-decision logic. Add source-backed tables and newly composed SVG diagrams when they materially explain the chapter. Give report sections, tables, and figures stable IDs, and mark report figures that the deck must carry with `data-deck-use="required"`. The report gate requires complete argument coverage, captions and sources, working TOC/lightbox, desktop/mobile rendering, and an inspected A4 PDF.
 
 Derive the deck's narrative, claims, terminology, tables, SVGs, and CSS relationships from the approved report. Reuse a report visual directly when it is legible at slide scale; otherwise make a faithful slide-scale adaptation without changing its meaning. Keep `data-report-source="report.html"` on the deck main element and put valid `data-report-refs` on every slide. Preserve automatic report/deck TOCs and verify that every report section and every required figure is covered.
+
+When revising either artifact, re-audit the paired report and every slide that cites a changed section, table, or figure. The deck must neither lag behind changed report claims nor introduce claims absent from the report. Update conditions, terminology, visible report-reference labels—including roadmap/body text—and trace metadata together, then pass both gates again.
 
 After creating or editing a report or deck, run:
 
@@ -25,4 +31,4 @@ python3 agent-support/scripts/build-index.py --check
 python3 agent-support/scripts/validate-site.py --check-materials
 ```
 
-Inspect both the rendered report and presentation in a browser when visual behavior matters. Prepare local changes by default; commit, push, open a PR, or change Pages settings only when the user explicitly requests that external action.
+Inspect both the rendered report and presentation in a browser when visual behavior matters. For Korean long-form text, verify at the actual desktop, narrow-mobile, and print widths that line wrapping keeps words intact (`word-break: keep-all` with an overflow fallback where appropriate); a clean DOM is not evidence that Korean words are not splitting on screen. Prepare local changes by default; commit, push, open a PR, or change Pages settings only when the user explicitly requests that external action.

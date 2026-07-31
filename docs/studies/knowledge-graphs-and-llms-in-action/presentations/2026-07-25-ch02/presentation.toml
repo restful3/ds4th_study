@@ -1,9 +1,9 @@
 study_id = "kg-llm-in-action-2026"
-session_id = "2026-07-25-ch01-ch02"
-title = "지식 그래프와 LLM: Chapter 1–2 합본 (보존용)"
+session_id = "2026-07-25-ch02"
+title = "지능형 시스템: 하이브리드 접근"
 date = "2026-07-25"
 presenters = ["수경"]
-chapters = ["Chapter 1", "Chapter 2"]
+chapters = ["Chapter 2"]
 template = "study-deck-v1"
 report_template = "study-report-v1"
 workflow = "raw-report-deck-v1"
