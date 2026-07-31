@@ -35,6 +35,15 @@ MERGE_MARKER_RE = re.compile(r"(?m)^(?:<<<<<<<(?: .*)?|=======|>>>>>>>(?: .*)?)$
 STANDALONE_CSS_PLUS_RE = re.compile(r"(?m)^\s*\+\s*$")
 FONT_FAMILY_RE = re.compile(r"font-family\s*:\s*([^;}]+)", re.IGNORECASE)
 FONT_ATTRIBUTE_RE = re.compile(r"""font-family\s*=\s*["']([^"']+)["']""", re.IGNORECASE)
+CSS_COMMENT_RE = re.compile(r"/\*.*?\*/", re.DOTALL)
+CSS_RULE_RE = re.compile(r"([^{}]*)\{([^{}]*)\}")
+CJK_WRAP_DECLARATIONS = (
+    ("word-break: keep-all", re.compile(r"word-break\s*:\s*keep-all", re.IGNORECASE)),
+    (
+        "overflow-wrap: break-word",
+        re.compile(r"overflow-wrap\s*:\s*break-word", re.IGNORECASE),
+    ),
+)
 
 # Registered 2026-07-27. Remove one entry only after that published session's
 # SVGs have been updated, rendered at final size, and visually rechecked.
@@ -468,6 +477,44 @@ def validate_font_stack_contract(
         )
 
 
+def body_rule_blocks(css_text: str) -> list[str]:
+    """Declaration blocks of every rule whose selector is exactly `body`.
+
+    The rule regex cannot nest, so a `body` rule wrapped in `@media ... { }` is
+    reached the same way a top-level one is.
+    """
+    stripped = CSS_COMMENT_RE.sub(" ", css_text)
+    return [
+        match.group(2)
+        for match in CSS_RULE_RE.finditer(stripped)
+        if " ".join(match.group(1).split()).lower() == "body"
+    ]
+
+
+def validate_cjk_wrap_contract(session_dir: Path, errors: list[str]) -> None:
+    """Both CJK wrap declarations must sit on `body` so they inherit everywhere.
+
+    Declaring them only on table cells or the cover title leaves section
+    headings and paragraphs on the browser default, which breaks Korean
+    mid-어절. Declaring `keep-all` without `overflow-wrap: break-word` is the
+    banned solo form: it then lets long Latin tokens and URLs overflow.
+    """
+    for name in ("report.css", "deck.css"):
+        css_path = session_dir / "assets" / name
+        if not css_path.is_file():
+            continue
+        blocks = body_rule_blocks(css_path.read_text(encoding="utf-8", errors="replace"))
+        missing = [
+            declaration
+            for declaration, pattern in CJK_WRAP_DECLARATIONS
+            if not any(pattern.search(block) for block in blocks)
+        ]
+        if missing:
+            errors.append(
+                f"the `body` rule must declare {' and '.join(missing)} in {css_path}"
+            )
+
+
 def validate_registry(
     registry: Path, site: Path, check_materials: bool, errors: list[str]
 ) -> dict[str, dict]:
@@ -598,6 +645,8 @@ def validate_metadata(site: Path, studies: dict[str, dict], errors: list[str]) -
                     errors.append(
                         f"study-report-v1 asset is missing in {metadata_path.parent}: {asset}"
                     )
+
+        validate_cjk_wrap_contract(metadata_path.parent, errors)
 
         if (
             {"report", "slides"}.issubset(artifacts)

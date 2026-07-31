@@ -77,6 +77,14 @@ REPORT_HTML = '''<!doctype html>
 '''
 
 
+SESSION_CSS = '''body {
+  font-family: Inter, sans-serif;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+'''
+
+
 class SiteToolTests(unittest.TestCase):
     def setUp(self) -> None:
         self.tempdir = tempfile.TemporaryDirectory()
@@ -108,8 +116,10 @@ class SiteToolTests(unittest.TestCase):
         (self.deck / "index.html").write_text(DECK_HTML, encoding="utf-8")
         (self.deck / "report.html").write_text(REPORT_HTML, encoding="utf-8")
         (self.deck / "assets").mkdir()
-        for name in ("deck.css", "deck.js", "report.css", "report.js"):
+        for name in ("deck.js", "report.js"):
             (self.deck / "assets" / name).write_text("/* test */\n", encoding="utf-8")
+        for name in ("deck.css", "report.css"):
+            (self.deck / "assets" / name).write_text(SESSION_CSS, encoding="utf-8")
 
     def tearDown(self) -> None:
         self.tempdir.cleanup()
@@ -505,10 +515,7 @@ class SiteToolTests(unittest.TestCase):
     def test_validator_rejects_svg_report_font_stack_drift(self) -> None:
         build_result = self.build()
         self.assertEqual(build_result.returncode, 0, build_result.stderr)
-        (self.deck / "assets" / "report.css").write_text(
-            "body { font-family: Inter, sans-serif; }\n",
-            encoding="utf-8",
-        )
+        (self.deck / "assets" / "report.css").write_text(SESSION_CSS, encoding="utf-8")
         figures = self.deck / "assets" / "figs"
         figures.mkdir()
         (figures / "drift.svg").write_text(
@@ -525,10 +532,7 @@ class SiteToolTests(unittest.TestCase):
     def test_validator_ignores_leading_monospace_svg_font_declaration(self) -> None:
         build_result = self.build()
         self.assertEqual(build_result.returncode, 0, build_result.stderr)
-        (self.deck / "assets" / "report.css").write_text(
-            "body { font-family: Inter, sans-serif; }\n",
-            encoding="utf-8",
-        )
+        (self.deck / "assets" / "report.css").write_text(SESSION_CSS, encoding="utf-8")
         figures = self.deck / "assets" / "figs"
         figures.mkdir()
         (figures / "mixed-fonts.svg").write_text(
@@ -540,6 +544,49 @@ class SiteToolTests(unittest.TestCase):
             '<text class="label">기본 라벨</text>'
             '<text class="code">MATCH</text>'
             "</svg>",
+            encoding="utf-8",
+        )
+
+        validation = self.validate()
+        self.assertEqual(validation.returncode, 0, validation.stderr)
+
+    def test_validator_rejects_cjk_keep_all_without_break_word(self) -> None:
+        # keep-all on its own is the banned solo form: it holds Korean 어절
+        # together but lets long Latin tokens and URLs overflow horizontally.
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        (self.deck / "assets" / "deck.css").write_text(
+            "body {\n  font-family: Inter, sans-serif;\n  word-break: keep-all;\n}\n",
+            encoding="utf-8",
+        )
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn("overflow-wrap: break-word", validation.stderr)
+
+    def test_validator_rejects_cjk_wrap_pair_declared_outside_body(self) -> None:
+        # The shipped defect: the pair sat on table cells and the cover title
+        # only, so it never inherited into section headings or paragraphs.
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        (self.deck / "assets" / "report.css").write_text(
+            "body {\n  font-family: Inter, sans-serif;\n}\n"
+            "td,\nth {\n  word-break: keep-all;\n  overflow-wrap: break-word;\n}\n",
+            encoding="utf-8",
+        )
+
+        validation = self.validate()
+        self.assertNotEqual(validation.returncode, 0)
+        self.assertIn("word-break: keep-all", validation.stderr)
+
+    def test_validator_accepts_cjk_wrap_pair_in_media_query_body_rule(self) -> None:
+        build_result = self.build()
+        self.assertEqual(build_result.returncode, 0, build_result.stderr)
+        (self.deck / "assets" / "report.css").write_text(
+            "body {\n  font-family: Inter, sans-serif;\n}\n"
+            "@media screen {\n"
+            "  body {\n    word-break: keep-all;\n    overflow-wrap: break-word;\n  }\n"
+            "}\n",
             encoding="utf-8",
         )
 
