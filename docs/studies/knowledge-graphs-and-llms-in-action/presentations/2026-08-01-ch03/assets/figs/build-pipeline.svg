@@ -33,7 +33,7 @@
     <path class="line" d="M578 122H716"/>
   </g>
 
-  <path class="line" d="M814 168V196H936V270H912"/>
+  <path class="line" d="M814 168V222"/>
 
   <g>
     <rect class="navy" x="620" y="222" width="292" height="96" rx="14"/>
