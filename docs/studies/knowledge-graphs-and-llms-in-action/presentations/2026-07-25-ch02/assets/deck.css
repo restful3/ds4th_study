@@ -44,6 +44,7 @@ body {
   color: var(--text);
   font-family: var(--font-sans-ko);
   word-break: keep-all;
+  overflow-wrap: break-word;
   text-rendering: optimizeLegibility;
 }
 

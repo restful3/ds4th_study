@@ -42,6 +42,7 @@ body {
   color: var(--text);
   font-family: Inter, Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   word-break: keep-all;
+  overflow-wrap: break-word;
   text-rendering: optimizeLegibility;
 }
 

@@ -46,6 +46,8 @@ body {
   color: var(--text);
   line-height: 1.6;
   letter-spacing: -0.01em;
+  word-break: keep-all;
+  overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
   padding: 36px 0;
 }
