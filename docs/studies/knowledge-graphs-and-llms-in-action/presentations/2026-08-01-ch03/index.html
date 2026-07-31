@@ -139,27 +139,27 @@
       <div class="slide-body">
         <figure class="deck-report-figure">
           <img src="assets/figs/edge-metadata-options.svg" alt="RDF n항 관계, 명명 그래프, RDF-star, LPG 관계 속성이 한 질병 표현형 주석의 출처 작성자 날짜를 다르게 표현하는 비교">
-          <figcaption><b>같은 주장, 네 모델</b><span>n-ary: Annotation 개념 추가</span><span>named graph / RDF-star: 문장 맥락</span><span>LPG: 개별 관계의 키–값</span></figcaption>
+          <figcaption><b>같은 의도, 네 모델</b><span>n-ary: Annotation 개념 추가</span><span>named graph / RDF-star: 문장 맥락</span><span>LPG: 개별 관계의 키–값</span></figcaption>
         </figure>
       </div>
       <footer class="slide-footer"><a class="report-ref" href="report.html#fig-edge-metadata">상세 리포트 그림 3 · 주석 표현 패턴</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
-    <section class="slide" aria-label="같은 사실을 적는 네 가지 문법" data-report-refs="data-technology rdf-lpg-choice code-edge-metadata fig-edge-metadata">
+    <section class="slide" aria-label="같은 의도를 적는 네 가지 모델" data-report-refs="data-technology rdf-lpg-choice code-edge-metadata fig-edge-metadata">
       <header class="slide-header"><span class="brand-name">ds4th study</span><span class="section-tag">CODE · RDF vs LPG</span></header>
-      <h1>같은 사실 하나를 적는데, 문법은 네 개가 필요하다</h1>
-      <p class="lead">“<code>OMIM:222100</code>–<code>HP:0410050</code> 연결의 근거는 <code>PMID:9357814</code>” — 이 한 문장을 적고 다시 꺼내는 방법입니다.</p>
+      <h1>같은 의도, 네 모델은 이렇게 다르게 적는다</h1>
+      <p class="lead">연결의 근거를 네 모델에 적고 다시 읽는 예입니다. 모델마다 표현 구조는 다릅니다.</p>
       <div class="slide-body code-layout">
-        <pre class="code-block code-block--dense"><span class="code-comment">// ① N항 관계 — 근거를 담을 노드를 새로 만든다</span>
+        <pre class="code-block code-block--dense"><span class="code-comment"># ① N항 관계 — 근거를 담을 노드를 새로 만든다</span>
 _:Annotation :forDisease        OMIM:222100 ;
              :phenotypicFeature HP:0410050 ;
              :source            PMID:9357814 .
 
-<span class="code-comment">// ② 명명 그래프 — 문장을 봉투에 넣고 봉투에 적는다</span>
+<span class="code-comment"># ② 명명 그래프 — 문장을 봉투에 넣고 봉투에 적는다</span>
 :G1 { OMIM:222100 :hasPhenotypicFeature HP:0410050 }
 :G1 :source PMID:9357814 .
 
-<span class="code-comment">// ③ RDF-star — 문장 자체를 주어로 삼는다</span>
+<span class="code-comment"># ③ 교재의 RDF-star — 문장을 인용한다(인용 자체는 단언이 아님)</span>
 &lt;&lt;OMIM:222100 :hasPhenotypicFeature HP:0410050&gt;&gt; :source PMID:9357814 .
 
 <span class="code-comment">// ④ LPG — 관계 안에 그냥 적는다</span>
@@ -167,17 +167,17 @@ _:Annotation :forDisease        OMIM:222100 ;
         <div>
           <article class="panel panel--accent">
             <p class="eyebrow">꺼낼 때의 차이</p>
-            <h2>LPG만 우회가 없다</h2>
+            <h2>꺼내는 경로의 길이가 다르다</h2>
             <ul>
-              <li><b>①</b> 중간 노드를 먼저 찾고 나서 근거를 읽음 — 모델이 한 단계 깊어짐</li>
-              <li><b>②</b> 봉투 안을 확인하고 봉투 밖을 다시 조회 — 주석 28만 건이면 봉투 28만 개</li>
-              <li><b>③</b> 가장 읽기 좋지만 <b>엔진이 지원해야</b> 쓸 수 있음</li>
-              <li><b>④</b> 관계에 이름 붙이고 속성 읽으면 끝 — <b>3줄</b></li>
+              <li><b>①</b> 중간 노드를 거쳐 근거를 읽음</li>
+              <li><b>②</b> 봉투 안·밖을 조회 — 묶음 단위는 provenance 설계 선택</li>
+              <li><b>③</b> 인용 ≠ 단언 — <b>엔진의 RDF-star/RDF 1.2 지원</b> 확인</li>
+              <li><b>④</b> 관계 속성을 바로 읽음 — <b>3줄</b></li>
             </ul>
           </article>
         </div>
       </div>
-      <p class="takeaway"><strong>선택의 근거</strong> — “LPG가 RDF보다 낫다”가 아닙니다. <b>주석마다 근거가 다르다</b>는 이 장의 요구가 관계 속성을 필수로 만들었을 뿐입니다.</p>
+      <p class="takeaway"><strong>선택의 근거</strong> — 우열이 아니라, 이 장은 주석별 근거를 관계 속성으로 바로 탐색해야 했습니다.</p>
       <footer class="slide-footer"><a class="report-ref" href="report.html#code-edge-metadata">상세 리포트 §2.2 · 네 가지 코드 대조</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
@@ -197,7 +197,7 @@ _:Annotation :forDisease        OMIM:222100 ;
         </table>
         <p class="takeaway"><strong>선택 질문</strong> — 임상의가 특정 연결의 출처·증거·날짜를 얼마나 직접 비교해야 하는가?</p>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#table-rdf-lpg">상세 리포트 표 4 · RDF/LPG 비교</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-rdf-lpg">상세 리포트 표 8 · RDF/LPG 비교</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide slide--section" aria-label="구축과 운영 섹션" data-report-refs="build-operate fig-build-pipeline table-build-steps fig-annotation-lifecycle table-implementation-audit">
@@ -229,7 +229,7 @@ _:Annotation :forDisease        OMIM:222100 ;
         </div>
         <p class="takeaway"><strong>품질 질문</strong> — 입력 행 하나가 그래프의 어떤 assertion으로 남았는지 역추적할 수 있어야 합니다.</p>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#table-build-steps">상세 리포트 표 5 · 구축 단계</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-build-steps">상세 리포트 표 9 · 구축 단계</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide slide--visual" aria-label="HPOA 주석의 생애주기" data-report-refs="build-operate annotation-lifecycle fig-annotation-lifecycle">
@@ -292,7 +292,7 @@ MERGE (dis)-[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe)</pre>
         </div>
         <p class="takeaway"><strong>재현성</strong> — 릴리스 URL·체크섬·적재 단계·질의 버전을 결과와 함께 저장합니다.</p>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#table-implementation-audit">상세 리포트 표 6 · 구현 감사</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-implementation-audit">상세 리포트 표 10 · 구현 감사</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide" aria-label="직접 돌려 본 숫자" data-report-refs="build-operate notebook-rerun table-notebook-measurements">
@@ -307,7 +307,7 @@ MERGE (dis)-[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe)</pre>
         </div>
         <p class="takeaway"><strong>따라 하기 전에</strong> — 교재는 Neo4j <b>Enterprise</b> 기준입니다. <b>Community 에디션에서는 책의 첫 명령 <code>CREATE DATABASE hpo</code>가 실패</b>합니다(멀티 DB 미지원). 기본 <code>neo4j</code> DB를 쓰면 학습에는 지장이 없습니다. 전체 재구축은 9분 남짓 — <b>시연 중에 실행하지 마세요.</b></p>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#table-notebook-measurements">상세 리포트 표 7 · 실측 대조</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-notebook-measurements">상세 리포트 표 11 · 실측 대조</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide slide--section" aria-label="질의와 추론 섹션" data-report-refs="query-case reasoning fig-clinical-query table-candidate-results fig-hierarchical-inference table-query-reasoning">
@@ -354,7 +354,7 @@ LIMIT 5</code></pre>
         </div>
       </div>
       <p class="takeaway"><strong>빠진 것</strong> — 희귀도·부정 소견·발현 시점·증거 질·환자 맥락은 이 단순 랭킹에 포함되지 않습니다.</p>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#table-candidate-results">상세 리포트 표 8 · 후보 해석</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-candidate-results">상세 리포트 표 12 · 후보 해석</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide" aria-label="같은 질의 다른 스냅샷" data-report-refs="query-case rerun-drift table-rerun-candidates notebook-rerun">
@@ -388,7 +388,7 @@ LIMIT 5</code></pre>
         </div>
         <p class="takeaway"><strong>세 가지를 읽습니다</strong> — ① 진단 결론(1위)은 견고합니다. ② 3개 공유가 1건에서 3건으로 늘어 <b>“2위가 도드라진다”는 인상 자체가 사라집니다.</b> ③ 질병 식별자조차 <b>고정된 상수가 아닙니다.</b></p>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#table-rerun-candidates">상세 리포트 표 9 · 순위 대조</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-rerun-candidates">상세 리포트 표 13 · 순위 대조</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide slide--visual" aria-label="온톨로지 계층 추론" data-report-refs="reasoning explicit-inferred fig-hierarchical-inference">
@@ -419,7 +419,7 @@ LIMIT 5</code></pre>
         </table>
         <p class="takeaway"><strong>설명 가능성</strong> — 어떤 하위 표현형과 계층 경로 때문에 포함됐는지 사용자에게 보여줍니다.</p>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#table-query-reasoning">상세 리포트 표 11 · 직접/추론 비교</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-query-reasoning">상세 리포트 표 15 · 직접/추론 비교</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide" aria-label="추론은 온톨로지를 따라 바뀐다" data-report-refs="reasoning reasoning-boundary table-inference-drift code-inference">
@@ -434,7 +434,7 @@ LIMIT 5</code></pre>
         </div>
         <p class="takeaway"><strong>더 중요한 발견</strong> — 책 표 3.3이 “내분비계 이상의 하위”로 굵게 강조한 <b><em>Hyperglycemia</em>는 현재 HPO에서 대사 이상 쪽으로 재분류</b>되었습니다. 코드도 데이터도 그대로인데 <b>의미 구조가 바뀌어 추론 결과가 달라진 것</b>입니다. 재현하려면 주석 릴리스뿐 아니라 <b>온톨로지 릴리스도 고정</b>해야 합니다.</p>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#table-inference-drift">상세 리포트 표 10 · 추론 범위 실측</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-inference-drift">상세 리포트 표 14 · 추론 범위 실측</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide slide--section" aria-label="검증과 도입 판단 섹션" data-report-refs="evidence-limits decision fig-validation-gates table-failure-modes table-decision">
@@ -512,7 +512,7 @@ ORDER BY matched DESC</code></pre>
         </div>
         <p class="takeaway"><strong>최소 파일럿</strong> — 대표 질문 3개, 고정 HPO 스냅샷, 주석 보존 모델, 직접/추론 분리 화면으로 시작합니다.</p>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#table-decision">상세 리포트 표 13 · 도입 판단</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-decision">상세 리포트 표 17 · 도입 판단</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide" aria-label="발표 정리 질문" data-report-refs="decision discussion table-discussion">
@@ -527,7 +527,7 @@ ORDER BY matched DESC</code></pre>
         </div>
         <p class="takeaway"><strong>토론</strong> — 가장 답하기 어려운 질문이 지금 설계에서 가장 짧은 미검증 구간입니다.</p>
       </div>
-      <footer class="slide-footer"><a class="report-ref" href="report.html#table-discussion">상세 리포트 표 14 · 토론 질문</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
+      <footer class="slide-footer"><a class="report-ref" href="report.html#table-discussion">상세 리포트 표 18 · 토론 질문</a><span><b data-slide-number></b> / <b data-slide-total></b></span></footer>
     </section>
 
     <section class="slide slide--closing" aria-label="정리와 질의응답" data-report-refs="summary decision minimum-pilot">

@@ -62,7 +62,7 @@
           <li><strong>경계</strong> — 후보 랭킹과 계층 추론을 어디까지 믿고, 무엇을 임상의에게 남겨야 하는가?</li>
         </ul></div>
       </div>
-      <p>이 장은 개념 장이 아니라 <strong>구현 장</strong>이다. 그래서 이 리포트는 교재 Listing 3.5–3.28의 코드를 본문에 함께 싣고 한 줄씩 쉬운 말로 풀었다. §2.2는 같은 사실 하나를 RDF 세 방식과 LPG로 각각 적어 비교하고, §3은 온톨로지 적재부터 정제까지의 파이프라인을, §5–6은 추론과 근거 추적 질의를 다룬다.</p>
+      <p>이 장은 개념 장이 아니라 <strong>구현 장</strong>이다. 그래서 이 리포트는 교재 Listing 3.5–3.28의 핵심 코드를 본문에 함께 싣는다. 처음 등장하는 문법은 기호와 줄 단위로 풀고, 뒤에서 반복되는 문법은 새로 추가된 부분만 설명한다. §2.2는 같은 사용자 의도 하나를 RDF 세 방식과 LPG로 각각 모델링해 비교하고, §3은 온톨로지 적재부터 정제까지의 파이프라인을, §5–6은 추론과 근거 추적 질의를 다룬다.</p>
       <p>아울러 이 회차의 학습 노트북 <a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/03_chapter_guide.ipynb" rel="noreferrer" target="_blank"><code>03_chapter_guide.ipynb</code></a>가 모든 리스팅을 <strong>실제 Neo4j에서 끝까지 실행한 기록</strong>을 남겼다. 그 실측치를 책 값과 나란히 놓으면 재현에 관한 사실이 드러난다 — 적재 트리플은 899,558에서 <strong>926,450</strong>으로 늘었고, 진단 질의의 <strong>1위 후보는 그대로지만 2위 이하는 바뀌었으며</strong>, 책 표 3.3이 강조한 <em>Hyperglycemia</em>는 <strong>더 이상 내분비계 이상의 하위가 아니다</strong>. 코드는 그대로인데 결과가 달라지는 이 세 가지가 §3.4·4.2·5.2의 주제다.</p>
       <table class="cmp-table" id="table-overview">
         <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 1</span><span class="asset-caption__title">Chapter 3의 전체 논리</span></div></caption>
@@ -149,82 +149,178 @@
       </figure>
 
       <div id="code-edge-metadata">
-        <h4>같은 한 문장을 네 가지로 적어 보기</h4>
-        <p>네 방식 모두 <strong>똑같은 사실 하나</strong>를 적는다. “질병 <code>OMIM:222100</code>과 표현형 <code>HP:0410050</code>이 연결되며, 그 근거는 논문 <code>PMID:9357814</code>이고 Nicole Vasilevsky가 2018-02-23에 기록했다.” 차이는 <em>근거를 어디에 붙이느냐</em> 하나뿐이다. 아래 네 블록은 각각 <strong>적는 법</strong>과 <strong>꺼내는 법</strong>을 한 쌍으로 묶었다. 마지막 LPG만 유일하게 우회 없이 끝난다.</p>
+        <h4>같은 사용자 의도를 네 가지 데이터 모델로 표현해 보기</h4>
+        <p>네 방식의 <strong>사용자 수준 의도</strong>는 같다. “질병 <code>OMIM:222100</code>과 표현형 <code>HP:0410050</code>의 연관을 기록하고, 그 근거가 논문 <code>PMID:9357814</code>이며 Nicole Vasilevsky가 2018-02-23에 기록했다는 정보까지 남긴다.” 그러나 네 코드가 RDF 의미론상 완전히 같은 트리플 집합을 만든다는 뜻은 아니다. 차이는 <em>연관 기록을 무엇으로 취급하고 근거를 어디에 붙이느냐</em>다.</p>
 
-        <h4>① N항 관계 — 근거를 담을 노드를 하나 새로 만든다 <span class="asset-note">(책 Listing 3.5 · 3.6)</span></h4>
-        <pre><code class="language-turtle"># 적는 법 — 이름 없는 노드(_:Annotation)를 만들어 질병·표현형·근거를 모두 매단다
-_:Annotation rdf:type :PhenotypicAnnotation ;
+        <div class="callout--insight"><span class="callout__kicker">먼저 알아둘 전제</span><div class="callout__body">
+          <p>교재 Listing은 비교에 필요한 본문만 잘라 놓은 <strong>코드 조각</strong>이다. 실제 Turtle·TriG·SPARQL 문서에는 <code>rdf:</code>, <code>xsd:</code>, <code>OMIM:</code>, <code>HP:</code>, <code>PMID:</code>, 기본 접두사 <code>:</code>가 어느 전체 IRI를 줄인 것인지 선언해야 한다. 접두사는 휴대전화 연락처의 단축 이름과 비슷하다. 엔진은 단축 이름을 선언된 전체 주소로 펼쳐서 읽는다.</p>
+        </div></div>
+
+        <table class="cmp-table" id="table-code-symbols">
+          <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 4</span><span class="asset-caption__title">같은 기호도 언어에 따라 뜻이 달라진다</span></div></caption>
+          <thead><tr><th>기호</th><th>Turtle·TriG·SPARQL에서</th><th>Cypher에서</th></tr></thead>
+          <tbody>
+            <tr><td><code>:</code></td><td><code>rdf:type</code>처럼 접두사와 로컬 이름을 나눈다. 앞이 비면 기본 접두사다.</td><td><code>:HpoDisease</code>는 노드 레이블, <code>:HAS_…</code>는 관계 타입이다.</td></tr>
+            <tr><td><code>?</code></td><td><strong>SPARQL에서만</strong> <code>?source</code>처럼 엔진이 결과값을 담을 변수 바구니를 표시한다.</td><td>이 예제에서는 쓰지 않는다. Cypher 변수는 <code>d</code>, <code>r</code>처럼 그냥 이름을 쓴다.</td></tr>
+            <tr><td><code>{ }</code></td><td>TriG에서는 그래프의 내용, SPARQL에서는 찾아야 할 패턴의 범위를 감싼다.</td><td><code>{id: "…"}</code>처럼 속성 이름과 값을 묶는 map이다.</td></tr>
+            <tr><td><code>;</code> · <code>.</code></td><td><code>;</code>는 같은 주어를 이어 쓰고, <code>.</code>은 한 RDF 문장을 끝낸다.</td><td>문장 끝의 <code>;</code>는 Neo4j 실행 환경에 따라 선택적으로 쓴다. <code>.</code>은 <code>n.id</code>처럼 변수와 속성 이름을 나눈다.</td></tr>
+            <tr><td><code>^^</code></td><td><code>"2018-02-23"^^xsd:date</code>를 단순 문자열이 아니라 날짜 값으로 해석하라고 지정한다.</td><td>이 예제에서는 날짜를 문자열 속성으로 저장하므로 쓰지 않는다.</td></tr>
+          </tbody>
+        </table>
+
+        <h4>① N항 관계 — 연관 기록을 ‘임시 포스트잇’ 노드로 만든다 <span class="asset-note">(책 Listing 3.5 · 3.6)</span></h4>
+        <p><strong>비유부터 잡아 볼게요.</strong> 질병 카드와 표현형 카드 사이에 바로 메모를 쓰기 어려우니, 두 카드를 함께 가리키는 포스트잇 한 장을 붙이고 그 포스트잇에 출처·작성자·날짜를 적는 방식입니다. 여기서 “임시”는 이해를 돕는 비유일 뿐, 공백 노드가 메모리에서 곧 사라진다는 뜻은 아닙니다.</p>
+
+        <h4 class="sub-h4">적는 법 · Turtle</h4>
+        <pre id="code-nary-write"><code class="language-turtle">_:Annotation rdf:type :PhenotypicAnnotation ;
     :forDisease        OMIM:222100 ;
     :phenotypicFeature HP:0410050 ;
     :source            PMID:9357814 ;
     :createdBy         "Nicole Vasilevsky" ;
-    :creationDate      "2018-02-23"^^xsd:date .
+    :creationDate      "2018-02-23"^^xsd:date .</code></pre>
+        <table class="cmp-table" id="table-nary-write">
+          <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 5</span><span class="asset-caption__title">공백 노드 한 개에 연관의 다섯 역할을 연결한다</span></div></caption>
+          <thead><tr><th>코드 조각</th><th>엔진에게 전달되는 뜻</th></tr></thead>
+          <tbody>
+            <tr><td><code>_:Annotation</code></td><td><strong>밑줄+콜론</strong> <code>_:</code>는 전역 IRI가 없는 공백 노드라는 표시이고, <code>Annotation</code>은 이 문서 안에서 같은 노드를 다시 가리키는 로컬 표찰이다.</td></tr>
+            <tr><td><code>rdf:type :PhenotypicAnnotation</code></td><td>이 포스트잇이 아무 노드가 아니라 “표현형 주석” 종류라고 선언한다.</td></tr>
+            <tr><td><code>:forDisease</code> · <code>:phenotypicFeature</code></td><td>포스트잇이 어느 질병과 어느 표현형을 함께 설명하는지 연결한다.</td></tr>
+            <tr><td><code>:source</code> · <code>:createdBy</code></td><td>주장의 출처와 작성자를 같은 포스트잇에 붙인다. 세미콜론 덕분에 주어를 반복하지 않는다.</td></tr>
+            <tr><td><code>:creationDate … .</code></td><td>날짜 자료형을 붙이고 마침표로 이 주어에 관한 서술을 끝낸다.</td></tr>
+          </tbody>
+        </table>
 
-# 꺼내는 법 (SPARQL) — 질병·표현형으로 그 노드를 먼저 찾고 나서 근거를 읽는다
-SELECT ?source ?author ?date WHERE {
+        <h4 class="sub-h4">꺼내는 법 · SPARQL</h4>
+        <pre id="code-nary-read"><code class="language-sparql">SELECT ?source ?author ?date
+WHERE {
   ?annotation a :PhenotypicAnnotation ;
       :forDisease        OMIM:222100 ;
       :phenotypicFeature HP:0410050 ;
-      :source ?source ; :createdBy ?author ; :creationDate ?date .
+      :source            ?source ;
+      :createdBy         ?author ;
+      :creationDate      ?date .
 }</code></pre>
-        <p><strong>쉽게 말하면</strong> — “A와 B가 연결됨”이라는 한 줄을 적을 수 없어서, <em>연결 그 자체를 대신할 노드</em>를 하나 발명한다. 질병과 표현형은 이제 직접 이어지지 않고 이 중간 노드를 거친다. 모델이 한 단계 깊어지고, 질의도 “중간 노드부터 찾기”로 길어진다. <code>_:Annotation</code>의 <code>_:</code>는 <strong>공백 노드(blank node)</strong>, 즉 이름을 붙일 필요가 없는 익명 자원이라는 표시다.</p>
+        <p><strong>위에서 아래로 읽어 보세요.</strong> <code>WHERE { … }</code>는 “이 모양과 같은 그래프 조각을 찾아 주세요”라는 검색 틀입니다. <code>?annotation</code>에 조건을 모두 만족하는 포스트잇 노드가 들어오면, 그 노드의 출처·작성자·날짜가 각각 <code>?source</code>·<code>?author</code>·<code>?date</code>에 채워지고 <code>SELECT</code>가 그 세 열만 결과로 내보냅니다. <code>a</code>는 작성 코드의 <code>rdf:type</code>과 같은 뜻인 짧은 표기입니다.</p>
+        <div class="callout--insight"><span class="callout__kicker">초보자 질문 · 이름이 없다면서 왜 Annotation이라고 쓰나요?</span><div class="callout__body">
+          <p><code>Annotation</code>은 웹 전체에서 통하는 이름이 아니라 현재 문서 안에서 줄들을 한 노드로 묶기 위한 손잡이입니다. <code>_:memo1</code>로 바꾸어도 모든 등장 위치를 함께 바꾸면 의미는 같습니다. 다른 문서의 <code>_:Annotation</code>과 같은 노드라는 보장은 없습니다.</p>
+        </div></div>
 
-        <h4>② 명명 그래프 — 문장을 묶어 이름표를 붙인다 <span class="asset-note">(책 Listing 3.7 · 3.8)</span></h4>
-        <pre><code class="language-trig"># 적는 법 (TriG) — 문장을 :Graph1 이라는 상자에 넣고, 상자에 근거를 붙인다
-:Graph1 {
-    OMIM:222100 :hasPhenotypicFeature HP:0410050
+        <h4>② 명명 그래프 — 문장을 봉투에 넣고 봉투에 발신 정보를 적는다 <span class="asset-note">(책 Listing 3.7 · 3.8)</span></h4>
+        <p>명명 그래프는 RDF 데이터셋 안의 트리플 묶음에 그래프 이름을 연결합니다. 편지 한 장을 봉투에 넣고, 봉투 겉면에 출처와 작성일을 적는 모습을 떠올리면 됩니다. 봉투 안 여러 문장은 같은 맥락을 공유할 수 있습니다.</p>
+
+        <h4 class="sub-h4">적는 법 · TriG</h4>
+        <pre id="code-named-graph-write"><code class="language-trig">:Graph1 {
+    OMIM:222100 :hasPhenotypicFeature HP:0410050 .
 }
+
 :Graph1
     :source       PMID:9357814 ;
     :createdBy    "Nicole Vasilevsky" ;
-    :creationDate "2018-02-23"^^xsd:date .
+    :creationDate "2018-02-23"^^xsd:date .</code></pre>
+        <table class="cmp-table" id="table-named-graph-write">
+          <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 6</span><span class="asset-caption__title">중괄호 안의 그래프와 밖의 기본 그래프를 구분한다</span></div></caption>
+          <thead><tr><th>코드 조각</th><th>엔진에게 전달되는 뜻</th></tr></thead>
+          <tbody>
+            <tr><td><code>:Graph1 {</code></td><td>이름이 <code>:Graph1</code>인 그래프의 내용이 시작된다. <code>:Graph1</code>은 기본 접두사를 펼친 IRI이지 변수가 아니다.</td></tr>
+            <tr><td><code>OMIM:… :has… HP:… .</code></td><td>질병–표현형 트리플을 <code>:Graph1</code> 안에 단언한다.</td></tr>
+            <tr><td><code>}</code></td><td>명명 그래프의 내용이 끝난다.</td></tr>
+            <tr><td><code>:Graph1 :source …</code></td><td>중괄호 밖이므로 이 메타데이터 트리플은 기본 그래프에 기록된다. 내용물이 아니라 봉투 이름을 주어로 삼는다.</td></tr>
+          </tbody>
+        </table>
 
-# 꺼내는 법 (SPARQL) — 상자 안을 확인하고, 상자 바깥의 근거를 읽는다
-SELECT ?source ?author ?date WHERE {
-  GRAPH :Graph1 { OMIM:222100 :hasPhenotypicFeature HP:0410050 . }
-  :Graph1 :source ?source ; :createdBy ?author ; :creationDate ?date .
+        <h4 class="sub-h4">꺼내는 법 · SPARQL</h4>
+        <pre id="code-named-graph-read"><code class="language-sparql">SELECT ?source ?author ?date
+WHERE {
+  GRAPH :Graph1 {
+    OMIM:222100 :hasPhenotypicFeature HP:0410050 .
+  }
+  :Graph1 :source ?source ;
+          :createdBy ?author ;
+          :creationDate ?date .
 }</code></pre>
-        <p><strong>쉽게 말하면</strong> — 문장은 그대로 두고, 문장을 담은 <em>봉투</em>에 근거를 적는다. 트리플(3요소)에 “어느 봉투 소속인가”라는 네 번째 요소가 붙는 셈이다. 맥락을 담기엔 강력하지만, 주석이 28만 건이면 봉투도 28만 개가 필요해 저장·교환이 무거워지고 봉투 안 문장 하나만 고치기도 까다롭다.</p>
+        <p><code>GRAPH :Graph1 { … }</code>은 검색 대상을 그 봉투 안으로 제한합니다. 이어지는 <code>:Graph1 :source …</code> 패턴은 기본 그래프에서 봉투에 붙은 메타데이터를 읽습니다. SPARQL의 <code>SELECT</code>·<code>WHERE</code>·<code>GRAPH</code> 같은 키워드는 대소문자를 바꿔도 되지만, 읽기 쉽게 대문자로 쓰는 관례가 있습니다. 반면 <code>?source</code>와 <code>?Source</code>, 접두사로 펼쳐지는 IRI는 같은 것으로 바꾸어 읽으면 안 됩니다.</p>
+        <div class="callout--insight"><span class="callout__kicker">초보자 질문 · 주석 28만 건이면 봉투도 반드시 28만 개인가요?</span><div class="callout__body">
+          <p>그렇지 않습니다. 출처 파일·수집 시점·기관 단위로 여러 트리플을 한 그래프에 묶을 수도 있습니다. 다만 <strong>각 질병–표현형 연관의 근거를 서로 완전히 분리</strong>하려고 “연관 한 건당 그래프 하나”를 택하면 그래프 수도 주석 수만큼 늘어납니다. 이것은 명명 그래프의 필수 규칙이 아니라 provenance의 세밀도를 정하는 모델링 선택입니다.</p>
+        </div></div>
 
-        <h4>③ RDF-star — 문장 자체를 주어로 삼는다 <span class="asset-note">(책 Listing 3.9 · 3.10)</span></h4>
-        <pre><code class="language-turtle"># 적는 법 — &lt;&lt; &gt;&gt; 로 문장 하나를 통째로 감싸 그것을 다시 주어로 쓴다
-&lt;&lt;OMIM:222100 :hasPhenotypicFeature HP:0410050&gt;&gt;
+        <h4>③ 교재의 RDF-star — 문장을 인용해 그 문장에 관해 말한다 <span class="asset-note">(책 Listing 3.9 · 3.10)</span></h4>
+        <p>이중 꺾쇠는 대화에서 큰따옴표로 남의 문장을 인용하는 것과 비슷합니다. “질병이 이 표현형을 가진다”라는 문장을 하나의 대상으로 집어 들고, 그 인용된 문장에 출처·작성자·날짜를 연결합니다.</p>
+
+        <h4 class="sub-h4">적는 법 · 교재 시점의 Turtle-star</h4>
+        <pre id="code-rdf-star-write"><code class="language-turtle">&lt;&lt;OMIM:222100 :hasPhenotypicFeature HP:0410050&gt;&gt;
     :source       PMID:9357814 ;
     :createdBy    "Nicole Vasilevsky" ;
-    :creationDate "2018-02-23"^^xsd:date .
+    :creationDate "2018-02-23"^^xsd:date .</code></pre>
 
-# 꺼내는 법 (SPARQL-star) — 같은 &lt;&lt; &gt;&gt; 표기로 바로 읽는다
-SELECT ?source ?author ?date {
+        <h4 class="sub-h4">꺼내는 법 · 교재 시점의 SPARQL-star</h4>
+        <pre id="code-rdf-star-read"><code class="language-sparql">SELECT ?source ?author ?date {
   &lt;&lt;OMIM:222100 :hasPhenotypicFeature HP:0410050&gt;&gt;
-      :source ?source ; :createdBy ?author ; :creationDate ?date .
+      :source ?source ;
+      :createdBy ?author ;
+      :creationDate ?date .
 }</code></pre>
-        <p><strong>쉽게 말하면</strong> — 우회를 없애고 “이 문장에 대해 말하기”를 문법으로 직접 지원한다. 셋 중 가장 읽기 쉽다. 다만 표준 확장이라 <strong>엔진이 지원해야만 쓸 수 있고</strong>, 질의 성능도 아직 개선 중이다. 교재는 Orlandi 등을 인용해 “새 구문 확장을 쓰려면 RDF 엔진의 특정 구현이 필요하고, 그래서 채택이 제한된다”고 짚는다.</p>
+        <p><code>SELECT</code> 뒤에 곧바로 <code>{ … }</code>가 와도 오류가 아닙니다. SPARQL에서 <code>WHERE</code>는 생략할 수 있기 때문입니다. 안쪽의 <code>&lt;&lt; … &gt;&gt;</code>는 세 토큰을 단순 문자열로 묶는 것이 아니라 트리플 구조를 유지한 채 인용합니다. 그래서 조회할 때도 같은 구조를 써서 그 문장에 연결된 메타데이터를 찾습니다.</p>
+        <div class="callout--insight"><span class="callout__kicker">중요 · 인용했다고 그 내용이 자동으로 사실이 되지는 않습니다</span><div class="callout__body">
+          <p>교재 코드처럼 트리플을 인용하고 그 인용에 대해 말하는 것과, 원래 질병–표현형 트리플을 그래프의 사실로 단언하는 것은 구분해야 합니다. “누군가 이렇게 말했다”와 “그 말이 사실이다”가 다른 것과 같습니다. 연결 자체도 사실로 넣으려면 원 트리플을 별도로 단언하거나, 단언과 주석을 함께 만드는 문법을 사용해야 합니다.</p>
+        </div></div>
+        <div class="callout--insight"><span class="callout__kicker">2026년 7월 사양 주의</span><div class="callout__body">
+          <p>교재는 RDF-star Community Group 계열의 <code>&lt;&lt; … &gt;&gt;</code> 설명을 따른다. <strong>2026-07-31 열람 기준</strong> W3C RDF 1.2 Concepts는 Candidate Recommendation Snapshot(2026-04-07), Turtle 1.2는 Working Draft(2026-07-30), SPARQL 1.2 Query는 Working Draft(2026-06-25)다. Turtle 1.2는 triple term <code>&lt;&lt;( … )&gt;&gt;</code>, reified triple 표기 <code>&lt;&lt; … &gt;&gt;</code>(식별자를 생략하면 새 공백 노드가 reifier가 된다), 단언과 주석을 함께 쓰는 <code>{| … |}</code> 문법을 구분한다. 따라서 실제 제품에서는 교재 구문을 그대로 채택하기 전에 사용하는 엔진의 RDF 1.2 지원 범위와 의미를 확인해야 한다.[8]</p>
+        </div></div>
+        <pre id="code-rdf12-annotation"><code class="language-turtle"># Turtle 1.2 초안의 annotation 문법: 원 트리플을 단언하면서 근거도 함께 붙인다
+VERSION "1.2"
+OMIM:222100 :hasPhenotypicFeature HP:0410050
+  {| :source       PMID:9357814 ;
+     :createdBy    "Nicole Vasilevsky" ;
+     :creationDate "2018-02-23"^^xsd:date |} .</code></pre>
 
-        <h4>④ LPG — 관계 안에 그냥 적는다 <span class="asset-note">(책 Listing 3.11 · 3.12)</span></h4>
-        <pre><code class="language-cypher">// 적는 법 — 화살표 안 중괄호에 키–값을 그대로 넣는다
-(d {id: "OMIM:222100"})
+        <h4>④ LPG — 관계 자체에 키–값 속성을 둔다 <span class="asset-note">(책 Listing 3.11 · 3.12)</span></h4>
+        <p>LPG에서는 관계가 데이터베이스 안의 개별 요소이므로, 화살표 모양의 관계 안에 속성을 바로 넣을 수 있습니다. 다만 교재 Listing 3.11은 <code>CREATE</code>나 <code>MERGE</code>가 없는 <strong>모델 모양</strong>이라 그 조각만 실행할 수는 없습니다.</p>
+
+        <h4 class="sub-h4">모델 모양 · Cypher 패턴</h4>
+        <pre id="code-lpg-shape"><code class="language-cypher">(d {id: "OMIM:222100"})
   -[:HAS_PHENOTYPIC_FEATURE {
       source:       "PMID:9357814",
       createdBy:    "Nicole Vasilevsky",
       creationDate: "2018-02-23"
   }]-&gt;
-(p {id: "HP:0410050"})
+(p {id: "HP:0410050"})</code></pre>
 
-// 꺼내는 법 (Cypher) — 관계에 변수 r 을 붙이고 r 의 속성을 읽는다
-MATCH (d)-[r:HAS_PHENOTYPIC_FEATURE]-&gt;(p)
+        <h4 class="sub-h4">실제로 적는 법 · 기존 두 노드를 연결하는 예</h4>
+        <pre id="code-lpg-write"><code class="language-cypher">MATCH (d:HpoDisease {id: "OMIM:222100"})
+MATCH (p:HpoPhenotype {id: "HP:0410050"})
+CREATE (d)-[:HAS_PHENOTYPIC_FEATURE {
+  source:       "PMID:9357814",
+  createdBy:    "Nicole Vasilevsky",
+  creationDate: "2018-02-23"
+}]-&gt;(p)</code></pre>
+        <p><code>MATCH</code> 두 줄은 이미 존재하는 질병 노드와 표현형 노드를 각각 <code>d</code>와 <code>p</code>라는 변수에 담습니다. 소괄호 <code>( )</code>는 노드, 대괄호 <code>[ ]</code>는 관계, <code>-&gt;</code>는 저장 방향입니다. <code>CREATE</code>는 관계를 새로 만들기 때문에 같은 코드를 반복하면 같은 내용의 관계가 더 생길 수 있습니다. 반복 실행 안전성이 필요하면 주석 식별자와 중복 정책을 먼저 설계해야 합니다.</p>
+
+        <h4 class="sub-h4">꺼내는 법 · Cypher</h4>
+        <pre id="code-lpg-read"><code class="language-cypher">MATCH (d)-[r:HAS_PHENOTYPIC_FEATURE]-&gt;(p)
 WHERE d.id = "OMIM:222100" AND p.id = "HP:0410050"
 RETURN r.source, r.createdBy, r.creationDate</code></pre>
-        <p><strong>쉽게 말하면</strong> — 새 노드도, 봉투도, 확장 문법도 필요 없다. 관계에 이름(<code>r</code>)을 붙이고 속성을 읽으면 끝이다. 앞의 세 방식이 “근거를 어디 둘까”를 먼저 설계해야 했다면, LPG는 그 질문 자체가 생기지 않는다. <strong>이 3줄짜리 질의가 이 장이 LPG를 고른 이유의 전부다.</strong></p>
-        <small class="asset-note">교재 Listing 3.5–3.12를 그대로 옮기되, 원서 조판 과정에서 깨진 닫는 괄호·구두점(예: Listing 3.11의 미종료 문자열, Listing 3.10의 <code>? date</code> 띄어쓰기)은 실행 가능한 형태로 바로잡았다. 주석 줄과 들여쓰기는 읽기 편하도록 발표자가 붙였다.</small>
+        <table class="cmp-table" id="table-lpg-read">
+          <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 7</span><span class="asset-caption__title">관계를 변수에 담아 속성을 직접 읽는다</span></div></caption>
+          <thead><tr><th>줄</th><th>엔진에게 전달되는 뜻</th></tr></thead>
+          <tbody>
+            <tr><td><code>MATCH (d)-[r:…]-&gt;(p)</code></td><td>지정한 타입의 관계를 찾고 양쪽 노드를 <code>d</code>·<code>p</code>, 관계를 <code>r</code>에 담는다.</td></tr>
+            <tr><td><code>WHERE … AND …</code></td><td>두 ID 조건을 동시에 만족하는 연결만 남긴다.</td></tr>
+            <tr><td><code>RETURN r.source, …</code></td><td>관계 변수 <code>r</code>의 세 속성을 결과 열로 반환한다.</td></tr>
+          </tbody>
+        </table>
+        <div class="callout--insight"><span class="callout__kicker">초보자 질문 · match를 소문자로 써도 되나요?</span><div class="callout__body">
+          <p><code>MATCH</code>·<code>WHERE</code>·<code>RETURN</code> 같은 키워드는 대소문자를 바꿔 쓸 수 있지만 대문자 표기가 읽기 좋은 관례입니다. 반면 변수 <code>d</code>와 <code>D</code>, 레이블 <code>:HpoDisease</code>와 <code>:HPODISEASE</code>, 속성 <code>createdBy</code>와 <code>createdby</code>는 서로 다른 이름입니다.</p>
+        </div></div>
+        <p><strong>쉽게 말하면</strong> — LPG는 관계 메타데이터를 조회하는 코드 경로를 짧게 만든다. 하지만 “같은 질병–표현형 사이의 여러 주석을 관계 몇 개로 볼 것인가”라는 식별·중복 설계까지 없애 주지는 않는다. §3.2에서 볼 수 있듯 관계를 질병–표현형 쌍만으로 <code>MERGE</code>하면 서로 다른 근거가 한 관계에 덮일 수 있다. <strong>이 장이 LPG를 고른 이유는 문법의 절대 우월성이 아니라, 선택한 주석 단위를 보존한다는 전제에서 관계 속성을 바로 탐색할 수 있기 때문이다.</strong></p>
+        <small class="asset-note">교재 Listing 3.5–3.12의 비교 의도를 보존하면서 작성·조회 코드를 분리했다. 원서 조판 과정에서 깨진 닫는 괄호·구두점(예: Listing 3.11의 미종료 문자열, Listing 3.10의 <code>? date</code> 띄어쓰기)은 바로잡았다. 접두사 선언이 생략된 RDF 코드는 독립 실행문이 아닌 교재 조각이며, LPG에는 교재의 패턴 조각과 실제 <code>MATCH</code>·<code>CREATE</code> 예시를 구분해 제시했다. RDF 1.2 주의는 W3C 2026년 문서를 기준으로 보완했다.</small>
       </div>
 
       <table class="cmp-table" id="table-rdf-lpg">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 4</span><span class="asset-caption__title">RDF와 LPG의 선택 기준</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 8</span><span class="asset-caption__title">RDF와 LPG의 선택 기준</span></div></caption>
         <thead><tr><th>관점</th><th>RDF 계열</th><th>LPG</th><th>이 사례의 판단</th></tr></thead>
         <tbody>
           <tr><td>기본 표현</td><td>전역 식별 가능한 트리플</td><td>레이블 노드·고유 관계·속성</td><td>HPO 원천은 RDF/OWL, 앱 모델은 LPG</td></tr>
-          <tr><td>관계 메타데이터</td><td>n항 관계·명명 그래프·RDF-star 등</td><td>개별 관계의 키–값</td><td>출처·증거·날짜 접근을 단순화</td></tr>
+          <tr><td>관계 메타데이터</td><td>n항 관계·명명 그래프·RDF-star/RDF 1.2 reification 등</td><td>개별 관계의 키–값</td><td>접근을 단순화하되 주석 식별 단위는 별도 설계</td></tr>
           <tr><td>주요 강점</td><td>표준 교환·연합·의미 표현·추론</td><td>경로 탐색·관계 속성·운영 질의</td><td>Neosemantics로 두 강점을 일부 결합</td></tr>
           <tr><td>선택 위험</td><td>주석 모델과 엔진 지원이 복잡할 수 있음</td><td>OWL 의미를 전부 자동 보존하지 않음</td><td>필요한 계층·규칙만 명시적으로 검증</td></tr>
         </tbody>
@@ -249,7 +345,7 @@ RETURN r.source, r.createdBy, r.creationDate</code></pre>
         <small class="asset-note">교재 그림 3.1–3.2, 3.7, 3.9–3.10의 전체 흐름을 산출물과 검증 지점 중심으로 통합 재구성. 각 단계가 남겨야 할 산출물은 대표 질문, 원천 계약, 모델 선택 근거, 적재 로그, 품질 점검과 재현 가능한 질의다.</small>
       </figure>
       <table class="cmp-table" id="table-build-steps">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 5</span><span class="asset-caption__title">설계 이후 여섯 구축 단계의 입력·출력·확인 질문</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 9</span><span class="asset-caption__title">설계 이후 여섯 구축 단계의 입력·출력·확인 질문</span></div></caption>
         <thead><tr><th>단계</th><th>주요 작업</th><th>출력</th><th>품질 확인</th></tr></thead>
         <tbody>
           <tr><td>DB 준비</td><td>DB 생성, URI/ID 유일성 제약, ID 인덱스</td><td>중복을 거부하는 저장 공간</td><td>제약 충돌과 기존 데이터 상태</td></tr>
@@ -264,7 +360,14 @@ RETURN r.source, r.createdBy, r.creationDate</code></pre>
 
       <div id="code-ontology-load">
         <h4>전반부 코드 — 온톨로지가 들어오기까지 네 줄</h4>
-        <p>표 5의 앞 세 단계는 코드로 보면 놀랄 만큼 짧다. 무거운 일은 전부 Neosemantics가 대신하고, 우리가 하는 일은 <strong>규칙을 미리 정해 두는 것</strong>뿐이다.</p>
+        <p>표 9의 앞 세 단계는 코드로 보면 놀랄 만큼 짧다. 무거운 일은 전부 Neosemantics가 대신하고, 우리가 하는 일은 <strong>규칙을 미리 정해 두는 것</strong>뿐이다.</p>
+        <div class="callout--insight"><span class="callout__kicker">Cypher 그림 문법을 먼저 읽어 볼게요</span><div class="callout__body"><ul>
+          <li><code>(n)</code> — 소괄호는 노드이고, <code>n</code>은 그 노드를 뒤에서 다시 부르기 위한 변수입니다.</li>
+          <li><code>(n:HpoPhenotype)</code> — 콜론 뒤의 <code>HpoPhenotype</code>은 노드의 역할을 나타내는 레이블입니다.</li>
+          <li><code>{id: "HP:…"}</code> — 중괄호는 속성 이름과 값을 묶은 map입니다.</li>
+          <li><code>-[r:TYPE]-&gt;</code> — 대괄호는 관계, <code>r</code>은 관계 변수, <code>TYPE</code>은 관계 타입, 화살촉은 저장 방향입니다.</li>
+          <li><code>n.id</code> — 점은 변수 <code>n</code>에 들어 있는 요소의 <code>id</code> 속성을 읽는다는 뜻입니다.</li>
+        </ul></div></div>
         <pre><code class="language-cypher">// ① 그릇 만들기 (책 3.13) — Enterprise 전용 명령이다
 CREATE DATABASE hpo IF NOT EXISTS
 
@@ -282,6 +385,12 @@ CALL n10s.graphconfig.set({ applyNeo4jNaming: True });      // 관계 타입을 
 
 // ④ 적재 (책 3.16) — 딱 한 줄이다
 CALL n10s.rdf.import.fetch("http://purl.obolibrary.org/obo/hp.owl", "RDF/XML");</code></pre>
+        <div class="callout--insight"><span class="callout__kicker">네 단계가 필요한 이유</span><div class="callout__body"><ol>
+          <li><code>CREATE DATABASE</code>는 데이터를 담을 공간을 준비합니다. <code>IF NOT EXISTS</code>는 이미 있으면 오류 대신 그대로 두라는 안전장치입니다.</li>
+          <li><code>CONSTRAINT</code>는 중복을 거부하는 규칙이고, <code>INDEX</code>는 ID로 빨리 찾기 위한 색인입니다. 둘은 목적이 다릅니다.</li>
+          <li><code>n10s.graphconfig</code>는 RDF 이름을 Neo4j 이름으로 어떻게 번역할지 먼저 고정합니다. 번역 규칙을 적재 뒤에 바꾸면 같은 원문이 다른 그래프 모양이 될 수 있습니다.</li>
+          <li><code>n10s.rdf.import.fetch</code>는 URL에서 RDF/XML을 받아 앞서 정한 규칙으로 노드·관계를 만듭니다. 문자열 <code>"RDF/XML"</code>은 파일을 어떤 문법으로 읽을지 알려 줍니다.</li>
+        </ol></div></div>
         <p><strong>③이 왜 중요한가</strong> — <code>handleVocabUris: "IGNORE"</code>는 임포트할 때 네임스페이스를 떼어 낸다. 그래서 속성 이름이 <code>obo:IAO_0000115</code>가 아니라 <code>iAO_0000115</code>가 된다. <code>applyNeo4jNaming: True</code>는 관계 타입을 대문자로 바꾼다. 그래서 OWL의 <code>rdfs:subClassOf</code>가 LPG 관용 표기인 <code>:SUBCLASSOF</code>로 들어온다. <strong>§5의 추론이 <code>SUBCLASSOF</code>라는 이름으로 계층을 훑을 수 있는 건 이 한 줄 덕분이다.</strong></p>
         <pre><code class="language-cypher">// ⑤ 접합면 만들기 (책 3.17) — 이 장에서 가장 중요한 다섯 줄
 MATCH (n:Resource)
@@ -314,6 +423,13 @@ SKIP 5
 MATCH (dis:HpoDisease)   WHERE dis.id = row[0]   // TSV 0번 열 = OMIM:222100
 MATCH (phe:HpoPhenotype) WHERE phe.id = row[3]   // TSV 3번 열 = HP:0410050
 MERGE (dis)-[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe)</code></pre>
+        <div class="callout--insight"><span class="callout__kicker">TSV 한 행이 Cypher 변수로 바뀌는 과정</span><div class="callout__body"><ul>
+          <li><code>LOAD CSV … AS row</code>는 파일을 한 행씩 읽어 현재 행을 <code>row</code>라는 리스트에 담습니다.</li>
+          <li><code>FIELDTERMINATOR '\t'</code>는 쉼표가 아니라 탭으로 열을 나누라는 뜻입니다. 이름은 CSV지만 TSV도 이 설정으로 읽습니다.</li>
+          <li><code>WITH row SKIP 5</code>는 다음 절로 <code>row</code>만 넘기면서 메타데이터 4행과 헤더 1행을 버립니다.</li>
+          <li><code>row[0]</code>은 첫 번째 열, <code>row[3]</code>은 네 번째 열입니다. 리스트 번호가 0부터 시작하기 때문입니다.</li>
+          <li><code>MERGE</code>는 패턴을 먼저 찾고 없을 때만 만듭니다. <code>ON CREATE SET</code>은 이번에 새로 만든 경우에만 이름을 채워 기존 값을 함부로 덮지 않습니다.</li>
+        </ul></div></div>
         <p><strong>여기가 두 파일이 만나는 지점이다.</strong> <code>phe.id</code>는 ①에서 <code>hp.owl</code>의 URI를 가공해 만든 값이고, <code>row[3]</code>은 TSV가 원래 갖고 있던 값이다. 형식이 전혀 다른 두 파일이 <strong>온톨로지의 표준 식별자를 공통 언어로 삼아</strong> 하나의 그래프가 된다. §1에서 말한 “의미 통합”의 구체적 실체가 이 두 줄이다.</p>
         <pre><code class="language-cypher">// ③ 관계에 근거 붙이기 (책 3.22) — 열 8개를 그대로 관계 속성으로
 LOAD CSV FROM 'https://mng.bz/qRyr' AS row
@@ -331,6 +447,9 @@ FOREACH(_ IN CASE WHEN row[9]  IS NOT NULL THEN [1] ELSE [] END | SET rel.modifi
 FOREACH(_ IN CASE WHEN row[10] IS NOT NULL THEN [1] ELSE [] END | SET rel.aspect      = row[10])
 FOREACH(_ IN CASE WHEN row[11] IS NOT NULL THEN [1] ELSE [] END | SET rel.biocuration = row[11])</code></pre>
         <p><strong><code>FOREACH(CASE …)</code>가 왜 이렇게 생겼나</strong> — Cypher에는 “조건이 맞을 때만 <code>SET</code>”이라는 문법이 없다. 그래서 <em>원소가 1개인 리스트를 도는 반복문</em>과 <em>빈 리스트를 도는 반복문</em>(=아무것도 안 함)으로 if를 흉내 낸다. 목적은 단순하다. TSV에서 빈 칸인 열이 기존 값을 <code>null</code>로 덮어쓰지 못하게 막는 것이다. 여덟 번 반복되는 건 열이 여덟 개이기 때문이지 다른 뜻은 없다.</p>
+        <div class="callout--insight"><span class="callout__kicker">기호를 한 번 더 풀면</span><div class="callout__body">
+          <p><code>CASE WHEN … THEN [1] ELSE [] END</code>는 값이 있으면 한 칸짜리 리스트, 없으면 빈 리스트를 만듭니다. <code>FOREACH(_ IN … | SET …)</code>의 밑줄 <code>_</code>은 리스트의 실제 값이 필요 없다는 관례적 변수 이름이고, 세로줄 <code>|</code> 뒤가 각 원소에 대해 실행할 갱신입니다. 즉 리스트 길이를 1 또는 0으로 바꾸어 실행 횟수를 제어합니다.</p>
+        </div></div>
         <pre><code class="language-cypher">// ④ 사람이 읽을 수 있게 바꾸기 (책 3.23) — 약어를 문장으로, 출처를 링크로
 CALL apoc.periodic.iterate(
   "MATCH (dis:HpoDisease)-[rel:HAS_PHENOTYPIC_FEATURE]-&gt;(phe:HpoPhenotype) RETURN rel",
@@ -374,7 +493,7 @@ YIELD batches, total RETURN batches, total</code></pre>
       <p>교재 결과는 Neo4j 5.20.0, APOC 5.20.0, Neosemantics 5.20.0과 2025년 2월 HPO를 기준으로 한다. 저장소의 학습 노트북은 2026-06-23 HPOA 메타데이터를 확인했으며, “latest” URL을 쓰면 데이터가 계속 바뀐다. 따라서 노드·관계 수와 상위 질병 목록이 책과 다른 것은 곧바로 오류가 아니라 <strong>데이터 드리프트</strong>일 수 있다. 재현하려면 온톨로지·주석의 릴리스 URL과 체크섬을 함께 고정해야 한다.</p>
       <p>또한 교재 Listing 3.18의 중간 상태 질의는 최종 정제 후 실행하면 실패한다. 이는 동일 코드가 어떤 시점에 실행됐는지가 결과의 일부라는 뜻이다. 실습 저장소의 파일 번호는 최종 교재보다 +3 오프셋이 있고, 일부 업스트림 파일은 중복 또는 0바이트라 <a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/study.toml" rel="noreferrer" target="_blank"><code>study.toml</code></a>의 <code>[mapping.listings.ch03]</code>가 정본이다.</p>
       <table class="cmp-table" id="table-implementation-audit">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 6</span><span class="asset-caption__title">원자료·코드 감사에서 확인한 재현 경계</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 10</span><span class="asset-caption__title">원자료·코드 감사에서 확인한 재현 경계</span></div></caption>
         <thead><tr><th>경계</th><th>관찰</th><th>영향</th><th>권장 통제</th></tr></thead>
         <tbody>
           <tr><td>데이터 버전</td><td>책은 2025-02, 노트북 확인본은 2026-06-23</td><td>건수·후보 순위·주석 내용 변경</td><td>릴리스 URL·체크섬·적재일 기록</td></tr>
@@ -393,7 +512,7 @@ YIELD batches, total RETURN batches, total</code></pre>
         <p>노트북은 Docker로 띄운 <strong>Neo4j 5.26.28 Community</strong>에서 돌렸다(플러그인 <code>n10s</code>·<code>apoc</code>·<code>gds</code>). 그런데 <strong>책의 첫 명령 <code>CREATE DATABASE hpo</code>가 Community 에디션에서는 실패한다</strong> — 멀티 데이터베이스는 Enterprise 전용 기능이라 <code>UnsupportedAdministrationCommand</code> 오류가 난다. 노트북은 기본 <code>neo4j</code> 데이터베이스를 그대로 쓰는 것으로 우회했고, 학습 내용에는 영향이 없다. 교재가 Enterprise 5.20 기준이라는 점을 모르면 <strong>첫 줄에서 막힌다.</strong></p>
       </div></div>
       <table class="cmp-table" id="table-notebook-measurements">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 7</span><span class="asset-caption__title">책 실행값과 노트북 재실행 실측값</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 11</span><span class="asset-caption__title">책 실행값과 노트북 재실행 실측값</span></div></caption>
         <thead><tr><th>항목</th><th>교재 (HPO 2025-02)</th><th>노트북 (HPOA 2026-06-23)</th><th>읽는 법</th></tr></thead>
         <tbody>
           <tr><td>적재된 트리플</td><td>899,558</td><td><strong>926,450</strong></td><td>16개월 사이 약 2.7만 건 증가. 숫자가 다른 것이 정상이다</td></tr>
@@ -428,6 +547,11 @@ YIELD batches, total RETURN batches, total</code></pre>
 MATCH path=(dis:HpoDisease)-[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe:HpoPhenotype)
 WHERE dis.id = "OMIM:222100"
 RETURN path</code></pre>
+      <div class="callout--insight"><span class="callout__kicker">세 줄을 그래프 그림으로 읽기</span><div class="callout__body"><ol>
+        <li><code>MATCH path=…</code>는 질병 노드에서 표현형 노드로 가는 전체 패턴을 찾고, 노드와 관계를 포함한 경로를 <code>path</code> 변수에 담습니다.</li>
+        <li><code>WHERE dis.id = …</code>는 찾은 모든 질병 중 제1형 당뇨병 ID 하나만 남깁니다.</li>
+        <li><code>RETURN path</code>는 이름 목록이 아니라 경로 자체를 반환하므로 Neo4j Browser가 중심 질병과 주변 표현형을 그래프로 그릴 수 있습니다.</li>
+      </ol></div></div>
       <p>노트북 재실행 결과 <code>OMIM:222100</code>에는 표현형 <strong>8개</strong>가 달려 있다 — Autoimmunity, Decreased circulating 1,5 anhydroglucitol concentration, Diabetes mellitus, Hyperglycemia, Ketoacidosis, Polydipsia, Polyphagia, Polyuria. 다음(그림 6)에서 중심 노드를 둘러싼 별 모양이 이것이다.</p>
       <p>이어 임상의가 환자에게서 성장 지연(<a href="https://www.ebi.ac.uk/ols4/ontologies/hp/classes?obo_id=HP:0001510" rel="noreferrer" target="_blank"><code>HP:0001510</code></a>), 큰 무릎(<a href="https://www.ebi.ac.uk/ols4/ontologies/hp/classes?obo_id=HP:0030866" rel="noreferrer" target="_blank"><code>HP:0030866</code></a>), 감각신경성 청각 장애(<a href="https://www.ebi.ac.uk/ols4/ontologies/hp/classes?obo_id=HP:0000407" rel="noreferrer" target="_blank"><code>HP:0000407</code></a>), 소양증(<a href="https://www.ebi.ac.uk/ols4/ontologies/hp/classes?obo_id=HP:0000989" rel="noreferrer" target="_blank"><code>HP:0000989</code></a>)을 추가로 관찰했다고 가정한다. 위 목록에 없는 증상들이다. 이제 <strong>질문이 뒤집힌다</strong> — “이 질병의 증상은?”이 아니라 <strong>“이 증상 조합을 가진 질병은?”</strong>이다. 그래프에서는 <em>화살표를 반대로 따라가기만 하면</em> 되는 같은 질의다. 두 번째 질의는 다섯 표현형과 연결된 질병을 모으고, 겹치는 특징 수를 내림차순으로 정렬한다.</p>
       <pre><code class="language-cypher">// 책 3.26 — 증상 조합에서 질병 후보로
@@ -446,6 +570,14 @@ RETURN dis.id AS disease_id,
        count(nodes) AS num_of_features
 ORDER BY num_of_features DESC, disease_name
 LIMIT 5</code></pre>
+      <div class="callout--insight"><span class="callout__kicker">여덟 절을 데이터 파이프라인으로 읽기</span><div class="callout__body"><ol>
+        <li>첫 <code>MATCH</code>와 <code>WHERE … IN [ … ]</code>은 관찰한 다섯 이름과 같은 표현형만 고릅니다. <code>IN</code>은 “이 리스트 안에 포함되는가?”를 검사합니다.</li>
+        <li><code>WITH phe</code>는 선택된 표현형을 다음 질의 절로 넘깁니다. SQL의 서브쿼리 경계와 비슷하지만, Cypher에서는 행이 절에서 절로 흐르는 파이프 역할을 합니다.</li>
+        <li>두 번째 <code>MATCH</code>는 각 표현형으로 들어오는 질병 관계를 찾아 질병–표현형 일치 한 건마다 행을 만듭니다.</li>
+        <li><code>dis</code>는 리스트가 아니라 질병 노드 하나인데도, 교재는 <code>UNWIND dis AS nodes</code>로 그 노드를 한 번 흘려보낸 뒤 <code>count(nodes)</code>로 일치 행 수를 셉니다. 학습 노트북에서 <code>count(nodes)</code>와 <code>count(phe)</code>의 상위 5행이 같음을 확인했으므로, 이 예제에서는 <code>count(phe)</code>가 의도를 더 직접 보여 줍니다.</li>
+        <li><code>collect(phe.label)</code>은 같은 질병에 속한 표현형 이름을 리스트 하나로 모으고, <code>count(nodes)</code>는 그 질병이 몇 특징과 일치했는지 셉니다.</li>
+        <li><code>AS</code>는 결과 열에 사람이 읽을 별칭을 붙입니다. <code>ORDER BY … DESC</code>는 일치 수가 큰 순서, <code>LIMIT 5</code>는 상위 다섯 행만 반환한다는 뜻입니다.</li>
+      </ol></div></div>
       <p>교재의 2025년 2월 스냅샷에서는 다섯 특징을 모두 공유하는 <em>Odontochondrodysplasia 2 with hearing loss and diabetes</em>(OMIM:619269)가 첫 후보로 나타난다. 그다음 후보는 세 개 또는 두 개의 특징을 공유한다. 그래프의 가치는 질병 이름만 반환하는 데 있지 않다. 어떤 표현형 경로가 점수를 만들었는지, 각 관계에 어떤 출처·증거·빈도가 있는지 다시 열어볼 수 있다.</p>
       <figure class="report-figure" id="fig-clinical-query" data-deck-use="required">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 6</span><span class="asset-caption__title">관찰한 다섯 표현형으로 질병 후보를 순위화하기</span></figcaption>
@@ -453,7 +585,7 @@ LIMIT 5</code></pre>
         <small class="asset-note">교재 §3.4, Listing 3.25–3.26과 표 3.2를 경로와 겹침 수 중심으로 재구성. 선은 후보 랭킹에서 공유 주석의 존재만 나타내며 관계 방향은 그림 2의 질병→표현형을 따른다. 질병명과 수치는 HPO 2025-02 교재 스냅샷이다. 표기 주의 — 교재와 현재 HPOA 데이터는 모두 <em>Ondontochondrodysplasia</em>로 적혀 있고, 이 리포트 본문은 OMIM:619269의 정식 표기 <em>Odontochondrodysplasia</em>를 쓴다. 노트북을 직접 돌리면 데이터 원문 표기가 그대로 출력된다.</small>
       </figure>
       <table class="cmp-table" id="table-candidate-results">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 8</span><span class="asset-caption__title">교재 스냅샷의 상위 후보와 해석 경계</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 12</span><span class="asset-caption__title">교재 스냅샷의 상위 후보와 해석 경계</span></div></caption>
         <thead><tr><th>후보</th><th>공유 특징</th><th>이 결과가 말하는 것</th><th>말하지 않는 것</th></tr></thead>
         <tbody>
           <tr><td><a href="https://omim.org/entry/619269" rel="noreferrer" target="_blank">Odontochondrodysplasia 2 with hearing loss and diabetes</a></td><td>5</td><td>입력 다섯 표현형 모두와 주석 경로가 있음</td><td>환자가 이 질병일 확률 또는 확정 진단</td></tr>
@@ -465,7 +597,7 @@ LIMIT 5</code></pre>
       <h3 id="rerun-drift">4.2 같은 질의를 지금 돌리면 2위 이하가 바뀐다</h3>
       <p>§3.4의 노트북으로 <strong>똑같은 책 3.26 질의</strong>를 2026-06-23 HPOA에서 다시 돌린 결과다. 결론(1위)은 그대로지만 <strong>그 아래는 상당히 달라졌다.</strong></p>
       <table class="cmp-table" id="table-rerun-candidates">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 9</span><span class="asset-caption__title">같은 질의, 다른 스냅샷 — 후보 순위 대조</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 13</span><span class="asset-caption__title">같은 질의, 다른 스냅샷 — 후보 순위 대조</span></div></caption>
         <thead><tr><th>순위</th><th>교재 (HPO 2025-02)</th><th>노트북 재실행 (HPOA 2026-06-23)</th></tr></thead>
         <tbody>
           <tr><td>1</td><td><a href="https://omim.org/entry/619269" rel="noreferrer" target="_blank">OMIM:619269</a> Ondontochondrodysplasia 2 … <strong>(5)</strong></td><td>OMIM:619269 동일 <strong>(5)</strong> — 변화 없음</td></tr>
@@ -476,7 +608,7 @@ LIMIT 5</code></pre>
         </tbody>
       </table>
       <p><strong>세 가지를 읽어야 한다.</strong> 첫째, <strong>진단 결론은 견고하다</strong> — 다섯 특징을 모두 공유하는 1위는 16개월이 지나도 그대로다. 둘째, <strong>3개 공유 후보가 두 건 새로 생겼다</strong>. 교재에서는 3개 공유가 1건뿐이라 2위가 도드라져 보였지만, 지금은 3개 공유가 3건이라 <strong>“2위와 3위의 격차”라는 인상 자체가 사라진다.</strong> 셋째, 3-methylglutaconic aciduria VIII의 <strong>OMIM 번호가 614700에서 617248로 바뀌었다</strong> — 질병 식별자조차 고정된 상수가 아니다.</p>
-      <p>이것이 §3.3이 말한 드리프트의 실물이다. 슬라이드에 표 8만 띄우고 <em>“이 목록이 나옵니다”</em>라고 말하면, 청중이 노트북을 돌렸을 때 다른 화면을 보고 코드가 틀렸다고 생각하게 된다. <strong>결과를 보여줄 때는 반드시 어느 릴리스에서 나온 값인지 함께 적어야 한다.</strong></p>
+      <p>이것이 §3.3이 말한 드리프트의 실물이다. 슬라이드에 표 12만 띄우고 <em>“이 목록이 나옵니다”</em>라고 말하면, 청중이 노트북을 돌렸을 때 다른 화면을 보고 코드가 틀렸다고 생각하게 된다. <strong>결과를 보여줄 때는 반드시 어느 릴리스에서 나온 값인지 함께 적어야 한다.</strong></p>
       <div class="callout--insight"><span class="callout__kicker">임상 경계</span><div class="callout__body"><p>단순 겹침 수 <code>count(nodes)</code>는 표현형의 희귀도, 부정 소견, 발현 시점, 증거 질, 환자 인구집단을 가중하지 않는다. 결과 화면은 후보·경로·근거를 함께 보여주고 임상의의 다음 검토를 지원해야 한다. 위의 순위 변동이 보여주듯 <strong>“2위”라는 자리 자체가 데이터 갱신에 흔들린다.</strong></p></div></div>
     </section>
 
@@ -511,6 +643,13 @@ MATCH (dis)-[:HAS_PHENOTYPIC_FEATURE]-&gt;(phe:HpoPhenotype)
 RETURN dis.label AS disease, collect(DISTINCT phe.label) AS features
 ORDER BY size(features) ASC, disease</code></pre>
         <p><strong>쉽게 말하면</strong> — <code>*1..3</code>은 “하위 클래스 관계를 1단계에서 3단계까지 따라가라”는 뜻이다. 화살표 방향(<code>&lt;-</code>)에 주의해야 한다. HPO는 <em>자식 → 부모</em> 방향으로 <code>SUBCLASSOF</code>를 저장하므로, 부모에서 자식을 찾으려면 화살표를 거꾸로 읽어야 한다. 3.28의 <code>nodesInCategory</code>는 이 순회를 대신 해 주면서 <strong>깊이 제한 없이</strong> 훑고, 찾은 표현형에 주석된 질병까지 한 번에 돌려준다.</p>
+        <div class="callout--insight"><span class="callout__kicker">프로시저 호출 문법만 따로 보기</span><div class="callout__body"><ul>
+          <li><code>CALL n10s.inference.nodesInCategory(cat, { … })</code> — 현재 노드 <code>cat</code>과 설정 map을 외부 프로시저에 전달합니다.</li>
+          <li><code>inCatRel</code>은 “구성원과 범주를 어떤 관계로 연결했는가”, <code>subCatRel</code>은 “하위 범주와 상위 범주를 어떤 관계로 연결했는가”를 알려 줍니다.</li>
+          <li><code>YIELD node AS dis</code> — 프로시저가 내놓은 <code>node</code> 열을 이후 질의에서 <code>dis</code>라는 질병 변수로 사용합니다.</li>
+          <li><code>collect(DISTINCT phe.label)</code> — 같은 표현형 이름이 여러 경로에서 나와도 한 번만 모읍니다.</li>
+          <li><code>size(features)</code> — 모아 둔 표현형 리스트의 길이를 계산해 정렬에 사용합니다.</li>
+        </ul></div></div>
       </div>
       <figure class="report-figure" id="fig-hierarchical-inference" data-deck-use="required">
         <figcaption class="asset-caption asset-caption--figure"><span class="asset-caption__chip">그림 7</span><span class="asset-caption__title">하위 표현형 주석을 상위 범주 질의에 포함하기</span></figcaption>
@@ -522,7 +661,7 @@ ORDER BY size(features) ASC, disease</code></pre>
       <p>계층 추론은 검색 누락을 줄이지만 품질을 자동 보장하지 않는다. <code>1..3</code> 깊이는 구현자가 정한 범위이고, 더 깊은 하위 개념을 놓칠 수 있다. 반대로 범위를 무제한으로 넓히면 너무 일반적인 상위 개념을 통해 관련성이 약한 후보가 늘 수 있다. 또한 HPO와 주석은 불완전하게 갱신되므로 “연결 없음”을 “관련 없음”으로 해석해서는 안 된다.</p>
       <p>노트북이 이 두 문장을 숫자로 확인했다. <code>HP:0000818</code>의 하위 표현형은 <strong>깊이 1\~3으로 세면 256개, 깊이 제한을 풀면 474개</strong>다. 즉 책 3.27의 <code>*1..3</code>은 <strong>실제 계층의 절반가량만 본다.</strong> 무엇을 놓치는지도 구체적이다. 책 표 3.3에 나오는 <em>Transient neonatal diabetes mellitus</em>는 <code>HP:0000818</code>에서 <strong>4단계 아래</strong>라 <code>*1..3</code>으로는 잡히지 않는다. 3.28이 프로시저를 쓰는 이유가 바로 이것이다.</p>
       <table class="cmp-table" id="table-inference-drift">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 10</span><span class="asset-caption__title">추론 범위와 온톨로지 변경의 실측 영향</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 14</span><span class="asset-caption__title">추론 범위와 온톨로지 변경의 실측 영향</span></div></caption>
         <thead><tr><th>관찰</th><th>실측</th><th>무엇을 뜻하는가</th></tr></thead>
         <tbody>
           <tr><td>깊이 <code>*1..3</code> 하위 표현형</td><td>256개</td><td>책 3.27이 실제로 보는 범위</td></tr>
@@ -537,7 +676,7 @@ ORDER BY size(features) ASC, disease</code></pre>
       </div></div>
       <p>따라서 결과에는 직접 연결인지 계층으로 포함됐는지, 어떤 <code>SUBCLASSOF</code> 경로를 따라왔는지, 어느 HPO 릴리스를 썼는지를 함께 표시해야 한다. 임상의가 추론 경로를 검토할 수 없다면 추론의 설명 가능성은 저장소 내부에만 머문다.</p>
       <table class="cmp-table" id="table-query-reasoning">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 11</span><span class="asset-caption__title">직접 질의와 계층 추론의 역할·위험 비교</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 15</span><span class="asset-caption__title">직접 질의와 계층 추론의 역할·위험 비교</span></div></caption>
         <thead><tr><th>관점</th><th>직접 연결 질의</th><th>계층 추론</th><th>화면에 남길 근거</th></tr></thead>
         <tbody>
           <tr><td>범위</td><td>명시된 질병–표현형 주석</td><td>하위 표현형을 상위 범주에 포함</td><td>direct / inferred 상태</td></tr>
@@ -566,7 +705,7 @@ ORDER BY size(features) ASC, disease</code></pre>
         <small class="asset-note">교재의 데이터 품질 강조와 Chapter 3 구현 감사를 운영 통제 관점으로 재구성. 게이트 통과는 의료적 타당성의 자동 증명이 아니라 임상의가 검토할 후보와 근거를 만들었다는 뜻이다.</small>
       </figure>
       <table class="cmp-table" id="table-failure-modes">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 12</span><span class="asset-caption__title">주장–조건–실패 신호 추적표</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 16</span><span class="asset-caption__title">주장–조건–실패 신호 추적표</span></div></caption>
         <thead><tr><th>핵심 주장</th><th>근거</th><th>적용 조건</th><th>실패 신호</th></tr></thead>
         <tbody>
           <tr><td>온톨로지가 의미 통합을 돕는다</td><td>표준 ID·동의어·계층으로 원천을 정렬</td><td>매핑 규칙과 온톨로지 범위가 맞음</td><td>동일 개념의 복수 ID·잘못된 계층</td></tr>
@@ -587,7 +726,14 @@ WITH dis, count(DISTINCT phe) AS matched,
               url: rel.url, curator: rel.createdBy, date: rel.creationDate}) AS grounds
 RETURN dis.id AS disease_id, dis.label AS disease, matched, grounds
 ORDER BY matched DESC, disease</code></pre>
-      <p>달라진 것은 <strong>한 군데뿐이다.</strong> 관계에 <code>rel</code>이라는 이름을 붙이고, <code>rel.source</code>·<code>rel.url</code>·<code>rel.createdBy</code>를 함께 담았다. 실행 결과는 이렇게 나온다.</p>
+      <div class="callout--insight"><span class="callout__kicker">새로 등장한 문법</span><div class="callout__body"><ul>
+        <li><code>$features</code> — 질의 문자열 안에 환자 특징을 직접 붙이지 않고 애플리케이션이 별도로 전달하는 parameter입니다.</li>
+        <li><code>[rel:HAS_…]</code> — 관계에 <code>rel</code>이라는 변수를 붙였기 때문에 출처·URL·작성자 속성을 읽을 수 있습니다.</li>
+        <li><code>count(DISTINCT phe)</code> — 같은 표현형이 중복 경로로 잡혀도 한 번만 세어 일치 수가 부풀지 않게 합니다.</li>
+        <li><code>{feature: …, source: …}</code> — 근거 한 건을 key–value map으로 만들고, <code>collect(…)</code>가 그 map들을 <code>grounds</code> 리스트로 모읍니다.</li>
+        <li><code>WITH</code> — 질병별 일치 수와 근거 목록을 먼저 계산한 뒤, 다음 <code>RETURN</code>에 필요한 값만 넘깁니다.</li>
+      </ul></div></div>
+      <p>핵심 변화는 관계에 <code>rel</code>이라는 이름을 붙이고, 그 관계의 <code>source</code>·<code>url</code>·<code>createdBy</code> 등을 결과에 함께 담은 것이다. 실행 결과는 이렇게 나온다.</p>
       <pre><code class="language-text">OMIM:619269  Ondontochondrodysplasia 2 with hearing loss and diabetes — 특징 5개 일치
   · Pruritus
       증거   : Published clinical study
@@ -606,7 +752,7 @@ OMIM:618500  Holoprosencephaly 12 with or without pancreatic agenesis — 특징
       출처   : OMIM:618500   ->  https://omim.org/entry/618500
       큐레이션: skoehler (2019-09-07)</code></pre>
       <p><strong>여기서 두 후보의 성격이 갈린다.</strong> 1위 후보는 다섯 특징이 <strong>전부 같은 논문 하나(<a href="https://pubmed.ncbi.nlm.nih.gov/32101163" rel="noreferrer" target="_blank">PMID:32101163</a>)</strong>에서 왔다. 즉 이 증후군을 기술한 단일 임상 연구가 근거다. 2위 후보는 근거가 섞여 있다 — 하나는 <em>Published clinical study</em>(<a href="https://pubmed.ncbi.nlm.nih.gov/31006513" rel="noreferrer" target="_blank">PMID:31006513</a> — 사람이 논문을 읽고 기록), 둘은 <em>Inferred from electronic annotation</em>(<a href="https://omim.org/entry/618500" rel="noreferrer" target="_blank">OMIM:618500</a> 텍스트를 기계가 파싱). <strong>같은 “3개 일치”라도 근거의 무게가 다르다.</strong></p>
-      <p>겹침 수만 보면 이 차이가 보이지 않는다. §4.2의 “단순 겹침 수는 증거 질을 가중하지 않는다”는 경고가 추상이 아닌 이유가 이것이고, <strong>§2.2에서 LPG를 고른 결정이 최종적으로 값을 치르는 지점</strong>이기도 하다. RDF였다면 이 화면을 만들기 위해 n항 관계·명명 그래프·RDF-star 중 하나로 우회해야 했다.</p>
+      <p>겹침 수만 보면 이 차이가 보이지 않는다. §4.2의 “단순 겹침 수는 증거 질을 가중하지 않는다”는 경고가 추상이 아닌 이유가 이것이고, <strong>§2.2에서 LPG를 고른 결정이 최종적으로 값을 치르는 지점</strong>이기도 하다. RDF에서도 n항 관계·명명 그래프·RDF-star/RDF 1.2 reification 같은 모델로 같은 근거 화면을 만들 수 있지만, 이 사례의 LPG에서는 관계 변수 <code>rel</code>에서 메타데이터에 곧바로 접근하는 질의 경로가 짧다.</p>
 
       <h3 id="medical-boundary">6.3 이 장은 임상 의사결정 지원의 개념 증명이다</h3>
       <p>교재 사례는 HPO 데이터 위에서 질의와 추론이 어떻게 작동하는지 보여주는 교육용 예시다. 환자 EHR의 실제 수집·동의·권한·비식별화, 부정 표현형, 발현 시점, 환자군별 빈도, 임상 검증, 규제와 책임 배분은 다루지 않는다. 따라서 결과를 “진단”이라고 표현하기보다 <strong>검토 가능한 후보 생성</strong>으로 제한해야 한다.</p>
@@ -624,7 +770,7 @@ OMIM:618500  Holoprosencephaly 12 with or without pancreatic agenesis — 특징
 
       <h3 id="technology-decision">7.1 기술 이름이 아니라 지식 질문으로 선택한다</h3>
       <table class="cmp-table" id="table-decision">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 13</span><span class="asset-caption__title">온톨로지 기반 KG 도입 판단표</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 17</span><span class="asset-caption__title">온톨로지 기반 KG 도입 판단표</span></div></caption>
         <thead><tr><th>질문</th><th>도입 가치가 커지는 신호</th><th>다른 접근이 나은 신호</th><th>작은 실험</th></tr></thead>
         <tbody>
           <tr><td>의미 정렬이 핵심인가?</td><td>동의어·중의어·세분성 때문에 통합 오류가 큼</td><td>단일 시스템의 고정 코드만 사용</td><td>상위 100개 값의 표준 ID 매핑 감사</td></tr>
@@ -642,7 +788,7 @@ OMIM:618500  Holoprosencephaly 12 with or without pancreatic agenesis — 특징
 
       <h3 id="discussion">7.3 토론 질문</h3>
       <table class="cmp-table" id="table-discussion">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 14</span><span class="asset-caption__title">책의 개념을 우리 설계로 옮기는 질문</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 18</span><span class="asset-caption__title">책의 개념을 우리 설계로 옮기는 질문</span></div></caption>
         <thead><tr><th>질문</th><th>드러나는 설계 결정</th><th>좋은 답의 증거</th></tr></thead>
         <tbody>
           <tr><td>우리 데이터의 “같은 개념”은 누가 승인하는가?</td><td>매핑 소유권·변경 이력·충돌 정책</td><td>표본 감사와 되돌릴 수 있는 매핑 버전</td></tr>
@@ -656,7 +802,7 @@ OMIM:618500  Holoprosencephaly 12 with or without pancreatic agenesis — 특징
       <div class="report-section__kicker">Appendix A · Glossary</div>
       <h1>핵심 용어</h1>
       <table class="cmp-table" id="table-glossary">
-        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 15</span><span class="asset-caption__title">Chapter 3 용어 사전</span></div></caption>
+        <caption class="cmp-table__caption asset-caption asset-caption--table"><div class="asset-caption__inner"><span class="asset-caption__chip">표 19</span><span class="asset-caption__title">Chapter 3 용어 사전</span></div></caption>
         <thead><tr><th>용어</th><th>이 리포트에서의 의미</th></tr></thead>
         <tbody>
           <tr><td>온톨로지</td><td>도메인의 표준 개념·식별자·속성·범주·관계를 명시한 참조 어휘와 스키마.</td></tr>
@@ -681,8 +827,9 @@ OMIM:618500  Holoprosencephaly 12 with or without pancreatic agenesis — 특징
         <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[3]</span><span><a href="https://github.com/obophenotype/human-phenotype-ontology/releases/latest/download/phenotype.hpoa" rel="noreferrer" target="_blank">HPOA release data</a>. 이 URL은 latest이므로 재현 가능한 운영에서는 고정 릴리스와 체크섬을 기록해야 한다.</span></li>
         <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[4]</span><span>저장소의 Chapter 3 <a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/chapter_03_create_your_first_knowledge_graph_from_ontologies/03_create_your_first_knowledge_graph_from_ontologies.md" rel="noreferrer" target="_blank">원문</a>·<a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/chapter_03_create_your_first_knowledge_graph_from_ontologies/03_create_your_first_knowledge_graph_from_ontologies_ko.md" rel="noreferrer" target="_blank">한국어 번역</a>·<a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/chapter_03_create_your_first_knowledge_graph_from_ontologies/03_create_your_first_knowledge_graph_from_ontologies_ko_explained.md" rel="noreferrer" target="_blank">해설판</a>, <a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/importer/import_hpo.py" rel="noreferrer" target="_blank"><code>src/ch03/importer/import_hpo.py</code></a>, <a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/study.toml" rel="noreferrer" target="_blank"><code>study.toml</code></a> 리스팅 대응표를 원자료 감사에 사용했다. 업스트림 리스팅 원문은 저자 저장소 <a href="https://github.com/alenegro81/knowledge-graphs-and-llms-in-action/tree/main/chapters/ch03" rel="noreferrer" target="_blank">alenegro81/…/chapters/ch03</a>에 있다.</span></li>
         <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[5]</span><span>그림 1–8은 교재 도형을 복제하지 않고 Chapter 3의 논리 관계를 발표자가 새로 구성한 SVG다. 임상 결과 그림의 질병명과 공유 특징 수만 교재의 HPO 2025-02 결과 스냅샷을 따른다.</span></li>
-        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[6]</span><span>학습 노트북 <a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/03_chapter_guide.ipynb" rel="noreferrer" target="_blank"><code>03_chapter_guide.ipynb</code></a>. 표 7·9·10과 §3.4·4.2·5.2·6.2의 모든 실측 수치·실행 결과·소요 시간은 이 노트북을 Neo4j 5.26.28 Community(플러그인 <code>n10s</code>·<code>apoc</code>·<code>gds</code>)에서 HPOA 2026-06-23 스냅샷으로 끝까지 실행한 기록에서 가져왔다. 교재 값과 다른 숫자는 모두 이 재실행 결과다.</span></li>
-        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[7]</span><span>본문의 Cypher·Turtle·TriG·SPARQL 코드는 교재 Listing 3.5–3.28을 옮긴 것이다. 실행 가능한 리스팅은 저장소 <a href="https://github.com/restful3/ds4th_study/tree/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/listings" rel="noreferrer" target="_blank"><code>src/ch03/listings/</code></a>의 원문을 따랐고(파일 번호는 교재 번호 +3), 원서 조판 과정에서 깨진 구두점만 바로잡았다. 주석 줄과 들여쓰기는 읽기 편하도록 발표자가 붙인 것이며 교재 원문에는 없다.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[6]</span><span>학습 노트북 <a href="https://github.com/restful3/ds4th_study/blob/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/03_chapter_guide.ipynb" rel="noreferrer" target="_blank"><code>03_chapter_guide.ipynb</code></a>. 표 11·13·14와 §3.4·4.2·5.2·6.2의 모든 실측 수치·실행 결과·소요 시간은 이 노트북을 Neo4j 5.26.28 Community(플러그인 <code>n10s</code>·<code>apoc</code>·<code>gds</code>)에서 HPOA 2026-06-23 스냅샷으로 끝까지 실행한 기록에서 가져왔다. 교재 값과 다른 숫자는 모두 이 재실행 결과다.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[7]</span><span>본문의 Cypher·Turtle·TriG·SPARQL 코드는 교재 Listing 3.5–3.28의 비교 의도와 실행 흐름을 옮긴 것이다. 실행 가능한 Cypher 리스팅은 저장소 <a href="https://github.com/restful3/ds4th_study/tree/main/source/Alessandro%20Negro%20-%20Knowledge%20Graphs%20and%20LLMs%20in%20Action/chapter_03_create_your_first_knowledge_graph_from_ontologies/src/ch03/listings" rel="noreferrer" target="_blank"><code>src/ch03/listings/</code></a>의 원문을 따랐고(파일 번호는 교재 번호 +3), 원서 조판 과정에서 깨진 구두점은 바로잡았다. Listing 3.5–3.12의 RDF 계열 코드는 접두사 선언이 생략된 교재 조각이고, Listing 3.11은 실행 절이 없는 패턴 표현이므로 §2.2에서 독립 실행문과 구분했다. 주석 줄과 들여쓰기는 읽기 편하도록 발표자가 붙인 것이며 교재 원문에는 없다.</span></li>
+        <li style="display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);"><span style="min-width:36px;font-weight:800;color:var(--brand-primary);">[8]</span><span>W3C의 <a href="https://www.w3.org/TR/rdf12-concepts/" rel="noreferrer" target="_blank">RDF 1.2 Concepts and Abstract Data Model</a>, <a href="https://www.w3.org/TR/rdf12-turtle/" rel="noreferrer" target="_blank">RDF 1.2 Turtle</a>, <a href="https://www.w3.org/TR/rdf12-trig/" rel="noreferrer" target="_blank">RDF 1.2 TriG</a>, <a href="https://www.w3.org/TR/sparql12-query/" rel="noreferrer" target="_blank">SPARQL 1.2 Query Language</a>. 2026-07-31에 열람했으며, §2.2의 공백 노드·명명 그래프·triple term·reified triple·reifier·annotation 문법과 당시 문서 성숙도를 확인한 1차 자료다.</span></li>
       </ol>
       <div class="report-jump-links"><a href="./">발표자료</a><a href="../../">회차 목록</a><a href="#summary">문서 처음</a></div>
     </section>
