@@ -1,0 +1,11 @@
+study_id = "kg-llm-in-action-2026"
+session_id = "2026-08-08-ch04"
+title = "단순 네트워크에서 멀티소스 통합으로"
+date = "2026-08-08"
+presenters = ["종훈(S)"]
+chapters = ["Chapter 4"]
+template = "study-deck-v1"
+report_template = "study-report-v1"
+workflow = "raw-report-deck-v1"
+report_source = "report.html"
+artifacts = ["report", "slides"]

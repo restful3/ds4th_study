@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
+  <title id="title">KG 결과와 LLM 해석을 분리하는 검토 루프</title>
+  <desc id="desc">KG 질의 결과가 LLM 설명 후보로 바뀌고 사람 검토를 거쳐 연구 질문, 프로토콜 보완, 보류 또는 폐기로 갈라진다.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#627084"/>
+    </marker>
+    <style>
+      .text{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}
+      .title{font-size:23px;font-weight:900;fill:#0F0F10}
+      .label{font-size:16px;font-weight:850;fill:#0F0F10}
+      .small{font-size:13px;font-weight:650;fill:#596371}
+      .box{fill:#FFFFFF;stroke:#BAC6D6;stroke-width:1.6}
+      .dark{fill:#0F2C59}
+      .warn{fill:#FFF7ED;stroke:#D97706;stroke-width:2}
+      .ok{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+      .line{fill:none;stroke:#627084;stroke-width:2.5;marker-end:url(#arrow)}
+      .gate{fill:#0F2C59;font-size:12px;font-weight:900}
+    </style>
+  </defs>
+  <rect width="960" height="360" rx="18" fill="#FAFAF9"/>
+  <g class="text">
+    <text class="title" x="44" y="48">LLM 설명은 검증된 결정과 같은 상태가 아니다</text>
+    <text class="small" x="44" y="75">생명의학·임상 영역에서는 후보, 설명, 결정, 기록을 분리한다.</text>
+
+    <rect class="box" x="54" y="134" width="150" height="86" rx="14"/>
+    <text class="label" x="129" y="168" text-anchor="middle">KG 질의 결과</text>
+    <text class="small" x="129" y="192" text-anchor="middle">DWPC · CKG</text>
+
+    <path class="line" d="M204 177H266"/>
+    <rect class="box" x="266" y="134" width="150" height="86" rx="14"/>
+    <text class="label" x="341" y="168" text-anchor="middle">LLM 설명 후보</text>
+    <text class="small" x="341" y="192" text-anchor="middle">해석 · 질문</text>
+
+    <path class="line" d="M416 177H478"/>
+    <rect class="dark" x="478" y="124" width="160" height="106" rx="16"/>
+    <text class="label" x="558" y="163" text-anchor="middle" fill="#FFFFFF">사람 검토</text>
+    <text class="small" x="558" y="188" text-anchor="middle" fill="#D9E2EF">연구자 · 임상의</text>
+    <text class="small" x="558" y="209" text-anchor="middle" fill="#D9E2EF">근거 · 위험 · 맥락</text>
+
+    <path class="line" d="M638 158H704"/>
+    <rect class="ok" x="704" y="94" width="174" height="70" rx="13"/>
+    <text class="label" x="791" y="124" text-anchor="middle">연구 질문</text>
+    <text class="small" x="791" y="145" text-anchor="middle">후속 실험 설계</text>
+
+    <path class="line" d="M638 196H704"/>
+    <rect class="ok" x="704" y="196" width="174" height="70" rx="13"/>
+    <text class="label" x="791" y="226" text-anchor="middle">프로토콜 보완</text>
+    <text class="small" x="791" y="247" text-anchor="middle">선별 · 모니터링</text>
+
+    <path class="line" d="M558 230V282"/>
+    <rect class="warn" x="454" y="282" width="208" height="52" rx="13"/>
+    <text class="label" x="558" y="313" text-anchor="middle">보류 또는 폐기</text>
+
+    <text class="gate" x="558" y="107" text-anchor="middle">검증 게이트</text>
+  </g>
+</svg>

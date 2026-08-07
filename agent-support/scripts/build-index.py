@@ -256,7 +256,8 @@ def render_study(study: dict, decks: list[dict]) -> str:
                 f'    <div class="artifact-links">{"".join(links)}</div>\n'
                 "  </article>"
             )
-        body.append(f'  <div class="grid">\n{"\n".join(cards)}\n  </div>')
+        cards_markup = "\n".join(cards)
+        body.append(f'  <div class="grid">\n{cards_markup}\n  </div>')
     body.append("  <footer>공개 리포트·발표자료 경로는 스터디 아카이브 이후에도 유지됩니다.</footer>")
     return page_shell(study["title_ko"], "../../assets/site.css", "\n".join(body))
 

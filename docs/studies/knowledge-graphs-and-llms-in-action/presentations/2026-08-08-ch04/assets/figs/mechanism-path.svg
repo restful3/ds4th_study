@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
+  <title id="title">PPI와 질병 연관을 합친 최소 그래프 모델</title>
+  <desc id="desc">Disease 노드가 여러 Protein 노드와 연결되고 Protein 노드들은 서로 상호작용한다. 질병 경로는 연관 Protein 노드들만 뽑아낸 부분 그래프다.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#627084"/>
+    </marker>
+    <style>
+      .text{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}
+      .title{font-size:23px;font-weight:900;fill:#0F0F10}
+      .small{font-size:13px;font-weight:650;fill:#596371}
+      .label{font-size:15px;font-weight:850;fill:#0F0F10}
+      .edge{fill:none;stroke:#8EA0B6;stroke-width:2.5}
+      .assoc{fill:none;stroke:#0F2C59;stroke-width:3;marker-end:url(#arrow)}
+      .protein{fill:#FFFFFF;stroke:#0F2C59;stroke-width:2}
+      .disease{fill:#0F2C59}
+      .ghost{fill:#F4F7FA;stroke:#B7C2D0;stroke-width:1.6}
+      .pathbox{fill:#EEF4FA;stroke:#0F2C59;stroke-width:2;stroke-dasharray:8 7}
+      .note{font-size:12px;font-weight:750;fill:#0F2C59}
+    </style>
+  </defs>
+  <rect width="960" height="360" rx="18" fill="#FAFAF9"/>
+  <g class="text">
+    <text class="title" x="44" y="48">질병 경로는 Disease 노드가 아니라 관련 Protein 부분 그래프다</text>
+    <text class="small" x="44" y="75">PPI는 Protein-Protein 네트워크이고, 질병 연관은 Disease-Protein 관계를 추가한다.</text>
+
+    <rect class="pathbox" x="366" y="104" width="424" height="194" rx="18"/>
+    <text class="note" x="578" y="126" text-anchor="middle">disease pathway H_d</text>
+
+    <circle class="disease" cx="158" cy="200" r="58"/>
+    <text class="label" x="158" y="194" text-anchor="middle" fill="#FFFFFF">Disease</text>
+    <text class="small" x="158" y="216" text-anchor="middle" fill="#D9E2EF">celiac disease</text>
+
+    <path class="assoc" d="M214 187C278 164 315 146 388 148"/>
+    <path class="assoc" d="M216 205C292 209 319 205 398 205"/>
+    <path class="assoc" d="M209 226C278 265 323 263 394 260"/>
+    <text class="small" x="282" y="176" text-anchor="middle">ASSOCIATED_WITH</text>
+
+    <circle class="protein" cx="430" cy="148" r="34"/>
+    <text class="label" x="430" y="154" text-anchor="middle">P1</text>
+    <circle class="protein" cx="526" cy="205" r="34"/>
+    <text class="label" x="526" y="211" text-anchor="middle">P2</text>
+    <circle class="protein" cx="430" cy="260" r="34"/>
+    <text class="label" x="430" y="266" text-anchor="middle">P3</text>
+    <circle class="protein" cx="674" cy="160" r="34"/>
+    <text class="label" x="674" y="166" text-anchor="middle">P4</text>
+    <circle class="protein" cx="690" cy="258" r="34"/>
+    <text class="label" x="690" y="264" text-anchor="middle">P5</text>
+
+    <path class="edge" d="M459 165L496 188"/>
+    <path class="edge" d="M459 244L496 221"/>
+    <path class="edge" d="M556 194L644 171"/>
+    <path class="edge" d="M557 218L659 246"/>
+    <path class="edge" d="M462 148C535 120 590 121 644 145"/>
+    <text class="small" x="604" y="100" text-anchor="middle">INTERACTS_WITH</text>
+
+    <circle class="ghost" cx="828" cy="98" r="28"/>
+    <text class="label" x="828" y="104" text-anchor="middle">Px</text>
+    <circle class="ghost" cx="840" cy="304" r="28"/>
+    <text class="label" x="840" y="310" text-anchor="middle">Py</text>
+    <path class="edge" d="M706 147L806 105"/>
+    <path class="edge" d="M718 267L817 299"/>
+    <text class="small" x="817" y="196" text-anchor="middle">외부 PPI 연결은</text>
+    <text class="small" x="817" y="215" text-anchor="middle">conductance에서 다시 본다</text>
+  </g>
+</svg>

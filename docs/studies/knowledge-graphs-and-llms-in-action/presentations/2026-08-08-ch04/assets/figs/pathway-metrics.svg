@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
+  <title id="title">질병 경로를 재는 세 지표</title>
+  <desc id="desc">질병 관련 단백질 부분 그래프와 외부 단백질을 구분하고, largest component, density, conductance가 각각 재는 대상을 설명한다.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#627084"/>
+    </marker>
+    <style>
+      .text{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}
+      .title{font-size:23px;font-weight:900;fill:#0F0F10}
+      .label{font-size:16px;font-weight:850;fill:#0F0F10}
+      .small{font-size:13px;font-weight:650;fill:#596371}
+      .node{fill:#FFFFFF;stroke:#0F2C59;stroke-width:2}
+      .main{fill:#0F2C59}
+      .external{fill:#F4F7FA;stroke:#B7C2D0;stroke-width:1.6}
+      .edge{fill:none;stroke:#8EA0B6;stroke-width:2.5}
+      .boundary{fill:none;stroke:#D97706;stroke-width:2.6;stroke-dasharray:7 6}
+      .panel{fill:#FFFFFF;stroke:#BAC6D6;stroke-width:1.6}
+      .accent{fill:#EEF4FA;stroke:#0F2C59;stroke-width:2;stroke-dasharray:8 7}
+    </style>
+  </defs>
+  <rect width="960" height="360" rx="18" fill="#FAFAF9"/>
+  <g class="text">
+    <text class="title" x="44" y="48">같은 질병 경로도 세 질문으로 나누어 읽는다</text>
+    <text class="small" x="44" y="75">내부 연결, 가능한 연결 대비 실제 연결, 외부로 새는 연결은 서로 다른 신호다.</text>
+
+    <rect class="accent" x="52" y="112" width="350" height="196" rx="20"/>
+    <text class="small" x="227" y="132" text-anchor="middle">질병 관련 단백질 집합 V_d</text>
+    <circle class="main" cx="150" cy="185" r="22"/>
+    <circle class="main" cx="214" cy="160" r="22"/>
+    <circle class="main" cx="274" cy="190" r="22"/>
+    <circle class="node" cx="196" cy="250" r="22"/>
+    <circle class="node" cx="320" cy="252" r="22"/>
+    <path class="edge" d="M169 176L193 168"/>
+    <path class="edge" d="M235 170L253 181"/>
+    <path class="edge" d="M214 182L202 228"/>
+    <path class="edge" d="M293 203L312 232"/>
+    <circle class="external" cx="464" cy="146" r="20"/>
+    <circle class="external" cx="470" cy="268" r="20"/>
+    <path class="boundary" d="M296 183L445 151"/>
+    <path class="boundary" d="M340 255L450 268"/>
+    <text class="small" x="454" y="113" text-anchor="middle">외부 PPI 노드</text>
+    <text class="small" x="426" y="235" text-anchor="middle" fill="#B45309">B_d</text>
+
+    <rect class="panel" x="540" y="104" width="370" height="62" rx="12"/>
+    <text class="label" x="566" y="130">1. largest component</text>
+    <text class="small" x="566" y="151">가장 큰 연결 덩어리에 단백질이 얼마나 들어가는가</text>
+    <rect class="panel" x="540" y="184" width="370" height="62" rx="12"/>
+    <text class="label" x="566" y="210">2. density</text>
+    <text class="small" x="566" y="231">가능한 내부 엣지 중 실제 내부 엣지의 비율은 얼마인가</text>
+    <rect class="panel" x="540" y="264" width="370" height="62" rx="12"/>
+    <text class="label" x="566" y="290">3. conductance</text>
+    <text class="small" x="566" y="311">외부 경계 엣지가 내부 결속 대비 얼마나 큰가</text>
+  </g>
+</svg>

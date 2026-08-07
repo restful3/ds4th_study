@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
+  <title id="title">멀티소스 KG 통합 파이프라인</title>
+  <desc id="desc">PPI, 질병 연관, 온톨로지, 유전자 정보가 식별자 정렬과 스키마 매핑을 거쳐 KG가 되고 그래프 분석과 LLM 해석으로 이어진다.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#627084"/>
+    </marker>
+    <style>
+      .text{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}
+      .title{font-size:24px;font-weight:900;fill:#0F0F10}
+      .label{font-size:17px;font-weight:850;fill:#0F0F10}
+      .small{font-size:13px;font-weight:650;fill:#596371}
+      .chip{font-size:12px;font-weight:800;fill:#0F2C59}
+      .source{fill:#FFFFFF;stroke:#BAC6D6;stroke-width:1.5}
+      .stage{fill:#F7FAFC;stroke:#0F2C59;stroke-width:2}
+      .dark{fill:#0F2C59}
+      .arrow{fill:none;stroke:#627084;stroke-width:2.5;marker-end:url(#arrow)}
+      .dash{fill:none;stroke:#A3B0C1;stroke-width:2;stroke-dasharray:7 7}
+    </style>
+  </defs>
+  <rect width="960" height="360" rx="18" fill="#FAFAF9"/>
+  <g class="text">
+    <text class="title" x="44" y="48">구조화 소스는 먼저 식별자와 스키마로 정렬된다</text>
+    <text class="small" x="44" y="74">LLM은 구축의 원천 권위가 아니라, 분석 결과를 설명하는 후속 계층으로 둔다.</text>
+
+    <g transform="translate(44 112)">
+      <rect class="source" x="0" y="0" width="178" height="48" rx="8"/>
+      <text class="chip" x="18" y="20">PPI network</text>
+      <text class="small" x="18" y="38">Protein-Protein edges</text>
+      <rect class="source" x="0" y="62" width="178" height="48" rx="8"/>
+      <text class="chip" x="18" y="82">DisGeNET</text>
+      <text class="small" x="18" y="100">Disease-Protein links</text>
+      <rect class="source" x="0" y="124" width="178" height="48" rx="8"/>
+      <text class="chip" x="18" y="144">Disease Ontology</text>
+      <text class="small" x="18" y="162">Class, UMLS mapping</text>
+      <rect class="source" x="0" y="186" width="178" height="48" rx="8"/>
+      <text class="chip" x="18" y="206">NIH gene_info</text>
+      <text class="small" x="18" y="224">Symbol, description</text>
+    </g>
+
+    <path class="arrow" d="M235 225H314"/>
+    <rect class="stage" x="314" y="136" width="180" height="178" rx="14"/>
+    <text class="label" x="404" y="176" text-anchor="middle">정렬·정규화</text>
+    <text class="small" x="404" y="205" text-anchor="middle">ID reconciliation</text>
+    <text class="small" x="404" y="229" text-anchor="middle">schema alignment</text>
+    <text class="small" x="404" y="253" text-anchor="middle">constraints</text>
+    <text class="small" x="404" y="277" text-anchor="middle">source retention</text>
+
+    <path class="arrow" d="M494 225H572"/>
+    <rect class="dark" x="572" y="140" width="160" height="170" rx="14"/>
+    <text class="label" x="652" y="182" text-anchor="middle" fill="#FFFFFF">통합 KG</text>
+    <text class="small" x="652" y="211" text-anchor="middle" fill="#D9E2EF">Protein · Disease</text>
+    <text class="small" x="652" y="235" text-anchor="middle" fill="#D9E2EF">GO · Drug · Patient</text>
+    <text class="small" x="652" y="259" text-anchor="middle" fill="#D9E2EF">typed relations</text>
+
+    <path class="arrow" d="M732 225H790"/>
+    <rect class="stage" x="790" y="112" width="124" height="70" rx="12"/>
+    <text class="label" x="852" y="143" text-anchor="middle">그래프 분석</text>
+    <text class="small" x="852" y="164" text-anchor="middle">WCC · DWPC</text>
+    <rect class="stage" x="790" y="226" width="124" height="70" rx="12"/>
+    <text class="label" x="852" y="257" text-anchor="middle">LLM 해석</text>
+    <text class="small" x="852" y="278" text-anchor="middle">설명 후보</text>
+    <path class="dash" d="M852 183V226"/>
+  </g>
+</svg>

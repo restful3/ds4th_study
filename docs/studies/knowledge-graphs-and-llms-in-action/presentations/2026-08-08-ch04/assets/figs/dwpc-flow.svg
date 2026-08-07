@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
+  <title id="title">metapath에서 PC와 DWPC로 가는 계산 흐름</title>
+  <desc id="desc">메타경로가 실제 경로 인스턴스로 펼쳐지고, PC는 단순 개수를 세며, DWPC는 차수가 높은 노드를 지나는 경로를 낮게 가중한다.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#627084"/>
+    </marker>
+    <style>
+      .text{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}
+      .title{font-size:23px;font-weight:900;fill:#0F0F10}
+      .label{font-size:16px;font-weight:850;fill:#0F0F10}
+      .small{font-size:13px;font-weight:650;fill:#596371}
+      .panel{fill:#FFFFFF;stroke:#BAC6D6;stroke-width:1.6}
+      .dark{fill:#0F2C59}
+      .node{fill:#FFFFFF;stroke:#0F2C59;stroke-width:2}
+      .hub{fill:#FCE7C2;stroke:#D97706;stroke-width:2}
+      .line{fill:none;stroke:#627084;stroke-width:2.5;marker-end:url(#arrow)}
+      .edge{fill:none;stroke:#8EA0B6;stroke-width:2.1}
+      .warn{fill:#B45309;font-size:12px;font-weight:800}
+    </style>
+  </defs>
+  <rect width="960" height="360" rx="18" fill="#FAFAF9"/>
+  <g class="text">
+    <text class="title" x="44" y="48">PC는 경로를 세고, DWPC는 허브 경유 경로를 낮춘다</text>
+    <text class="small" x="44" y="75">metapath는 유형 패턴이고, 실제 경로 인스턴스의 점수화는 별도 단계다.</text>
+
+    <rect class="panel" x="48" y="118" width="210" height="142" rx="14"/>
+    <text class="label" x="153" y="148" text-anchor="middle">metapath</text>
+    <text class="small" x="153" y="176" text-anchor="middle">Disease → Gene →</text>
+    <text class="small" x="153" y="198" text-anchor="middle">BiologicalProcess</text>
+    <text class="small" x="153" y="230" text-anchor="middle">유형 시퀀스</text>
+
+    <path class="line" d="M258 189H326"/>
+    <rect class="panel" x="326" y="94" width="278" height="190" rx="14"/>
+    <text class="label" x="465" y="124" text-anchor="middle">실제 경로 인스턴스</text>
+    <circle class="node" cx="380" cy="168" r="18"/><text class="small" x="380" y="173" text-anchor="middle">D</text>
+    <circle class="hub" cx="458" cy="142" r="20"/><text class="small" x="458" y="147" text-anchor="middle">G</text>
+    <circle class="node" cx="542" cy="168" r="18"/><text class="small" x="542" y="173" text-anchor="middle">BP</text>
+    <path class="edge" d="M398 162L438 148"/><path class="edge" d="M478 148L524 162"/>
+    <circle class="node" cx="380" cy="226" r="18"/><text class="small" x="380" y="231" text-anchor="middle">D</text>
+    <circle class="node" cx="458" cy="226" r="18"/><text class="small" x="458" y="231" text-anchor="middle">G</text>
+    <circle class="node" cx="542" cy="226" r="18"/><text class="small" x="542" y="231" text-anchor="middle">BP</text>
+    <path class="edge" d="M398 226H440"/><path class="edge" d="M476 226H524"/>
+    <text class="warn" x="458" y="115" text-anchor="middle">high degree</text>
+
+    <path class="line" d="M604 189H670"/>
+    <rect class="panel" x="670" y="94" width="110" height="190" rx="14"/>
+    <text class="label" x="725" y="135" text-anchor="middle">PC</text>
+    <text class="small" x="725" y="165" text-anchor="middle">경로 수</text>
+    <text class="label" x="725" y="207" text-anchor="middle">2</text>
+    <text class="small" x="725" y="240" text-anchor="middle">단순 합</text>
+
+    <rect class="dark" x="806" y="94" width="110" height="190" rx="14"/>
+    <text class="label" x="861" y="135" text-anchor="middle" fill="#FFFFFF">DWPC</text>
+    <text class="small" x="861" y="166" text-anchor="middle" fill="#D9E2EF">PDP 합</text>
+    <text class="small" x="861" y="199" text-anchor="middle" fill="#D9E2EF">허브 경유</text>
+    <text class="small" x="861" y="221" text-anchor="middle" fill="#D9E2EF">경로 감쇠</text>
+    <text class="small" x="861" y="254" text-anchor="middle" fill="#D9E2EF">d^-w</text>
+  </g>
+</svg>

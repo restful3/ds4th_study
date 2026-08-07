@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
+  <title id="title">Chapter 4의 분석 루프</title>
+  <desc id="desc">통합 KG에서 전체 구조 분석, 질병 경로 분석, Hetionet 경로 분석, LLM 해석, 사람 검증이 이어지고 검증 결과가 다음 분석 질문으로 돌아간다.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#627084"/>
+    </marker>
+    <style>
+      .text{font-family:'Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',NanumGothic,Inter,system-ui,sans-serif}
+      .title{font-size:23px;font-weight:900;fill:#0F0F10}
+      .small{font-size:13px;font-weight:650;fill:#596371}
+      .label{font-size:16px;font-weight:850;fill:#0F0F10}
+      .box{fill:#FFFFFF;stroke:#BAC6D6;stroke-width:1.7}
+      .dark{fill:#0F2C59;stroke:#0F2C59;stroke-width:2}
+      .line{fill:none;stroke:#627084;stroke-width:2.6;marker-end:url(#arrow)}
+      .return{fill:none;stroke:#0F2C59;stroke-width:2.2;stroke-dasharray:8 7;marker-end:url(#arrow)}
+      .num{font-size:12px;font-weight:900;fill:#FFFFFF}
+    </style>
+  </defs>
+  <rect width="960" height="360" rx="18" fill="#FAFAF9"/>
+  <g class="text">
+    <text class="title" x="44" y="48">계산 결과는 다음 질문과 사람 검증으로 이어져야 한다</text>
+    <text class="small" x="44" y="75">분석 알고리즘은 최종 판단자가 아니라 후보를 좁히는 렌즈다.</text>
+
+    <rect class="dark" x="54" y="154" width="150" height="86" rx="14"/>
+    <text class="label" x="129" y="190" text-anchor="middle" fill="#FFFFFF">통합 KG</text>
+    <text class="small" x="129" y="214" text-anchor="middle" fill="#D9E2EF">source + schema</text>
+
+    <path class="line" d="M204 197H264"/>
+    <rect class="box" x="264" y="118" width="150" height="72" rx="12"/>
+    <text class="label" x="339" y="150" text-anchor="middle">전체 구조</text>
+    <text class="small" x="339" y="171" text-anchor="middle">WCC · Louvain</text>
+
+    <path class="line" d="M414 154H474"/>
+    <rect class="box" x="474" y="118" width="150" height="72" rx="12"/>
+    <text class="label" x="549" y="150" text-anchor="middle">질병 경로</text>
+    <text class="small" x="549" y="171" text-anchor="middle">density · conductance</text>
+
+    <path class="line" d="M624 154H684"/>
+    <rect class="box" x="684" y="118" width="150" height="72" rx="12"/>
+    <text class="label" x="759" y="150" text-anchor="middle">경로 관련성</text>
+    <text class="small" x="759" y="171" text-anchor="middle">metapath · DWPC</text>
+
+    <path class="line" d="M759 190V230"/>
+    <rect class="box" x="684" y="230" width="150" height="72" rx="12"/>
+    <text class="label" x="759" y="262" text-anchor="middle">LLM 해석</text>
+    <text class="small" x="759" y="283" text-anchor="middle">설명 · 연구 질문</text>
+
+    <path class="line" d="M684 266H624"/>
+    <rect class="box" x="474" y="230" width="150" height="72" rx="12"/>
+    <text class="label" x="549" y="262" text-anchor="middle">사람 검증</text>
+    <text class="small" x="549" y="283" text-anchor="middle">승인 · 보류 · 폐기</text>
+
+    <path class="return" d="M474 266C308 302 186 292 132 240"/>
+    <text class="small" x="324" y="314" text-anchor="middle">검증 결과는 데이터 품질과 다음 분석 질문을 갱신한다</text>
+  </g>
+</svg>
